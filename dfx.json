@@ -1,0 +1,12 @@
+{
+  "canisters": {
+    "motoko-book": {
+        "type": "assets",
+        "source": ["book/"],
+        "frontend": {
+            "entrypoint": "book/index.html"
+        },
+        "build": "mdbook build"
+    }
+  }
+}

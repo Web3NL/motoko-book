@@ -1,0 +1,7 @@
+[book]
+authors = ["Samer"]
+language = "en"
+src = "src"
+title = "The Motoko Programming Language Book"
+
+git-repository-url = "https://github.com/Web3NL/motoko-book"
