@@ -5,10 +5,6 @@
 [Introduction](introduction.md)
 
 - [Getting Started](getting-started.md)
-    - [Motoko Playground](getting-started/motoko-playground.md)
-    - [Installation](getting-started/installation.md)
-    - [Hello world!](getting-started/hello-world.md)
-    - [Project Configuration](getting-started/project-configuration.md)
 
 - [Common Programming Concepts](common-programming-concepts.md)
     - [Variables](common-programming-concepts/variables.md)
@@ -45,7 +41,7 @@
     - [Corresponding Rust Types](candid/rust-types.md)
 
 - [Advanced Concepts](advanced-concepts.md)
-    - [Subtyping](advanced-concepts/subtyping.md)
+    - [Sub-typing](advanced-concepts/subtyping.md)
     - [Generics](advanced-concepts/generics.md)
     - [Actor Classes](advanced-concepts/actor-classes.md)
     - [Upgrades](advanced-concepts/upgrades.md)
@@ -53,7 +49,7 @@
     - [Multi-canister Scaling](advanced-concepts/multi-canister-scaling.md)
 
 - [Canister Deployment and Upgrading](project-deployment.md)
-    - [Motoko Playground Deployment](project-deployment/motoko-playground-deployment.md)
+    - [Installing the SDK](project-deployment/installing-sdk.md)
     - [Local Deployment](project-deployment/local-deployment.md)
     - [PEM Files](project-deployment/pem-files.md)
     - [Cycles Wallet](project-deployment/cycles-wallet.md)
