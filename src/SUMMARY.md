@@ -12,7 +12,7 @@
     - [Comments](common-programming-concepts/comments.md)
     - [Types](common-programming-concepts/types.md)
         - [Tuples](common-programming-concepts/types/tuples.md)
-        - [Records](common-programming-concepts/types/records.md)
+        - [Objects](common-programming-concepts/types/objects.md)
         - [Variants](common-programming-concepts/types/variants.md)
     - [Pattern Matching](common-programming-concepts/pattern-matching.md)
     - [Functions](common-programming-concepts/functions.md)

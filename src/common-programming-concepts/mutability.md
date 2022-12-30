@@ -16,4 +16,27 @@ x := 2;
 
 The `:=` is called the assignment operator. It is used to assign a new value to an already declared variable. 
 
-We can change the value of a mutable variable as many times as we like.  
+We can change the value of a mutable variable as many times as we like. For example, we declare a mutable variable named `city` with text value `"Amsterdam"`
+
+```markdown
+var city = "Amsterdam";
+```
+
+And we also declare two immutable variables. 
+
+```markdown
+let newYork = "New York";
+let berlin = "Berlin";
+```
+
+Now we mutate `city` three times:
+
+```markdown
+city := newYork;
+city := berlin;
+city := "Paris";
+```
+
+The last mutation was achieved by assigning a *string literal* to the variable name. The first two mutations were achieved by assigning the value of other immutable variables. It is also possible to assign the value of another mutable variable. 
+
+*Source file: [mutability.mo](mutability.mo)*

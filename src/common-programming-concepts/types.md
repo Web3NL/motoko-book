@@ -32,7 +32,7 @@ let x : Bool = true : Bool;
     
 In this case it is unnecessary and makes the code ugly. The convention is to leave spaces around the colon.
 
-*Primitive types* are fundamental core data types that are not composed of more fundamental types. Some common ones in Motoko are:  
+*Primitive types* are fundamental core data types that are not *composed* of more fundamental types. Some common ones in Motoko are:  
 - Nat
 - Int
 - Float
@@ -56,4 +56,6 @@ let age : Age = 18;
 ```
 
 The variable name `age` is of type `Age`. 
+
+*Source file: [types.mo](types.mo)*
 
