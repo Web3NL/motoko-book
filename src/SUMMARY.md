@@ -54,13 +54,10 @@
 - [Common Internet Computer Canisters](common-internet-computer-canisters.md)
     - [IC Management Canister](common-internet-computer-canisters/ic-management-canister.md)
     - [ICP Ledger](common-internet-computer-canisters/ledger.md)
-    - [Cycles Wallet](common-internet-computer-canisters/cycles-wallet.md)
     - [Cycle Minting Canister](common-internet-computer-canisters/cycles-minting-canister.md)
 
 - [Internet Computer Standards](internet-computer-standards.md)
     - [ICRC1](internet-computer-standards/icrc1.md)
-    - [ICRC2](internet-computer-standards/icrc2.md)
-    - [ICRC3](internet-computer-standards/icrc3.md)
 
 - [Tokenized Comments Example](tokenized-comments-example.md)
 
