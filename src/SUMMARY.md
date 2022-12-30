@@ -32,13 +32,9 @@
 - [The Base Library](base-library.md)
     - [Primitive Types](base-library/primitive-types.md)
     - [Data Structures](base-library/data-structures.md)
-    - [IC Management](base-library/ic-management.md)
+    - [IC APIs](base-library/ic-apis.md)
 
-- [Candid and Async Types](candid.md)
-    - [Candid Types](candid/candid-types.md)
-    - [Corresponding Motoko Types](candid/motoko-types.md)
-    - [Corresponding Javascript Types](candid/javascript-types.md)
-    - [Corresponding Rust Types](candid/rust-types.md)
+- [Shared Types](shared-types.md)
 
 - [Advanced Concepts](advanced-concepts.md)
     - [Sub-typing](advanced-concepts/subtyping.md)
