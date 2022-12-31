@@ -1,4 +1,4 @@
-# [The Motoko Programming Language Book]()
+# [The Motoko Programming Language Book](https://7po3j-syaaa-aaaal-qbqea-cai.ic0.app/)
 
 <img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by.png" alt="https://creativecommons.org/licenses/by/4.0/" />
 
