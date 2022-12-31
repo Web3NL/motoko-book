@@ -10,7 +10,7 @@ let individual = ("Male", 30);
 let (gender, age) = individual;
 ```
 
-The tuple `("Male", 30)` has a `Text` value and a `Nat` value. The second line *binds* these values to newly created variable names `gender` and `age`. We can nou use these variables in this scope. 
+The tuple `("Male", 30)` has a `Male` value and a `30` value. The second line *binds* these values to newly created variable names `gender` and `age`. We can nou use these variables in this scope. 
 
 We could also type annotate the variable names to *check* the type of the values we are decomposing. 
 

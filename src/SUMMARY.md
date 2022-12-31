@@ -31,6 +31,11 @@
   
 - [The Base Library](base-library.md)
     - [Primitive Types](base-library/primitive-types.md)
+        - [Bool](base-library/primitive-types/bool.md)
+        - [Nat](base-library/primitive-types/nat.md)
+        - [Int](base-library/primitive-types/int.md)
+        - [Float](base-library/primitive-types/float.md)
+        - [Principal](base-library/primitive-types/principal.md)
     - [Data Structures](base-library/data-structures.md)
     - [IC APIs](base-library/ic-apis.md)
 
