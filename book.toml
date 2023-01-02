@@ -5,3 +5,6 @@ src = "src"
 title = "The Motoko Programming Language Book"
 
 git-repository-url = "https://github.com/Web3NL/motoko-book"
+
+[output.html]
+additional-js = ["theme/hljs_run.js"]

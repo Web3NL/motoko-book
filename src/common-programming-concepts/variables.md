@@ -4,7 +4,7 @@ A variable is a *value* that has an arbitrary *name*. It is defined by a *declar
 
 A variable is declared as follows:
 
-```markdown
+```motoko
 let myVariable = 0;
 ```
 
@@ -16,7 +16,7 @@ The convention is to use `lowerCamelCase` for variable names.
 
 Some examples of immutable variables:
 
-```markdown
+```motoko
 let x = 12;
 
 let temperature = -5;

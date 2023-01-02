@@ -2,13 +2,13 @@
 
 Variables that can change their value *after* declaring them are called *mutable variables*. They are declared using a `var` declaration:
 
-```markdown
+```motoko
 var x = 1;
 ```
 
 `x` is now the name of a mutable variable with the value `1`. If we want change the value, in other words *mutate* it, we *assign* a new value to it:
 
-```markdown
+```motoko
 x := 2;
 ```
 
@@ -18,20 +18,20 @@ The `:=` is called the assignment operator. It is used to assign a new value to 
 
 We can change the value of a mutable variable as many times as we like. For example, we declare a mutable variable named `city` with text value `"Amsterdam"`
 
-```markdown
+```motoko
 var city = "Amsterdam";
 ```
 
 And we also declare two immutable variables. 
 
-```markdown
+```motoko
 let newYork = "New York";
 let berlin = "Berlin";
 ```
 
 Now we mutate `city` three times:
 
-```markdown
+```motoko
 city := newYork;
 city := berlin;
 city := "Paris";

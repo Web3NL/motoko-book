@@ -4,7 +4,7 @@ A type describes the *data type* of a value. Motoko has static types. This means
 
 Motoko can in many cases know the type of a variable without you doing anything:
 
-```markdown
+```motoko
 let x = true;
 ```
 
@@ -12,7 +12,7 @@ In the example above the `true` value of variable name `x` has the `Bool` type. 
 
 In some cases the type is not obvious and we need to add the type ourselves. This is called *type annotation*. We can annotate the name of the variable like this:
 
-```markdown
+```motoko
 let x : Bool = true;
 ```
 
@@ -20,13 +20,13 @@ With the colon `:` and the name of the type after the variable name, we tell Mot
 
 We can also annotate the value:
 
-```markdown
+```motoko
 let x = true : Bool;
 ```
 
 Or both:
 
-```markdown
+```motoko
 let x : Bool = true : Bool;
 ```
     
@@ -45,13 +45,13 @@ See the [full list of all Motoko data types](https://internetcomputer.org/docs/c
  
 We can define arbitrary names for any type:
 
-```markdown
+```motoko
 type Age = Nat;
 ```   
 
 This creates an alias (a second name) for the `Nat` type. This is useful for writing clear readable code.
 
-```markdown
+```motoko
 let age : Age = 18; 
 ```
 
