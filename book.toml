@@ -8,3 +8,8 @@ git-repository-url = "https://github.com/Web3NL/motoko-book"
 
 [output.html]
 additional-js = ["theme/hljs_run.js"]
+
+[output.html.fold]
+enable = true    # whether or not to enable section folding
+level = 1         # the depth to start folding
+
