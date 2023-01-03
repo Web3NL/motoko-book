@@ -32,6 +32,7 @@ let x : Bool = true : Bool;
     
 In this case it is unnecessary and makes the code ugly. The convention is to leave spaces around the colon.
 
+# Primitive types
 *Primitive types* are fundamental core data types that are not *composed* of more fundamental types. Some common ones in Motoko are:  
 - Nat
 - Int
@@ -56,6 +57,19 @@ let age : Age = 18;
 ```
 
 The variable name `age` is of type `Age`. 
+
+# The unit type
+The last type we will mention in this chapter is the *unit type* `()`. This type is also called the empty [tuple](types/tuples.html) type. It's useful in several places, for example in [functions](functions.html) to indicate that a function does not return any specific type.
+
+For now let's just look at one *ugly, strange and useless*, yet legal Motoko code example for the sake of learning:
+
+```motoko
+let unitType : () = () : ();
+```
+
+We declared a variable named `unitType` and type annotated this variable name with the unit type. Then we assigned the empty [tuple](types/tuples.html) value `()` to it and also annotated this value with the unit type. 
+
+Observe that we type annotate twice, once on the left hand side of the assignment and the other on the right hand side, like we did for variable `x` above.
 
 *Source file: [types.mo](types.mo)*
 

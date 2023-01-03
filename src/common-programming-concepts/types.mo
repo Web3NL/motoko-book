@@ -21,3 +21,7 @@ type Age = Nat;
 
 
 let age : Age = 18; 
+
+
+
+let unitType : () = () : ();
