@@ -23,4 +23,8 @@ actor {
 
     let output = concat("Hello ", "world");
 
+    type Concat = (Text, Text) -> Text;
+
+    let ourFunc : Concat = concat;
+
 };

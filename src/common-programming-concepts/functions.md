@@ -56,7 +56,7 @@ func myFunc(x : Nat) : Nat {
 
 We removed the private keyword and simplified the return expression to just `x`. Even the semicolon `;` is gone. But note that we can't leave out the type annotations, like we did with variables. Type inference doesn't work on function declarations except for the defaulting unit type behavior mentioned above. 
 
-Lets end this chapter with a useful private function and *call* it:
+Lets write a useful private function and *call* it:
 
 ```motoko
 func concat(t1 : Text, t2 : Text) : Text {
@@ -75,7 +75,23 @@ The result of the concatenation `t1 # t2` is another `Text`. We did not type ann
 
 We return `result` by placing it at the last line of the function without a `return` keyword and semicolon `;`. You could be explicit by adding the return keyword and even type annotate the `result` variable with a `: Text` type, but in this case it is not necessary. 
 
-Lastly, we call this function with two text *literals* as the arguments and assign its result to the variable `output`. Again, we don't have to annotate the type of this `output` variable, because this is obvious from the context and Motoko will infer this information for us. 
+Lastly, we *call* this function with two text *literals* as the arguments and assign its result to the variable `output`. Again, we don't have to annotate the type of this `output` variable, because this is obvious from the context and Motoko will infer this information for us. 
+
+# Function type
+The last concept for this chapter is the type of the *whole* function. A function's *typed arguments* and *return type* together are used to define a type for the function as a whole. The type of the function `concat` above is the following:
+
+```motoko
+type Concat = (Text, Text) -> Text;
+
+let ourFunc : Concat = concat;
+```
+
+We used the type name `Concat` to define a new type `(Text, Text) -> Text`. This is the type of our function `concat`. The function type is constructed by joining three things: 
+- a *tuple of types* for the function argument types
+- the `->` keyword
+- the return type of the function
+
+We use the `Concat` type to annotate the type of another variable `ourFunc` and assign the function name `concat` to it without the parenthesis and arguments like we did when we called the function. We basically renamed our function to `ourFunc`. 
 
 **Note:** All functions above are placed inside an [actor](/internet-computer-programming-concepts/actors.html)
 
