@@ -1,3 +1,6 @@
+import Text "mo:base/Text";
+import Bool "mo:base/Bool";
+import Nat "mo:base/Nat";
 //  RECORDS
 
 // let peter = {
@@ -43,3 +46,29 @@ let car : Car = {
 };
 
 car.mileage := 30_000;
+
+// --------------------------------------
+
+type FootBaller = {
+    country : Text;
+    isGoodPlayer : Bool ;
+    var goal_Yet : Nat ;
+};
+
+let Messi : FootBaller = {
+     country = "Argentina";
+    isGoodPlayer = true ;
+    var goal_Yet = 803 ;
+
+};
+
+ Messi.goal_Yet := 804 ;
+
+let ronaldo : FootBaller = {
+     country = "Portugal";
+    isGoodPlayer = true ;
+    var goal_Yet = 803 ;
+
+};
+
+ ronaldo.goal_Yet := 819 ;
