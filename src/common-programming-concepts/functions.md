@@ -32,7 +32,7 @@ private func myFunc(x : Nat) {
 };
 ```
 
-The function is now marked private. All arguments **must** be annotated. Type inference doesn't work here. In this case we take in one argument and call it `x`. We also type annotate it with `Nat`. 
+The function is now marked private. All arguments **must** be annotated. Type inference doesn't work here. In this case we take in one argument and name it `x`. We also type annotate it with `Nat`. 
 
 Lets proceed by adding a return type to this function and actually returning a value of that type:
 
@@ -89,7 +89,7 @@ let ourFunc : Concat = concat;
 We used the type name `Concat` to define a new type `(Text, Text) -> Text`. This is the type of our function `concat`. The function type is constructed by joining three things: 
 - a *tuple of types* for the function argument types
 - the `->` keyword
-- the return type of the function
+- the *return type* of the function
 
 We use the `Concat` type to annotate the type of another variable `ourFunc` and assign the function name `concat` to it without the parenthesis and arguments like we did when we called the function. We basically renamed our function to `ourFunc`. 
 
