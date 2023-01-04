@@ -8,7 +8,7 @@ A one-line comment is written by starting the line with `//`.
 It's always recommended to clarify your code by commenting:
 ```motoko
 // A constant representing my phone number
-let phoneNumber = 0123456789;
+let phoneNumber = 1234567890;
 ```    
 
 A comment could start at the end of a line
