@@ -1,6 +1,6 @@
-# Objects
+# Records
 
-Objects are like a *collection* of named values (variables). These values could be mutable or immutable. We assign an object *literal* to a variable name `peter`:
+Records are like a *collection* of named values (variables). These values could be mutable or immutable. We assign a record to a variable name `peter`:
 
 ```motoko
 let peter = {
@@ -9,7 +9,7 @@ let peter = {
 };
 ```
 
-The object is enclosed with curly brackets `{}`. The example above is a named object with two *field expressions*. A field expression consists of a variable name and its assigned value. In this case `name` and `age` are the names. `Peter` and `18` are the values. Field expressions end with a semicolon `;`
+The record is enclosed with curly brackets `{}`. The example above is a named record with two *field expressions*. A field expression consists of a variable name and its assigned value. In this case `name` and `age` are the names. `Peter` and `18` are the values. Field expressions end with a semicolon `;`
 
 We could annotate the types of the variables like this:
 
@@ -20,7 +20,7 @@ let peter = {
 };
 ```
 
-The object now has two type annotated fields. The whole object also has an *object type*. We could write:
+The record now has two type annotated fields. The whole record also has an *record type*. We could write:
 
 ```motoko
 type Person = {
@@ -29,7 +29,7 @@ type Person = {
 };
 ```
 
-This type declaration defines a new name for our type and specifies the type of the object. We could now start using this type to declare several variables of this same type:
+This type declaration defines a new name for our type and specifies the type of the record. We could now start using this type to declare several variables of this same type:
 
 ```motoko
 let bob : Person = {
@@ -43,7 +43,7 @@ let alice : Person = {
 };  
 ```
 
-Another example is an object with mutable contents:
+Another example is an record with mutable contents:
 
 ```motoko
 type Car = {
@@ -63,4 +63,4 @@ We defined a new type `Car`. It has a mutable field `var mileage`. This field ca
 
 Note, we used an underscore `_` in the natural number. This is allowed for readability and does not affect the value.
 
-*Source file: [objects.mo](objects.mo)*
+*Source file: [records.mo](records.mo)*

@@ -1,6 +1,6 @@
 # Pattern Matching
 
-When we discussed tuples, objects and variants, we were building up *structured data* types. With pattern matching we are able to *decompose* structured data into its constituent parts. 
+When we discussed tuples, records and variants, we were building up *structured data* types. With pattern matching we are able to *decompose* structured data into its constituent parts. 
 
 Lets use pattern matching to decompose a tuple into its constituent parts. We first construct a tuple and assign it to a variable. Then we deconstruct it by naming its values one by one and bringing them into scope:
 
@@ -22,7 +22,7 @@ In this last example, we only brought gender into scope. Using the *wildcard* `_
 
 When we decompose `individual` into `gender` and `age` we say that the variable is *consumed* by the pattern `(gender, age)`.
 
-Lets look at an example of pattern matching on an object:
+Lets look at an example of pattern matching on a record:
 
 ```motoko
 let person = {
@@ -33,7 +33,7 @@ let person = {
 let {name; member} = person;
 ```
 
-In the example above, we define an object. We then decompose the object fields by using the names of the fields, thereby bringing these variables into scope. 
+In the example above, we define a record. We then decompose the record fields by using the names of the fields, thereby bringing these variables into scope. 
 
 Note we use the `{name; member}` pattern to consume the variable.
 
