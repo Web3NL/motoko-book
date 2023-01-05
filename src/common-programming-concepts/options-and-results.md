@@ -3,7 +3,7 @@ In this chapter we discuss the *Option* type and the *Result* variant type.
 
 They are different concepts but they are generally used for the same purpose, namely specifying the return type of functions. Options are used more widely beyond function return types, where as Results mostly appear as function return type. 
 
-# Options
+## Options
 An option type is a type that can either have some value or have no value at all.
 
 An option type is a *type* preceded by a question mark `?`.  
@@ -44,7 +44,7 @@ The two functions both have `?Nat` as their return type. The first returns an op
 
 In the next chapter about [control flow](control-flow.html) we will demonstrate how we can use option types in a useful way. 
 
-# Results
+## Results
 To fully understand Results we have to understand [generics](/advanced-concepts/generics.html) first, which are an advanced topic that we will cover later in this book. For now we will only cover a limited form of the Result variant type (without type parameters) to give a basic idea of the concept.
 
 A Result type is a *[variant type](/common-programming-concepts/types/variants.html)*. A simple definition could be:

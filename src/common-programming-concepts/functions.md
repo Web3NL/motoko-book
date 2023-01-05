@@ -11,7 +11,7 @@ Other possible functions will be discussed in upcoming chapters:
 - [`Async Messages`](/internet-computer-programming-concepts/async-messages.html): shared and caller-identifying functions
 - [`Upgrades`](/advanced-concepts/upgrades.html): system upgrade functions
 
-# Private functions
+## Private functions
 Lets start with most simple function in Motoko: 
 
 ```motoko
@@ -77,7 +77,7 @@ We return `result` by placing it at the last line of the function without a `ret
 
 Lastly, we *call* this function with two text *literals* as the arguments and assign its result to the variable `output`. Again, we don't have to annotate the type of this `output` variable, because this is obvious from the context and Motoko will infer this information for us. 
 
-# Function type
+## Function type
 The last concept for this chapter is the type of the *whole* function. A function's *typed arguments* and *return type* together are used to define a type for the function as a whole. The type of the function `concat` above is the following:
 
 ```motoko

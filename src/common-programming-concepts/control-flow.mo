@@ -28,7 +28,7 @@ var count = 0;
 
 switch (color) {
     case (#Black) { count += 1 };
-    case (#White) { count-= 1 };
+    case (#White) { count -= 1 };
     case (#Blue) { count := 0 };
 };
 

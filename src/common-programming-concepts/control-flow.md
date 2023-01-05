@@ -4,7 +4,7 @@ Control flow refers to the order in which a program is *executed*. We discuss th
 
 These constructs are called *expressions* because they *evaluate* to a value of a certain type. They also contain expressions. 
 
-# If expression
+## If expression
 
 An *if expression* is constructed with the `if` keyword followed by two expressions. The first expression is enclosed in parenthesis `()` and the second is enclosed with curly braces `{}`. They both evaluate to a value of a certain type.
 
@@ -24,7 +24,7 @@ The first expression evaluates to `true` so the second expression is evaluated a
 
 If the first expression evaluates to `false`, then the second expression is **not** evaluated and the *whole* `if` expression will evaluate to the unit type `()` and the program continues.
 
-# If Else expression
+## If Else expression
 
 The `if else` expression starts with an `if` expression followed by the `else` keyword and a third expression also enclosed in curly braces `{}`. When the first expression now evaluates to `false`, the third expression evaluates in stead of returning `()`. 
 
@@ -46,7 +46,7 @@ let result : Text = if (condition) {
 
 The second and third expression of the `if else` expression (enclosed in curly braces `{}`) must evaluate to a value of the same type. In this case its the `Text` type and therefore the variable `result` has type `Text`.  
 
-# Switch expression
+## Switch expression
 
 The `switch` expression is a powerful control flow construct that allows [pattern matching](pattern-matching.html) on its input. 
 
@@ -71,7 +71,7 @@ var count = 0;
 
 switch (color) {
     case (#Black) { count += 1 };
-    case (#White) { count-= 1 };
+    case (#White) { count -= 1 };
     case (#Blue) { count := 0 };
 };
 ```
