@@ -10,6 +10,7 @@
     - [Variables](common-programming-concepts/variables.md)
     - [Mutability](common-programming-concepts/mutability.md)
     - [Comments](common-programming-concepts/comments.md)
+    - [Operators](common-programming-concepts/operators.md)
     - [Types](common-programming-concepts/types.md)
         - [Tuples](common-programming-concepts/types/tuples.md)
         - [Records](common-programming-concepts/types/records.md)
