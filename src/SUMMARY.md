@@ -1,6 +1,6 @@
 # The Motoko Programming Language
 
-[The Motoko Programming Language](title-page.md)
+[The Motoko Programming Language](index.md)
 
 [Introduction](introduction.md)
 
