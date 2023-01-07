@@ -1,1 +1,0 @@
-# The Motoko Programming Language
