@@ -7,8 +7,8 @@ Private functions in Motoko may appear in `Actors`, `Modules`, `Objects`, `Class
 Other possible functions will be discussed in upcoming chapters: 
 - [`Objects and Classes`](objects-and-classes.html): public and private functions inside an object or class
 - [`Modules`](modules.html): public and private functions inside a module
-- [`Actors`](/internet-computer-programming-concepts/actors.html): update, query and oneway functions
-- [`Async Messages`](/internet-computer-programming-concepts/async-messages.html): shared and caller-identifying functions
+- [`Actors`](/internet-computer-programming-concepts/actors.html): update, query and oneway shared functions
+- [`Async Messages`](/internet-computer-programming-concepts/async-messages.html): caller-identifying functions
 - [`Upgrades`](/advanced-concepts/upgrades.html): system upgrade functions
 
 ## Private functions
