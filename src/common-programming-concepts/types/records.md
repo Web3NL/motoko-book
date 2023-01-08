@@ -20,7 +20,7 @@ let peter = {
 };
 ```
 
-The record now has two type annotated fields. The whole record also has an *record type*. We could write:
+The record now has two type annotated fields. The whole record also has a [type](#object-literal). We could write:
 
 ```motoko
 type Person = {
@@ -62,5 +62,37 @@ car.mileage := 30_000;
 We defined a new type `Car`. It has a mutable field `var mileage`. This field can be accessed by writing `car.mileage`. We then mutated the value of the mutable `mileage` variable to the value 30_000; 
 
 Note, we used an underscore `_` in the natural number. This is allowed for readability and does not affect the value.
+
+## Object literal
+
+Records are sometimes referred to as *[object](/common-programming-concepts/objects-and-classes.html) literals*. They are like the string literals we saw in earlier chapters. Records are a 'literal' value of an object. We will discuss [objects](/common-programming-concepts/objects-and-classes.html) and their types in an upcoming chapter.
+
+In our examples above, the literal value for the `bob` variable was:
+
+```motoko
+{
+    name = "Bob";
+    age = 20;
+}
+```
+
+And this record has an *object type*:
+
+```motoko
+{
+    name : Text;
+    age : Nat;
+}
+```
+
+Zero or more annotated names enclosed in `{}` is an object type. In fact, we could use this type to annotate a variable:
+
+```motoko
+let bob : { name : Text; age : Nat; } = { name = "Bob"; age = 20; };
+```
+
+This is the same declaration we made earlier, but now we spelled out the type explicitly. 
+
+We will revisit this subject in [objects and classes](/common-programming-concepts/objects-and-classes.html).
 
 *Source file: [records.mo](records.mo)*

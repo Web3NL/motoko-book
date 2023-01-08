@@ -5,15 +5,10 @@
 //     age = 18;
 // };
 
-
-
 let peter = {
     name : Text = "Peter";
     age : Nat = 18;
 };
-
-
-
 
 type Person = {
     name : Text;
@@ -28,9 +23,7 @@ let bob : Person = {
 let alice : Person = {
     name = "Alice";
     age = 25;
-};  
-
-
+};
 
 type Car = {
     brand : Text;
@@ -43,3 +36,15 @@ let car : Car = {
 };
 
 car.mileage := 30_000;
+
+// {
+//     name = "Bob";
+//     age = 20;
+// }
+
+// {
+//     name : Text;
+//     age : Nat;
+// }
+
+// let bob : { name : Text; age : Nat; } = { name = "Bob"; age = 20; };
