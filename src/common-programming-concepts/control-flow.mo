@@ -33,3 +33,33 @@ switch (color) {
 };
 
 
+
+
+type Result = {
+    #ok : Nat;
+    #err : Text;
+};
+
+type Balance = ?Nat;
+
+var balance : Balance = null;
+
+func getBalance() : Result {
+    switch (balance) {
+        case (null) {
+            #err "No balance!"
+        };
+        case (?amount) {
+            #ok amount
+        };
+    }
+};
+
+let amount : Result = getBalance();
+
+balance := ?10;
+
+let amount2 = getBalance();
+
+
+
