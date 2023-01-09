@@ -5,9 +5,9 @@ Operators are symbols that indicate several kinds of *operations* on values. The
 let x = 1 + 1; 
 ```
 
-The `+` character in the example above serves as an addition operator.
+The `+` character in the example above serves as an addition operator, which performs an *arithmetic operation*. 
 
-<!-- There are several kinds of operators in Motoko, namely `unary`, `relational`, `numeric`, `bitwise` and `assignment` operators (and one `text` operator). We will only cover a subset in this book. A full overview of all operators is available in the [official documentation](https://internetcomputer.org/docs/current/developer-docs/build/cdks/motoko-dfinity/language-manual#operators-and-types). -->
+In this chapter we will cover several kinds of operators, namely `numeric`, `relational` and `assignment` operators. 
 
 ## Numeric operators
 Numeric operators are used to perform *arithmetic* operations on number types like `Nat`, `Int` or `Float`. Here's a list of all numeric operators:
