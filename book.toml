@@ -6,8 +6,12 @@ title = "The Motoko Programming Language Book"
 
 [output.html]
 additional-js = ["theme/hljs_run.js"]
+
 git-repository-icon = "fa-github"
 git-repository-url = "https://github.com/Web3NL/motoko-book"
+
+default-theme = "ayu"
+preferred-dark-theme = "ayu"
 
 [output.html.fold]
 enable = true    # whether or not to enable section folding
