@@ -20,6 +20,8 @@
     - [Options and Results](common-programming-concepts/options-and-results.md)
     - [Control Flow](common-programming-concepts/control-flow.md)
     - [Objects and Classes](common-programming-concepts/objects-and-classes.md)
+        - [Objects](common-programming-concepts/objects-and-classes/objects.md)
+        - [Classes](common-programming-concepts/objects-and-classes/classes.md)
     - [Modules](common-programming-concepts/modules.md)
 
 - [Internet Computer Programming Concepts](internet-computer-programming-concepts.md)

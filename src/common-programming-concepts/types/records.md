@@ -43,7 +43,7 @@ let alice : Person = {
 };  
 ```
 
-Another example is an record with mutable contents:
+Another example is a record with mutable contents:
 
 ```motoko
 type Car = {
