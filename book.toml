@@ -4,10 +4,10 @@ language = "en"
 src = "src"
 title = "The Motoko Programming Language Book"
 
-git-repository-url = "https://github.com/Web3NL/motoko-book"
-
 [output.html]
 additional-js = ["theme/hljs_run.js"]
+git-repository-icon = "fa-github"
+git-repository-url = "https://github.com/Web3NL/motoko-book"
 
 [output.html.fold]
 enable = true    # whether or not to enable section folding
