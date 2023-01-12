@@ -13,11 +13,11 @@
     - [Types](common-programming-concepts/types.md)
         - [Tuples](common-programming-concepts/types/tuples.md)
         - [Records](common-programming-concepts/types/records.md)
-        - [Options]
+        - [Options](common-programming-concepts/types/options.md)
         - [Variants](common-programming-concepts/types/variants.md)
-        - [Mutable Arrays]
-        - [Immutable Arrays]
-        - [Recursive Types] 
+        - [Mutable Arrays](common-programming-concepts/types/mutable-arrays.md)
+        - [Immutable Arrays](common-programming-concepts/types/immutable-arrays.md)
+        - [Recursive Types](common-programming-concepts/types/recursive-types.md) 
     - [Operators](common-programming-concepts/operators.md)
     - [Pattern Matching](common-programming-concepts/pattern-matching.md)
     - [Functions](common-programming-concepts/functions.md)
@@ -32,15 +32,15 @@
 
 - [Internet Computer Programming Concepts](internet-computer-programming-concepts.md)
     - [Actors](internet-computer-programming-concepts/actors.md)
-    - [Futures, Async/Await]
-    - [Messaging Errors, Try/Catch/Throw]
+    - [Futures, Async/Await](internet-computer-programming-concepts/async-await.md)
+    - [Messaging Errors, Try/Catch/Throw](internet-computer-programming-concepts/errors.md)
     - [Async Messages](internet-computer-programming-concepts/async-messages.md)
     - [Stable Variables](internet-computer-programming-concepts/stable-variables.md)
     - [Authentication](internet-computer-programming-concepts/authentication.md)
-         - [Principals]
+         - [Principals](internet-computer-programming-concepts/authentication/principals.md)
     - [Canisters](internet-computer-programming-concepts/canisters.md)
     - [Cycles and ICP](internet-computer-programming-concepts/cycles.md)
-    - [Cryptographic Randomness]
+    - [Cryptographic Randomness](internet-computer-programming-concepts/randomness.md)
 
   
 - [The Base Library](base-library.md)
@@ -50,10 +50,10 @@
         - [Int](base-library/primitive-types/int.md)
         - [Float](base-library/primitive-types/float.md)
         - [Principal](base-library/primitive-types/principal.md)
-        - [Text]
-        - [Char]
-        - [Bounded Integral Types]
-        - [Blob]
+        - [Text](base-library/primitive-types/text.md)
+        - [Char](base-library/primitive-types/char.md)
+        - [Bounded Integral Types](base-library/primitive-types/bounded-integral-types.md)
+        - [Blob](base-library/primitive-types/blob.md)
     - [Data Structures](base-library/data-structures.md)
     - [IC APIs](base-library/ic-apis.md)
 
@@ -64,10 +64,10 @@
     - [Upgrades](advanced-concepts/upgrades.md)
     - [Stable Storage](advanced-concepts/stable-storage.md)
     - [Multi-canister Scaling](advanced-concepts/multi-canister-scaling.md)
-    - [Computations (`async*`/`await*`)]
-    - [Timers (Hearbeats?)]
-    - [Dynamic calls & `from_candid`/`to_candid`]
-    - [Message Inspection]
+    - [Computations (`async*`/`await*`)](advanced-concepts/internal-async-await.md)
+    - [Timers and Heartbeats](advanced-concepts/timers.md)
+    - [Dynamic calls `from_candid`/`to_candid`](advanced-concepts/candid.md)
+    - [Message Inspection](advanced-concepts/message-inspection.md)
     
 
 - [Canister Deployment and Upgrading](project-deployment.md)
