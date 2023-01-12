@@ -13,7 +13,11 @@
     - [Types](common-programming-concepts/types.md)
         - [Tuples](common-programming-concepts/types/tuples.md)
         - [Records](common-programming-concepts/types/records.md)
+        - [Options]
         - [Variants](common-programming-concepts/types/variants.md)
+        - [Mutable Arrays]
+        - [Immutable Arrays]
+        - [Recursive Types] 
     - [Operators](common-programming-concepts/operators.md)
     - [Pattern Matching](common-programming-concepts/pattern-matching.md)
     - [Functions](common-programming-concepts/functions.md)
@@ -26,11 +30,16 @@
 
 - [Internet Computer Programming Concepts](internet-computer-programming-concepts.md)
     - [Actors](internet-computer-programming-concepts/actors.md)
+    - [Futures, Async/Await]
+    - [Messaging Errors, Try/Catch/Throw]
     - [Async Messages](internet-computer-programming-concepts/async-messages.md)
     - [Stable Variables](internet-computer-programming-concepts/stable-variables.md)
     - [Authentication](internet-computer-programming-concepts/authentication.md)
+         - [Principals]
     - [Canisters](internet-computer-programming-concepts/canisters.md)
     - [Cycles and ICP](internet-computer-programming-concepts/cycles.md)
+    - [Cryptographic Randomness]
+
   
 - [The Base Library](base-library.md)
     - [Primitive Types](base-library/primitive-types.md)
@@ -39,18 +48,25 @@
         - [Int](base-library/primitive-types/int.md)
         - [Float](base-library/primitive-types/float.md)
         - [Principal](base-library/primitive-types/principal.md)
+        - [Text]
+        - [Char]
+        - [Bounded Integral Types]
+        - [Blob]
     - [Data Structures](base-library/data-structures.md)
     - [IC APIs](base-library/ic-apis.md)
 
 - [Shared Types](shared-types.md)
 
 - [Advanced Concepts](advanced-concepts.md)
-    - [Sub-typing](advanced-concepts/subtyping.md)
-    - [Generics](advanced-concepts/generics.md)
     - [Actor Classes](advanced-concepts/actor-classes.md)
     - [Upgrades](advanced-concepts/upgrades.md)
     - [Stable Storage](advanced-concepts/stable-storage.md)
     - [Multi-canister Scaling](advanced-concepts/multi-canister-scaling.md)
+    - [Computations (Async*/Await*)]
+    - [Timers]
+    - [Dynamic calls, from_candid/to_candid]
+    - [Message Inspection]
+    
 
 - [Canister Deployment and Upgrading](project-deployment.md)
     - [Installing the SDK](project-deployment/installing-sdk.md)
