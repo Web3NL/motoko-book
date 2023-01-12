@@ -27,6 +27,8 @@
         - [Objects](common-programming-concepts/objects-and-classes/objects.md)
         - [Classes](common-programming-concepts/objects-and-classes/classes.md)
     - [Modules](common-programming-concepts/modules.md)
+    - [Sub-typing](advanced-concepts/subtyping.md)
+    - [Generics](advanced-concepts/generics.md)
 
 - [Internet Computer Programming Concepts](internet-computer-programming-concepts.md)
     - [Actors](internet-computer-programming-concepts/actors.md)
@@ -62,9 +64,9 @@
     - [Upgrades](advanced-concepts/upgrades.md)
     - [Stable Storage](advanced-concepts/stable-storage.md)
     - [Multi-canister Scaling](advanced-concepts/multi-canister-scaling.md)
-    - [Computations (Async*/Await*)]
-    - [Timers]
-    - [Dynamic calls, from_candid/to_candid]
+    - [Computations (`async*`/`await*`)]
+    - [Timers (Hearbeats?)]
+    - [Dynamic calls & `from_candid`/`to_candid`]
     - [Message Inspection]
     
 
