@@ -62,7 +62,7 @@
     - [Upgrades](advanced-concepts/upgrades.md)
     - [Stable Storage](advanced-concepts/stable-storage.md)
     - [Multi-canister Scaling](advanced-concepts/multi-canister-scaling.md)
-    - [Async* and Await*)](advanced-concepts/internal-async-await.md)
+    - [Async* and Await*](advanced-concepts/internal-async-await.md)
     - [Timers and Heartbeats](advanced-concepts/timers.md)
     - [Candid](advanced-concepts/candid.md)
     - [Message Inspection](advanced-concepts/message-inspection.md)
