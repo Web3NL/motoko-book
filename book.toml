@@ -9,6 +9,7 @@ additional-js = ["theme/hljs_run.js"]
 
 git-repository-icon = "fa-github"
 git-repository-url = "https://github.com/Web3NL/motoko-book"
+edit-url-template = "https://github.com/Web3NL/motoko-book/edit/main/{path}"
 
 default-theme = "ayu"
 preferred-dark-theme = "ayu"
