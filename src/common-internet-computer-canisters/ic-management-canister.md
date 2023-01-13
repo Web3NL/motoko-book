@@ -1,1 +1,1 @@
-# Internet Computer Management Canister
+# IC Management Canister
