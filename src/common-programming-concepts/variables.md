@@ -5,7 +5,7 @@ A variable is a *value* that has an arbitrary *name*. It is defined by a *declar
 A variable is declared as follows:
 
 ```motoko
-{{#include _mo/variables1.mo}}
+{{#include _mo/variables.mo:a}}
 ```
 
 The *let* keyword indicates we are declaring a variable. The name of the variable is *myVariable*. The value that is named is `0`.
@@ -17,7 +17,7 @@ The convention is to use `lowerCamelCase` for variable names.
 Some examples of immutable variables:
 
 ```motoko
-{{#include _mo/variables2.mo}}
+{{#include _mo/variables.mo:b}}
 ```
 
 A declaration ends with a *semicolon* `;`

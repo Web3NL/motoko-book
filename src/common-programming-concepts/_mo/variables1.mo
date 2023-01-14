@@ -1,1 +1,0 @@
-let myVariable = 0;
