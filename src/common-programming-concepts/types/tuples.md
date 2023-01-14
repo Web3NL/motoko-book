@@ -34,5 +34,5 @@ We access the first element like this:
 let username: Text = profile.0;
 ```
 
-*source file: [tuples.mo](tuples.mo)*
+
 

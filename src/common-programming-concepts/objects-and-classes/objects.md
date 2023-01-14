@@ -92,4 +92,3 @@ This object has the following type:
 
 This object type has two fields. The `addAmount` field has function type `Nat -> Nat`. And the second field is a `var` mutable variable of type `Nat`.
 
-*Source file: [objects.mo](objects.mo)*

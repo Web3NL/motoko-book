@@ -2,28 +2,23 @@
 
 A one-line comment is written by starting the line with `//`.
 ```motoko
-// This is a comment
+{{#include _mo/comments.mo:a}}
 ```
 
 It's always recommended to clarify your code by commenting:
 ```motoko
-// A constant representing my phone number
-let phoneNumber = 1234567890;
+{{#include _mo/comments.mo:b}}
 ```    
 
 A comment could start at the end of a line:
 ```motoko
-var weight = 80; // In kilo grams!
+{{#include _mo/comments.mo:c}}
 ```
 
 And comments could span multiple lines by enclosing it in `/** **/`:
 
 ```motoko
-/**
-Multiline comment
-A description of the code goes here
-**/
+{{#include _mo/comments.mo:d}}
 ```
 
     
-*Source file: [comments.mo](comments.mo)*

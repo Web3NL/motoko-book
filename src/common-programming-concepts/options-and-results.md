@@ -74,4 +74,3 @@ Both functions have `Result` as their return type. The one returns the `#ok` var
 
 In the next chapter about [control flow](control-flow.html) we will demonstrate how we can use the Result variant type in a useful way.
 
-*Source file: [options-and-results.mo](options-and-results.mo)*
