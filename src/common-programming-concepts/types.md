@@ -5,7 +5,7 @@ A type describes the *data type* of a value. Motoko has static types. This means
 Motoko can in many cases know the type of a variable without you doing anything:
 
 ```motoko
-let x = true;
+{{#include _mo/types1.mo}}
 ```
 
 In the example above the `true` value of variable name `x` has the `Bool` type. We did not state this explicitly but Motoko *infers* this information automatically for us.
@@ -13,7 +13,7 @@ In the example above the `true` value of variable name `x` has the `Bool` type. 
 In some cases the type is not obvious and we need to add the type ourselves. This is called *type annotation*. We can annotate the name of the variable like this:
 
 ```motoko
-let x : Bool = true;
+{{#include _mo/types2.mo}}
 ```
 
 With the colon `:` and the name of the type after the variable name, we tell Motoko that `x` is of type `Bool`.
@@ -21,13 +21,13 @@ With the colon `:` and the name of the type after the variable name, we tell Mot
 We can also annotate the value:
 
 ```motoko
-let x = true : Bool;
+{{#include _mo/types3.mo}}
 ```
 
 Or both:
 
 ```motoko
-let x : Bool = true : Bool;
+{{#include _mo/types4.mo:a}}
 ```
     
 In this case it is unnecessary and makes the code ugly. The convention is to leave spaces around the colon.
@@ -47,13 +47,13 @@ See the [full list of all Motoko data types](https://internetcomputer.org/docs/c
 We can define arbitrary names for any type:
 
 ```motoko
-type Age = Nat;
+{{#include _mo/types4.mo:b}}
 ```   
 
 This creates an alias (a second name) for the `Nat` type. This is useful for writing clear readable code.
 
 ```motoko
-let age : Age = 18; 
+{{#include _mo/types4.mo:c}}
 ```
 
 The variable name `age` is of type `Age`. 
@@ -64,7 +64,7 @@ The last type we will mention in this chapter is the *unit type* `()`. This type
 For now let's just look at one *ugly, strange and useless*, yet legal Motoko code example for the sake of learning:
 
 ```motoko
-let unitType : () = () : ();
+{{#include _mo/types4.mo:d}}
 ```
 
 We declared a variable named `unitType` and type annotated this variable name with the unit type. Then we assigned the empty [tuple](types/tuples.html) value `()` to it and also annotated this value with the unit type. 
