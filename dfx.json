@@ -5,8 +5,7 @@
         "source": ["book/"],
         "frontend": {
             "entrypoint": "book/index.html"
-        },
-        "build": "mdbook build"
+        }
     }
   }
 }
