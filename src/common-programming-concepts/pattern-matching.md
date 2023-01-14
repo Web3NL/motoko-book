@@ -53,4 +53,3 @@ Type annotation within the patterns is allowed and recommended when its not obvi
 
 Pattern matching is a powerful feature of Motoko with many more options and we will revisit it later in this book. For more info check the [official docs](https://internetcomputer.org/docs/current/developer-docs/build/cdks/motoko-dfinity/pattern-matching).
 
-*Source file: [pattern-matching.mo](pattern-matching.mo)*

@@ -71,5 +71,5 @@ We declared a variable named `unitType` and type annotated this variable name wi
 
 Observe that we type annotate twice, once on the left hand side of the assignment and the other on the right hand side, like we did for variable `x` above.
 
-*Source file: [types.mo](types.mo)*
+
 

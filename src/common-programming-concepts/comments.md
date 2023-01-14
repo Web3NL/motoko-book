@@ -26,4 +26,3 @@ A description of the code goes here
 ```
 
     
-*Source file: [comments.mo](comments.mo)*

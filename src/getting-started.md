@@ -1,6 +1,6 @@
 # Getting Started
 
-[Motoko Playground](http://localhost:3000/getting-started/motoko-playground.html) is the easiest way to deploy a *Hello World* example in Motoko. 
+[Motoko Playground](https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/) is the easiest way to deploy a *Hello World* example in Motoko. 
 
 Motoko Playground is an online code editor for Motoko. It allows us to use Motoko without having a local development environment. It simplifies the process of deploying Motoko code to the Internet Computer.
 
@@ -25,12 +25,12 @@ It is recommended to explore the example projects. Taking the time to read every
 
 While exploring you will encounter things you don't understand. Be comfortable with that and continue exploring carefully. 
 
-Whenever you feel ready, consider [installing](project-deployment/installing-sdk.html) the Canister Development Kit.
+Whenever you feel ready, consider [installing](/project-deployment/installing-sdk.html) the Canister Development Kit.
 
 ## How it works
 When you deploy code in Motoko Playground, a couple of things happen:
 - The Motoko code is compiled into a [Webassembly module](internet-computer-programming-concepts.html).
-- A new [*canister*](internet-computer-programming-concepts/canisters.html) is created on the Internet Computer.
+- A new [*canister*](/internet-computer-programming-concepts/canisters.html) is created on the Internet Computer.
 - The Webassembly module is *installed* in the canister.
-- A [*candid*](candid.html) interface file will be generated
-- The Candid UI allows you to interact with the [actor](internet-computer-programming-concepts/actors.html) that is defined in the Motoko code
+- A [*candid*](/advanced-concepts/candid.html) interface file will be generated
+- The Candid UI allows you to interact with the [actor](/internet-computer-programming-concepts/actors.html) that is defined in the Motoko code

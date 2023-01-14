@@ -26,4 +26,3 @@ The convention is to use spaces around the equals sign.
 
 The declarations above all span one line but a declaration may span several lines as long as it ends with a semicolon.
 
-*Source file: [variables.mo](variables.mo)*

@@ -105,4 +105,3 @@ But if we run this code in Motoko, the value of `q` will be `0.6`! The reason fo
 
 Multiplication and division have a *higher precedence* than addition and subtraction. Every operator has a certain 'priority' compared to other operators. To see all the precedence rules of which operators are applied before others, checkout the [official docs](https://internetcomputer.org/docs/current/developer-docs/build/cdks/motoko-dfinity/language-manual#operator-and-keyword-precedence).   
 
-*Source file: [operators.mo](operators.mo)*

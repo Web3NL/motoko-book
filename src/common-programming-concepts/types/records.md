@@ -95,4 +95,3 @@ This is the same declaration we made earlier, but now we spelled out the type ex
 
 We will revisit this subject in [objects and classes](/common-programming-concepts/objects-and-classes.html).
 
-*Source file: [records.mo](records.mo)*

@@ -95,4 +95,3 @@ We use the `Concat` type to annotate the type of another variable `ourFunc` and 
 
 **Note:** All functions above are placed inside an [actor](/internet-computer-programming-concepts/actors.html)
 
-*Source file: [functions.mo](functions.mo)*

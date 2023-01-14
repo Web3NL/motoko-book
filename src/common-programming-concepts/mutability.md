@@ -39,4 +39,3 @@ city := "Paris";
 
 The last mutation was achieved by assigning a *string literal* to the variable name. The first two mutations were achieved by assigning the value of other immutable variables. It is also possible to assign the value of another mutable variable. 
 
-*Source file: [mutability.mo](mutability.mo)*

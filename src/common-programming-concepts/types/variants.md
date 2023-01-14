@@ -46,4 +46,3 @@ In the case of the `#Linux` variant, the associated type is a `Text` value to in
 
 Note that the last variable declaration is not type annotated. That's fine, because Motoko will infer the type that we declared earlier. 
 
-*Source file: [variants.mo](variants.mo)*
