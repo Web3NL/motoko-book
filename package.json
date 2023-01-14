@@ -1,0 +1,6 @@
+{
+  "devDependencies": {
+    "@types/node": "^18.11.18",
+    "motoko": "^3.3.0"
+  }
+}

@@ -5,7 +5,7 @@ A variable is a *value* that has an arbitrary *name*. It is defined by a *declar
 A variable is declared as follows:
 
 ```motoko
-let myVariable = 0;
+{{#include variables.mo}}
 ```
 
 The *let* keyword indicates we are declaring a variable. The name of the variable is *myVariable*. The value that is named is `0`.
