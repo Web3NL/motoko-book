@@ -16,7 +16,6 @@
         - [Variants](common-programming-concepts/types/variants.md)
         - [Immutable Arrays](common-programming-concepts/types/immutable-arrays.md)
         - [Mutable Arrays](common-programming-concepts/types/mutable-arrays.md)
-        - [Recursive Types](common-programming-concepts/types/recursive-types.md) 
     - [Operators](common-programming-concepts/operators.md)
     - [Pattern Matching](common-programming-concepts/pattern-matching.md)
     - [Functions](common-programming-concepts/functions.md)
@@ -25,13 +24,10 @@
         - [If Expression](common-programming-concepts/control-flow/if-expression.md)
         - [If Else Expression](common-programming-concepts/control-flow/if-else-expression.md)
         - [Switch Expression](common-programming-concepts/control-flow/switch-expression.md)
-        - [Labeled Loops](common-programming-concepts/control-flow/labeled-loops.md)
     - [Objects and Classes](common-programming-concepts/objects-and-classes.md)
         - [Objects](common-programming-concepts/objects-and-classes/objects.md)
         - [Classes](common-programming-concepts/objects-and-classes/classes.md)
-    - [Modules](common-programming-concepts/modules.md)
-    - [Sub-typing](advanced-concepts/subtyping.md)
-    - [Generics](advanced-concepts/generics.md)
+    - [Modules and Imports](common-programming-concepts/modules.md)
 
 - [Internet Computer Programming Concepts](internet-computer-programming-concepts.md)
     - [Actors](internet-computer-programming-concepts/actors.md)
@@ -43,6 +39,11 @@
     - [Cryptographic Randomness](internet-computer-programming-concepts/randomness.md)
     - [Async Errors](internet-computer-programming-concepts/async-errors.md)
 
+- [Advanced Types](advanced-types.md)
+    - [Shared Types](advanced-types/shared-types.md)
+    - [Sub-typing](advanced-types/subtyping.md)
+    - [Generics](advanced-types/generics.md)
+    - [Recursive Types](advanced-types/recursive-types.md) 
   
 - [The Base Library](base-library.md)
     - [Primitive Types](base-library/primitive-types.md)
@@ -57,8 +58,6 @@
         - [Blob](base-library/primitive-types/blob.md)
     - [Data Structures](base-library/data-structures.md)
     - [IC APIs](base-library/ic-apis.md)
-
-- [Shared Types](shared-types.md)
 
 - [Advanced Concepts](advanced-concepts.md)
     - [Actor Classes](advanced-concepts/actor-classes.md)
