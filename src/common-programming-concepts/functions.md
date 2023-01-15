@@ -93,5 +93,3 @@ We used the type name `Concat` to define a new type `(Text, Text) -> Text`. This
 
 We use the `Concat` type to annotate the type of another variable `ourFunc` and assign the function name `concat` to it without the parenthesis and arguments like we did when we called the function. We basically renamed our function to `ourFunc`. 
 
-**Note:** All functions above are placed inside an [actor](/internet-computer-programming-concepts/actors.html)
-
