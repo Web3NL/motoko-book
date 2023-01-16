@@ -5,17 +5,17 @@ We begin our treatment of functions in this chapter by discussing a subset of po
 Private functions in Motoko may appear in `Actors`, `Modules`, `Objects`, `Classes` and other places as well.    
 
 Other possible functions will be discussed in upcoming chapters: 
-- [`Objects and Classes`](objects-and-classes.html): public and private functions inside an object or class
-- [`Modules`](modules.html): public and private functions inside a module
-- [`Actors`](/internet-computer-programming-concepts/actors.html): update, query and oneway shared functions
-- [`Async Messages`](/internet-computer-programming-concepts/async-messages.html): caller-identifying functions
-- [`Upgrades`](/advanced-concepts/upgrades.html): system upgrade functions
+- [`Objects and Classes`](objects-and-classes.html) public and private functions inside an object or class
+- [`Modules`](modules.html) public and private functions inside a module
+- [`Actors`](/internet-computer-programming-concepts/actors.html) update, query and oneway shared functions
+- [`Principals and Authentication`](/internet-computer-programming-concepts/principals-and-authentication.html) caller-identifying functions
+- [`Upgrades`](/advanced-concepts/upgrades.html) system upgrade functions
 
 ## Private functions
 Lets start with most simple function in Motoko: 
 
 ```motoko
-func myFunc() {};
+{{#include _mo/functions1.mo:a}}
 ```
 
 The `func` keyword is indicating a *function declaration*. `myFunc` is an arbitrary name of the function followed by two parenthesis `()` and two curly brackets `{}`. The `()` are used for function *arguments* and the `{}` are used for the function *body*.
@@ -27,9 +27,7 @@ We could *explicitly* tell Motoko that this is a private function by using the `
 Lets be more explicit about our private function, add one argument as an input and expand the body:
 
 ```motoko
-private func myFunc(x : Nat) {
-    // function body
-};
+{{#include _mo/functions2.mo:a}}
 ```
 
 The function is now marked private. All arguments **must** be annotated. Type inference doesn't work here. In this case we take in one argument and name it `x`. We also type annotate it with `Nat`. 
@@ -37,9 +35,7 @@ The function is now marked private. All arguments **must** be annotated. Type in
 Lets proceed by adding a return type to this function and actually returning a value of that type:
 
 ```motoko
-private func myFunc(x : Nat) : Nat {
-    return x;
-};
+{{#include _mo/functions3.mo:a}}
 ```
 
 After the function arguments we annotate the *return type* of this function with `: Nat`. If we don't annotate the return type of a private function, it defaults to the unit `()` return type.  
@@ -49,9 +45,7 @@ Inside the body we return `x`, the same variable that was passed to the function
 Lets simplify this useless function:
 
 ```motoko
-func myFunc(x : Nat) : Nat {
-    x
-};
+{{#include _mo/functions4.mo:a}}
 ```
 
 We removed the private keyword and simplified the return expression to just `x`. Even the semicolon `;` is gone. But note that we can't leave out the type annotations, like we did with variables. Type inference doesn't work on function declarations except for the defaulting unit type behavior mentioned above. 
@@ -59,15 +53,10 @@ We removed the private keyword and simplified the return expression to just `x`.
 Lets write a useful private function and *call* it:
 
 ```motoko
-func concat(t1 : Text, t2 : Text) : Text {
-    let result = t1 # t2;
-    result
-};
-
-let output = concat("Hello ", "world");
+{{#include _mo/functions4.mo:b}}
 ```
 
-Our function `concat` takes to arguments of type `Text`. It also returns a `Text` type. 
+Our function `concat` takes two arguments of type `Text`. It also returns a `Text` type. 
 
 We use the `#` sign to *concatenate* the two arguments and assign the result to a new variable. Concatenation with `#` only works for `Text` types. 
 
@@ -81,9 +70,7 @@ Lastly, we *call* this function with two text *literals* as the arguments and as
 The last concept for this chapter is the type of the *whole* function. A function's *typed arguments* and *return type* together are used to define a type for the function as a whole. The type of the function `concat` above is the following:
 
 ```motoko
-type Concat = (Text, Text) -> Text;
-
-let ourFunc : Concat = concat;
+{{#include _mo/functions4.mo:c}}
 ```
 
 We used the type name `Concat` to define a new type `(Text, Text) -> Text`. This is the type of our function `concat`. The function type is constructed by joining three things: 
