@@ -5,5 +5,5 @@ import Mod "module-nested";
 
 let personName = Mod.Person.name;
 
-let city = Mod.city;
+let city = Mod.place;
 // ANCHOR_END: a

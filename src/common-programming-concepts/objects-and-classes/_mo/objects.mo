@@ -39,3 +39,9 @@ let balance = object {
 //     addAmount : Nat -> Nat; 
 //     var balance : Nat; 
 // }
+
+// ANCHOR: a
+let result = obj.x();
+
+let f = obj.x;
+// ANCHOR_END: a

@@ -8,10 +8,10 @@ module {
         public let age = 20;
     };
 
-    module Info {
+    private module Info {
         public let city = "Amsterdam";
     };
 
-    public let city = Info.city;
+    public let place = Info.city;
 }
 // ANCHOR_END: a

@@ -30,7 +30,9 @@ let obj : Obj = object {
 };
 ```
 
-We defined the type beforehand, which consists only of one named variable `y` of type `Nat`. Then we declared an object with a `public` variable `y`. We used the object type to annotate the name of the variable `obj`. Notice that `x` is not part of the type.
+We defined the type beforehand, which consists only of one named variable `y` of type `Nat`. Then we declared an object with a `public` variable `y`. We used the object type to annotate the name of the variable `obj`. 
+
+Notice that `x` is not part of the type, therefore it is not accessible from outside the object.
 
 The values of the variables inside objects (and inside records as well) could also be a *function*. As we saw in [functions](/common-programming-concepts/functions.html), functions also have a type and they could be assigned to a named variable. 
 
@@ -58,7 +60,13 @@ This object now has the following type:
 { x : () -> () }
 ```
 
-This is the type of an object with one *field* named `x`, which is of *function type* `() -> ()`. 
+This is the type of an object with one *field* named `x`, which is of *function type* `() -> ()`. We could access this public field like this:
+
+```motoko
+{{#include _mo/objects.mo:a}}
+```
+
+The first line actually calls the function and assigns the result to `result`. The second line only *references* the function and renames it. 
 
 ## Public functions in objects
 
