@@ -1,8 +1,7 @@
 // MODULES
 
 // ANCHOR: a
-type MyModule = module {
-    x : Nat;
-    f : () -> ();
-};
+import MyModule "module";
+
+let person : Text = MyModule.name;
 // ANCHOR_END: a

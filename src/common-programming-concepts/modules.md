@@ -80,6 +80,7 @@ The last function `compute` is allowed because it only defines *how* to perform 
 Module types are not used often in practice, but they do exist. Modules have types that look almost the same as object types. A type of a module looks like this:
 
 ```motoko
-{{#include _mo/modules1.mo:a}}
+{{#include _mo/modules4.mo:a}}
 ```
+
  This type describes a module with two public fields, one being a `Nat` and the other being a function of type `() -> ()`.
