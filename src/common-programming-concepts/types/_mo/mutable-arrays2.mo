@@ -11,7 +11,7 @@ letters[0] := "hello";
 // ANCHOR: c
 let size = letters.size();
 
-letters[size] := "last element";
+letters[size - 1] := "last element";
 // ANCHOR_END: c
 
 // ANCHOR: d

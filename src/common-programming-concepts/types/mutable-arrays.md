@@ -27,7 +27,7 @@ We can mutate values as many times as we like. Lets change the last value of our
 {{#include _mo/mutable-arrays2.mo:c}}
 ```
 
-We used the `.size()` method to obtain a `Nat` and used that to index into the array, thereby accessing the last element of the array and giving it a new `Text` value. 
+We used the `.size()` method to obtain a `Nat` and used that to index into the array, thereby accessing the last element of the array and giving it a new `Text` value. The last element is `size - 1` because array indexing starts at 0 and the `.size()` method counts the size of the array starting at 1.
 
 Our array has now the following value:
 
