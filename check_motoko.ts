@@ -49,5 +49,6 @@ function checkMotoko(file: string) {
     console.log("CORRECT: " + file)
   } else {
     console.log("ERROR: " + file)
+    console.log(check)
   }
 }
