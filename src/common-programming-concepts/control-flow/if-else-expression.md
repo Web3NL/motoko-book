@@ -1,13 +1,19 @@
 # If Else Expression
-The `if else` expression starts with an `if` expression followed by the `else` keyword and a third expression also enclosed in curly braces `{}`. When the first expression now evaluates to `false`, the third expression evaluates in stead of returning `()`. 
-
-It looks like this:
+The `if else` expression starts with an `if` expression (including two sub-expressions, a condition and its associated branch) followed by the `else` keyword and a third sub-expression:
 
 ```motoko
-if (condition) {} else {};
+if (condition) 1 else 2;
 ```
 
-To demonstrate that the *whole* `if else` expression evaluates to a value of a certain type, we assign that value to a variable named `result`:
+When the branches are more complex expressions, they require curly braces:
+
+```motoko
+if (condition) {if-branch} else {else-branch};
+```
+
+Unlike `if` expressions that lack an `else`, when the first sub-expression of an `if else` evaluates to `false`, the entire `if else` expression evaluates as the third sub-expression, not the unit value `()`. 
+
+For example, this `if else` expression evaluates to a value of a certain type (`Text`), and we assign that value to a variable named `result`:
 
 ```motoko
 let result : Text = if (condition) {
@@ -17,4 +23,4 @@ let result : Text = if (condition) {
 }
 ```
 
-The second and third expression of the `if else` expression (enclosed in curly braces `{}`) must evaluate to a value of the same type. In this case its the `Text` type and therefore the variable `result` has type `Text`. 
+Generally, the second and third sub-expressions of the `if else` expression must evaluate to a value of the same type, as they do here (again, the common type is ``Text`).
