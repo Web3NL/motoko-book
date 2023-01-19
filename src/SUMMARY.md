@@ -31,13 +31,15 @@
 
 - [Internet Computer Programming Concepts](internet-computer-programming-concepts.md)
     - [Actors](internet-computer-programming-concepts/actors.md)
-    - [Async/Await and Futures](internet-computer-programming-concepts/async-await.md)
-    - [Stable Variables](internet-computer-programming-concepts/stable-variables.md)
+        - [From Actor to Canister](internet-computer-programming-concepts/actors/actor-to-canister.md)
+        - [Actor Type](internet-computer-programming-concepts/actors/actor-type.md)
+        - [Canister Calling](internet-computer-programming-concepts/actors/canister-calling.md)
+    - [Actor Classes](internet-computer-programming-concepts/actor-classes.md)
+        - [From Actor Class to Canister](internet-computer-programming-concepts/actor-classes/actor-class-to-canister.md)
+        - [Actor Class Type](internet-computer-programming-concepts/actor-classes/actor-class-type.md)
+        - [Cross Canister Calling](internet-computer-programming-concepts/actor-classes/cross-canister-calling.md)
     - [Principals and Authentication](internet-computer-programming-concepts/principals-and-authentication.md)
-    - [Canisters](internet-computer-programming-concepts/canisters.md)
-    - [Cycles and ICP](internet-computer-programming-concepts/cycles.md)
-    - [Cryptographic Randomness](internet-computer-programming-concepts/randomness.md)
-    - [Async Errors](internet-computer-programming-concepts/async-errors.md)
+    - [Cross Canister Calls and Rollbacks](internet-computer-programming-concepts/cross-canister-calls-and-rollbacks.md)
 
 - [Advanced Types](advanced-types.md)
     - [Shared Types](advanced-types/shared-types.md)
@@ -60,7 +62,7 @@
     - [IC APIs](base-library/ic-apis.md)
 
 - [Advanced Concepts](advanced-concepts.md)
-    - [Actor Classes](advanced-concepts/actor-classes.md)
+    - [Stable Variables](advanced-concepts/stable-variables.md)
     - [Upgrades](advanced-concepts/upgrades.md)
     - [Stable Storage](advanced-concepts/stable-storage.md)
     - [Multi-canister Scaling](advanced-concepts/multi-canister-scaling.md)
@@ -68,12 +70,14 @@
     - [Timers and Heartbeats](advanced-concepts/timers.md)
     - [Candid](advanced-concepts/candid.md)
     - [Message Inspection](advanced-concepts/message-inspection.md)
+    - [Cryptographic Randomness](advanced-concepts/randomness.md)
     
 
 - [Canister Deployment and Upgrading](project-deployment.md)
     - [Installing the SDK](project-deployment/installing-sdk.md)
     - [Local Deployment](project-deployment/local-deployment.md)
     - [PEM Files](project-deployment/pem-files.md)
+    - [Cycles and ICP](project-deployment/cycles-and-icp.md)
     - [Cycles Wallet](project-deployment/cycles-wallet.md)
     - [IC Deployment](project-deployment/ic-deployment.md)
 
