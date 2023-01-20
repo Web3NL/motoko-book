@@ -31,21 +31,19 @@
 
 - [Internet Computer Programming Concepts](internet-computer-programming-concepts.md)
     - [Actors](internet-computer-programming-concepts/actors.md)
-        - [From Actor to Canister](internet-computer-programming-concepts/actors/actor-to-canister.md)
-        - [Actor Type](internet-computer-programming-concepts/actors/actor-type.md)
-        - [Canister Calling](internet-computer-programming-concepts/actors/canister-calling.md)
-    - [Actor Classes](internet-computer-programming-concepts/actor-classes.md)
-        - [From Actor Class to Canister](internet-computer-programming-concepts/actor-classes/actor-class-to-canister.md)
-        - [Actor Class Type](internet-computer-programming-concepts/actor-classes/actor-class-type.md)
-        - [Cross Canister Calling](internet-computer-programming-concepts/actor-classes/cross-canister-calling.md)
+        - [From Actor to Canister](internet-computer-programming-concepts/actor-to-canister.md)
+        - [Canister Calls from Clients](internet-computer-programming-concepts/canister-calling.md)
     - [Principals and Authentication](internet-computer-programming-concepts/principals-and-authentication.md)
-    - [Cross Canister Calls and Rollbacks](internet-computer-programming-concepts/cross-canister-calls-and-rollbacks.md)
-
+    - [Candid](internet-computer-programming-concepts/candid.md)
+    - [Actor Classes](internet-computer-programming-concepts/actor-classes.md)
+        - [From Actor Class to Canister](internet-computer-programming-concepts/actor-class-to-canister.md)
+        - [Child Canister Calling](internet-computer-programming-concepts/child-canister-calling.md)
+  
 - [Advanced Types](advanced-types.md)
     - [Shared Types](advanced-types/shared-types.md)
-    - [Sub-typing](advanced-types/subtyping.md)
     - [Generics](advanced-types/generics.md)
-    - [Recursive Types](advanced-types/recursive-types.md) 
+    - [Recursive Types](advanced-types/recursive-types.md)
+    - [Sub-typing](advanced-types/subtyping.md) 
   
 - [The Base Library](base-library.md)
     - [Primitive Types](base-library/primitive-types.md)
@@ -62,13 +60,14 @@
     - [IC APIs](base-library/ic-apis.md)
 
 - [Advanced Concepts](advanced-concepts.md)
+
     - [Stable Variables](advanced-concepts/stable-variables.md)
     - [Upgrades](advanced-concepts/upgrades.md)
     - [Stable Storage](advanced-concepts/stable-storage.md)
     - [Multi-canister Scaling](advanced-concepts/multi-canister-scaling.md)
+    - [Cross Canister Calls and Rollbacks](advanced-concepts/cross-canister-calls-and-rollbacks.md)
     - [Async* and Await*](advanced-concepts/internal-async-await.md)
     - [Timers and Heartbeats](advanced-concepts/timers.md)
-    - [Candid](advanced-concepts/candid.md)
     - [Message Inspection](advanced-concepts/message-inspection.md)
     - [Cryptographic Randomness](advanced-concepts/randomness.md)
     
