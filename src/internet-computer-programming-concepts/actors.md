@@ -35,8 +35,8 @@ To understand actors it is useful to compare them with objects:
 For a full comparison checkout: [**Motoko Items Comparison Table**](https://docs.google.com/spreadsheets/d/1IqgPi9I9EmoknJBzzxea_7dN9WRwtFle7Y99UURXC7Y/edit?usp=sharing)
 
 
-## Public Shared Functions
-Besides private (mutable or immutable) variables and private functions, actors allow *three kinds* of public functions:
+## Public Shared Functions in Actors
+Actors allow *three kinds* of public functions:
 
 1. Public **shared query** functions:  
 Can only *read* state
@@ -45,22 +45,33 @@ Can only *read* state
 Can *read* and *write* state
 
 1. Public **shared oneway** functions:  
-Can *read* and *write*, but don't have any *return value*. 
+Can *read* and *write*, but don't have any *return value*.
 
 *Query* and *update* functions always have the special `async` return type.  
-*Oneway* functions always have the unit `()` return type. 
+*Oneway* functions always immediately return `()` regardless of whether they execute successfully.  
 
+These functions are only allowed inside *actors*. Here are their *function signatures* and *function types*.
+
+### Public shared query
 ```motoko
 {{#include _mo/actors2.mo:a}}
-```
+``` 
 
-Since shared functions are only allowed in actors, we declared an actor with three public shared functions. Lets analyze their *function signatures* and *function types*.
+The function named `read` is declared with `public shared query` and returns `async ()`. This function is not allowed to modify the state of the actor because of the `query` keyword. It can only read state and return most types. The `shared query` and `async` keywords are part of the function type. Query functions are fast.
 
-The first function named `read` is declared with `public shared query` and returns `async ()`. This function is not allowed to modify the state of the actor because of the `query` keyword. It can only read state and return most types. It returns `()`. Query functions are fast.
+### Public shared update
+```motoko
+{{#include _mo/actors2.mo:b}}
+``` 
 
-The second function named `write` is declared with `public shared` and also returns `async ()`. This function is allowed to modify the state of the actor. There is no other special keyword (like query) to indicate that this is an update function. It returns `()`. Update functions take 2 seconds per call. 
+The function named `write` is declared with `public shared` and also returns `async ()`. This function is allowed to modify the state of the actor. There is no other special keyword (like query) to indicate that this is an update function. The `shared` and `async` keywords are part of the function type. Update functions take 2 seconds per call. 
 
-The third function named `oneway` is also declared with `public shared` but does not have a return type. This function is allowed to modify the state of the actor. Because it has no return type, it is assumed to be a oneway function which always returns `()`. Oneway functions also take 2 seconds per call. 
+### Public shared oneway
+```motoko
+{{#include _mo/actors2.mo:c}}
+``` 
+
+The function named `oneway` is also declared with `public shared` but does not have a return type. This function is allowed to modify the state of the actor. Because it has no return type, it is assumed to be a oneway function which always returns `()` regardless of whether they execute successfully. Only the `shared` keyword is part of their type. Oneway functions also take 2 seconds per call. 
 
 In our example none of the functions take any arguments for simplicity.
 
@@ -77,7 +88,7 @@ Then first function `readComment` is a *query* function that takes no arguments 
 
 The second function `writeComment` is an *update* function that takes one argument and modifies the state variable. It could return some value, but in this case it returns `async ()`.
 
-The third function `deleteComment` is a *oneway* function that doesn't take any arguments and also modifies the state. But it can not return any value and always returns `()`.
+The third function `deleteComment` is a *oneway* function that doesn't take any arguments and also modifies the state. But it can not return any value and always returns `()` regardless of whether it successfully updated the state or not.
 
 ## Actor type
 Only public shared functions are part of the type of an actor. 
