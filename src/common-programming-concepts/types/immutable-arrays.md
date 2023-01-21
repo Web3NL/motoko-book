@@ -35,7 +35,7 @@ But we have to take care when we try to access values inside an array. If we cho
 {{#include _mo/immutable-arrays3.mo:c}}
 ```
 
-To avoid indexing into array outside its bounds, we could use a *method* that is available on all array types called `size()`. A method is just a [function](/common-programming-concepts/functions.html) that is called on a named value. 
+To avoid indexing into an array outside its bounds, we could use a *method* that is available on all array types called `size()`. A method is just a [function](/common-programming-concepts/functions.html) that is called on a named value. 
 
 ```motoko
 {{#include _mo/immutable-arrays3.mo:d}}
@@ -43,7 +43,7 @@ To avoid indexing into array outside its bounds, we could use a *method* that is
 
 We now declared a variable named `size` which is of type `Nat` and assign the value returned by our method `.size()`. This method returns the total length of the array. In our case, this value would be `3`. 
 
-NOTE: Be careful, the last element of the array is `size - 1`! See example in [mutable arrays](/common-programming-concepts/types/mutable-arrays.html).
+**WARNING**: Be careful, the last element of the array is `size - 1`! See example in [mutable arrays](/common-programming-concepts/types/mutable-arrays.html).
 
 ## Arrays and mutable variables
 An immutable array could be assigned to a mutable variable. The array values are still immutable, but the value of the variable (which is an immutable array) could change.

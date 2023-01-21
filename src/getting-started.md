@@ -2,7 +2,7 @@
 
 [Motoko Playground](https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/) is the easiest way to deploy a *Hello World* example in Motoko. 
 
-Motoko Playground is an online code editor for Motoko. It allows us to use Motoko without having a local development environment. It simplifies the process of deploying Motoko code to the Internet Computer.
+Motoko Playground is an online code editor for Motoko. It allows us to use Motoko without having a [local development environment](/project-deployment/installing-sdk.html). It simplifies the process of deploying Motoko code to the Internet Computer.
 
 ## Hello World!
 
@@ -16,7 +16,7 @@ Motoko Playground is an online code editor for Motoko. It allows us to use Motok
 
 Motoko Playground will now deploy your code to the Internet Computer! 
 
-You should see now a `Candid UI` on the right hand side of your screen. Write something in the text box and click the `QUERY` button. The output should be displayed in the `OUTPUT LOG`.
+You should see a `Candid UI` on the right hand side of your screen. Write something in the text box and click the `QUERY` button. The output should be displayed in the `OUTPUT LOG`.
 
 ## Next steps
 Exploring the Motoko Playground will help you gain familiarity with the basics of Motoko and related concepts.
@@ -27,7 +27,7 @@ While exploring you will encounter things you don't understand. Be comfortable w
 
 Whenever you feel ready, consider [installing](/project-deployment/installing-sdk.html) the Canister Development Kit.
 
-## How it works
+## [How it works](/internet-computer-programming-concepts/actor-to-canister.html)
 When you deploy code in Motoko Playground, a couple of things happen:
 - The Motoko code is compiled into a [Webassembly module](/internet-computer-programming-concepts/actor-to-canister.html#code-compiling-and-wasm-modules).
 - A new [*canister*](/internet-computer-programming-concepts/actor-to-canister.html#canister) is created on the Internet Computer.

@@ -1,6 +1,6 @@
 # Types
 
-A type describes the *data type* of a value. Motoko has static types. This means that the type of every value is known when the Motoko code is being *compiled*.
+A type describes the *data type* of a value. Motoko has static types. This means that the type of every value is known when the Motoko code is being [*compiled*](http://localhost:3000/internet-computer-programming-concepts/actor-to-canister.html).
 
 Motoko can in many cases know the type of a variable without you doing anything:
 
@@ -34,13 +34,13 @@ In this case it is unnecessary and makes the code ugly. The convention is to lea
 
 ## Primitive types
 *Primitive types* are fundamental core data types that are not *composed* of more fundamental types. Some common ones in Motoko are:  
-- Nat
-- Int
-- Float
-- Bool
-- Blob
-- Text
-- Principal
+- [Bool](/base-library/primitive-types/bool.html)
+- [Nat](/base-library/primitive-types/nat.html)
+- [Int](/base-library/primitive-types/int.html)
+- [Float](/base-library/primitive-types/float.html)
+- [Text](/base-library/primitive-types/text.html)
+- [Principal](/base-library/primitive-types/principal.html)
+- [Blob](/base-library/primitive-types/blob.html)
 
 See the [full list of all Motoko data types](https://internetcomputer.org/docs/current/developer-docs/build/cdks/motoko-dfinity/language-manual#primitive-types)
  
@@ -50,7 +50,7 @@ We can define arbitrary names for any type:
 {{#include _mo/types4.mo:b}}
 ```   
 
-This creates an alias (a second name) for the `Nat` type. This is useful for writing clear readable code.
+This creates an alias (a second name) `Age` for the `Nat` type. This is useful for writing clear readable code. The convention is to use type names that start with a capital letter. 
 
 ```motoko
 {{#include _mo/types4.mo:c}}

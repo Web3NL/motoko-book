@@ -9,7 +9,7 @@ let peter = {
 };
 ```
 
-The record is enclosed with curly brackets `{}`. The example above is a named record with two *field expressions*. A field expression consists of a variable name and its assigned value. In this case `name` and `age` are the names. `Peter` and `18` are the values. Field expressions end with a semicolon `;`
+The record is enclosed with curly brackets `{}`. The example above is a record with two *field expressions*. A field expression consists of a variable name and its assigned value. In this case `name` and `age` are the names. `Peter` and `18` are the values. Field expressions end with a semicolon `;`
 
 We could annotate the types of the variables like this:
 
@@ -20,7 +20,7 @@ let peter = {
 };
 ```
 
-The record now has two type annotated fields. The whole record also has a [type](#object-literal). We could write:
+The record now has two type annotated fields. The whole record also has a type. We could write:
 
 ```motoko
 type Person = {
@@ -65,7 +65,7 @@ Note, we used an underscore `_` in the natural number. This is allowed for reada
 
 ## Object literal
 
-Records are sometimes referred to as *[object](/common-programming-concepts/objects-and-classes.html) literals*. They are like the string literals we saw in earlier chapters. Records are a 'literal' value of an object. We will discuss [objects](/common-programming-concepts/objects-and-classes.html) and their types in an upcoming chapter.
+Records are sometimes referred to as *[object](/common-programming-concepts/objects-and-classes.html) literals*. They are like the [string literals](/common-programming-concepts/mutability.html) we saw in earlier chapters. Records are a 'literal' value of an object. We will discuss [objects](/common-programming-concepts/objects-and-classes.html) and their types in an upcoming chapter.
 
 In our examples above, the literal value for the `bob` variable was:
 

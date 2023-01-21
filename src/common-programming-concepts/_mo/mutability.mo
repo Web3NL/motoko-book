@@ -18,7 +18,7 @@ let berlin = "Berlin";
 // ANCHOR_END: d
 
 // ANCHOR: e
-city := newYork; // variable city now has text value "New York"
-city := berlin; // variable city now has text value "Berlin"
-city := "Paris"; // variable city now has text value "Paris"
+city := newYork;
+city := berlin;
+city := "Paris";
 // ANCHOR_END: e

@@ -6,7 +6,7 @@ Variables that can change their value *after* declaring them are called *mutable
 {{#include _mo/mutability.mo:a}}
 ```
 
-`x` is now the name of a mutable variable with the value `1`. If we want change the value, in other words *mutate* it, we *assign* a new value to it:
+`x` is now the name of a mutable variable with the value `1`. If we want to change the value, in other words *mutate* it, we *assign* a new value to it:
 
 ```motoko
 {{#include _mo/mutability.mo:b}}

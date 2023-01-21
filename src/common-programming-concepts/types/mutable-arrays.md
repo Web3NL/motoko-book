@@ -42,7 +42,7 @@ We could also assign a mutable array to a mutable variable.
 {{#include _mo/mutable-arrays3.mo:a}}
 ```
 
-We declared a mutable variable named `numbers`. We annotated the type of the variable with `[var Nat]` indicating that the value of this variable is a mutable array of `Nat` values. We then assigned a mutable array to the variable name. Not, that the array has the keyword `var` inside of it.
+We declared a mutable variable named `numbers`. We annotated the type of the variable with `[var Nat]` indicating that the value of this variable is a mutable array of `Nat` values. We then assigned a mutable array to the variable name. The array has the keyword `var` inside of it.
 
 In the second line we access the third element by indexing and mutate the `Nat` value at that index.
 

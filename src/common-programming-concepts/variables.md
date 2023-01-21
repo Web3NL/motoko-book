@@ -8,7 +8,7 @@ A variable is declared as follows:
 {{#include _mo/variables.mo:a}}
 ```
 
-The *let* keyword indicates we are declaring a variable. The name of the variable is *myVariable*. The value that is named is `0`.
+The *let* keyword indicates we are declaring a variable. The name of the variable is `myVariable`. The value that is named is `0`.
 
 The convention is to use `lowerCamelCase` for variable names. 
 

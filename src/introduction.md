@@ -11,6 +11,6 @@ Blockchain programs are a new kind of software that runs in the form of *caniste
 
 Motoko allows writing a broad range of blockchain applications from small microservices to large networks of smart contracts all interacting to serve millions of users. In this book we review the Motoko language features and describe how to use them with examples. 
 
-We start with common programming concepts found in any language. We then move on to special features for programming on the Internet Computer. We also review the *Motoko Base Library* and tackle advanced programming concepts. And finally, we go over common canisters (smart contracts) in the Internet Computer ecosystem and also describe common community standards within the context of Motoko Programming.
+We start with common programming concepts found in any language. We then move on to special features for programming on the Internet Computer. We also review the [*Motoko Base Library*](/base-library.html) and tackle advanced programming concepts. And finally, we go over common canisters (smart contracts) in the Internet Computer ecosystem and also describe common community standards within the context of Motoko Programming.
 
 Along the way, we will develop ideas and techniques that allow us to build a *Tokenized Comments* section that demonstrates many cool features of Motoko and the Internet Computer. 
