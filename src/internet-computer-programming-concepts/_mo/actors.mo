@@ -6,5 +6,5 @@ import Mod "mod";
 
 actor {
 
-}
+};
 // ANCHOR_END: a
