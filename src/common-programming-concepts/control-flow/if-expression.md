@@ -8,11 +8,11 @@ let condition = true;
 
 var number = 0;
 
-if (condition) { number += 1};
+if (condition) { number += 1 };
 
 // number is now 1
 ```
 
-The first expression evaluates to `true` so the second expression is evaluated and the code inside it is executed. Note we used the `+=` assignment [operator](operators.html) to increment the mutable variable `number`. 
+The first expression evaluates to `true` so the second expression is evaluated and the code inside it is executed. Note we used the `+=` assignment [operator](/common-programming-concepts/operators.html) to increment the mutable variable `number`. 
 
 If the first expression evaluates to `false`, then the second expression is **not** evaluated and the *whole* `if` expression will evaluate to the unit type `()` and the program continues.

@@ -2,7 +2,7 @@
 
 We begin our treatment of functions in this chapter by discussing a subset of possible functions in Motoko, namely *private* functions. We will explain private function arguments, argument type annotation, return type and the type of the function itself. 
 
-Private functions in Motoko may appear in `Actors`, `Modules`, `Objects`, `Classes` and other places as well.    
+Private functions in Motoko may appear in `Records`, `Objects`, `Classes`, `Modules`, `Actors` and other places as well.    
 
 Other possible functions will be discussed in upcoming chapters: 
 - [`Objects and Classes`](objects-and-classes.html) public and private functions inside an object or class
@@ -18,7 +18,7 @@ Lets start with most simple function in Motoko:
 {{#include _mo/functions1.mo:a}}
 ```
 
-The `func` keyword is indicating a *function declaration*. `myFunc` is an arbitrary name of the function followed by two parenthesis `()` and two curly brackets `{}`. The `()` are used for function *arguments* and the `{}` are used for the function *body*.
+The `func` keyword is indicating a *function declaration*. `myFunc` is an arbitrary name of the function followed by two parenthesis `()` and two curly brackets `{}`. The `()` are used for function *arguments* (inputs to the function) and the `{}` are used for the function *body*.
 
 **Note:** The `()` in this context is not the same as the [unit type](types.html)!
 
@@ -42,7 +42,7 @@ After the function arguments we annotate the *return type* of this function with
 
 Inside the body we return `x`, the same variable that was passed to the function. This is allowed because `x` also has type `Nat`, which is the expected return type for this function.
 
-Lets simplify this useless function:
+Lets simplify this function:
 
 ```motoko
 {{#include _mo/functions4.mo:a}}
@@ -58,7 +58,7 @@ Lets write a useful private function and *call* it:
 
 Our function `concat` takes two arguments of type `Text`. It also returns a `Text` type. 
 
-We use the `#` sign to *concatenate* the two arguments and assign the result to a new variable. Concatenation with `#` only works for `Text` types. 
+We use the text concatenation [*operator*](/common-programming-concepts/operators.html) `#` to *concatenate* the two arguments and assign the result to a new variable. Concatenation with `#` only works for `Text` types. 
 
 The result of the concatenation `t1 # t2` is another `Text`. We did not type annotate the variable `result`. Motoko automatically infers this for us. 
 
@@ -74,7 +74,7 @@ The last concept for this chapter is the type of the *whole* function. A functio
 ```
 
 We used the type name `Concat` to define a new type `(Text, Text) -> Text`. This is the type of our function `concat`. The function type is constructed by joining three things: 
-- a *tuple of types* for the function argument types
+- a *[tuple](/common-programming-concepts/types/tuples.html) of types* for the function argument types
 - the `->` keyword
 - the *return type* of the function
 

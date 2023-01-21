@@ -6,8 +6,8 @@ They are different concepts but they are generally used for the same purpose, na
 ## Options
 An option type is a type that can either have some value or have no value at all.
 
-An option type is a *type* preceded by a question mark `?`.  
-An option value is a *value* preceded by a question mark `?`.
+An *option type* is a type preceded by a question mark `?`.  
+An *option value* is a value preceded by a question mark `?`.
 
 Some examples:
 
@@ -42,10 +42,10 @@ func returnNull() : ?Nat {
 
 The two functions both have `?Nat` as their return type. The first returns an option value and the second returns `null`. 
 
-In the next chapter about [control flow](control-flow.html) we will demonstrate how we can use option types in a useful way. 
+In the next chapter about [control flow](/common-programming-concepts/control-flow/switch-expression.html#a-little-program) we will demonstrate how we can use option types in a useful way. 
 
 ## Results
-To fully understand Results we have to understand [generics](/advanced-concepts/generics.html) first, which are an advanced topic that we will cover later in this book. For now we will only cover a limited form of the Result variant type (without type parameters) to give a basic idea of the concept.
+To fully understand Results we have to understand [generics](/advanced-types/generics.html) first, which are an advanced topic that we will cover later in this book. For now we will only cover a limited form of the Result variant type to give a basic idea of the concept.
 
 A Result type is a *[variant type](/common-programming-concepts/types/variants.html)*. A simple definition could be:
 
@@ -56,7 +56,7 @@ type Result = {
 };
 ```
 
-A value of this type may be one of two possible variants, namely `#ok` or `#err`. These variants are used to indicate either the successful *result* of a function or a possible error during the evaluation of a function.  
+A value of this type may be one of two possible variants, namely `#ok` or `#err`. These variants are used to indicate either the *successful result* of a function or a *possible error* during the evaluation of a function.  
 
 Lets use the Result type in the same way we used Options above:
 
@@ -72,5 +72,5 @@ func returnErr() : Result {
 
 Both functions have `Result` as their return type. The one returns the `#ok` variant and the other return the `#err` variant. 
 
-In the next chapter about [control flow](control-flow.html) we will demonstrate how we can use the Result variant type in a useful way.
+In the next chapter about [control flow](/common-programming-concepts/control-flow/switch-expression.html#a-little-program) we will demonstrate how we can use the Result variant type in a useful way.
 

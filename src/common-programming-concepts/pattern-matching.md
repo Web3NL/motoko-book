@@ -1,6 +1,6 @@
 # Pattern Matching
 
-When we discussed tuples, records and variants, we were building up *structured data* types. With pattern matching we are able to *decompose* structured data into its constituent parts. 
+When we discussed [tuples](/common-programming-concepts/types/tuples.html), [records](/common-programming-concepts/types/records.html) and [variants](/common-programming-concepts/types/variants.html), we were building up *structured data* types. With pattern matching we are able to *decompose* structured data into its constituent parts. 
 
 Lets use pattern matching to decompose a tuple into its constituent parts. We first construct a tuple and assign it to a variable. Then we deconstruct it by naming its values one by one and bringing them into scope:
 
@@ -10,7 +10,7 @@ let individual = ("Male", 30);
 let (gender, age) = individual;
 ```
 
-The tuple `("Male", 30)` has a `Male` value and a `30` value. The second line *binds* these values to newly created variable names `gender` and `age`. We can nou use these variables in this scope. 
+The tuple `("Male", 30)` has a `"Male"` value and a `30` value. The second line *binds* these values to *newly created* variable names `gender` and `age`. We can nou use these variables in this scope. 
 
 We could also type annotate the variable names to *check* the type of the values we are decomposing. 
 

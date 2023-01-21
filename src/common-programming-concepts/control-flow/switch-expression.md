@@ -1,5 +1,5 @@
 # Switch Expression
-The `switch` expression is a powerful control flow construct that allows [pattern matching](pattern-matching.html) on its input. 
+The `switch` expression is a powerful control flow construct that allows [pattern matching](/common-programming-concepts/pattern-matching.html) on its input. 
 
 It is constructed with the `switch` keyword followed by an input expression enclosed in parenthesis `()` and a code block enclosed in curly braces `{}`. Inside this code block we encounter the `case` keyword once or several times depending on the input. 
 
@@ -9,7 +9,7 @@ switch (condition) {
 };
 ```
 
-The `case` keyword is followed by a *[pattern](pattern-matching.html)* and an expression in curly braces `{}`. Pattern matching is performed on the input and the possible values of the input are *bound* to the names in the pattern. If the pattern matches, then the expression in the curly braces evaluates. 
+The `case` keyword is followed by a *[pattern](/common-programming-concepts/pattern-matching.html)* and an expression in curly braces `{}`. Pattern matching is performed on the input and the possible values of the input are *bound* to the names in the pattern. If the pattern matches, then the expression in the curly braces evaluates. 
 
 Lets switch on a variant as an input:
 
