@@ -3,6 +3,7 @@
 *By [@SamerWeb3](https://twitter.com/SamerWeb3)*
 
 **Latest updates**  
+22-01-2023: Version 0.2 (Chapter 2 release)  
 15-01-2023: Version 0.1  
 27-12-2022: This book is being developed and is not complete.
 
