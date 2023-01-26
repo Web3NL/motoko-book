@@ -28,14 +28,14 @@ To convert a textual principal into a value of type `Principal` we can use the [
 {{#include _mo/principals2.mo:a}}
 ```
 
-We *[import](/common-programming-concepts/modules.html)* the Principal module and name it `P`. We then defined a variable named `principal` of type `Principal` and assigned a value using the `.fromText()` *method* available in the Principal module. The argument for this method is a textual principal of type `Text`.
+We *[import](/common-programming-concepts/modules.html)* the Principal module and name it `P`. We then defined a variable named `principal` of type `Principal` and assigned a value using the `.fromText()` *method* available in the Principal module.
 
 We could now user our `principal` variable wherever a value is expected of type `Principal`.
 
 ## Caller Authenticating Public Shared Functions
-There is a special *message* [object](/common-programming-concepts/objects-and-classes/objects.html) that is available to [public shared functions](/internet-computer-programming-concepts/actors.html#public-shared-functions-in-actors). Today (Jan 2023) it is only used to *authenticate* the caller of a function. In the future it may have other uses as well. 
+There is a special *message object* that is available to [public shared functions](/internet-computer-programming-concepts/actors.html#public-shared-functions-in-actors). Today (Jan 2023) it is only used to *authenticate* the caller of a function. In the future it may have other uses as well. 
 
-This message object has the following type:
+This message [object](/common-programming-concepts/objects-and-classes/objects.html) has the following type:
 
 ```motoko
 {{#include _mo/principals2.mo:b}}
@@ -43,7 +43,7 @@ This message object has the following type:
 
 We chose the name `MessageObject` arbitrarily, but the type `{ caller : Principal }` is a special *object type* available to public shared functions inside actors.
 
-To use this object, we must *[pattern match](/common-programming-concepts/pattern-matching.html)* on it in the function signature and function body:
+To use this object, we must *[pattern match](/common-programming-concepts/pattern-matching.html)* on it in the function signature:
 
 ```motoko
 {{#include _mo/principals2.mo:c}}
@@ -65,7 +65,7 @@ We did not have to pattern match inside the function body. A simple way to acces
 {{#include _mo/principals3.mo:a}}
 ```
 
-This time we used a public shared query function that returns a the principal obtained from the message object.
+This time we used a public shared query function that returns the principal obtained from the message object.
 
 ## Calling an actor anonymously
 If an actor specifies public shared functions and is deployed, then anyone can call its publicly available functions. It is useful to know whether a caller is *anonymous* or *authenticated*. 
