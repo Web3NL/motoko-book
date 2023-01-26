@@ -65,7 +65,7 @@ We did not have to pattern match inside the function body. A simple way to acces
 {{#include _mo/principals3.mo:a}}
 ```
 
-This time we used a public shared query function that returns a the principal obtained from the message object.
+This time we used a public shared query function that returns the principal obtained from the message object.
 
 ## Calling an actor anonymously
 If an actor specifies public shared functions and is deployed, then anyone can call its publicly available functions. It is useful to know whether a caller is *anonymous* or *authenticated*. 
