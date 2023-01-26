@@ -44,6 +44,7 @@
     - [Generics](advanced-types/generics.md)
     - [Recursive Types](advanced-types/recursive-types.md)
     - [Sub-typing](advanced-types/subtyping.md) 
+    - [Type Bounds](advanced-types/type-bounds.md) 
   
 - [The Base Library](base-library.md)
     - [Primitive Types](base-library/primitive-types.md)
