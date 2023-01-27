@@ -35,7 +35,7 @@ let x = -15;
 
 let int_to_float = Float.fromInt(x);
 
-assert int_to_float == -15.0;
+assert int_to_float == -15.;
 // ANCHOR_END: f
 
 // ANCHOR: g
