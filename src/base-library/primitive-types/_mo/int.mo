@@ -16,9 +16,9 @@ let absolute_value = Int.abs(interger);
 // ANCHOR_END: b
 
 // ANCHOR: c
-
 let int_to_text = Int.toText(interger);
 
+assert int_to_text == "-10";
 // ANCHOR_END: c
 
 // ANCHOR: d
