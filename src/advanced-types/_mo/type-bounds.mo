@@ -4,7 +4,7 @@
 import Int "mo:base/Int";
 import Float "mo:base/Float";
 
-func makeNat<T <: Number>(x : T) : Number {
+func makeNat<T <: Number>(x : T) : Natural {
     switch (x) {
         case (#N i) {
             #N i
@@ -22,22 +22,30 @@ func makeNat<T <: Number>(x : T) : Number {
 };
 // ANCHOR_END: example
 
+// ANCHOR: example2
+assert makeNat( #N 0 ) == #N 0;
+
+assert makeNat( #I (-10) ) == #N 10;
+
+assert makeNat( #F (-5.9) ) == #N 6;
+// ANCHOR_END: example2
+
 
 // ANCHOR: a
-type N = {
+type Natural = {
     #N : Nat;
 };
 
-type I = {
+type Integer = {
     #I : Int;
 };
 
-type F = {
+type FloatingPoint = {
     #F : Float;
 };
 // ANCHOR_END: a
 
 // ANCHOR: b
-type Number = I or N or F;
+type Number = Natural or Integer or FloatingPoint;
 // ANCHOR_END: b
 
