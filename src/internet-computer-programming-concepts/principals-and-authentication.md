@@ -28,7 +28,7 @@ To convert a textual principal into a value of type `Principal` we can use the [
 {{#include _mo/principals2.mo:a}}
 ```
 
-We *[import](/common-programming-concepts/modules.html)* the Principal module and name it `P`. We then defined a variable named `principal` of type `Principal` and assigned a value using the `.fromText()` *method* available in the Principal module.
+We *[import](/common-programming-concepts/modules.html)* the Principal module from the [Base Library](/base-library.html) and name it `P`. We then defined a variable named `principal` of type `Principal` and assigned a value using the `.fromText()` *method* available in the Principal module.
 
 We could now user our `principal` variable wherever a value is expected of type `Principal`.
 
@@ -67,7 +67,7 @@ We did not have to pattern match inside the function body. A simple way to acces
 
 This time we used a public shared query function that returns the principal obtained from the message object.
 
-## Calling an actor anonymously
+## Checking the Identity of the Caller
 If an actor specifies public shared functions and is deployed, then anyone can call its publicly available functions. It is useful to know whether a caller is *anonymous* or *authenticated*. 
 
 Here's an actor with a public shared query function which checks whether its caller is anonymous:
