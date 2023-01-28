@@ -41,7 +41,7 @@
         - [Child Canister Calling](internet-computer-programming-concepts/child-canister-calling.md)
   
 - [Advanced Types](advanced-types.md)
-    - [Generics](advanced-types/generics.md)
+    - [Generic Types](advanced-types/generics.md)
     - [Recursive Types](advanced-types/recursive-types.md)
     - [Sub-typing](advanced-types/subtyping.md) 
     - [Type Bounds](advanced-types/type-bounds.md) 
