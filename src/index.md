@@ -1,7 +1,5 @@
 # The Motoko Programming Language
 
-*By [@SamerWeb3](https://twitter.com/SamerWeb3)*
-
 **Latest updates**  
 22-01-2023: Version 0.2 (Chapter 2 release)  
 15-01-2023: Version 0.1  
@@ -12,6 +10,11 @@
 [Official Motoko Docs](https://internetcomputer.org/docs/current/developer-docs/build/cdks/motoko-dfinity/motoko/)  
 [Official Base Library Reference](https://internetcomputer.org/docs/current/references/motoko-ref/)
 
+*Written by [@SamerWeb3](https://twitter.com/SamerWeb3)*  
+
 *Special thank you to OpenAI's ChatGPT for helping me learn quickly and assisting me with writing this text!* 
+
+**"Democratize access to the tech economy and make everyone industrious"**  
+~Dominic Williams
 
 
