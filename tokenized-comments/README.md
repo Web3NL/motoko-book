@@ -2,58 +2,31 @@
 ## **Experimental** crypto-economically moderated Web3 comments system
 Tokenized Comments is an example project for the Motoko Programming Language Book that demonstrates the use of an ICRC-1 token to moderate an online comments section. 
 
-### Design choices
+- Every user receives an initial amount of tokens upon first login
 
-**Commenting**
-- Any authenticated user can place a comment
+- Any auth user can comment, like or dislike
 
-- Any authenticated user can either like, dislike or report a comment
+- Likes and dislikes are initially hidden
 
-- A reported comment is removed from main list and placed on reported list
+- Every comment receives an 'engagement score' after the 'initial period'
 
-- Any authenticated user can confirm report a comment on the reported list 
+- After initial period, likes and dislikes are revealed
 
-- Comments older than one month are deleted
+- Score is calculated based on the ATH of likes for a comment. It is (likes / ATH likes) - (dislikes / ATH likes)
 
-**Rewards**
-- Commenting, liking, disliking, reporting and confirm reporting are rewarded equally
+The following scenarios exist:
+1. The comment has score lower than the moving average score
+-> no one gets rewarded
 
-- A commenter is rewarded if the comment turns controversial within a time frame.
+1. The comment has score higher than moving average score
+-> commenter get 10% reward. Likers and dislikers get 90%
 
-- Likers or dislikers are rewarded only if they turn a controversial comment into a non-controversial comment within a time frame
+1. The comment has more dislikes than allowed like / dislike ratio
+Commenter and likers are slashed 10%
 
-- A controversial comment does not display likes and dislikes
-
-- A controversial comment is one that has a minimum amount of likes plus dislikes where the difference is smaller than a predefined constant. 
-
-$$ 
-\begin{aligned}
-total &= likes + dislikes \\
-threshold &= 0.5 \\  
-
-diff &= \bigg | \frac{likes}{total} - \frac{dislikes}{total} \bigg | \\
-
-controversial &= diff < threshold
-\end{aligned}
-$$
-
-- Reporters and confirm reporters are rewarded on a first come first serve basis with a maximum number of voters
-
-- Reporters who's report is reverted, wont be rewarded for a week. 
-
-- Reporting results are revealed after voting period
+Expected effects:
+- Commenter are rewarded for engaging and positive comments.
+- Engagers, even dislikers, are rewarded for their engagement.
+- Likers and dislikers are rewarded equally with the possiblity of likers being slashed
 
 
-## Data models
-- Comment
-    - Principal
-    - Text
-    - Date
-
-- Like
-
-- Dislike
-
-- Report
-
-- ConfirmReport
