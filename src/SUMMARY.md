@@ -44,6 +44,7 @@
     - [Generics](advanced-types/generics.md)
     - [Recursive Types](advanced-types/recursive-types.md)
     - [Sub-typing](advanced-types/subtyping.md) 
+    - [Type Bounds](advanced-types/type-bounds.md) 
   
 - [The Base Library](base-library.md)
     - [Primitive Types](base-library/primitive-types.md)
@@ -56,8 +57,16 @@
         - [Char](base-library/primitive-types/char.md)
         - [Bounded Number Types](base-library/primitive-types/bounded-number-types.md)
         - [Blob](base-library/primitive-types/blob.md)
+    - [Utility Modules](base-library/utils.md)
+        - [Time](base-library/utils/time.md)
+        - [Error](base-library/utils/error.md)
+        - [Iterators](base-library/utils/iter.md)
     - [Data Structures](base-library/data-structures.md)
-    - [IC APIs](base-library/ic-apis.md)
+        - [Array](base-library/data-structures/array.md)
+        - [List](base-library/data-structures/list.md)
+        - [Buffer](base-library/data-structures/buffer.md)
+        - [HashMap](base-library/data-structures/hashmap.md)
+        - [RBTree](base-library/data-structures/rbtree.md)
 
 - [Advanced Concepts](advanced-concepts.md)
 
