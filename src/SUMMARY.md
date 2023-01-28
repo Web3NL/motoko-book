@@ -28,6 +28,7 @@
         - [Objects](common-programming-concepts/objects-and-classes/objects.md)
         - [Classes](common-programming-concepts/objects-and-classes/classes.md)
     - [Modules and Imports](common-programming-concepts/modules.md)
+    - [Assertions](common-programming-concepts/assertions.md)
 
 - [Internet Computer Programming Concepts](internet-computer-programming-concepts.md)
     - [Actors](internet-computer-programming-concepts/actors.md)
