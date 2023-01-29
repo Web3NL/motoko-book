@@ -21,7 +21,7 @@ To understand actors it is useful to compare them with objects:
 - Public functions in objects are only accessible from within your Motoko code.
 
 **Public shared functions**  
-- Actors only allow *[shared](#public-shared-functions)* public functions
+- Actors only allow *[shared](#public-shared-functions-in-actors)* public functions
 - Objects only allow non-shared public functions
 
 **Public state**  
@@ -46,6 +46,9 @@ Can *read* and *write* state
 
 1. Public **shared oneway** functions:  
 Can *read* and *write*, but don't have any *return value*.
+
+### Shared types
+The argument and return types of shared public functions are restricted to *[shared types](/internet-computer-programming-concepts/shared-types-and-candid.html)* only. We will cover shared types [later](/internet-computer-programming-concepts/shared-types-and-candid.html) in this book.
 
 *Query* and *update* functions always have the special `async` return type.  
 *Oneway* functions always immediately return `()` regardless of whether they execute successfully.  
@@ -108,4 +111,3 @@ Every field name is a public shared function with its own *function type*. The o
 `writeComment` has type `shared Text -> async ()` indicating it is an *shared update* function that takes one `Text` argument and returns no value `async ()`.
 
 `deleteComment` has type `shared () -> ()` indicating it is a *shared oneway* function that takes no arguments and always returns `()`.
-
