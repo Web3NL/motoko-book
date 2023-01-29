@@ -63,6 +63,30 @@ We used our newly chosen module name `SizeChecker` to reference the public funct
 
 The expression `SizeChecker.checkSize(x)` evaluates to a `Bool` value and thus can be used as an argument in the if expression. 
 
+## Public types in modules
+Modules (and even objects) can also define private and public *types*. Private types are meant for internal use only, like private variables. Public types in a module are meant to be imported and used elsewhere.
+
+Types are declared using the `type` keyword and their *visibility* is specified:
+
+```motoko
+{{#include _mo/types.mo:a}}
+```
+
+Only the `User` type is visible outside the module. Type `UserData` can only be referenced inside a module and even used in a public type (or variable or function) declaration as shown above. 
+
+### Type imports and renaming
+Types are often given a local *type alias* (renamed) after importing them:
+
+```motoko
+{{#include _mo/modules5.mo:a}}
+```
+
+In the example above, we first import the module from file `types.mo` and give it the *module name* `User`. 
+
+Then we define a new *type alias* also named `User`, again using the `type` keyword. We reference the imported type by module name and type name: `User.User`.
+
+We often use the same name for the module, the type alias and the imported type!
+
 ##  Static expressions only
 Modules are limited to *static* expressions only. This means that no computations can take place inside the module. Static means that no program is running. A module only defines code to be used elsewhere for computations. 
 
