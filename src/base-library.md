@@ -30,3 +30,6 @@ Our imported module, now named `Principal`, has a [module type](/common-programm
 The [type annotation](/common-programming-concepts/types.html) for variable `p` uses the always available *primitive type* `Principal`. This type does not have to be imported. 
 
 We used the `.fromText()` *method* (public functions in [modules](/common-programming-concepts/modules.html) and [objects or classes](/common-programming-concepts/objects-and-classes.html) are often called methods) by referencing it through our chosen name `Principal`.
+
+## Assertions
+In this chapter, we will use [assertions](/common-programming-concepts/assertions.html) that always evaluate to `()` in the code examples to illustrate the results of the manipulations we perform. 
