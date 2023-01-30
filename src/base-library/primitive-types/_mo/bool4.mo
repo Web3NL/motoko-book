@@ -7,5 +7,5 @@ let b = false;
 
 let isNotEqual = Bool.notEqual(a, b);
 
-assert isNotEqual == false;
+assert isNotEqual == true;
 // ANCHOR_END: a

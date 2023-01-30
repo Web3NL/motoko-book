@@ -4,9 +4,9 @@ import Bool "mo:base/Bool";
 let a = true;
 let b = false;
 
-let logand = Bool.logand(a, b);
+let bothTrue = Bool.logand(a, b);
 
-assert logand == false;
+assert bothTrue == false;
 // ANCHOR_END: a
 
 

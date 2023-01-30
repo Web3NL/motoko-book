@@ -4,7 +4,7 @@ import Bool "mo:base/Bool";
 let a = true;
 let b = false;
 
-let logor = Bool.logor(a, b);
+let eitherIsTrue = Bool.logor(a, b);
 
-assert logor == true;
+assert eitherIsTrue == true;
 // ANCHOR_END: a

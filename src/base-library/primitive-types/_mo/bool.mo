@@ -22,8 +22,12 @@ assert comparison == #greater;
 // ANCHOR_END: c
 
 // ANCHOR: d
-let lognot = Bool.lognot(is_principal);
+let positive = true;
 
-assert lognot == false;
+let negative = Bool.lognot(positive);
+assert negative == false;
+
+let logicalNot = not positive;
+assert logicalNot == false;
 // ANCHOR_END: d
 

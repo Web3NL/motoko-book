@@ -5,7 +5,7 @@ import Bool "mo:base/Bool";
 let a = true;
 let b = false;
 
-let logxor = Bool.logxor(a, b);
+let exclusiveOr = Bool.logxor(a, b);
 
-assert logxor == false;
+assert exclusiveOr == true;
 // ANCHOR_END: a
