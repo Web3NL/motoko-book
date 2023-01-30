@@ -21,5 +21,9 @@ let comparison = Bool.compare(a, b);
 assert comparison == #greater;
 // ANCHOR_END: c
 
-assert comparison == #greater;
-// ANCHOR_END: c
+// ANCHOR: d
+let lognot = Bool.lognot(is_principal);
+
+assert lognot == false;
+// ANCHOR_END: d
+
