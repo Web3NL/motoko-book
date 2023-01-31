@@ -24,10 +24,6 @@ To understand actors it is useful to compare them with objects:
 - Actors only allow *[shared](#public-shared-functions-in-actors)* public functions
 - Objects only allow non-shared public functions
 
-**Public state**  
-- Actors don't allow public mutable or immutable variables
-- Objects allow public mutable or immutable variables
-
 **Class and Actor Class**
 - Actors have 'factory' functions called [Actor Classes](/internet-computer-programming-concepts/actor-classes.html)
 - Objects have 'factory' functions called [Classes](/common-programming-concepts/objects-and-classes/classes.html)
@@ -47,8 +43,11 @@ Can *read* and *write* state
 1. Public **shared oneway** functions:  
 Can *read* and *write*, but don't have any *return value*.
 
+> **NOTE**  
+> *Public shared query functions are fast, but don't have the full security guarantees of the Internet Computer because they do not 'go through' consensus*
+
 ### Shared types
-The argument and return types of shared public functions are restricted to *[shared types](/internet-computer-programming-concepts/shared-types-and-candid.html)* only. We will cover shared types [later](/internet-computer-programming-concepts/shared-types-and-candid.html) in this book.
+The argument and return types of public shared functions are restricted to *[shared types](/internet-computer-programming-concepts/shared-types.html)* only. We will cover shared types [later](/internet-computer-programming-concepts/shared-types.html) in this book.
 
 *Query* and *update* functions always have the special `async` return type.  
 *Oneway* functions always immediately return `()` regardless of whether they execute successfully.  
