@@ -2,10 +2,15 @@
 
 actor {
 
+type GenderAge = { 
+    #Male : Nat;
+    #Female : Nat;
+};
+
 // ANCHOR: a
 type User = { 
     id : Principal;
-    balance : Nat;
+    genderAge : GenderAge;
 };
 
 type SharedFunction = shared User -> async User;
