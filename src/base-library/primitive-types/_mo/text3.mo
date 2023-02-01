@@ -7,7 +7,7 @@ type Pattern = {#char : Char; #text : Text; #predicate : (Char -> Bool)};
 
 let text = "blockchain";
 
-let letter : Pattern = #char 'b';
+let letter : Pattern = #char 'n';
 
 let isEndsWith = Text.endsWith( text, letter);
 
