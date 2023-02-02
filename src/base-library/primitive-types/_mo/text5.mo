@@ -14,5 +14,6 @@ let encode = Text.encodeUtf8( text);
 
 let decode = Text.decodeUtf8(encode);
 
+
 assert encode == "blockchain" ;
 // ANCHOR_END: b
