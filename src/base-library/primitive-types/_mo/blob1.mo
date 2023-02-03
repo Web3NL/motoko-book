@@ -3,15 +3,11 @@ import Blob "mo:base/Blob";
 
 
 // ANCHOR: a
-let arr : [var Nat8] = [var 1,2,3];
+let a : [var Nat8] = [var 1,2,3];
 
-let mutableArrayToBlob = Blob.fromArrayMut(arr);
+let mutableArrayBlob = Blob.fromArrayMut(a);
 
-// assert arrayToBlob == "true";
-// ANCHOR_END: a
+let mutableArray = Blob.toArrayMut(mutableArrayBlob);
 
-// ANCHOR: b
-let blobToMutableArray = Blob.toArrayMut(mutableArrayToBlob);
-
-// assert blobToMutableArray == [var 1,2,3];
+assert mutableArray.size() == 3;
 // ANCHOR_END: b
