@@ -9,7 +9,7 @@ let text = "blockchain";
 
 let letter : Pattern = #char 'b';
 
-let isStartsWith = Text.startsWith( text, letter);
+let startsWith = Text.startsWith(text, letter);
 
-assert isStartsWith == true ;
+assert startsWith == true ;
 // ANCHOR_END: a

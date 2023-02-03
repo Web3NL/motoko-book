@@ -10,27 +10,17 @@ let text = "blockchain";
 // ANCHOR_END: b
 
 // ANCHOR: c
-let text_length = Text.size(text);
+let textLength = Text.size(text);
 
-assert text_length == 10;
+assert textLength == 10;
 // ANCHOR_END: c
 
 // ANCHOR: d
 let character = 'c';
 
-let char_to_text = Text.fromChar(character);
+let charToText = Text.fromChar(character);
 
-assert char_to_text == "c";
+assert charToText == "c";
 // ANCHOR_END: d
 
-
-// ANCHOR: g
-let sentence = "The quick brown fox jumps over the lazy dog.";
-
-let word = #text "dog";
-
-let result_ = Text.endsWith( sentence, word);
-
-assert result_ == true ;
-// ANCHOR_END: g
 

@@ -9,7 +9,7 @@ let text = "blockchain";
 
 let letter : Pattern = #char 'b';
 
-let isEndsWith = Text.endsWith( text, letter);
+let endsWith = Text.endsWith(text, letter);
 
-assert isEndsWith == true ;
+assert endsWith == false ;
 // ANCHOR_END: a

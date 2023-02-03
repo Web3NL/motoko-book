@@ -9,7 +9,7 @@ let text = "blockchain";
 
 let letter : Pattern = #char 'b';
 
-let replace = Text.replace( text, letter, "c");
+let replace = Text.replace(text, letter, "c");
 
 assert replace == "clockchain" ;
 // ANCHOR_END: a

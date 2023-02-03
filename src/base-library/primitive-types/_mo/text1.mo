@@ -9,7 +9,7 @@ let text = "blockchain";
 
 let letter : Pattern = #char 'k';
 
-let isContained = Text.contains( text, letter);
+let containsChar = Text.contains(text, letter);
 
-assert isContained == true ;
+assert containsChar == true ;
 // ANCHOR_END: a
