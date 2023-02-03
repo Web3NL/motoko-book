@@ -1,5 +1,7 @@
 # The Motoko Programming Language
 
+**WARNING**: Book is work in progress.
+
 **Latest updates**  
 22-01-2023: Version 0.2 (Chapter 2 release)  
 15-01-2023: Version 0.1  
