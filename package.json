@@ -4,7 +4,6 @@
     "motoko": "^3.3.0"
   },
   "scripts": {
-    "build": "mdbook build",
-    "dev": "cd tokenized-comments & npm run dev"
+    "build": "mdbook build"
   }
 }

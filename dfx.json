@@ -9,7 +9,7 @@
       }
     },
 
-    "comments-frontend": {
+    "frontend": {
       "type": "assets",
       "source": ["tokenized-comments/build/"],
       "frontend": {
@@ -17,7 +17,7 @@
       }
     },
 
-    "comments-backend": {
+    "backend": {
       "type": "motoko",
       "main": "tokenized-comments/src/backend/main.mo"
     }
