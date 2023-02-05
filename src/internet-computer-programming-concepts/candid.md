@@ -76,26 +76,23 @@ A Motoko *oneway* public shared function type `shared Nat -> ()` in Candid would
 (nat) → () oneway
 ```
 
-
 ### The `type` keyword
+Type aliases (custom names) in Candid are written with the `type` keyword. A Motoko type alias like `type MyType = Nat` would be represented in Candid like this:
+```candid
+type MyType = nat
+```
 
-See the full [Candid Reference](https://internetcomputer.org/docs/current/references/candid-ref).
+
+
 
 ## Actor Interfaces
 An [actor](/internet-computer-programming-concepts/actors.html) running in a [canister](/internet-computer-programming-concepts/actor-to-canister.html) has a Candid description of its interface. Consider the following actor in a Motoko source file `main.mo`:
 
-```candid
-type User = record {
-   principal;
-   text;
-};
- 
-service : {
-  getUser: () -> (User) query;
-}
+```motoko
+{{#include _mo/candid.mo}}
 ``` 
 
-Only public types and [public shared functions](/internet-computer-programming-concepts/actors.html#public-shared-functions-in-actors) are included in the *candid interface*. This actor has a `public type` and a `public shared function`. Both of these are part of its public interface. 
+Only public types and [public shared functions](/internet-computer-programming-concepts/actors.html#public-shared-functions-in-actors) are included in the *candid interface*. This actor has a `public type` and two `public shared functions`. Both of these are part of its public interface. 
 
 The actor could have other fields, but they won't be included in the Candid Interface. 
 
@@ -103,14 +100,26 @@ We describe this actor's interface in a Candid `.did` file. A Candid Interface c
 
 ```candid
 // candid.did
-{{#include _mo/candid.did}}
+type User = record {
+   principal;
+   text;
+};
+ 
+service : {
+  getUser: () -> (User) query;
+  doSomething: () -> () oneway;
+}
 ``` 
 
 Our Candid Interface consists of two parts: a `type` and a `service`.
 
 The `service : { }` lists the *names* and *types* of the public shared functions of the actor. This is the information needed to *interact* with the actor from "the outside" by calling its functions. In fact, actors are sometimes referred to as *services*. 
 
-The type reflects the public Motoko type `User` from our actor, which is a Motoko tuple of `(Principal, Text)`. In Candid, the tuple is translated into `record { principal; text; };`. Since this is a public Motoko type that is used as a return type in a public shared function, it is included in the Candid Interface.
+The type reflects the public Motoko type `User` from our actor. Since this is a public Motoko type that is used as a return type in a public shared function, it is included in the Candid Interface.
+
+> **NOTE**  
+> *The type alias `User` is a Motoko tuple `(Principal, Text)`. In Candid a custom type alias for a tuple is translated into `record { principal; text }`. Don't confuse it with the Candid tuple type `(principal, text)`!*
+
 
 ### Candid Serialization
 Another important use of Candid is *data serialization* of [shared types](/internet-computer-programming-concepts/shared-types.html). Data structures in Motoko, like in any other language, are not always stored as serial (contiguous) bytes in memory. When we want to *send* shared data in and out of a canisters, we have to *serialize* the data before sending. 
@@ -118,3 +127,5 @@ Another important use of Candid is *data serialization* of [shared types](/inter
 Motoko has built in support for serializing shared types into Candid format. 
 
 TBD
+
+See the full [Candid Reference](https://internetcomputer.org/docs/current/references/candid-ref).
