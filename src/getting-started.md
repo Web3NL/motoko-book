@@ -32,5 +32,5 @@ When you deploy code in Motoko Playground, a couple of things happen:
 - The Motoko code is compiled into a [Webassembly module](/internet-computer-programming-concepts/actor-to-canister.html#code-compiling-and-wasm-modules).
 - A new [*canister*](/internet-computer-programming-concepts/actor-to-canister.html#canister) is created on the Internet Computer.
 - The Webassembly module is *installed* in the canister.
-- A [*candid*](/internet-computer-programming-concepts/candid.html) interface file will be generated
+- A [*candid*](/internet-computer-programming-concepts/async-data/candid.html) interface file will be generated
 - The Candid UI allows you to interact with the [actor](/internet-computer-programming-concepts/actors.html) that is defined in the Motoko code

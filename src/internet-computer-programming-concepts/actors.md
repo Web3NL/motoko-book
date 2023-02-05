@@ -47,7 +47,7 @@ Can *read* and *write*, but don't have any *return value*.
 > *Public shared query functions are fast, but don't have the full security guarantees of the Internet Computer because they do not 'go through' consensus*
 
 ### Shared types
-The argument and return types of public shared functions are restricted to *[shared types](/internet-computer-programming-concepts/shared-types.html)* only. We will cover shared types [later](/internet-computer-programming-concepts/shared-types.html) in this book.
+The argument and return types of public shared functions are restricted to *[shared types](/internet-computer-programming-concepts/async-data/shared-types.html)* only. We will cover shared types [later](/internet-computer-programming-concepts/async-data/shared-types.html) in this book.
 
 *Query* and *update* functions always have the special `async` return type.  
 *Oneway* functions always immediately return `()` regardless of whether they execute successfully.  

@@ -2,10 +2,10 @@
 All *shared types and values* in Motoko have a corresponding *description* in the 'outside world'. This description defines the types and values independently of Motoko or any other language. These alternative descriptions are written in a special *Interface Description Language* called Candid.  
 
 ## Shared Types
-Candid has a slightly different notation (syntax) and keywords to represent [shared types](/internet-computer-programming-concepts/shared-types.html). 
+Candid has a slightly different notation (syntax) and keywords to represent [shared types](/internet-computer-programming-concepts/async-data/shared-types.html). 
 
 ### Primitive types
-[Primitive types](/internet-computer-programming-concepts/shared-types.html#shared-primitive-types) in Candid are written without capital letters:  
+[Primitive types](/internet-computer-programming-concepts/async-data/shared-types.html#shared-primitive-types) in Candid are written without capital letters:  
 
 | Motoko | Candid |
 |---|---|
@@ -18,19 +18,19 @@ Candid has a slightly different notation (syntax) and keywords to represent [sha
 | Blob | blob |  
 
 ### Option types
-[Option types](/internet-computer-programming-concepts/shared-types.html#shared-option-types) in Candid are written with the `opt` keyword. An option type in Motoko like `?Principal` would be represented in Candid as:
+[Option types](/internet-computer-programming-concepts/async-data/shared-types.html#shared-option-types) in Candid are written with the `opt` keyword. An option type in Motoko like `?Principal` would be represented in Candid as:
 ```candid
 opt principal
 ```
 
 ### Tuple types
-[Tuple types](/internet-computer-programming-concepts/shared-types.html#shared-tuple-types) in Candid have the same parenthesis notation `()`. A Motoko tuple `(Nat, Text, Principal)` would be represented in Candid as:
+[Tuple types](/internet-computer-programming-concepts/async-data/shared-types.html#shared-tuple-types) in Candid have the same parenthesis notation `()`. A Motoko tuple `(Nat, Text, Principal)` would be represented in Candid as:
 ```candid
 (nat, text, principal)
 ```
 
 ### Immutable array types
-The [immutable array type](/internet-computer-programming-concepts/shared-types.html#shared-immutable-array-types) `[]` is represented in Candid with the `vec` keyword. 
+The [immutable array type](/internet-computer-programming-concepts/async-data/shared-types.html#shared-immutable-array-types) `[]` is represented in Candid with the `vec` keyword. 
 
 A Motoko array type `[Nat]` in candid looks like this:
 ```candid
@@ -38,7 +38,7 @@ vec nat
 ```
 
 ### Variant types
-[Variant types](/internet-computer-programming-concepts/shared-types.html#shared-variant-types) in Candid are written with the `variant` keyword and curly braces `{ }`. A Motoko variant like `{#A : Nat; #B : Text}` would be represented in Candid like this:
+[Variant types](/internet-computer-programming-concepts/async-data/shared-types.html#shared-variant-types) in Candid are written with the `variant` keyword and curly braces `{ }`. A Motoko variant like `{#A : Nat; #B : Text}` would be represented in Candid like this:
 ```candid
 variant { 
     A : nat; 
@@ -48,7 +48,7 @@ variant {
 The `#` character is not used
 
 ### Object types
-[Object types](/internet-computer-programming-concepts/shared-types.html#shared-object-types) in Candid are written with the `record` keyword and curly braces `{ }`. A Motoko object type like `{name : Text; age : Nat}` in Candid looks like this:
+[Object types](/internet-computer-programming-concepts/async-data/shared-types.html#shared-object-types) in Candid are written with the `record` keyword and curly braces `{ }`. A Motoko object type like `{name : Text; age : Nat}` in Candid looks like this:
 ```candid
 record { 
     name : text;
@@ -57,7 +57,7 @@ record {
 ```
 
 ### Public shared function types
-[Public shared function types](/internet-computer-programming-concepts/shared-types.html#shared-function-types) in Candid have a slightly different notation. A shared public function type in Motoko like `shared () -> async Nat` would be represented in Candid like this:
+[Public shared function types](/internet-computer-programming-concepts/async-data/shared-types.html#shared-function-types) in Candid have a slightly different notation. A shared public function type in Motoko like `shared () -> async Nat` would be represented in Candid like this:
 ```candid
 () -> (nat)
 ```
@@ -122,7 +122,7 @@ The type reflects the public Motoko type `User` from our actor. Since this is a 
 
 
 ### Candid Serialization
-Another important use of Candid is *data serialization* of [shared types](/internet-computer-programming-concepts/shared-types.html). Data structures in Motoko, like in any other language, are not always stored as serial (contiguous) bytes in memory. When we want to *send* shared data in and out of a canisters, we have to *serialize* the data before sending. 
+Another important use of Candid is *data serialization* of [shared types](/internet-computer-programming-concepts/async-data/shared-types.html). Data structures in Motoko, like in any other language, are not always stored as serial (contiguous) bytes in memory. When we want to *send* shared data in and out of a canisters, we have to *serialize* the data before sending. 
 
 Motoko has built in support for serializing shared types into Candid format. 
 
