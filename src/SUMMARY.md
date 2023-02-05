@@ -57,6 +57,8 @@
         - [Text](base-library/primitive-types/text.md)
         - [Char](base-library/primitive-types/char.md)
         - [Bounded Number Types](base-library/primitive-types/bounded-number-types.md)
+            - [Bounded Nat](base-library/primitive-types/bounded-number-types/bounded-nat.md)
+            - [Bounded Int](base-library/primitive-types/bounded-number-types/bounded-int.md)
         - [Blob](base-library/primitive-types/blob.md)
     - [Utility Modules](base-library/utils.md)
         - [Time](base-library/utils/time.md)
