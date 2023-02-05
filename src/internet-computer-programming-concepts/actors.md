@@ -25,7 +25,7 @@ To understand actors it is useful to compare them with objects:
 - Objects only allow non-shared public functions
 
 **Class and Actor Class**
-- Actors have 'factory' functions called [Actor Classes](/internet-computer-programming-concepts/actor-classes.html)
+- Actors have 'factory' functions called [Actor Classes](/advanced-concepts/scalability/actor-classes.html)
 - Objects have 'factory' functions called [Classes](/common-programming-concepts/objects-and-classes/classes.html)
 
 For a full comparison checkout: [**Motoko Items Comparison Table**](https://docs.google.com/spreadsheets/d/1IqgPi9I9EmoknJBzzxea_7dN9WRwtFle7Y99UURXC7Y/edit?usp=sharing)
