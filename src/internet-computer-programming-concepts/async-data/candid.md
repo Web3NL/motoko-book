@@ -1,5 +1,5 @@
 # Candid
-All *shared types and values* in Motoko have a corresponding *description* in the 'outside world'. This description defines the types and values independently of Motoko or any other language. These alternative descriptions are written in a special *Interface Description Language* called Candid.  
+All *shared types and values* in Motoko have a corresponding *description* in the 'outside world'. This description defines the types and values independently of Motoko or any other language. These alternative descriptions are written in a special *Interface Description Language* called [Candid](https://internetcomputer.org/docs/current/references/candid-ref).  
 
 ## Shared Types
 Candid has a slightly different notation (syntax) and keywords to represent [shared types](/internet-computer-programming-concepts/async-data/shared-types.html). 
