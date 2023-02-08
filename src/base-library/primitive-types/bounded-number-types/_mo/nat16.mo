@@ -5,30 +5,32 @@ import Nat16 "mo:base/Nat16";
 // ANCHOR_END: a
 
 // ANCHOR: b
-let a : Nat16 = 32767;
+let a : Nat16 = 65535;
 
-let b : Nat = Nat16.toNat(a);
+let nat = Nat16.toNat(a);
 
-assert b == 32767;
+assert nat == 65535;
 // ANCHOR_END: b
 
 // ANCHOR: c
 let textualNat16 = Nat16.toText(a);
 
-assert textualNat16 == "32767";
+assert textualNat16 == "65535";
 // ANCHOR_END: c
 
 // ANCHOR: d
-let natToNat16 = Nat16.fromNat(b);
+let number = 65535;
 
-assert natToNat16 == 32767;
+let natToNat16 = Nat16.fromNat(number);
+
+assert natToNat16 == 65535;
 // ANCHOR_END: d
 
-// ANCHOR: f
-let integer : Int = 32768 ;
+// ANCHOR: e
+let integer = 65537;
 
 let wrap = Nat16.fromIntWrap(integer);
 
 assert wrap == 1;
-// ANCHOR_END: f
+// ANCHOR_END: e
 

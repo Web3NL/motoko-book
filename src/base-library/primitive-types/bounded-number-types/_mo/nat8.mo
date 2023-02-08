@@ -24,11 +24,11 @@ let nat8 = Nat8.fromNat(b);
 assert nat8 == 255;
 // ANCHOR_END: d
 
-// ANCHOR: f
+// ANCHOR: e
 let integer : Int = 356 ;
 
 let wrap = Nat8.fromIntWrap(integer);
 
 assert wrap == 100 ;
-// ANCHOR_END: f
+// ANCHOR_END: e
 
