@@ -122,10 +122,27 @@ The type reflects the public Motoko type `User` from our actor. Since this is a 
 
 
 ### Candid Serialization
-Another important use of Candid is *data serialization* of [shared types](/internet-computer-programming-concepts/async-data/shared-types.html). Data structures in Motoko, like in any other language, are not always stored as serial (contiguous) bytes in memory. When we want to *send* shared data in and out of a canisters, we have to *serialize* the data before sending. 
+Another important use of Candid is *data serialization* of [shared types](/internet-computer-programming-concepts/async-data/shared-types.html). Data structures in Motoko, like in any other language, are not always stored as serial (contiguous) bytes in *working memory*. When we want to *send* shared data in and out of a canisters or store data in [stable memory](/advanced-concepts/scalability/stable-storage.html), we have to *serialize* the data before sending. 
 
-Motoko has built in support for serializing shared types into Candid format. 
+Motoko has built in support for serializing shared types into Candid format. A *higher order* data type like an object can be converted into a *binary blob* that would still have a shared type.
 
-TBD
+Consider the following relatively complex data structure:
+```motoko
+{{#include _mo/candid2.mo:a}}
+```
 
-See the full [Candid Reference](https://internetcomputer.org/docs/current/references/candid-ref).
+Our object type `MyData` contains a `Text` field and fields of variant types `A` and `B`. We could turn a *value* of type `MyData` into a value of type `Blob` by using the `to_candid()` and `from_candid()` functions in Motoko.
+```motoko
+{{#include _mo/candid2.mo:b}}
+```
+
+We declared a variable of type `MyData` and assigned it a value. Then we *serialized* that data into a `Blob` by using `to_candid()`.
+
+This blob can now be sent or received in arguments or return types of public shared functions or stored in [memory](/advanced-concepts/scalability/stable-storage.html). 
+
+We could recover the original type by doing the opposite, namely deserializing the data back into a Motoko shared type by using `from_candid()`. 
+```motoko
+{{#include _mo/candid2.mo:c}}
+```
+
+We declare a variable with option type `?MyData`, because the `from_candid()` function always returns an option of the original type. Type annotation is required for this function to work. We use a `switch` statement after deserializing to handle both cases of the option type.  
