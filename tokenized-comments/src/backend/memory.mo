@@ -2,6 +2,7 @@ import Mem "mo:base/ExperimentalStableMemory";
 import A "mo:base/Array";
 import Nat64 "mo:base/Nat64";
 import B "mo:base/Blob";
+import P "mo:base/Principal";
 
 import T "types";
 
@@ -39,19 +40,26 @@ module {
   public class StableMemory() {
     let PAGE : Nat64 = 65536;
     let PSIZE : Nat = 29;
+    let P_ENTRY_SIZE : Nat = PSIZE + 8;
 
     var memPointer : Nat64 = 0;
     var pages : Nat64 = 0;
 
-    func initPrincipalList() {
-      // type PrincipalList = (?Blob, ?PrincipalPointer);
-      // type PrincipalPointer = Nat64;
-      let listSize = PSIZE + 8;
-      
-      let data = A.tabulate<Nat8>(listSize, func(_) {0 : Nat8});
-      let blob = B.fromArray(data);
+    var principalPointer : PrincipalPointer = 0;
 
-      ignore write(blob)
+    func alloc(bytes : Nat64) : ?Nat64 {
+      if (bytes > PAGE) { return null };
+
+      let freeMem = ((pages * PAGE) - memPointer);  
+      if (freeMem < bytes) { 
+          ignore Mem.grow(1);
+          pages += 1; 
+      };
+      
+      let pointer = memPointer;
+      memPointer += bytes;
+
+      ?pointer
     };
 
     func write(data : Blob) : ?Pointer {
@@ -66,23 +74,45 @@ module {
       };
     };
 
+    func initPrincipalList() {      
+      let data = A.tabulate<Nat8>(P_ENTRY_SIZE, func(_) {0 : Nat8});
+      let blob = B.fromArray(data);
 
-    func alloc(bytes : Nat64) : ?Nat64 {
-      if (bytes > PAGE) { return null };
-
-      let freeMem = ((pages * PAGE) - memPointer);
-        
-      if (freeMem < bytes) { 
-          ignore Mem.grow(1);
-          pages += 1; 
-      };
-      
-      let pointer = memPointer;
-
-      memPointer += bytes;
-
-      ?pointer
+      ignore write(blob)
     };
+
+    initPrincipalList();
+
+    func loadPrincipal(p : PrincipalPointer) : Principal {
+      let blob = Mem.loadBlob(p, PSIZE);
+      P.fromBlob(blob)
+    };
+
+    func storePrincipal(principal : Principal) {
+      let blob = P.toBlob(principal);
+      let p = write(blob);
+
+      let mem = alloc(Nat64.fromNat(P_ENTRY_SIZE));
+      switch (mem) {
+        case null assert false;
+        case (?offset) {
+          write()
+          principalPointer := offset;
+        }
+      }
+
+      
+
+      
+
+    };
+
+
+
+
+
+
+    
 
 
 
