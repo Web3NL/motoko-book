@@ -1,9 +1,0 @@
-type User = 
- record {
-   principal;
-   text;
- };
- 
-service : {
-  getUser: () -> (User) query;
-}

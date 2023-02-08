@@ -25,7 +25,7 @@ To understand actors it is useful to compare them with objects:
 - Objects only allow non-shared public functions
 
 **Class and Actor Class**
-- Actors have 'factory' functions called [Actor Classes](/internet-computer-programming-concepts/actor-classes.html)
+- Actors have 'factory' functions called [Actor Classes](/advanced-concepts/scalability/actor-classes.html)
 - Objects have 'factory' functions called [Classes](/common-programming-concepts/objects-and-classes/classes.html)
 
 For a full comparison checkout: [**Motoko Items Comparison Table**](https://docs.google.com/spreadsheets/d/1IqgPi9I9EmoknJBzzxea_7dN9WRwtFle7Y99UURXC7Y/edit?usp=sharing)
@@ -47,7 +47,7 @@ Can *read* and *write*, but don't have any *return value*.
 > *Public shared query functions are fast, but don't have the full security guarantees of the Internet Computer because they do not 'go through' consensus*
 
 ### Shared types
-The argument and return types of public shared functions are restricted to *[shared types](/internet-computer-programming-concepts/shared-types.html)* only. We will cover shared types [later](/internet-computer-programming-concepts/shared-types.html) in this book.
+The argument and return types of public shared functions are restricted to *[shared types](/internet-computer-programming-concepts/async-data/shared-types.html)* only. We will cover shared types [later](/internet-computer-programming-concepts/async-data/shared-types.html) in this book.
 
 *Query* and *update* functions always have the special `async` return type.  
 *Oneway* functions always immediately return `()` regardless of whether they execute successfully.  

@@ -1,14 +1,9 @@
 # Shared Types
-[Actors](/internet-computer-programming-concepts/actors.html) expose [public shared functions](/internet-computer-programming-concepts/actors.html#public-shared-functions-in-actors) to the outside world. They define the *interface* for interacting with all Motoko programs running in [canisters](/internet-computer-programming-concepts/actor-to-canister.html) on the Internet Computer.
-
-This chapter explains what kind of data is allowed *in* and *out* of Motoko programs from the outside world.
-
-## Incoming and Outgoing Data 
-Incoming and outgoing data is defined by the *argument types* and *return types* of [public shared functions](/internet-computer-programming-concepts/actors.html#public-shared-functions-in-actors) inside actors. Incoming and outgoing data types are restricted to a *subset* of available Motoko types, called *shared types*. 
+Incoming and outgoing data are defined by the *argument types* and *return types* of [public shared functions](/internet-computer-programming-concepts/actors.html#public-shared-functions-in-actors) inside actors. Incoming and outgoing data types are restricted to a *subset* of available Motoko types, called *shared types*.
 
 Shared types are always *immutable* types or data structures composed of immutable types (like [records](/common-programming-concepts/types/records.html), [objects](/common-programming-concepts/objects-and-classes/objects.html) and [variants](/common-programming-concepts/types/variants.html)). 
 
-Shared types get their name from being *sharable* with the outside world, that is the wider internet beyond the [actors](/internet-computer-programming-concepts/actors.html) running in [canisters](/internet-computer-programming-concepts/actor-to-canister.html) on the the Internet Computer.
+Shared types get their name from being *sharable* with the outside world, that is the wider internet beyond the [actors](/internet-computer-programming-concepts/actors.html) running in [canisters](/internet-computer-programming-concepts/actor-to-canister.html) on the Internet Computer.
 
 ## Shared Types in Public Shared Functions
 Only shared types are allowed for *arguments* and *return values* of public shared functions. We give examples of a custom *public shared function type* called `SharedFunction` to illustrate shared types. [Recall](/internet-computer-programming-concepts/actors.html#actor-type) that a public shared function type includes the `shared` and `async` keywords.
