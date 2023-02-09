@@ -32,6 +32,14 @@ Or both:
     
 In this case it is unnecessary and makes the code ugly. The convention is to leave spaces around the colon.
 
+## The `type` keyword
+We can always *rename* any type by using the `type` keyword. We could rename the `Bool` type to `B`:
+```motoko
+{{#include _mo/types4.mo:e}}
+```
+
+We defined a new *alias* for the `Bool` type and named it `B`. We then declare a variable `booelan` of type `B`.
+
 ## Primitive types
 *Primitive types* are fundamental core data types that are not *composed* of more fundamental types. Some common ones in Motoko are:  
 - [Bool](/base-library/primitive-types/bool.html)

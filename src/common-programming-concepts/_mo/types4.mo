@@ -16,6 +16,12 @@ let age : Age = 18;
 let unitType : () = () : ();
 // ANCHOR_END: d
 
+// ANCHOR: e
+type B = Bool;
+
+let boolean : B = true;
+// ANCHOR_END: e
+
 
 
 
