@@ -1,8 +1,8 @@
-// Int
+// Int8
 
 import Int8 "mo:base/Int8";
 
-// ANCHOR: 
+// ANCHOR: a 
 let integer = -127;
 
 let int8 = Int8.fromInt(integer);
