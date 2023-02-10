@@ -6,7 +6,7 @@ import Int "mo:base/Int";
 // ANCHOR: a
 let a = 20;
 
-let b = - 20;
+let b = -20;
 
 let maximum = Int.max(a, b);
 

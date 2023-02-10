@@ -1,6 +1,6 @@
 # Float
 
-- type Float
+<!-- - type Float
 
 - sqrt
 - ceil
@@ -12,4 +12,4 @@
 - fromInt
 
 Bonus:
-- format
+- format -->

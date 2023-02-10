@@ -18,7 +18,7 @@ assert intToText == "-10";
 
 // ANCHOR: d
 let a = 20;
-let b = - 20;
+let b = -20;
 
 let minimum = Int.min(a, b);
 

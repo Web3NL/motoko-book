@@ -1,6 +1,6 @@
 # Bounded Number Types
 
-## Nat8, Nat16, Nat32, Nat64
+<!-- ## Nat8, Nat16, Nat32, Nat64
 - toNat
 - fromNat
 - toText
@@ -21,4 +21,4 @@ Int32.toNat32
 Int32.fromNat32
 
 Int64.toNat64
-Int64.fromNat64
+Int64.fromNat64 -->
