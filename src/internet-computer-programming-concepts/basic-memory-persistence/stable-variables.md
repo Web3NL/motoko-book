@@ -19,22 +19,22 @@ Our actor has a mutable variable `count` that is declared `stable`. It's initial
 |2|Call `increment()`|<center>1</center>|<center>1</center>|
 |3|Call `read()`|<center>1</center>|<center>1</center>|
 |4|Call `increment()`|<center>2</center>|<center>2</center>|
-|5|Reinstall same actor code|<center>0</center>|<center>2</center>|
+|5|Upgrade actor code|<center>0</center>|<center>2</center>|
 |6|Call `read()`|<center>0</center>|<center>2</center>|
 |7|Call `increment()`|<center>1</center>|<center>3</center>|
 |8|Call `increment()`|<center>2</center>|<center>4</center>|
-|9|Reinstall again|<center>0</center>|<center>4</center>|
-|10|Call `read()`|<center>0</center>|<center>4</center>|
-|11|Call `increment()`|<center>1</center>|<center>5</center>|
-|12|Call `increment()`|<center>2</center>|<center>6</center>|
+|9|Reinstall actor code|<center>0</center>|<center>0</center>|
+|10|Call `read()`|<center>0</center>|<center>0</center>|
+|11|Call `increment()`|<center>1</center>|<center>1</center>|
+|12|Call `increment()`|<center>2</center>|<center>2</center>|
 
 **Time 1:** Our initial value for `count` is 0 in both cases.  
 **Time 2:** An update function mutates the state in both cases.  
 **Time 3:** A query function does not mutate state in both cases.  
-**Time 5:** `stable var count` value is persisted after upgrade / reinstall.  
-**Time 6:** `var count` is reset after upgrade / reinstall.  
+**Time 5:** `stable var count` value is persisted after upgrade.  
+**Time 6:** `var count` is reset after upgrade.  
 **Time 7:** `var count` starts at `0`, while `stable var count` starts at `2`.  
-**Time 10:** `var count` is reset again due to upgrade / reinstall , while `stable var count` persists its state.  
+**Time 10:** `var count` and `stable var count` are both reset due to reinstall.  
 
 ## Stable var types vs shared types
 Recall that [shared types](/internet-computer-programming-concepts/async-data/shared-types.html) are always immutable. On the other hand, stable variables are always mutable. A subtle fact is that the *values* of *mutable stable variables* are restricted to values of shared types only.
