@@ -1,6 +1,6 @@
 # Principals and Authentication
 
-Principals are *unique identifiers* for either *[canisters](/internet-computer-programming-concepts/actor-to-canister.html)* or *[clients](/internet-computer-programming-concepts/canister-calling.html)* (external users). Both a canister or an external user can use a principal to *authenticate* themselves on the Internet Computer.  
+Principals are *unique identifiers* for either *[canisters](/internet-computer-programming-concepts/actors/actor-to-canister.html)* or *[clients](/internet-computer-programming-concepts/canister-calling.html)* (external users). Both a canister or an external user can use a principal to *authenticate* themselves on the Internet Computer.  
 
 Principals in Motoko are a *[primitive type](/common-programming-concepts/types.html#primitive-types)* called `Principal`. We can work directly with this type or use an alternative textual representation of a principal. 
 

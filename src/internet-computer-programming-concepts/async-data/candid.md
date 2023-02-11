@@ -86,7 +86,7 @@ type MyType = nat
 
 
 ## Actor Interfaces
-An [actor](/internet-computer-programming-concepts/actors.html) running in a [canister](/internet-computer-programming-concepts/actor-to-canister.html) has a Candid description of its interface. Consider the following actor in a Motoko source file `main.mo`:
+An [actor](/internet-computer-programming-concepts/actors.html) running in a [canister](/internet-computer-programming-concepts/actors/actor-to-canister.html) has a Candid description of its interface. Consider the following actor in a Motoko source file `main.mo`:
 
 ```motoko
 {{#include _mo/candid.mo}}

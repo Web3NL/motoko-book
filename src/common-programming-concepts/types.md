@@ -1,6 +1,6 @@
 # Types
 
-A type describes the *data type* of a value. Motoko has static types. This means that the type of every value is known when the Motoko code is being [*compiled*](http://localhost:3000/internet-computer-programming-concepts/actor-to-canister.html).
+A type describes the *data type* of a value. Motoko has static types. This means that the type of every value is known when the Motoko code is being [*compiled*](http://localhost:3000/internet-computer-programming-concepts/actors/actor-to-canister.html).
 
 Motoko can in many cases know the type of a variable without you doing anything:
 

@@ -16,8 +16,8 @@ Before diving in, lets briefly describe four terms that look alike, but are not 
 
 - [**Actor**](/internet-computer-programming-concepts/actors.html) An abstract notion of a self-contained software execution unit that communicates with other actors through asynchronous message passing.
 
-- [**Canister**](/internet-computer-programming-concepts/actor-to-canister.html) An instance of an actor that runs on the Internet Computer Blockchain.
+- [**Canister**](/internet-computer-programming-concepts/actors/actor-to-canister.html) An instance of an actor that runs on the Internet Computer Blockchain.
 
-- [**WebAssembly Module**](/internet-computer-programming-concepts/actor-to-canister.html#code-compiling-and-wasm-modules) A file containing a binary representation of a program (that may have been written in Motoko) that is installed in a canister that runs on the Internet Computer. 
+- [**WebAssembly Module**](/internet-computer-programming-concepts/actors/actor-to-canister.html#code-compiling-and-wasm-modules) A file containing a binary representation of a program (that may have been written in Motoko) that is installed in a canister that runs on the Internet Computer. 
 
 - **Smart Contract**  The traditional notion of a blockchain program with roughly the same security guarantees as canisters but with limited memory and computation power. 
