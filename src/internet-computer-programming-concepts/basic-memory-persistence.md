@@ -5,18 +5,32 @@ The state of the actor can not change during a [query](/internet-computer-progra
 
 The state of the actor may change during an [update](/internet-computer-programming-concepts/actors.html#public-shared-update) or [oneway](/internet-computer-programming-concepts/actors.html#public-shared-oneway) function call. Data provided as arguments (or data generated without arguments in the function itself) could be *stored* inside the actor.
 
-## Memory Persistence across function calls
+## Canister main memory
+Every actor running in a canister has access to a 4GB main 'working' memory (in Feb 2023). This is like the RAM memory of a process running on Linux. 
+
+Code in actors directly acts on main memory:
+- The state of (top-level) mutable and immutable variables is stored in main memory. 
+- Public and private functions that read and write state do so from and to main memory.
+- Imported classes from modules are instantiated in main memory. 
+- Imported functions from modules operate on main memory.
+- Same for any other imported item.  
+
+### Memory Persistence across function calls
 Consider the actor from our [previous example](/internet-computer-programming-concepts/actors.html#a-simple-actor) with only the mutable variable `latestComment` and the functions `readComment` and `writeComment`:
 ```motoko
 {{#include _mo/basic-memory-persistence.mo:a}}
 ```
 
-Calling the update function `writeComment` [*mutates*](/common-programming-concepts/mutability.html) the state of the mutable variable `latestComment`. For instance, we could call `writeComment` with an argument `"Motoko is great!"` and the variable `latestComment` will be set to that value. The mutable variable now has a *new state*. Another call to `readComment` would return the new value.   
+The mutable variable `latestComment` is stored in main memory. Calling the update function `writeComment` [*mutates*](/common-programming-concepts/mutability.html) the state of the mutable variable `latestComment` in main memory. 
+
+For instance, we could call `writeComment` with an argument `"Motoko is great!"`. The variable `latestComment` will be set to that value in main memory. The mutable variable now has a *new state*. Another call to `readComment` would return the new value.  
+
+ 
 
 ### Service upgrades and memory
 Now, suppose we would like to *extend the functionality* of our service by adding another *public shared function* (like the [`deleteComment`](/internet-computer-programming-concepts/actors.html#a-simple-actor) function). We would need to write the function in Motoko, edit our original Motoko source file and go through the deployment process again. 
 
-**The redeployment of our actor will wipe out the memory state of the actor!**
+**The redeployment of our actor will wipe out the main memory state of the actor!**
 
 There are two main ways to upgrade the functionality of a service without resetting the *memory state* of the mutable variables (like `latestComment)` of the underlying actor. 
 
