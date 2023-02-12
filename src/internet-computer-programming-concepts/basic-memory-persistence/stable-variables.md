@@ -19,11 +19,11 @@ Our actor has a mutable variable `count` that is declared `stable`. It's initial
 |2|Call `increment()`|<center>1</center>|<center>1</center>|
 |3|Call `read()`|<center>1</center>|<center>1</center>|
 |4|Call `increment()`|<center>2</center>|<center>2</center>|
-|5|Upgrade actor code|<center>0</center>|<center>2</center>|
+|5|[Upgrade](/internet-computer-programming-concepts/basic-memory-persistence/simple-upgrades.html) actor code|<center>0</center>|<center>2</center>|
 |6|Call `read()`|<center>0</center>|<center>2</center>|
 |7|Call `increment()`|<center>1</center>|<center>3</center>|
 |8|Call `increment()`|<center>2</center>|<center>4</center>|
-|9|Reinstall actor code|<center>0</center>|<center>0</center>|
+|9|[Reinstall](/internet-computer-programming-concepts/basic-memory-persistence/simple-upgrades.html) actor code|<center>0</center>|<center>0</center>|
 |10|Call `read()`|<center>0</center>|<center>0</center>|
 |11|Call `increment()`|<center>1</center>|<center>1</center>|
 |12|Call `increment()`|<center>2</center>|<center>2</center>|
@@ -31,10 +31,10 @@ Our actor has a mutable variable `count` that is declared `stable`. It's initial
 **Time 1:** Our initial value for `count` is 0 in both cases.  
 **Time 2:** An update function mutates the state in both cases.  
 **Time 3:** A query function does not mutate state in both cases.  
-**Time 5:** `stable var count` value is persisted after upgrade.  
+**Time 5:** `stable var count` value is persisted after [upgrade](/internet-computer-programming-concepts/basic-memory-persistence/simple-upgrades.html).  
 **Time 6:** `var count` is reset after upgrade.  
 **Time 7:** `var count` starts at `0`, while `stable var count` starts at `2`.  
-**Time 10:** `var count` and `stable var count` are both reset due to reinstall.  
+**Time 10:** `var count` and `stable var count` are both reset due to [reinstall](/internet-computer-programming-concepts/basic-memory-persistence/simple-upgrades.html).  
 
 ## Stable var types vs shared types
 Recall that [shared types](/internet-computer-programming-concepts/async-data/shared-types.html) are always immutable. On the other hand, stable variables are always mutable. A subtle fact is that the *values* of *mutable stable variables* are restricted to values of shared types only.
@@ -47,7 +47,7 @@ Suppose we have an [object](/common-programming-concepts/objects-and-classes/obj
 
 We define a type of an object with a public field that is mutable. We assign an instance of that object to an immutable variable named `myObject`. We could now mutate the state of our public variable.
 
-The restriction for stable variables is shown in the last comment. We can NOT assign an object instance with mutable fields as the value of a stable variable.  
+The restriction for stable variables is shown in the last comment. We can NOT assign an object instance with mutable fields as the value of a stable variable, because an object with a mutable variable is not of shared type.   
 
 
 ## How it works
