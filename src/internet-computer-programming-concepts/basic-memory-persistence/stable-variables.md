@@ -1,7 +1,7 @@
 # Stable Variables
 The *mutable state* of an actor is stored in the form of mutable variables that are declared with the `var` keyword. Mutable variables in actors always have `private` *visibility*. (although the `private` keyword is not necessary and is assumed by default).
 
-If we want to persist the state of our actor when [upgrading](/internet-computer-programming-concepts/basic-memory-persistence/simple-upgrades.html), we could declare our mutable variables `stable`. A stable variable looks like this:
+If we want to persist the state of our actor when [upgrading](/internet-computer-programming-concepts/basic-memory-persistence/upgrades.html), we could declare our mutable variables `stable`. A stable variable looks like this:
 ```motoko
 {{#include _mo/stable-variables.mo:a}}
 ```
@@ -19,11 +19,11 @@ Our actor has a mutable variable `count` that is declared `stable`. It's initial
 |2|Call `increment()`|<center>1</center>|<center>1</center>|
 |3|Call `read()`|<center>1</center>|<center>1</center>|
 |4|Call `increment()`|<center>2</center>|<center>2</center>|
-|5|[Upgrade](/internet-computer-programming-concepts/basic-memory-persistence/simple-upgrades.html) actor code|<center>0</center>|<center>2</center>|
+|5|[Upgrade](/internet-computer-programming-concepts/basic-memory-persistence/upgrades.html) actor code|<center>0</center>|<center>2</center>|
 |6|Call `read()`|<center>0</center>|<center>2</center>|
 |7|Call `increment()`|<center>1</center>|<center>3</center>|
 |8|Call `increment()`|<center>2</center>|<center>4</center>|
-|9|[Reinstall](/internet-computer-programming-concepts/basic-memory-persistence/simple-upgrades.html) actor code|<center>0</center>|<center>0</center>|
+|9|[Reinstall](/internet-computer-programming-concepts/basic-memory-persistence/upgrades.html) actor code|<center>0</center>|<center>0</center>|
 |10|Call `read()`|<center>0</center>|<center>0</center>|
 |11|Call `increment()`|<center>1</center>|<center>1</center>|
 |12|Call `increment()`|<center>2</center>|<center>2</center>|
@@ -31,10 +31,10 @@ Our actor has a mutable variable `count` that is declared `stable`. It's initial
 **Time 1:** Our initial value for `count` is 0 in both cases.  
 **Time 2:** An update function mutates the state in both cases.  
 **Time 3:** A query function does not mutate state in both cases.  
-**Time 5:** `stable var count` value is persisted after [upgrade](/internet-computer-programming-concepts/basic-memory-persistence/simple-upgrades.html).  
+**Time 5:** `stable var count` value is persisted after [upgrade](/internet-computer-programming-concepts/basic-memory-persistence/upgrades.html).  
 **Time 6:** `var count` is reset after upgrade.  
 **Time 7:** `var count` starts at `0`, while `stable var count` starts at `2`.  
-**Time 10:** `var count` and `stable var count` are both reset due to [reinstall](/internet-computer-programming-concepts/basic-memory-persistence/simple-upgrades.html).  
+**Time 10:** `var count` and `stable var count` are both reset due to [reinstall](/internet-computer-programming-concepts/basic-memory-persistence/upgrades.html).  
 
 ## Stable var types vs shared types
 Recall that [shared types](/internet-computer-programming-concepts/async-data/shared-types.html) are always immutable. On the other hand, stable variables are always mutable. A subtle fact is that the *values* of *mutable stable variables* are restricted to values of shared types only.
@@ -51,7 +51,7 @@ The restriction for stable variables is shown in the last comment. We can NOT as
 
 
 ## How it works
-Declaring mutable variable(s) `stable` causes the following to happen *automatically* when [upgrading](/internet-computer-programming-concepts/basic-memory-persistence/simple-upgrades.html) our canister with new actor code:
+Declaring mutable variable(s) `stable` causes the following to happen *automatically* when [upgrading](/internet-computer-programming-concepts/basic-memory-persistence/upgrades.html) our canister with new actor code:
 - The value of the mutable variable(s) is *serialized* into [Candid format](/internet-computer-programming-concepts/async-data/candid.html#candid-serialization).
 - The serialized Candid format is copied to [stable memory](/advanced-concepts/scalability/stable-storage.html).  
 - The upgraded actor code (in the form of a [Wasm module](/internet-computer-programming-concepts/actors/actor-to-canister.html#code-compiling-and-wasm-modules)) is installed in the [canister](/internet-computer-programming-concepts/actors/actor-to-canister.html) and the state of the mutable variables is lost.

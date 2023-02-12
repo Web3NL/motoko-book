@@ -11,9 +11,9 @@ Here is the code for *one* actor defined in its own Motoko source file. It conta
 We will *deploy* this actor to the Internet Computer!
 
 ## Canister
-A canister is like a home for an actor. It lives on the Internet Computer Blockchain. A canister is meant to 'host' actors and make their public functions available to the wider Internet beyond the Internet Computer itself. 
+A canister is like a home for an actor. It lives on the Internet Computer Blockchain. A canister is meant to 'host' actors and make their public functions available to other canisters and the wider Internet beyond the Internet Computer itself. A canister also provides [*memory*](/internet-computer-programming-concepts/basic-memory-persistence.html#canister-main-memory) that every actor needs to operate. 
 
-Each canister can host one actor. The *public interface* of the canister is defined by the [*actor type*](/internet-computer-programming-concepts/actors.html#actor-type) of the actor it hosts. The public interface is described using an [*Interface Definition Language*](/internet-computer-programming-concepts/async-data/shared-types.html). Every canister has a [unique id](/internet-computer-programming-concepts/principals-and-authentication.html).
+Each canister can host one actor. The [*public interface*](/internet-computer-programming-concepts/async-data/candid.html#actor-interfaces) of the canister is defined by the [*actor type*](/internet-computer-programming-concepts/actors.html#actor-type) of the actor it hosts. The public interface is described using an [*Interface Definition Language*](/internet-computer-programming-concepts/async-data/shared-types.html). Every canister has a [unique id](/internet-computer-programming-concepts/principals-and-authentication.html).
 
 ## Code compiling and Wasm modules
 Before an actor can be deployed to the Internet Computer, the Motoko code has to be *compiled* into a special kind of code. Compilation transforms the Motoko code into code that can *run* (be executed) on the Internet Computer. This code is called Webassembly bytecode. The bytecode is just a file on your computer called a *Wasm module*.
