@@ -1,5 +1,5 @@
 # Stable Variables
-The *state* of an actor is stored in the form of mutable variables that are declared with the `var` keyword. Mutable variables are restricted to [*shared types*](/internet-computer-programming-concepts/async-data/shared-types.html) only and always have `private` *visibility*. (although the `private` keyword is not necessary and is assumed by default).
+The *mutable state* of an actor is stored in the form of mutable variables that are declared with the `var` keyword. Mutable variables in actors always have `private` *visibility*. (although the `private` keyword is not necessary and is assumed by default).
 
 If we want to persist the state of our actor when [upgrading](/internet-computer-programming-concepts/basic-memory-persistence/simple-upgrades.html), we could declare our mutable variables `stable`. A stable variable looks like this:
 ```motoko
