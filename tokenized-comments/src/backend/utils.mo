@@ -36,9 +36,8 @@ module {
     };
 
     // Check comment size
-    public func checkCommentSize(comment : Types.Comment) : Bool {
-        let size = comment.text.size();
-
+    public func checkCommentSize(text : Text) : Bool {
+        let size = text.size();
         size >= Cons.MIN_COMMENT_SIZE and size <= Cons.MAX_COMMENT_SIZE
     };
 }
