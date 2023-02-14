@@ -1,23 +1,31 @@
-import Mem "memory";
 import Result "mo:base/Result";
 import Array "mo:base/Array";
+import RB "mo:base/RBTree";
+import Hash "mo:base/Hash";
+import Time "mo:base/Time";
+
+import Cons "constants";
+import Types "types";
+import Utils "utils";
 
 actor {
+    type Comment = Types.Comment;
+    type CommentHash = Hash.Hash;
 
-    let mem = Mem.Mem();
+    private let comments = RB.RBTree<CommentHash, Comment>(Utils.commentHashCompare);
 
-    public func size() : async () {
-        switch (mem.init()) {
-            case (#ok()) ();
-            case (_) { assert false };
+    private func putComment(owner : Principal, text : Text) {
+        let created = Time.now();
+
+        let comment = {
+            created;
+            owner;
+            text;
         };
-    };
 
-    public func store() : async Mem.StoreResult {
-        let a = Array.tabulate<Nat8>(10, func _ = 255);
-        let c = to_candid(a);
-        mem.storeBlob(c)
-    };
+        let hash = Utils.hashComment(comment);
 
+        comments.put(hash, comment)
+    };
 
 }
