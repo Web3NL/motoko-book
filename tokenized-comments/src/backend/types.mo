@@ -1,6 +1,7 @@
 import List "mo:base/List";
 import Hash "mo:base/Hash";
 import Time "mo:base/Time";
+import RB "mo:base/RBTree";
 
 module {
     public type CommentHash = Hash.Hash;
@@ -11,7 +12,9 @@ module {
         text : Text;
     };
 
-    public type CommentHistory = List.List<CommentHash>;
+    public type CommentsTree = RB.RBTree<CommentHash, Comment>;
+
+    public type CommentsHashHistory = List.List<CommentHash>;
 
     public type Like = {
         id : CommentHash;
