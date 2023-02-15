@@ -50,7 +50,8 @@ We defined a new *alias* for the `Bool` type and named it `B`. We then declare a
 - [Principal](/base-library/primitive-types/principal.html)
 - [Blob](/base-library/primitive-types/blob.html)
 
-See the [full list of all Motoko data types](https://internetcomputer.org/docs/current/developer-docs/build/cdks/motoko-dfinity/language-manual#primitive-types)
+See the [full list of all Motoko data types](https://internetcomputer.org/docs/current/motoko/main/language-manual#primitive-types)
+
  
 We can define arbitrary names for any type:
 
