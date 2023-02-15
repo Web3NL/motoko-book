@@ -22,7 +22,7 @@ module {
       };
     };
 
-    func stateArgs() : StateArgs { ?(memPointer, pages) };
+    public func stateArgs() : StateArgs { ?(memPointer, pages) };
 
     func alloc(bytes : Nat64) : ?Nat64 {
       // Max alloc size is one page = 64kiB
@@ -40,7 +40,7 @@ module {
       ?pointer
     };
 
-    func write(data : Blob) : ?Pointer {
+    public func write(data : Blob) : ?Pointer {
       let bytes = Nat64.fromNat(data.size());
       let offset = alloc(bytes);
       switch (offset) {
@@ -52,7 +52,7 @@ module {
       };
     };
 
-    func read(p : Pointer) : ?Blob {
+    public func read(p : Pointer) : ?Blob {
       let offset = p.0;
       let readSize = p.1;
       if ( not (offset < (memPointer - readSize))) {

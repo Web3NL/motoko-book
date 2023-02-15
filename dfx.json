@@ -20,6 +20,11 @@
     "backend": {
       "type": "motoko",
       "main": "tokenized-comments/src/backend/main.mo"
+    },
+
+    "test": {
+      "type": "motoko",
+      "main": "tokenized-comments/src/backend/stable_mem/test.mo"
     }
   }
 }
