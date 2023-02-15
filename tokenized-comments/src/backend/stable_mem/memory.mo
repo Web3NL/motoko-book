@@ -1,5 +1,6 @@
 import Mem "mo:base/ExperimentalStableMemory";
 import Nat64 "mo:base/Nat64";
+import D "mo:base/Debug";
 
 import T "../types";
 
@@ -42,6 +43,8 @@ module {
 
     public func write(data : Blob) : ?Pointer {
       let bytes = Nat64.fromNat(data.size());
+      D.print(Nat64.toText(bytes));
+      
       let offset = alloc(bytes);
       switch (offset) {
         case null return null;
