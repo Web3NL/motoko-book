@@ -1,53 +1,31 @@
 import Mem "mo:base/ExperimentalStableMemory";
-import A "mo:base/Array";
 import Nat64 "mo:base/Nat64";
-import B "mo:base/Blob";
-import P "mo:base/Principal";
 
-import T "types";
-
-
-// MEM LAYOUT
-// A: 29 + 8 = 37 for PrincipalList
+import T "../types";
 
 module {
-  type Pointer = (Nat64, Nat64);
+  public type Pointer = (Nat64, Nat64);
+  public type StateArgs = ?(Nat64, Nat64);
 
-  type PrincipalPointer = Nat64;
-  type PrincipalList = (?Blob, ?PrincipalPointer);
-
-  type IsReported = Nat8;
-
-  type TotalLikes = Nat64;
-  type TotalReports = Nat64;
-
-  type LikeList = (?PrincipalPointer, ?Nat64);
-  type ReportList = (?PrincipalPointer, ?Nat64);
-
-  type CommentData = Blob;
-
-  type StoredComment = (
-    IsReported, 
-    TotalLikes,
-    TotalReports,
-    LikeList, 
-    ReportList,
-    CommentData,
-  );
-
-  public type CommentPointer = (Nat64, Nat64);
-
-  public class StableMemory() {
+  public class StableMemory(args : StateArgs) {
+    // Page size = 64kiB
     let PAGE : Nat64 = 65536;
-    let PSIZE : Nat = 29;
-    let P_ENTRY_SIZE : Nat = PSIZE + 8;
 
     var memPointer : Nat64 = 0;
     var pages : Nat64 = 0;
 
-    var principalPointer : PrincipalPointer = 0;
+    switch (args) {
+      case null {};
+      case (?args) {
+        memPointer := args.0;
+        pages := args.1;
+      };
+    };
+
+    func stateArgs() : StateArgs { ?(memPointer, pages) };
 
     func alloc(bytes : Nat64) : ?Nat64 {
+      // Max alloc size is one page = 64kiB
       if (bytes > PAGE) { return null };
 
       let freeMem = ((pages * PAGE) - memPointer);  
@@ -67,78 +45,20 @@ module {
       let offset = alloc(bytes);
       switch (offset) {
         case null return null;
-        case (?mem) { 
-          Mem.storeBlob(mem, data);
-          ?(mem, bytes) 
+        case (?memPointer) { 
+          Mem.storeBlob(memPointer, data);
+          ?(memPointer, bytes) 
         };
       };
     };
 
-    func initPrincipalList() {      
-      let data = A.tabulate<Nat8>(P_ENTRY_SIZE, func(_) {0 : Nat8});
-      let blob = B.fromArray(data);
-
-      ignore write(blob)
+    func read(p : Pointer) : ?Blob {
+      let offset = p.0;
+      let readSize = p.1;
+      if ( not (offset < (memPointer - readSize))) {
+        return null
+      }; 
+      ?Mem.loadBlob(offset, Nat64.toNat(readSize))
     };
-
-    initPrincipalList();
-
-    func loadPrincipal(p : PrincipalPointer) : Principal {
-      let blob = Mem.loadBlob(p, PSIZE);
-      P.fromBlob(blob)
-    };
-
-    func storePrincipal(principal : Principal) {
-      let blob = P.toBlob(principal);
-      let p = write(blob);
-
-      let mem = alloc(Nat64.fromNat(P_ENTRY_SIZE));
-      switch (mem) {
-        case null assert false;
-        case (?offset) {
-          write()
-          principalPointer := offset;
-        }
-      }
-
-      
-
-      
-
-    };
-
-
-
-
-
-
-    
-
-
-
-
-// ------------------------------
-    // totalComments() : Nat
-
-    // storeComment(c : T.Comment) : CommentPointer
-    // loadComment(p : CommentPointer) : T.Comment
-
-    // markReported(p : CommentPointer)
-
-    // likeComment(p : CommentPointer, principal : Principal)
-    // reportComment(p : CommentPointer, principal : Principal)
-
-    // totalLikes(p : CommentPointer) : Nat
-    // totalReports(p : CommentPointer) : Nat
-
-    // balance(principal : Principal) : Nat
-    // addToBalance(principal : Principal, amount : Nat)
-
-    // likeList(p : CommentPointer) : [Principal]
-    // reportList(p : CommentPointer) : [Principal]
-
-    // storeScore(score : Nat)
-    // loadScore(p : CommentPointer) : Nat
-    
   };
 };
