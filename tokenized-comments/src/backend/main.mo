@@ -39,10 +39,29 @@ actor {
         comments.put(hash, comment)
     };
 
+    // Retrieve last n comments
+    private func _getComments(n : Nat) : [Comment] {
+        // Collect last n CommentHashes in a list
+        let latestHashes = List.take(commentsHistory, n);
+
+        // Collect last n Comments in a list
+        let latestComments = List.mapFilter<CommentHash, Comment>(
+            latestHashes,
+            func(h){ comments.get(h) }
+        );
+
+        // Convert list to array
+        List.toArray(latestComments)
+    };
+
     public query func totalComments() : async Nat { _totalComments() };
 
     public shared ({caller = owner}) func postComment(text : Text) {
         _putComment(owner, text)
+    };
+
+    public query func getComments(n : Nat) : async [Comment] {
+        _getComments(n)
     };
 
 }
