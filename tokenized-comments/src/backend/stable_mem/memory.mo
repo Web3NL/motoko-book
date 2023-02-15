@@ -44,7 +44,7 @@ module {
     public func write(data : Blob) : ?Pointer {
       let bytes = Nat64.fromNat(data.size());
       D.print(Nat64.toText(bytes));
-      
+
       let offset = alloc(bytes);
       switch (offset) {
         case null return null;
@@ -58,9 +58,6 @@ module {
     public func read(p : Pointer) : ?Blob {
       let offset = p.0;
       let readSize = p.1;
-      if ( not (offset < (memPointer - readSize))) {
-        return null
-      }; 
       ?Mem.loadBlob(offset, Nat64.toNat(readSize))
     };
   };
