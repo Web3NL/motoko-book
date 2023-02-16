@@ -1,10 +1,10 @@
 # Principal
 
-- type Principal
+<!-- - type Principal
 
 - fromActor
 - toBlob
 - fromBlob
 - toText
 - isAnonymous
-- fromText
+- fromText -->

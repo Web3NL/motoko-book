@@ -40,7 +40,7 @@
         - [Candid](internet-computer-programming-concepts/async-data/candid.md)
     - [Basic Memory Persistence](internet-computer-programming-concepts/basic-memory-persistence.md)
         - [Stable Variables](internet-computer-programming-concepts/basic-memory-persistence/stable-variables.md)
-        - [Simple Upgrades](internet-computer-programming-concepts/basic-memory-persistence/simple-upgrades.md)
+        - [Upgrades](internet-computer-programming-concepts/basic-memory-persistence/upgrades.md)
 
 - [Advanced Types](advanced-types.md)
     - [Generic Types](advanced-types/generics.md)
@@ -58,6 +58,8 @@
         - [Text](base-library/primitive-types/text.md)
         - [Char](base-library/primitive-types/char.md)
         - [Bounded Number Types](base-library/primitive-types/bounded-number-types.md)
+            - [Bounded Nat](base-library/primitive-types/bounded-number-types/bounded-nat.md)
+            - [Bounded Int](base-library/primitive-types/bounded-number-types/bounded-int.md)
         - [Blob](base-library/primitive-types/blob.md)
     - [Utility Modules](base-library/utils.md)
         - [Time](base-library/utils/time.md)
@@ -81,6 +83,7 @@
         - [Multi-canister Scaling](advanced-concepts/scalability/multi-canister-scaling.md)
     - [System API's](advanced-concepts/system-apis.md)
         - [Timers and Heartbeats](advanced-concepts/system-apis/timers.md)
+        - [Pre-upgrade and Post-upgrade](advanced-concepts/system-apis/preupgrade-postupgrade.md)
         - [Cryptographic Randomness](advanced-concepts/system-apis/randomness.md)
     
 

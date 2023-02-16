@@ -86,7 +86,7 @@ type MyType = nat
 
 
 ## Actor Interfaces
-An [actor](/internet-computer-programming-concepts/actors.html) running in a [canister](/internet-computer-programming-concepts/actor-to-canister.html) has a Candid description of its interface. Consider the following actor in a Motoko source file `main.mo`:
+An [actor](/internet-computer-programming-concepts/actors.html) running in a [canister](/internet-computer-programming-concepts/actors/actor-to-canister.html) has a Candid description of its interface. Consider the following actor in a Motoko source file `main.mo`:
 
 ```motoko
 {{#include _mo/candid.mo}}
@@ -121,7 +121,7 @@ The type reflects the public Motoko type `User` from our actor. Since this is a 
 > *The type alias `User` is a Motoko tuple `(Principal, Text)`. In Candid a custom type alias for a tuple is translated into `record { principal; text }`. Don't confuse it with the Candid tuple type `(principal, text)`!*
 
 
-### Candid Serialization
+## Candid Serialization
 Another important use of Candid is *data serialization* of [shared types](/internet-computer-programming-concepts/async-data/shared-types.html). Data structures in Motoko, like in any other language, are not always stored as serial (contiguous) bytes in *working memory*. When we want to *send* shared data in and out of a canisters or store data in [stable memory](/advanced-concepts/scalability/stable-storage.html), we have to *serialize* the data before sending. 
 
 Motoko has built in support for serializing shared types into Candid format. A *higher order* data type like an object can be converted into a *binary blob* that would still have a shared type.
