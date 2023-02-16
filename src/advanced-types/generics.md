@@ -69,8 +69,28 @@ We [pattern match](/common-programming-concepts/pattern-matching.html) on the po
 
 
 ## Generics in functions
+Generic types are also found in functions. Functions that allow type parameters are:
+-Private and public functions in modules and nested modules
+-Private and public functions in objects
+-Private and public functions in classes
+-Only private functions in actors
 
 > **NOTE**  
-> *Public shared functions are not allowed to have generic type arguments.* 
+> *Public shared functions in actors are not allowed to have generic type arguments.* 
+
+Some public functions in modules of the Base Library are written with generic type parameters. Lets look the useful `init` public function found in the `Array` module of the Base Library:
+```motoko
+
+```
+
+This function is used to construct a mutable array of some size filled with copies of some initial value. The function takes one generic type parameter `X`. This parameter is used to specify the type of the initial value `initValue`.
+
+It may be used like this:
+```motoko
+
+```
+
+
+
 
 ## Generics in classes
