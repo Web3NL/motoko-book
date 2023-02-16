@@ -8,22 +8,22 @@ type Result<Ok, Err> = {
 // ANCHOR_END: a
 
 // ANCHOR: b
-type UsernameError = {
-    #TooShort;
-    #TooLong;
+func checkUsername(name : Text) : Result<(), Text> {
+    let size = name.size();
+    if (size < 4) #err("Too short!") 
+    else if (size > 20) #err("To long!") 
+    else #ok();
 };
 // ANCHOR_END: b
 
 // ANCHOR: c
-type UsernameCheck = Result<(), UsernameError>;
-// ANCHOR_END: c
+let result = checkUsername("SamerWeb3");
 
-// ANCHOR: d
-func checkUsername(name : Text) : UsernameCheck {
-    let size = name.size();
-    if (size < 4) #err(#TooShort) else if (size > 20) #err(#TooLong) else #ok();
+switch (result) {
+    case (#ok()) { };
+    case (#err(error)) { };
 };
-// ANCHOR_END: d
+// ANCHOR_END: c
 
 // ANCHOR: e
 type Obj<T, U, V> = {
