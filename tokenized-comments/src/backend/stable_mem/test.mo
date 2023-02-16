@@ -1,6 +1,7 @@
 import SM "memory";
 
 import P "mo:base/Principal";
+import D "mo:base/Debug";
 
 actor {
     let mem = SM.StableMemory(null);
@@ -9,7 +10,7 @@ actor {
 
     public query func stateArgs() : async SM.StateArgs { mem.stateArgs() };
 
-    public shared ({caller = id}) func write() : async ?SM.Pointer { 
+    public shared ({caller = id}) func write() : async ?SM.Pointer {
         p := mem.write(P.toBlob(id));
         p 
     }; 
