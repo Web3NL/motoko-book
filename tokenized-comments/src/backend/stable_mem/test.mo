@@ -9,8 +9,9 @@ actor {
 
     public query func stateArgs() : async SM.StateArgs { mem.stateArgs() };
 
-    public shared ({caller = id}) func write() : async () { 
-        p := mem.write(P.toBlob(id)) 
+    public shared ({caller = id}) func write() : async ?SM.Pointer { 
+        p := mem.write(P.toBlob(id));
+        p 
     }; 
 
     public query func read() : async ?Principal {
