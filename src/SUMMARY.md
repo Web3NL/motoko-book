@@ -44,8 +44,8 @@
 
 - [Advanced Types](advanced-types.md)
     - [Generic Types](advanced-types/generics.md)
-    - [Recursive Types](advanced-types/recursive-types.md)
     - [Sub-typing](advanced-types/subtyping.md) 
+    - [Recursive Types](advanced-types/recursive-types.md)
     - [Type Bounds](advanced-types/type-bounds.md) 
   
 - [The Base Library](base-library.md)
@@ -63,6 +63,7 @@
         - [Blob](base-library/primitive-types/blob.md)
     - [Utility Modules](base-library/utils.md)
         - [Time](base-library/utils/time.md)
+        - [Result](base-library/utils/result.md)
         - [Error](base-library/utils/error.md)
         - [Iterators](base-library/utils/iter.md)
     - [Data Structures](base-library/data-structures.md)

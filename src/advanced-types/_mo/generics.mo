@@ -1,14 +1,8 @@
 // GENERICS
 
-// ANCHOR: example
-func checkSize<T>( data : [T] ) : Bool {
-    data.size() < 100
-};
-// ANCHOR_END: example
-
 // ANCHOR: a
 type Result<Ok, Err> = {
-    #ok : Ok; 
+    #ok : Ok;
     #err : Err;
 };
 // ANCHOR_END: a
@@ -25,11 +19,9 @@ type UsernameCheck = Result<(), UsernameError>;
 // ANCHOR_END: c
 
 // ANCHOR: d
-func checkUsername( name : Text ) : UsernameCheck {
+func checkUsername(name : Text) : UsernameCheck {
     let size = name.size();
-    if (size < 4) #err(#TooShort)
-    else if (size > 20) #err(#TooLong)
-    else #ok()
+    if (size < 4) #err(#TooShort) else if (size > 20) #err(#TooLong) else #ok();
 };
 // ANCHOR_END: d
 
@@ -75,3 +67,6 @@ type Brand = {
 
 let admin : User<Brand> = #Admin(#Dell);
 // ANCHOR_END: h
+
+// Generic functions
+// Generic classes
