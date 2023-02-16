@@ -36,7 +36,7 @@ Our actor has a mutable variable `count` that is declared `stable`. It's initial
 **Time 7:** `var count` starts at `0`, while `stable var count` starts at `2`.  
 **Time 10:** `var count` and `stable var count` are both reset due to [reinstall](/internet-computer-programming-concepts/basic-memory-persistence/upgrades.html).  
 
-## Stable var types vs shared types
+<!-- ## Stable var types vs shared types
 Recall that [shared types](/internet-computer-programming-concepts/async-data/shared-types.html) are always immutable. On the other hand, stable variables are always mutable. A subtle fact is that the *values* of *mutable stable variables* are restricted to values of shared types only.
 
 ### Non stable types
@@ -47,7 +47,7 @@ Suppose we have an [object](/common-programming-concepts/objects-and-classes/obj
 
 We define a type of an object with a public field that is mutable. We assign an instance of that object to an immutable variable named `myObject`. We could now mutate the state of our public variable.
 
-The restriction for stable variables is shown in the last comment. We can NOT assign an object instance with mutable fields as the value of a stable variable, because an object with a mutable variable is not of shared type.   
+The restriction for stable variables is shown in the last comment. We can NOT assign an object instance with mutable fields as the value of a stable variable, because an object with a mutable variable is not of shared type.    -->
 
 
 ## How it works
