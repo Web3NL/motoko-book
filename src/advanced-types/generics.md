@@ -69,27 +69,31 @@ We [pattern match](/common-programming-concepts/pattern-matching.html) on the po
 
 
 ## Generics in functions
-Generic types are also found in functions. Functions that allow type parameters are:
--Private and public functions in modules and nested modules
--Private and public functions in objects
--Private and public functions in classes
--Only private functions in actors
+Generic types are also found in functions. Functions that allow type parameters are:  
+- Private and public functions in modules and nested modules
+- Private and public functions in objects
+- Private and public functions in classes
+- Only private functions in actors
 
 > **NOTE**  
 > *Public shared functions in actors are not allowed to have generic type arguments.* 
 
 Some public functions in modules of the Base Library are written with generic type parameters. Lets look the useful `init` public function found in the `Array` module of the Base Library:
 ```motoko
-
+func init<X>(size : Nat, initValue : X) : [var X]
+// Function body is omitted
 ```
 
-This function is used to construct a mutable array of some size filled with copies of some initial value. The function takes one generic type parameter `X`. This parameter is used to specify the type of the initial value `initValue`.
+This function is used to construct a mutable array of some `size` filled with copies of some `initValue`. The function takes one generic type parameter `X`. This parameter is used to specify the type of the initial value `initValue`.
 
 It may be used like this:
 ```motoko
-
+{{#include _mo/generic-functions.mo:a}}
 ```
 
+We import the `Array.mo` module and name it `Array`. We access the function with `Array.init`. We supply *type arguments* into the angle brackets, in our case `<Bool>`. The second argument in the function (`initValue`) is now of type `Bool`. And the mutable array that will be constructed will have `3` mutable elements of value `true`.
+
+In the same module
 
 
 
