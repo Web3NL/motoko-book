@@ -91,10 +91,11 @@ It may be used like this:
 {{#include _mo/generic-functions.mo:a}}
 ```
 
-We import the `Array.mo` module and name it `Array`. We access the function with `Array.init`. We supply *type arguments* into the angle brackets, in our case `<Bool>`. The second argument in the function (`initValue`) is now of type `Bool`. And the mutable array that will be constructed will have `3` mutable elements of value `true`.
+We import the `Array.mo` module and name it `Array`. We access the function with `Array.init`. We supply *type arguments* into the angle brackets, in our case `<Bool>`. The second argument in the function (`initValue`) is now of type `Bool`. 
 
-In the same module
-
-
+A mutable array will be constructed with `3` mutable elements of value `true`. The value of `t` would therefore be
+```motoko
+{{#include _mo/generic-functions.mo:b}}
+```
 
 ## Generics in classes
