@@ -1,4 +1,16 @@
 # Stable Variables
+To persist the state of an actor when upgrading, we can declare immutable and mutable variables to be `stable`. Stable variables must be of *stable type*.  
+
+## Stable types
+All shared types are stable types. A type is stable if it is shared when ignoring any `var` keywords within it. 
+
+The following *values* for variables in actors could be declared stable:
+- All values of primitive type, except the `Error` type
+- Immutable and mutable arrays of values of stable type
+- Records with immutable and mutable variables
+- 
+
+## Stable mutable variables
 The *mutable state* of an actor is stored in the form of mutable variables that are declared with the `var` keyword. Mutable variables in actors always have `private` *visibility*. (although the `private` keyword is not necessary and is assumed by default).
 
 If we want to persist the state of our actor when [upgrading](/internet-computer-programming-concepts/basic-memory-persistence/upgrades.html), we could declare our mutable variables `stable`. A stable variable looks like this:
