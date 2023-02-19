@@ -11,14 +11,14 @@ In our own words, generic types allow us to write code that *generalizes* over m
 In Motoko, [custom types](/common-programming-concepts/types.html#the-type-keyword), [functions](/common-programming-concepts/functions.html) and [classes](/common-programming-concepts/objects-and-classes/classes.html) can specify *generic type parameters*. Type parameters have *names* and are supplied by adding them in between angle brackets `< >`. The angle brackets are supplied directly after the *name* of the type, function or class.  
 
 ### Type parameters
-Here's a custom type alias for a [tuple](/common-programming-concepts/types/tuples.html), that has the conventional generic type parameter `T`:
+Here's a custom type alias for a [tuple](/common-programming-concepts/types/tuples.html), that has the *conventional* generic type parameter `T`:
 ```motoko
 {{#include _mo/type-args.mo:a}}
 ```
 
-The type parameter `T` is supplied after the custom type name in angle bracket: `CustomType<T>`. Then the generic type parameter is used inside the tuple. This indicates that a value of `CustomType` will have *some* type `T` in the tuple (alongside known types `Nat` and `Int`) without knowing ahead of time what type that would be.
+The type parameter `T` is supplied after the custom type name in angle brackets: `CustomType<T>`. Then the generic type parameter is used inside the tuple. This indicates that a value of `CustomType` will have *some* type `T` in the tuple (alongside known types `Nat` and `Int`) without knowing ahead of time what type that would be.
 
-The names of generic type parameters are by convention single capital letters like `T` and `U` or (short) words that start with a capital letter like `Ok` and `Err`. 
+The names of generic type parameters are by convention single capital letters like `T` and `U` or words that start with a capital letter like `Ok` and `Err`. 
 
 Generic parameter type names must start with a letter, may contain lowercase and uppercase letters, and may also contain numbers `0-9` and underscores `_`.
 
@@ -47,12 +47,12 @@ A type alias `Result` is declared, which has two type parameters `Ok` and `Err`.
 
 This means that the variants can take on many different associated types, depending on how we want to use our `Result`. 
 
-Results are usually used as a return value for functions to provide information about a possible success or failure of the function:
+Results are usually used as a return value for functions to provide information about a possible *success* or *failure* of the function:
 ```motoko
 {{#include _mo/generics.mo:b}}
 ```
 
-Our function `checkUsername` takes a `Text` argument and returns a value of type `Result<(), Text>`. The unit type `()` and `Text` are type parameters. 
+Our function `checkUsername` takes a `Text` argument and returns a value of type `Result<(), Text>`. The unit type `()` and `Text` are *type arguments*. 
 
 The function checks the size of the its argument `name`. In case `name` is shorter than 4 characters, it returns an 'error' by constructing a *value* for the `#err` variant and adding an associated value of type `Text`. The return value would in this case be `#err("Too short!")` which is a valid value for our `Result` variant. 
 
@@ -70,21 +70,21 @@ We [pattern match](/common-programming-concepts/pattern-matching.html) on the po
 
 ## Generics in functions
 Generic types are also found in functions. Functions that allow type parameters are:  
-- Private and public functions in modules and nested modules
-- Private and public functions in objects
-- Private and public functions in classes
-- Only private functions in actors
+- Private and public functions in [modules](/common-programming-concepts/modules.html) and [nested modules](/common-programming-concepts/modules.html#nested-modules)
+- Private and public functions in [objects](/common-programming-concepts/objects-and-classes/objects.html)
+- Private and public functions in [classes](/common-programming-concepts/objects-and-classes/classes.html)
+- **Only private functions** in [actors](/internet-computer-programming-concepts/actors.html)
 
 > **NOTE**  
-> *Public shared functions in actors are not allowed to have generic type arguments.* 
+> *[Public shared functions](/internet-computer-programming-concepts/actors.html#public-shared-functions-in-actors) in actors are **not allowed** to have generic type arguments.* 
 
-Some public functions in modules of the Base Library are written with generic type parameters. Lets look the useful `init` public function found in the `Array` module of the Base Library:
+Some [public functions in modules](/common-programming-concepts/modules.html#public-functions-in-modules) of the [Base Library](/base-library.html) are written with generic type parameters. Lets look the useful `init` public function found in the `Array` module of the Base Library:
 ```motoko
-func init<X>(size : Nat, initValue : X) : [var X]
+public func init<X>(size : Nat, initValue : X) : [var X]
 // Function body is omitted
 ```
 
-This function is used to construct a mutable array of some `size` filled with copies of some `initValue`. The function takes one generic type parameter `X`. This parameter is used to specify the type of the initial value `initValue`.
+This function is used to construct a [mutable array](/common-programming-concepts/types/mutable-arrays.html) of a certain `size` filled with copies of *some* `initValue`. The function takes one generic type parameter `X`. This parameter is used to specify the type of the initial value `initValue`.
 
 It may be used like this:
 ```motoko

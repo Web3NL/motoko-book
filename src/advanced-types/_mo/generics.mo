@@ -1,7 +1,7 @@
 // GENERICS
-
+actor {
 // ANCHOR: a
-type Result<Ok, Err> = {
+public type Result<Ok, Err> = {
     #ok : Ok;
     #err : Err;
 };
@@ -68,5 +68,4 @@ type Brand = {
 let admin : User<Brand> = #Admin(#Dell);
 // ANCHOR_END: h
 
-// Generic functions
-// Generic classes
+}
