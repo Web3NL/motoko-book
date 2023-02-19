@@ -39,8 +39,9 @@
         - [Shared Types](internet-computer-programming-concepts/async-data/shared-types.md)
         - [Candid](internet-computer-programming-concepts/async-data/candid.md)
     - [Basic Memory Persistence](internet-computer-programming-concepts/basic-memory-persistence.md)
-        - [Stable Variables](internet-computer-programming-concepts/basic-memory-persistence/stable-variables.md)
         - [Upgrades](internet-computer-programming-concepts/basic-memory-persistence/upgrades.md)
+        - [Stable Variables](internet-computer-programming-concepts/basic-memory-persistence/stable-variables.md)
+        
 
 - [Advanced Types](advanced-types.md)
     - [Generic Types](advanced-types/generics.md)
