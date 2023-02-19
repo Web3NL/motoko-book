@@ -38,6 +38,9 @@ The same `CustomType` could be used again and again with different type argument
 In the last example we used `[Nat]` as a type argument. This means we have to supply an [immutable array](/common-programming-concepts/types/immutable-arrays.html) of type `[Nat]` for the `T` in the tuple. 
 
 ## Generics in type declarations
+Generics may be used in type declarations of *higher order* types like objects and variants.
+
+### Generic variant
 A commonly used generic type is the `Result` [variant type](/common-programming-concepts/types/variants.html) that is available as a [public type](/common-programming-concepts/modules.html#public-types-in-modules) in the [Base Library](/base-library.html) in the [Result module](/base-library/utils/result.html). 
 ```motoko
 {{#include _mo/generics.mo:a}}
@@ -67,6 +70,20 @@ If we use this function, we could [`switch`](/common-programming-concepts/contro
 
 We [pattern match](/common-programming-concepts/pattern-matching.html) on the possible variants of `Result<(), Text>`. In case of the `#err` variant, we also *bind* the associated `Text` value to a new name `error` so we could use it inside the scope of the `#err` case. 
 
+### Generic object
+Here's a type declaration of an object type `Obj` that takes three *type parameters* `T`, `U` and `V`. These type parameters are used as types of some variables of the object. 
+```motoko
+{{#include _mo/generics.mo:d}}
+```
+
+The first variable `a` is of generic type `T`. The second variable `b` is a [public function in the object](/common-programming-concepts/objects-and-classes/objects.html#public-functions-in-objects) with generic arguments and return type `T -> U`. The third variable is mutable and is of type `V`. And the last variable `d` does not use a generic type. 
+
+We would use it like this:
+```motoko
+{{#include _mo/generics.mo:e}}
+```
+
+We declare a variable `obj` of type `Obj` and use `Nat`, `Int` and `Text` as *type arguments*. Note that `b` is a function that takes a `Nat` and returns an `Int`. 
 
 ## Generics in functions
 Generic types are also found in functions. Functions that allow type parameters are:  
@@ -99,3 +116,9 @@ A mutable array will be constructed with `3` mutable elements of value `true`. T
 ```
 
 ## Generics in classes
+```motoko
+{{#include _mo/generic-class.mo:a}}
+```
+```motoko
+{{#include _mo/generic-class.mo:b}}
+```

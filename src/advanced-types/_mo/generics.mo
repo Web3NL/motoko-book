@@ -25,47 +25,22 @@ switch (result) {
 };
 // ANCHOR_END: c
 
-// ANCHOR: e
-type Obj<T, U, V> = {
+// ANCHOR: d
+type Obj<T, U, V> = object {
     a : T;
-    b : U;
-    c : V;
+    b : T -> U;
+    var c : V;
     d : Bool;
 };
+// ANCHOR_END: d
 
+// ANCHOR: e
 let obj : Obj<Nat, Int, Text> = {
     a = 0;
-    b = -1;
-    c = "Motoko";
+    b = func (n : Nat) { -1 * n };
+    var c = "Motoko";
     d = false;
 };
 // ANCHOR_END: e
-
-// ANCHOR: f
-type User<Device> = {
-    #User : Device;
-    #Admin : Device;
-    #Moderator : Device;
-};
-// ANCHOR_END: f
-
-// ANCHOR: g
-type Hardware = {
-    #Laptop;
-    #Mobile;
-};
-
-let user : User<Hardware> = #User(#Mobile);
-// ANCHOR_END: g
-
-// ANCHOR: h
-type Brand = {
-    #Apple;
-    #Samsung;
-    #Dell;
-};
-
-let admin : User<Brand> = #Admin(#Dell);
-// ANCHOR_END: h
 
 }
