@@ -1,9 +1,9 @@
 # Generics
 Let's ask [ChatGPT](https://chat.openai.com/) how it would explain *generic types* to a beginner:
 
-Q: How would you explain generic typing to a beginner?  
+**Q**: How would you explain generic typing to a beginner?  
 
-ChatGPT: *Generics are a way of creating flexible and reusable code in programming. They allow you to write functions, classes, and data structures that can work with different types of data without specifying the type ahead of time.* 
+**ChatGPT**: *Generics are a way of creating flexible and reusable code in programming. They allow you to write functions, classes, and data structures that can work with different types of data without specifying the type ahead of time.* 
 
 In our own words, generic types allow us to write code that *generalizes* over many possible types. In fact, that is where they get there name from. 
 
@@ -108,7 +108,7 @@ It may be used like this:
 {{#include _mo/generic-functions.mo:a}}
 ```
 
-We import the `Array.mo` module and name it `Array`. We access the function with `Array.init`. We supply *type arguments* into the angle brackets, in our case `<Bool>`. The second argument in the function (`initValue`) is now of type `Bool`. 
+We [import](/common-programming-concepts/modules.html#imports) the `Array.mo` module and name it `Array`. We access the function with `Array.init`. We supply *type arguments* into the angle brackets, in our case `<Bool>`. The second argument in the function (`initValue`) is now of type `Bool`. 
 
 A mutable array will be constructed with `3` mutable elements of value `true`. The value of `t` would therefore be
 ```motoko
@@ -116,9 +116,25 @@ A mutable array will be constructed with `3` mutable elements of value `true`. T
 ```
 
 ## Generics in classes
+Generics may be used in [classes](/common-programming-concepts/objects-and-classes/classes.html) to construct [objects](/common-programming-concepts/objects-and-classes/objects.html) with generic types.
+
+Lets use the `Array.init` function again, this time in a class:
 ```motoko
 {{#include _mo/generic-class.mo:a}}
 ```
+The class `MyClass` takes one generic *type parameter* `T`, which is used three times in the class declaration. 
+
+1. The class takes two arguments: `n` of type `Nat` and `initVal` of generic type `T`. 
+
+1. The public variable `array` is annotated with `[var T]`, which is the type returned from the `Array.init` function. 
+
+1. The function `Array.init` is used inside the class and takes `T` as a type parameter.
+
+[Recall](/common-programming-concepts/objects-and-classes/classes.html) that a class is just a *constructor for objects*, so lets make an object with our class. 
 ```motoko
 {{#include _mo/generic-class.mo:b}}
 ```
+
+We construct an object `myObject` by calling our class with a *type argument* `Bool` and two *argument values*. The second argument must be of type `Bool`, because that's what we specified as the type argument for `T` and `initVal` is of type `T`.  
+
+We now have an object with a public variable `array` of type `[var Bool]`. So we can reference an element of that array with the angle bracket notation `myObject.array[]` and mutate it. 
