@@ -10,6 +10,7 @@ import Types "types";
 import Utils "utils";
 import Comments "comments";
 
+import M "mo:MotokoStableBTree";
 
 actor {
     type Comment = Types.Comment;
