@@ -1,6 +1,7 @@
 // MODULES
 
 // ANCHOR: a
+// main.mo
 import SizeChecker "module-public-functions";
 
 let x = 5;

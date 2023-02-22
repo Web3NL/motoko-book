@@ -3,7 +3,7 @@ Incoming and outgoing data are defined by the *argument types* and *return types
 
 Shared types are always *immutable* types or data structures composed of immutable types (like [records](/common-programming-concepts/types/records.html), [objects](/common-programming-concepts/objects-and-classes/objects.html) and [variants](/common-programming-concepts/types/variants.html)). 
 
-Shared types get their name from being *sharable* with the outside world, that is the wider internet beyond the [actors](/internet-computer-programming-concepts/actors.html) running in [canisters](/internet-computer-programming-concepts/actor-to-canister.html) on the Internet Computer.
+Shared types get their name from being *sharable* with the outside world, that is the wider internet beyond the [actors](/internet-computer-programming-concepts/actors.html) running in [canisters](/internet-computer-programming-concepts/actors/actor-to-canister.html) on the Internet Computer.
 
 ## Shared Types in Public Shared Functions
 Only shared types are allowed for *arguments* and *return values* of public shared functions. We give examples of a custom *public shared function type* called `SharedFunction` to illustrate shared types. [Recall](/internet-computer-programming-concepts/actors.html#actor-type) that a public shared function type includes the `shared` and `async` keywords.

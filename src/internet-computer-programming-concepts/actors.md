@@ -77,6 +77,9 @@ The function named `oneway` is also declared with `public shared` but does not h
 
 In our example none of the functions take any arguments for simplicity.
 
+> **NOTE**  
+> *The `shared` keyword may be left out and Motoko will assume the public function in an actor to be `shared` by default. To avoid confusion with public functions elsewhere (like [modules](/common-programming-concepts/modules.html), [objects](/common-programming-concepts/objects-and-classes/objects.html) or [classes](/common-programming-concepts/objects-and-classes/classes.html)) we will keep using the shared keyword for public functions in actors*
+
 ## A simple actor
 Here's an actor with one *state* variable and some functions that *read* or *write* that variable:
 
