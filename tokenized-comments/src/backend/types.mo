@@ -30,4 +30,6 @@ module {
     public type CommentMap = HashMap.HashMap<CommentHash, Comment>;
 
     public type CommentHashHistory = List.List<CommentHash>;
+
+    public type Balance = (Principal, Nat64);
 }

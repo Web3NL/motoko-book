@@ -4,11 +4,13 @@ import HashMap "mo:base/HashMap";
 import Hash "mo:base/Hash";
 // import Time "mo:base/Time";
 import List "mo:base/List";
+import Option "mo:base/Option";
 
 import Cons "constants";
 import Types "types";
 import Utils "utils";
 import Comments "comments";
+import Memory "memory";
 
 actor {
     type Comment = Types.Comment;
@@ -17,7 +19,7 @@ actor {
 
     type CommentHashHistory = Types.CommentHashHistory;
 
-    stable var commentsTotal = 0;
+    stable var memHeight : Nat64 = Option.get(Memory.memHeight(), 0:Nat64);
 
     let comments = HashMap.HashMap<CommentHash, Comment>(10_000, Utils.commentEqual, func(h){h});
 
@@ -34,5 +36,10 @@ actor {
     public query func getComments(n : Nat) : async [SharedComment] {
         Comments.getComment(n, comments, commentHist)
     };
+
+    // public func testMem() : async ?Nat64 {Memory.memHeight()};
+    // public shared ({caller=id}) func testMem2() : async () {
+    //     Memory.storeBalance(memHeight, (id, 0))
+    // };
 
 }

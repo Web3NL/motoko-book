@@ -4,5 +4,6 @@ module {
     public let MIN_COMMENT_SIZE = 1;
     public let MAX_COMMENT_SIZE = 250;
 
+    public let PRINCIPAL_SIZE = 29;
     
 }
