@@ -9,7 +9,7 @@ Other possible functions will be discussed in upcoming chapters:
 - [`Modules`](modules.html) public and private functions inside a module
 - [`Actors`](/internet-computer-programming-concepts/actors.html) update, query and oneway shared functions
 - [`Principals and Authentication`](/internet-computer-programming-concepts/principals-and-authentication.html) caller-identifying functions
-- [`Upgrades`](/advanced-concepts/upgrades.html) system upgrade functions
+- [`Upgrades`](/advanced-concepts/system-apis/preupgrade-postupgrade.html) system upgrade functions
 
 ## Private functions
 Lets start with most simple function in Motoko: 
