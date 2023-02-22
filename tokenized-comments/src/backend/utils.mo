@@ -2,18 +2,16 @@ import Hash "mo:base/Hash";
 import Text "mo:base/Text";
 import Int "mo:base/Int";
 import Principal "mo:base/Principal";
-import Order "mo:base/Order";
 
 import Cons "constants";
 import Types "types";
 
 module {
-
-    // Rename our Hash type
+    type Comment = Types.Comment;
     type CommentHash = Types.CommentHash;
 
     // Custom comment hash
-    public func hashComment(comment : Types.Comment) : CommentHash {
+    public func commentHash(comment : Comment) : CommentHash {
         let created = Int.toText(comment.created);
         let owner = Principal.toText(comment.owner);
         
@@ -23,16 +21,8 @@ module {
     };
 
     // Compute the order of two comment hashes
-    public func commentHashCompare(h1 : CommentHash, h2 : CommentHash) : Order.Order {
-        switch (h1 == h2) {
-            case true return #equal;
-            case false {
-                switch (h1 > h2) {
-                    case true return #greater;
-                    case false return #less;
-                };
-            };
-        };
+    public func commentEqual(h1 : CommentHash, h2 : CommentHash) : Bool {
+        h1 == h2
     };
 
     // Check comment size

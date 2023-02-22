@@ -1,22 +1,33 @@
 import List "mo:base/List";
 import Hash "mo:base/Hash";
 import Time "mo:base/Time";
-import RB "mo:base/RBTree";
+import HashMap "mo:base/HashMap";
 
 module {
-    public type Time = Time.Time;
-
     public type CommentHash = Hash.Hash;
+
+    public type Like = (Nat64, Principal);
+    public type Report = (Nat64, Principal);
 
     public type Comment = {
         created : Time.Time;
         owner : Principal;
         text : Text;
-        likes : Nat;
-        Reports : Nat;
-        likers : List.List<(Time, Principal)>;
-        reporters : List.List<(Time, Principal)>;
+        var likes : Nat;
+        var reports : Nat;
+        var likers : List.List<Like>;
+        var reporters : List.List<Report>;
     };
 
-    public type CommentsHashHistory = List.List<CommentHash>;
+    public type SharedComment = {
+        created : Time.Time;
+        owner : Principal;
+        text : Text;
+        likes : Nat;
+        reports : Nat;
+    };
+
+    public type CommentMap = HashMap.HashMap<CommentHash, Comment>;
+
+    public type CommentHashHistory = List.List<CommentHash>;
 }

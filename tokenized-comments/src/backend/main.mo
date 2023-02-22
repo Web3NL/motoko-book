@@ -1,6 +1,6 @@
-import Result "mo:base/Result";
-import Array "mo:base/Array";
-import RB "mo:base/RBTree";
+// import Result "mo:base/Result";
+// import Array "mo:base/Array";
+import HashMap "mo:base/HashMap";
 import Hash "mo:base/Hash";
 // import Time "mo:base/Time";
 import List "mo:base/List";
@@ -12,24 +12,27 @@ import Comments "comments";
 
 actor {
     type Comment = Types.Comment;
-    type CommentHash = Hash.Hash;
+    type SharedComment = Types.SharedComment;
+    type CommentHash = Types.CommentHash;
 
-    type CommentsHashHistory = Types.CommentsHashHistory;
+    type CommentHashHistory = Types.CommentHashHistory;
 
     stable var commentsTotal = 0;
 
-    private var commentsHashHistory : CommentsHashHistory = List.nil<CommentHash>();
+    let comments = HashMap.HashMap<CommentHash, Comment>(10_000, Utils.commentEqual, func(h){h});
+
+    private var commentHist : CommentHashHistory = List.nil<CommentHash>();
 
     public query func totalComments() : async Nat { 
-        
+        comments.size()
     };
 
-    public shared ({caller = owner}) func postComment(text : Text) : async ?() {
-
+    public shared ({caller = owner}) func postComment(text : Text) : async () {
+        commentHist := Comments.putComment(owner, text, comments, commentHist)
     };
 
-    public query func getComments(n : Nat) : async [Comment] {
-
+    public query func getComments(n : Nat) : async [SharedComment] {
+        Comments.getComment(n, comments, commentHist)
     };
 
 }
