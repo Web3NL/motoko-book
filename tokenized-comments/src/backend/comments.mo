@@ -16,31 +16,32 @@ module {
     type Like = Types.Like;
     type Report = Types.Report;
 
-    public func putComment(owner : Principal, text : Text, hm : CommentMap, hist : CommentHashHistory) : CommentHashHistory {
+    public func putComment(owner : Principal, text : Text, hm : CommentMap, hist : CommentHashHistory) : (CommentHash, CommentHashHistory) {
         let comment : Comment = {
             created = Time.now();
             owner;
             text;
-            var likes = 0;
-            var reports = 0;
-            var likers = List.nil<Like>();
-            var reporters = List.nil<Report>();
+            likes = 0;
+            reports = 0;
+            likers = List.nil<Like>();
+            reporters = List.nil<Report>();
         };
        
         let hash = Utils.commentHash(comment);
 
         hm.put(hash, comment);
-        List.push(hash, hist)
+        (hash, List.push(hash, hist))
     };
 
     public func getComment(n : Nat, hm : CommentMap, hist : CommentHashHistory) : [SharedComment] {
         let commentHashes = List.take(hist, n);
 
-        func sharedComment(h : CommentHash) : ?SharedComment {
-            switch (hm.get(h)) {
+        func sharedComment(hash : CommentHash) : ?SharedComment {
+            switch (hm.get(hash)) {
                 case null return null;
                 case (?c) {
                     ?{
+                        hash;
                         created = c.created;
                         owner = c.owner;
                         text = c.text;
@@ -54,6 +55,24 @@ module {
         let comments = List.mapFilter<CommentHash, SharedComment>(commentHashes, sharedComment);
         
         List.toArray(comments)
+    };
+
+    public func like(h : CommentHash, hm : CommentMap) {
+        switch(hm.get(h)) {
+            case null assert false;
+            case (?comment) {
+                let new = {
+                    created = comment.created;
+                    owner = comment.owner;
+                    text = comment.text;
+                    likes = comment.likes + 1;
+                    reports = comment.reports;
+                    likers = comment.likers;
+                    reporters = comment.reporters;
+                };
+                hm.put(h, new)
+            };
+        };
     };
 
 }

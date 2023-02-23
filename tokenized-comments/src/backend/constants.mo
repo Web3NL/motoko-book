@@ -5,5 +5,7 @@ module {
     public let MAX_COMMENT_SIZE = 250;
 
     public let PRINCIPAL_SIZE = 29;
-    
+
+    public let MAX_USERS = 1000;
+    public let MAX_COMMENTS = 1000;
 }

@@ -5,23 +5,23 @@ import Hash "mo:base/Hash";
 // import Time "mo:base/Time";
 import List "mo:base/List";
 import Option "mo:base/Option";
+import Text "mo:base/Text";
+import Blob "mo:base/Blob";
 
-import Cons "constants";
+// import Constants "constants";
 import Types "types";
 import Utils "utils";
 import Comments "comments";
-import Memory "memory";
+// import Memory "memory";
 
 actor {
     type Comment = Types.Comment;
     type SharedComment = Types.SharedComment;
     type CommentHash = Types.CommentHash;
-
+    type CommentMap = Types.CommentMap;
     type CommentHashHistory = Types.CommentHashHistory;
 
-    stable var memHeight : Nat64 = Option.get(Memory.memHeight(), 0:Nat64);
-
-    let comments = HashMap.HashMap<CommentHash, Comment>(10_000, Utils.commentEqual, func(h){h});
+    let comments : CommentMap = HashMap.HashMap<CommentHash, Comment>(10_000, Utils.commentEqual, func(h){h});
 
     private var commentHist : CommentHashHistory = List.nil<CommentHash>();
 
@@ -29,17 +29,26 @@ actor {
         comments.size()
     };
 
-    public shared ({caller = owner}) func postComment(text : Text) : async () {
-        commentHist := Comments.putComment(owner, text, comments, commentHist)
+    public shared ({caller = owner}) func postComment(text : Text) : async CommentHash {
+        let (hash, hist) = Comments.putComment(owner, text, comments, commentHist);
+        commentHist := hist;
+        hash
     };
 
     public query func getComments(n : Nat) : async [SharedComment] {
         Comments.getComment(n, comments, commentHist)
     };
 
-    // public func testMem() : async ?Nat64 {Memory.memHeight()};
-    // public shared ({caller=id}) func testMem2() : async () {
-    //     Memory.storeBalance(memHeight, (id, 0))
+    public func like(h : CommentHash) : async () {
+        Comments.like(h, comments)
+    };
+
+    // public shared query ({caller}) func memHeight_() : async ?Nat64 {
+    //     Memory.memHeight() 
+    // };
+
+    // public shared ({caller}) func testMem2() : async () {
+    //     Memory.storeBalance(memHeight, (caller, 0))
     // };
 
 }

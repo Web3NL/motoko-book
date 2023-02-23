@@ -4,32 +4,28 @@ import Time "mo:base/Time";
 import HashMap "mo:base/HashMap";
 
 module {
-    public type CommentHash = Hash.Hash;
-
-    public type Like = (Nat64, Principal);
-    public type Report = (Nat64, Principal);
-
     public type Comment = {
         created : Time.Time;
         owner : Principal;
         text : Text;
-        var likes : Nat;
-        var reports : Nat;
-        var likers : List.List<Like>;
-        var reporters : List.List<Report>;
     };
 
-    public type SharedComment = {
-        created : Time.Time;
-        owner : Principal;
-        text : Text;
-        likes : Nat;
-        reports : Nat;
-    };
+    public type CommentHash = Hash.Hash;
 
     public type CommentMap = HashMap.HashMap<CommentHash, Comment>;
-
     public type CommentHashHistory = List.List<CommentHash>;
 
-    public type Balance = (Principal, Nat64);
+    public type Likes = HashMap.HashMap<CommentHash, Nat>;
+    public type Reports = HashMap.HashMap<CommentHash, Nat>;
+
+    public type Likers = HashMap.HashMap<CommentHash, List.List<Principal>>;
+    public type Reporters = HashMap.HashMap<CommentHash, List.List<Principal>>;
+
+    public type LikeHash = Hash.Hash;
+    public type ReportHash = Hash.Hash;
+
+    public type Liked = HashMap.HashMap<LikeHash, Bool>;
+    public type Reported = HashMap.HashMap<ReportHash, Bool>;
+
+    public type Balances = HashMap.HashMap<Principal, Nat>;
 }
