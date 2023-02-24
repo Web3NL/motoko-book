@@ -21,15 +21,11 @@ To understand actors it is useful to compare them with objects:
 - Public functions in objects are only accessible from within your Motoko code.
 
 **Public shared functions**  
-- Actors only allow *[shared](#public-shared-functions)* public functions
+- Actors only allow *[shared](#public-shared-functions-in-actors)* public functions
 - Objects only allow non-shared public functions
 
-**Public state**  
-- Actors don't allow public mutable or immutable variables
-- Objects allow public mutable or immutable variables
-
 **Class and Actor Class**
-- Actors have 'factory' functions called [Actor Classes](/internet-computer-programming-concepts/actor-classes.html)
+- Actors have 'factory' functions called [Actor Classes](/advanced-concepts/scalability/actor-classes.html)
 - Objects have 'factory' functions called [Classes](/common-programming-concepts/objects-and-classes/classes.html)
 
 For a full comparison checkout: [**Motoko Items Comparison Table**](https://docs.google.com/spreadsheets/d/1IqgPi9I9EmoknJBzzxea_7dN9WRwtFle7Y99UURXC7Y/edit?usp=sharing)
@@ -46,6 +42,12 @@ Can *read* and *write* state
 
 1. Public **shared oneway** functions:  
 Can *read* and *write*, but don't have any *return value*.
+
+> **NOTE**  
+> *Public shared query functions are fast, but don't have the full security guarantees of the Internet Computer because they do not 'go through' consensus*
+
+### Shared types
+The argument and return types of public shared functions are restricted to *[shared types](/internet-computer-programming-concepts/async-data/shared-types.html)* only. We will cover shared types [later](/internet-computer-programming-concepts/async-data/shared-types.html) in this book.
 
 *Query* and *update* functions always have the special `async` return type.  
 *Oneway* functions always immediately return `()` regardless of whether they execute successfully.  
@@ -74,6 +76,9 @@ The function named `write` is declared with `public shared` and also returns `as
 The function named `oneway` is also declared with `public shared` but does not have a return type. This function is allowed to modify the state of the actor. Because it has no return type, it is assumed to be a oneway function which always returns `()` regardless of whether they execute successfully. Only the `shared` keyword is part of their type. Oneway functions also take 2 seconds per call. 
 
 In our example none of the functions take any arguments for simplicity.
+
+> **NOTE**  
+> *The `shared` keyword may be left out and Motoko will assume the public function in an actor to be `shared` by default. To avoid confusion with public functions elsewhere (like [modules](/common-programming-concepts/modules.html), [objects](/common-programming-concepts/objects-and-classes/objects.html) or [classes](/common-programming-concepts/objects-and-classes/classes.html)) we will keep using the shared keyword for public functions in actors*
 
 ## A simple actor
 Here's an actor with one *state* variable and some functions that *read* or *write* that variable:
@@ -108,4 +113,3 @@ Every field name is a public shared function with its own *function type*. The o
 `writeComment` has type `shared Text -> async ()` indicating it is an *shared update* function that takes one `Text` argument and returns no value `async ()`.
 
 `deleteComment` has type `shared () -> ()` indicating it is a *shared oneway* function that takes no arguments and always returns `()`.
-

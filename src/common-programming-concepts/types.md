@@ -1,6 +1,6 @@
 # Types
 
-A type describes the *data type* of a value. Motoko has static types. This means that the type of every value is known when the Motoko code is being [*compiled*](http://localhost:3000/internet-computer-programming-concepts/actor-to-canister.html).
+A type describes the *data type* of a value. Motoko has static types. This means that the type of every value is known when the Motoko code is being [*compiled*](http://localhost:3000/internet-computer-programming-concepts/actors/actor-to-canister.html).
 
 Motoko can in many cases know the type of a variable without you doing anything:
 
@@ -32,6 +32,14 @@ Or both:
     
 In this case it is unnecessary and makes the code ugly. The convention is to leave spaces around the colon.
 
+## The `type` keyword
+We can always *rename* any type by using the `type` keyword. We could rename the `Bool` type to `B`:
+```motoko
+{{#include _mo/types4.mo:e}}
+```
+
+We defined a new *alias* for the `Bool` type and named it `B`. We then declare a variable `booelan` of type `B`.
+
 ## Primitive types
 *Primitive types* are fundamental core data types that are not *composed* of more fundamental types. Some common ones in Motoko are:  
 - [Bool](/base-library/primitive-types/bool.html)
@@ -42,7 +50,8 @@ In this case it is unnecessary and makes the code ugly. The convention is to lea
 - [Principal](/base-library/primitive-types/principal.html)
 - [Blob](/base-library/primitive-types/blob.html)
 
-See the [full list of all Motoko data types](https://internetcomputer.org/docs/current/developer-docs/build/cdks/motoko-dfinity/language-manual#primitive-types)
+See the [full list of all Motoko data types](https://internetcomputer.org/docs/current/motoko/main/language-manual#primitive-types)
+
  
 We can define arbitrary names for any type:
 

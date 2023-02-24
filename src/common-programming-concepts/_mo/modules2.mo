@@ -1,6 +1,7 @@
 // MODULES
 
 // ANCHOR: a
+// main.mo
 import Mod "module-nested";
 
 let personName = Mod.Person.name;

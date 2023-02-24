@@ -1,6 +1,6 @@
 # Variables
 
-A variable is a *value* that has an arbitrary *name*. It is defined by a *declaration*.
+A variable is a *value* that has a *name*. It is defined by a *declaration*.
 
 A variable is declared as follows:
 
@@ -9,6 +9,8 @@ A variable is declared as follows:
 ```
 
 The *let* keyword indicates we are declaring a variable. The name of the variable is `myVariable`. The value that is named is `0`.
+
+Variable names must start with a letter, may contain lowercase and uppercase letters, may also contain numbers 0-9 and underscores `_`. 
 
 The convention is to use `lowerCamelCase` for variable names. 
 

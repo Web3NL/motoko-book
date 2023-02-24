@@ -1,0 +1,12 @@
+// Nat
+
+import Nat "mo:base/Nat";
+
+// ANCHOR: a
+let a = 50;
+let b = 50;
+
+let remainder = Nat.rem(a, b);
+
+assert remainder == 0;
+// ANCHOR_END: a
