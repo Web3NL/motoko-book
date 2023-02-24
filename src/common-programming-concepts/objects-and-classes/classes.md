@@ -23,13 +23,13 @@ To use this class we have to create an instance of this class:
 
 When we *instantiate* our class by calling `MyClass()` it returns an object. That object is now named `myClassInstance`.
 
-In fact, we could test the expected type of the returned object by defining the type and annotating our variable with it:
+In fact, we could set the expected type of the returned object by defining the type and annotating our variable with it:
 
 ```motoko
 {{#include _mo/classes1.mo:d}}
 ```
 
-Now this class is not very useful and we could just have declared an object in stead of declaring a class and instantiating it. 
+Now this class is not very useful and we could just have declared an object instead of declaring a class and instantiating it. 
 
 Let declare a class that takes some arguments, instantiate two objects with it and use those objects:
 
@@ -41,7 +41,7 @@ Lets analyze the code line by line. Our class `CryptoAccount` takes in two value
 
 The first member of our class is a private function named `calc`. It just takes two values of type `Nat` and returns their product. The second member of the class is a mutable variable named `balance` which is declared by calling `calc` with the two values coming from our class. 
 
-Because the class only has one `public` field, the expected type of the object that is returned should be `{ var balance : Nat }`.
+Because this class only has one `public` field, the expected type of the object that is returned should be `{ var balance : Nat }`.
 
 We then define two objects `account1` and `account2` by calling our class with different values. Both objects have a mutable public field named `balance` and we can use that to mutate the value of each. 
 
