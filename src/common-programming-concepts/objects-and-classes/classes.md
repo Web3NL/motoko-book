@@ -29,7 +29,7 @@ In fact, we could set the expected type of the returned object by defining the t
 {{#include _mo/classes1.mo:d}}
 ```
 
-Now this class is not very useful and we could just have declared an object in stead of declaring a class and instantiating it. 
+Now this class is not very useful and we could just have declared an object instead of declaring a class and instantiating it. 
 
 Let declare a class that takes some arguments, instantiate two objects with it and use those objects:
 
