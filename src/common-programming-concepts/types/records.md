@@ -76,7 +76,7 @@ In our examples above, the literal value for the `bob` variable was:
 }
 ```
 
-And this record has an *object type*:
+<!-- And this record has an *object type*:
 
 ```motoko
 {
@@ -93,5 +93,5 @@ let bob : { name : Text; age : Nat; } = { name = "Bob"; age = 20; };
 
 This is the same declaration we made earlier, but now we spelled out the type explicitly. 
 
-We will revisit this subject in [objects and classes](/common-programming-concepts/objects-and-classes.html).
+We will revisit this subject in [objects and classes](/common-programming-concepts/objects-and-classes.html). -->
 
