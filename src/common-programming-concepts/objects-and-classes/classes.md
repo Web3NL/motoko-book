@@ -23,7 +23,7 @@ To use this class we have to create an instance of this class:
 
 When we *instantiate* our class by calling `MyClass()` it returns an object. That object is now named `myClassInstance`.
 
-In fact, we could test the expected type of the returned object by defining the type and annotating our variable with it:
+In fact, we could set the expected type of the returned object by defining the type and annotating our variable with it:
 
 ```motoko
 {{#include _mo/classes1.mo:d}}
