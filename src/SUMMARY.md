@@ -63,6 +63,7 @@
         - [Blob](base-library/primitive-types/blob.md)
     - [Utility Modules](base-library/utils.md)
         - [Time](base-library/utils/time.md)
+        - [Order](base-library/utils/order.md)
         - [Error](base-library/utils/error.md)
         - [Iterators](base-library/utils/iter.md)
     - [Data Structures](base-library/data-structures.md)
