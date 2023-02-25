@@ -35,7 +35,7 @@ The function `max` takes two `Int` arguments and returns an `Int` value.
 ```
 
 ## Int.compare
-The function `compare` takes two `Int` arguments and returns an `Order` variant value.  
+The function `compare` takes two `Int` arguments and returns an [Order](/base-library/utils/order.html) variant value.  
 
 ```motoko
 {{#include _mo/int2.mo:a}}
