@@ -47,6 +47,12 @@ The function `replace` takes one `Text`,one `Pattern`and one `Text` as arguments
 ```motoko
 {{#include _mo/text4.mo:a}}
 ```
+## Text.concat
+The function `concat` takes two `Text` arguments and returns a `Text` value. It is equivalent to the `#` [operator](/common-programming-concepts/operators.html).
+
+```motoko
+{{#include _mo/text4.mo:b}}
+```
 
 
 <!-- Type Text
