@@ -1,11 +1,30 @@
 {
   "canisters": {
+
     "motoko-book": {
-        "type": "assets",
-        "source": ["book/"],
-        "frontend": {
-            "entrypoint": "book/index.html"
-        }
+      "type": "assets",
+      "source": ["book/"],
+      "frontend": {
+        "entrypoint": "book/index.html"
+      }
+    },
+
+    "frontend": {
+      "type": "assets",
+      "source": ["tokenized-comments/build/"],
+      "frontend": {
+        "entrypoint": "tokenized-comments/build/"
+      }
+    },
+
+    "backend": {
+      "type": "motoko",
+      "main": "tokenized-comments/src/backend/main.mo"
+    },
+
+    "test": {
+      "type": "motoko",
+      "main": "tokenized-comments/src/backend/stable_mem/test.mo"
     }
   }
 }
