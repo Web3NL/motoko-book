@@ -13,7 +13,9 @@ assert integer == -127;
 // ANCHOR_END: b
 
 // ANCHOR: c
-let textualInt8 = Int8.toText(a);
+let b : Int8 = -127;
+
+let textualInt8 = Int8.toText(b);
 
 assert textualInt8 == "-127";
 // ANCHOR_END: c
