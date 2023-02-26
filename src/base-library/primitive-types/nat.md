@@ -27,7 +27,7 @@ The function `max` takes two `Nat` arguments and returns the largest value.
 ```
 
 ## Nat.compare
-The function `compare` takes two `Nat` arguments and returns an `Order` variant value.  
+The function `compare` takes two `Nat` arguments and returns an [Order](/base-library/utils/order.html) variant value.  
 
 ```motoko
 {{#include _mo/nat3.mo:a}}

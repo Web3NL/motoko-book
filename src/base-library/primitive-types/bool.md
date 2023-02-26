@@ -15,7 +15,7 @@ The function `toText` takes one `Bool` argument and returns a `Text` value.
 ```
 
 ## Bool.compare
-The function `compare` takes two `Bool` arguments and returns an `Order` variant value.  
+The function `compare` takes two `Bool` arguments and returns an [Order](/base-library/utils/order.html) variant value.  
 
 ```motoko
 {{#include _mo/bool.mo:c}}
