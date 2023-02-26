@@ -1,4 +1,3 @@
-// Blob
 
 import Blob "mo:base/Blob";
 
@@ -8,8 +7,7 @@ let a : [Nat8] = [1,2,3];
 
 let blob = Blob.fromArray(a);
 
-let array = Blob.toArray(blob);
+let mutableArray = Blob.toArrayMut(blob);
 
-assert array == [1,2,3];
+assert mutableArray.size() == 3;
 // ANCHOR_END: a
-
