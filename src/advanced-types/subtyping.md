@@ -1,4 +1,4 @@
-# Sub-typing
+# Subtyping
 Motoko's modern type system allows us to think of some types as being either a *subtype* or a *supertype*. If a type `T` is a subtype of type `U`, then `T` can be used everywhere `U` is expected. 
 
 To express this relationship we say that `T` is [*bounded*](/advanced-types/type-bounds.html) by `U` and we write:
@@ -71,6 +71,9 @@ Recall that [actors](/internet-computer-programming-concepts/actors.html) have [
 
 It's important to understand what kind of changes to actors maintain *backwards compatibility* with existing clients and which changes *break* existing clients. 
 
+> **NOTE**  
+> *Backwards compatibility depends on the [Candid interface](/internet-computer-programming-concepts/async-data/candid.html#actor-interfaces) of an actor. Candid has more permissive subtyping rules on variants and objects than Motoko. This section describes Motoko subtyping.*
+
 ### Actor interfaces
 The most common upgrade to an actor is the addition of a public shared function. Here are two versions of [actor types](/internet-computer-programming-concepts/actors.html#actor-type): 
 ```motoko
@@ -79,7 +82,7 @@ The most common upgrade to an actor is the addition of a public shared function.
 
 The first actor only has one public shared function `post`. We can upgrade to the second actor by adding the function `get`. This upgrade is backwards compatible, because the *function signature* of `post` did not change. 
 
-Actor `V2` is technically NOT a subtype of actor `V1` (like in the case of [object subtyping](/advanced-types/subtyping.html#subtyping-objects)). Although this example looks similar to object subtyping (because `V2` includes all the functions of `V1`) we cannot use `V2` where an actor type `V1` is expected.
+Actor `V2` is a subtype of actor `V1` (like in the case of [object subtyping](/advanced-types/subtyping.html#subtyping-objects)). This example looks similar to object subtyping, because `V2` includes all the functions of `V1`. We can use `V2` everywhere an actor type `V1` is expected.
 
 ### Breaking backwards compatibility
 Lets demonstrate an upgrade that would NOT be backwards compatible. Lets upgrade to `V3`:
@@ -105,9 +108,6 @@ Function `f1` is a subtype of `f2`. For this relationship to hold, two condition
 
 The return type `Nat` of function `f1` is a subtype of return type `Int` of function `f2`.   
 The argument `Nat` of function `f2` is a subtype of argument `Int` of function `f1`.
-
-> **NOTE**  
-> *There is an [exception](https://forum.dfinity.org/t/new-candid-version-and-catching-send-failures-motoko-updates/18410/3) for variant return types in new versions of [Candid](/internet-computer-programming-concepts/async-data/candid.html)*
 
 The types of `f1` and `f2` in Motoko are:
 ```motoko
@@ -142,6 +142,3 @@ We could upgrade to a new version with types `ArgsV2` and `ResultV2` without bre
 ```
 
 This is because `Args` is a *subtype* of `ArgsV2` and `Result` is a *supertype* of `ResultV2`.  
-
-> **NOTE**  
-> *There is an [exception](https://forum.dfinity.org/t/new-candid-version-and-catching-send-failures-motoko-updates/18410/3) for variant return types in new versions of [Candid](/internet-computer-programming-concepts/async-data/candid.html)*
