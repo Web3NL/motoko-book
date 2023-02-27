@@ -8,5 +8,9 @@ let b = 20;
 
 let isGreaterOrEqual = Nat.greaterOrEqual(a, b);
 
-assert isGreaterOrEqual == true;
+assert isGreaterOrEqual == true; 
+
+let greaterOrEqual = a >= b;
+
+assert greaterOrEqual == true;
 // ANCHOR_END: a
