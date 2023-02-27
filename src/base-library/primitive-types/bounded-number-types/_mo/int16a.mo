@@ -2,7 +2,7 @@
 
 import Int16 "mo:base/Int16";
 
-// ANCHOR: 
+// ANCHOR: a
 let integer = -32768;
 
 let int16 = Int16.fromInt(integer);

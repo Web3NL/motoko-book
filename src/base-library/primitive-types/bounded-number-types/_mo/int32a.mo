@@ -2,10 +2,10 @@
 
 import Int32 "mo:base/Int32";
 
-// ANCHOR: 
-let integer = -2147483648;
+// ANCHOR: a
+let integer = -21474;
 
 let int32 = Int32.fromInt(integer);
 
-assert int32 == -2147483648;
+assert int32 == -21474;
 // ANCHOR_END: a
