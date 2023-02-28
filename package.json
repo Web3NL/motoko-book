@@ -4,6 +4,6 @@
     "motoko": "^3.3.0"
   },
   "scripts": {
-    "build": "mdbook build"
+    "build": "mdbook build && cp -r domain/.well-known/ book/ && cp domain/.ic-assets.json book/"
   }
 }

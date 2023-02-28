@@ -1,0 +1,2 @@
+curl -sLv -X GET \
+    https://ic0.app/registrations/f5cedc4f048f449f583543155898a94ec7f157d2755f6579bc923b11e6b50084
