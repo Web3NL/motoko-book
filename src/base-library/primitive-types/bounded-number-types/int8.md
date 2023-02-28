@@ -1,15 +1,28 @@
-
-
 # Int8
-The convention is to name the *module alias* after the *file name* it is defined in:
+
+# Int
+The convention is to name the [*module alias*](/common-programming-concepts/modules.html#imports) after the *file name* it is defined in:
 
 ```motoko
 {{#include _mo/int8.mo:a}}
 ```
+## Public items
+The following types and functions are made public in the `Int` module:  
+[Type Int8](#int8int8)  
+[Function `toInt`](#int8toint)    
+[Function `toText`](#int8totext)  
+
+## Int8.Int8
+
 
 ## Int8.toInt
-The function `toInt` takes one `Int8` argument and returns an `Int` value. 
+### Function signature
+```motoko
+public func toInt(i : Int8) : Int
+```
+The function `toInt` takes one `Int8` argument and returns an `Int` value.
 
+### Code example
 ```motoko
 {{#include _mo/int8.mo:b}}
 ```
