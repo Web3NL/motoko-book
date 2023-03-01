@@ -5,19 +5,25 @@ The convention is to name the *module alias* after the *file name* it is defined
 {{#include _mo/char.mo:a}}
 ```
 
-## Char.isDigit
-The function `isDigit` takes one `Char` argument and returns a `Bool` value. 
+## Public items
+The following types and functions are made public in the `Char` module:  
+[Type Char](#type)  
+[Function `isDigit`](#charisdigit)    
+[Function `toNat32`](#chartonat32)  
+[Function `fromNat32`](#charfromnat32)  
+[Function `isAlphabetic`](#charisalphabetic)  
 
+## Type
 ```motoko
-{{#include _mo/char.mo:b}}
+type Char = Char.Char
 ```
 
+
 ## Char.isDigit
 The function `isDigit` takes one `Char` argument and returns a `Bool` value. 
 
 ```motoko
 {{#include _mo/char.mo:b}}
-
 ```
 
 ## Char.toNat32
