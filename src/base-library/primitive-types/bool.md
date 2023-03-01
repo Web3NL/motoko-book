@@ -7,6 +7,24 @@ The convention is to name the *module alias* after the *file name* it is defined
 
 This module is mostly used for [logical operations](https://en.wikipedia.org/wiki/Logical_connective).
 
+## Public items
+The following types and functions are made public in the `Bool` module:  
+[Type Bool](#type)  
+[Function `toText`](#booltotext)  
+[Function `compare`](#boolcompare)  
+[Function `lognot`](#boollognot)  
+[Function `logand`](#boollogand)  
+[Function `logor`](#boollogor)  
+[Function `logxor`](#boollogxor)  
+[Function `notEqual`](#boolnotequal)  
+[Function `equal`](#boolequal)  
+
+
+## Type
+```motoko
+type Bool = Bool.Bool
+```
+
 ## Bool.toText
 The function `toText` takes one `Bool` argument and returns a `Text` value.  
 

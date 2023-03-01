@@ -13,13 +13,15 @@ assert nat == 65535;
 // ANCHOR_END: b
 
 // ANCHOR: c
-let textualNat16 = Nat16.toText(a);
+let b : Nat16 = 65535;
+
+let textualNat16 = Nat16.toText(b);
 
 assert textualNat16 == "65535";
 // ANCHOR_END: c
 
 // ANCHOR: d
-let number = 65535;
+let number : Nat = 65535;
 
 let natToNat16 = Nat16.fromNat(number);
 

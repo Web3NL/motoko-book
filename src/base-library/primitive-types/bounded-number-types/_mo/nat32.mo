@@ -13,7 +13,9 @@ assert nat == 4294967295;
 // ANCHOR_END: b
 
 // ANCHOR: c
-let textualNat32 = Nat32.toText(a);
+let b : Nat32 = 4294967295;
+
+let textualNat32 = Nat32.toText(b);
 
 assert textualNat32 == "4294967295";
 // ANCHOR_END: c

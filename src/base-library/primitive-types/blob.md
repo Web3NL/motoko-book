@@ -8,6 +8,20 @@ The convention is to name the *module alias* after the *file name* it is defined
 {{#include _mo/blob.mo:a}}
 ```
 
+## Public items
+The following types and functions are made public in the `Blob` module:  
+[Type Blob](#type)  
+[Function `fromArray`](#blobfromarray)  
+[Function `toArray`](#blobtoarray)  
+[Function `toArrayMut`](#blobfromarraymut)  
+[Function `fromArrayMut`](#blobfromarraymut)  
+
+
+## Type
+```motoko
+type Blob = Blob.Blob
+```
+
 ## Blob.fromArray
 The function `fromArray` takes one `Array` argument and returns a `Blob` value.  
 
