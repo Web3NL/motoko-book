@@ -6,6 +6,25 @@ The convention is to name the *module alias* after the *file name* it is defined
 {{#include _mo/float.mo:a}}
 ```
 
+## Public items
+The following types and functions are made public in the `Float` module:  
+[Type Float](#type)  
+[Function `toInt`](#floattoint)    
+[Function `sqrt`](#floatsqrt)  
+[Function `ceil`](#floatceil)  
+[Function `floor`](#floatfloor)  
+[Function `fromInt`](#floatfromint)  
+[Function `toText`](#floattotext)  
+[Function `toInt64`](#floattoint64)  
+[Function `fromInt64`](#floatfromint642)  
+[Function `format`](#floatformat)  
+
+
+## Type
+```motoko
+type Float = Float.Float
+```
+
 ## Float.toInt
 The function `toInt` takes one `Float` argument and returns an `Int` value. 
 
