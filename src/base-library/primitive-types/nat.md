@@ -5,6 +5,32 @@ The convention is to name the *module alias* after the *file name* it is defined
 {{#include _mo/nat.mo:a}}
 ```
 
+## Public items
+The following types and functions are made public in the `Nat` module:  
+[Type Nat](#type)  
+[Function `toText`](#nattotext)    
+[Function `min`](#natmin)  
+[Function `max`](#natmax)  
+[Function `compare`](#natcompare)  
+[Function `equal`](#natequal)  
+[Function `notEqual`](#natnotequal)  
+[Function `less`](#natless)  
+[Function `lessOrEqual`](#natlessorequal)  
+[Function `greater`](#natgreater)  
+[Function `greaterOrEqual`](#natgreaterorequal)  
+[Function `add`](#natadd)  
+[Function `sub`](#natsub)  
+[Function `mul`](#natmul)  
+[Function `div`](#natdiv)  
+[Function `rem`](#natrem)  
+[Function `pow`](#natpow)  
+
+
+## Type
+```motoko
+type Nat = Nat.Nat
+```
+
 ## Nat.toText
 The function `toText` takes one `Nat` argument and returns a `Text` value.  
 
