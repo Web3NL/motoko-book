@@ -6,6 +6,24 @@ The convention is to name the *module alias* after the *file name* it is defined
 {{#include _mo/text.mo:a}}
 ```
 
+## Public items
+The following types and functions are made public in the `Text` module:  
+[Type Text](#type)  
+[Function `size`](#textsize)    
+[Function `fromChar`](#textfromchar)  
+[Function `contains`](#textcontains)  
+[Function `startsWith`](#textstartswith)  
+[Function `endsWith`](#textendswith)  
+[Function `replace`](#textreplace)  
+[Function `concat`](#textconcat)  
+
+
+## Type
+```motoko
+type Text = Text.Text
+```
+
+
 ## Text.size
 The function `size` takes one `Text` argument and returns a `Nat` value. 
 

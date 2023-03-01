@@ -5,6 +5,22 @@ The convention is to name the *module alias* after the *file name* it is defined
 {{#include _mo/principal.mo:a}}
 ```
 
+## Public items
+The following types and functions are made public in the `Principal` module:  
+[Type Principal](#type)  
+[Function `fromActor`](#principalfromactor)    
+[Function `toText`](#principaltotext)  
+[Function `fromText`](#principalfromtext)  
+[Function `toBlob`](#principaltoblob)  
+[Function `fromBlob`](#principalfromblob)  
+[Function `isAnonymous`](#principalisanonymous)  
+
+
+## Type
+```motoko
+type Principal = Principal.Principal
+```
+
 ## Principal.fromActor
 The function `fromActor` takes one `Actor` argument and returns a `Principal` value. 
 
