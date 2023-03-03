@@ -14,7 +14,6 @@ The following types and functions are made public in the `Array` module:
 [Function `thaw`](#arraythaw)  
 [Function `equal`](#arrayequal)  
 [Function `find`](#arrayfind)  
-[Function `append`](#arrayappend)  
 [Function `sort`](#arraysort)  
 [Function `sortInPlace`](#arraysortinplace)  
 [Function `reverse`](#arrayreverse)  
@@ -52,9 +51,6 @@ The following types and functions are made public in the `Array` module:
 
 
 ## Array.find
-
-
-## Array.append
 
 
 ## Array.sort
