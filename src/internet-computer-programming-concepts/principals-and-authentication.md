@@ -30,7 +30,7 @@ To convert a textual principal into a value of type `Principal` we can use the [
 
 We *[import](/common-programming-concepts/modules.html)* the Principal module from the [Base Library](/base-library.html) and name it `P`. We then defined a variable named `principal` of type `Principal` and assigned a value using the `.fromText()` *method* available in the Principal module.
 
-We could now user our `principal` variable wherever a value is expected of type `Principal`.
+We could now use our `principal` variable wherever a value is expected of type `Principal`.
 
 ## Caller Authenticating Public Shared Functions
 There is a special *message object* that is available to [public shared functions](/internet-computer-programming-concepts/actors.html#public-shared-functions-in-actors). Today (Jan 2023) it is only used to *authenticate* the caller of a function. In the future it may have other uses as well. 
