@@ -9,6 +9,6 @@ The most common way to interact with an actor (hosted in a canister on the Inter
 In fact, this is exactly what the [Candid UI interface](/internet-computer-programming-concepts/actors/actor-to-canister.html#calling-the-actor-from-motoko-playground) is doing when you call a function. Since Motoko Playground runs in the browser, it interacts with the Internet Computer by running Typescript code in the browser that uses the [Typescript libraries](https://github.com/dfinity/agent-js).
 
 ## Canister Calls from DFX
-Another way to send messages is from a client computer that runs some program in stead of a browser. In fact any program that can access the Internet and issue [HTTP request](https://www.w3schools.com/tags/ref_httpmethods.asp) can send a message to a canister running on the IC.
+Another way to send messages is from a client computer that runs some program instead of a browser. In fact any program that can access the Internet and issue [HTTP request](https://www.w3schools.com/tags/ref_httpmethods.asp) can send a message to a canister running on the IC.
 
 One such program is called DFX, which is a [Canister Development Kit](/project-deployment.html). We will describe how to send messages to canisters from DFX in later chapters. 
