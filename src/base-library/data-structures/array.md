@@ -65,6 +65,7 @@ func init<X>(
 The bigger `size` is, the more *time* the function takes to run.  
 The bigger `size` is, the more *memory* the function needs to run.  
 
+
 ## Array.tabulate
 
 The `tabulate` function generates an _immutable array_ of predefined `size` by using a generator function that takes the index of every element as an argument and produces the elements of the array.
@@ -99,11 +100,72 @@ func tabulate<X>(
 The bigger `size` is, the more *time* the function takes to run.  
 The bigger `size` is, the more *memory* the function needs to run.  
 
+
 ## Array.tabulateVar
+
+The `tabulateVar` function generates an _mutable array_ of predefined `size` by using a generator function that takes the index of every element as an argument and produces the elements of the array.
+
+### Function signature
+
+```motoko
+func tabulateVar<X>(
+
+    size : Nat,
+    generator : Nat -> X
+
+) : [var X]
+```
+
+### Parameters
+
+|                     |                        |
+| ------------------- | ---------------------- |
+| Generic parameters  | `X`                    |
+| Variable argument 1 | `size : Nat`           |
+| Function argument 1 | `generator : Nat -> X` |
+| Return type         | `[var X]`              |
+
+### Example
+
+```motoko
+{{#include _mo/array/tabulateVar.mo:a}}
+```
+
+### Time and Space Complexity
+The bigger `size` is, the more *time* the function takes to run.  
+The bigger `size` is, the more *memory* the function needs to run.  
 
 
 
 ## Array.freeze
+
+### Function signature
+
+```motoko
+func freeze<X>(
+
+  varArray : [var X]
+
+) : [X]
+```
+
+### Parameters
+
+|                     |                              |
+| ------------------- | ----------------------       |
+| Generic parameters  | `X`                          |
+| Variable argument   | `varArray : [var X]`         |
+| Return type         | `[X]`                        |
+
+### Example
+
+```motoko
+{{#include _mo/array/freeze.mo:a}}
+```
+
+### Time and Space Complexity
+The bigger `size` is, the more *time* the function takes to run.  
+The bigger `size` is, the more *memory* the function needs to run.  
 
 ## Array.thaw
 
