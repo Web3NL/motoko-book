@@ -169,13 +169,165 @@ The bigger `size` is, the more *memory* the function needs to run.
 
 ## Array.thaw
 
+### Function signature
+
+```motoko
+func thaw<X>(
+
+  array : [X]
+
+) : [var X]
+```
+
+### Parameters
+
+|                     |                              |
+| ------------------- | ----------------------       |
+| Generic parameters  | `X`                          |
+| Variable argument   | `array : [X]`                |
+| Return type         | `[var X]`                    |
+
+### Example
+
+```motoko
+{{#include _mo/array/thaw.mo:a}}
+```
+
+### Time and Space Complexity
+The bigger `size` is, the more *time* the function takes to run.  
+The Array.thaw method needs to allocate space for the new mutable array, which has the same size as the input array. However, it does not need to allocate any additional memory proportional to the size of the input array. This means that the space complexity of Array.thaw is O(1). 
+
+
 ## Array.equal
+
+### Function signature
+
+```motoko
+func equal<X>(
+
+  array1 : [X]
+  
+  array2 : [X]
+
+   equal : (X, X) -> Bool
+
+) : Bool 
+```
+
+### Parameters
+
+|                      |                              |
+| -------------------  | ----------------------       |
+| Generic parameters   | `X`                          |
+| Variable argument1   | `array1 : [X]`               |
+| Variable argument2   | `array2 : [X]`               |
+| function argument    |  `equal : (X, X) -> Bool`    |
+| Return type          | `Bool`                       |
+
+### Example
+
+```motoko
+{{#include _mo/array/equal.mo:a}}
+```
+
+### Time and Space Complexity
+
 
 ## Array.find
 
+### Function signature
+
+```motoko
+func find<X>(
+
+  array : [X]
+
+  predicate : X -> Bool
+
+) : ?X
+```
+
+### Parameters
+
+|                     |                              |
+| ------------------- | ----------------------       |
+| Generic parameters  | `X`                          |
+| Variable argument   |     `array : [X]`            |
+| function argument   | `predicate : X -> Bool`      |
+| Return type         | `?X`                         |
+
+### Example
+
+```motoko
+{{#include _mo/array/find.mo:a}}
+```
+
+### Time and Space Complexity
+
+
 ## Array.sort
 
+### Function signature
+
+```motoko
+func sort<X>(
+
+   array : [X]
+  
+ compare : (X, X) -> Order.Order
+
+) : [X]
+```
+
+### Parameters
+
+|                     |                                     |
+| ------------------- | ----------------------              |
+| Generic parameters  | `X`                                 |
+| Variable argument   | `array : [X]`                       |
+| function argument   | `compare : (X, X) -> Order.Order`   |
+| Return type         | `[X]`                           |
+
+### Example
+
+```motoko
+{{#include _mo/array/sort.mo:a}}
+```
+
+### Time and Space Complexity
+
+
 ## Array.sortInPlace
+
+### Function signature
+
+```motoko
+func sortInPlace<X>(
+
+   array : [var X]
+  
+ compare : (X, X) -> Order.Order
+
+) : [X]
+```
+
+### Parameters
+
+|                     |                                     |
+| ------------------- | ----------------------              |
+| Generic parameters  | `X`                                 |
+| Variable argument   | `array : [var X]`                       |
+| function argument   | `compare : (X, X) -> Order.Order`   |
+| Return type         | `[X]`                           |
+
+### Example
+
+```motoko
+{{#include _mo/array/sortInPlace.mo:a}}
+```
+
+### Time and Space Complexity
+
 
 ## Array.reverse
 

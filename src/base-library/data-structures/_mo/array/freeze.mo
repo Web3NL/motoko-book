@@ -1,7 +1,7 @@
 import Array "mo:base/Array";
 // ANCHOR: a
 
-let varArray = [ var "apple", "banana", "cherry", "date", "elderberry"];
+let varArray : [var Text]= [ var "apple", "banana", "cherry", "date", "elderberry"];
 
 varArray[1] := "kiwi";
 
