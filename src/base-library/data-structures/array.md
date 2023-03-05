@@ -339,6 +339,13 @@ func sortInPlace<X>(
 
 ## Array.mapFilter
 
+|Index|`array1 : [Nat]`|`array2 : [Int]`|
+|---|---|---|
+|0|`0`|`1`|
+|1|1|2|
+|2|2||
+
+
 ## Array.mapResult
 
 ## Array.chain
