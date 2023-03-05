@@ -316,9 +316,9 @@ func sortInPlace<X>(
 |                     |                                     |
 | ------------------- | ----------------------              |
 | Generic parameters  | `X`                                 |
-| Variable argument   | `array : [var X]`                       |
+| Variable argument   | `array : [var X]`                   |
 | function argument   | `compare : (X, X) -> Order.Order`   |
-| Return type         | `[X]`                           |
+| Return type         | `[X]`                               |
 
 ### Example
 
@@ -331,19 +331,275 @@ func sortInPlace<X>(
 
 ## Array.reverse
 
+
+### Function signature
+
+```motoko
+func reverse<X>(
+
+   array : [X]
+  
+) : [X]
+```
+
+### Parameters
+
+|                     |                                     |
+| ------------------- | ----------------------              |
+| Generic parameters  | `X`                                 |
+| Variable argument   | `array : [X]`                       |
+| Return type         | `[X]`                               |
+
+### Example
+
+```motoko
+{{#include _mo/array/reverse.mo:a}}
+```
+
+### Time and Space Complexity
+
+
+
 ## Array.map
+
+### Function signature
+
+```motoko
+func map<X>(
+
+   array : [X]
+   
+   f : X -> Y
+
+) : [Y]
+```
+
+### Parameters
+
+|                     |                                     |
+| ------------------- | ----------------------              |
+| Generic parameters  | `X`                                 |
+| Variable argument   | `array : [X]`                       |
+| function argument   | `f : X -> Y`                        |
+| Return type         | `[Y]`                               |
+
+### Example
+
+```motoko
+{{#include _mo/array/map.mo:a}}
+```
+
+### Time and Space Complexity
+The bigger `size` is, the more *time* the function takes to run.  
+The bigger `size` is, the more *memory* the function needs to run.  
+
 
 ## Array.filter
 
+### Function signature
+
+```motoko
+func filter<X>(
+
+   array : [X]
+   
+   predicate : X -> Bool
+
+) : [X]
+```
+
+### Parameters
+
+|                     |                                     |
+| ------------------- | ----------------------              |
+| Generic parameters  | `X`                                 |
+| Variable argument   | `array : [X]`                       |
+| function argument   | `predicate : X -> Bool`             |
+| Return type         | `[X]`                               |
+
+### Example
+
+```motoko
+{{#include _mo/array/filter.mo:a}}
+```
+
+### Time and Space Complexity
+The bigger `size` is, the more *time* the function takes to run.  
+The bigger `size` is, the more *memory* the function needs to run.  
+
+
 ## Array.mapEntries
+
+### Function signature
+
+```motoko
+func mapEntries<X,Y>(
+
+   array : [X]
+   
+   f : (X, Nat) -> Y
+
+) : [Y]
+```
+
+### Parameters
+
+|                     |                                     |
+| ------------------- | ----------------------              |
+| Generic parameters  | `X`                                 |
+| Variable argument   | `array : [X]`                       |
+| function argument   | `f : (X, Nat) -> Y`                 |
+| Return type         | `[Y]`                               |
+
+### Example
+
+```motoko
+{{#include _mo/array/mapEntries.mo:a}}
+```
+
+### Time and Space Complexity
+The bigger `size` is, the more *time* the function takes to run.  
+The bigger `size` is, the more *memory* the function needs to run.  
 
 ## Array.mapFilter
 
+
+### Function signature
+
+```motoko
+func mapFilter<X,Y>(
+
+  array : [X]
+   
+      f : X -> ?Y
+
+) : [Y]
+```
+
+### Parameters
+
+|                     |                                     |
+| ------------------- | ----------------------              |
+| Generic parameters  | `X`                                 |
+| Variable argument   | `array : [X]`                       |
+| function argument   | `f : X -> ?Y`                 |
+| Return type         | `[Y]`                               |
+
+### Example
+
+```motoko
+{{#include _mo/array/mapFilter.mo:a}}
+```
+
+### Time and Space Complexity
+The bigger `size` is, the more *time* the function takes to run.  
+The bigger `size` is, the more *memory* the function needs to run.  
+
 ## Array.mapResult
+
+### Function signature
+
+```motoko
+func mapResult<X, Y, E>(
+
+  array : [X]
+   
+      f : X -> Result.Result<Y, E>
+      
+) : Result.Result<[Y], E>
+```
+
+### Parameters
+
+|                     |                                     |
+| ------------------- | ----------------------              |
+| Generic parameters  | `X`                                 |
+| Generic parameters  | `Y`                                 |
+| Generic parameters  | `E`                                 |
+| Variable argument   | `array : [X]`                       |
+| function argument   | `f : X -> Result.Result<Y, E>`      |
+| Return type         | `Result.Result<[Y], E>`             |
+
+### Example
+
+```motoko
+{{#include _mo/array/mapResult.mo:a}}
+```
+
+### Time and Space Complexity
+The bigger `size` is, the more *time* the function takes to run.  
+The bigger `size` is, the more *memory* the function needs to run.  
+
 
 ## Array.chain
 
+### Function signature
+
+```motoko
+func chain<X, Y>(
+
+  array : [X]
+   
+      k : X -> [Y]
+      
+) : [Y]
+```
+
+### Parameters
+
+|                     |                                     |
+| ------------------- | ----------------------              |
+| Generic parameters  | `X`                                 |
+| Generic parameters  | `Y`                                 |
+| Variable argument   | `array : [X]`                       |
+| function argument   | `k : X -> [Y]`                      |
+| Return type         | `[Y]`                               |
+
+### Example
+
+```motoko
+{{#include _mo/array/chain.mo:a}}
+```
+
+### Time and Space Complexity
+The bigger `size` is, the more *time* the function takes to run.  
+The bigger `size` is, the more *memory* the function needs to run.  
+
+
 ## Array.foldLeft
+
+### Function signature
+
+```motoko
+func foldLeft<X, A>(
+
+  array : [X]
+   
+      k : X -> [Y]
+      
+) : [Y]
+```
+
+### Parameters
+
+|                     |                                     |
+| ------------------- | ----------------------              |
+| Generic parameters  | `X`                                 |
+| Generic parameters  | `A`                                 |
+| Variable argument   | `array : [X]`                       |
+| function argument   | `k : X -> [Y]`                      |
+| Return type         | `[Y]`                               |
+
+### Example
+
+```motoko
+{{#include _mo/array/foldLeft.mo:a}}
+```
+
+### Time and Space Complexity
+The bigger `size` is, the more *time* the function takes to run.  
+The bigger `size` is, the more *memory* the function needs to run.  
+
 
 ## Array.foldRight
 
