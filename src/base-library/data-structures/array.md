@@ -61,7 +61,7 @@ func init<X>(
 {{#include _mo/array/init.mo:a}}
 ```
 
-### Time and Space Complexity
+### Execution Time and Memory Usage
 The bigger `size` is, the more *time* the function takes to run.  
 The bigger `size` is, the more *memory* the function needs to run.  
 
@@ -96,7 +96,7 @@ func tabulate<X>(
 {{#include _mo/array/tabulate.mo:a}}
 ```
 
-### Time and Space Complexity
+### Execution Time and Memory Usage
 The bigger `size` is, the more *time* the function takes to run.  
 The bigger `size` is, the more *memory* the function needs to run.  
 
@@ -131,7 +131,7 @@ func tabulateVar<X>(
 {{#include _mo/array/tabulateVar.mo:a}}
 ```
 
-### Time and Space Complexity
+### Execution Time and Memory Usage
 The bigger `size` is, the more *time* the function takes to run.  
 The bigger `size` is, the more *memory* the function needs to run.  
 
@@ -163,7 +163,7 @@ func freeze<X>(
 {{#include _mo/array/freeze.mo:a}}
 ```
 
-### Time and Space Complexity
+### Execution Time and Memory Usage
 The bigger `size` is, the more *time* the function takes to run.  
 The bigger `size` is, the more *memory* the function needs to run.  
 
@@ -193,7 +193,7 @@ func thaw<X>(
 {{#include _mo/array/thaw.mo:a}}
 ```
 
-### Time and Space Complexity
+### Execution Time and Memory Usage
 The bigger `size` is, the more *time* the function takes to run.  
 The Array.thaw method needs to allocate space for the new mutable array, which has the same size as the input array. However, it does not need to allocate any additional memory proportional to the size of the input array. This means that the space complexity of Array.thaw is O(1). 
 
@@ -230,7 +230,7 @@ func equal<X>(
 {{#include _mo/array/equal.mo:a}}
 ```
 
-### Time and Space Complexity
+### Execution Time and Memory Usage
 
 
 ## Array.find
@@ -262,7 +262,7 @@ func find<X>(
 {{#include _mo/array/find.mo:a}}
 ```
 
-### Time and Space Complexity
+### Execution Time and Memory Usage
 
 
 ## Array.sort
@@ -294,7 +294,7 @@ func sort<X>(
 {{#include _mo/array/sort.mo:a}}
 ```
 
-### Time and Space Complexity
+### Execution Time and Memory Usage
 
 
 ## Array.sortInPlace
@@ -326,7 +326,7 @@ func sortInPlace<X>(
 {{#include _mo/array/sortInPlace.mo:a}}
 ```
 
-### Time and Space Complexity
+### Execution Time and Memory Usage
 
 
 ## Array.reverse
@@ -463,37 +463,12 @@ The bigger `size` is, the more *memory* the function needs to run.
 
 ## Array.mapFilter
 
+|Index|`array1 : [Nat]`|`array2 : [Int]`|
+|---|---|---|
+|0|`0`|`1`|
+|1|1|2|
+|2|2||
 
-### Function signature
-
-```motoko
-func mapFilter<X,Y>(
-
-  array : [X]
-   
-      f : X -> ?Y
-
-) : [Y]
-```
-
-### Parameters
-
-|                     |                                     |
-| ------------------- | ----------------------              |
-| Generic parameters  | `X`                                 |
-| Variable argument   | `array : [X]`                       |
-| function argument   | `f : X -> ?Y`                 |
-| Return type         | `[Y]`                               |
-
-### Example
-
-```motoko
-{{#include _mo/array/mapFilter.mo:a}}
-```
-
-### Time and Space Complexity
-The bigger `size` is, the more *time* the function takes to run.  
-The bigger `size` is, the more *memory* the function needs to run.  
 
 ## Array.mapResult
 
