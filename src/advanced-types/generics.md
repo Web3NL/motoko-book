@@ -8,7 +8,7 @@ Let's ask [ChatGPT](https://chat.openai.com/) how it would explain *generic type
 In our own words, generic types allow us to write code that *generalizes* over many possible types. In fact, that is where they get there name from. 
 
 ## Type parameters and type arguments
-In Motoko, [custom types](/common-programming-concepts/types.html#the-type-keyword), [functions](/common-programming-concepts/functions.html) and [classes](/common-programming-concepts/objects-and-classes/classes.html) can specify *generic type parameters*. Type parameters have *names* and are supplied by adding them in between angle brackets `< >`. The angle brackets are supplied directly after the *name* of the type, function or class.  
+In Motoko, [custom types](/common-programming-concepts/types.html#the-type-keyword), [functions](/common-programming-concepts/functions.html) and [classes](/common-programming-concepts/objects-and-classes/classes.html) can specify *generic type parameters*. Type parameters have *names* and are declared by adding them in between angle brackets `< >`. The angle brackets are declared directly after the *name* of the type, function or class (before any other parameters).
 
 ### Type parameters
 Here's a custom type alias for a [tuple](/common-programming-concepts/types/tuples.html), that has the *conventional* generic type parameter `T`:
@@ -38,7 +38,7 @@ The same `CustomType` could be used again and again with different type argument
 In the last example we used `[Nat]` as a type argument. This means we have to supply an [immutable array](/common-programming-concepts/types/immutable-arrays.html) of type `[Nat]` for the `T` in the tuple. 
 
 ## Generics in type declarations
-Generics may be used in type declarations of *higher order* types like objects and variants.
+Generics may be used in type declarations of *compound* types like objects and variants.
 
 ### Generic variant
 A commonly used generic type is the `Result` [variant type](/common-programming-concepts/types/variants.html) that is available as a [public type](/common-programming-concepts/modules.html#public-types-in-modules) in the [Base Library](/base-library.html) in the [Result module](/base-library/utils/result.html). 
@@ -57,7 +57,7 @@ Results are usually used as a return value for functions to provide information 
 
 Our function `checkUsername` takes a `Text` argument and returns a value of type `Result<(), Text>`. The unit type `()` and `Text` are *type arguments*. 
 
-The function checks the size of the its argument `name`. In case `name` is shorter than 4 characters, it returns an 'error' by constructing a *value* for the `#err` variant and adding an associated value of type `Text`. The return value would in this case be `#err("Too short!")` which is a valid value for our `Result` variant. 
+The function checks the size of the its argument `name`. In case `name` is shorter than 4 characters, it returns an 'error' by constructing a *value* for the `#err` variant and adding an associated value of type `Text`. The return value would in this case be `#err("Too short!")` which is a valid value for our `Result<(), Text>` variant.  
 
 Another failure scenario is when the argument is longer than 20 characters. The function returns `#err("To long!")`.
 
