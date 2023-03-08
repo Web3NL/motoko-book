@@ -3,6 +3,7 @@
         "DFINITY",
         "ICRC",
         "Motoko",
+        "subtyping",
         "Webassembly"
     ]
 }
