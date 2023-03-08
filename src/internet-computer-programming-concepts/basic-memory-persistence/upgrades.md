@@ -14,15 +14,20 @@ There are two ways to *update* the Wasm module of an actor running in a canister
 ### Reinstall
 When we have an actor Wasm module running in a canister, we could always reinstall that same actor module or a new actor module inside the same canister. Reinstalling always causes the actor to be 'reset'. Whether reinstalling the same actor Wasm module or a new one, the operation is the same as if installing for the first time.
 
-**Reinstalling always wipes out the main memory of the canister and erases the state of the actor including any stable variables.** 
+**Reinstalling always wipes out the main memory of the canister and erases the state of the actor** 
 
 ### Upgrade
 We could also choose to *upgrade* the Wasm module of an actor. Then:
-- [Stable variables](/internet-computer-programming-concepts/basic-memory-persistence/stable-variables.html) are persisted
-- [Pre and post upgrade hooks](/advanced-concepts/system-apis/preupgrade-postupgrade.html) are run before and after the upgrade
-- The [actor interface](/internet-computer-programming-concepts/async-data/candid.html#actor-interfaces) is checked for [backwards compatibility](/internet-computer-programming-concepts/basic-memory-persistence.html#service-upgrades-and-sub-typing)
+- The [actor interface](/internet-computer-programming-concepts/async-data/candid.html#actor-interfaces) is checked for [backwards compatibility](/internet-computer-programming-concepts/basic-memory-persistence.html#service-upgrades-and-sub-typing)  
+- The [pre-upgrade system function](/advanced-concepts/system-apis/preupgrade-postupgrade.html) is run before the upgrade
+- The canister [Wasm module](/internet-computer-programming-concepts/actors/actor-to-canister.html#code-compiling-and-wasm-modules) is upgraded
+- [Stable variables](/internet-computer-programming-concepts/basic-memory-persistence/stable-variables.html) are restored
+- The [post upgrade system function](/advanced-concepts/system-apis/preupgrade-postupgrade.html) is run after the upgrade
+
+> **NOTE**  
+> *Pre and post upgrade hooks could trap and lead to loss of canister data and thus are not considered best practice.*
 
 ## Upgrading and reinstalling in Motoko Playground and SDK
-When we have an already running canister in Motoko Playground and we click `deploy` again, we are presented with the option to `upgrade` or `reinstall` (among other options).
+When we have an already running canister in [Motoko Playground](/getting-started.html) and we click `deploy` again, we are presented with the option to `upgrade` or `reinstall` (among other options).
 
 The same functionality is provided when using the [SDK](/project-deployment.html).
