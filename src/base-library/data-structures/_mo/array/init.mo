@@ -6,5 +6,5 @@ let initValue : Char = 'A';
 
 let a : [var Char] = Array.init<Char>(size, initValue);
 
-// ['A', 'A', 'A'] : [Char]
+// ['A', 'A', 'A'] : [var Char]
 // ANCHOR_END: a

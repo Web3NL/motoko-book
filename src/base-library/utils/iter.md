@@ -1,13 +1,367 @@
 # Iterators
+The convention is to name the *module alias* after the *file name* it is defined in:
 
+```motoko
+{{#include _mo/iter/iter.mo:a}}
+```
 
 ## Public items
 
 The following types and functions are made public in the `Iter` module:  
-[Type `Iter<T>`]()
 
-[Class `range`](#arraytabulatevar)  
-&nbsp;&nbsp;&nbsp;&nbsp;[Function `next`](#arraytabulate)  
+[Type ](#type)
 
-[Function `freeze`](#arrayfreeze)  
-[Function `thaw`](#arraythaw)  
+[Class `range`](#class) 
+
+&nbsp;&nbsp;&nbsp;&nbsp;[Function `next`](#rangenext)  
+
+[Class `revRange`](#class) 
+
+&nbsp;&nbsp;&nbsp;&nbsp;[Function `next`](#revRangenext)  
+
+[Function `iterate`](#iteriterate)  
+[Function `size`](#itersize)  
+[Function `map`](#itermap)  
+[Function `filter`](#iterfilter)  
+[Function `make`](#itermake)  
+[Function `fromArray`](#iterfromarray)  
+[Function `fromArrayMut`](#iterfromarraymut)  
+[Function `fromList`](#iterfromlist)  
+[Function `toArray`](#itertoarray)  
+[Function `toArrayMut`](#itertoarraymut)  
+[Function `toList`](#itertolist)  
+[Function `sort`](#itersort)  
+
+
+## Type
+```motoko
+type Iter<T> = { next : () -> ?T }
+```
+
+## Class range
+```motoko
+class range(x : Nat, y : Int)
+```
+
+## range.next
+### Function signature
+
+```motoko
+func next() : ?Nat
+```
+The function `next` takes no argument and returns an `Nat` value. 
+
+### Example
+
+```motoko
+{{#include _mo/iter/iter.mo:b}}
+```
+
+
+## Class revRange
+```motoko
+class revRange(x : Int, y : Int)
+```
+## revRange.next
+
+### Function signature
+
+```motoko
+func next() : ?Int
+```
+The function `next` takes no argument and returns an `Int` value. 
+
+### Example
+
+```motoko
+{{#include _mo/iter/iter.mo:c}}
+```
+
+
+## Iter.iterate
+
+### Function signature
+
+```motoko
+func iterate<A>(
+
+  xs : Iter<A>
+
+   f : (A, Nat) -> ()
+
+) : () 
+
+```
+### Parameters
+
+|                     |                        |
+| ------------------- | ---------------------- |
+| Generic parameters  | `A`                    |
+| Variable argument   | `xs : Iter<A>`         |
+| Function argument   | `f : (A, Nat) -> ()`   |
+| Return type         | `() `                  |
+
+### Example
+
+```motoko
+{{#include _mo/iter/iterate.mo:a}}
+```
+
+
+## Iter.size
+
+### Function signature
+
+```motoko
+func size<A>(xs : Iter<A>) : Nat
+```
+
+### Parameters
+
+|                     |                        |
+| ------------------- | ---------------------- |
+| Generic parameters  | `A`                    |
+| Variable argument   | `xs : Iter<A>`         |
+| Return type         | `Nat`                  |
+
+
+### Example
+
+```motoko
+{{#include _mo/iter/size.mo:a}}
+```
+
+## Iter.map
+
+### Function signature
+
+```motoko
+func map<A, B>(
+
+  xs : Iter<A>
+
+   f : A -> B
+
+) : Iter<B>
+
+```
+### Parameters
+
+|                     |                        |
+| ------------------- | ---------------------- |
+| Generic parameter   | `A, B`                 |
+| Variable argument   | `xs : Iter<A>`         |
+| Function argument   | `f : A -> B`           |
+| Return type         | `Iter<B>`              |
+
+### Example
+
+```motoko
+{{#include _mo/iter/map.mo:a}}
+```
+
+## Iter.filter
+
+### Function signature
+
+```motoko
+func filter<A>(
+
+  xs : Iter<A>
+
+   f : A -> Bool
+
+) : Iter<A>
+
+```
+### Parameters
+
+|                     |                        |
+| ------------------- | ---------------------- |
+| Generic parameters  | `A`                    |
+| Variable argument   | `xs : Iter<A>`         |
+| Function argument   | `f : A -> Bool`        |
+| Return type         | `Iter<A>`              |
+
+### Example
+
+```motoko
+{{#include _mo/iter/filter.mo:a}}
+```
+
+## Iter.make
+
+### Function signature
+
+```motoko
+func make<A>(x : A) : Iter<A>
+```
+### Parameters
+
+|                     |                        |
+| ------------------- | ---------------------- |
+| Generic parameters  | `A`                    |
+| Variable argument   | `x : A`                |
+| Return type         | `Iter<A>`              |
+
+### Example
+
+```motoko
+{{#include _mo/iter/make.mo:a}}
+```
+
+## Iter.fromArray
+
+### Function signature
+
+```motoko
+func fromArray<A>(xs : [A]) : Iter<A>
+```
+### Parameters
+
+|                     |                        |
+| ------------------- | ---------------------- |
+| Generic parameters  | `A`                    |
+| Variable argument   | `xs : [A]`             |
+| Return type         | `Iter<A>`              |
+
+### Example
+
+```motoko
+{{#include _mo/iter/fromArray.mo:a}}
+```
+
+## Iter.fromArrayMut
+
+### Function signature
+
+```motoko
+func fromArrayMut<A>(xs : [var A]) : Iter<A>
+
+```
+### Parameters
+
+|                     |                        |
+| ------------------- | ---------------------- |
+| Generic parameters  | `A`                    |
+| Variable argument   | `xs : [var A]`         |
+| Return type         | `Iter<A>`              |
+
+### Example
+
+```motoko
+{{#include _mo/iter/fromArrayMut.mo:a}}
+```
+
+## Iter.fromList
+
+### Function signature
+
+```motoko
+func fromList(xs : List<T>) : Iter
+```
+### Parameters
+
+|                     |                        |
+| ------------------- | ---------------------- |
+| Variable argument   | `xs : List<T>`         |
+| Return type         | `Iter`                 |
+
+### Example
+
+```motoko
+{{#include _mo/iter/fromList.mo:a}}
+```
+
+## Iter.toArray
+
+### Function signature
+
+```motoko
+func toArray<A>(xs : Iter<A>) : [A]
+```
+### Parameters
+
+|                     |                        |
+| ------------------- | ---------------------- |
+| Generic parameters  | `A`                    |
+| Variable argument   | `xs : Iter<A>`         |
+| Return type         | `[A]`                  |
+
+### Example
+
+```motoko
+{{#include _mo/iter/toArray.mo:a}}
+```
+
+## Iter.toArrayMut
+
+### Function signature
+
+```motoko
+func toArrayMut<A>(xs : Iter<A>) : [var A]
+```
+### Parameters
+
+|                     |                        |
+| ------------------- | ---------------------- |
+| Generic parameters  | `A`                    |
+| Variable argument   | `xs : Iter<A>`         |
+| Return type         | `[var A]`              |
+
+### Example
+
+```motoko
+{{#include _mo/iter/toArrayMut.mo:a}}
+```
+
+## Iter.toList
+
+### Function signature
+
+```motoko
+func list<A>(xs : Iter<A>) : List.List<A>
+```
+### Parameters
+
+|                     |                        |
+| ------------------- | ---------------------- |
+| Generic parameters  | `A`                    |
+| Variable argument   | `xs : Iter<A>`         |
+| Return type         | `List.List<A>`         |
+
+### Example
+
+```motoko
+{{#include _mo/iter/toList.mo:a}}
+```
+
+## Iter.sort
+
+### Function signature
+
+```motoko
+func sort<A>(
+  
+     xs : Iter<A>
+
+compare : (A, A) -> Order.Order
+
+) : Iter<A>
+
+```
+### Parameters
+
+|                     |                                    |
+| ------------------- | ----------------------             |
+| Generic parameters  | `A`                                |
+| Variable argument   | `xs : Iter<A>`                     |
+| Function argument   | `compare : (A, A) -> Order.Order`  |
+| Return type         | `Iter<A>`                          |
+
+### Example
+
+```motoko
+{{#include _mo/iter/sort.mo:a}}
+```
+
