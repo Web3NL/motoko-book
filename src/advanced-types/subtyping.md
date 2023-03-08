@@ -1,7 +1,7 @@
-# Subtyping
-Motoko's modern type system allows us to think of some types as being either a *subtype* or a *supertype*. If a type `T` is a subtype of type `U`, then `T` can be used everywhere `U` is expected. 
+# Sub-typing
+Motoko's modern type system allows us to think of some types as being either a *subtype* or a *supertype*. If a type `T` is a subtype of type `U`, then a value of type `T` can be used everywhere a value of type `U` is expected. 
 
-To express this relationship we say that `T` is [*bounded*](/advanced-types/type-bounds.html) by `U` and we write:
+To express this relationship we write:
 ```motoko
 T <: U
 ```
