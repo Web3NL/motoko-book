@@ -2,9 +2,14 @@ import mo from "motoko"
 import fs from "fs"
 import path from "path"
 
+let base = await mo.fetchPackage('base', 'https://github.com/dfinity/motoko-base/master/src');
+mo.loadPackage(base);
+
 let folders = findFolder("src", "_mo");
 console.log(folders)
 folders.forEach(folder => checkMoFiles(folder));
+
+
 
 function findFolder(dir: string, folderName: string) {
   let array: string[] = []
