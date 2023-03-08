@@ -3,6 +3,7 @@
 **WARNING**: Book is work in progress.
 
 **Latest updates**  
+08-03-2023: Version 0.3.1 (Chapter 3 Release)  
 12-02-2023: Version 0.3 (Chapter 3 Beta Release)  
 09-02-2023: Version 0.2.1 (Chapter 2 Important additions)  
 22-01-2023: Version 0.2 (Chapter 2 Release)  
