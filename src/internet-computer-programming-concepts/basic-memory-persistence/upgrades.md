@@ -18,9 +18,11 @@ When we have an actor Wasm module running in a canister, we could always reinsta
 
 ### Upgrade
 We could also choose to *upgrade* the Wasm module of an actor. Then:
-- [Stable variables](/internet-computer-programming-concepts/basic-memory-persistence/stable-variables.html) are persisted
-- The [actor interface](/internet-computer-programming-concepts/async-data/candid.html#actor-interfaces) is checked for [backwards compatibility](/internet-computer-programming-concepts/basic-memory-persistence.html#service-upgrades-and-sub-typing)
-- [Pre and post upgrade hooks](/advanced-concepts/system-apis/preupgrade-postupgrade.html) are run before and after the upgrade
+- The [actor interface](/internet-computer-programming-concepts/async-data/candid.html#actor-interfaces) is checked for [backwards compatibility](/internet-computer-programming-concepts/basic-memory-persistence.html#service-upgrades-and-sub-typing)  
+- The [pre-upgrade system function](/advanced-concepts/system-apis/preupgrade-postupgrade.html) is run before the upgrade
+- The canister [Wasm module](/internet-computer-programming-concepts/actors/actor-to-canister.html#code-compiling-and-wasm-modules) is upgraded
+- [Stable variables](/internet-computer-programming-concepts/basic-memory-persistence/stable-variables.html) are restored
+- The [post upgrade system function](/advanced-concepts/system-apis/preupgrade-postupgrade.html) is run after the upgrade
 
 > **NOTE**  
 > *Pre and post upgrade hooks could trap and lead to loss of canister data and thus are not considered best practice.*

@@ -1,6 +1,8 @@
 
 actor {
 // ANCHOR: a
-stable var x = 0;
+stable let x = 0;
+
+stable var y = 0;
 // ANCHOR_END: a
 }

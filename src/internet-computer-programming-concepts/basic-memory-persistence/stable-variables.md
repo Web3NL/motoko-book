@@ -1,15 +1,15 @@
 # Stable Variables
 To persist the state of an actor when [upgrading](/internet-computer-programming-concepts/basic-memory-persistence/upgrades.html), we can declare [immutable](/common-programming-concepts/variables.html) and [mutable](/common-programming-concepts/mutability.html) variables to be `stable`. Stable variables must be of [*stable type*](/internet-computer-programming-concepts/basic-memory-persistence/stable-variables.html#stable-types).
 
-## Mutating and Upgrading Stable Mutable Variables
-The [*mutable state of an actor*](/internet-computer-programming-concepts/actors.html#a-simple-actor) is stored in the form of mutable variables that are declared with the `var` keyword. Mutable variables in actors always have `private` *visibility*. (although the `private` keyword is not necessary and is assumed by default).
+## Modifying and Upgrading Stable Variables
+The [*state of an actor*](/internet-computer-programming-concepts/actors.html#a-simple-actor) is stored in the form of *immutable* and *mutable* variables that are declared with the `let` or `var` keywords. Variable declarations in actors always have `private` *visibility* (although the `private` keyword is not necessary and is assumed by default).
 
-If we want to persist the state of our actor when [upgrading](/internet-computer-programming-concepts/basic-memory-persistence/upgrades.html), we could declare our mutable variables `stable`, if it is of [stable type](/internet-computer-programming-concepts/basic-memory-persistence/stable-variables.html#stable-types). A stable variable looks like this:
+If we want to retain the state of our actor when [upgrading](/internet-computer-programming-concepts/basic-memory-persistence/upgrades.html), we need to declare all its state variables as `stable`. A variable can only be declared stable if it is of [stable type](/internet-computer-programming-concepts/basic-memory-persistence/stable-variables.html#stable-types). Many, but not all types, are stable. Mutable and immutable stable variables are declared like this:
 ```motoko
 {{#include _mo/stable-variables.mo:a}}
 ```
 
-This variable now *persists* its state even after *upgrading* the actor code. Lets demonstrate this with an actor that implements a simple counter.
+These variables now *retain* their state even after *upgrading* the actor code. Lets demonstrate this with an actor that implements a simple counter.
 ```motoko
 {{#include _mo/stable-variables2.mo:a}}
 ```
@@ -60,7 +60,7 @@ Immutable or mutable variables of [*records with mutable fields*](/common-progra
 {{#include _mo/stable-var1.mo:b}}
 ```
 
-*Immutable variable* `r1` and *mutable variable* `r2` can be stable because they have a value of a *record with a mutable field*. 
+*Immutable variable* `r1` and *mutable variable* `r2` can be stable because they contain a stable type, namely a *record with a mutable field*. 
 
 ### Stable Objects with Mutable Variables
 Immutable or mutable variables of [*objects with (private or public) mutable variables*](/common-programming-concepts/objects-and-classes/objects.html) could be declared stable:
@@ -68,7 +68,7 @@ Immutable or mutable variables of [*objects with (private or public) mutable var
 {{#include _mo/stable-var1.mo:c}}
 ```
 
-*Immutable variable* `o1` and *mutable variable* `o2` can be stable because they have a value of an *object with private and public mutable variables*. 
+*Immutable variable* `o1` and *mutable variable* `o2` can be stable because they contain a stable type, namely an *object with private and public mutable variables*. 
 
 ### Stable Objects with Private Functions
 Immutable or mutable variables of [*objects with private functions*](/common-programming-concepts/objects-and-classes/objects.html) could be declared stable:
@@ -76,7 +76,7 @@ Immutable or mutable variables of [*objects with private functions*](/common-pro
 {{#include _mo/stable-var1.mo:d}}
 ```
 
-*Immutable variable* `p1` and *mutable variable* `p2` can be stable because they have a value of an *object with a private function*. 
+*Immutable variable* `p1` and *mutable variable* `p2` can be stable because they contain a stable type, namely an *object with a private function*. 
 
 ### Other stable types
 On top all [shared types](/internet-computer-programming-concepts/async-data/shared-types.html) and the types mentioned above, the following types could also be stable:  
@@ -86,9 +86,20 @@ On top all [shared types](/internet-computer-programming-concepts/async-data/sha
 
 ## How it works
 Declaring variable(s) `stable` causes the following to happen *automatically* when [upgrading](/internet-computer-programming-concepts/basic-memory-persistence/upgrades.html) our canister with new actor code:
-- The value of the variable(s) is *serialized* into [Candid format](/internet-computer-programming-concepts/async-data/candid.html#candid-serialization).
-- The serialized Candid format is copied to [stable memory](/advanced-concepts/scalability/stable-storage.html).  
+- The value of the variable(s) is *serialized* into an internal data format.
+- The serialized data format is copied to [stable memory](/advanced-concepts/scalability/stable-storage.html).  
 - The upgraded actor code (in the form of a [Wasm module](/internet-computer-programming-concepts/actors/actor-to-canister.html#code-compiling-and-wasm-modules)) is installed in the [canister](/internet-computer-programming-concepts/actors/actor-to-canister.html) and the state of the variables is lost.
-- The values in Candid format inside stable memory are retrieved and [*deserialized*](/internet-computer-programming-concepts/async-data/candid.html#candid-serialization).
-- The variables of the new actor code are assigned the original deserialized values.   
+- The values in data format inside stable memory are retrieved and [*deserialized*](/internet-computer-programming-concepts/async-data/candid.html#candid-serialization).
+- The variables of the new actor code are assigned the original deserialized values. 
+
+## Example of non-stable type
+A non-stable type could be an [object with public functions](/common-programming-concepts/objects-and-classes/objects.html#public-functions-in-objects). A variable that contains such an object, could not be declared stable!
+```motoko
+stable let q1 = object { 
+    public func f() {}; 
+};
+```
+**ERROR:** *Variable q1 is declared stable but has non-stable type!*
+
+
 

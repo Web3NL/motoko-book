@@ -32,4 +32,6 @@ stable var p2 = object {
     private func f() {}; 
 };
 // ANCHOR_END: d
+
+
 }
