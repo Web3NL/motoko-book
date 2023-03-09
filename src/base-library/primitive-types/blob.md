@@ -23,24 +23,44 @@ type Blob = Blob.Blob
 ```
 
 ## Blob.fromArray
+
+```motoko
+func fromArray(bytes : [Nat8]) : Blob
+```
+
 The function `fromArray` takes one `Array` argument and returns a `Blob` value.  
 
 ```motoko
 {{#include _mo/blob.mo:b}}
 ```
 ## Blob.toArray
+
+```motoko
+func toArray(blob : Blob) : [Nat8]
+```
+
 The function `toArray` takes one `Blob` argument and returns a `Array` value.  
 
 ```motoko
 {{#include _mo/blob1.mo:a}}
 ```
 ## Blob.toArrayMut
+
+```motoko
+func toArrayMut(blob : Blob) : [var Nat8]
+```
+
 The function `toArrayMut` takes one `Blob` argument and returns a `Mutable Array` value.  
 
 ```motoko
 {{#include _mo/blob2.mo:a}}
 ```
 ## Blob.fromArrayMut
+
+```motoko
+func fromArrayMut(bytes : [var Nat8]) : Blob
+```
+
 The function `fromArrayMut` takes one `Mutable Array` argument and returns a `Blob` value.  
 
 ```motoko

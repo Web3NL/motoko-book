@@ -283,6 +283,14 @@ func sort<X>(
 {{#include _mo/array/sort.mo:a}}
 ```
 
+|Index|`array1 : [Nat]`|`array2 : [Nat]`|
+|---|---|---|
+|0|50|10|
+|1|40|20|
+|2|30|30|
+|3|20|40|
+|4|10|50|
+
 ### Execution Time and Memory Usage
 
 
@@ -340,6 +348,13 @@ func reverse<X>(array : [X]) : [X]
 {{#include _mo/array/reverse.mo:a}}
 ```
 
+|Index|`array1 : [Text]`|`array2 : [Text]`|
+|---|---|---|
+|0|"first" |"third" |
+|1|"second"|"second"|
+|2|"third" |"first" |
+
+
 ### Time and Space Complexity
 
 
@@ -373,6 +388,13 @@ array : [X]
 {{#include _mo/array/map.mo:a}}
 ```
 
+|Index|`array1 : [Bool]`|`array2 : [Bool]`|
+|---|---|---|
+|0|true |false|
+|1|false|true |
+|2|true |false|
+|3|false|true |
+
 ### Time and Space Complexity
 The bigger `size` is, the more *time* the function takes to run.  
 The bigger `size` is, the more *memory* the function needs to run.  
@@ -405,6 +427,15 @@ predicate : X -> Bool
 ```motoko
 {{#include _mo/array/filter.mo:a}}
 ```
+
+|Index|`array1 : [Nat]`|`array2 : [Nat]`|
+|---|---|---|
+|0|1|2 |
+|1|2|6 |
+|2|5|  |
+|3|6|  |
+|4|9|  |
+|5|7|  |
 
 ### Time and Space Complexity
 The bigger `size` is, the more *time* the function takes to run.  
@@ -440,6 +471,13 @@ array : [X]
 {{#include _mo/array/mapEntries.mo:a}}
 ```
 
+|Index|`array1 : [Int]`|`array2 : [Int]`|
+|---|---|---|
+|0|-1| 0 |
+|1|-2|-2 |
+|2|-3|-6 |
+|3|-4|-12|
+
 ### Time and Space Complexity
 The bigger `size` is, the more *time* the function takes to run.  
 The bigger `size` is, the more *memory* the function needs to run.  
@@ -470,19 +508,22 @@ func mapFilter<X,Y>(
 ### Example
 
 ```motoko
-{{#include _mo/array/mapFilter.mo:a}}
+{{#include _mo/array/mapFilter.mo:a}}  
 ```
+
+
+|Index|`array1 : [Nat]`|`array2 : [Text]`|
+|---|---|---|
+|0|1|"100"|
+|1|2|"50" |
+|2|4|"25" |
+|3|5|"20" |
+
 
 ### Time and Space Complexity
 The bigger `size` is, the more *time* the function takes to run.  
 The bigger `size` is, the more *memory* the function needs to run.  
 
-
-|Index|`array1 : [Nat]`|`array2 : [Int]`|
-|---|---|---|
-|0|`0`|`1`|
-|1|1|2|
-|2|2||
 
 
 ## Array.mapResult
@@ -513,6 +554,13 @@ func mapResult<X, Y, E>(
 ```motoko
 {{#include _mo/array/mapResult.mo:a}}
 ```
+
+|Index|`array1 : [Nat]`|`array2 : [Nat]`|
+|---|---|---|
+|0|4|25 |
+|1|5|20 |
+|2|2|50 |
+|3|1|100|
 
 ### Time and Space Complexity
 The bigger `size` is, the more *time* the function takes to run.  
@@ -547,6 +595,16 @@ func chain<X, Y>(
 ```motoko
 {{#include _mo/array/chain.mo:a}}
 ```
+
+|Index|`array1 : [Nat]`|`array2 : [Int]`|
+|---|---|---|
+|0|10|10 |
+|1|20|-10|
+|2|30|20 |
+|3|  |-20|
+|4|  |30 |
+|5|  |-30|
+
 
 ### Time and Space Complexity
 The bigger `size` is, the more *time* the function takes to run.  

@@ -5,8 +5,6 @@ type List<T> = ?(T, List<T>);
 
 // ANCHOR: a
 
-let list : List<Nat> = null;
-
 let list1 : List<Nat> = ?(0, null);
 
 let list2 : List<Nat> = ?(1, list1);

@@ -1,18 +1,18 @@
 
+import Int "mo:base/Int";
 import Iter "mo:base/Iter";
-import Order "mo:base/Order";
 
 
 // ANCHOR: a
 
-let myRange = Iter.range(1, 3);
+let a : [Int] = [5, 2, -3, 1];
 
-func compare(a : Nat, b : Nat) : Order.Order {  #greater };
+let i : Iter.Iter<Int> = a.vals();
 
-let sort = Iter.sort<Nat>(myRange, compare);
+let sorted : Iter.Iter<Int> = Iter.sort(i, Int.compare);
 
-let array = Iter.toArray(sort);
+Iter.toArray(sorted) 
 
-// [3, 2, 1] : [Nat] 
+// [-3, 1, 2, 5] : [Int] 
 // ANCHOR_END: a
 

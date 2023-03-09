@@ -32,6 +32,11 @@ type Nat = Nat.Nat
 ```
 
 ## Nat.toText
+
+```motoko
+func toText(n : Nat) : Text
+```
+
 The function `toText` takes one `Nat` argument and returns a `Text` value.  
 
 ```motoko
@@ -39,6 +44,11 @@ The function `toText` takes one `Nat` argument and returns a `Text` value.
 ```
 
 ## Nat.min
+
+```motoko
+func min(x : Nat, y : Nat) : Nat
+```
+
 The function `min` takes two `Nat` arguments and returns the smallest value.  
 
 ```motoko
@@ -46,6 +56,11 @@ The function `min` takes two `Nat` arguments and returns the smallest value.
 ```
 
 ## Nat.max
+
+```motoko
+func max(x : Nat, y : Nat) : Nat
+```
+
 The function `max` takes two `Nat` arguments and returns the largest value.  
 
 ```motoko
@@ -53,6 +68,11 @@ The function `max` takes two `Nat` arguments and returns the largest value.
 ```
 
 ## Nat.compare
+
+```motoko
+func compare(x : Nat, y : Nat) : {#less; #equal; #greater}
+```
+
 The function `compare` takes two `Nat` arguments and returns an [Order](/base-library/utils/order.html) variant value.  
 
 ```motoko
@@ -60,6 +80,11 @@ The function `compare` takes two `Nat` arguments and returns an [Order](/base-li
 ```
 
 ## Nat.equal
+
+```motoko
+func equal(x : Nat, y : Nat) : Bool
+```
+
 The function `equal` takes two `Nat` arguments and returns a `Bool` value. It is equivalent to the `==` [operator](/common-programming-concepts/operators.html).  
 
 ```motoko
@@ -67,6 +92,11 @@ The function `equal` takes two `Nat` arguments and returns a `Bool` value. It is
 ```
 
 ## Nat.notEqual
+
+
+```motoko
+func notEqual(x : Nat, y : Nat) : Bool
+```
 The function `notEqual` takes two `Nat` arguments and returns a `Bool` value. It is equivalent to the `!=` [operator](/common-programming-concepts/operators.html).
 
 ```motoko
@@ -74,12 +104,22 @@ The function `notEqual` takes two `Nat` arguments and returns a `Bool` value. It
 ```
 
 ## Nat.less
+
+
+```motoko
+func less(x : Nat, y : Nat) : Bool
+```
 The function `less` takes two `Nat` arguments and returns a `Bool` value. It is equivalent to the `<` [operator](/common-programming-concepts/operators.html).
 ```motoko
 {{#include _mo/nat6.mo:a}}
 ```
 
 ## Nat.lessOrEqual
+
+```motoko
+func lessOrEqual(x : Nat, y : Nat) : Bool
+```
+
 The function `lessOrEqual` takes two `Nat` arguments and returns a `Bool` value. It is equivalent to the `<=` [operator](/common-programming-concepts/operators.html).
 
 ```motoko
@@ -87,6 +127,11 @@ The function `lessOrEqual` takes two `Nat` arguments and returns a `Bool` value.
 ```
 
 ## Nat.greater
+
+```motoko
+func greater(x : Nat, y : Nat) : Bool
+```
+
 The function `greater` takes two `Nat` arguments and returns a `Bool` value. It is equivalent to the `>` [operator](/common-programming-concepts/operators.html).
 
 ```motoko
@@ -94,6 +139,11 @@ The function `greater` takes two `Nat` arguments and returns a `Bool` value. It 
 ```
 
 ## Nat.greaterOrEqual
+
+```motoko
+func greaterOrEqual(x : Nat, y : Nat) : Bool
+```
+
 The function `greaterOrEqual` takes two `Nat` arguments and returns a `Bool` value. It is equivalent to the `>=` [operator](/common-programming-concepts/operators.html).
 
 ```motoko
@@ -101,6 +151,11 @@ The function `greaterOrEqual` takes two `Nat` arguments and returns a `Bool` val
 ```
 
 ## Nat.add
+
+
+```motoko
+func add(x : Nat, y : Nat) : Nat
+```
 The function `add` takes two `Nat` arguments and returns a `Nat` value. It is equivalent to the `+` [operator](/common-programming-concepts/operators.html).
 
 ```motoko
@@ -108,6 +163,11 @@ The function `add` takes two `Nat` arguments and returns a `Nat` value. It is eq
 ```
 
 ## Nat.sub
+
+```motoko
+func sub(x : Nat, y : Nat) : Nat
+```
+
 The function `sub` takes two `Nat` arguments and returns a `Nat` value. It is equivalent to the `-` [operator](/common-programming-concepts/operators.html).
 
 ```motoko
@@ -115,6 +175,11 @@ The function `sub` takes two `Nat` arguments and returns a `Nat` value. It is eq
 ```
 
 ## Nat.mul
+
+```motoko
+func mul(x : Nat, y : Nat) : Nat
+```
+
 The function `mul` takes two `Nat` arguments and returns a `Nat` value. It is equivalent to the `*` [operator](/common-programming-concepts/operators.html).
 
 ```motoko
@@ -122,6 +187,11 @@ The function `mul` takes two `Nat` arguments and returns a `Nat` value. It is eq
 ```
 
 ## Nat.div
+
+```motoko
+func div(x : Nat, y : Nat) : Nat
+```
+
 The function `div` takes two `Nat` arguments and returns a `Nat` value. It is equivalent to the `/` [operator](/common-programming-concepts/operators.html).
 
 ```motoko
@@ -129,6 +199,11 @@ The function `div` takes two `Nat` arguments and returns a `Nat` value. It is eq
 ```
 
 ## Nat.rem
+
+```motoko
+func rem(x : Nat, y : Nat) : Nat
+```
+
 The function `rem` takes two `Nat` arguments and returns a `Nat` value. It is equivalent to the `%` [operator](/common-programming-concepts/operators.html).
 
 ```motoko
@@ -136,6 +211,11 @@ The function `rem` takes two `Nat` arguments and returns a `Nat` value. It is eq
 ```
 
 ## Nat.pow
+
+```motoko
+func pow(x : Nat, y : Nat) : Nat
+```
+
 The function `pow` takes two `Nat` arguments and returns a `Nat` value. It is equivalent to the `**` [operator](/common-programming-concepts/operators.html).
 
 ```motoko
