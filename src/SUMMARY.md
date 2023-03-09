@@ -81,7 +81,9 @@
         - [RBTree](base-library/data-structures/rbtree.md)
 
 - [Advanced Concepts](advanced-concepts.md)
-    - [Errors and Traps](advanced-concepts/errors-and-traps.md)
+    - [Canisters](advanced-concepts/canisters.md)
+        - [Canister Status](advanced-concepts/canisters/canister-status.md)
+        - [Errors and Traps](advanced-concepts/canisters/errors-and-traps.md)
     - [Async Programming](advanced-concepts/async-programming.md)
         - [Message Inspection](advanced-concepts/async-programming/message-inspection.md)
         - [Cross Canister Calls and Rollbacks](advanced-concepts/async-programming/cross-canister-calls-and-rollbacks.md)
