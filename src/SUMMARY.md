@@ -72,7 +72,6 @@
     - [Utility Modules](base-library/utils.md)
         - [Time](base-library/utils/time.md)
         - [Result](base-library/utils/result.md)
-        - [Error](base-library/utils/error.md)
         - [Iterators](base-library/utils/iter.md)
     - [Data Structures](base-library/data-structures.md)
         - [Array](base-library/data-structures/array.md)
@@ -82,6 +81,7 @@
         - [RBTree](base-library/data-structures/rbtree.md)
 
 - [Advanced Concepts](advanced-concepts.md)
+    - [Errors and Traps](advanced-concepts/errors-and-traps.md)
     - [Async Programming](advanced-concepts/async-programming.md)
         - [Message Inspection](advanced-concepts/async-programming/message-inspection.md)
         - [Cross Canister Calls and Rollbacks](advanced-concepts/async-programming/cross-canister-calls-and-rollbacks.md)
