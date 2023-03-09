@@ -49,7 +49,7 @@ class range(x : Nat, y : Int)
 ```motoko
 func next() : ?Nat
 ```
-The function `next` takes no argument and returns an `Nat` value. 
+The function `next` takes no argument and returns an `?Nat` value. 
 
 ### Example
 
@@ -69,7 +69,7 @@ class revRange(x : Int, y : Int)
 ```motoko
 func next() : ?Int
 ```
-The function `next` takes no argument and returns an `Int` value. 
+The function `next` takes no argument and returns an `?Int` value. 
 
 ### Example
 
