@@ -2,12 +2,15 @@
 
 // ANCHOR: a
 let a : ?Nat = ?202;
+
 let b : ?Text = ?"DeFi";
+
 let c : ?Bool = ?true;
 // ANCHOR_END: a
 
 // ANCHOR: b
 let x : ?Nat = null;
+
 let y : ?Text = null : Null;
 // ANCHOR_END: b
 

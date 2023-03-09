@@ -12,7 +12,9 @@ let a : Nat = (2 ** 4) / 4;
 
 // ANCHOR: c
 let b = 2 > 3;
+
 let c = (2 : Int) >= 2;
+
 let d = 1.61 == 1.61;
 // ANCHOR_END: c
 

@@ -4,7 +4,6 @@
 let individual = ("Male", 30);
 
 let (gender, age) = individual;
-
 // ANCHOR_END: a
 
 // ANCHOR: b
