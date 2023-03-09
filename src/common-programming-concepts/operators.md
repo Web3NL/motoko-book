@@ -2,7 +2,7 @@
 Operators are symbols that indicate several kinds of *operations* on values. They consist of one, two or three characters and are used to perform manipulations on typically one or two values at a time.
 
 ```motoko
-let x = 1 + 1; 
+{{#include _mo/operators.mo:a}} 
 ```
 
 The `+` character in the example above serves as an addition operator, which performs an *arithmetic operation*. 
@@ -22,7 +22,7 @@ Numeric operators are used to perform *arithmetic* operations on number types li
 An example:
 
 ```motoko
-let a : Nat = (2 ** 4) / 4; 
+{{#include _mo/operators.mo:b}} 
 ```
 
 We used parentheses `(2 ** 4)` to indicate the order in which the operations need to be performed. The exponentiation happens first and the result is then divided by 4. The end result will be a value of type `Nat`.
@@ -42,11 +42,7 @@ Relational operators are used to *relate* or compare two values. The result of t
 Some examples:
 
 ```motoko
-let b = 2 > 3;
-
-let c = (2 : Int) >= 2;
-
-let d = 1.61 == 1.61;
+{{#include _mo/operators.mo:c}}
 ```
 
 In the first line we compared two `Nat` values. The result is the value `false` of type `Bool`.
@@ -66,13 +62,7 @@ We already encountered the most common assignment operator in [mutability](mutab
 Lets use all of them in an example:
 
 ```motoko
-var number : Int = 5;
-
-number += 2;
-
-number -= 10;
-
-number := 0;
+{{#include _mo/operators.mo:d}}
 ```
 
 We started by declaring a mutable variable named `number`, we annotated its name with the type `Int` and set its value equal to `5`.
@@ -90,7 +80,7 @@ Checkout the chapter on [functions](functions.html) to see an example of the tex
 Consider the following example:
 
 ```motoko
-let q : Float = 1 + 2 - 3 * 4 / 5;
+{{#include _mo/operators.mo:e}}
 ```
 
 We used 4 common arithmetic operations in one line. The result is a value of type `Float` and will be named `q`.
@@ -108,7 +98,7 @@ Multiplication and division have a *higher precedence* than addition and subtrac
 To ensure an operation happens first before any other, we can enclose the values and the operator inside parenthesis.
 
 ```motoko
-let q : Float = ((1 + 2) - 3) * 4 / 5;
+{{#include _mo/operators1.mo:a}}
 ```
 
 The value of `q` is now `0`.
