@@ -25,6 +25,11 @@ type Text = Text.Text
 
 
 ## Text.size
+
+```motoko
+func size(t : Text) : Nat
+```
+
 The function `size` takes one `Text` argument and returns a `Nat` value. 
 
 ```motoko
@@ -32,6 +37,11 @@ The function `size` takes one `Text` argument and returns a `Nat` value.
 ```
 
 ## Text.fromChar
+
+```motoko
+let fromChar : (c : Char) -> Text
+```
+
 The function `fromChar` takes one `Text` argument and returns a `Char` value. 
 
 ```motoko
@@ -39,6 +49,11 @@ The function `fromChar` takes one `Text` argument and returns a `Char` value.
 ```
 
 ## Text.contains
+
+```motoko
+func contains(t : Text, p : Pattern) : Bool
+```
+
 The function `contains` takes one `Text`,one `Pattern` as arguments and returns a `Bool` value. 
 
 ```motoko
@@ -46,6 +61,11 @@ The function `contains` takes one `Text`,one `Pattern` as arguments and returns 
 ```
 
 ## Text.startsWith
+
+```motoko
+func startsWith(t : Text, p : Pattern) : Bool
+```
+
 The function `startsWith` takes one `Text`,one `Pattern` as arguments and returns a `Bool` value. 
 
 ```motoko
@@ -53,6 +73,11 @@ The function `startsWith` takes one `Text`,one `Pattern` as arguments and return
 ```
 
 ## Text.endsWith
+
+```motoko
+func endsWith(t : Text, p : Pattern) : Bool
+```
+
 The function `endsWith` takes one `Text`,one `Pattern` as arguments and returns a `Bool` value. 
 
 ```motoko
@@ -60,12 +85,22 @@ The function `endsWith` takes one `Text`,one `Pattern` as arguments and returns 
 ```
 
 ## Text.replace
+
+```motoko
+func replace(t : Text, p : Pattern, r : Text) : Text
+```
+
 The function `replace` takes one `Text`,one `Pattern`and one `Text` as arguments and returns a `Text` value. 
 
 ```motoko
 {{#include _mo/text4.mo:a}}
 ```
 ## Text.concat
+
+```motoko
+func concat(t1 : Text, t2 : Text) : Text
+```
+
 The function `concat` takes two `Text` arguments and returns a `Text` value. It is equivalent to the `#` [operator](/common-programming-concepts/operators.html).
 
 ```motoko

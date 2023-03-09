@@ -18,8 +18,12 @@ The following types and functions are made public in the `Char` module:
 type Char = Char.Char
 ```
 
-
 ## Char.isDigit
+
+```motoko
+func isDigit(c : Char) : Bool
+```
+
 The function `isDigit` takes one `Char` argument and returns a `Bool` value. 
 
 ```motoko
@@ -27,6 +31,11 @@ The function `isDigit` takes one `Char` argument and returns a `Bool` value.
 ```
 
 ## Char.toNat32
+
+```motoko
+let toNat32 : (c : Char) -> Nat32
+```
+
 The function `toNat32` takes one `Char` argument and returns a `Nat32` value. 
 
 ```motoko
@@ -34,6 +43,11 @@ The function `toNat32` takes one `Char` argument and returns a `Nat32` value.
 ```
 
 ## Char.fromNat32
+
+```motoko
+let fromNat32 : (w : Nat32) -> Char
+```
+
 The function `fromNat32` takes one `Nat32` argument and returns a `Char` value. 
 
 ```motoko
@@ -41,6 +55,11 @@ The function `fromNat32` takes one `Nat32` argument and returns a `Char` value.
 ```
 
 ## Char.isAlphabetic
+
+```motoko
+let isAlphabetic : (c : Char) -> Bool
+```
+
 The function `isAlphabetic` takes one `Char` argument and returns a `Bool` value. 
 
 ```motoko

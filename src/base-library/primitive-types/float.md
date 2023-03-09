@@ -26,6 +26,11 @@ type Float = Float.Float
 ```
 
 ## Float.toInt
+
+```motoko
+let toInt : Float -> Int
+```
+
 The function `toInt` takes one `Float` argument and returns an `Int` value. 
 
 ```motoko
@@ -33,6 +38,11 @@ The function `toInt` takes one `Float` argument and returns an `Int` value.
 ```
 
 ## Float.sqrt
+
+```motoko
+let sqrt : (x : Float) -> Float
+```
+
 The function `sqrt` takes one `Float` argument and returns a `Float` value. 
 
 ```motoko
@@ -40,6 +50,11 @@ The function `sqrt` takes one `Float` argument and returns a `Float` value.
 ```
 
 ## Float.ceil
+
+```motoko
+let ceil : (x : Float) -> Float
+```
+
 The function `ceil` takes one `Float` argument and returns a `Float` value. 
 
 ```motoko
@@ -47,6 +62,11 @@ The function `ceil` takes one `Float` argument and returns a `Float` value.
 ```
 
 ## Float.floor
+
+```motoko
+let floor : (x : Float) -> Float
+```
+
 The function `floor` takes one `Float` argument and returns a `Float` value. 
 
 ```motoko
@@ -54,6 +74,11 @@ The function `floor` takes one `Float` argument and returns a `Float` value.
 ```
 
 ## Float.fromInt
+
+```motoko
+let fromInt : Int -> Float
+```
+
 The function `fromInt` takes one `Int` argument and returns a `Float` value. 
 
 ```motoko
@@ -61,6 +86,11 @@ The function `fromInt` takes one `Int` argument and returns a `Float` value.
 ```
 
 ## Float.toText
+
+```motoko
+let toText : Float -> Text
+```
+
 The function `toText` takes one `Float` argument and returns a `Text` value. 
 
 ```motoko
@@ -68,6 +98,11 @@ The function `toText` takes one `Float` argument and returns a `Text` value.
 ```
 
 ## Float.toInt64
+
+```motoko
+let toInt64 : Float -> Int64
+```
+
 The function `toInt64` takes one `Float` argument and returns an `Int64` value. 
 
 ```motoko
@@ -75,6 +110,11 @@ The function `toInt64` takes one `Float` argument and returns an `Int64` value.
 ```
 
 ## Float.fromInt64
+
+```motoko
+let fromInt64 : Int64 -> Float
+```
+
 The function `fromInt64` takes one `Int64` argument and returns a `Float` value. 
 
 ```motoko
@@ -82,6 +122,11 @@ The function `fromInt64` takes one `Int64` argument and returns a `Float` value.
 ```
 
 ## Float.format
+
+```motoko
+func format(fmt : {#fix : Nat8; #exp : Nat8; #gen : Nat8; #hex : Nat8; #exact}, x : Float) : Text
+```
+
 The function `format` takes two argument and returns a `Text` value. 
 
 ```motoko

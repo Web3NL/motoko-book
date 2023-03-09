@@ -22,6 +22,11 @@ type Principal = Principal.Principal
 ```
 
 ## Principal.fromActor
+
+```motoko
+func fromActor(a : actor {  }) : Principal
+```
+
 The function `fromActor` takes one `Actor` argument and returns a `Principal` value. 
 
 ```motoko
@@ -29,6 +34,11 @@ The function `fromActor` takes one `Actor` argument and returns a `Principal` va
 ```
 
 ## Principal.toText
+
+```motoko
+func toText(p : Principal) : Text
+```
+
 The function `toText` takes one `Principal` argument and returns a `textualPrincipal` value. 
 
 ```motoko
@@ -36,6 +46,11 @@ The function `toText` takes one `Principal` argument and returns a `textualPrinc
 ```
 
 ## Principal.fromText
+
+```motoko
+func fromText(t : Text) : Principal
+```
+
 The function `fromText` takes one `textualPrincipal` argument and returns a `Principal` value. 
 
 ```motoko
@@ -43,6 +58,11 @@ The function `fromText` takes one `textualPrincipal` argument and returns a `Pri
 ```
 
 ## Principal.toBlob
+
+```motoko
+func toBlob(p : Principal) : Blob
+```
+
 The function `toBlob` takes one `Principal` argument and returns a `Blob` value. 
 
 ```motoko
@@ -50,6 +70,11 @@ The function `toBlob` takes one `Principal` argument and returns a `Blob` value.
 ```
 
 ## Principal.fromBlob
+
+```motoko
+func fromBlob(b : Blob) : Principal
+```
+
 The function `fromBlob` takes one `BLob` argument and returns a `Principal` value. 
 
 ```motoko
@@ -57,6 +82,11 @@ The function `fromBlob` takes one `BLob` argument and returns a `Principal` valu
 ```
 
 ## Principal.isAnonymous
+
+```motoko
+func isAnonymous(p : Principal) : Bool
+```
+
 The function `isAnonymous` takes one `Principal` argument and returns a `Bool` value. 
 
 ```motoko

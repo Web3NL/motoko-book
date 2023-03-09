@@ -26,6 +26,11 @@ type Bool = Bool.Bool
 ```
 
 ## Bool.toText
+
+```motoko
+func toText(x : Bool) : Text
+```
+
 The function `toText` takes one `Bool` argument and returns a `Text` value.  
 
 ```motoko
@@ -33,6 +38,11 @@ The function `toText` takes one `Bool` argument and returns a `Text` value.
 ```
 
 ## Bool.compare
+
+```motoko
+func compare(x : Bool, y : Bool) : {#less; #equal; #greater}
+```
+
 The function `compare` takes two `Bool` arguments and returns an [Order](/base-library/utils/order.html) variant value.  
 
 ```motoko
@@ -40,6 +50,11 @@ The function `compare` takes two `Bool` arguments and returns an [Order](/base-l
 ```
 
 ## Bool.lognot
+
+```motoko
+func lognot(x : Bool) : Bool
+```
+
 The function `lognot` takes one `Bool` argument and returns a `Bool` value. It stands for *logical not*. It is equivalent to the `not` [operator](/common-programming-concepts/operators.html).
 
 ```motoko
@@ -47,6 +62,11 @@ The function `lognot` takes one `Bool` argument and returns a `Bool` value. It s
 ```
 
 ## Bool.logand
+
+```motoko
+func logand(x : Bool, y : Bool) : Bool
+```
+
 The function `logand` takes two `Bool` arguments and returns a `Bool` value. It stands for *logical and*. It is equivalent to the `and` [operator](/common-programming-concepts/operators.html).
 
 ```motoko
@@ -54,6 +74,11 @@ The function `logand` takes two `Bool` arguments and returns a `Bool` value. It 
 ```
 
 ## Bool.logor
+
+```motoko
+func logor(x : Bool, y : Bool) : Bool
+```
+
 The function `logor` takes two `Bool` arguments and returns a `Bool` value. It stands for *logical or*. It is equivalent to the `or` [operator](/common-programming-concepts/operators.html).
 
 ```motoko
@@ -61,6 +86,11 @@ The function `logor` takes two `Bool` arguments and returns a `Bool` value. It s
 ```
 
 ## Bool.logxor
+
+```motoko
+func logxor(x : Bool, y : Bool) : Bool
+```
+
 The function `logxor` takes two `Bool` arguments and returns a `Bool` value. It stands for *exclusive or*.
 
 ```motoko
@@ -68,6 +98,11 @@ The function `logxor` takes two `Bool` arguments and returns a `Bool` value. It 
 ```
 
 ## Bool.notEqual
+
+```motoko
+func notEqual(x : Bool, y : Bool) : Bool
+```
+
 The function `notEqual` takes two `Bool` arguments and returns a `Bool` value. It is equivalent to the `!=` [operator](/common-programming-concepts/operators.html).
 
 ```motoko
@@ -75,6 +110,11 @@ The function `notEqual` takes two `Bool` arguments and returns a `Bool` value. I
 ```
 
 ## Bool.equal
+
+```motoko
+func equal(x : Bool, y : Bool) : Bool
+```
+
 The function `equal` takes two `Bool` arguments and returns a `Bool` value. It is equivalent to the `==` [operator](/common-programming-concepts/operators.html).
 
 ```motoko
