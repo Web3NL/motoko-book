@@ -1,6 +1,4 @@
 # Operator precedence
-
-## Operator precedence
 Consider the following example:
 
 ```motoko

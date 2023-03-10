@@ -1,6 +1,4 @@
 # Relational operators
-
-## Relational operators
 Relational operators are used to *relate* or compare two values. The result of the comparison is a value of type `Bool`.
 
 - `==`  is equal to
