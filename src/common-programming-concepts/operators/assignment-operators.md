@@ -1,7 +1,4 @@
 # Assignment operators
-
-## Assignment operators
-
 We already encountered the most common assignment operator in [mutability](mutability.html), which is the `:=` operator. There are [many](https://internetcomputer.org/docs/current/developer-docs/build/cdks/motoko-dfinity/language-manual#assignment-operators) assignment operators in Motoko. Lets just focus on the three most essential ones here:
 
 - `:=`	assignment (in place update)

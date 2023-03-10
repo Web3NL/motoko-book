@@ -1,41 +1,52 @@
 # Logical expressions
 
-Boolean expressions are used to represent logical conditions in programming. The three main Boolean operators are not, and, and or. Let's look at each of them with a simple example:
+Logical expressions are used to express common [*logical operations*] on values of type `Bool`. There are three types of logical expressions in Motoko.
 
 ## not
-The not operator negates the value of a Boolean expression. For example, not True is False, and not False is True. Here's an example of how not can be used in a programming language:
+
+The `not` expression takes only one _operand_ of type `Bool` and _negates_ the value:
 
 ```motoko
-let x : Nat = 10;
-let y : Nat = 20;
-let z : Bool = x > y;
-let result : Bool = not z;
-assert result == true;
+let true = not false;
+
+let yes = not (1 > 2);
 ```
 
-In this example, we're comparing x and y, and storing the result in z. Since x is not greater than y, z is False. Then we apply the not operator to z, resulting in True. So the value of result is True.
+In the first line `true` is a variable name and `false` is a `Bool` _literal_ which is being negated.
+
+In the second line, we negate the _boolean expression_ `(1 > 2)`.
+
+Both `true` and `yes` are of type `Bool`. This type is [inferred](/common-programming-concepts/types.html).
+
+The _truth table_ for `not` is  
+| `x` | `not x` |  
+| ---- | ---- |  
+|true|false|  
+|false|true|  
+
+
 
 ## and
-The and operator returns True if both operands are True, and False otherwise. For example, True and False is False, and True and True is True. Here's an example of how and can be used.
+
+The `and` expression takes two _operands_ of type `Bool` and performs a _logical AND_ operation.
 
 ```motoko
-let x : Nat = 10;
-let y : Nat = 20;
-let result : Bool = x > 5 and y < 30;
-assert result == true;
+let result = true and false;
 ```
 
-In this example, we're checking if both x is greater than 5 and y is less than 30. Since both conditions are true, the value of result is True.
+`result` is now `false` according to the _truth table_.
+| `x` | `y` | `x and y` |  
+| ---- | ---- |  
+|true|false|  
+|false|true|  
 
 ## or
-The or operator returns True if at least one of the operands is True, and False otherwise. For example, True or False is True, and False or False is False. Here's an example of how or can be used.
 
-```motoko 
-let x : Nat = 10;
-let y : Nat = 20;
-let result: Bool = x < 5 or y > 30;
-assert result == false;
+The `or` expression takes two _operands_ of type `Bool` and performs a _logical OR_ operation.
+
+```motoko
+let result = true or false;
 ```
 
-In this example, we're checking if either x is less than 5 or y is greater than 30. Since neither condition is true, the value of result is False.
-
+`result` is now `true` according to the _truth table_.
+| `x` | `y` | `x or y` |  

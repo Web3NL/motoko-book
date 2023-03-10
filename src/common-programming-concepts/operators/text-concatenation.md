@@ -1,15 +1,8 @@
 # Text concatenation
-
-## Text operator
-Checkout the chapter on [functions](functions.html) to see an example of the text concatenation operator `#`.
-
+We can use the `#` sign to *concatenate* values of type `Text`.
 
 ```motoko
-let array : [Text] = ["ICP", "is", "a", "blockchain"];
-
-let sentance : Text = array[0] # " " # array[1] # " " # array[2] # " " # array[3];
-
-assert sentance == "ICP is a blockchain"
-
+{{#include _mo/text-concatenation.mo:a}}
 ```
 
+In the last line we concatenate the two `Text` variables `t1` and `t2` with a *text literal* `" "` representing a space. 
