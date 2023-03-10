@@ -2,7 +2,7 @@
 When we express a [subtype-supertype relationship](/advanced-types/subtyping.html) by writing `T <: U`, then we say that `T` is *bounded* by `U`. Lets explore *type bounds* in more detail.
 
 ## The `Any` and `None` types
-All types in Motoko are bounded by a special type, namely the `Any` type. This type is the *supertype* of all types and thus all types are a *subtype* of the `Any` type. We may refer to it as the *top type*. A variable in Motoko can be of type `Any`.
+All types in Motoko are bounded by a special type, namely the `Any` type. This type is the *supertype* of all types and thus all types are a *subtype* of the `Any` type. We may refer to it as the *top type*. Any value or expression in Motoko can be of type `Any`.
 
 Another special type in Motoko is the `None` type. This type is the *subtype* of all types and thus all types are a *supertype* of `None`. No value in Motoko can have the `None` type. 
 
