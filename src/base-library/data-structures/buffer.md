@@ -86,12 +86,51 @@ The following types and functions are made public in the `Buffer` module:
 
 ## Buffer.size
 
+### Function signature
+
+```motoko
+func thaw<X>(array : [X]) : [var X]
+```
+### Parameters
+
+|                     |                              |
+| ------------------- | ----------------------       |
+| Generic parameters  | `X`                          |
+| Variable argument   | `array : [X]`                |
+| Return type         | `[var X]`                    |
+
+### Example
+
+```motoko
+{{#include _mo/array/thaw.mo:a}}
+```
+
+### Execution Time and Memory Usage
 
 ## Buffer.add
 
 
 ## Buffer.get
 
+### Function signature
+
+```motoko
+func get(index : Nat) : X
+```
+### Parameters
+
+|                     |                              |
+| ------------------- | ----------------------       |
+| Variable argument   | `index : Nat`                |
+| Return type         | `X`                          |
+
+### Example
+
+```motoko
+{{#include _mo/array/thaw.mo:a}}
+```
+
+### Execution Time and Memory Usage
 
 ## Buffer.getOpt
 
