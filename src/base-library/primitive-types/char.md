@@ -5,9 +5,10 @@ The convention is to name the *module alias* after the *file name* it is defined
 {{#include _mo/char.mo:a}}
 ```
 
-## Public items
-The following types and functions are made public in the `Char` module:  
-[Type Char](#type)  
+ **Public Types**
+[Type Char](#type)
+
+ **conversion**
 [Function `isDigit`](#charisdigit)    
 [Function `toNat32`](#chartonat32)  
 [Function `fromNat32`](#charfromnat32)  
