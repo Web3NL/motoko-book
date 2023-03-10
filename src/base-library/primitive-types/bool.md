@@ -1,28 +1,43 @@
 # Bool
 The convention is to name the *module alias* after the *file name* it is defined in:
-
 ```motoko
 {{#include _mo/bool.mo:a}}
 ```
 
-This module is mostly used for [logical operations](https://en.wikipedia.org/wiki/Logical_connective).
-
-## Public items
-The following types and functions are made public in the `Bool` module:  
+**Public Types**  
 [Type Bool](#type)  
-[Function `toText`](#booltotext)  
+
+**Comparison**  
+[Function `equal`](#boolequal)  
+[Function `notEqual`](#boolnotequal)  
 [Function `compare`](#boolcompare)  
+
+**Conversion**  
+[Function `toText`](#booltotext)  
+
+**Logical operations**  
 [Function `lognot`](#boollognot)  
 [Function `logand`](#boollogand)  
 [Function `logor`](#boollogor)  
 [Function `logxor`](#boollogxor)  
-[Function `notEqual`](#boolnotequal)  
-[Function `equal`](#boolequal)  
+ 
+ 
 
 
 ## Type
 ```motoko
 type Bool = Bool.Bool
+```
+
+## Bool.equal
+```motoko
+func equal(x : Bool, y : Bool) : Bool
+```
+
+The function `equal` takes two `Bool` arguments and returns a `Bool` value. It is equivalent to the `==` [relational operator](/common-programming-concepts/operators.html#relational-operators).
+
+```motoko
+{{#include _mo/bool5.mo:a}}
 ```
 
 ## Bool.toText
@@ -109,14 +124,4 @@ The function `notEqual` takes two `Bool` arguments and returns a `Bool` value. I
 {{#include _mo/bool4.mo:a}}
 ```
 
-## Bool.equal
 
-```motoko
-func equal(x : Bool, y : Bool) : Bool
-```
-
-The function `equal` takes two `Bool` arguments and returns a `Bool` value. It is equivalent to the `==` [operator](/common-programming-concepts/operators.html).
-
-```motoko
-{{#include _mo/bool5.mo:a}}
-```

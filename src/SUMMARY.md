@@ -17,6 +17,13 @@
         - [Immutable Arrays](common-programming-concepts/types/immutable-arrays.md)
         - [Mutable Arrays](common-programming-concepts/types/mutable-arrays.md)
     - [Operators](common-programming-concepts/operators.md)
+        - [Numeric operators](common-programming-concepts/operators/numeric-operators.md)
+        - [Relational operators](common-programming-concepts/operators/relational-operators.md)
+        - [Assignment operators](common-programming-concepts/operators/assignment-operators.md)
+        - [Text concatenation](common-programming-concepts/operators/text-concatenation.md)
+        - [Logical expressions](common-programming-concepts/operators/logical-expressions.md)
+        - [Bitwise operators](common-programming-concepts/operators/bitwise-operators.md)
+        - [Operator precedence](common-programming-concepts/operators/operator-precedence.md)
     - [Pattern Matching](common-programming-concepts/pattern-matching.md)
     - [Functions](common-programming-concepts/functions.md)
     - [Options and Results](common-programming-concepts/options-and-results.md)
@@ -111,7 +118,3 @@
     - [ICRC1](internet-computer-standards/icrc1.md)
 
 - [Tokenized Comments Example](tokenized-comments-example.md)
-
-
-
-
