@@ -6,9 +6,10 @@ The convention is to name the *module alias* after the *file name* it is defined
 {{#include _mo/float.mo:a}}
 ```
 
-## Public items
+## Public Items
+
 The following types and functions are made public in the `Float` module:  
-[Type Float](#type)  
+[Type Float](#type)
 [Function `toInt`](#floattoint)    
 [Function `sqrt`](#floatsqrt)  
 [Function `ceil`](#floatceil)  

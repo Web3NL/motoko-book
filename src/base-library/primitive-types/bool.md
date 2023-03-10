@@ -40,16 +40,16 @@ The function `equal` takes two `Bool` arguments and returns a `Bool` value. It i
 {{#include _mo/bool5.mo:a}}
 ```
 
-## Bool.toText
+## Bool.notEqual
 
 ```motoko
-func toText(x : Bool) : Text
+func notEqual(x : Bool, y : Bool) : Bool
 ```
 
-The function `toText` takes one `Bool` argument and returns a `Text` value.  
+The function `notEqual` takes two `Bool` arguments and returns a `Bool` value. It is equivalent to the `!=` [operator](/common-programming-concepts/operators.html).
 
 ```motoko
-{{#include _mo/bool.mo:b}}
+{{#include _mo/bool4.mo:a}}
 ```
 
 ## Bool.compare
@@ -63,6 +63,20 @@ The function `compare` takes two `Bool` arguments and returns an [Order](/base-l
 ```motoko
 {{#include _mo/bool.mo:c}}
 ```
+
+
+## Bool.toText
+
+```motoko
+func toText(x : Bool) : Text
+```
+
+The function `toText` takes one `Bool` argument and returns a `Text` value.  
+
+```motoko
+{{#include _mo/bool.mo:b}}
+```
+
 
 ## Bool.lognot
 
@@ -110,18 +124,6 @@ The function `logxor` takes two `Bool` arguments and returns a `Bool` value. It 
 
 ```motoko
 {{#include _mo/bool3.mo:a}}
-```
-
-## Bool.notEqual
-
-```motoko
-func notEqual(x : Bool, y : Bool) : Bool
-```
-
-The function `notEqual` takes two `Bool` arguments and returns a `Bool` value. It is equivalent to the `!=` [operator](/common-programming-concepts/operators.html).
-
-```motoko
-{{#include _mo/bool4.mo:a}}
 ```
 
 
