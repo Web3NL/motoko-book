@@ -1,17 +1,5 @@
 # Type Bounds
-When we express a [subtype-supertype relationship](/advanced-types/subtyping.html) by writing `T <: U`, then we say that `T` is *bounded* by `U`. Lets explore *type bounds* in more detail.
-
-## The `Any` and `None` types
-All types in Motoko are bounded by a special type, namely the `Any` type. This type is the *supertype* of all types and thus all types are a *subtype* of the `Any` type. We may refer to it as the *top type*. Any value or expression in Motoko can be of type `Any`.
-
-Another special type in Motoko is the `None` type. This type is the *subtype* of all types and thus all types are a *supertype* of `None`. No value in Motoko can have the `None` type. 
-
-For any type `T` in Motoko, the following *type bounds* hold:  
-```motoko
-None <: T
-
-T <: Any
-```
+When we express a [subtype-supertype relationship](/advanced-types/subtyping.html) by writing `T <: U`, then we say that `T` is a *subtype* by `U`. We can use this relationship between two types in the instantiation of [generic types in functions](/advanced-types/generics.html#generics-in-functions).
 
 ## Type bounds in functions
 Consider the following *function signature*:
@@ -21,7 +9,7 @@ func makeNat<T <: Number>(x : T) : Natural
 
 It's a [generic function](/advanced-types/generics.html) that specifies a *type bound* `Number` for its generic type parameter `T`. This is expressed as `<T <: Number>`. 
 
-The function takes an argument of generic bounded type `T` and returns a value of type `Natural`. The function is meant to take a general kind of number and process it into a `Nat`. This is sometimes called *type casting*.  
+The function takes an argument of generic bounded type `T` and returns a value of type `Natural`. The function is meant to take a general kind of number and process it into a `Nat`.  
 
 The types `Number` and `Natural` are declared like this:
 ```motoko
@@ -53,3 +41,18 @@ Lets test our function using some [assertions](/common-programming-concepts/asse
 We use arguments of type `Natural`, `Integer` and `Floating` with associated types `Nat`, `Int` and `Float` respectively. They all are accepted by our function.
 
 In all three cases, we get back a value of type `Natural` with an associated value of type `Nat`. 
+
+## The `Any` and `None` types
+All types in Motoko are bounded by a special type, namely the `Any` type. This type is the *supertype* of all types and thus all types are a *subtype* of the `Any` type. We may refer to it as the *top type*. Any value or expression in Motoko can be of type `Any`.
+
+Another special type in Motoko is the `None` type. This type is the *subtype* of all types and thus all types are a *supertype* of `None`. We may refer to it as the *bottom type*. No value in Motoko can have the `None` type, but some expressions can.
+
+> **NOTE**  
+> *Even though no value has type `None`, it is still useful for typing expressions that don't produce a value, such as infinite loops, early exits via `return` and `throw` and other constructs that divert control-flow (like Debug.trap : `Text -> None`)*
+
+For any type `T` in Motoko, the following *subtype-supertype* relationship holds:  
+```motoko
+None <: T
+
+T <: Any
+```
