@@ -1,4 +1,5 @@
 # Logical expressions
+
 Boolean expressions are used to represent logical conditions in programming. The three main Boolean operators are not, and, and or. Let's look at each of them with a simple example:
 
 ## not
@@ -37,6 +38,4 @@ assert result == false;
 ```
 
 In this example, we're checking if either x is less than 5 or y is greater than 30. Since neither condition is true, the value of result is False.
-
-
 

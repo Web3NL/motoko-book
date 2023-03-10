@@ -1,26 +1,35 @@
 // PATTERN MATCHING
 
+// ANCHOR: a
 let individual = ("Male", 30);
 
 let (gender, age) = individual;
+// ANCHOR_END: a
 
-
-
-// let (gender : Text, _ : Nat) = individual;
-
-
-
+// ANCHOR: b
 let person = {
     name = "Peter";
     member = false;
 };
 
 let {name; member} = person;
+// ANCHOR_END: b
 
-
-
-// let {name} = person;
-
-
-
+// ANCHOR: c
 let {name = realName; member = groupMember} = person;
+// ANCHOR_END: c
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

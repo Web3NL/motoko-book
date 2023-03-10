@@ -1,6 +1,6 @@
 # Actors
 
-Actors, like objects, are like a package of *state* and a *public API* that accesses and modifies that state. They are declared using the `actor` keyword and have an *actor type*. 
+Actors, like [objects](/common-programming-concepts/objects-and-classes/objects.html), are like a package of *state* and a *public API* that accesses and modifies that state. They are declared using the `actor` keyword and have an [*actor type*](#actor-type). 
 
 ## Top level actors
 Today (Jan 2023), an actor in Motoko is defined as a top-level item in its own Motoko source file. Optionally, it may be preceded by one or more imports:
@@ -9,22 +9,28 @@ Today (Jan 2023), an actor in Motoko is defined as a top-level item in its own M
 {{#include _mo/actors.mo:a}}
 ```
 
-We declared an empty actor in its own source file `actor.mo`. It is preceded by an import of a module defined in `mod.mo` and named `Mod` for use inside the actor.
+We declared an empty actor in its own source file `actor.mo`. It is preceded by an [import of a module](/common-programming-concepts/modules.html) defined in `mod.mo` and named `Mod` for use inside the actor.
 
 You may feel disappointed by the simplicity of this example, but this setup (one source file containing **only** *imports* and *one actor*) is the core of every Motoko program!
 
 ## Actors vs. objects
-To understand actors it is useful to compare them with objects:
+Unlike [objects](/common-programming-concepts/objects-and-classes/objects.html), actors may **only** have `private` (immutable or mutable) variables. We can only communicate with an actor by calling its [public shared functions](#public-shared-functions-in-actors) and never by directly modifying its `private` variables. In this way, the [*memory state*](/internet-computer-programming-concepts/basic-memory-persistence.html) of an actor is isolated from other actors. Only public shared functions (and some system functions) can change the memory state of an actor. 
 
-**Public API**  
-- Public functions in actors are accessible from outside the Internet Computer.
-- Public functions in objects are only accessible from within your Motoko code.
+To understand actors it is useful to compare them with objects: 
 
-**Public shared functions**  
+### Public API 
+- [Public functions in actors](#public-shared-functions-in-actors) are accessible from outside the Internet Computer.
+- [Public functions in objects](/common-programming-concepts/objects-and-classes/objects.html#public-functions-in-objects) are only accessible from within your Motoko code.
+
+### Private and public variables
+- Actors don't allow public ([immutable](/common-programming-concepts/variables.html) or [mutable](/common-programming-concepts/mutability.html)) variables
+- Objects do allow public ([immutable](/common-programming-concepts/variables.html) or [mutable](/common-programming-concepts/mutability.html)) variables
+
+### Public shared functions  
 - Actors only allow *[shared](#public-shared-functions-in-actors)* public functions
 - Objects only allow non-shared public functions
 
-**Class and Actor Class**
+### Class and Actor Class
 - Actors have 'factory' functions called [Actor Classes](/advanced-concepts/scalability/actor-classes.html)
 - Objects have 'factory' functions called [Classes](/common-programming-concepts/objects-and-classes/classes.html)
 
@@ -34,13 +40,13 @@ For a full comparison checkout: [**Motoko Items Comparison Table**](https://docs
 ## Public Shared Functions in Actors
 Actors allow *three kinds* of public functions:
 
-1. Public **shared query** functions:  
+1. Public [**shared query**](#public-shared-query) functions:  
 Can only *read* state
 
-1. Public **shared update** functions:  
+1. Public [**shared update**](#public-shared-update) functions:  
 Can *read* and *write* state
 
-1. Public **shared oneway** functions:  
+1. Public [**shared oneway**](#public-shared-oneway) functions:  
 Can *read* and *write*, but don't have any *return value*.
 
 > **NOTE**  

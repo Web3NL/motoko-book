@@ -1,5 +1,8 @@
 {
   "motoko-book": {
     "ic": "7po3j-syaaa-aaaal-qbqea-cai"
+  },
+  "staging": {
+    "ic": "olm72-siaaa-aaaal-qbtpa-cai"
   }
 }

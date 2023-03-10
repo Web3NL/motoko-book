@@ -25,3 +25,4 @@ In the first line we compared two `Nat` values. The result is the value `false` 
 Notice how we type annotated the *value* itself in the second line, therefore telling Motoko that we are now comparing two `Int` values. The result is the value `true` of type `Bool`.  
 
 In the last line we compared two `Float` values. The result is the value `true` of type `Bool`.
+

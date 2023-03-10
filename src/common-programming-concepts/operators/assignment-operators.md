@@ -28,3 +28,4 @@ In the third line we subtract 10, leaving us with a value of -3 for our variable
 
 In the last line, we don't care about the value of the variable and just assign it a whole new value, discarding its old value. Our `number` now has the value `0`.
 
+

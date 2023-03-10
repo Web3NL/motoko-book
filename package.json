@@ -1,7 +1,9 @@
 {
+  "type": "module",
   "devDependencies": {
     "@types/node": "^18.11.18",
-    "motoko": "^3.3.0"
+    "motoko": "^3.3.0",
+    "tsc": "^2.0.4"
   },
   "scripts": {
     "build": "mdbook build && cp -r domain/.well-known/ book/ && cp domain/.ic-assets.json book/"

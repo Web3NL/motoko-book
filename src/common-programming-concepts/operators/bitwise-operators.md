@@ -1,6 +1,5 @@
 # Bitwise operators
 
-
 ## Bitwise And (&)
 
 ```motoko
