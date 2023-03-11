@@ -3,26 +3,26 @@ Bitwise operators are used to manipulate the *bits* of number values.
 
 ## Bitwise AND `&`
 ```motoko
-let a : Nat8 = 10;     // # binary: 0000_1010
-let b : Nat8 = 6;      // # binary: 0000_0110
-let c : Nat8 = a & b;  // # binary: 0010 (decimal: 2)
+let a : Nat8 = 10;     //  binary: 0000_1010
+let b : Nat8 = 6;      //  binary: 0000_0110
+let c : Nat8 = a & b;  //  binary: 0010 (decimal: 2)
 assert c == 2;
 ```
 
 
 ## Bitwise OR `|`
 ```motoko
-let a : Nat8 = 10;    // # binary: 1010
-let b : Nat8 = 6;     // # binary: 0110
-let c : Nat8 = a | b; // # binary: 1110 (decimal: 14)
+let a : Nat8 = 10;    //  binary: 0000_1010
+let b : Nat8 = 6;     //  binary: 0000_0110
+let c : Nat8 = a | b; //  binary: 0000_1110 (decimal: 14)
 assert c == 14;
 ```
 
 ## Bitwise XOR `^`
 ```motoko
-let : Nat8 a = 10;     // # binary: 1010
-let : Nat8 b = 6;      // # binary: 0110
-let c : Nat8 = a ^ b;  // # binary: 1100 (decimal: 12)
+let : Nat8 a = 10;     //  binary: 0000_1010
+let : Nat8 b = 6;      //  binary: 0000_0110
+let c : Nat8 = a ^ b;  //  binary: 0000_1100 (decimal: 12)
 assert c == 12;
 ```
 

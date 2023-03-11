@@ -18,12 +18,12 @@ In the second line, we negate the _boolean expression_ `(1 > 2)`.
 
 Both `true` and `yes` are of type `Bool`. This type is [inferred](/common-programming-concepts/types.html).
 
-The _truth table_ for `not` is  
-| `x` | `not x` |  
-| ---- | ---- |  
-|true|false|  
-|false|true|  
+The _truth table_ for `not` is   
 
+|`x`|`not x`|
+|---|---|
+|true|false|
+|false|true|
 
 
 ## and
@@ -35,10 +35,13 @@ let result = true and false;
 ```
 
 `result` is now `false` according to the _truth table_.
-| `x` | `y` | `x and y` |  
-| ---- | ---- |  
-|true|false|  
-|false|true|  
+
+|`x`|`y`|`x and y` |
+|---|---|---|
+|true|true|true|
+|true|false|false|
+|false|true|false|
+|false|false|false|
 
 ## or
 
@@ -49,4 +52,10 @@ let result = true or false;
 ```
 
 `result` is now `true` according to the _truth table_.
-| `x` | `y` | `x or y` |  
+
+|`x`|`y`|`x 0r y` |
+|---|---|---|
+|true|true|true|
+|true|false|true|
+|false|true|true|
+|false|false|false|
