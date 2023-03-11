@@ -1,13 +1,15 @@
+// Blob
 
 import Blob "mo:base/Blob";
 
 
 // ANCHOR: a
-let a : [var Nat8] = [var 1,2,3];
+let a : [Nat8] = [1,2,3];
 
-let mutableArrayBlob = Blob.fromArrayMut(a);
+let blob = Blob.fromArray(a);
 
-let mutableArray = Blob.toArrayMut(mutableArrayBlob);
+let array = Blob.toArray(blob);
 
-assert mutableArray.size() == 3;
-// ANCHOR_END: b
+assert array == [1,2,3];
+// ANCHOR_END: a
+

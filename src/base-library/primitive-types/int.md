@@ -1,11 +1,31 @@
 # Int
-The convention is to name the *module alias* after the *file name* it is defined in:
+The convention is to name the [*module alias*](/common-programming-concepts/modules.html#imports) after the [*file name*](/common-programming-concepts/modules.html#imports) it is defined in:
 
 ```motoko
 {{#include _mo/int.mo:a}}
 ```
 
+## Public items
+The following types and functions are made public in the `Int` module:  
+[Type Int](#type)  
+[Function `abs`](#intabs)    
+[Function `toText`](#inttotext)  
+[Function `min`](#intmin)  
+[Function `max`](#intmax)  
+[Function `compare`](#intcompare)  
+
+
+## Type
+```motoko
+type Int = Int.Int
+```
+
 ## Int.abs
+
+```motoko
+func abs(x : Int) : Nat
+```
+
 The function `abs` takes one `Int` argument and returns an `Int` value. 
 
 ```motoko
@@ -14,6 +34,11 @@ The function `abs` takes one `Int` argument and returns an `Int` value.
 
 
 ## Int.toText
+
+```motoko
+func toText(x : Int) : Text
+```
+
 The function `toText` takes one `Int` argument and returns a `Text` value.  
 
 ```motoko
@@ -21,6 +46,11 @@ The function `toText` takes one `Int` argument and returns a `Text` value.
 ```
 
 ## Int.min
+
+```motoko
+func min(x : Int, y : Int) : Int
+```
+
 The function `min` takes two `Int` arguments and returns an `Int` value. 
 
 ```motoko
@@ -28,6 +58,11 @@ The function `min` takes two `Int` arguments and returns an `Int` value.
 ```
 
 ## Int.max
+
+```motoko
+func max(x : Int, y : Int) : Int
+```
+
 The function `max` takes two `Int` arguments and returns an `Int` value. 
 
 ```motoko
@@ -35,7 +70,12 @@ The function `max` takes two `Int` arguments and returns an `Int` value.
 ```
 
 ## Int.compare
-The function `compare` takes two `Int` arguments and returns an `Order` variant value.  
+
+```motoko
+func compare(x : Int, y : Int) : {#less; #equal; #greater}
+```
+
+The function `compare` takes two `Int` arguments and returns an [Order](/base-library/utils/order.html) variant value.  
 
 ```motoko
 {{#include _mo/int2.mo:a}}

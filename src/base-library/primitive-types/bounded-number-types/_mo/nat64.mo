@@ -5,29 +5,31 @@ import Nat64 "mo:base/Nat64";
 // ANCHOR_END: a
 
 // ANCHOR: b   
-let a : Nat64 = 18446744073709551615;
+let a : Nat64 = 184467;
 
 let nat = Nat64.toNat(a);
 
-assert nat == 18446744073709551615;
+assert nat == 184467;
 // ANCHOR_END: b
 
 // ANCHOR: c
-let textualNat64 = Nat64.toText(a);
+let b : Nat64 = 184467;
 
-assert textualNat64 == "18446744073709551615";
+let textualNat64 = Nat64.toText(b);
+
+assert textualNat64 == "184467";
 // ANCHOR_END: c
 
 // ANCHOR: d
-let number = 18446744073709551615;
+let number = 184467;
 
 let natToNat64 = Nat64.fromNat(number);
 
-assert natToNat64 == 18446744073709551615;
+assert natToNat64 == 184467;
 // ANCHOR_END: d
 
 // ANCHOR: f
-let integer = 18446744073709551617;
+let integer = 1;
 
 let wrap = Nat64.fromIntWrap(integer);
 

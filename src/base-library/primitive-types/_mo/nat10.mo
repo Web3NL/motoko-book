@@ -8,5 +8,9 @@ let b = 20;
 
 let add = Nat.add(a, b);
 
-assert add == 70;
+assert add == 70; 
+
+let addition = a + b;
+
+assert addition == 70;
 // ANCHOR_END: a

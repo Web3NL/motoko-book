@@ -13,7 +13,9 @@ assert integer == -32768;
 // ANCHOR_END: b
 
 // ANCHOR: c
-let textualInt16 = Int16.toText(a);
+let b : Int16 = -32768;
+
+let textualInt16 = Int16.toText(b);
 
 assert textualInt16 == "-32768";
 // ANCHOR_END: c

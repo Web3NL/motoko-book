@@ -7,10 +7,8 @@ import Blob "mo:base/Blob";
 // ANCHOR: b
 let a : [Nat8] = [1,2,3];
 
-let arrayBlob = Blob.fromArray(a);
+let blob = Blob.fromArray(a);
 
-let array = Blob.toArray(arrayBlob);
-
-assert array == [1,2,3];
+assert blob.size() == 3;
 // ANCHOR_END: b
 
