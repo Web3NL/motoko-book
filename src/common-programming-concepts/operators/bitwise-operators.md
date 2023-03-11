@@ -28,29 +28,29 @@ assert c == 12;
 
 ## Bitwise Shift Left `<<`
 ```motoko
-let a : Nat8 = 10;     // 0000_1010
-let b : Nat8 = a << 2; // 0010_1000 (decimal: 40)
+let a : Nat8 = 10;     //  binary: 0000_1010
+let b : Nat8 = a << 2; //  binary: 0010_1000 (decimal: 40)
 assert b == 40;
 ```
 
 ## Bitwise Shift Right `>>`
 ```motoko
-let a : Nat8 = 10;     // 0000_1010
-let b : Nat8 = a >> 2; // 0000_0010 (decimal: 2)
+let a : Nat8 = 10;     //  binary: 0000_1010
+let b : Nat8 = a >> 2; //  binary: 0000_0010 (decimal: 2)
 assert b == 2;
 ```
 
 ## Bitwise Rotate Left `<<>`
 ```motoko 
-let a : Nat8 = 10;       // 0000_1010
-let b : Nat8 = a <<> 2;  // 0010_1000 (decimal: 40)
+let a : Nat8 = 10;       //  binary: 0000_1010
+let b : Nat8 = a <<> 2;  //  binary: 0010_1000 (decimal: 40)
 assert b == 40;
 ```
 
 ## Bitwise Rotate Right `<>>`
 ```motoko
-let a : Nat8 = 10;       // 0000_1010
-let b : Nat8 = a >> 2;   // 1000_0010 (decimal: 130)
+let a : Nat8 = 10;       //  binary: 0000_1010
+let b : Nat8 = a >> 2;   //  binary: 1000_0010 (decimal: 130)
 assert b == 130;
 ```
 
