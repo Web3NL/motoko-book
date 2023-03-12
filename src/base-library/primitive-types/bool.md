@@ -72,43 +72,39 @@ The function `toText` takes one `Bool` argument and returns a `Text` value.
 
 
 ## Bool.lognot
-
 ```motoko
 func lognot(x : Bool) : Bool
 ```
 
-The function `lognot` takes one `Bool` argument and returns a `Bool` value. It stands for *logical not*. It is equivalent to the `not` [operator](/common-programming-concepts/operators.html).
+The function `lognot` takes one `Bool` argument and returns a `Bool` value. It stands for *logical not*. It is equivalent to the `not` [expression](/common-programming-concepts/operators/logical-expressions.html#not-expression).
 
 ```motoko
 {{#include _mo/bool.mo:d}}
 ```
 
 ## Bool.logand
-
 ```motoko
 func logand(x : Bool, y : Bool) : Bool
 ```
 
-The function `logand` takes two `Bool` arguments and returns a `Bool` value. It stands for *logical and*. It is equivalent to the `and` [operator](/common-programming-concepts/operators.html).
+The function `logand` takes two `Bool` arguments and returns a `Bool` value. It stands for *logical and*. It is equivalent to the `and` [expression](/common-programming-concepts/operators/logical-expressions.html#and-expression).
 
 ```motoko
 {{#include _mo/bool1.mo:a}}
 ```
 
 ## Bool.logor
-
 ```motoko
 func logor(x : Bool, y : Bool) : Bool
 ```
 
-The function `logor` takes two `Bool` arguments and returns a `Bool` value. It stands for *logical or*. It is equivalent to the `or` [operator](/common-programming-concepts/operators.html).
+The function `logor` takes two `Bool` arguments and returns a `Bool` value. It stands for *logical or*. It is equivalent to the `or` [expression](/common-programming-concepts/operators/logical-expressions.html#or-expression).
 
 ```motoko
 {{#include _mo/bool2.mo:a}}
 ```
 
 ## Bool.logxor
-
 ```motoko
 func logxor(x : Bool, y : Bool) : Bool
 ```
