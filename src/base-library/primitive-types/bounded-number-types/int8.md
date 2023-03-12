@@ -1,5 +1,5 @@
 # Int8
-The convention is to name the [*module alias*](/common-programming-concepts/modules.html#imports) after the *file name* it is defined in:
+The *convention* is to name the [*module alias*](/common-programming-concepts/modules.html#imports) after the *file name* it is defined in:
 
 ```motoko
 {{#include _mo/int8.mo:a}}

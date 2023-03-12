@@ -1,11 +1,10 @@
 import Bool "mo:base/Bool";
 
-
 // ANCHOR: a
 let a = true;
-let b = false;
+let b = true;
 
 let exclusiveOr = Bool.logxor(a, b);
 
-assert exclusiveOr == true;
+assert exclusiveOr == false;
 // ANCHOR_END: a

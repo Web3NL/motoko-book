@@ -1,6 +1,6 @@
 # Array
 
-The convention is to name the _module alias_ after the _file name_ it is defined in:
+The *convention* is to name the _module alias_ after the _file name_ it is defined in:
 
 ```motoko
 {{#include _mo/array.mo:a}}
