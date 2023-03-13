@@ -4,9 +4,6 @@ The *convention* is to name the [*module alias*](/common-programming-concepts/mo
 {{#include _mo/bool.mo:a}}
 ```
 
-### Types
-[Type Bool](#type)  
-
 ### Comparison
 [Function `equal`](#boolequal)  
 [Function `notEqual`](#boolnotequal)  
@@ -21,11 +18,6 @@ The *convention* is to name the [*module alias*](/common-programming-concepts/mo
 [Function `logor`](#boollogor)  
 [Function `logxor`](#boollogxor)  
 
-## Type
-It is useful to define a local [type alias](/common-programming-concepts/types.html#the-type-keyword) with the [same type name](/common-programming-concepts/modules.html#type-imports-and-renaming).
-```motoko
-type Bool = Bool.Bool;
-```
 
 ## Bool.equal
 ```motoko
@@ -59,13 +51,11 @@ The function `compare` takes two `Bool` arguments and returns an [Order](/base-l
 
 
 ## Bool.toText
-
 ```motoko
 func toText(x : Bool) : Text
 ```
 
 The function `toText` takes one `Bool` argument and returns a `Text` value.  
-
 ```motoko
 {{#include _mo/bool.mo:b}}
 ```
