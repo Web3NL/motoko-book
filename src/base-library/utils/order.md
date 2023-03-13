@@ -47,3 +47,4 @@ The function `equal` takes two `Order` argument and returns a `Bool` value.
 ```motoko
 {{#include _mo/order.mo:d}}
 ```
+
