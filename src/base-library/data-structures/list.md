@@ -58,11 +58,8 @@ The following types and functions are made public in the `List` module:
 ### Function signature
 
 ```motoko
-func nil<T>(
-
-) : List<T>
+func nil<T>() : List<T>
 ```
-
 ### Parameters
 
 |                     |                        |
@@ -80,19 +77,13 @@ func nil<T>(
 ### Execution Time and Memory Usage
 
 
-
 ## List.isNil
 
 ### Function signature
 
 ```motoko
-func isNil<T>(
-
-  l : List<T>
-
-) : Bool
+func isNil<T>(l : List<T>) : Bool
 ```
-
 ### Parameters
 
 |                     |                        |
@@ -108,7 +99,6 @@ func isNil<T>(
 ```
 
 ### Execution Time and Memory Usage
-
 
 ## List.push
 
@@ -147,13 +137,8 @@ func push<T>(
 ### Function signature
 
 ```motoko
-func last<T>(
-
-  l : List<T>
-
-) : ?T
+func last<T>(l : List<T>) : ?T
 ```
-
 ### Parameters
 
 |                     |                        |
@@ -170,19 +155,13 @@ func last<T>(
 
 ### Execution Time and Memory Usage
 
-
 ## List.pop
 
 ### Function signature
 
 ```motoko
-func pop<T>(
-
-  l : List<T>
-
-) : (?T, List<T>)
+func pop<T>(l : List<T>) : (?T, List<T>)
 ```
-
 ### Parameters
 
 |                     |                        |
@@ -199,19 +178,13 @@ func pop<T>(
 
 ### Execution Time and Memory Usage
 
-
 ## List.size
 
 ### Function signature
 
 ```motoko
-func size<T>(
-
-  l : List<T>
-
-) : Nat
+func size<T>(l : List<T>) : Nat
 ```
-
 ### Parameters
 
 |                     |                        |
@@ -228,7 +201,6 @@ func size<T>(
 
 ### Execution Time and Memory Usage
 
-
 ## List.get
 
 ### Function signature
@@ -242,7 +214,6 @@ func get<T>(
 
 ) : ?T
 ```
-
 ### Parameters
 
 |                     |                        |
@@ -257,22 +228,15 @@ func get<T>(
 ```motoko
 {{#include _mo/list/get.mo:a}}
 ```
-
 ### Execution Time and Memory Usage
-
 
 ## List.reverse
 
 ### Function signature
 
 ```motoko
-func reverse<T>(
-
-  l : List<T>
-
-) : List<T>
+func reverse<T>(l : List<T>) : List<T>
 ```
-
 ### Parameters
 
 |                     |                        |
@@ -286,9 +250,7 @@ func reverse<T>(
 ```motoko
 {{#include _mo/list/reverse.mo:a}}
 ```
-
 ### Execution Time and Memory Usage
-
 
 ## List.iterate
 
@@ -303,7 +265,6 @@ func iterate<T>(
 
 ) : 
 ```
-
 ### Parameters
 
 |                     |                        |
@@ -318,9 +279,7 @@ func iterate<T>(
 ```motoko
 {{#include _mo/list/iterate.mo:a}}
 ```
-
 ### Execution Time and Memory Usage
-
 
 ## List.map
 
@@ -335,13 +294,11 @@ func map<T, U>(
 
 ) : List<U>
 ```
-
 ### Parameters
 
 |                     |                        |
 | ------------------- | ---------------------- |
-| Generic parameters  | `T`                    |
-| Generic parameters  | `U`                    |
+| Generic parameters  | `T, U`                 |
 | Variable argument   | `l : List<T>`          |
 | Function argument   | `f : T -> U`           |
 | Return type         | `List<U>`              |
@@ -351,9 +308,7 @@ func map<T, U>(
 ```motoko
 {{#include _mo/list/map.mo:a}}
 ```
-
 ### Execution Time and Memory Usage
-
 
 ## List.filter
 
@@ -368,7 +323,6 @@ func filter<T>(
 
 ) : List<T>
 ```
-
 ### Parameters
 
 |                     |                        |
@@ -383,9 +337,7 @@ func filter<T>(
 ```motoko
 {{#include _mo/list/filter.mo:a}}
 ```
-
 ### Execution Time and Memory Usage
-
 
 ## List.partition
 
@@ -400,7 +352,6 @@ func partition<T>(
 
 ) : (List<T>, List<T>)
 ```
-
 ### Parameters
 
 |                     |                        |
@@ -415,9 +366,7 @@ func partition<T>(
 ```motoko
 {{#include _mo/list/partition.mo:a}}
 ```
-
 ### Execution Time and Memory Usage
-
 
 ## List.mapFilter
 
@@ -432,13 +381,11 @@ func mapFilter<T, U>(
 
 ) : List<U>
 ```
-
 ### Parameters
 
 |                     |                        |
 | ------------------- | ---------------------- |
-| Generic parameters  | `T`                    |
-| Generic parameters  | `U`                    |
+| Generic parameters  | `T, U`                 |
 | Variable argument   | `l : List<T>`          |
 | Function argument   | `f : T -> ?U`          |
 | Return type         | `List<U>`              |
@@ -448,9 +395,7 @@ func mapFilter<T, U>(
 ```motoko
 {{#include _mo/list/mapFilter.mo:a}}
 ```
-
 ### Execution Time and Memory Usage
-
 
 ## List.mapResult
 
@@ -465,14 +410,11 @@ func mapResult<T, R, E>(
 
 ) : Result.Result<List<R>, E>
 ```
-
 ### Parameters
 
 |                     |                                 |
 | ------------------- | ----------------------          |
-| Generic parameters  | `T`                             |
-| Generic parameters  | `R`                             |
-| Generic parameters  | `E`                             |
+| Generic parameters  | `T, R, E`                       |
 | Variable argument   | `xs : List<T>`                  |
 | Function argument   | `f : T -> Result.Result<R, E>`  |
 | Return type         | `Result.Result<List<R>, E>`     |
@@ -482,9 +424,7 @@ func mapResult<T, R, E>(
 ```motoko
 {{#include _mo/list/mapResult.mo:a}}
 ```
-
 ### Execution Time and Memory Usage
-
 
 ## List.append
 
@@ -499,7 +439,6 @@ func append<T>(
 
 ) : (List<T>)
 ```
-
 ### Parameters
 
 |                     |                        |
@@ -514,9 +453,7 @@ func append<T>(
 ```motoko
 {{#include _mo/list/append.mo:a}}
 ```
-
 ### Execution Time and Memory Usage
-
 
 ## List.flatten
 
@@ -529,7 +466,6 @@ l : List<List<T>>
 
 ) : (List<T>)
 ```
-
 ### Parameters
 
 |                     |                        |
@@ -543,9 +479,7 @@ l : List<List<T>>
 ```motoko
 {{#include _mo/list/flatten.mo:a}}
 ```
-
 ### Execution Time and Memory Usage
-
 
 ## List.take
 
@@ -560,7 +494,6 @@ func take<T>(
 
 ) : (List<T>)
 ```
-
 ### Parameters
 
 |                     |                        |
@@ -575,9 +508,7 @@ func take<T>(
 ```motoko
 {{#include _mo/list/take.mo:a}}
 ```
-
 ### Execution Time and Memory Usage
-
 
 ## List.drop
 
@@ -592,7 +523,6 @@ func drop<T>(
 
 ) : (List<T>)
 ```
-
 ### Parameters
 
 |                     |                        |
@@ -607,9 +537,7 @@ func drop<T>(
 ```motoko
 {{#include _mo/list/drop.mo:a}}
 ```
-
 ### Execution Time and Memory Usage
-
 
 ## List.foldLeft
 
@@ -626,13 +554,11 @@ func foldLeft<T, S>(
 
 ) : S
 ```
-
 ### Parameters
 
 |                     |                              |
 | ------------------- | ----------------------       |
-| Generic parameters  | `T`                          |
-| Generic parameters  | `S`                          |
+| Generic parameters  | `T, S`                       |
 | Variable argument1  | `list : List<T>`             |
 | Variable argument2  | `base : S`                   |
 | Function argument   | `combine : (S, T) -> S`      |
@@ -643,9 +569,7 @@ func foldLeft<T, S>(
 ```motoko
 {{#include _mo/list/foldLeft.mo:a}}
 ```
-
 ### Execution Time and Memory Usage
-
 
 ## List.foldRight
 
@@ -662,13 +586,11 @@ func foldRight<T, S>(
 
 ) : S
 ```
-
 ### Parameters
 
 |                     |                              |
 | ------------------- | ----------------------       |
-| Generic parameters  | `T`                          |
-| Generic parameters  | `S`                          |
+| Generic parameters  | `T, S`                       |
 | Variable argument1  | `list : List<T>`             |
 | Variable argument2  | `base : S`                   |
 | Function argument   | `combine : (T, S) -> S`      |
@@ -679,9 +601,7 @@ func foldRight<T, S>(
 ```motoko
 {{#include _mo/list/foldRight.mo:a}}
 ```
-
 ### Execution Time and Memory Usage
-
 
 ## List.find
 
@@ -696,7 +616,6 @@ func find<T>(
 
 ) : ?T
 ```
-
 ### Parameters
 
 |                     |                        |
@@ -711,9 +630,7 @@ func find<T>(
 ```motoko
 {{#include _mo/list/find.mo:a}}
 ```
-
 ### Execution Time and Memory Usage
-
 
 ## List.some
 
@@ -728,7 +645,6 @@ func some<T>(
 
 ) : Bool
 ```
-
 ### Parameters
 
 |                     |                        |
@@ -743,9 +659,7 @@ func some<T>(
 ```motoko
 {{#include _mo/list/some.mo:a}}
 ```
-
 ### Execution Time and Memory Usage
-
 
 
 ## List.all
@@ -761,7 +675,6 @@ func all<T>(
 
 ) : Bool
 ```
-
 ### Parameters
 
 |                     |                        |
@@ -776,9 +689,7 @@ func all<T>(
 ```motoko
 {{#include _mo/list/all.mo:a}}
 ```
-
 ### Execution Time and Memory Usage
-
 
 
 ## List.merge
@@ -796,7 +707,6 @@ func merge<T>(
 
 ) : List<T>
 ```
-
 ### Parameters
 
 |                     |                                    |
@@ -812,9 +722,7 @@ func merge<T>(
 ```motoko
 {{#include _mo/list/merge.mo:a}}
 ```
-
 ### Execution Time and Memory Usage
-
 
 ## List.compare
 
@@ -831,7 +739,6 @@ compare : (T, T) -> Order.Order
 
 ) : Order.Order
 ```
-
 ### Parameters
 
 |                     |                                    |
@@ -847,9 +754,7 @@ compare : (T, T) -> Order.Order
 ```motoko
 {{#include _mo/list/compare.mo:a}}
 ```
-
 ### Execution Time and Memory Usage
-
 
 ## List.equal
 
@@ -866,7 +771,6 @@ equal : (T, T) -> Bool
 
 ) : Bool
 ```
-
 ### Parameters
 
 |                     |                                    |
@@ -882,9 +786,7 @@ equal : (T, T) -> Bool
 ```motoko
 {{#include _mo/list/equal.mo:a}}
 ```
-
 ### Execution Time and Memory Usage
-
 
 ## List.tabulate
 
@@ -899,7 +801,6 @@ func tabulate<T>(
 
 ) : List<T>
 ```
-
 ### Parameters
 
 |                     |                        |
@@ -914,22 +815,15 @@ func tabulate<T>(
 ```motoko
 {{#include _mo/list/tabulate.mo:a}}
 ```
-
 ### Execution Time and Memory Usage
-
 
 ## List.make
 
 ### Function signature
 
 ```motoko
-func make<T>(
-
-  n : T
-
-) : List<T>
+func make<T>(n : T) : List<T>
 ```
-
 ### Parameters
 
 |                     |                        |
@@ -943,9 +837,7 @@ func make<T>(
 ```motoko
 {{#include _mo/list/make.mo:a}}
 ```
-
 ### Execution Time and Memory Usage
-
 
 ## List.replicate
 
@@ -975,9 +867,7 @@ func replicate<T>(
 ```motoko
 {{#include _mo/list/replicate.mo:a}}
 ```
-
 ### Execution Time and Memory Usage
-
 
 ## List.zip
 
@@ -992,13 +882,11 @@ func zip<T, U>(
 
 ) : List<(T, U)>
 ```
-
 ### Parameters
 
 |                     |                        |
 | ------------------- | ---------------------- |
-| Generic parameters  | `T`                    |
-| Generic parameters  | `U`                    |
+| Generic parameters  | `T, U`                 |
 | Variable argument1  | `xs : List<T>`         |
 | Variable argument2  | `ys : List<U>`         |
 | Return type         | `List<(T, U)>`         |
@@ -1008,9 +896,7 @@ func zip<T, U>(
 ```motoko
 {{#include _mo/list/zip.mo:a}}
 ```
-
 ### Execution Time and Memory Usage
-
 
 ## List.zipWith
 
@@ -1027,14 +913,11 @@ func zipWith<T, U, V>(
 
 ) : List<V>
 ```
-
 ### Parameters
 
 |                     |                        |
 | ------------------- | ---------------------- |
-| Generic parameters  | `T`                    |
-| Generic parameters  | `U`                    |
-| Generic parameters  | `V`                    |
+| Generic parameters  | `T, U, V`              |
 | Variable argument1  | `xs : List<T>`         |
 | Variable argument2  | `ys : List<U>`         |
 | Function argument2  | `f : (T, U) -> V`      |
@@ -1045,9 +928,7 @@ func zipWith<T, U, V>(
 ```motoko
 {{#include _mo/list/zipWith.mo:a}}
 ```
-
 ### Execution Time and Memory Usage
-
 
 ## List.split
 
@@ -1062,7 +943,6 @@ func split<T>(
 
 ) : (List<T>, List<T>)
 ```
-
 ### Parameters
 
 |                     |                        |
@@ -1077,9 +957,7 @@ func split<T>(
 ```motoko
 {{#include _mo/list/split.mo:a}}
 ```
-
 ### Execution Time and Memory Usage
-
 
 
 ## List.chunks
@@ -1095,7 +973,6 @@ func chunks<T>(
 
 ) : List<List<T>>
 ```
-
 ### Parameters
 
 |                     |                        |
@@ -1110,23 +987,15 @@ func chunks<T>(
 ```motoko
 {{#include _mo/list/chunks.mo:a}}
 ```
-
 ### Execution Time and Memory Usage
-
-
 
 ## List.fromArray
 
 ### Function signature
 
 ```motoko
-func fromArray<T>(
-
- xs : [T]
-
-) : List<T>
+func fromArray<T>(xs : [T]) : List<T>
 ```
-
 ### Parameters
 
 |                     |                        |
@@ -1140,9 +1009,7 @@ func fromArray<T>(
 ```motoko
 {{#include _mo/list/fromArray.mo:a}}
 ```
-
 ### Execution Time and Memory Usage
-
 
 ## List.fromVarArray
 
@@ -1169,22 +1036,15 @@ func fromVarArray<T>(
 ```motoko
 {{#include _mo/list/fromVarArray.mo:a}}
 ```
-
 ### Execution Time and Memory Usage
-
 
 ## List.toArray
 
 ### Function signature
 
 ```motoko
-func toArray<T>(
-
- xs : List<T>
-
-) : [T]
+func toArray<T>(xs : List<T>) : [T]
 ```
-
 ### Parameters
 
 |                     |                        |
@@ -1198,22 +1058,15 @@ func toArray<T>(
 ```motoko
 {{#include _mo/list/toArray.mo:a}}
 ```
-
 ### Execution Time and Memory Usage
-
 
 ## List.toVarArray
 
 ### Function signature
 
 ```motoko
-func toVarArray<T>(
-
- xs : List<T>
-
-) : [var T]
+func toVarArray<T>(xs : List<T>) : [var T]
 ```
-
 ### Parameters
 
 |                     |                        |
@@ -1230,19 +1083,13 @@ func toVarArray<T>(
 
 ### Execution Time and Memory Usage
 
-
 ## List.toIter
 
 ### Function signature
 
 ```motoko
-func toIter<T>(
-
- xs : List<T>
-
-) : Iter.Iter<T>
+func toIter<T>(xs : List<T>) : Iter.Iter<T>
 ```
-
 ### Parameters
 
 |                     |                        |
@@ -1256,7 +1103,6 @@ func toIter<T>(
 ```motoko
 {{#include _mo/list/toIter.mo:a}}
 ```
-
 ### Execution Time and Memory Usage
 
 
