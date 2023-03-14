@@ -16,7 +16,9 @@ The *convention* is to name the [*module alias*](/common-programming-concepts/mo
 [Function `toText`](#floattotext)  
 [Function `toInt64`](#floattoint64)  
 [Function `fromInt64`](#floatfromint642)  
-[Function `format`](#floatformat)  
+
+<!-- ### Formatting
+[Function `format`](#floatformat)   -->
 
 ## Float.sqrt
 ```motoko
@@ -97,7 +99,7 @@ The function `fromInt64` takes one `Int64` argument and returns a `Float` value.
 {{#include _mo/float.mo:d}}
 ```
 
-## Float.format
+<!-- ## Float.format
 ```motoko
 func format(fmt : {#fix : Nat8; #exp : Nat8; #gen : Nat8; #hex : Nat8; #exact}, x : Float) : Text
 ```
@@ -105,4 +107,4 @@ func format(fmt : {#fix : Nat8; #exp : Nat8; #gen : Nat8; #hex : Nat8; #exact}, 
 The function `format` takes two argument and returns a `Text` value. 
 ```motoko
 {{#include _mo/float6.mo:a}}
-```
+``` -->
