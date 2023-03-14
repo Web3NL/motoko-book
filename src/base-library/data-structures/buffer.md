@@ -87,7 +87,7 @@ func size() : Nat
 The function `size` takes no argument and returns a `Nat` value.  
 
 ```motoko
-{{#include _mo/buffer/size.mo:a}}
+{{#include _mo/buffer/method/size.mo:a}}
 ```
 ## Buffer.add
 
@@ -97,7 +97,7 @@ func add(element : X) : ()
 The function `add` takes one generic type `X` argument and returns a `()` value.  
 
 ```motoko
-{{#include _mo/buffer/add.mo:a}}
+{{#include _mo/buffer/method/add.mo:a}}
 ```
 ## Buffer.get
 
@@ -107,7 +107,7 @@ func get(index : Nat) : X
 The function `get` takes one `Nat` argument and returns a generic type value `X` .  
 
 ```motoko
-{{#include _mo/buffer/get.mo:a}}
+{{#include _mo/buffer/method/get.mo:a}}
 ```
 
 ## Buffer.getOpt
@@ -118,7 +118,7 @@ func getOpt(index : Nat) : ?X
 The function `getOpt` takes one `Nat` argument and returns a generic type value `?X`.  
 
 ```motoko
-{{#include _mo/buffer/getOpt.mo:a}}
+{{#include _mo/buffer/method/getOpt.mo:a}}
 ```
 ## Buffer.put
 
@@ -128,7 +128,7 @@ func put(index : Nat, element : X) : ()
 The function `put` takes one `Nat`and one generic type `x` argument and returns a `()` value.  
 
 ```motoko
-{{#include _mo/buffer/put.mo:a}}
+{{#include _mo/buffer/method/put.mo:a}}
 ```
 
 ## Buffer.removeLast
@@ -139,7 +139,7 @@ func removeLast() : ?X
 The function `removeLast` takes no argument and returns a generic type value `?X`.  
 
 ```motoko
-{{#include _mo/buffer/removeLast.mo:a}}
+{{#include _mo/buffer/method/removeLast.mo:a}}
 ```
 
 ## Buffer.remove
@@ -150,7 +150,7 @@ func remove(index : Nat) : X
 The function `remove` takes one `Nat` argument and returns a generic type value `X`.  
 
 ```motoko
-{{#include _mo/buffer/remove.mo:a}}
+{{#include _mo/buffer/method/remove.mo:a}}
 ```
 ## Buffer.clear
 
@@ -160,7 +160,7 @@ func clear() : ()
 The function `clear` takes no argument and returns a `()` value.  
 
 ```motoko
-{{#include _mo/buffer/clear.mo:a}}
+{{#include _mo/buffer/method/clear.mo:a}}
 ```
 ## Buffer.filterEntries
 
@@ -175,7 +175,7 @@ func filterEntries(predicate : (Nat, X) -> Bool) : ()
 | Return type         | `()`                   |
 
 ```motoko
-{{#include _mo/buffer/filterEntries.mo:a}}
+{{#include _mo/buffer/method/filterEntries.mo:a}}
 ```
 ## Buffer.capacity
 
@@ -185,7 +185,7 @@ func capacity() : Nat
 The function `capacity` takes no argument and returns a `Nat` value.  
 
 ```motoko
-{{#include _mo/buffer/capacity.mo:a}}
+{{#include _mo/buffer/method/capacity.mo:a}}
 ```
 ## Buffer.reserve
 
@@ -195,7 +195,7 @@ func reserve(capacity : Nat) : ()
 The function `reserve` takes one `Nat` argument and returns a `()` value.  
 
 ```motoko
-{{#include _mo/buffer/reserve.mo:a}}
+{{#include _mo/buffer/method/reserve.mo:a}}
 ```
 ## Buffer.append
 
@@ -205,7 +205,7 @@ func append(buffer2 : Buffer<X>) : ()
 The function `append` takes one generic type `Buffer<X>` argument and returns a `()` value.  
 
 ```motoko
-{{#include _mo/buffer/append.mo:a}}
+{{#include _mo/buffer/method/append.mo:a}}
 ```
 ## Buffer.insert
 
@@ -215,7 +215,7 @@ func insert(index : Nat, element : X) : ()
 The function `insert` takes one `Nat`and one generic type `X` argument and returns a `()` value.  
 
 ```motoko
-{{#include _mo/buffer/insert.mo:a}}
+{{#include _mo/buffer/method/insert.mo:a}}
 ```
 
 ## Buffer.insertBuffer
@@ -226,7 +226,7 @@ func insertBuffer(index : Nat, buffer2 : Buffer<X>) : ()
 The function `insertBuffer` takes one `Nat`and one generic type `Buffer<X>` argument and returns a `()` value.  
 
 ```motoko
-{{#include _mo/buffer/insertBuffer.mo:a}}
+{{#include _mo/buffer/method/insertBuffer.mo:a}}
 ```
 
 ## Buffer.sort
@@ -242,7 +242,7 @@ func sort(compare : (X, X) -> Order.Order) : ()
 | Return type         | `()`                     |
 
 ```motoko
-{{#include _mo/buffer/sort.mo:a}}
+{{#include _mo/buffer/method/sort.mo:a}}
 ```
 
 ## Buffer.vals
@@ -253,7 +253,7 @@ func vals() : { next : () -> ?X }
 The function `vals` takes no argument and returns a `Iter` value.  
 
 ```motoko
-{{#include _mo/buffer/vals.mo:a}}
+{{#include _mo/buffer/method/vals.mo:a}}
 ```
 
 ## Buffer.isEmpty
