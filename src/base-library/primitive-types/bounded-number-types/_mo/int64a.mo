@@ -2,10 +2,10 @@
 
 import Int64 "mo:base/Int64";
 
-// ANCHOR: 
-let integer = -9223372036854775808;
+// ANCHOR: a
+let integer = -92233;
 
 let int64 = Int64.fromInt(integer);
 
-assert int64 == -9223372036854775808;
+assert int64 == -92233;
 // ANCHOR_END: a

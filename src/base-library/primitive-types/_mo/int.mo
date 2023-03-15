@@ -5,20 +5,16 @@ import Int "mo:base/Int";
 // ANCHOR_END: a
 
 // ANCHOR: b
-let integer = -10;
+let integer : Int = -10;
 
-let absoluteValue = Int.abs(integer);
+let absoluteValue : Nat = Int.abs(integer);
+
+assert absoluteValue == 10;
 // ANCHOR_END: b
 
-// ANCHOR: c
-let intToText = Int.toText(integer);
-
-assert intToText == "-10";
-// ANCHOR_END: c
-
 // ANCHOR: d
-let a = 20;
-let b = -20;
+let a : Int = 20;
+let b : Int = -20;
 
 let minimum = Int.min(a, b);
 

@@ -5,11 +5,9 @@ import Text "mo:base/Text";
 
 // ANCHOR_END: a
 
-// ANCHOR: b
-let text = "blockchain";
-// ANCHOR_END: b
-
 // ANCHOR: c
+let text = "blockchain";
+
 let textLength = Text.size(text);
 
 assert textLength == 10;

@@ -9,12 +9,14 @@ let a : Int32 = -2147483648;
 
 let integer = Int32.toInt(a);
 
-assert integer == -2147483648;
+assert integer == -21474;
 // ANCHOR_END: b
 
 // ANCHOR: c
-let textualInt32 = Int32.toText(a);
+let b : Int32 = -2147483648;
 
-assert textualInt32 == "-2147483648";
+let textualInt32 = Int32.toText(b);
+
+assert textualInt32 == "-21474";
 // ANCHOR_END: c
 

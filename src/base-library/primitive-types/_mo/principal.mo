@@ -32,6 +32,3 @@ let isAnonymous = Principal.isAnonymous(principal);
 assert isAnonymous == false;
 // ANCHOR_END: g
 
-
-let p : Principal = Principal.fromActor(MyActor); 
-// ANCHOR_END: a
