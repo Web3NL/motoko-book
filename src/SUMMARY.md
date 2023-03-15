@@ -83,11 +83,10 @@
         - [RBTree](base-library/data-structures/rbtree.md)
 
 - [Advanced Concepts](advanced-concepts.md)
-    - [Canisters](advanced-concepts/canisters.md)
-        - [Canister Status](advanced-concepts/canisters/canister-status.md)
-        - [Errors and Traps](advanced-concepts/canisters/errors-and-traps.md)
     - [Async Programming](advanced-concepts/async-programming.md)
-        - [Message Inspection](advanced-concepts/async-programming/message-inspection.md)
+        - [Canisters](advanced-concepts/async-programming/canisters.md)
+        - [Async Calls and Await](advanced-concepts/async-programming/async-calls-and-await.md)
+        - [Errors and Traps](advanced-concepts/async-programming/errors-and-traps.md)
         - [Cross Canister Calls and Rollbacks](advanced-concepts/async-programming/cross-canister-calls-and-rollbacks.md)
         - [Async* and Await*](advanced-concepts/async-programming/internal-async-await.md)
     - [Scalability](advanced-concepts/scalability.md)
@@ -97,6 +96,8 @@
     - [System API's](advanced-concepts/system-apis.md)
         - [Timers and Heartbeats](advanced-concepts/system-apis/timers.md)
         - [Pre-upgrade and Post-upgrade](advanced-concepts/system-apis/preupgrade-postupgrade.md)
+        - [Message Inspection](advanced-concepts/system-apis/message-inspection.md)
+        - [Certified Variables](advanced-concepts/system-apis/certified-variables.md)
         - [Cryptographic Randomness](advanced-concepts/system-apis/randomness.md)
     
 
@@ -104,6 +105,7 @@
     - [Installing the SDK](project-deployment/installing-sdk.md)
     - [Local Deployment](project-deployment/local-deployment.md)
     - [PEM Files](project-deployment/pem-files.md)
+    - [Canister Status](project-deployment/canister-status.md)
     - [Cycles and ICP](project-deployment/cycles-and-icp.md)
     - [Cycles Wallet](project-deployment/cycles-wallet.md)
     - [IC Deployment](project-deployment/ic-deployment.md)
