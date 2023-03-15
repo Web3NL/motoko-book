@@ -2,9 +2,9 @@ import Principal "mo:base/Principal";
 
 // ANCHOR: a
 type myActor = actor {
-    f1 : shared () : async ();
-    f2 : shared Nat : async ();
-    f3 : shared Text : ();
+    f1 : shared () -> async ();
+    f2 : shared Nat -> async ();
+    f3 : shared Text -> ();
 };
 // ANCHOR_END: a
 
@@ -20,8 +20,7 @@ type CallArgs = {
 };
 // ANCHOR_END: b
 
+
 //ANCHOR: c
-    #f1 : () -> ();
-    #f2 : () -> Nat;
-    #f3 : () -> Text;
+
 //ANCHOR_END: c
