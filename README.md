@@ -1,4 +1,4 @@
-# [The Motoko Programming Language Book](https://7po3j-syaaa-aaaal-qbqea-cai.ic0.app/)
+# [The Motoko Programming Language Book](https://web3.motoko-book.dev/)
 
 **WARNING: Book is work in progress.**  
 

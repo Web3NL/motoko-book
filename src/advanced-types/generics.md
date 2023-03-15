@@ -5,7 +5,7 @@ Let's ask [ChatGPT](https://chat.openai.com/) how it would explain *generic type
 
 **ChatGPT**: *Generics are a way of creating flexible and reusable code in programming. They allow you to write functions, classes, and data structures that can work with different types of data without specifying the type ahead of time.* 
 
-In our own words, generic types allow us to write code that *generalizes* over many possible types. In fact, that is where they get there name from. 
+In our own words, generic types allow us to write code that *generalizes* over many possible types. In fact, that is where they get their name from. 
 
 ## Type parameters and type arguments
 In Motoko, [custom types](/common-programming-concepts/types.html#the-type-keyword), [functions](/common-programming-concepts/functions.html) and [classes](/common-programming-concepts/objects-and-classes/classes.html) can specify *generic type parameters*. Type parameters have *names* and are declared by adding them in between angle brackets `< >`. The angle brackets are declared directly after the *name* of the type, function or class (before any other parameters).

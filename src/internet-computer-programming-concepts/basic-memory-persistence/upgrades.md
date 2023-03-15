@@ -27,6 +27,13 @@ We could also choose to *upgrade* the Wasm module of an actor. Then:
 > **NOTE**  
 > *Pre and post upgrade hooks could trap and lead to loss of canister data and thus are not considered best practice.*
 
+## Service upgrades and sub-typing
+When upgrading a service, we may also upgrade the [public interface](/internet-computer-programming-concepts/async-data/candid.html#actor-interfaces). This means that our [actor type](/internet-computer-programming-concepts/actors.html#actor-type) and [public interface description](/internet-computer-programming-concepts/async-data/candid.html#actor-interfaces) may change.
+
+An older [client](/internet-computer-programming-concepts/actors/canister-calling.html) that is not aware of the change may still use the old interface. This can cause problems if for instance a client calls a function that no longer exists in the interface. This is called a *breaking change*, because it 'breaks' the older clients. 
+
+To avoid breaking changes, we could extend the functionality of a service by using [sub-typing](/advanced-types/subtyping.html). This preserves the *old interface* rather than the memory state and is called *backwards compatibility*. This will be discussed [later](/advanced-types/subtyping.html) in this book. 
+
 ## Upgrading and reinstalling in Motoko Playground and SDK
 When we have an already running canister in [Motoko Playground](/getting-started.html) and we click `deploy` again, we are presented with the option to `upgrade` or `reinstall` (among other options).
 

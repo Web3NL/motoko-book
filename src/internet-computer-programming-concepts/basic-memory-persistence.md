@@ -37,9 +37,4 @@ There are two main ways to upgrade the functionality of a service without resett
 
 This chapter describes [*stable variables*](/internet-computer-programming-concepts/basic-memory-persistence/stable-variables.html) which are a way to *persist* the state of mutable variables across [*upgrades*](/internet-computer-programming-concepts/basic-memory-persistence/upgrades.html). Another way is to use [*stable memory*](/advanced-concepts/scalability/stable-storage.html), which will be discussed later in this book. 
 
-### Service upgrades and sub-typing
-When upgrading a service, we may also upgrade the [public interface](/internet-computer-programming-concepts/async-data/candid.html#actor-interfaces). This means that our [actor type](/internet-computer-programming-concepts/actors.html#actor-type) and [public interface description](/internet-computer-programming-concepts/async-data/candid.html#actor-interfaces) may change.
 
-An older [client](/internet-computer-programming-concepts/actors/canister-calling.html) that is not aware of the change may still use the old interface. This can cause problems if for instance a client calls a function that no longer exists in the interface. This is called a *breaking change*, because it 'breaks' the older clients. 
-
-To avoid breaking changes, we could extend the functionality of a service by using [sub-typing](/advanced-types/subtyping.html). This preserves the *old interface* rather than the memory state and is called *backwards compatibility*. This will be discussed [later](/advanced-types/subtyping.html) in this book. 

@@ -72,6 +72,8 @@
     - [Utility Modules](base-library/utils.md)
         - [Time](base-library/utils/time.md)
         - [Result](base-library/utils/result.md)
+        - [Order](base-library/utils/order.md)
+        - [Error](base-library/utils/error.md)
         - [Iterators](base-library/utils/iter.md)
     - [Data Structures](base-library/data-structures.md)
         - [Array](base-library/data-structures/array.md)
