@@ -29,25 +29,13 @@ The `inspect` function may examine this information about the call and decide to
 ### The `inspect` function argument
 The argument to the `inspect` system function is provided by the IC. The type of this argument depends on the [type of the actor](/internet-computer-programming-concepts/actors.html#actor-type). Lets consider an actor of the following actor type:
 ```motoko
-type myActor = actor {
-    f1 : shared () : async ();
-    f2 : shared Nat : async ();
-    f3 : shared Text : ();
-};
+{{#include _mo/message-inspection1.mo:a}}
 ```
 The functions `f1` and `f2` are *update* functions and `f3` is a *oneway* function. Also, `f2` takes a `Nat` argument and `f3` takes a `Text` argument. 
 
-The argument to the `inspect` system function (which we call `args` in this example) for this specific actor will be an object of the following type:
+The argument to the `inspect` system function (which we call `args` in this example) for this specific actor will be an object of the following type:  
 ```motoko
-type CallArgs = {
-    caller : Principal;
-    arg : Blob;
-    msg : {
-        #f1 : () -> ();
-        #f2 : () -> Nat;
-        #f3 : () -> Text;
-    };
-};
+{{#include _mo/message-inspection1.mo:b}}  
 ``` 
 
 This object contains three fields with *predefined* names: 
@@ -62,9 +50,7 @@ But the *associated types* for the variant fields **ARE NOT** the types of the f
 
 In our example these 'function-variable-accessor' function types are:
 ```motoko
-    #f1 : () -> ();
-    #f2 : () -> Nat;
-    #f3 : () -> Text;
+{{#include _mo/message-inspection1.mo:c}}  
 ```
 These functions return the variable arguments that were supplied during the call to the public shared function. Thus, they always have unit argument types and return the variable type of the called function. 
 
