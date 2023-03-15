@@ -1,19 +1,16 @@
 import Buffer "mo:base/Buffer";
 // ANCHOR: a
-
 let intStorage = Buffer.Buffer<Int>(0);
 intStorage.add(-1);
 intStorage.add(2);
-intStorage.add(-3);
-intStorage.add(4);
-intStorage.add(-5);
-intStorage.add(6);
+intStorage.add(-2);
+intStorage.add(1);
+intStorage.add(3);
 
-func part(arg : Int) :Int {
-    x % 2 == 0;
+func part(x : Int) : Bool {
+    x > 0;
 };
 
-let partitions = intStorage.partition<Int>(intStorage, part);
-
-let array : [Int] = Buffer.toArray(intStorage);
+let partitions = Buffer.partition<Int>(intStorage,part);
+let tuple : ([Int], [Int]) = (Buffer.toArray(partitions.0), Buffer.toArray(partitions.1)) // => ([0, -1, -2], [1, 2, 3])
 // ANCHOR_END: a
