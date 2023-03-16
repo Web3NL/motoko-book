@@ -2,14 +2,15 @@ import mo from "motoko"
 import fs from "fs"
 import path from "path"
 
-let base = await mo.fetchPackage('base', 'https://github.com/dfinity/motoko-base/master/src');
-mo.loadPackage(base);
+let base = await mo.fetchPackage(
+  "base",
+  "https://github.com/dfinity/motoko-base/master/src"
+)
+mo.loadPackage(base)
 
-let folders = findFolder("src", "_mo");
+let folders = findFolder("src", "_mo")
 console.log(folders)
-folders.forEach(folder => checkMoFiles(folder));
-
-
+folders.forEach((folder) => checkMoFiles(folder))
 
 function findFolder(dir: string, folderName: string) {
   let array: string[] = []
@@ -20,6 +21,10 @@ function findFolder(dir: string, folderName: string) {
     if (stats.isDirectory()) {
       if (files[i] === folderName) {
         array.push(filePath)
+        let result = findFolder2(filePath)
+        if (result) {
+          result.forEach((value) => array.push(value))
+        }
       } else {
         let result = findFolder(filePath, folderName)
         if (result) {
@@ -31,13 +36,30 @@ function findFolder(dir: string, folderName: string) {
   return array
 }
 
-function checkMoFiles(directoryPath : string) {
+function findFolder2(dir: string) {
+  let array: string[] = []
+  let files = fs.readdirSync(dir)
+  for (let i = 0; i < files.length; i++) {
+    let filePath = path.join(dir, files[i])
+    let stats = fs.statSync(filePath)
+    if (stats.isDirectory()) {
+      array.push(filePath)
+      let result = findFolder2(filePath)
+      if (result) {
+        result.forEach((value) => array.push(value))
+      }
+    }
+  }
+  return array
+}
+
+function checkMoFiles(directoryPath: string) {
   fs.readdir(directoryPath, function (err, files) {
     if (err) {
       return console.log("Unable to scan directory: " + err)
     }
     files.forEach(function (file) {
-      if (path.extname(file) === '.mo') {
+      if (path.extname(file) === ".mo") {
         checkMotoko(path.join(directoryPath, file))
       }
     })
