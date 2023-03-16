@@ -33,7 +33,7 @@ func fromText(t : Text) : Principal
 
 The function `fromText` takes one `Text` argument and returns a `Principal` value. 
 ```motoko
-{{#include _mo/principal.mo:d}}
+{{#include _mo/principal1.mo:a}}
 ```
 
 ## Principal.toText
@@ -43,7 +43,7 @@ func toText(p : Principal) : Text
 
 The function `toText` takes one `Principal` argument and returns a `Text` value. 
 ```motoko
-{{#include _mo/principal.mo:c}}
+{{#include _mo/principal2.mo:a}}
 ```
 
 ## Principal.toBlob
@@ -53,7 +53,7 @@ func toBlob(p : Principal) : Blob
 
 The function `toBlob` takes one `Principal` argument and returns a `Blob` value. 
 ```motoko
-{{#include _mo/principal.mo:e}}
+{{#include _mo/principal3.mo:a}}
 ```
 
 ## Principal.fromBlob
@@ -63,7 +63,7 @@ func fromBlob(b : Blob) : Principal
 
 The function `fromBlob` takes one `BLob` argument and returns a `Principal` value. 
 ```motoko
-{{#include _mo/principal.mo:f}}
+{{#include _mo/principal4.mo:a}}
 ```
 
 ## Principal.isAnonymous
@@ -73,5 +73,5 @@ func isAnonymous(p : Principal) : Bool
 
 The function `isAnonymous` takes one `Principal` argument and returns a `Bool` value. 
 ```motoko
-{{#include _mo/principal.mo:g}}
+{{#include _mo/principal5.mo:a}}
 ```
