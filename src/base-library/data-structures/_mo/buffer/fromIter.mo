@@ -9,5 +9,4 @@ let iter : Iter.Iter<Int> = array.vals();
 
 let buffer = Buffer.fromIter<Int>(iter);  
 Buffer.toText(buffer, Int.toText); // => "[-1, 0, 1]"
-
 // ANCHOR_END: a

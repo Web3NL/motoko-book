@@ -1,6 +1,5 @@
 import Buffer "mo:base/Buffer";
 // ANCHOR: a
-
 let intStorage = Buffer.Buffer<Int>(0);
 intStorage.add(-2);
 intStorage.add(2);
@@ -15,6 +14,4 @@ func check(index : Nat, value : Int) : Bool {
 let filterEntries = intStorage.filterEntries(check);
 
 let array : [Int] = Buffer.toArray(intStorage);  // [-2, 2, 4]
-
-
 // ANCHOR_END: a

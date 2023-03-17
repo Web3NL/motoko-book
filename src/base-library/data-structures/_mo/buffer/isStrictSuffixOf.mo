@@ -15,5 +15,4 @@ intStorage.add(1);
 intStorage.add(2);
 
 let isStrictSuffixOf : Bool = Buffer.isStrictSuffixOf(suffix, intStorage, Int.equal);  // => true
-
 // ANCHOR_END: a
