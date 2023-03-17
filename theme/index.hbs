@@ -52,8 +52,10 @@
         <!-- MathJax -->
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
         {{/if}}
+
     </head>
     <body>
+    <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
             var path_to_root = "{{ path_to_root }}";
@@ -91,10 +93,12 @@
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
             var html = document.querySelector('html');
-            var sidebar = 'hidden';
+            var sidebar = null;
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
             }
             html.classList.remove('sidebar-visible');
             html.classList.add("sidebar-" + sidebar);
@@ -102,11 +106,6 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <div>
-                    <a href="https://internetcomputer.org">
-                        <img width="100%" src="https://cdn-assets-eu.frontify.com/s3/frontify-enterprise-files-eu/eyJwYXRoIjoiZGZpbml0eVwvYWNjb3VudHNcLzAxXC80MDAwMzA0XC9wcm9qZWN0c1wvNFwvYXNzZXRzXC9mMlwvMzI0XC9iNDMwNzYyODc3NWJkMWUyYTBmNTA0NjUwNDExOTJjMy0xNjQ4MDM4Nzc0LnN2ZyJ9:dfinity:Lp5AaDtxdU9rq5DMLPKRudu_mOYKGguYw4keRXOjKfY" alt="Running on the Internet Computer Blockchain" />
-                    </a>
-                </div>
                 {{#toc}}{{/toc}}
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
@@ -288,13 +287,7 @@
         {{/if}}
 
         <script src="{{ path_to_root }}clipboard.min.js"></script>
-        <script src="{{ path_to_root }}highlight.js"></script>
         <script src="{{ path_to_root }}book.js"></script>
-
-        <!-- Custom JS scripts -->
-        {{#each additional_js}}
-        <script src="{{ ../path_to_root }}{{this}}"></script>
-        {{/each}}
 
         {{#if is_print}}
         {{#if mathjax_support}}
@@ -314,5 +307,6 @@
         {{/if}}
         {{/if}}
 
+    </div>
     </body>
 </html>
