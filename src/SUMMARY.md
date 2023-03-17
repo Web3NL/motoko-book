@@ -94,10 +94,10 @@
         - [Actor Classes](advanced-concepts/scalability/actor-classes.md)
         - [Multi-canister Scaling](advanced-concepts/scalability/multi-canister-scaling.md)
     - [System API's](advanced-concepts/system-apis.md)
-        - [Timers and Heartbeats](advanced-concepts/system-apis/timers.md)
-        - [Pre-upgrade and Post-upgrade](advanced-concepts/system-apis/preupgrade-postupgrade.md)
         - [Message Inspection](advanced-concepts/system-apis/message-inspection.md)
+        - [Timers and Heartbeats](advanced-concepts/system-apis/timers.md)
         - [Certified Variables](advanced-concepts/system-apis/certified-variables.md)
+        - [Pre-upgrade and Post-upgrade](advanced-concepts/system-apis/preupgrade-postupgrade.md)
         - [Cryptographic Randomness](advanced-concepts/system-apis/randomness.md)
     
 
