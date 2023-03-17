@@ -7,6 +7,6 @@
     "vite": "^4.2.0"
   },
   "scripts": {
-    "build": "mdbook build && cp -r domain/.well-known/ book/ && cp domain/.ic-assets.json book/"
+    "build": "npx vite build && mdbook build && cp -r domain/.well-known/ book/ && cp domain/.ic-assets.json book/"
   }
 }

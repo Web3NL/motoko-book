@@ -1,7 +1,5 @@
-import mo from 'motoko'
-
-mo.write('main.mo','0')
-console.log(mo.run('main.mo'))
+import mo from "motoko"
+import { machine } from "os"
 
 registerMotoko()
 hljs.configure({
@@ -17,7 +15,7 @@ hljs.initHighlightingOnLoad()
 
 // Add custom play button
 function addPlayButtons() {
-  const motokoCodeElements = document.querySelectorAll("code.language-motoko")
+  const motokoCodeElements = document.querySelectorAll("code.run")
 
   const motokoPreElements = Array.from(motokoCodeElements).map(
     (codeElement) => {
@@ -33,18 +31,34 @@ function addPlayButtons() {
     runCodeButton.setAttribute("aria-label", runCodeButton.title)
 
     const buttonsDiv = element.querySelector(".buttons")
-
     buttonsDiv.insertBefore(runCodeButton, buttonsDiv.firstChild)
 
+    const output = document.createElement("code")
+    output.classList.add('result', 'hljs', 'language-motoko')
+    output.style.display = 'none'
+    element.querySelector("code").insertAdjacentElement("afterend", output)
+
     runCodeButton.addEventListener("click", function (_) {
-      console.log("clickk")
+      const code = element.querySelector("code").textContent
+      mo.file("main.mo")
+      mo.write("main.mo", code.toString())
+
+      const result = mo.run("main.mo")
+
+      if (result.stderr.length == 0) {
+        output.style.display = 'block'
+        output.textContent = result.stdout
+      } else {
+        console.log(result)
+      }
+      mo.delete("main.mo")
     })
   })
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-    addPlayButtons()
-});
+document.addEventListener("DOMContentLoaded", function () {
+  addPlayButtons()
+})
 
 function registerMotoko() {
   var string = {

@@ -5,6 +5,8 @@ src = "src"
 title = "The Motoko Programming Language Book"
 
 [output.html]
+unsafe = true
+
 additional-js = ["theme/motoko.js"]
 
 git-repository-icon = "fa-github"
