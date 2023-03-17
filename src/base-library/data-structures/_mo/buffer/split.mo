@@ -11,5 +11,4 @@ let splits = Buffer.split<Int>(intStorage,2);
 
 let tuple : ([Int], [Int]) = (Buffer.toArray<Int>(splits.0), Buffer.toArray<Int>(splits.1));
 // =>  ([-2, -1], [0, 1, 2])
-
 // ANCHOR_END: a

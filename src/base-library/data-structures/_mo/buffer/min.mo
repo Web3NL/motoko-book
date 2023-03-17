@@ -8,5 +8,4 @@ intStorage.add(0);
 intStorage.add(1);
 
 let min : ?Int = Buffer.min<Int>(intStorage, Int.compare) // ?-1
-
 // ANCHOR_END: a

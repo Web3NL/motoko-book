@@ -11,5 +11,4 @@ intStorage.add(2);
 
 let suffix : Buffer.Buffer<Int> = Buffer.suffix(intStorage, 3); 
 let text : Text = Buffer.toText(suffix, Int.toText); // => "[0, 1, 2]"
-
 // ANCHOR_END: a
