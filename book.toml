@@ -21,5 +21,5 @@ enable = true    # whether or not to enable section folding
 level = 1         # the depth to start folding
 
 [build]
-create-missing = false
+create-missing = true
 
