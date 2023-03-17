@@ -3,6 +3,7 @@
 **WARNING**: Book is work in progress.
 
 **Latest updates**  
+15-03-2023: Version 0.5.1 (Chapter 5 [Introduction](/base-library.html))  
 11-03-2023: Version 0.4 (Chapter 4 Release)  
 
 [GitHub Repo](https://github.com/Web3NL/motoko-book)

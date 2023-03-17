@@ -113,3 +113,4 @@ Message inspection is executed by a single replica (without full consensus, like
 *Secure access control* checks can only be performed by:
 1. Implementing [public shared functions](/internet-computer-programming-concepts/actors.html#public-shared-functions-in-actors) in an [actor](/internet-computer-programming-concepts/actors.html) which implement the [caller identifying](/internet-computer-programming-concepts/principals-and-authentication.html#caller-authenticating-public-shared-functions) message object 
 1. Additionally guard incoming calls by the `inspect` system function.
+
