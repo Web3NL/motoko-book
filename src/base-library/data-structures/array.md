@@ -1,37 +1,71 @@
 # Array
 
-The *convention* is to name the _module alias_ after the _file name_ it is defined in:
+The _convention_ is to name the _module alias_ after the _file name_ it is defined in:
 
 ```motoko
 {{#include _mo/array.mo:a}}
 ```
 
-## Public items
+### Size
 
-The following types and functions are made public in the `Array` module:  
+[Function `size`](#arraysize)
+
+### Initialization
+
 [Function `init`](#arrayinit)  
+[Function `make`](#arraymake)  
 [Function `tabulate`](#arraytabulate)  
-[Function `tabulateVar`](#arraytabulatevar)  
+[Function `tabulateVar`](#arraytabulatevar)
+
+### Transformation
+
 [Function `freeze`](#arrayfreeze)  
 [Function `thaw`](#arraythaw)  
-[Function `equal`](#arrayequal)  
-[Function `find`](#arrayfind)  
 [Function `sort`](#arraysort)  
 [Function `sortInPlace`](#arraysortinplace)  
 [Function `reverse`](#arrayreverse)  
+[Function `flatten`](#arrayflatten)
+
+### Comparison
+
+[Function `equal`](#arrayequal)
+
+### Mapping
+
 [Function `map`](#arraymap)  
 [Function `filter`](#arrayfilter)  
 [Function `mapEntries`](#arraymapentries)  
 [Function `mapFilter`](#arraymapfilter)  
-[Function `mapResult`](#arraymapresult)  
-[Function `chain`](#arraychain)  
-[Function `foldLeft`](#arrayfoldleft)  
-[Function `foldRight`](#arrayfoldright)  
-[Function `flatten`](#arrayflatten)  
-[Function `make`](#arraymake)  
+[Function `mapResult`](#arraymapresult)
+
+### Iteration
+
 [Function `vals`](#arrayvals)  
 [Function `keys`](#arraykeys)  
-[Function `size`](#arraysize)
+[Function `find`](#arrayfind)  
+[Function `chain`](#arraychain)  
+[Function `foldLeft`](#arrayfoldleft)  
+[Function `foldRight`](#arrayfoldright)
+
+## Array.size
+
+### Function signature
+
+```motoko
+func size<X>(array : [X]) : Nat
+```
+
+| **Parameters**     |               |
+| ------------------ | ------------- |
+| Generic parameters | `X`           |
+| Variable argument  | `array : [X]` |
+| Return type        | `Nat`         |
+
+### Example
+
+```motoko, run
+{{#include _mo/array/size.mo:a}}
+```
 
 ## Array.init
 
@@ -46,25 +80,38 @@ initValue : X
 ) : [var X]
 ```
 
-### Parameters
-
-|                     |                        |
-| ------------------- | ---------------------- |
-| Generic parameters  | `X`                    |
-| Variable argument 1 | `size : Nat`           |
-| Variable argument 2 | `initValue : X`        |
-| Return type         | `[var X]`              |
+| **Parameters**      |                 |
+| ------------------- | --------------- |
+| Generic parameters  | `X`             |
+| Variable argument 1 | `size : Nat`    |
+| Variable argument 2 | `initValue : X` |
+| Return type         | `[var X]`       |
 
 ### Example
 
-```motoko
+```motoko, run
 {{#include _mo/array/init.mo:a}}
 ```
 
-### Execution Time and Memory Usage
-The bigger `size` is, the more *time* the function takes to run.  
-The bigger `size` is, the more *memory* the function needs to run.  
+## Array.make
 
+### Function signature
+
+```motoko
+func make<X>(element : X) : [x]
+```
+
+| **Parameters**     |               |
+| ------------------ | ------------- |
+| Generic parameters | `X`           |
+| Variable argument  | `element : X` |
+| Return type        | `[X]`         |
+
+### Example
+
+```motoko, run
+{{#include _mo/array/make.mo:a}}
+```
 
 ## Array.tabulate
 
@@ -81,25 +128,18 @@ generator : Nat -> X
 ) : [X]
 ```
 
-### Parameters
-
-|                     |                        |
-| ------------------- | ---------------------- |
-| Generic parameters  | `X`                    |
-| Variable argument   | `size : Nat`           |
-| Function argument   | `generator : Nat -> X` |
-| Return type         | `[X]`                  |
+| **Parameters**     |                        |
+| ------------------ | ---------------------- |
+| Generic parameters | `X`                    |
+| Variable argument  | `size : Nat`           |
+| Function argument  | `generator : Nat -> X` |
+| Return type        | `[X]`                  |
 
 ### Example
 
 ```motoko
 {{#include _mo/array/tabulate.mo:a}}
 ```
-
-### Execution Time and Memory Usage
-The bigger `size` is, the more *time* the function takes to run.  
-The bigger `size` is, the more *memory* the function needs to run.  
-
 
 ## Array.tabulateVar
 
@@ -116,26 +156,18 @@ generator : Nat -> X
 ) : [var X]
 ```
 
-### Parameters
-
-|                     |                        |
-| ------------------- | ---------------------- |
-| Generic parameters  | `X`                    |
-| Variable argument   | `size : Nat`           |
-| Function argument   | `generator : Nat -> X` |
-| Return type         | `[var X]`              |
+| **Parameters**     |                        |
+| ------------------ | ---------------------- |
+| Generic parameters | `X`                    |
+| Variable argument  | `size : Nat`           |
+| Function argument  | `generator : Nat -> X` |
+| Return type        | `[var X]`              |
 
 ### Example
 
 ```motoko
 {{#include _mo/array/tabulateVar.mo:a}}
 ```
-
-### Execution Time and Memory Usage
-The bigger `size` is, the more *time* the function takes to run.  
-The bigger `size` is, the more *memory* the function needs to run.  
-
-
 
 ## Array.freeze
 
@@ -144,23 +176,18 @@ The bigger `size` is, the more *memory* the function needs to run.
 ```motoko
 func freeze<X>(varArray : [var X]) : [X]
 ```
-### Parameters
 
-|                     |                              |
-| ------------------- | ----------------------       |
-| Generic parameters  | `X`                          |
-| Variable argument   | `varArray : [var X]`         |
-| Return type         | `[X]`                        |
+| **Parameters**     |                      |
+| ------------------ | -------------------- |
+| Generic parameters | `X`                  |
+| Variable argument  | `varArray : [var X]` |
+| Return type        | `[X]`                |
 
 ### Example
 
 ```motoko
 {{#include _mo/array/freeze.mo:a}}
 ```
-
-### Execution Time and Memory Usage
-The bigger `size` is, the more *time* the function takes to run.  
-The bigger `size` is, the more *memory* the function needs to run.  
 
 ## Array.thaw
 
@@ -169,13 +196,12 @@ The bigger `size` is, the more *memory* the function needs to run.
 ```motoko
 func thaw<X>(array : [X]) : [var X]
 ```
-### Parameters
 
-|                     |                              |
-| ------------------- | ----------------------       |
-| Generic parameters  | `X`                          |
-| Variable argument   | `array : [X]`                |
-| Return type         | `[var X]`                    |
+| **Parameters**     |               |
+| ------------------ | ------------- |
+| Generic parameters | `X`           |
+| Variable argument  | `array : [X]` |
+| Return type        | `[var X]`     |
 
 ### Example
 
@@ -183,10 +209,8 @@ func thaw<X>(array : [X]) : [var X]
 {{#include _mo/array/thaw.mo:a}}
 ```
 
-### Execution Time and Memory Usage
-The bigger `size` is, the more *time* the function takes to run.  
-The Array.thaw method needs to allocate space for the new mutable array, which has the same size as the input array. However, it does not need to allocate any additional memory proportional to the size of the input array. This means that the space complexity of Array.thaw is O(1). 
-
+The bigger `size` is, the more _time_ the function takes to run.  
+The Array.thaw method needs to allocate space for the new mutable array, which has the same size as the input array. However, it does not need to allocate any additional memory proportional to the size of the input array. This means that the space complexity of Array.thaw is O(1).
 
 ## Array.equal
 
@@ -196,32 +220,27 @@ The Array.thaw method needs to allocate space for the new mutable array, which h
 func equal<X>(
 
   array1 : [X]
-  
+
   array2 : [X]
 
    equal : (X, X) -> Bool
 
-) : Bool 
+) : Bool
 ```
 
-### Parameters
-
-|                      |                              |
-| -------------------  | ----------------------       |
-| Generic parameters   | `X`                          |
-| Variable argument1   | `array1 : [X]`               |
-| Variable argument2   | `array2 : [X]`               |
-| Function argument    |  `equal : (X, X) -> Bool`    |
-| Return type          | `Bool`                       |
+| **Parameters**     |                          |
+| ------------------ | ------------------------ |
+| Generic parameters | `X`                      |
+| Variable argument1 | `array1 : [X]`           |
+| Variable argument2 | `array2 : [X]`           |
+| Function argument  | `equal : (X, X) -> Bool` |
+| Return type        | `Bool`                   |
 
 ### Example
 
 ```motoko
 {{#include _mo/array/equal.mo:a}}
 ```
-
-### Execution Time and Memory Usage
-
 
 ## Array.find
 
@@ -236,23 +255,19 @@ predicate : X -> Bool
 
 ) : ?X
 ```
-### Parameters
 
-|                     |                              |
-| ------------------- | ----------------------       |
-| Generic parameters  | `X`                          |
-| Variable argument   |     `array : [X]`            |
-| function argument   | `predicate : X -> Bool`      |
-| Return type         | `?X`                         |
+| **Parameters**     |                         |
+| ------------------ | ----------------------- |
+| Generic parameters | `X`                     |
+| Variable argument  | `array : [X]`           |
+| function argument  | `predicate : X -> Bool` |
+| Return type        | `?X`                    |
 
 ### Example
 
 ```motoko
 {{#include _mo/array/find.mo:a}}
 ```
-
-### Execution Time and Memory Usage
-
 
 ## Array.sort
 
@@ -262,20 +277,18 @@ predicate : X -> Bool
 func sort<X>(
 
    array : [X]
-  
+
  compare : (X, X) -> Order.Order
 
 ) : [X]
 ```
 
-### Parameters
-
-|                     |                                     |
-| ------------------- | ----------------------              |
-| Generic parameters  | `X`                                 |
-| Variable argument   | `array : [X]`                       |
-| Function argument   | `compare : (X, X) -> Order.Order`   |
-| Return type         | `[X]`                           |
+| **Parameters**     |                                   |
+| ------------------ | --------------------------------- |
+| Generic parameters | `X`                               |
+| Variable argument  | `array : [X]`                     |
+| Function argument  | `compare : (X, X) -> Order.Order` |
+| Return type        | `[X]`                             |
 
 ### Example
 
@@ -283,16 +296,13 @@ func sort<X>(
 {{#include _mo/array/sort.mo:a}}
 ```
 
-|Index|`array1 : [Nat]`|`array2 : [Nat]`|
-|---|---|---|
-|0|50|10|
-|1|40|20|
-|2|30|30|
-|3|20|40|
-|4|10|50|
-
-### Execution Time and Memory Usage
-
+| Index | `array1 : [Nat]` | `array2 : [Nat]` |
+| ----- | ---------------- | ---------------- |
+| 0     | 50               | 10               |
+| 1     | 40               | 20               |
+| 2     | 30               | 30               |
+| 3     | 20               | 40               |
+| 4     | 10               | 50               |
 
 ## Array.sortInPlace
 
@@ -302,20 +312,18 @@ func sort<X>(
 func sortInPlace<X>(
 
    array : [var X]
-  
+
  compare : (X, X) -> Order.Order
 
 ) : ()
 ```
 
-### Parameters
-
-|                     |                                     |
-| ------------------- | ----------------------              |
-| Generic parameters  | `X`                                 |
-| Variable argument   | `array : [var X]`                   |
-| Function argument   | `compare : (X, X) -> Order.Order`   |
-| Return type         | `()`                                |
+| **Parameters**     |                                   |
+| ------------------ | --------------------------------- |
+| Generic parameters | `X`                               |
+| Variable argument  | `array : [var X]`                 |
+| Function argument  | `compare : (X, X) -> Order.Order` |
+| Return type        | `()`                              |
 
 ### Example
 
@@ -323,24 +331,19 @@ func sortInPlace<X>(
 {{#include _mo/array/sortInPlace.mo:a}}
 ```
 
-### Execution Time and Memory Usage
-
-
 ## Array.reverse
-
 
 ### Function signature
 
 ```motoko
 func reverse<X>(array : [X]) : [X]
 ```
-### Parameters
 
-|                     |                                     |
-| ------------------- | ----------------------              |
-| Generic parameters  | `X`                                 |
-| Variable argument   | `array : [X]`                       |
-| Return type         | `[X]`                               |
+| **Parameters**     |               |
+| ------------------ | ------------- |
+| Generic parameters | `X`           |
+| Variable argument  | `array : [X]` |
+| Return type        | `[X]`         |
 
 ### Example
 
@@ -348,16 +351,11 @@ func reverse<X>(array : [X]) : [X]
 {{#include _mo/array/reverse.mo:a}}
 ```
 
-|Index|`array1 : [Text]`|`array2 : [Text]`|
-|---|---|---|
-|0|"first" |"third" |
-|1|"second"|"second"|
-|2|"third" |"first" |
-
-
-### Time and Space Complexity
-
-
+| Index | `array1 : [Text]` | `array2 : [Text]` |
+| ----- | ----------------- | ----------------- |
+| 0     | "first"           | "third"           |
+| 1     | "second"          | "second"          |
+| 2     | "third"           | "first"           |
 
 ## Array.map
 
@@ -367,20 +365,18 @@ func reverse<X>(array : [X]) : [X]
 func map<X>(
 
 array : [X]
-   
+
     f : X -> Y
 
 ) : [Y]
 ```
 
-### Parameters
-
-|                     |                                     |
-| ------------------- | ----------------------              |
-| Generic parameters  | `X`                                 |
-| Variable argument   | `array : [X]`                       |
-| Function argument   | `f : X -> Y`                        |
-| Return type         | `[Y]`                               |
+| **Parameters**     |               |
+| ------------------ | ------------- |
+| Generic parameters | `X`           |
+| Variable argument  | `array : [X]` |
+| Function argument  | `f : X -> Y`  |
+| Return type        | `[Y]`         |
 
 ### Example
 
@@ -388,17 +384,15 @@ array : [X]
 {{#include _mo/array/map.mo:a}}
 ```
 
-|Index|`array1 : [Bool]`|`array2 : [Bool]`|
-|---|---|---|
-|0|true |false|
-|1|false|true |
-|2|true |false|
-|3|false|true |
+| Index | `array1 : [Bool]` | `array2 : [Bool]` |
+| ----- | ----------------- | ----------------- |
+| 0     | true              | false             |
+| 1     | false             | true              |
+| 2     | true              | false             |
+| 3     | false             | true              |
 
-### Time and Space Complexity
-The bigger `size` is, the more *time* the function takes to run.  
-The bigger `size` is, the more *memory* the function needs to run.  
-
+The bigger `size` is, the more _time_ the function takes to run.  
+The bigger `size` is, the more _memory_ the function needs to run.
 
 ## Array.filter
 
@@ -408,19 +402,18 @@ The bigger `size` is, the more *memory* the function needs to run.
 func filter<X>(
 
     array : [X]
-   
+
 predicate : X -> Bool
 
 ) : [X]
 ```
-### Parameters
 
-|                     |                                     |
-| ------------------- | ----------------------              |
-| Generic parameters  | `X`                                 |
-| Variable argument   | `array : [X]`                       |
-| Function argument   | `predicate : X -> Bool`             |
-| Return type         | `[X]`                               |
+| **Parameters**     |                         |
+| ------------------ | ----------------------- |
+| Generic parameters | `X`                     |
+| Variable argument  | `array : [X]`           |
+| Function argument  | `predicate : X -> Bool` |
+| Return type        | `[X]`                   |
 
 ### Example
 
@@ -428,19 +421,17 @@ predicate : X -> Bool
 {{#include _mo/array/filter.mo:a}}
 ```
 
-|Index|`array1 : [Nat]`|`array2 : [Nat]`|
-|---|---|---|
-|0|1|2 |
-|1|2|6 |
-|2|5|  |
-|3|6|  |
-|4|9|  |
-|5|7|  |
+| Index | `array1 : [Nat]` | `array2 : [Nat]` |
+| ----- | ---------------- | ---------------- |
+| 0     | 1                | 2                |
+| 1     | 2                | 6                |
+| 2     | 5                |                  |
+| 3     | 6                |                  |
+| 4     | 9                |                  |
+| 5     | 7                |                  |
 
-### Time and Space Complexity
-The bigger `size` is, the more *time* the function takes to run.  
-The bigger `size` is, the more *memory* the function needs to run.  
-
+The bigger `size` is, the more _time_ the function takes to run.  
+The bigger `size` is, the more _memory_ the function needs to run.
 
 ## Array.mapEntries
 
@@ -448,22 +439,20 @@ The bigger `size` is, the more *memory* the function needs to run.
 
 ```motoko
 func mapEntries<X,Y>(
- 
+
 array : [X]
-   
+
     f : (X, Nat) -> Y
 
 ) : [Y]
 ```
 
-### Parameters
-
-|                     |                                     |
-| ------------------- | ----------------------              |
-| Generic parameters  | `X, Y`                              |
-| Variable argument   | `array : [X]`                       |
-| Function argument   | `f : (X, Nat) -> Y`                 |
-| Return type         | `[Y]`                               |
+| **Parameters**     |                     |
+| ------------------ | ------------------- |
+| Generic parameters | `X, Y`              |
+| Variable argument  | `array : [X]`       |
+| Function argument  | `f : (X, Nat) -> Y` |
+| Return type        | `[Y]`               |
 
 ### Example
 
@@ -471,16 +460,15 @@ array : [X]
 {{#include _mo/array/mapEntries.mo:a}}
 ```
 
-|Index|`array1 : [Int]`|`array2 : [Int]`|
-|---|---|---|
-|0|-1| 0 |
-|1|-2|-2 |
-|2|-3|-6 |
-|3|-4|-12|
+| Index | `array1 : [Int]` | `array2 : [Int]` |
+| ----- | ---------------- | ---------------- |
+| 0     | -1               | 0                |
+| 1     | -2               | -2               |
+| 2     | -3               | -6               |
+| 3     | -4               | -12              |
 
-### Time and Space Complexity
-The bigger `size` is, the more *time* the function takes to run.  
-The bigger `size` is, the more *memory* the function needs to run.  
+The bigger `size` is, the more _time_ the function takes to run.  
+The bigger `size` is, the more _memory_ the function needs to run.
 
 ## Array.mapFilter
 
@@ -490,41 +478,34 @@ The bigger `size` is, the more *memory* the function needs to run.
 func mapFilter<X,Y>(
 
    array : [X]
-   
+
        f : X -> ?Y
 
 ) : [Y]
 ```
 
-### Parameters
-
-|                     |                                     |
-| ------------------- | ----------------------              |
-| Generic parameters  | `X, Y`                              |
-| Variable argument   | `array : [X]`                       |
-| Function argument   | `f : X -> ?Y`                       |
-| Return type         | `[Y]`                               |
+| **Parameters**     |               |
+| ------------------ | ------------- |
+| Generic parameters | `X, Y`        |
+| Variable argument  | `array : [X]` |
+| Function argument  | `f : X -> ?Y` |
+| Return type        | `[Y]`         |
 
 ### Example
 
 ```motoko
-{{#include _mo/array/mapFilter.mo:a}}  
+{{#include _mo/array/mapFilter.mo:a}}
 ```
 
+| Index | `array1 : [Nat]` | `array2 : [Text]` |
+| ----- | ---------------- | ----------------- |
+| 0     | 1                | "100"             |
+| 1     | 2                | "50"              |
+| 2     | 4                | "25"              |
+| 3     | 5                | "20"              |
 
-|Index|`array1 : [Nat]`|`array2 : [Text]`|
-|---|---|---|
-|0|1|"100"|
-|1|2|"50" |
-|2|4|"25" |
-|3|5|"20" |
-
-
-### Time and Space Complexity
-The bigger `size` is, the more *time* the function takes to run.  
-The bigger `size` is, the more *memory* the function needs to run.  
-
-
+The bigger `size` is, the more _time_ the function takes to run.  
+The bigger `size` is, the more _memory_ the function needs to run.
 
 ## Array.mapResult
 
@@ -534,20 +515,18 @@ The bigger `size` is, the more *memory* the function needs to run.
 func mapResult<X, Y, E>(
 
   array : [X]
-   
+
       f : X -> Result.Result<Y, E>
-      
+
 ) : Result.Result<[Y], E>
 ```
 
-### Parameters
-
-|                     |                                     |
-| ------------------- | ----------------------              |
-| Generic parameters  | `X, Y, E`                           |
-| Variable argument   | `array : [X]`                       |
-| Function argument   | `f : X -> Result.Result<Y, E>`      |
-| Return type         | `Result.Result<[Y], E>`             |
+| **Parameters**     |                                |
+| ------------------ | ------------------------------ |
+| Generic parameters | `X, Y, E`                      |
+| Variable argument  | `array : [X]`                  |
+| Function argument  | `f : X -> Result.Result<Y, E>` |
+| Return type        | `Result.Result<[Y], E>`        |
 
 ### Example
 
@@ -555,17 +534,15 @@ func mapResult<X, Y, E>(
 {{#include _mo/array/mapResult.mo:a}}
 ```
 
-|Index|`array1 : [Nat]`|`array2 : [Nat]`|
-|---|---|---|
-|0|4|25 |
-|1|5|20 |
-|2|2|50 |
-|3|1|100|
+| Index | `array1 : [Nat]` | `array2 : [Nat]` |
+| ----- | ---------------- | ---------------- |
+| 0     | 4                | 25               |
+| 1     | 5                | 20               |
+| 2     | 2                | 50               |
+| 3     | 1                | 100              |
 
-### Time and Space Complexity
-The bigger `size` is, the more *time* the function takes to run.  
-The bigger `size` is, the more *memory* the function needs to run.  
-
+The bigger `size` is, the more _time_ the function takes to run.  
+The bigger `size` is, the more _memory_ the function needs to run.
 
 ## Array.chain
 
@@ -575,20 +552,18 @@ The bigger `size` is, the more *memory* the function needs to run.
 func chain<X, Y>(
 
   array : [X]
-   
+
       k : X -> [Y]
-      
+
 ) : [Y]
 ```
 
-### Parameters
-
-|                     |                                     |
-| ------------------- | ----------------------              |
-| Generic parameters  | `X, Y`                              |
-| Variable argument   | `array : [X]`                       |
-| Function argument   | `k : X -> [Y]`                      |
-| Return type         | `[Y]`                               |
+| **Parameters**     |                |
+| ------------------ | -------------- |
+| Generic parameters | `X, Y`         |
+| Variable argument  | `array : [X]`  |
+| Function argument  | `k : X -> [Y]` |
+| Return type        | `[Y]`          |
 
 ### Example
 
@@ -596,20 +571,17 @@ func chain<X, Y>(
 {{#include _mo/array/chain.mo:a}}
 ```
 
-|Index|`array1 : [Nat]`|`array2 : [Int]`|
-|---|---|---|
-|0|10|10 |
-|1|20|-10|
-|2|30|20 |
-|3|  |-20|
-|4|  |30 |
-|5|  |-30|
+| Index | `array1 : [Nat]` | `array2 : [Int]` |
+| ----- | ---------------- | ---------------- |
+| 0     | 10               | 10               |
+| 1     | 20               | -10              |
+| 2     | 30               | 20               |
+| 3     |                  | -20              |
+| 4     |                  | 30               |
+| 5     |                  | -30              |
 
-
-### Time and Space Complexity
-The bigger `size` is, the more *time* the function takes to run.  
-The bigger `size` is, the more *memory* the function needs to run.  
-
+The bigger `size` is, the more _time_ the function takes to run.  
+The bigger `size` is, the more _memory_ the function needs to run.
 
 ## Array.foldLeft
 
@@ -619,23 +591,21 @@ The bigger `size` is, the more *memory* the function needs to run.
 func foldLeft<X, A>(
 
   array : [X]
-   
+
    base : A
 
 combine : (A, X) -> A
-      
+
 ) : A
 ```
 
-### Parameters
-
-|                     |                                     |
-| ------------------- | ----------------------              |
-| Generic parameters  | `X, A`                              |
-| Variable argument1  | `array : [X]`                       |
-| Variable argument2  | `base : A`                          |
-| Function argument   | `combine : (A, X) -> A`             |
-| Return type         | `A`                                 |
+| **Parameters**     |                         |
+| ------------------ | ----------------------- |
+| Generic parameters | `X, A`                  |
+| Variable argument1 | `array : [X]`           |
+| Variable argument2 | `base : A`              |
+| Function argument  | `combine : (A, X) -> A` |
+| Return type        | `A`                     |
 
 ### Example
 
@@ -643,36 +613,32 @@ combine : (A, X) -> A
 {{#include _mo/array/foldLeft.mo:a}}
 ```
 
-### Time and Space Complexity
-The bigger `size` is, the more *time* the function takes to run.  
-The bigger `size` is, the more *memory* the function needs to run.  
-
+The bigger `size` is, the more _time_ the function takes to run.  
+The bigger `size` is, the more _memory_ the function needs to run.
 
 ## Array.foldRight
- 
+
 ### Function signature
 
 ```motoko
 func foldRight<X, A>(
 
   array : [X]
-   
+
    base : A
 
 combine : (X, A) -> A
-      
+
 ) : A
 ```
 
-### Parameters
-
-|                     |                                     |
-| ------------------- | ----------------------              |
-| Generic parameters  | `X, A`                              |
-| Variable argument1  | `array : [X]`                       |
-| Variable argument2  | `base : A`                          |
-| Function argument   | `combine : (X, A) -> A`             |
-| Return type         | `A`                                 |
+| **Parameters**     |                         |
+| ------------------ | ----------------------- |
+| Generic parameters | `X, A`                  |
+| Variable argument1 | `array : [X]`           |
+| Variable argument2 | `base : A`              |
+| Function argument  | `combine : (X, A) -> A` |
+| Return type        | `A`                     |
 
 ### Example
 
@@ -680,10 +646,8 @@ combine : (X, A) -> A
 {{#include _mo/array/foldRight.mo:a}}
 ```
 
-### Time and Space Complexity
-The bigger `size` is, the more *time* the function takes to run.  
-The bigger `size` is, the more *memory* the function needs to run.  
-
+The bigger `size` is, the more _time_ the function takes to run.  
+The bigger `size` is, the more _memory_ the function needs to run.
 
 ## Array.flatten
 
@@ -692,13 +656,12 @@ The bigger `size` is, the more *memory* the function needs to run.
 ```motoko
 func flatten<X>(arrays : [[X]]) : [x]
 ```
-### Parameters
 
-|                     |                                     |
-| ------------------- | ----------------------              |
-| Generic parameters  | `X`                                 |
-| Variable argument   | `arrays : [[X]]`                    |
-| Return type         | `[X]`                               |
+| **Parameters**     |                  |
+| ------------------ | ---------------- |
+| Generic parameters | `X`              |
+| Variable argument  | `arrays : [[X]]` |
+| Return type        | `[X]`            |
 
 ### Example
 
@@ -706,33 +669,8 @@ func flatten<X>(arrays : [[X]]) : [x]
 {{#include _mo/array/flatten.mo:a}}
 ```
 
-### Time and Space Complexity
-The bigger `size` is, the more *time* the function takes to run.  
-The bigger `size` is, the more *memory* the function needs to run.  
-
-
-## Array.make
-
-### Function signature
-
-```motoko
-func make<X>(element : X) : [x]
-```
-### Parameters
-
-|                     |                                     |
-| ------------------- | ----------------------              |
-| Generic parameters  | `X`                                 |
-| Variable argument   | `element : X`                       |
-| Return type         | `[X]`                               |
-
-### Example
-
-```motoko
-{{#include _mo/array/make.mo:a}}
-```
-
-### Time and Space Complexity
+The bigger `size` is, the more _time_ the function takes to run.  
+The bigger `size` is, the more _memory_ the function needs to run.
 
 ## Array.vals
 
@@ -741,22 +679,18 @@ func make<X>(element : X) : [x]
 ```motoko
 func vals<X>(array : [X]) : I.Iter<X>
 ```
-### Parameters
 
-|                     |                                     |
-| ------------------- | ----------------------              |
-| Generic parameters  | `X`                                 |
-| Variable argument   | `array : [X]`                       |
-| Return type         | `I.Iter<X>`                         |
+| **Parameters**     |               |
+| ------------------ | ------------- |
+| Generic parameters | `X`           |
+| Variable argument  | `array : [X]` |
+| Return type        | `I.Iter<X>`   |
 
 ### Example
 
 ```motoko
 {{#include _mo/array/vals.mo:a}}
 ```
-
-### Time and Space Complexity
-
 
 ## Array.keys
 
@@ -765,44 +699,15 @@ func vals<X>(array : [X]) : I.Iter<X>
 ```motoko
 func keys<X>(array : [X]) : I.Iter<Nat>
 ```
-### Parameters
 
-|                     |                                     |
-| ------------------- | ----------------------              |
-| Generic parameters  | `X`                                 |
-| Variable argument   | `array : [X]`                       |
-| Return type         | `I.Iter<Nat>`                       |
+| **Parameters**     |               |
+| ------------------ | ------------- |
+| Generic parameters | `X`           |
+| Variable argument  | `array : [X]` |
+| Return type        | `I.Iter<Nat>` |
 
 ### Example
 
 ```motoko
 {{#include _mo/array/keys.mo:a}}
 ```
-
-### Time and Space Complexity
-
-
-## Array.size
-
-### Function signature
-
-```motoko
-func size<X>(array : [X]) : Nat
-```
-
-### Parameters
-
-|                     |                                     |
-| ------------------- | ----------------------              |
-| Generic parameters  | `X`                                 |
-| Variable argument   | `array : [X]`                       |
-| Return type         | `Nat`                               |
-
-### Example
-
-```motoko
-{{#include _mo/array/size.mo:a}}
-```
-
-### Time and Space Complexity
-

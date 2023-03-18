@@ -1,10 +1,6 @@
-import Array "mo:base/Array";
-// ANCHOR: a
 
+// ANCHOR: a
+import Array "mo:base/Array";
 
 let a : [Text] = Array.make<Text>("ICP");
-
-assert a[0] == "ICP";
-
-// a = ["ICP"] : [Text]
 // ANCHOR_END: a
