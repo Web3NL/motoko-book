@@ -21,15 +21,16 @@ The *file name* and our chosen *module name* do not have to be the same (like in
 {{#include _mo/base-lib2.mo:a}}
 ```
 
-Our imported module, now named `Principal`, has a [module type](/common-programming-concepts/modules.html#module-type) `module { ... }` with public fields. It exposes several *public types and functions* that we can now reference by using our alias:
+Our imported module, now named `Principal`, has a [module type](/common-programming-concepts/modules.html#module-type) `module { ... }` with public fields. It exposes several [*public types*](/common-programming-concepts/modules.html#public-types-in-modules) and [*public functions*](/common-programming-concepts/modules.html#public-functions-in-modules) that we can now reference by using our alias:
 
 ```motoko
 {{#include _mo/base-lib2.mo:b}}
 ```
+Note the two meanings of `Principal`:
 
-The [type annotation](/common-programming-concepts/types.html) for variable `p` uses the always available *primitive type* `Principal`. This type does not have to be imported. 
+- The [type annotation](/common-programming-concepts/types.html) for variable `p` uses the always available [*primitive type*](/common-programming-concepts/types.html#primitive-types) `Principal`. This *type* does not have to be imported. 
 
-We used the `.fromText()` *method* (public functions in [modules](/common-programming-concepts/modules.html) and [objects or classes](/common-programming-concepts/objects-and-classes.html) are often called methods) by referencing it through our chosen name `Principal`.
+- We used the `.fromText()` *method* from the `Principal` module (public functions in [modules](/common-programming-concepts/modules.html) or in [objects or classes](/common-programming-concepts/objects-and-classes.html) are often called methods) by referencing it through our chosen *module name* `Principal`.
 
 ## Assertions
 In this chapter, we will use [assertions](/common-programming-concepts/assertions.html) that always evaluate to `()` in the code examples to illustrate the results of the manipulations we perform. 
