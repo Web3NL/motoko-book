@@ -22,8 +22,8 @@ func fromActor(a : actor {  }) : Principal
 ```
 
 The function `fromActor` takes one `actor` argument and returns a `Principal` value. 
-```motoko
-{{#include _mo/principal.mo:b}}
+```motoko, run
+{{#include _mo/principal0.mo:b}}
 ```
 
 ## Principal.fromText
@@ -32,7 +32,7 @@ func fromText(t : Text) : Principal
 ```
 
 The function `fromText` takes one `Text` argument and returns a `Principal` value. 
-```motoko
+```motoko, run
 {{#include _mo/principal1.mo:a}}
 ```
 
@@ -42,7 +42,7 @@ func toText(p : Principal) : Text
 ```
 
 The function `toText` takes one `Principal` argument and returns a `Text` value. 
-```motoko
+```motoko, run
 {{#include _mo/principal2.mo:a}}
 ```
 
@@ -52,7 +52,7 @@ func toBlob(p : Principal) : Blob
 ```
 
 The function `toBlob` takes one `Principal` argument and returns a `Blob` value. 
-```motoko
+```motoko, run
 {{#include _mo/principal3.mo:a}}
 ```
 
@@ -62,7 +62,7 @@ func fromBlob(b : Blob) : Principal
 ```
 
 The function `fromBlob` takes one `BLob` argument and returns a `Principal` value. 
-```motoko
+```motoko, run
 {{#include _mo/principal4.mo:a}}
 ```
 
@@ -72,6 +72,6 @@ func isAnonymous(p : Principal) : Bool
 ```
 
 The function `isAnonymous` takes one `Principal` argument and returns a `Bool` value. 
-```motoko
+```motoko, run
 {{#include _mo/principal5.mo:a}}
 ```
