@@ -1,5 +1,4 @@
 import mo from "motoko"
-import { machine } from "os"
 
 registerMotoko()
 hljs.configure({
@@ -13,9 +12,15 @@ hljs.configure({
 // highlight.js warns to the console before language registration
 hljs.initHighlightingOnLoad()
 
-// Add custom play button
-function addPlayButtons() {
-  const motokoCodeElements = document.querySelectorAll("code.run")
+// Make Motoko code runnable
+async function runMotoko() {
+  const motokoCodeElements = document.querySelectorAll(
+    "code.language-motoko.run"
+  )
+
+  if( motokoCodeElements.length > 0) {
+    await loadPackages()
+  }
 
   const motokoPreElements = Array.from(motokoCodeElements).map(
     (codeElement) => {
@@ -34,8 +39,8 @@ function addPlayButtons() {
     buttonsDiv.insertBefore(runCodeButton, buttonsDiv.firstChild)
 
     const output = document.createElement("code")
-    output.classList.add('result', 'hljs', 'language-motoko')
-    output.style.display = 'none'
+    output.classList.add("result", "hljs", "language-motoko")
+    output.style.display = "none"
     element.querySelector("code").insertAdjacentElement("afterend", output)
 
     runCodeButton.addEventListener("click", function (_) {
@@ -46,19 +51,31 @@ function addPlayButtons() {
       const result = mo.run("main.mo")
 
       if (result.stderr.length == 0) {
-        output.style.display = 'block'
+        output.style.display = "block"
         output.textContent = result.stdout
       } else {
         console.log(result)
       }
+
+      // clean up
       mo.delete("main.mo")
+      mo.clearPackages()
     })
   })
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  addPlayButtons()
+  runMotoko()
 })
+
+async function loadPackages() {
+  mo.clearPackages()
+  let base = await mo.fetchPackage(
+    "base",
+    "https://github.com/dfinity/motoko-base/master/src"
+  )
+  mo.loadPackage(base)
+}
 
 function registerMotoko() {
   var string = {
