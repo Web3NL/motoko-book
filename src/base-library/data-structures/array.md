@@ -137,7 +137,7 @@ generator : Nat -> X
 
 ### Example
 
-```motoko
+```motoko, run
 {{#include _mo/array/tabulate.mo:a}}
 ```
 
@@ -165,7 +165,7 @@ generator : Nat -> X
 
 ### Example
 
-```motoko
+```motoko, run
 {{#include _mo/array/tabulateVar.mo:a}}
 ```
 
@@ -185,7 +185,7 @@ func freeze<X>(varArray : [var X]) : [X]
 
 ### Example
 
-```motoko
+```motoko, run
 {{#include _mo/array/freeze.mo:a}}
 ```
 
@@ -205,12 +205,119 @@ func thaw<X>(array : [X]) : [var X]
 
 ### Example
 
-```motoko
+```motoko, run
 {{#include _mo/array/thaw.mo:a}}
 ```
 
-The bigger `size` is, the more _time_ the function takes to run.  
-The Array.thaw method needs to allocate space for the new mutable array, which has the same size as the input array. However, it does not need to allocate any additional memory proportional to the size of the input array. This means that the space complexity of Array.thaw is O(1).
+## Array.sort
+
+### Function signature
+
+```motoko
+func sort<X>(
+
+   array : [X]
+
+ compare : (X, X) -> Order.Order
+
+) : [X]
+```
+
+| **Parameters**     |                                   |
+| ------------------ | --------------------------------- |
+| Generic parameters | `X`                               |
+| Variable argument  | `array : [X]`                     |
+| Function argument  | `compare : (X, X) -> Order.Order` |
+| Return type        | `[X]`                             |
+
+### Example
+
+```motoko, run
+{{#include _mo/array/sort.mo:a}}
+```
+
+| Index | `array1 : [Nat]` | `array2 : [Nat]` |
+| ----- | ---------------- | ---------------- |
+| 0     | 50               | 10               |
+| 1     | 40               | 20               |
+| 2     | 30               | 30               |
+| 3     | 20               | 40               |
+| 4     | 10               | 50               |
+
+
+## Array.sortInPlace
+
+### Function signature
+
+```motoko
+func sortInPlace<X>(
+
+   array : [var X]
+
+ compare : (X, X) -> Order.Order
+
+) : ()
+```
+
+| **Parameters**     |                                   |
+| ------------------ | --------------------------------- |
+| Generic parameters | `X`                               |
+| Variable argument  | `array : [var X]`                 |
+| Function argument  | `compare : (X, X) -> Order.Order` |
+| Return type        | `()`                              |
+
+### Example
+
+```motoko, run
+{{#include _mo/array/sortInPlace.mo:a}}
+```
+
+## Array.reverse
+
+### Function signature
+
+```motoko
+func reverse<X>(array : [X]) : [X]
+```
+
+| **Parameters**     |               |
+| ------------------ | ------------- |
+| Generic parameters | `X`           |
+| Variable argument  | `array : [X]` |
+| Return type        | `[X]`         |
+
+### Example
+
+```motoko, run
+{{#include _mo/array/reverse.mo:a}}
+```
+
+| Index | `array1 : [Text]` | `array2 : [Text]` |
+| ----- | ----------------- | ----------------- |
+| 0     | "first"           | "third"           |
+| 1     | "second"          | "second"          |
+| 2     | "third"           | "first"           |
+
+
+## Array.flatten
+
+### Function signature
+
+```motoko
+func flatten<X>(arrays : [[X]]) : [x]
+```
+
+| **Parameters**     |                  |
+| ------------------ | ---------------- |
+| Generic parameters | `X`              |
+| Variable argument  | `arrays : [[X]]` |
+| Return type        | `[X]`            |
+
+### Example
+
+```motoko, run
+{{#include _mo/array/flatten.mo:a}}
+```
 
 ## Array.equal
 
@@ -238,8 +345,225 @@ func equal<X>(
 
 ### Example
 
-```motoko
+```motoko, run
 {{#include _mo/array/equal.mo:a}}
+```
+
+## Array.map
+
+### Function signature
+
+```motoko
+func map<X>(
+
+array : [X]
+
+    f : X -> Y
+
+) : [Y]
+```
+
+| **Parameters**     |               |
+| ------------------ | ------------- |
+| Generic parameters | `X`           |
+| Variable argument  | `array : [X]` |
+| Function argument  | `f : X -> Y`  |
+| Return type        | `[Y]`         |
+
+### Example
+
+```motoko, run
+{{#include _mo/array/map.mo:a}}
+```
+
+| Index | `array1 : [Bool]` | `array2 : [Bool]` |
+| ----- | ----------------- | ----------------- |
+| 0     | true              | false             |
+| 1     | false             | true              |
+| 2     | true              | false             |
+| 3     | false             | true              |
+
+
+## Array.filter
+
+### Function signature
+
+```motoko
+func filter<X>(
+
+    array : [X]
+
+predicate : X -> Bool
+
+) : [X]
+```
+
+| **Parameters**     |                         |
+| ------------------ | ----------------------- |
+| Generic parameters | `X`                     |
+| Variable argument  | `array : [X]`           |
+| Function argument  | `predicate : X -> Bool` |
+| Return type        | `[X]`                   |
+
+### Example
+
+```motoko, run
+{{#include _mo/array/filter.mo:a}}
+```
+
+| Index | `array1 : [Nat]` | `array2 : [Nat]` |
+| ----- | ---------------- | ---------------- |
+| 0     | 1                | 2                |
+| 1     | 2                | 6                |
+| 2     | 5                |                  |
+| 3     | 6                |                  |
+| 4     | 9                |                  |
+| 5     | 7                |                  |
+
+
+## Array.mapEntries
+
+### Function signature
+
+```motoko
+func mapEntries<X,Y>(
+
+array : [X]
+
+    f : (X, Nat) -> Y
+
+) : [Y]
+```
+
+| **Parameters**     |                     |
+| ------------------ | ------------------- |
+| Generic parameters | `X, Y`              |
+| Variable argument  | `array : [X]`       |
+| Function argument  | `f : (X, Nat) -> Y` |
+| Return type        | `[Y]`               |
+
+### Example
+
+```motoko, run
+{{#include _mo/array/mapEntries.mo:a}}
+```
+
+| Index | `array1 : [Int]` | `array2 : [Int]` |
+| ----- | ---------------- | ---------------- |
+| 0     | -1               | 0                |
+| 1     | -2               | -2               |
+| 2     | -3               | -6               |
+| 3     | -4               | -12              |
+
+
+## Array.mapFilter
+
+### Function signature
+
+```motoko
+func mapFilter<X,Y>(
+
+   array : [X]
+
+       f : X -> ?Y
+
+) : [Y]
+```
+
+| **Parameters**     |               |
+| ------------------ | ------------- |
+| Generic parameters | `X, Y`        |
+| Variable argument  | `array : [X]` |
+| Function argument  | `f : X -> ?Y` |
+| Return type        | `[Y]`         |
+
+### Example
+
+```motoko, run
+{{#include _mo/array/mapFilter.mo:a}}
+```
+
+| Index | `array1 : [Nat]` | `array2 : [Text]` |
+| ----- | ---------------- | ----------------- |
+| 0     | 1                | "100"             |
+| 1     | 2                | "50"              |
+| 2     | 4                | "25"              |
+| 3     | 5                | "20"              |
+
+
+## Array.mapResult
+
+### Function signature
+
+```motoko
+func mapResult<X, Y, E>(
+
+  array : [X]
+
+      f : X -> Result.Result<Y, E>
+
+) : Result.Result<[Y], E>
+```
+
+| **Parameters**     |                                |
+| ------------------ | ------------------------------ |
+| Generic parameters | `X, Y, E`                      |
+| Variable argument  | `array : [X]`                  |
+| Function argument  | `f : X -> Result.Result<Y, E>` |
+| Return type        | `Result.Result<[Y], E>`        |
+
+### Example
+
+```motoko, run
+{{#include _mo/array/mapResult.mo:a}}
+```
+
+| Index | `array1 : [Nat]` | `array2 : [Nat]` |
+| ----- | ---------------- | ---------------- |
+| 0     | 4                | 25               |
+| 1     | 5                | 20               |
+| 2     | 2                | 50               |
+| 3     | 1                | 100              |
+
+
+## Array.vals
+
+### Function signature
+
+```motoko
+func vals<X>(array : [X]) : I.Iter<X>
+```
+
+| **Parameters**     |               |
+| ------------------ | ------------- |
+| Generic parameters | `X`           |
+| Variable argument  | `array : [X]` |
+| Return type        | `I.Iter<X>`   |
+
+### Example
+
+```motoko, run
+{{#include _mo/array/vals.mo:a}}
+```
+
+## Array.keys
+
+### Function signature
+
+```motoko
+func keys<X>(array : [X]) : I.Iter<Nat>
+```
+
+| **Parameters**     |               |
+| ------------------ | ------------- |
+| Generic parameters | `X`           |
+| Variable argument  | `array : [X]` |
+| Return type        | `I.Iter<Nat>` |
+
+### Example
+
+```motoko, run
+{{#include _mo/array/keys.mo:a}}
 ```
 
 ## Array.find
@@ -265,284 +589,9 @@ predicate : X -> Bool
 
 ### Example
 
-```motoko
+```motoko, run
 {{#include _mo/array/find.mo:a}}
 ```
-
-## Array.sort
-
-### Function signature
-
-```motoko
-func sort<X>(
-
-   array : [X]
-
- compare : (X, X) -> Order.Order
-
-) : [X]
-```
-
-| **Parameters**     |                                   |
-| ------------------ | --------------------------------- |
-| Generic parameters | `X`                               |
-| Variable argument  | `array : [X]`                     |
-| Function argument  | `compare : (X, X) -> Order.Order` |
-| Return type        | `[X]`                             |
-
-### Example
-
-```motoko
-{{#include _mo/array/sort.mo:a}}
-```
-
-| Index | `array1 : [Nat]` | `array2 : [Nat]` |
-| ----- | ---------------- | ---------------- |
-| 0     | 50               | 10               |
-| 1     | 40               | 20               |
-| 2     | 30               | 30               |
-| 3     | 20               | 40               |
-| 4     | 10               | 50               |
-
-## Array.sortInPlace
-
-### Function signature
-
-```motoko
-func sortInPlace<X>(
-
-   array : [var X]
-
- compare : (X, X) -> Order.Order
-
-) : ()
-```
-
-| **Parameters**     |                                   |
-| ------------------ | --------------------------------- |
-| Generic parameters | `X`                               |
-| Variable argument  | `array : [var X]`                 |
-| Function argument  | `compare : (X, X) -> Order.Order` |
-| Return type        | `()`                              |
-
-### Example
-
-```motoko
-{{#include _mo/array/sortInPlace.mo:a}}
-```
-
-## Array.reverse
-
-### Function signature
-
-```motoko
-func reverse<X>(array : [X]) : [X]
-```
-
-| **Parameters**     |               |
-| ------------------ | ------------- |
-| Generic parameters | `X`           |
-| Variable argument  | `array : [X]` |
-| Return type        | `[X]`         |
-
-### Example
-
-```motoko
-{{#include _mo/array/reverse.mo:a}}
-```
-
-| Index | `array1 : [Text]` | `array2 : [Text]` |
-| ----- | ----------------- | ----------------- |
-| 0     | "first"           | "third"           |
-| 1     | "second"          | "second"          |
-| 2     | "third"           | "first"           |
-
-## Array.map
-
-### Function signature
-
-```motoko
-func map<X>(
-
-array : [X]
-
-    f : X -> Y
-
-) : [Y]
-```
-
-| **Parameters**     |               |
-| ------------------ | ------------- |
-| Generic parameters | `X`           |
-| Variable argument  | `array : [X]` |
-| Function argument  | `f : X -> Y`  |
-| Return type        | `[Y]`         |
-
-### Example
-
-```motoko
-{{#include _mo/array/map.mo:a}}
-```
-
-| Index | `array1 : [Bool]` | `array2 : [Bool]` |
-| ----- | ----------------- | ----------------- |
-| 0     | true              | false             |
-| 1     | false             | true              |
-| 2     | true              | false             |
-| 3     | false             | true              |
-
-The bigger `size` is, the more _time_ the function takes to run.  
-The bigger `size` is, the more _memory_ the function needs to run.
-
-## Array.filter
-
-### Function signature
-
-```motoko
-func filter<X>(
-
-    array : [X]
-
-predicate : X -> Bool
-
-) : [X]
-```
-
-| **Parameters**     |                         |
-| ------------------ | ----------------------- |
-| Generic parameters | `X`                     |
-| Variable argument  | `array : [X]`           |
-| Function argument  | `predicate : X -> Bool` |
-| Return type        | `[X]`                   |
-
-### Example
-
-```motoko
-{{#include _mo/array/filter.mo:a}}
-```
-
-| Index | `array1 : [Nat]` | `array2 : [Nat]` |
-| ----- | ---------------- | ---------------- |
-| 0     | 1                | 2                |
-| 1     | 2                | 6                |
-| 2     | 5                |                  |
-| 3     | 6                |                  |
-| 4     | 9                |                  |
-| 5     | 7                |                  |
-
-The bigger `size` is, the more _time_ the function takes to run.  
-The bigger `size` is, the more _memory_ the function needs to run.
-
-## Array.mapEntries
-
-### Function signature
-
-```motoko
-func mapEntries<X,Y>(
-
-array : [X]
-
-    f : (X, Nat) -> Y
-
-) : [Y]
-```
-
-| **Parameters**     |                     |
-| ------------------ | ------------------- |
-| Generic parameters | `X, Y`              |
-| Variable argument  | `array : [X]`       |
-| Function argument  | `f : (X, Nat) -> Y` |
-| Return type        | `[Y]`               |
-
-### Example
-
-```motoko
-{{#include _mo/array/mapEntries.mo:a}}
-```
-
-| Index | `array1 : [Int]` | `array2 : [Int]` |
-| ----- | ---------------- | ---------------- |
-| 0     | -1               | 0                |
-| 1     | -2               | -2               |
-| 2     | -3               | -6               |
-| 3     | -4               | -12              |
-
-The bigger `size` is, the more _time_ the function takes to run.  
-The bigger `size` is, the more _memory_ the function needs to run.
-
-## Array.mapFilter
-
-### Function signature
-
-```motoko
-func mapFilter<X,Y>(
-
-   array : [X]
-
-       f : X -> ?Y
-
-) : [Y]
-```
-
-| **Parameters**     |               |
-| ------------------ | ------------- |
-| Generic parameters | `X, Y`        |
-| Variable argument  | `array : [X]` |
-| Function argument  | `f : X -> ?Y` |
-| Return type        | `[Y]`         |
-
-### Example
-
-```motoko
-{{#include _mo/array/mapFilter.mo:a}}
-```
-
-| Index | `array1 : [Nat]` | `array2 : [Text]` |
-| ----- | ---------------- | ----------------- |
-| 0     | 1                | "100"             |
-| 1     | 2                | "50"              |
-| 2     | 4                | "25"              |
-| 3     | 5                | "20"              |
-
-The bigger `size` is, the more _time_ the function takes to run.  
-The bigger `size` is, the more _memory_ the function needs to run.
-
-## Array.mapResult
-
-### Function signature
-
-```motoko
-func mapResult<X, Y, E>(
-
-  array : [X]
-
-      f : X -> Result.Result<Y, E>
-
-) : Result.Result<[Y], E>
-```
-
-| **Parameters**     |                                |
-| ------------------ | ------------------------------ |
-| Generic parameters | `X, Y, E`                      |
-| Variable argument  | `array : [X]`                  |
-| Function argument  | `f : X -> Result.Result<Y, E>` |
-| Return type        | `Result.Result<[Y], E>`        |
-
-### Example
-
-```motoko
-{{#include _mo/array/mapResult.mo:a}}
-```
-
-| Index | `array1 : [Nat]` | `array2 : [Nat]` |
-| ----- | ---------------- | ---------------- |
-| 0     | 4                | 25               |
-| 1     | 5                | 20               |
-| 2     | 2                | 50               |
-| 3     | 1                | 100              |
-
-The bigger `size` is, the more _time_ the function takes to run.  
-The bigger `size` is, the more _memory_ the function needs to run.
 
 ## Array.chain
 
@@ -567,7 +616,7 @@ func chain<X, Y>(
 
 ### Example
 
-```motoko
+```motoko, run
 {{#include _mo/array/chain.mo:a}}
 ```
 
@@ -580,8 +629,6 @@ func chain<X, Y>(
 | 4     |                  | 30               |
 | 5     |                  | -30              |
 
-The bigger `size` is, the more _time_ the function takes to run.  
-The bigger `size` is, the more _memory_ the function needs to run.
 
 ## Array.foldLeft
 
@@ -609,12 +656,9 @@ combine : (A, X) -> A
 
 ### Example
 
-```motoko
+```motoko, run
 {{#include _mo/array/foldLeft.mo:a}}
 ```
-
-The bigger `size` is, the more _time_ the function takes to run.  
-The bigger `size` is, the more _memory_ the function needs to run.
 
 ## Array.foldRight
 
@@ -642,72 +686,6 @@ combine : (X, A) -> A
 
 ### Example
 
-```motoko
+```motoko, run
 {{#include _mo/array/foldRight.mo:a}}
-```
-
-The bigger `size` is, the more _time_ the function takes to run.  
-The bigger `size` is, the more _memory_ the function needs to run.
-
-## Array.flatten
-
-### Function signature
-
-```motoko
-func flatten<X>(arrays : [[X]]) : [x]
-```
-
-| **Parameters**     |                  |
-| ------------------ | ---------------- |
-| Generic parameters | `X`              |
-| Variable argument  | `arrays : [[X]]` |
-| Return type        | `[X]`            |
-
-### Example
-
-```motoko
-{{#include _mo/array/flatten.mo:a}}
-```
-
-The bigger `size` is, the more _time_ the function takes to run.  
-The bigger `size` is, the more _memory_ the function needs to run.
-
-## Array.vals
-
-### Function signature
-
-```motoko
-func vals<X>(array : [X]) : I.Iter<X>
-```
-
-| **Parameters**     |               |
-| ------------------ | ------------- |
-| Generic parameters | `X`           |
-| Variable argument  | `array : [X]` |
-| Return type        | `I.Iter<X>`   |
-
-### Example
-
-```motoko
-{{#include _mo/array/vals.mo:a}}
-```
-
-## Array.keys
-
-### Function signature
-
-```motoko
-func keys<X>(array : [X]) : I.Iter<Nat>
-```
-
-| **Parameters**     |               |
-| ------------------ | ------------- |
-| Generic parameters | `X`           |
-| Variable argument  | `array : [X]` |
-| Return type        | `I.Iter<Nat>` |
-
-### Example
-
-```motoko
-{{#include _mo/array/keys.mo:a}}
-```
+``` 

@@ -1,7 +1,7 @@
-import Array "mo:base/Array";
-import Result "mo:base/Result";
 
 // ANCHOR: a
+import Array "mo:base/Array";
+import Result "mo:base/Result";
 
 let array = [4, 5, 2, 1];
 
@@ -14,6 +14,4 @@ func result(x : Nat) : Result.Result<Nat, Text> {
 };
 
 let mapResult : Result.Result<[Nat], Text> = Array.mapResult<Nat, Nat, Text>(array, result);
-
-//  #ok [25, 20, 50, 100]
 // ANCHOR_END: a
