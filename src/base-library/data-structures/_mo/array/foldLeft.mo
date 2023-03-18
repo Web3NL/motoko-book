@@ -1,5 +1,5 @@
-import Array "mo:base/Array";
 // ANCHOR: a
+import Array "mo:base/Array";
 
 let array = [40, 20, 0, 10];
 
@@ -8,6 +8,4 @@ a + b
 };
 
 let sum =  Array.foldLeft<Nat, Nat>( array, 30, combine);
-
-assert sum == 100;
 // ANCHOR_END: a

@@ -1,5 +1,5 @@
-import Array "mo:base/Array";
 // ANCHOR: a
+import Array "mo:base/Array";
 
 let array = [10, 20, 30];
 
@@ -8,8 +8,4 @@ func chain(x : Nat) : [Int]{
 };
 
 let chainedArray =  Array.chain<Nat, Int>( array, chain);
-
-assert chainedArray[1] == -10;
-
-// [10, -10, 20, -20, 30, -30] : [Int]
 // ANCHOR_END: a
