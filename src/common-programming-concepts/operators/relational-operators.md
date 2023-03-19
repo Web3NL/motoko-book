@@ -10,12 +10,16 @@ Relational operators are used to *relate* or compare two values. The result of t
 
 Some examples:
 
-```motoko
-let b = 2 > 3;
+```motoko, run
+{{#include _mo/relational-operators1.mo:a}}
+```
 
-let c = (2 : Int) >= 2;
+```motoko, run
+{{#include _mo/relational-operators2.mo:a}}
+```
 
-let d = 1.61 == 1.61;
+```motoko, run
+{{#include _mo/relational-operators3.mo:a}}
 ```
 
 In the first line we compared two `Nat` values. The result is the value `false` of type `Bool`.

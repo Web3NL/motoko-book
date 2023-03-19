@@ -11,20 +11,23 @@ We already encountered the most common assignment operator in [mutability](/comm
 
 Lets use all of them in an example:
 
-```motoko
-var number : Int = 5;
-
-number += 2;    // 7
-
-number -= 10;   // -3
-
-number *= 2;    // -6
-
-number /= 2;    // -3  
-
-number %= 5;    // 2
-
-number **= 2;   // 4
+```motoko, run
+{{#include _mo/assignment-operators.mo:a}}
+```
+```motoko, run
+{{#include _mo/assignment-operators1.mo:a}}
+```
+```motoko, run
+{{#include _mo/assignment-operators2.mo:a}}
+```
+```motoko, run
+{{#include _mo/assignment-operators3.mo:a}}
+```
+```motoko, run
+{{#include _mo/assignment-operators4.mo:a}}
+```
+```motoko, run
+{{#include _mo/assignment-operators5.mo:a}}
 ```
 
 We started by declaring a mutable variable named `number`, we annotated its name with the type `Int` and set its value equal to `5`. Then we *mutate* the variable multiple times using *assignment operators*. 

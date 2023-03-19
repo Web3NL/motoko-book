@@ -1,7 +1,7 @@
 // ANCHOR: a
-let t1 = "Motoko";
+let t1 : Text = "Motoko";
 
-let t2 = "Programming";
+let t2 : Text = "Programming";
 
-let result = t1 # " " # t2;
+let result : Text = t1 # " " # t2;
 // ANCHOR_END: a
