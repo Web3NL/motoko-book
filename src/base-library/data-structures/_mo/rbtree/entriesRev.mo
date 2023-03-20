@@ -11,5 +11,4 @@ textIntTree.put("ICP", 3);
 let entriesRev : Iter.Iter<(Text, Int)> = textIntTree.entriesRev();
 
 let array : [(Text, Int)]= Iter.toArray(entriesRev)
-
 // ANCHOR_END: a

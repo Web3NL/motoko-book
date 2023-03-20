@@ -1,4 +1,4 @@
-# RBTree
+# rbtree
 The *convention* is to name the [*module alias*](/common-programming-concepts/modules.html#imports) after the [*file name*](/common-programming-concepts/modules.html#imports) it is defined in:
 
 ```motoko
@@ -6,308 +6,190 @@ The *convention* is to name the [*module alias*](/common-programming-concepts/mo
 ```
 
 ## Public items
-The following types and functions are made public in the `RBtree` module:   
+The following types and functions are made public in the `rbtree` module:   
 [Type `Color`](#type)  
 [Type `Tree`](#type)   
-[Class `RBTree<K,V>`](#class)  
-[Function `share`](#rbtreeshare)  
-[Function `unShare`](#rbtreeunshare)  
-[Function `get`](#rbtreeget)  
-[Function `replace`](#rbtreereplace)  
-[Function `put`](#rbtreeput)  
-[Function `delete`](#rbtreedelete)  
-[Function `remove`](#rbtreeremove)  
-[Function `entries`](#rbtreeentries)  
-[Function `entriesRev`](#rbtreeentriesrev)  
+[Class `rbtree<K,V>`](#class)    
+&nbsp;&nbsp;&nbsp;&nbsp;[Function `share`](#rbtreeshare)  
+&nbsp;&nbsp;&nbsp;&nbsp;[Function `unShare`](#rbtreeunshare)  
+&nbsp;&nbsp;&nbsp;&nbsp;[Function `get`](#rbtreeget)  
+&nbsp;&nbsp;&nbsp;&nbsp;[Function `replace`](#rbtreereplace)  
+&nbsp;&nbsp;&nbsp;&nbsp;[Function `put`](#rbtreeput)  
+&nbsp;&nbsp;&nbsp;&nbsp;[Function `delete`](#rbtreedelete)  
+&nbsp;&nbsp;&nbsp;&nbsp;[Function `remove`](#rbtreeremove)  
+&nbsp;&nbsp;&nbsp;&nbsp;[Function `entries`](#rbtreeentries)  
+&nbsp;&nbsp;&nbsp;&nbsp;[Function `entriesRev`](#rbtreeentriesrev)    
 [Function `iter`](#rbtreeiter)  
 [Function `size`](#rbtreesize)  
 
-
-## Type
-
-
-## Type
-
-
-## Class
-
-
-## RBtree.share
+## RBTree.share
 
 ### Function signature
 
 ```motoko
-func share<X>(
-
-  ()
-  
-) : 
+func share() : Tree<K, V>
 ```
-
-### Parameters
-
-|                     |                        |
-| ------------------- | ---------------------- |
-| Generic parameters  | `X`                    |
-| Variable argument 1 | `size : Nat`           |
-| Variable argument 2 | `initValue : X`        |
-| Return type         | `[var X]`              |
+The function `share` takes no argument and returns an value of type `Tree<K, V>`. 
 
 ### Example
 
-```motoko
+```motoko, run
 {{#include _mo/rbtree/share.mo:a}}
 ```
-
-### Execution Time and Memory Usage
-
-
-## RBtree.unShare
+## RBTree.unShare
 
 ### Function signature
 
 ```motoko
-func unShare<X>(
-
-  t : Tree<K, V>
-  
-) : ()
+func unShare(t : Tree<K, V>) : ()
 ```
 
-### Parameters
-
-|                     |                        |
+|   **Parameters**    |                        |
 | ------------------- | ---------------------- |
-| Generic parameters  | `X`                    |
-| Variable argument 1 | `t : Tree<K, V>`       |
+| Variable argument   | `t : Tree<K, V>`       |
 | Return type         | `()`                   |
 
 ### Example
 
-```motoko
+```motoko, run
 {{#include _mo/rbtree/unShare.mo:a}}
 ```
 
-### Execution Time and Memory Usage
-
-
-## RBtree.get
+## RBTree.get
 
 ### Function signature
 
 ```motoko
-func get<X>(
-
-  key : K
-  
-) : ?V
+func get(key : K) : ?V
 ```
 
-### Parameters
-
-|                     |                        |
+|   **Parameters**    |                        |
 | ------------------- | ---------------------- |
-| Generic parameters  | `X`                    |
 | Variable argument   | `key : K`              |
 | Return type         | `?V`                   |
 
 ### Example
 
-```motoko
+```motoko, run
 {{#include _mo/rbtree/get.mo:a}}
 ```
 
-### Execution Time and Memory Usage
-
-
-
-## RBtree.replace 
+## RBTree.replace 
 
 ### Function signature
 
 ```motoko
-func replace<X>(
-
-  key : K
-
-  value : V
-  
-) : ?V
+func replace(key : K, value : V) : ?V
 ```
 
-### Parameters
-
-|                     |                        |
+|   **Parameters**    |                        |
 | ------------------- | ---------------------- |
-| Generic parameters  | `X`                    |
 | Variable argument1  | `key : K`              |
 | Variable argument2  | `value : V`            |
 | Return type         | `?V`                   |
 
 ### Example
 
-```motoko
+```motoko, run
 {{#include _mo/rbtree/replace.mo:a}}
 ```
 
-### Execution Time and Memory Usage
-
-
-
-## RBtree.put 
+## RBTree.put 
 
 ### Function signature
 
 ```motoko
-func put<X>(
-
-  key : K
-
-  value : V
-  
-) : 
+func put(key : K, value : V) : ()
 ```
 
-### Parameters
 
-|                     |                        |
+|   **Parameters**    |                        |
 | ------------------- | ---------------------- |
-| Generic parameters  | `X`                    |
 | Variable argument1  | `key : K`              |
 | Variable argument2  | `value : V`            |
-| Return type         | ``                   |
+| Return type         | `()`                   |
 
 ### Example
 
-```motoko
+```motoko, run
 {{#include _mo/rbtree/put.mo:a}}
 ```
 
-### Execution Time and Memory Usage
-
-
-
-## RBtree.delete
+## RBTree.delete
 
 ### Function signature
 
 ```motoko
-func delete<X>(
-
-  key : K
-  
-) : 
+func delete(key : K) : ()
 ```
 
-### Parameters
 
-|                     |                        |
+|   **Parameters**    |                        |
 | ------------------- | ---------------------- |
-| Generic parameters  | `X`                    |
 | Variable argument   | `key : K`              |
-| Return type         | ``                     |
+| Return type         | `()`                   |
 
 ### Example
 
-```motoko
+```motoko, run
 {{#include _mo/rbtree/delete.mo:a}}
 ```
 
-### Execution Time and Memory Usage
-
-
-
-## RBtree.remove
+## RBTree.remove
 
 ### Function signature
 
 ```motoko
-func remove<X>(
-
-  key : K
-  
-) : ?V
+func remove(key : K) : ?V
 ```
 
-### Parameters
 
-|                     |                        |
+|   **Parameters**    |                        |
 | ------------------- | ---------------------- |
-| Generic parameters  | `X`                    |
 | Variable argument   | `key : K`              |
 | Return type         | `?V`                   |
 
 ### Example
 
-```motoko
+```motoko, run
 {{#include _mo/rbtree/remove.mo:a}}
 ```
 
-### Execution Time and Memory Usage
-
-
-
-## RBtree.entries
+## RBTree.entries
 
 ### Function signature
 
 ```motoko
-func entries<X>(
-
-  
-  
-) : I.Iter<(K, V)>
+func entries() : I.Iter<(K, V)>
 ```
-
-### Parameters
-
-|                     |                        |
-| ------------------- | ---------------------- |
-| Generic parameters  | `X`                    |
-| Variable argument   | ``                     |
-| Return type         | `I.Iter<(K, V)>`       |
-
+The function `entries` takes no argument and returns an value of type `I.Iter<(K, V)>`. 
 ### Example
 
-```motoko
+```motoko, run
 {{#include _mo/rbtree/entries.mo:a}}
 ```
 
-### Execution Time and Memory Usage
-
-
-
-## RBtree.entriesRev
+## RBTree.entriesRev
 
 ### Function signature
 
 ```motoko
-func entriesRev<X>(
-
-  
-  
-) : I.Iter<(K, V)>
+func entriesRev() : I.Iter<(K, V)>
 ```
 
-### Parameters
 
-|                     |                        |
+|   **Parameters**    |                        |
 | ------------------- | ---------------------- |
-| Generic parameters  | `X`                    |
-| Variable argument   | ``                     |
+| Variable argument   | `()`                   |
 | Return type         | `I.Iter<(K, V)>`       |
 
 ### Example
 
-```motoko
+```motoko, run
 {{#include _mo/rbtree/entriesRev.mo:a}}
 ```
 
-### Execution Time and Memory Usage
-
-
-
-## RBtree.iter
+## RBTree.iter
 
 ### Function signature
 
@@ -315,32 +197,26 @@ func entriesRev<X>(
 func iter<X, Y>(
 
   tree : Tree<X, Y>
-
   direction : {#fwd; #bwd}
   
 ) : I.Iter<(X, Y)>
 ```
 
-### Parameters
 
-|                     |                            |
+|   **Parameters**    |                            |
 | ------------------- | ----------------------     |
-| Generic parameters  | `X`                        |
-| Generic parameters  | `Y`                        |
-| Variable argument   | `tree : Tree<X< Y>`        |
-| Variable argument   | `direction : {#fwd; #bwd}` |
+| Generic parameters  | `X, Y`                     |
+| Variable argument1  | `tree : Tree<X< Y>`        |
+| Variable argument2  | `direction : {#fwd; #bwd}` |
 | Return type         | `I.Iter<(X, Y)>`           |
 
 ### Example
 
-```motoko
+```motoko, run
 {{#include _mo/rbtree/iter.mo:a}}
 ```
 
-### Execution Time and Memory Usage
-
-
-## Rbtree.size
+## RBTree.size
 
 ### Function signature
 
@@ -352,24 +228,18 @@ func size<X, Y>(
 ) : Nat
 ```
 
-### Parameters
 
-|                     |                            |
+|   **Parameters**    |                            |
 | ------------------- | ----------------------     |
-| Generic parameters  | `X`                        |
-| Generic parameters  | `Y`                        |
+| Generic parameters  | `X, Y`                     |
 | Variable argument   | `t : Tree<X< Y>`           |
 | Return type         | `Nat`                      |
 
 ### Example
 
-```motoko
+```motoko, run
 {{#include _mo/rbtree/size.mo:a}}
 ```
-
-### Execution Time and Memory Usage
-
-
 
 
 

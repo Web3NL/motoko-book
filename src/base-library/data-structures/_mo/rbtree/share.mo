@@ -8,5 +8,4 @@ textIntTree.put("ETH", 2);
 
 let share : RBTree.Tree<Text, Int> = textIntTree.share();
 let treeSize : Nat = RBTree.size(share)
-
 // ANCHOR_END: a

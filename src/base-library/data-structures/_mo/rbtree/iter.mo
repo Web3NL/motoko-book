@@ -13,5 +13,4 @@ let share : RBTree.Tree<Text, Int> = textIntTree.share();
 let iter : Iter.Iter<(Text, Int)> = RBTree.iter<Text, Int>(share, #bwd);
 
 let array : [(Text, Int)]= Iter.toArray(iter)
-
 // ANCHOR_END: a
