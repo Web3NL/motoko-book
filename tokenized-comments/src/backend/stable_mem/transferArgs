@@ -1,0 +1,11 @@
+record {
+    to = record {
+        owner = principal "cfiha-gzimj-egknx-ne2un-tuxvo-bwxgl-7jt7e-n4sdk-by3g2-oqwg5-6qe";
+        subaccount = null;
+    };
+    amount = 100000000;
+    from_subaccount = null;
+    fee = null;
+    memo = null;
+    created_at_time = null;
+}

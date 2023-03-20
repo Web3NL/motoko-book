@@ -1,0 +1,23 @@
+(
+    record {
+        initial_mints = vec {
+            record {
+                account = record {
+                    owner = principal "hopg6-qb5bk-fywb2-44xhe-2ovp4-stuku-oitob-vkpim-zrip3-7f375-rae";
+                    subaccount = null;
+                };
+                amount = 100_000_000_000;
+            };
+        };
+
+        minting_account = record {
+            owner = principal "aaaaa-aa";
+            subaccount = null;
+        };
+
+        token_name = "MotokoProTrio"; 
+        token_symbol = "MPT"; 
+        decimals = 8 ; 
+        transfer_fee = 100_000;
+    }
+)
