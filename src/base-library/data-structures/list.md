@@ -70,7 +70,7 @@ func nil<T>() : List<T>
 
 ### Example
 
-```motoko
+```motoko, 
 {{#include _mo/list/nil.mo:a}}
 ```
 
@@ -108,7 +108,6 @@ func isNil<T>(l : List<T>) : Bool
 func push<T>(
   
   x : T
-
   l : List<T>
 
 ) : List<T>
@@ -125,7 +124,7 @@ func push<T>(
 
 ### Example
 
-```motoko
+```motoko, run
 {{#include _mo/list/push.mo:a}}
 ```
 
@@ -209,7 +208,6 @@ func size<T>(l : List<T>) : Nat
 func get<T>(
 
   l : List<T>
-  
   n : Nat
 
 ) : ?T
@@ -260,7 +258,6 @@ func reverse<T>(l : List<T>) : List<T>
 func iterate<T>(
 
   l : List<T>
-
   f : T -> ()
 
 ) : 
@@ -289,7 +286,6 @@ func iterate<T>(
 func map<T, U>(
 
   l : List<T>
-
   f : T -> U
 
 ) : List<U>
@@ -318,7 +314,6 @@ func map<T, U>(
 func filter<T>(
 
   l : List<T>
-  
   f : T -> Bool
 
 ) : List<T>
@@ -347,7 +342,6 @@ func filter<T>(
 func partition<T>(
 
   l : List<T>
-
   f : T -> Bool
 
 ) : (List<T>, List<T>)
@@ -376,7 +370,6 @@ func partition<T>(
 func mapFilter<T, U>(
 
   l : List<T>
-
   f : T -> ?U
 
 ) : List<U>
@@ -405,7 +398,6 @@ func mapFilter<T, U>(
 func mapResult<T, R, E>(
 
   xs : List<T>
-
    f : T -> Result.Result<R, E>
 
 ) : Result.Result<List<R>, E>
@@ -434,7 +426,6 @@ func mapResult<T, R, E>(
 func append<T>(
 
   l : List<T>
-
   m : List<T>
 
 ) : (List<T>)
@@ -489,7 +480,6 @@ l : List<List<T>>
 func take<T>(
 
   l : List<T>
-
   n : Nat
 
 ) : (List<T>)
@@ -518,7 +508,6 @@ func take<T>(
 func drop<T>(
 
   l : List<T>
-
   n : Nat
 
 ) : (List<T>)
@@ -547,7 +536,6 @@ func drop<T>(
 func foldLeft<T, S>(
 
     list : List<T>
-
     base : S
  
  combine : (S, T) -> S
@@ -579,7 +567,6 @@ func foldLeft<T, S>(
 func foldRight<T, S>(
 
     list : List<T>
-
     base : S
  
  combine : (T, S) -> S
@@ -611,7 +598,6 @@ func foldRight<T, S>(
 func find<T>(
 
   l : List<T>
-
   f : T -> Bool
 
 ) : ?T
@@ -640,7 +626,6 @@ func find<T>(
 func some<T>(
 
   l : List<T>
-
   f : T -> Bool
 
 ) : Bool
@@ -670,7 +655,6 @@ func some<T>(
 func all<T>(
 
   l : List<T>
-
   f : T -> Bool
 
 ) : Bool
@@ -700,7 +684,6 @@ func all<T>(
 func merge<T>(
 
     l1 : List<T>
-
     l2 : List<T>
     
     lessThanOrEqual : (T, T) -> Bool
@@ -732,7 +715,6 @@ func merge<T>(
 func compare<T>(
 
      l1 : List<T>
-
      l2 : List<T>
     
 compare : (T, T) -> Order.Order
@@ -764,7 +746,6 @@ compare : (T, T) -> Order.Order
 func equal<T>(
 
    l1 : List<T>
-
    l2 : List<T>
     
 equal : (T, T) -> Bool
@@ -796,7 +777,6 @@ equal : (T, T) -> Bool
 func tabulate<T>(
 
   n : Nat
-
   f : Nat -> T
 
 ) : List<T>
@@ -847,7 +827,6 @@ func make<T>(n : T) : List<T>
 func replicate<T>(
 
   n : Nat
-
   x : T
 
 ) : List<T>
@@ -877,7 +856,6 @@ func replicate<T>(
 func zip<T, U>(
 
   xs : List<T>
-
   ys : List<U>
 
 ) : List<(T, U)>
@@ -906,9 +884,7 @@ func zip<T, U>(
 func zipWith<T, U, V>(
 
   xs : List<T>
-
   ys : List<U>
-  
    f : (T, U) -> V
 
 ) : List<V>
@@ -938,7 +914,6 @@ func zipWith<T, U, V>(
 func split<T>(
 
   n : Nat
-
  xs : List<T>
 
 ) : (List<T>, List<T>)
@@ -968,7 +943,6 @@ func split<T>(
 func chunks<T>(
 
   n : Nat
-
  xs : List<T>
 
 ) : List<List<T>>
