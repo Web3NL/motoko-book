@@ -7,7 +7,7 @@ let map = HashMap.HashMap<Text, Int>(5, Text.equal, Text.hash);
   map.put("sachin", 100);
   map.put("kohli", 74);
   map.put("root", 50);
-  
+
 func edit(k : Text, v : Int) : ?Int {
       if (v > 0) {
         ?(v * 2);

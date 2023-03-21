@@ -32,7 +32,7 @@ func size() : Nat
 ```
 The function `size` takes no argument and returns a `Nat` value.  
 
-```motoko
+```motoko, run
 {{#include _mo/hashmap/size.mo:a}}  
 ```
 
@@ -43,7 +43,7 @@ func get(key : K) : (value : ?V)
 ```
 The function `get` takes one argument of type `K` and returns a value of type `?V`.  
 
-```motoko
+```motoko, run
 {{#include _mo/hashmap/get.mo:a}}
 ```
 
@@ -54,7 +54,7 @@ func put(key : K, value : V)
 ```
 The function `put` takes one argument of type `K` and returns a value of type `V`.  
 
-```motoko
+```motoko, run
 {{#include _mo/hashmap/put.mo:a}}
 ```
 
@@ -65,7 +65,7 @@ func replace(key : K, value : V) : (oldValue : ?V)
 ```
 The function `replace` takes one argument of type `K` and one of type `v` returns a value of type `?V`.  
 
-```motoko
+```motoko, run
 {{#include _mo/hashmap/replace.mo:a}}
 ```
 
@@ -76,7 +76,7 @@ func delete(key : K)
 ```
 The function `delete` takes one argument of type `K` and returns nothing.  
 
-```motoko
+```motoko, run
 {{#include _mo/hashmap/delete.mo:a}}
 ```
 
@@ -87,7 +87,7 @@ func remove(key : K) : (oldValue : ?V)
 ```
 The function `remove` takes one argument of type `K` and returns a value of type `?V`.  
 
-```motoko
+```motoko, run
 {{#include _mo/hashmap/remove.mo:a}}
 ```
 
@@ -98,7 +98,7 @@ func keys() : Iter.Iter<K>
 ```
 The function `keys` takes nothing and returns an `Iterator` of type `K`.  
 
-```motoko
+```motoko, run
 {{#include _mo/hashmap/keys.mo:a}}
 ```
 
@@ -109,7 +109,7 @@ func vals() : Iter.Iter<V>
 ```
 The function `vals` takes nothing and returns an `Iterator` of type `V`.
 
-```motoko
+```motoko, run
 {{#include _mo/hashmap/vals.mo:a}}
 ```
 
@@ -120,7 +120,7 @@ func entries() : Iter.Iter<(K, V)>
 ```
 The function `entries` takes nothing and returns an `Iterator` of type tuple `(K, V)`.  
 
-```motoko
+```motoko, run
 {{#include _mo/hashmap/entries.mo:a}}
 ```
 
@@ -131,17 +131,13 @@ The function `entries` takes nothing and returns an `Iterator` of type tuple `(K
 func clone<K, V>(
     
      map : HashMap<K, V>
-    
    keyEq : (K, K) -> Bool
-     
  keyHash : K -> Hash.Hash
       
   ) : HashMap<K, V>
 ```
 
-### Parameters
-
-|                     |                              |
+|   **Parameters**    |                              |
 | ------------------- | ---------------------------- |
 | Generic parameters  | `K, V`                       |
 | Variable argument   | `map : HashMap<K, V>`        |
@@ -150,7 +146,7 @@ func clone<K, V>(
 | Return type         | `HashMap<K, V>`              |
 
 
-```motoko
+```motoko, run
 {{#include _mo/hashmap/clone.mo:a}}
 ```
 
@@ -162,19 +158,14 @@ func clone<K, V>(
 func fromIter<K, V>(
     
          iter : Iter.Iter<(K, V)>
-    
  initCapacity : Nat
-     
         keyEq : (K, K) -> Bool
-      
       keyHash : K -> Hash.Hash
        
     ) : HashMap<K, V>
 ```
 
-### Parameters
-
-|                     |                              |
+|   **Parameters**    |                              |
 | ------------------- | ---------------------------- |
 | Generic parameters  | `K, V`                       |
 | Variable argument1  | `iter : Iter.Iter<(K, V)>`   |
@@ -184,7 +175,7 @@ func fromIter<K, V>(
 | Return type         | `HashMap<K, V>`              |
 
 
-```motoko
+```motoko, run
 {{#include _mo/hashmap/fromIter.mo:a}}
 ```
 
@@ -196,19 +187,15 @@ func fromIter<K, V>(
 func map<K, V1, V2>(
     
  hashMap : HashMap<K, V1>
-    
    keyEq : (K, K) -> Bool
-     
  keyHash : K -> Hash.Hash
-      
        f : (K, V1) -> V2
        
    ) : HashMap<K, V2>
 ```
 
-### Parameters
 
-|                     |                              |
+|   **Parameters**    |                              |
 | ------------------- | ---------------------------- |
 | Generic parameters  | `K, V1, V2`                  |
 | Variable argument1  | `hashMap : HashMap<K, V1>`   |
@@ -218,7 +205,7 @@ func map<K, V1, V2>(
 | Return type         | `HashMap<K, V2>`             |
 
 
-```motoko
+```motoko, run
 {{#include _mo/hashmap/map.mo:a}}
 ```
 
@@ -230,19 +217,15 @@ func map<K, V1, V2>(
 func mapFilter<K, V1, V2>(
     
  hashMap : HashMap<K, V1>
-    
    keyEq : (K, K) -> Bool
-     
  keyHash : K -> Hash.Hash
-      
        f : (K, V1) -> ?V2
        
    ) : HashMap<K, V2>
 ```
 
-### Parameters
 
-|                     |                              |
+|   **Parameters**    |                              |
 | ------------------- | ---------------------------- |
 | Generic parameters  | `K, V1, V2`                  |
 | Variable argument1  | `hashMap : HashMap<K, V1>`   |
@@ -252,6 +235,6 @@ func mapFilter<K, V1, V2>(
 | Return type         | `HashMap<K, V2>`             |
 
 
-```motoko
+```motoko, run
 {{#include _mo/hashmap/mapFilter.mo:a}}
 ```
