@@ -3,10 +3,8 @@ Logical expressions are used to express common *logical operations* on values of
 
 ## `not` expression
 The `not` expression takes only one _operand_ of type `Bool` and _negates_ the value:
-```motoko
-let negate = not false;
-
-let yes = not (1 > 2);
+```motoko, run
+{{#include _mo/logical-expressions.mo:a}}
 ```
 
 In the first line `negate` has boolean value `true`. It is set by negating the boolean _literal_ `false`. In the second line, we negate the _boolean expression_ `(1 > 2)`.
@@ -23,8 +21,8 @@ The _truth table_ for `not` is
 
 ## `and` expression
 The `and` expression takes two _operands_ of type `Bool` and performs a _logical AND_ operation.
-```motoko
-let result = true and false;
+```motoko, run
+{{#include _mo/logical-expressions1.mo:a}}
 ```
 
 `result` is now `false` according to the _truth table_.
@@ -38,8 +36,8 @@ let result = true and false;
 
 ## `or` expression
 The `or` expression takes two _operands_ of type `Bool` and performs a _logical OR_ operation.
-```motoko
-let result = true or false;
+```motoko, run
+{{#include _mo/logical-expressions2.mo:a}}
 ```
 
 `result` is now `true` according to the _truth table_.

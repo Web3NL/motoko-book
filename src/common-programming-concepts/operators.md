@@ -1,7 +1,7 @@
 # Operators
 Operators are symbols that indicate several kinds of *operations* on values. They consist of one, two or three characters and are used to perform manipulations on typically one or two values at a time.
 
-```motoko
+```motoko, run
 {{#include _mo/operators.mo:a}} 
 ```
 

@@ -2,86 +2,57 @@
 Bitwise operators are used to manipulate the *bits* of number values. 
 
 ## Bitwise AND `&`
-```motoko
-let a : Nat8 = 10;     //  binary: 0000_1010
-let b : Nat8 = 6;      //  binary: 0000_0110
-let c : Nat8 = a & b;  //  binary: 0010 (decimal: 2)
-assert c == 2;
+```motoko, run
+{{#include _mo/bitwise-operators.mo:a}}
 ```
 
 
 ## Bitwise OR `|`
-```motoko
-let a : Nat8 = 10;    //  binary: 0000_1010
-let b : Nat8 = 6;     //  binary: 0000_0110
-let c : Nat8 = a | b; //  binary: 0000_1110 (decimal: 14)
-assert c == 14;
+```motoko, run
+{{#include _mo/bitwise-operators1.mo:a}}
 ```
 
 ## Bitwise XOR `^`
-```motoko
-let : Nat8 a = 10;     //  binary: 0000_1010
-let : Nat8 b = 6;      //  binary: 0000_0110
-let c : Nat8 = a ^ b;  //  binary: 0000_1100 (decimal: 12)
-assert c == 12;
+```motoko, run
+{{#include _mo/bitwise-operators2.mo:a}}
 ```
 
 ## Bitwise Shift Left `<<`
-```motoko
-let a : Nat8 = 10;     //  binary: 0000_1010
-let b : Nat8 = a << 2; //  binary: 0010_1000 (decimal: 40)
-assert b == 40;
+```motoko, run
+{{#include _mo/bitwise-operators3.mo:a}}
 ```
 
 ## Bitwise Shift Right `>>`
-```motoko
-let a : Nat8 = 10;     //  binary: 0000_1010
-let b : Nat8 = a >> 2; //  binary: 0000_0010 (decimal: 2)
-assert b == 2;
+```motoko, run
+{{#include _mo/bitwise-operators4.mo:a}}
 ```
 
 ## Bitwise Rotate Left `<<>`
-```motoko 
-let a : Nat8 = 10;       //  binary: 0000_1010
-let b : Nat8 = a <<> 2;  //  binary: 0010_1000 (decimal: 40)
-assert b == 40;
+```motoko, run 
+{{#include _mo/bitwise-operators5.mo:a}}
 ```
 
 ## Bitwise Rotate Right `<>>`
-```motoko
-let a : Nat8 = 10;       //  binary: 0000_1010
-let b : Nat8 = a >> 2;   //  binary: 1000_0010 (decimal: 130)
-assert b == 130;
+```motoko, run
+{{#include _mo/bitwise-operators6.mo:a}}
 ```
 
 ## Wrapping Addition `+%`
-```motoko
-let a : Int8 = 127;     // maximum value for a 8-bit signed integer
-let b : Int8 = 1;
-let c : Int8 = a +% b;  // wraps around to -128
-assert c == -128;
+```motoko, run
+{{#include _mo/bitwise-operators7.mo:a}}
 ```
 
 ## Wrapping Subtraction `-%`
-```motoko
-let a : Int8 = -128;    // minimum value for a 8-bit signed integer
-let b : Int8 = 1;
-let c : Int8 = a -% b;  // wraps around to 127
-assert c == 127;
+```motoko, run
+{{#include _mo/bitwise-operators8.mo:a}}
 ```
 
 ## Wrapping Multiplication `*%`
-```motoko
-let a : Nat = 2;
-let b : Nat = 128;
-let c : Nat = a *% b;   // wraps around to 0
-assert c == 0;
+```motoko, run
+{{#include _mo/bitwise-operators9.mo:a}}
 ```
 
 ## Wrapping Exponentiation `**%`
-```motoko
-let a : Nat = 2;
-let b : Nat = 8;
-let c : Nat = a **% b;  // wraps around to 0
-assert c == 0;
+```motoko, run
+{{#include _mo/bitwise-operators10.mo:a}}
 ```

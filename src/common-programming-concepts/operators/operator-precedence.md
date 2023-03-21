@@ -1,8 +1,8 @@
 # Operator precedence
 Consider the following example:
 
-```motoko
-let q : Float = 1 + 2 - 3 * 4 / 5;
+```motoko, run
+{{#include _mo/operator-precedence.mo:a}}
 ```
 
 We used 4 common arithmetic operations in one line. The result is a value of type `Float` and will be named `q`.
@@ -19,8 +19,8 @@ Multiplication and division have a *higher precedence* than addition and subtrac
 
 To ensure an operation happens first before any other, we can enclose the values and the operator inside parenthesis.
 
-```motoko
-let q : Float = ((1 + 2) - 3) * 4 / 5;
+```motoko, run
+{{#include _mo/operator-precedence1.mo:a}}
 ```
 
 The value of `q` is now `0`.

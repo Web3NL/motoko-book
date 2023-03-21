@@ -10,8 +10,8 @@ Numeric operators are used to perform *arithmetic* operations on number types li
 
 An example:
 
-```motoko
-let a : Nat = (2 ** 4) / 4; 
+```motoko, run
+{{#include _mo/numeric-operators.mo:a}}
 ```
 
 We used parentheses `(2 ** 4)` to indicate the order in which the operations need to be performed. The exponentiation happens first and the result is then divided by 4. The end result will be a value of type `Nat`.

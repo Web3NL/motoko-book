@@ -1,7 +1,7 @@
 # Text concatenation
 We can use the `#` sign to *concatenate* values of type `Text`.
 
-```motoko
+```motoko, run
 {{#include _mo/text-concatenation.mo:a}}
 ```
 
