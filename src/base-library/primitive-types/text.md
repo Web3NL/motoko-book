@@ -1,28 +1,37 @@
-
 # Text
-The *convention* is to name the [*module alias*](/common-programming-concepts/modules.html#imports) after the [*file name*](/common-programming-concepts/modules.html#imports) it is defined in:
+
+The _convention_ is to name the [_module alias_](/common-programming-concepts/modules.html#imports) after the [_file name_](/common-programming-concepts/modules.html#imports) it is defined in:
 
 ```motoko
-{{#include _mo/text.mo:a}}
+import Text "mo:base/Text";
 ```
 
-## Public items
-The following types and functions are made public in the `Text` module:  
-[Type Text](#type)  
-[Function `size`](#textsize)    
-[Function `fromChar`](#textfromchar)  
+### Types
+
+[Type `Pattern`]()  
+
+### Analysis
+
+[Function `size`](#textsize)  
 [Function `contains`](#textcontains)  
 [Function `startsWith`](#textstartswith)  
-[Function `endsWith`](#textendswith)  
+[Function `endsWith`](#textendswith)
+
+### Conversion
+
+[Function `fromChar`](#textfromchar)  
+[Function `encodeUtf8`](#textencodeutf8)  
+[Function `decodeUtf8`](#textdecodeutf8)
+
+### Transformation
+
 [Function `replace`](#textreplace)  
-[Function `concat`](#textconcat)  
+[Function `concat`](#textconcat)
 
-
-## Type
-```motoko
-type Text = Text.Text
+## Text.Pattern
+```motoko, run
+{{#include _mo/text5.mo:a}}
 ```
-
 
 ## Text.size
 
@@ -30,10 +39,10 @@ type Text = Text.Text
 func size(t : Text) : Nat
 ```
 
-The function `size` takes one `Text` argument and returns a `Nat` value. 
+The function `size` takes one `Text` argument and returns a `Nat` value.
 
-```motoko
-{{#include _mo/text.mo:c}}
+```motoko, run
+{{#include _mo/text.mo:a}}
 ```
 
 ## Text.fromChar
@@ -42,11 +51,15 @@ The function `size` takes one `Text` argument and returns a `Nat` value.
 let fromChar : (c : Char) -> Text
 ```
 
-The function `fromChar` takes one `Text` argument and returns a `Char` value. 
+The function `fromChar` takes one `Text` argument and returns a `Char` value.
 
-```motoko
-{{#include _mo/text.mo:d}}
+```motoko, run
+{{#include _mo/text0.mo:c}}
 ```
+
+## Text.encodeUtf8
+
+## Text.decodeUtf8
 
 ## Text.contains
 
@@ -54,9 +67,9 @@ The function `fromChar` takes one `Text` argument and returns a `Char` value.
 func contains(t : Text, p : Pattern) : Bool
 ```
 
-The function `contains` takes one `Text`,one `Pattern` as arguments and returns a `Bool` value. 
+The function `contains` takes one `Text`,one `Pattern` as arguments and returns a `Bool` value.
 
-```motoko
+```motoko, run
 {{#include _mo/text1.mo:a}}
 ```
 
@@ -66,9 +79,9 @@ The function `contains` takes one `Text`,one `Pattern` as arguments and returns 
 func startsWith(t : Text, p : Pattern) : Bool
 ```
 
-The function `startsWith` takes one `Text`,one `Pattern` as arguments and returns a `Bool` value. 
+The function `startsWith` takes one `Text`,one `Pattern` as arguments and returns a `Bool` value.
 
-```motoko
+```motoko, run
 {{#include _mo/text2.mo:a}}
 ```
 
@@ -78,9 +91,9 @@ The function `startsWith` takes one `Text`,one `Pattern` as arguments and return
 func endsWith(t : Text, p : Pattern) : Bool
 ```
 
-The function `endsWith` takes one `Text`,one `Pattern` as arguments and returns a `Bool` value. 
+The function `endsWith` takes one `Text`,one `Pattern` as arguments and returns a `Bool` value.
 
-```motoko
+```motoko, run
 {{#include _mo/text3.mo:a}}
 ```
 
@@ -90,11 +103,12 @@ The function `endsWith` takes one `Text`,one `Pattern` as arguments and returns 
 func replace(t : Text, p : Pattern, r : Text) : Text
 ```
 
-The function `replace` takes one `Text`,one `Pattern`and one `Text` as arguments and returns a `Text` value. 
+The function `replace` takes one `Text`,one `Pattern`and one `Text` as arguments and returns a `Text` value.
 
-```motoko
+```motoko, run
 {{#include _mo/text4.mo:a}}
 ```
+
 ## Text.concat
 
 ```motoko
@@ -103,17 +117,6 @@ func concat(t1 : Text, t2 : Text) : Text
 
 The function `concat` takes two `Text` arguments and returns a `Text` value. It is equivalent to the `#` [operator](/common-programming-concepts/operators.html).
 
-```motoko
+```motoko, run
 {{#include _mo/text4.mo:b}}
 ```
-
-
-<!-- Type Text
-Value fromChar
-Function size
-Function contains
-Function startsWith
-Function endsWith
-Function replace
-Value encodeUtf8
-Value decodeUtf8 -->
