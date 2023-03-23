@@ -1,10 +1,9 @@
 
 // ANCHOR: a
 import Text "mo:base/Text";
-type Pattern = {#char : Char; #text : Text; #predicate : (Char -> Bool)};
 
 let text : Text = "blockchain";
-let letter : Pattern = #char 'k';
+let letter : Text.Pattern = #char 'k';
 
 Text.contains(text, letter);
 // ANCHOR_END: a
