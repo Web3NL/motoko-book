@@ -1,8 +1,7 @@
+// ANCHOR: a
 import Buffer "mo:base/Buffer";
 import Iter "mo:base/Iter";
 import Int "mo:base/Int";
-
-// ANCHOR: a
 let array : [Int] = [-1, 0, 1];
 
 let iter : Iter.Iter<Int> = array.vals();

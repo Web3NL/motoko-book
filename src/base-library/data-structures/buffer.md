@@ -2,7 +2,7 @@
 
 The *convention* is to name the [*module alias*](/common-programming-concepts/modules.html#imports) after the [*file name*](/common-programming-concepts/modules.html#imports) it is defined in:
 
-```motoko
+```motoko, run
 {{#include _mo/buffer.mo:a}}
 ```
   
@@ -86,7 +86,7 @@ func size() : Nat
 ```
 The function `size` takes no argument and returns a `Nat` value.  
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/method/size.mo:a}}
 ```
 ## Buffer.add
@@ -96,7 +96,7 @@ func add(element : X) : ()
 ```
 The function `add` takes one generic type `X` argument and returns a `()` value.  
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/method/add.mo:a}}
 ```
 ## Buffer.get
@@ -106,7 +106,7 @@ func get(index : Nat) : X
 ```
 The function `get` takes one `Nat` argument and returns a generic type value `X` .  
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/method/get.mo:a}}
 ```
 
@@ -117,7 +117,7 @@ func getOpt(index : Nat) : ?X
 ```
 The function `getOpt` takes one `Nat` argument and returns a generic type value `?X`.  
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/method/getOpt.mo:a}}
 ```
 ## Buffer.put
@@ -127,7 +127,7 @@ func put(index : Nat, element : X) : ()
 ```
 The function `put` takes one `Nat`and one generic type `x` argument and returns a `()` value.  
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/method/put.mo:a}}
 ```
 
@@ -138,7 +138,7 @@ func removeLast() : ?X
 ```
 The function `removeLast` takes no argument and returns a generic type value `?X`.  
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/method/removeLast.mo:a}}
 ```
 
@@ -149,7 +149,7 @@ func remove(index : Nat) : X
 ```
 The function `remove` takes one `Nat` argument and returns a generic type value `X`.  
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/method/remove.mo:a}}
 ```
 ## Buffer.clear
@@ -159,7 +159,7 @@ func clear() : ()
 ```
 The function `clear` takes no argument and returns a `()` value.  
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/method/clear.mo:a}}
 ```
 ## Buffer.filterEntries
@@ -167,14 +167,12 @@ The function `clear` takes no argument and returns a `()` value.
 ```motoko
 func filterEntries(predicate : (Nat, X) -> Bool) : ()
 ```
-### Parameters
-
-|                     |                        |
+| **Parameters**      |                        |
 | ------------------- | ---------------------- |
 | Function argument   | `(Nat, X) -> Bool`     |
 | Return type         | `()`                   |
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/method/filterEntries.mo:a}}
 ```
 ## Buffer.capacity
@@ -184,7 +182,7 @@ func capacity() : Nat
 ```
 The function `capacity` takes no argument and returns a `Nat` value.  
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/method/capacity.mo:a}}
 ```
 ## Buffer.reserve
@@ -194,7 +192,7 @@ func reserve(capacity : Nat) : ()
 ```
 The function `reserve` takes one `Nat` argument and returns a `()` value.  
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/method/reserve.mo:a}}
 ```
 ## Buffer.append
@@ -204,7 +202,7 @@ func append(buffer2 : Buffer<X>) : ()
 ```
 The function `append` takes one generic type `Buffer<X>` argument and returns a `()` value.  
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/method/append.mo:a}}
 ```
 ## Buffer.insert
@@ -214,7 +212,7 @@ func insert(index : Nat, element : X) : ()
 ```
 The function `insert` takes one `Nat`and one generic type `X` argument and returns a `()` value.  
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/method/insert.mo:a}}
 ```
 
@@ -225,7 +223,7 @@ func insertBuffer(index : Nat, buffer2 : Buffer<X>) : ()
 ```
 The function `insertBuffer` takes one `Nat`and one generic type `Buffer<X>` argument and returns a `()` value.  
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/method/insertBuffer.mo:a}}
 ```
 
@@ -234,14 +232,12 @@ The function `insertBuffer` takes one `Nat`and one generic type `Buffer<X>` argu
 ```motoko
 func sort(compare : (X, X) -> Order.Order) : ()
 ```
-### Parameters
-
-|                     |                          |
+| **Parameters**      |                          |
 | ------------------- | ----------------------   |
 | Function argument   | `(X, X) -> Order.Order`  |
 | Return type         | `()`                     |
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/method/sort.mo:a}}
 ```
 
@@ -252,7 +248,7 @@ func vals() : { next : () -> ?X }
 ```
 The function `vals` takes no argument and returns a `Iter` value.  
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/method/vals.mo:a}}
 ```
 
@@ -263,16 +259,14 @@ The function `vals` takes no argument and returns a `Iter` value.
 ```motoko
 func isEmpty<X>(buffer : Buffer<X>) : Bool
 ```
-### Parameters
-
-|                     |                                     |
+| **Parameters**      |                                     |
 | ------------------- | ----------------------              |
 | Generic parameters  | `X`                                 |
 | Variable argument   | `buffer : Buffer<X>`                |
 | Return type         | `Bool`                              |
 
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/isEmpty.mo:a}}
 ```
 
@@ -284,17 +278,13 @@ func isEmpty<X>(buffer : Buffer<X>) : Bool
 func contains<X>(
 
   buffer : Buffer<X>
-   
  element : X 
- 
    equal : (X, X) -> Bool
   
 ) : Bool 
 ```
 
-### Parameters
-
-|                     |                               |
+| **Parameters**      |                               |
 | ------------------- | ----------------------        |
 | Generic parameters  | `X`                           |
 | Variable argument1  | `buffer : Buffer<X>`          |
@@ -303,7 +293,7 @@ func contains<X>(
 | Return type         | `Bool`                        |
 
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/contains.mo:a}}
 ```
 
@@ -314,16 +304,14 @@ func contains<X>(
 ```motoko
 func clone<X>(buffer : Buffer<X>) : Buffer<X>
 ```
-### Parameters
-
-|                     |                                     |
+| **Parameters**      |                                     |
 | ------------------- | ----------------------              |
 | Generic parameters  | `X`                                 |
 | Variable argument   | `buffer : Buffer<X>`                |
 | Return type         | `Buffer<X>`                         |
 
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/clone.mo:a}}
 ```
 
@@ -335,14 +323,11 @@ func clone<X>(buffer : Buffer<X>) : Buffer<X>
 func max<X>(
     
   buffer : Buffer<X>
-
  compare : (X, X) -> Order
  
  ) : ?X
 ```
-### Parameters
-
-|                     |                                     |
+| **Parameters**      |                                     |
 | ------------------- | ----------------------              |
 | Generic parameters  | `X`                                 |
 | Variable argument   | `buffer : Buffer<X>`                |
@@ -350,7 +335,7 @@ func max<X>(
 | Return type         | `?X`                                |
 
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/max.mo:a}}
 ```
 
@@ -362,14 +347,11 @@ func max<X>(
 func min<X>(
     
   buffer : Buffer<X>
-
  compare : (X, X) -> Order
  
  ) : ?X
 ```
-### Parameters
-
-|                     |                                     |
+| **Parameters**      |                                     |
 | ------------------- | ----------------------              |
 | Generic parameters  | `X`                                 |
 | Variable argument   | `buffer : Buffer<X>`                |
@@ -377,7 +359,7 @@ func min<X>(
 | Return type         | `?X`                                |
 
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/min.mo:a}}
 ```
 
@@ -389,16 +371,12 @@ func min<X>(
 func equal<X>(
     
  buffer1 : Buffer<X>
-
  buffer2 : Buffer<X>
- 
    equal : (X, X) -> Bool
    
    ) : Bool
 ```
-### Parameters
-
-|                     |                                     |
+| **Parameters**      |                                     |
 | ------------------- | ----------------------              |
 | Generic parameters  | `X`                                 |
 | Variable argument1  | `buffer1 : Buffer<X>`               |
@@ -407,7 +385,7 @@ func equal<X>(
 | Return type         | `Bool`                              |
 
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/equal.mo:a}}
 ```
 
@@ -419,16 +397,12 @@ func equal<X>(
 func compare<X>(
     
  buffer1 : Buffer<X>
-
  buffer2 : Buffer<X>
- 
  compare : (X, X) -> Order.Order
  
  ) : Order.Order
 ```
-### Parameters
-
-|                     |                                     |
+| **Parameters**      |                                     |
 | ------------------- | ----------------------              |
 | Generic parameters  | `X`                                 |
 | Variable argument1  | `buffer1 : Buffer<X>`               |
@@ -437,7 +411,7 @@ func compare<X>(
 | Return type         | `Order.Order`                       |
 
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/compare.mo:a}}
 ```
 
@@ -449,14 +423,11 @@ func compare<X>(
 func toText<X>(
     
  buffer : Buffer<X>
-
  toText : X -> Text
  
  ) : Text
 ```
-### Parameters
-
-|                     |                                     |
+| **Parameters**      |                                     |
 | ------------------- | ----------------------              |
 | Generic parameters  | `X`                                 |
 | Variable argument   | `buffer : Buffer<X>`                |
@@ -464,7 +435,7 @@ func toText<X>(
 | Return type         | `Text`                              |
 
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/toText.mo:a}}
 ```
 
@@ -476,14 +447,11 @@ func toText<X>(
 func toText<X>(
     
  buffer : Buffer<X>
-
    hash : X -> Nat32)
  
  ) : Nat32
 ```
-### Parameters
-
-|                     |                                     |
+| **Parameters**      |                                     |
 | ------------------- | ----------------------              |
 | Generic parameters  | `X`                                 |
 | Variable argument   | `buffer : Buffer<X>`                |
@@ -491,7 +459,7 @@ func toText<X>(
 | Return type         | `Nat32`                             |
 
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/hash.mo:a}}
 ```
 ## Buffer.indexOf
@@ -502,16 +470,12 @@ func toText<X>(
 func indexOf<X>(
     
 element : X
-
  buffer : Buffer<X>
- 
   equal : (X, X) -> Bool
   
   ) : ?Nat
 ```
-### Parameters
-
-|                     |                                     |
+| **Parameters**      |                                     |
 | ------------------- | ----------------------              |
 | Generic parameters  | `X`                                 |
 | Variable argument1  | `element : X`                       |
@@ -520,7 +484,7 @@ element : X
 | Return type         | `?Nat`                              |
 
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/indexOf.mo:a}}
 ```
 
@@ -532,16 +496,12 @@ element : X
 func indexOf<X>(
     
 element : X
-
  buffer : Buffer<X>
- 
   equal : (X, X) -> Bool
   
   ) : ?Nat
 ```
-### Parameters
-
-|                     |                                     |
+| **Parameters**      |                                     |
 | ------------------- | ----------------------              |
 | Generic parameters  | `X`                                 |
 | Variable argument1  | `element : X`                       |
@@ -550,7 +510,7 @@ element : X
 | Return type         | `?Nat`                              |
 
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/lastIndexOf.mo:a}}
 ```
 
@@ -562,16 +522,12 @@ element : X
 func indexOfBuffer<X>(
     
  subBuffer : Buffer<X>
-    
-    buffer : Buffer<X>
-     
+    buffer : Buffer<X> 
      equal : (X, X) -> Bool
   
     ) : ?Nat
 ```
-### Parameters
-
-|                     |                                     |
+| **Parameters**      |                                     |
 | ------------------- | ----------------------              |
 | Generic parameters  | `X`                                 |
 | Variable argument1  | `subBuffer : Buffer<X>`             |
@@ -580,7 +536,7 @@ func indexOfBuffer<X>(
 | Return type         | `?Nat`                              |
 
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/indexOfBuffer.mo:a}}
 ```
 
@@ -592,16 +548,12 @@ func indexOfBuffer<X>(
 func binarySearch<X>(
     
 element : X
-
  buffer : Buffer<X>
- 
 compare : (X, X) -> Order.Order
   
   ) : ?Nat
 ```
-### Parameters
-
-|                     |                                     |
+| **Parameters**      |                                     |
 | ------------------- | ----------------------              |
 | Generic parameters  | `X`                                 |
 | Variable argument1  | `element : X`                       |
@@ -610,7 +562,7 @@ compare : (X, X) -> Order.Order
 | Return type         | `?Nat`                              |
 
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/binarySearch.mo:a}}
 ```
 
@@ -622,16 +574,12 @@ compare : (X, X) -> Order.Order
 func subBuffer<X>(
     
     buffer : Buffer<X>
-    
      start : Nat
-     
     length : Nat
     
     ) : Buffer<X>
 ```
-### Parameters
-
-|                     |                                     |
+| **Parameters**      |                                     |
 | ------------------- | ----------------------              |
 | Generic parameters  | `X`                                 |
 | Variable argument1  | `buffer  : Buffer<X>`               |
@@ -640,7 +588,7 @@ func subBuffer<X>(
 | Return type         | `Buffer<X>`                         |
 
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/subBuffer.mo:a}}
 ```
 
@@ -652,16 +600,12 @@ func subBuffer<X>(
 func isSubBufferOf<X>(
     
  subBuffer : Buffer<X>
-    
     buffer : Buffer<X>
-     
      equal : (X, X) -> Bool
   
     ) : Bool
 ```
-### Parameters
-
-|                     |                                     |
+| **Parameters**      |                                     |
 | ------------------- | ----------------------              |
 | Generic parameters  | `X`                                 |
 | Variable argument1  | `subBuffer : Buffer<X>`             |
@@ -670,7 +614,7 @@ func isSubBufferOf<X>(
 | Return type         | `Bool`                              |
 
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/isSubBufferOf.mo:a}}
 ```
 
@@ -682,16 +626,12 @@ func isSubBufferOf<X>(
 func isSubBufferOf<X>(
     
  subBuffer : Buffer<X>
-    
     buffer : Buffer<X>
-     
      equal : (X, X) -> Bool
   
     ) : Bool
 ```
-### Parameters
-
-|                     |                                     |
+| **Parameters**      |                                     |
 | ------------------- | ----------------------              |
 | Generic parameters  | `X`                                 |
 | Variable argument1  | `subBuffer : Buffer<X>`             |
@@ -700,7 +640,7 @@ func isSubBufferOf<X>(
 | Return type         | `Bool`                              |
 
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/isStrictSubBufferOf.mo:a}}
 ```
 
@@ -712,14 +652,11 @@ func isSubBufferOf<X>(
 func prefix<X>(
     
     buffer : Buffer<X>
-     
     length : Nat
     
     ) : Buffer<X>
 ```
-### Parameters
-
-|                     |                                     |
+| **Parameters**      |                                     |
 | ------------------- | ----------------------              |
 | Generic parameters  | `X`                                 |
 | Variable argument1  | `buffer  : Buffer<X>`               |
@@ -727,7 +664,7 @@ func prefix<X>(
 | Return type         | `Buffer<X>`                         |
 
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/prefix.mo:a}}
 ```
 
@@ -739,16 +676,12 @@ func prefix<X>(
 func isPrefixOf<X>(
     
     prefix : Buffer<X>
-    
     buffer : Buffer<X>
-     
      equal : (X, X) -> Bool
   
     ) : Bool
 ```
-### Parameters
-
-|                     |                                     |
+| **Parameters**      |                                     |
 | ------------------- | ----------------------              |
 | Generic parameters  | `X`                                 |
 | Variable argument1  | `prefix : Buffer<X>`                |
@@ -757,7 +690,7 @@ func isPrefixOf<X>(
 | Return type         | `Bool`                              |
 
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/isPrefixOf.mo:a}}
 ```
 
@@ -769,16 +702,12 @@ func isPrefixOf<X>(
 func isStrictPrefixOf<X>(
     
     prefix : Buffer<X>
-    
     buffer : Buffer<X>
-     
      equal : (X, X) -> Bool
   
     ) : Bool
 ```
-### Parameters
-
-|                     |                                     |
+| **Parameters**      |                                     |
 | ------------------- | ----------------------              |
 | Generic parameters  | `X`                                 |
 | Variable argument1  | `prefix : Buffer<X>`                |
@@ -787,7 +716,7 @@ func isStrictPrefixOf<X>(
 | Return type         | `Bool`                              |
 
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/isStrictPrefixOf.mo:a}}
 ```
 
@@ -799,14 +728,11 @@ func isStrictPrefixOf<X>(
 func suffix<X>(
     
     buffer : Buffer<X>
-     
     length : Nat
     
     ) : Buffer<X>
 ```
-### Parameters
-
-|                     |                                     |
+| **Parameters**      |                                     |
 | ------------------- | ----------------------              |
 | Generic parameters  | `X`                                 |
 | Variable argument1  | `buffer : Buffer<X>`                |
@@ -814,7 +740,7 @@ func suffix<X>(
 | Return type         | `Buffer<X>`                         |
 
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/suffix.mo:a}}
 ```
 
@@ -826,16 +752,12 @@ func suffix<X>(
 func isSuffixOf<X>(
     
     suffix : Buffer<X>
-    
     buffer : Buffer<X>
-     
      equal : (X, X) -> Bool
   
     ) : Bool
 ```
-### Parameters
-
-|                     |                                     |
+| **Parameters**      |                                     |
 | ------------------- | ----------------------              |
 | Generic parameters  | `X`                                 |
 | Variable argument1  | `suffix : Buffer<X>`                |
@@ -844,7 +766,7 @@ func isSuffixOf<X>(
 | Return type         | `Bool`                              |
 
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/isSuffixOf.mo:a}}
 ```
 
@@ -856,16 +778,12 @@ func isSuffixOf<X>(
 func isSuffixOf<X>(
     
     suffix : Buffer<X>
-    
     buffer : Buffer<X>
-     
      equal : (X, X) -> Bool
   
     ) : Bool
 ```
-### Parameters
-
-|                     |                                     |
+| **Parameters**      |                                     |
 | ------------------- | ----------------------              |
 | Generic parameters  | `X`                                 |
 | Variable argument1  | `suffix : Buffer<X>`                |
@@ -874,7 +792,7 @@ func isSuffixOf<X>(
 | Return type         | `Bool`                              |
 
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/isStrictSuffixOf.mo:a}}
 ```
 
@@ -886,14 +804,11 @@ func isSuffixOf<X>(
 func forAll<X>(
     
     buffer : Buffer<X>
-    
  predicate : X -> Bool
      
     ) : Bool
 ```
-### Parameters
-
-|                     |                                     |
+| **Parameters**      |                                     |
 | ------------------- | ----------------------              |
 | Generic parameters  | `X`                                 |
 | Variable argument   | `buffer : Buffer<X>`                |
@@ -901,7 +816,7 @@ func forAll<X>(
 | Return type         | `Bool`                              |
 
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/forAll.mo:a}}
 ```
 ## Buffer.forSome
@@ -912,14 +827,11 @@ func forAll<X>(
 func forSome<X>(
     
     buffer : Buffer<X>
-    
  predicate : X -> Bool
      
     ) : Bool
 ```
-### Parameters
-
-|                     |                                     |
+| **Parameters**      |                                     |
 | ------------------- | ----------------------              |
 | Generic parameters  | `X`                                 |
 | Variable argument   | `buffer : Buffer<X>`                |
@@ -927,7 +839,7 @@ func forSome<X>(
 | Return type         | `Bool`                              |
 
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/forSome.mo:a}}
 ```
 ## Buffer.forNone
@@ -938,14 +850,11 @@ func forSome<X>(
 func forNone<X>(
     
     buffer : Buffer<X>
-    
  predicate : X -> Bool
      
     ) : Bool
 ```
-### Parameters
-
-|                     |                                     |
+| **Parameters**      |                                     |
 | ------------------- | ----------------------              |
 | Generic parameters  | `X`                                 |
 | Variable argument   | `buffer : Buffer<X>`                |
@@ -953,7 +862,7 @@ func forNone<X>(
 | Return type         | `Bool`                              |
 
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/forNone.mo:a}}
 ```
 ## Buffer.toArray
@@ -963,16 +872,14 @@ func forNone<X>(
 ```motoko
 func toArray<X>(buffer : Buffer<X>) : [X]
 ```
-### Parameters
-
-|                     |                                     |
+| **Parameters**      |                                     |
 | ------------------- | ----------------------              |
 | Generic parameters  | `X`                                 |
 | Variable argument   | `buffer : Buffer<X>`                |
 | Return type         | `[X]`                               |
 
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/toArray.mo:a}}
 ```
 ## Buffer.toVarArray
@@ -982,16 +889,14 @@ func toArray<X>(buffer : Buffer<X>) : [X]
 ```motoko
 func toVarArray<X>(buffer : Buffer<X>) : [var X]
 ```
-### Parameters
-
-|                     |                                     |
+| **Parameters**      |                                     |
 | ------------------- | ----------------------              |
 | Generic parameters  | `X`                                 |
 | Variable argument   | `buffer : Buffer<X>`                |
 | Return type         | `[var X]`                           |
 
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/toVarArray.mo:a}}
 ```
 ## Buffer.fromArray
@@ -1001,16 +906,14 @@ func toVarArray<X>(buffer : Buffer<X>) : [var X]
 ```motoko
 func fromArray<X>(array : [X]) : Buffer<X>
 ```
-### Parameters
-
-|                     |                                     |
+| **Parameters**      |                                     |
 | ------------------- | ----------------------              |
 | Generic parameters  | `X`                                 |
 | Variable argument   | `array : [X]`                       |
 | Return type         | `Buffer<X>`                         |
 
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/fromArray.mo:a}}
 ```
 ## Buffer.fromVarArray
@@ -1020,16 +923,14 @@ func fromArray<X>(array : [X]) : Buffer<X>
 ```motoko
 func fromArray<X>(array : [var X]) : Buffer<X>
 ```
-### Parameters
-
-|                     |                                     |
+| **Parameters**      |                                     |
 | ------------------- | ----------------------              |
 | Generic parameters  | `X`                                 |
 | Variable argument   | `array : [var X]`                   |
 | Return type         | `Buffer<X>`                         |
 
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/fromArray.mo:a}}
 ```
 ## Buffer.fromIter
@@ -1039,16 +940,14 @@ func fromArray<X>(array : [var X]) : Buffer<X>
 ```motoko
 func fromIter<X>(iter : { next : () -> ?X }) : Buffer<X>
 ```
-### Parameters
-
-|                     |                                     |
+| **Parameters**      |                                     |
 | ------------------- | ----------------------              |
 | Generic parameters  | `X`                                 |
 | Variable argument   | `iter : { next : () -> ?X }`        |
 | Return type         | `Buffer<X>`                         |
 
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/fromIter.mo:a}}
 ```
 ## Buffer.trimToSize
@@ -1058,16 +957,14 @@ func fromIter<X>(iter : { next : () -> ?X }) : Buffer<X>
 ```motoko
 func trimToSize<X>(buffer : Buffer<X>) : ()
 ```
-### Parameters
-
-|                     |                                     |
+| **Parameters**      |                                     |
 | ------------------- | ----------------------              |
 | Generic parameters  | `X`                                 |
 | Variable argument   | `buffer : Buffer<X>`                |
 | Return type         | `()`                                |
 
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/trimToSize.mo:a}}
 ```
 ## Buffer.map
@@ -1078,14 +975,11 @@ func trimToSize<X>(buffer : Buffer<X>) : ()
 func map<X, Y>(
     
 buffer : Buffer<X>
- 
      f : X -> Y
   
   ) : Buffer<Y>
 ```
-### Parameters
-
-|                     |                                     |
+| **Parameters**      |                                     |
 | ------------------- | ----------------------              |
 | Generic parameters  | `X, Y`                              |
 | Variable argument   | `buffer : Buffer<X>`                |
@@ -1093,7 +987,7 @@ buffer : Buffer<X>
 | Return type         | `Buffer<Y>`                         |
 
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/map.mo:a}}
 ```
 ## Buffer.iterate
@@ -1104,14 +998,11 @@ buffer : Buffer<X>
 func iterate<X>(
     
 buffer : Buffer<X>
- 
      f : X -> ()
   
   ) : ()
 ```
-### Parameters
-
-|                     |                                     |
+| **Parameters**      |                                     |
 | ------------------- | ----------------------              |
 | Generic parameters  | `X`                                 |
 | Variable argument   | `buffer : Buffer<X>`                |
@@ -1119,7 +1010,7 @@ buffer : Buffer<X>
 | Return type         | `()`                                |
 
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/iterate.mo:a}}
 ```
 ## Buffer.mapEntries
@@ -1130,14 +1021,11 @@ buffer : Buffer<X>
 func mapEntries<X, Y>(
     
 buffer : Buffer<X>
-
      f : (Nat, X) -> Y
  
  ) : Buffer<Y>
 ```
-### Parameters
-
-|                     |                                     |
+| **Parameters**      |                                     |
 | ------------------- | ----------------------              |
 | Generic parameters  | `X, Y`                              |
 | Variable argument   | `buffer : Buffer<X>`                |
@@ -1145,7 +1033,7 @@ buffer : Buffer<X>
 | Return type         | `Buffer<Y>`                         |
 
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/mapEntries.mo:a}}
 ```
 ## Buffer.mapFilter
@@ -1156,14 +1044,11 @@ buffer : Buffer<X>
 func mapFilter<X, Y>(
     
 buffer : Buffer<X>
-
      f :  X -> ?Y
  
  ) : Buffer<Y>
 ```
-### Parameters
-
-|                     |                                     |
+| **Parameters**      |                                     |
 | ------------------- | ----------------------              |
 | Generic parameters  | `X, Y`                              |
 | Variable argument   | `buffer : Buffer<X>`                |
@@ -1171,7 +1056,7 @@ buffer : Buffer<X>
 | Return type         | `Buffer<Y>`                         |
 
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/mapFilter.mo:a}}
 ```
 ## Buffer.mapResult
@@ -1182,14 +1067,11 @@ buffer : Buffer<X>
 func mapResult<X, Y, E>(
     
 buffer : Buffer<X>
-    
      f : X -> Result.Result<Y, E>
-     
+
      ) : Result.Result<Buffer<Y>, E>
 ```
-### Parameters
-
-|                     |                                     |
+| **Parameters**      |                                     |
 | ------------------- | ----------------------              |
 | Generic parameters  | `X, Y, E`                           |
 | Variable argument   | `buffer : Buffer<X>`                |
@@ -1197,7 +1079,7 @@ buffer : Buffer<X>
 | Return type         | `Result.Result<Buffer<Y>, E>`       |
 
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/mapResult.mo:a}}
 ```
 ## Buffer.chain
@@ -1208,14 +1090,11 @@ buffer : Buffer<X>
 func chain<X, Y>(
     
 buffer : Buffer<X>
-    
      k : X -> Buffer<Y>
      
      ) : Buffer<Y>
 ```
-### Parameters
-
-|                     |                                     |
+| **Parameters**      |                                     |
 | ------------------- | ----------------------              |
 | Generic parameters  | `X, Y`                              |
 | Variable argument   | `buffer : Buffer<X>`                |
@@ -1223,7 +1102,7 @@ buffer : Buffer<X>
 | Return type         | `Buffer<Y>`                         |
 
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/chain.mo:a}}
 ```
 ## Buffer.foldLeft
@@ -1234,16 +1113,12 @@ buffer : Buffer<X>
 func foldLeft<A, X>(
     
    buffer : Buffer<X>
-    
      base : A
-     
   combine : (A, X) -> A
       
       ) : A
 ```
-### Parameters
-
-|                     |                                     |
+| **Parameters**      |                                     |
 | ------------------- | ----------------------              |
 | Generic parameters  | `A, X`                              |
 | Variable argument1  | `buffer : Buffer<X>`                |
@@ -1252,7 +1127,7 @@ func foldLeft<A, X>(
 | Return type         | `A`                                 |
 
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/foldLeft.mo:a}}
 ```
 ## Buffer.foldRight
@@ -1263,16 +1138,12 @@ func foldLeft<A, X>(
 func foldLeft<A, X>(
     
    buffer : Buffer<X>
-    
      base : A
-     
   combine : (X, A) -> A
       
       ) : A
 ```
-### Parameters
-
-|                     |                                     |
+| **Parameters**      |                                     |
 | ------------------- | ----------------------              |
 | Generic parameters  | `A, X`                              |
 | Variable argument1  | `buffer : Buffer<X>`                |
@@ -1281,7 +1152,7 @@ func foldLeft<A, X>(
 | Return type         | `A`                                 |
 
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/foldRight.mo:a}}
 ```
 ## Buffer.first
@@ -1291,16 +1162,14 @@ func foldLeft<A, X>(
 ```motoko
 func first<X>(buffer : Buffer<X>) : X
 ```
-### Parameters
-
-|                     |                                     |
+| **Parameters**      |                                     |
 | ------------------- | ----------------------              |
 | Generic parameters  | `X`                                 |
 | Variable argument   | `buffer : Buffer<X>`                |
 | Return type         | `X`                                 |
 
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/first.mo:a}}
 ```
 ## Buffer.last
@@ -1310,16 +1179,14 @@ func first<X>(buffer : Buffer<X>) : X
 ```motoko
 func last<X>(buffer : Buffer<X>) : X
 ```
-### Parameters
-
-|                     |                                     |
+| **Parameters**      |                                     |
 | ------------------- | ----------------------              |
 | Generic parameters  | `X`                                 |
 | Variable argument   | `buffer : Buffer<X>`                |
 | Return type         | `X`                                 |
 
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/last.mo:a}}
 ```
 ## Buffer.make
@@ -1329,16 +1196,14 @@ func last<X>(buffer : Buffer<X>) : X
 ```motoko
 func make<X>(element : X) : Buffer<X>
 ```
-### Parameters
-
-|                     |                                     |
+| **Parameters**      |                                     |
 | ------------------- | ----------------------              |
 | Generic parameters  | `X`                                 |
 | Variable argument   | `element : X`                       |
 | Return type         | `Buffer<X>`                         |
 
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/make.mo:a}}
 ```
 ## Buffer.reverse
@@ -1348,16 +1213,14 @@ func make<X>(element : X) : Buffer<X>
 ```motoko
 func reverse<X>(buffer : Buffer<X>) : ()
 ```
-### Parameters
-
-|                     |                                     |
+| **Parameters**      |                                     |
 | ------------------- | ----------------------              |
 | Generic parameters  | `X`                                 |
 | Variable argument   | `buffer : Buffer<X>`                |
 | Return type         | `()`                                |
 
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/reverse.mo:a}}
 ```
 ## Buffer.merge
@@ -1368,16 +1231,12 @@ func reverse<X>(buffer : Buffer<X>) : ()
 func merge<X>(
     
   buffer1 : Buffer<X>
-    
   buffer2 : Buffer<X>
- 
   compare : (X, X) -> Order
   
   ) : Buffer<X>
 ```
-### Parameters
-
-|                     |                                     |
+| **Parameters**      |                                     |
 | ------------------- | ----------------------              |
 | Generic parameters  | `X`                                 |
 | Variable argument1  | `buffer1 : Buffer<X>`               |
@@ -1386,7 +1245,7 @@ func merge<X>(
 | Return type         | `BufferX`                           |
 
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/merge.mo:a}}
 ```
 ## Buffer.removeDuplicates
@@ -1397,14 +1256,11 @@ func merge<X>(
 func removeDuplicates<X>(
     
      buffer : Buffer<X>
-    
     compare : (X, X) -> Order
     
     ) : ()
 ```
-### Parameters
-
-|                     |                                     |
+| **Parameters**      |                                     |
 | ------------------- | ----------------------              |
 | Generic parameters  | `X`                                 |
 | Variable argument   | `buffer : Buffer<X>`                |
@@ -1412,7 +1268,7 @@ func removeDuplicates<X>(
 | Return type         | `()`                                |
 
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/removeDuplicates.mo:a}}
 ```
 ## Buffer.partition
@@ -1423,14 +1279,11 @@ func removeDuplicates<X>(
 func partition<X>(
     
     buffer : Buffer<X>
-    
  predicate : X -> Bool
  
  ) : (Buffer<X>, Buffer<X>)
 ```
-### Parameters
-
-|                     |                                     |
+| **Parameters**      |                                     |
 | ------------------- | ----------------------              |
 | Generic parameters  | `X`                                 |
 | Variable argument   | `buffer : Buffer<X>`                |
@@ -1438,7 +1291,7 @@ func partition<X>(
 | Return type         | `(Buffer<X>, Buffer<X>)`            |
 
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/partition.mo:a}}
 ```
 ## Buffer.split
@@ -1449,14 +1302,11 @@ func partition<X>(
 func split<X>(
     
  buffer : Buffer<X>
-    
   index : Nat
  
  ) : (Buffer<X>, Buffer<X>)
 ```
-### Parameters
-
-|                     |                                     |
+| **Parameters**      |                                     |
 | ------------------- | ----------------------              |
 | Generic parameters  | `X`                                 |
 | Variable argument1  | `buffer : Buffer<X>`                |
@@ -1464,7 +1314,7 @@ func split<X>(
 | Return type         | `(Buffer<X>, Buffer<X>)`            |
 
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/split.mo:a}}
 ```
 ## Buffer.chunk
@@ -1475,14 +1325,11 @@ func split<X>(
 func chunk<X>(
     
    buffer : Buffer<X>
-    
      size : Nat
      
  ) : Buffer<Buffer<X>>
 ```
-### Parameters
-
-|                     |                                     |
+| **Parameters**      |                                     |
 | ------------------- | ----------------------              |
 | Generic parameters  | `X`                                 |
 | Variable argument1  | `buffer : Buffer<X>`                |
@@ -1490,7 +1337,7 @@ func chunk<X>(
 | Return type         | `(Buffer<Buffer<X>>)`               |
 
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/chunk.mo:a}}
 ```
 ## Buffer.groupBy
@@ -1501,14 +1348,11 @@ func chunk<X>(
 func groupBy<X>(
     
    buffer : Buffer<X>
-    
     equal : (X, X) -> Bool
      
  ) : Buffer<Buffer<X>>
 ```
-### Parameters
-
-|                     |                                     |
+| **Parameters**      |                                     |
 | ------------------- | ----------------------              |
 | Generic parameters  | `X`                                 |
 | Variable argument   | `buffer : Buffer<X>`                |
@@ -1516,7 +1360,7 @@ func groupBy<X>(
 | Return type         | `(Buffer<Buffer<X>>)`               |
 
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/groupBy.mo:a}}
 ```
 ## Buffer.flatten
@@ -1526,16 +1370,14 @@ func groupBy<X>(
 ```motoko
 func flatten<X>(buffer : Buffer<Buffer<X>>) : Buffer<X>
 ```
-### Parameters
-
-|                     |                                     |
+| **Parameters**      |                                     |
 | ------------------- | ----------------------              |
 | Generic parameters  | `X`                                 |
 | Variable argument   | `buffer : Buffer<Buffer<X>>`        |
 | Return type         | `Buffer<X>`                         |
 
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/flatten.mo:a}}
 ```
 ## Buffer.zip
@@ -1546,14 +1388,11 @@ func flatten<X>(buffer : Buffer<Buffer<X>>) : Buffer<X>
 func zip<X, Y>(
     
   buffer1 : Buffer<X>
-    
   buffer2 : Buffer<X>
  
   ) : Buffer<(X, Y)>
 ```
-### Parameters
-
-|                     |                                     |
+| **Parameters**      |                                     |
 | ------------------- | ----------------------              |
 | Generic parameters  | `X, Y`                              |
 | Variable argument1  | `buffer1 : Buffer<X>`               |
@@ -1561,7 +1400,7 @@ func zip<X, Y>(
 | Return type         | `Buffer<(X, Y)>`                    |
 
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/zip.mo:a}}
 ```
 ## Buffer.zipWith
@@ -1571,17 +1410,14 @@ func zip<X, Y>(
 ```motoko
 func zipWith<X, Y, Z>(
     
-buffer1 : Buffer<X>
-    
+buffer1 : Buffer<X>  
 buffer2 : Buffer<Y>
      
     zip : (X, Y) -> Z
       
       ) : Buffer<Z>
 ```
-### Parameters
-
-|                     |                                     |
+| **Parameters**      |                                     |
 | ------------------- | ----------------------              |
 | Generic parameters  | `X, Y, Z`                           |
 | Variable argument1  | `buffer1 : Buffer<X>`               |
@@ -1590,7 +1426,7 @@ buffer2 : Buffer<Y>
 | Return type         | `Buffer<Z>`                         |
 
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/zip.mo:a}}
 ```
 ## Buffer.takeWhile
@@ -1601,14 +1437,11 @@ buffer2 : Buffer<Y>
 func takeWhile<X>(
     
     buffer : Buffer<X>
-    
  predicate : X -> Bool
  
  ) : (Buffer<X>)
 ```
-### Parameters
-
-|                     |                                     |
+| **Parameters**      |                                     |
 | ------------------- | ----------------------              |
 | Generic parameters  | `X`                                 |
 | Variable argument   | `buffer : Buffer<X>`                |
@@ -1616,7 +1449,7 @@ func takeWhile<X>(
 | Return type         | `(Buffer<X>)`                       |
 
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/takeWhile.mo:a}}
 ```
 ## Buffer.dropWhile
@@ -1627,14 +1460,11 @@ func takeWhile<X>(
 func dropWhile<X>(
     
     buffer : Buffer<X>
-    
  predicate : X -> Bool
  
  ) : (Buffer<X>)
 ```
-### Parameters
-
-|                     |                                     |
+| **Parameters**      |                                     |
 | ------------------- | ----------------------              |
 | Generic parameters  | `X`                                 |
 | Variable argument   | `buffer : Buffer<X>`                |
@@ -1642,6 +1472,6 @@ func dropWhile<X>(
 | Return type         | `(Buffer<X>)`                       |
 
 
-```motoko
+```motoko, run
 {{#include _mo/buffer/dropWhile.mo:a}}
 ```

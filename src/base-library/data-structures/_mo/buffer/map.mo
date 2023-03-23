@@ -1,7 +1,6 @@
+// ANCHOR: a
 import Buffer "mo:base/Buffer";
 import Int "mo:base/Int";
-
-// ANCHOR: a
 let intStorage = Buffer.Buffer<Int>(10);
 intStorage.add(-1);
 intStorage.add(0);

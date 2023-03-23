@@ -1,5 +1,5 @@
-import Buffer "mo:base/Buffer";
 // ANCHOR: a
+import Buffer "mo:base/Buffer";
 let intStorage = Buffer.Buffer<Int>(10);
 intStorage.add(-1);
 intStorage.add(0);
