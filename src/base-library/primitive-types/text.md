@@ -45,22 +45,6 @@ The function `size` takes one `Text` argument and returns a `Nat` value.
 {{#include _mo/text.mo:a}}
 ```
 
-## Text.fromChar
-
-```motoko
-let fromChar : (c : Char) -> Text
-```
-
-The function `fromChar` takes one `Text` argument and returns a `Char` value.
-
-```motoko, run
-{{#include _mo/text0.mo:c}}
-```
-
-## Text.encodeUtf8
-
-## Text.decodeUtf8
-
 ## Text.contains
 
 ```motoko
@@ -97,6 +81,42 @@ The function `endsWith` takes one `Text`,one `Pattern` as arguments and returns 
 {{#include _mo/text3.mo:a}}
 ```
 
+## Text.fromChar
+
+```motoko
+let fromChar : (c : Char) -> Text
+```
+
+The function `fromChar` takes one `Text` argument and returns a `Char` value.
+
+```motoko, run
+{{#include _mo/text0.mo:a}}
+```
+
+## Text.encodeUtf8
+
+```motoko
+let encodeUtf8 : Text -> Blob
+```
+
+The function `encodeUtf8` takes one `Text` argument and returns a `Bool` value.
+
+```motoko, run
+{{#include _mo/text6.mo:a}}
+```
+
+## Text.decodeUtf8
+
+```motoko
+let decodeUtf8 : Blob -> ?Text
+```
+
+The function `decodeUtf8` takes one `Blob` argument and returns a `?Text` value.
+
+```motoko, run
+{{#include _mo/text7.mo:a}}
+```
+
 ## Text.replace
 
 ```motoko
@@ -118,5 +138,5 @@ func concat(t1 : Text, t2 : Text) : Text
 The function `concat` takes two `Text` arguments and returns a `Text` value. It is equivalent to the `#` [operator](/common-programming-concepts/operators.html).
 
 ```motoko, run
-{{#include _mo/text4.mo:b}}
+{{#include _mo/text8.mo:a}}
 ```
