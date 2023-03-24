@@ -1,37 +1,29 @@
 // Char
 
 // ANCHOR: a
-
 import Char "mo:base/Char";
-
 // ANCHOR_END: a
 
 // ANCHOR: b
+import Char "mo:base/Char";
 
-let letter = 'y';
-
-let serch_decimal = Char.isDigit(letter);
-
-assert serch_decimal == true;
-
+Char.isDigit('y');
 // ANCHOR_END: b
 
 // ANCHOR: c
+import Char "mo:base/Char";
 
-let unicode = Char.toNat32(letter);
-
+Char.toNat32('y');
 // ANCHOR_END: c
 
 // ANCHOR: d
+import Char "mo:base/Char";
 
-let charecter = Char.fromNat32(unicode);
-
+Char.fromNat32( 10 : Nat32 );
 // ANCHOR_END: d
 
 // ANCHOR: e
+import Char "mo:base/Char";
 
-let isAlphabetic = Char.isAlphabetic(charecter);
-
-assert isAlphabetic == true ;
-
+Char.isAlphabetic('0');
 // ANCHOR_END: e

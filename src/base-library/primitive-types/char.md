@@ -1,23 +1,15 @@
 # Char
-The *convention* is to name the [*module alias*](/common-programming-concepts/modules.html#imports) after the [*file name*](/common-programming-concepts/modules.html#imports) it is defined in:
+
+The _convention_ is to name the [_module alias_](/common-programming-concepts/modules.html#imports) after the [_file name_](/common-programming-concepts/modules.html#imports) it is defined in:
 
 ```motoko
 {{#include _mo/char.mo:a}}
 ```
 
- **Public Types**
-[Type Char](#type)
-
- **conversion**
-[Function `isDigit`](#charisdigit)    
+[Function `isDigit`](#charisdigit)  
 [Function `toNat32`](#chartonat32)  
 [Function `fromNat32`](#charfromnat32)  
-[Function `isAlphabetic`](#charisalphabetic)  
-
-## Type
-```motoko
-type Char = Char.Char
-```
+[Function `isAlphabetic`](#charisalphabetic)
 
 ## Char.isDigit
 
@@ -25,7 +17,7 @@ type Char = Char.Char
 func isDigit(c : Char) : Bool
 ```
 
-The function `isDigit` takes one `Char` argument and returns a `Bool` value. 
+The function `isDigit` takes one `Char` argument and returns a `Bool` value.
 
 ```motoko
 {{#include _mo/char.mo:b}}
@@ -37,7 +29,7 @@ The function `isDigit` takes one `Char` argument and returns a `Bool` value.
 let toNat32 : (c : Char) -> Nat32
 ```
 
-The function `toNat32` takes one `Char` argument and returns a `Nat32` value. 
+The function `toNat32` takes one `Char` argument and returns a `Nat32` value.
 
 ```motoko
 {{#include _mo/char.mo:c}}
@@ -49,7 +41,7 @@ The function `toNat32` takes one `Char` argument and returns a `Nat32` value.
 let fromNat32 : (w : Nat32) -> Char
 ```
 
-The function `fromNat32` takes one `Nat32` argument and returns a `Char` value. 
+The function `fromNat32` takes one `Nat32` argument and returns a `Char` value.
 
 ```motoko
 {{#include _mo/char.mo:d}}
@@ -61,15 +53,8 @@ The function `fromNat32` takes one `Nat32` argument and returns a `Char` value.
 let isAlphabetic : (c : Char) -> Bool
 ```
 
-The function `isAlphabetic` takes one `Char` argument and returns a `Bool` value. 
+The function `isAlphabetic` takes one `Char` argument and returns a `Bool` value.
 
 ```motoko
 {{#include _mo/char.mo:e}}
 ```
-
-<!-- Type Char
-Value toNat32
-Value fromNat32
-Value toText
-Function isDigit
-Value isAlphabetic -->
