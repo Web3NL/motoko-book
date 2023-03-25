@@ -5,9 +5,10 @@ The *convention* is to name the [*module alias*](/common-programming-concepts/mo
 {{#include _mo/hashmap.mo:a}}
 ```
 
-## Public items
-The following types and functions are made public in the `Hashmap` module:   
-[Class `HashMap<K, V>`](#class)     
+### On this page
+[Type `HashMap.HashMap<K, V>`](#type-hashmaphashmapkv)
+
+[Class `HashMap.HashMap<K, V>(initCapacity : Nat, keyEq : (K, K) -> Bool, keyHash : K -> Hash.Hash)`](#class-hashmaphashmapkv)     
 &nbsp;&nbsp;&nbsp;&nbsp;[Function `get`](#hashmapget)  
 &nbsp;&nbsp;&nbsp;&nbsp;[Function `size`](#hashmapsize)  
 &nbsp;&nbsp;&nbsp;&nbsp;[Function `put`](#hashmapput)  
@@ -22,8 +23,34 @@ The following types and functions are made public in the `Hashmap` module:
 [Function `map`](#hashmapmap)  
 [Function `mapFilter`](#hashmapmapfilter)  
 
+## Type `HashMap.HashMap<K, V>`
 
-## Class HashMap<K, V>  
+The `HashMap` module contains a [public type](/common-programming-concepts/modules.html#public-types-in-modules) `HashMap<K, V>` with the same name. It's convenient to [rename the type](/common-programming-concepts/modules.html#type-imports-and-renaming) locally:
+
+```motoko
+{{#include _mo/hashmap/type/type.mo:a}}
+```
+
+In the first line we declare a local [type alias](/common-programming-concepts/modules.html#type-imports-and-renaming) `HashMap<K, V>` by referring to the type inside the module. This new local type name takes in a [generic type parameter](/advanced-types/generics.html#type-parameters-and-type-arguments) `<K, V>`.
+
+In the second line we declare another local alias `BufNat` which takes no parameters. It is always a `HashMap` of `Nat`.
+
+## Class `HashMap.HashMap<K, V>`
+
+```motoko
+HashMap.HashMap<K, V>(initCapacity : Nat, keyEq : (K, K) -> Bool, keyHash : K -> Hash.Hash)
+```
+
+The `HashMap<K, V>` class takes one argument `initCapacity` of type `Nat`, which represent the initial capacity of the buffer.
+
+To construct a buffer object, we use the `HashMap` class:
+
+```motoko, run
+{{#include _mo/hashmap/_class.mo:a}}
+```
+
+We construct an [object](/common-programming-concepts/objects-and-classes/objects.html) `myBuffer` of type `HashMap<Nat>` by calling the [class](/common-programming-concepts/objects-and-classes/classes.html) `HashMap.HashMap` with type parameter `Nat` and initial capacity `100`.  
+ 
 
 ## Hashmap.size
 
