@@ -4,11 +4,12 @@ import Text "mo:base/Text";
 import Iter "mo:base/Iter";
 
 let map = HashMap.HashMap<Text, Int>(5, Text.equal, Text.hash);
- map.put("Rohit", 30);
- map.put("Kohli", 28);
- map.put("Rahul", 27);
+ 
+map.put("Rohit", 30);
+map.put("Kohli", 28);
+map.put("Rahul", 27);
 
 let iter : Iter.Iter<Text> = map.keys();
 
-let array : [Text] = Iter.toArray<Text>(iter);
+Iter.toArray<Text>(iter);
 // ANCHOR_END: a
