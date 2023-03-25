@@ -216,8 +216,7 @@ func thaw<X>(array : [X]) : [var X]
 ```motoko
 func sort<X>(
 
-   array : [X]
-
+   array : [X], 
  compare : (X, X) -> Order.Order
 
 ) : [X]
@@ -252,8 +251,7 @@ func sort<X>(
 ```motoko
 func sortInPlace<X>(
 
-   array : [var X]
-
+   array : [var X], 
  compare : (X, X) -> Order.Order
 
 ) : ()
@@ -326,10 +324,8 @@ func flatten<X>(arrays : [[X]]) : [x]
 ```motoko
 func equal<X>(
 
-  array1 : [X]
-
-  array2 : [X]
-
+  array1 : [X], 
+  array2 : [X], 
    equal : (X, X) -> Bool
 
 ) : Bool
@@ -356,8 +352,7 @@ func equal<X>(
 ```motoko
 func map<X>(
 
-array : [X]
-
+array : [X], 
     f : X -> Y
 
 ) : [Y]
@@ -391,8 +386,7 @@ array : [X]
 ```motoko
 func filter<X>(
 
-    array : [X]
-
+    array : [X], 
 predicate : X -> Bool
 
 ) : [X]
@@ -428,8 +422,7 @@ predicate : X -> Bool
 ```motoko
 func mapEntries<X,Y>(
 
-array : [X]
-
+array : [X], 
     f : (X, Nat) -> Y
 
 ) : [Y]
@@ -463,8 +456,7 @@ array : [X]
 ```motoko
 func mapFilter<X,Y>(
 
-   array : [X]
-
+   array : [X], 
        f : X -> ?Y
 
 ) : [Y]
@@ -498,8 +490,7 @@ func mapFilter<X,Y>(
 ```motoko
 func mapResult<X, Y, E>(
 
-  array : [X]
-
+  array : [X], 
       f : X -> Result.Result<Y, E>
 
 ) : Result.Result<[Y], E>
@@ -573,8 +564,7 @@ func keys<X>(array : [X]) : I.Iter<Nat>
 ```motoko
 func find<X>(
 
-    array : [X]
-
+    array : [X], 
 predicate : X -> Bool
 
 ) : ?X
@@ -600,8 +590,7 @@ predicate : X -> Bool
 ```motoko
 func chain<X, Y>(
 
-  array : [X]
-
+  array : [X], 
       k : X -> [Y]
 
 ) : [Y]
@@ -637,10 +626,8 @@ func chain<X, Y>(
 ```motoko
 func foldLeft<X, A>(
 
-  array : [X]
-
-   base : A
-
+  array : [X], 
+   base : A, 
 combine : (A, X) -> A
 
 ) : A
@@ -667,10 +654,8 @@ combine : (A, X) -> A
 ```motoko
 func foldRight<X, A>(
 
-  array : [X]
-
-   base : A
-
+  array : [X], 
+   base : A, 
 combine : (X, A) -> A
 
 ) : A
