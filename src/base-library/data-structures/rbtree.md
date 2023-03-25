@@ -5,11 +5,11 @@ The *convention* is to name the [*module alias*](/common-programming-concepts/mo
 {{#include _mo/rbtree.mo:a}}
 ```
 
-## Public items
-The following types and functions are made public in the `rbtree` module:   
-[Type `Color`](#type)  
-[Type `Tree`](#type)   
-[Class `rbtree<K,V>`](#class)    
+### On this page
+
+[Type `RBTree.Color = {#R; #B}`](#type-rbtreecolor)  
+[Type `RBTree.Tree<K, V> = {#node : (Color, Tree<K, V>, (K, ?V), Tree<K, V>); #leaf}`](#type-rbtreetreek-v)   
+[Class `RBTree.RBtree<K, V>(compare : (K, K) -> O.Order)`](#class-rbtreerbtreekv)    
 &nbsp;&nbsp;&nbsp;&nbsp;[Function `share`](#rbtreeshare)  
 &nbsp;&nbsp;&nbsp;&nbsp;[Function `unShare`](#rbtreeunshare)  
 &nbsp;&nbsp;&nbsp;&nbsp;[Function `get`](#rbtreeget)  
@@ -22,6 +22,29 @@ The following types and functions are made public in the `rbtree` module:
 [Function `iter`](#rbtreeiter)  
 [Function `size`](#rbtreesize)  
 
+
+## Type `RBTree.Color`
+
+```motoko
+{{#include _mo/rbtree/type/color.mo:a}}
+```
+## Type `RBTree.Tree<K, V>`
+
+```motoko
+{{#include _mo/rbtree/type/tree.mo:a}}
+```
+
+## Class `RBTree.RBtree<K,V>`
+
+```motoko
+class RBTree<K, V>(compare : (K, K) -> O.Order)
+```
+
+To construct a rbtree object, we use the `RBTree` class:
+
+```motoko, run
+{{#include _mo/rbtree/_class.mo:a}}
+```
 ## RBTree.share
 
 ### Function signature
@@ -196,7 +219,7 @@ func entriesRev() : I.Iter<(K, V)>
 ```motoko
 func iter<X, Y>(
 
-  tree : Tree<X, Y>
+  tree : Tree<X, Y>,
   direction : {#fwd; #bwd}
   
 ) : I.Iter<(X, Y)>
