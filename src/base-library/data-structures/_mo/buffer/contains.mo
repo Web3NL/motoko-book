@@ -3,11 +3,12 @@ import Buffer "mo:base/Buffer";
 import Int "mo:base/Int";
 
 let intStorage = Buffer.Buffer<Int>(0);
+
 intStorage.add(-1);
 intStorage.add(0);
 intStorage.add(1);
 
 let element : Int = 2;
 
-let contains : Bool = Buffer.contains(intStorage, element, Int.equal); // false
+Buffer.contains(intStorage, element, Int.equal);
 // ANCHOR_END: a
