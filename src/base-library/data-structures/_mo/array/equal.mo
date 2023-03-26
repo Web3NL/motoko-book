@@ -1,5 +1,6 @@
 // ANCHOR: a
 import Array "mo:base/Array";
+
 let class1 = ["Alice", "Bob", "Charlie", "David"];
 
 let class2 = ["Alice", "Bob", "Charlie", "Eve"];

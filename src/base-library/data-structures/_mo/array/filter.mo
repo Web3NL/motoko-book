@@ -2,6 +2,7 @@
 // ANCHOR: a
 import Array "mo:base/Array";
 import Nat "mo:base/Nat";
+
 let ages : [Nat] = [1, 2, 5, 6, 9, 7];
 
 func isEven(x : Nat) : Bool{
