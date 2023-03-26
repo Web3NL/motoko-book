@@ -4,5 +4,5 @@ import Float "mo:base/Float";
 
 let pi : Float = 3.14;
 
-Float.sqrt(pi);
+Float.toInt(pi);
 // ANCHOR_END: a

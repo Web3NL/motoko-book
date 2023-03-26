@@ -1,10 +1,8 @@
 // FLOAT
+// ANCHOR: a
 import Float "mo:base/Float";
 
-// ANCHOR: a
-let pi = 3.14;
+let pi : Float = 3.14;
 
-let floor = Float.floor(pi);
-
-assert floor == 3;
+Float.floor(pi);
 // ANCHOR_END: a
