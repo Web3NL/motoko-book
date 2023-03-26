@@ -1,13 +1,9 @@
 // Nat
-
+// ANCHOR: a
 import Nat "mo:base/Nat";
 
-// ANCHOR: a
 let a : Nat = 50;
 let b : Nat = 20;
 
-let maximum = Nat.max(a, b);
-
-assert maximum == 50;
+Nat.max(a, b);
 // ANCHOR_END: a
-

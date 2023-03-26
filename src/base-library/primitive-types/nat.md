@@ -1,7 +1,7 @@
 # Nat
 The *convention* is to name the [*module alias*](/common-programming-concepts/modules.html#imports) after the [*file name*](/common-programming-concepts/modules.html#imports) it is defined in:
 
-```motoko
+```motoko, run
 {{#include _mo/nat.mo:a}}
 ``` 
 
@@ -34,8 +34,8 @@ func toText(n : Nat) : Text
 
 The function `toText` takes one `Nat` argument and returns a `Text` value.  
 
-```motoko
-{{#include _mo/nat.mo:b}}
+```motoko, run
+{{#include _mo/nat16.mo:a}}
 ```
 
 ## Nat.min
@@ -44,8 +44,8 @@ func min(x : Nat, y : Nat) : Nat
 ```
 
 The function `min` takes two `Nat` arguments and returns the smallest `Nat` value.  
-```motoko
-{{#include _mo/nat.mo:d}}
+```motoko, run
+{{#include _mo/nat17.mo:a}}
 ```
 
 ## Nat.max
@@ -54,7 +54,7 @@ func max(x : Nat, y : Nat) : Nat
 ```
 
 The function `max` takes two `Nat` arguments and returns the largest `Nat` value.  
-```motoko
+```motoko, run
 {{#include _mo/nat2.mo:a}}
 ```
 
@@ -64,7 +64,7 @@ func compare(x : Nat, y : Nat) : {#less; #equal; #greater}
 ```
 
 The function `compare` takes two `Nat` arguments and returns an [Order](/base-library/utils/order.html) variant value.  
-```motoko
+```motoko, run
 {{#include _mo/nat3.mo:a}}
 ```
 
@@ -74,7 +74,7 @@ func equal(x : Nat, y : Nat) : Bool
 ```
 
 The function `equal` takes two `Nat` arguments and returns a `Bool` value. It is equivalent to the `==` [relational operator](/common-programming-concepts/operators/relational-operators.html).  
-```motoko
+```motoko, run
 {{#include _mo/nat4.mo:a}}
 ```
 
@@ -84,7 +84,7 @@ func notEqual(x : Nat, y : Nat) : Bool
 ```
 The function `notEqual` takes two `Nat` arguments and returns a `Bool` value. It is equivalent to the `!=` [relational operator](/common-programming-concepts/operators/relational-operators.html)
 
-```motoko
+```motoko, run
 {{#include _mo/nat5.mo:a}}
 ```
 
@@ -93,7 +93,7 @@ The function `notEqual` takes two `Nat` arguments and returns a `Bool` value. It
 func less(x : Nat, y : Nat) : Bool
 ```
 The function `less` takes two `Nat` arguments and returns a `Bool` value. It is equivalent to the `<` [relational operator](/common-programming-concepts/operators/relational-operators.html).
-```motoko
+```motoko, run
 {{#include _mo/nat6.mo:a}}
 ```
 
@@ -103,7 +103,7 @@ func lessOrEqual(x : Nat, y : Nat) : Bool
 ```
 
 The function `lessOrEqual` takes two `Nat` arguments and returns a `Bool` value. It is equivalent to the `<=` [relational operator](/common-programming-concepts/operators/relational-operators.html).
-```motoko
+```motoko, run
 {{#include _mo/nat7.mo:a}}
 ```
 
@@ -114,7 +114,7 @@ func greater(x : Nat, y : Nat) : Bool
 
 The function `greater` takes two `Nat` arguments and returns a `Bool` value. It is equivalent to the `>` [relational operator](/common-programming-concepts/operators/relational-operators.html).
 
-```motoko
+```motoko, run
 {{#include _mo/nat8.mo:a}}
 ```
 
@@ -124,7 +124,7 @@ func greaterOrEqual(x : Nat, y : Nat) : Bool
 ```
 
 The function `greaterOrEqual` takes two `Nat` arguments and returns a `Bool` value. It is equivalent to the `>=` [relational operator](/common-programming-concepts/operators/relational-operators.html).
-```motoko
+```motoko, run
 {{#include _mo/nat9.mo:a}}
 ```
 
@@ -133,7 +133,7 @@ The function `greaterOrEqual` takes two `Nat` arguments and returns a `Bool` val
 func add(x : Nat, y : Nat) : Nat
 ```
 The function `add` takes two `Nat` arguments and returns a `Nat` value. It is equivalent to the `+` [numeric operator](/common-programming-concepts/operators/numeric-operators.html).
-```motoko
+```motoko, run
 {{#include _mo/nat10.mo:a}}
 ```
 
@@ -143,7 +143,7 @@ func sub(x : Nat, y : Nat) : Nat
 ```
 
 The function `sub` takes two `Nat` arguments and returns a `Nat` value. It is equivalent to the `-` [numeric operator](/common-programming-concepts/operators/numeric-operators.html).
-```motoko
+```motoko, run
 {{#include _mo/nat11.mo:a}}
 ```
 
@@ -156,7 +156,7 @@ func mul(x : Nat, y : Nat) : Nat
 ```
 
 The function `mul` takes two `Nat` arguments and returns a `Nat` value. It is equivalent to the `*` [numeric operator](/common-programming-concepts/operators/numeric-operators.html).
-```motoko
+```motoko, run
 {{#include _mo/nat12.mo:a}}
 ```
 
@@ -166,7 +166,7 @@ func div(x : Nat, y : Nat) : Nat
 ```
 
 The function `div` takes two `Nat` arguments and returns a `Nat` value. It is equivalent to the `/` [numeric operator](/common-programming-concepts/operators/numeric-operators.html).
-```motoko
+```motoko, run
 {{#include _mo/nat13.mo:a}}
 ```
 
@@ -176,7 +176,7 @@ func rem(x : Nat, y : Nat) : Nat
 ```
 
 The function `rem` takes two `Nat` arguments and returns a `Nat` value. It is equivalent to the `%` [numeric operator](/common-programming-concepts/operators/numeric-operators.html).
-```motoko
+```motoko, run
 {{#include _mo/nat14.mo:a}}
 ```
 
@@ -186,6 +186,6 @@ func pow(x : Nat, y : Nat) : Nat
 ```
 
 The function `pow` takes two `Nat` arguments and returns a `Nat` value. It is equivalent to the `**` [numeric operator](/common-programming-concepts/operators/numeric-operators.html).
-```motoko
+```motoko, run
 {{#include _mo/nat15.mo:a}}
 ```

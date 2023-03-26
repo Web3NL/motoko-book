@@ -8,8 +8,6 @@ import Nat "mo:base/Nat";
 let natural : Nat = 10;
 
 let textualNat = Nat.toText(natural);
-
-assert textualNat == "10";
 // ANCHOR_END: b
 
 // ANCHOR: c
