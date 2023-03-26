@@ -22,5 +22,3 @@ level = 1         # the depth to start folding
 
 [build]
 create-missing = true
-
-[output.pdf]
