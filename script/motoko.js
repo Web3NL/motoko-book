@@ -1,18 +1,81 @@
+import mo from "motoko"
 
-// Adopted from https://github.com/dfinity/motoko/blob/master/doc/docusaurus/src/theme/CodeBlock/hljs_run.js
-// Copied highlight.min.js from the custom download to theme/highlight.js thanks to
-// https://github.com/rust-lang/mdBook/issues/1870#issuecomment-1368950881
-
-registerMotoko();
+registerMotoko()
 hljs.configure({
+  tabReplace: "    ", // 4 spaces
   ignoreUnescapedHTML: true,
   languages: ["motoko", "candid"],
-});
+})
 
 // DIRTY HACK: Reload highlight.js again after language registration
 // https://github.com/rust-lang/mdBook/issues/657#issuecomment-924556465
 // highlight.js warns to the console before language registration
-hljs.initHighlightingOnLoad();
+hljs.initHighlightingOnLoad()
+
+// Make Motoko code runnable
+async function runMotoko() {
+  const motokoCodeElements = document.querySelectorAll(
+    "code.language-motoko.run"
+  )
+
+  if( motokoCodeElements.length > 0) {
+    await loadPackages()
+  }
+
+  const motokoPreElements = Array.from(motokoCodeElements).map(
+    (codeElement) => {
+      return codeElement.closest("pre")
+    }
+  )
+
+  motokoPreElements.forEach((element) => {
+    var runCodeButton = document.createElement("button")
+    runCodeButton.className = "fa fa-play play-button"
+    runCodeButton.hidden = true
+    runCodeButton.title = "Run this code"
+    runCodeButton.setAttribute("aria-label", runCodeButton.title)
+
+    const buttonsDiv = element.querySelector(".buttons")
+    buttonsDiv.insertBefore(runCodeButton, buttonsDiv.firstChild)
+
+    const output = document.createElement("code")
+    output.classList.add("result", "hljs", "language-motoko")
+    output.style.display = "none"
+    element.querySelector("code").insertAdjacentElement("afterend", output)
+
+    runCodeButton.addEventListener("click", function (_) {
+      const code = element.querySelector("code").textContent
+      mo.file("main.mo")
+      mo.write("main.mo", code.toString())
+
+      const result = mo.run("main.mo")
+
+      if (result.stderr.length == 0) {
+        output.style.display = "block"
+        output.textContent = result.stdout
+      } else {
+        console.log(result)
+      }
+
+      // clean up
+      mo.delete("main.mo")
+      mo.clearPackages()
+    })
+  })
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  runMotoko()
+})
+
+async function loadPackages() {
+  mo.clearPackages()
+  let base = await mo.fetchPackage(
+    "base",
+    "https://github.com/dfinity/motoko-base/master/src"
+  )
+  mo.loadPackage(base)
+}
 
 function registerMotoko() {
   var string = {
@@ -25,7 +88,7 @@ function registerMotoko() {
         begin: /b?'\\?(x\w{2}|u\w{4}|U\w{8}|.)'/,
       },
     ],
-  };
+  }
   var number = {
     className: "number",
     variants: [
@@ -37,7 +100,7 @@ function registerMotoko() {
       },
     ],
     relevance: 0,
-  };
+  }
   hljs.registerLanguage("motoko", function (hljs) {
     return {
       name: "Motoko",
@@ -102,8 +165,8 @@ function registerMotoko() {
           ],
         },
       ],
-    };
-  });
+    }
+  })
   hljs.registerLanguage("candid", function (hljs) {
     return {
       name: "Candid",
@@ -130,6 +193,6 @@ function registerMotoko() {
         string,
         number,
       ],
-    };
-  });
+    }
+  })
 }
