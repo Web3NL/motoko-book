@@ -2,7 +2,7 @@
 // ANCHOR: a
 import Float "mo:base/Float";
 
-let pi : Float = 3.14;
+let y : Int64 =  -9223372036854775808;
 
-Float.sqrt(pi);
+Float.fromInt64(y);
 // ANCHOR_END: a

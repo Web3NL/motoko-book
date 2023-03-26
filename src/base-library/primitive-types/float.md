@@ -26,7 +26,7 @@ let sqrt : (x : Float) -> Float
 ```
 
 The function `sqrt` takes one `Float` argument and returns a `Float` value. 
-```motoko
+```motoko, run
 {{#include _mo/float1.mo:a}}
 ```
 
@@ -36,7 +36,7 @@ let ceil : (x : Float) -> Float
 ```
 
 The function `ceil` takes one `Float` argument and returns a `Float` value. 
-```motoko
+```motoko, run
 {{#include _mo/float2.mo:a}}
 ```
 
@@ -46,7 +46,7 @@ let floor : (x : Float) -> Float
 ```
 
 The function `floor` takes one `Float` argument and returns a `Float` value. 
-```motoko
+```motoko, run
 {{#include _mo/float3.mo:a}}
 ```
 
@@ -56,8 +56,8 @@ let toInt : Float -> Int
 ```
 
 The function `toInt` takes one `Float` argument and returns an `Int` value. 
-```motoko
-{{#include _mo/float.mo:b}}
+```motoko, run
+{{#include _mo/float7.mo:a}}
 ```
 ## Float.fromInt
 ```motoko
@@ -65,8 +65,8 @@ let fromInt : Int -> Float
 ```
 
 The function `fromInt` takes one `Int` argument and returns a `Float` value. 
-```motoko
-{{#include _mo/float.mo:c}}
+```motoko, run
+{{#include _mo/float8.mo:a}}
 ```
 
 ## Float.toText
@@ -75,7 +75,7 @@ let toText : Float -> Text
 ```
 
 The function `toText` takes one `Float` argument and returns a `Text` value. 
-```motoko
+```motoko, run
 {{#include _mo/float4.mo:a}}
 ```
 
@@ -85,7 +85,7 @@ let toInt64 : Float -> Int64
 ```
 
 The function `toInt64` takes one `Float` argument and returns an `Int64` value. 
-```motoko
+```motoko, run
 {{#include _mo/float5.mo:a}}
 ```
 
@@ -95,8 +95,8 @@ let fromInt64 : Int64 -> Float
 ```
 
 The function `fromInt64` takes one `Int64` argument and returns a `Float` value. 
-```motoko
-{{#include _mo/float.mo:d}}
+```motoko, run
+{{#include _mo/float9.mo:a}}
 ```
 
 <!-- ## Float.format

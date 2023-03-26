@@ -1,8 +1,8 @@
 // FLOAT
+// ANCHOR: a
 import Float "mo:base/Float";
 
-// ANCHOR: a
-let pi = 3.14;
+let pi : Float = 3.14;
 
 let fixedPointFormat = Float.format(#fix 10 , pi);
 assert fixedPointFormat == "3.1400000000" ;

@@ -2,7 +2,7 @@
 // ANCHOR: a
 import Float "mo:base/Float";
 
-let pi : Float = 3.14;
+let x : Int = -15;
 
-Float.sqrt(pi);
+Float.fromInt(x);
 // ANCHOR_END: a
