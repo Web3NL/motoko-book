@@ -1,8 +1,10 @@
 //List
+
+
+// ANCHOR: a
 import List "mo:base/List";
 import Iter "mo:base/Iter";
 
-// ANCHOR: a
 let list :  List.List<Int> =?(-3, ?(-2, ?(-1, null))); 
 
 let iter : Iter.Iter<Int>  = List.toIter<Int>(list);

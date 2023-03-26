@@ -1,8 +1,10 @@
 //List
+
+
+// ANCHOR: a
 import List "mo:base/List";
 import Int "mo:base/Int";
 
-// ANCHOR: a
 let list :  List.List<Int> =?(1, ?(0, ?(-1, null))); 
 
 func change(x : Int) : Bool {

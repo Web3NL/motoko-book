@@ -1,7 +1,7 @@
 //List
+// ANCHOR: a
 import List "mo:base/List";
 
-// ANCHOR: a
 let list :  List.List<Int> =?(-3, ?(-2, ?(-1, null))); 
 
 let chunks : List.List<List.List<Int>> = List.chunks<Int>(1, list);

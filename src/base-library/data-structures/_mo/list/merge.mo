@@ -1,7 +1,7 @@
 //List
+// ANCHOR: a
 import List "mo:base/List";
 
-// ANCHOR: a
 let list1 :  List.List<Int> =?(-3, ?(-2, ?(-1, null))); 
 let list2 :  List.List<Int> =?(-3, ?(-2, ?(-1, null))); 
 
