@@ -1,11 +1,14 @@
 // ANCHOR: a
 import Buffer "mo:base/Buffer";
+
 let intStorageP = Buffer.Buffer<Int>(0);
+
 intStorageP.add(-3);
 intStorageP.add(-2);
 intStorageP.add(-1);
 
 let intStorageN = Buffer.Buffer<Int>(0);
+
 intStorageN.add(3);
 intStorageN.add(2);
 
@@ -19,6 +22,5 @@ let zipped : Buffer.Buffer<Int> = Buffer.zipWith<Int, Int, Int>(
       edit,
 );
 
-let array : [Int] = Buffer.toArray<Int>(zipped);
-    // [-9, -4]
+Buffer.toArray<Int>(zipped)
 // ANCHOR_END: a

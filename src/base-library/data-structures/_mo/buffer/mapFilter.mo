@@ -1,6 +1,8 @@
 // ANCHOR: a
 import Buffer "mo:base/Buffer";
+
 let intStorage = Buffer.Buffer<Int>(10);
+
 intStorage.add(-1);
 intStorage.add(0);
 intStorage.add(1);
@@ -15,5 +17,6 @@ func filter(x : Int) : ?Int {
 };
 
 let newBuffer : Buffer.Buffer<Int> = Buffer.mapFilter<Int, Int>(intStorage, filter);
-let array : [Int] = Buffer.toArray<Int>(newBuffer);  // [10, 20]
+
+Buffer.toArray<Int>(newBuffer)
 // ANCHOR_END: a

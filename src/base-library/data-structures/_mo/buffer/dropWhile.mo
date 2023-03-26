@@ -1,7 +1,8 @@
-
 // ANCHOR: a
 import Buffer "mo:base/Buffer";
+
 let intStorage = Buffer.Buffer<Int>(0);
+
 intStorage.add(-3);
 intStorage.add(-2);
 intStorage.add(-1);
@@ -17,5 +18,5 @@ let newBuffer : Buffer.Buffer<Int> = Buffer.dropWhile<Int>(
   check,
 );
 
-let array : [Int] = Buffer.toArray<Int>(newBuffer);  // [0, 1]
+Buffer.toArray<Int>(newBuffer);
 // ANCHOR_END: a

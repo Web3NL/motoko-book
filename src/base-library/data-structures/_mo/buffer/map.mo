@@ -1,7 +1,9 @@
 // ANCHOR: a
 import Buffer "mo:base/Buffer";
 import Int "mo:base/Int";
+
 let intStorage = Buffer.Buffer<Int>(10);
+
 intStorage.add(-1);
 intStorage.add(0);
 intStorage.add(1);
@@ -12,5 +14,5 @@ func change(x : Int) : Int {
 
 let newBuffer : Buffer.Buffer<Int> = Buffer.map<Int, Int>(intStorage, change);
 
-let text : Text = Buffer.toText(newBuffer, Int.toText); // => "[1, 0, 1]"
+Buffer.toText(newBuffer, Int.toText)
 // ANCHOR_END: a

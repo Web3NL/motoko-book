@@ -1,9 +1,11 @@
 // ANCHOR: a
 import Buffer "mo:base/Buffer";
-let intStorage = Buffer.Buffer<Int>(0);
+
+let intStorage = Buffer.Buffer<Int>(10);
+
 intStorage.add(-1);
 intStorage.add(0);
 intStorage.add(1);
 
-let size : Nat = intStorage.size();  // 3 : Nat
+intStorage.size()
 // ANCHOR_END: a
