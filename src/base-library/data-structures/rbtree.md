@@ -1,4 +1,4 @@
-# rbtree
+# RBTree
 The *convention* is to name the [*module alias*](/common-programming-concepts/modules.html#imports) after the [*file name*](/common-programming-concepts/modules.html#imports) it is defined in:
 
 ```motoko
@@ -7,18 +7,22 @@ The *convention* is to name the [*module alias*](/common-programming-concepts/mo
 
 ### On this page
 
-[Type `RBTree.Color = {#R; #B}`](#type-rbtreecolor)  
-[Type `RBTree.Tree<K, V> = {#node : (Color, Tree<K, V>, (K, ?V), Tree<K, V>); #leaf}`](#type-rbtreetreek-v)   
-[Class `RBTree.RBtree<K, V>(compare : (K, K) -> O.Order)`](#class-rbtreerbtreekv)    
-&nbsp;&nbsp;&nbsp;&nbsp;[Function `share`](#rbtreeshare)  
-&nbsp;&nbsp;&nbsp;&nbsp;[Function `unShare`](#rbtreeunshare)  
-&nbsp;&nbsp;&nbsp;&nbsp;[Function `get`](#rbtreeget)  
-&nbsp;&nbsp;&nbsp;&nbsp;[Function `replace`](#rbtreereplace)  
-&nbsp;&nbsp;&nbsp;&nbsp;[Function `put`](#rbtreeput)  
-&nbsp;&nbsp;&nbsp;&nbsp;[Function `delete`](#rbtreedelete)  
-&nbsp;&nbsp;&nbsp;&nbsp;[Function `remove`](#rbtreeremove)  
-&nbsp;&nbsp;&nbsp;&nbsp;[Function `entries`](#rbtreeentries)  
-&nbsp;&nbsp;&nbsp;&nbsp;[Function `entriesRev`](#rbtreeentriesrev)    
+[Type `RBTree.Color`](#type-rbtreecolor)  
+[Type `RBTree.Tree<K, V>`](#type-rbtreetreek-v)   
+[Class `RBTree.RBtree<K, V>`](#class-rbtreerbtreekv)
+
+[**Class methods**](#class-methods)  
+&nbsp;&nbsp;&nbsp;&nbsp;[Method `share`](#rbtreeshare)  
+&nbsp;&nbsp;&nbsp;&nbsp;[Method `unShare`](#rbtreeunshare)  
+&nbsp;&nbsp;&nbsp;&nbsp;[Method `get`](#rbtreeget)  
+&nbsp;&nbsp;&nbsp;&nbsp;[Method `replace`](#rbtreereplace)  
+&nbsp;&nbsp;&nbsp;&nbsp;[Method `put`](#rbtreeput)  
+&nbsp;&nbsp;&nbsp;&nbsp;[Method `delete`](#rbtreedelete)  
+&nbsp;&nbsp;&nbsp;&nbsp;[Method `remove`](#rbtreeremove)  
+&nbsp;&nbsp;&nbsp;&nbsp;[Method `entries`](#rbtreeentries)  
+&nbsp;&nbsp;&nbsp;&nbsp;[Method `entriesRev`](#rbtreeentriesrev)    
+
+[**Module public functions**](#module-public-functions)  
 [Function `iter`](#rbtreeiter)  
 [Function `size`](#rbtreesize)  
 
@@ -45,7 +49,10 @@ To construct a rbtree object, we use the `RBTree` class:
 ```motoko, run
 {{#include _mo/rbtree/_class.mo:a}}
 ```
-## RBTree.share
+
+## Class methods
+
+## rbtree.share
 
 ### Function signature
 
@@ -59,7 +66,7 @@ The function `share` takes no argument and returns an value of type `Tree<K, V>`
 ```motoko, run
 {{#include _mo/rbtree/share.mo:a}}
 ```
-## RBTree.unShare
+## rbtree.unShare
 
 ### Function signature
 
@@ -78,7 +85,7 @@ func unShare(t : Tree<K, V>) : ()
 {{#include _mo/rbtree/unShare.mo:a}}
 ```
 
-## RBTree.get
+## rbtree.get
 
 ### Function signature
 
@@ -97,7 +104,7 @@ func get(key : K) : ?V
 {{#include _mo/rbtree/get.mo:a}}
 ```
 
-## RBTree.replace 
+## rbtree.replace 
 
 ### Function signature
 
@@ -117,7 +124,7 @@ func replace(key : K, value : V) : ?V
 {{#include _mo/rbtree/replace.mo:a}}
 ```
 
-## RBTree.put 
+## rbtree.put 
 
 ### Function signature
 
@@ -138,7 +145,7 @@ func put(key : K, value : V) : ()
 {{#include _mo/rbtree/put.mo:a}}
 ```
 
-## RBTree.delete
+## rbtree.delete
 
 ### Function signature
 
@@ -158,7 +165,7 @@ func delete(key : K) : ()
 {{#include _mo/rbtree/delete.mo:a}}
 ```
 
-## RBTree.remove
+## rbtree.remove
 
 ### Function signature
 
@@ -178,7 +185,7 @@ func remove(key : K) : ?V
 {{#include _mo/rbtree/remove.mo:a}}
 ```
 
-## RBTree.entries
+## rbtree.entries
 
 ### Function signature
 
@@ -192,7 +199,7 @@ The function `entries` takes no argument and returns an value of type `I.Iter<(K
 {{#include _mo/rbtree/entries.mo:a}}
 ```
 
-## RBTree.entriesRev
+## rbtree.entriesRev
 
 ### Function signature
 
@@ -211,6 +218,8 @@ func entriesRev() : I.Iter<(K, V)>
 ```motoko, run
 {{#include _mo/rbtree/entriesRev.mo:a}}
 ```
+
+## Module public functions
 
 ## RBTree.iter
 
