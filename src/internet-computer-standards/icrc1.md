@@ -219,5 +219,5 @@ The time window spans from `now - (window + drift)` to `now + drift`.
 
 - If the `created_at_time` is smaller than `now - (window + drift)`, the response should an error `#TooOld`.
 - If the `created_at_time` is larger than `now + drift`, the response should be an error `#CreatedInFuture: { ledger_time : Timestamp }` where `ledger_time` is equal to `now`.
-- If the transaction falls within the time window, then there must not exist a duplicate transaction in the ledger within the same window. A duplicate transaction is one with all parameters equal to the current transaction that is awaiting approval, including the exact `memo` and `created_at_time`.
+- If the transaction falls within the time window, then there must not exist a duplicate transaction in the ledger within the same window. If its does exist, an error `#Duplicate : { duplicate_of : Nat }` should be returned. A duplicate transaction is one with all parameters equal to the current transaction that is awaiting approval, including the exact `memo` and `created_at_time`.
 - Otherwise `created_at_time` falls within the time window and has no duplicates and thus should be accepted by returning `#Ok(TxIndex)` where `TxIndex` is the index at which the transaction is recorded.
