@@ -1,10 +1,10 @@
+// ANCHOR: a
 import Buffer "mo:base/Buffer";
 import Int "mo:base/Int";
 
-// ANCHOR: a
 let varArray : [var Int] = [var -1, 0, 1];
 
 let buffer : Buffer.Buffer<Int> = Buffer.fromVarArray<Int>(varArray); 
 
-let text : Text = Buffer.toText(buffer, Int.toText); //  => "[-1, 0, 1]"; 
+Buffer.toText(buffer, Int.toText) 
 // ANCHOR_END: a

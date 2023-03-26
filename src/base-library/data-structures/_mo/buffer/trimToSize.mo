@@ -1,11 +1,13 @@
-import Buffer "mo:base/Buffer";
 // ANCHOR: a
+import Buffer "mo:base/Buffer";
+
 let intStorage = Buffer.Buffer<Int>(10);
+
 intStorage.add(-1);
 intStorage.add(0);
 intStorage.add(1);
 
-let trimToSize : () = Buffer.trimToSize<Int>(intStorage);
+Buffer.trimToSize<Int>(intStorage);
 
-intStorage.capacity();   // 3 : Nat
+intStorage.capacity()
 // ANCHOR_END: a

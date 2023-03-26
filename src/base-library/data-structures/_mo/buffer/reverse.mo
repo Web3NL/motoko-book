@@ -1,10 +1,13 @@
-import Buffer "mo:base/Buffer";
 // ANCHOR: a
+import Buffer "mo:base/Buffer";
+
 let intStorage = Buffer.Buffer<Int>(0);
+
 intStorage.add(-1);
 intStorage.add(0);
 intStorage.add(1);
 
 let reverse : () = Buffer.reverse<Int>(intStorage);
-let array : [Int] = Buffer.toArray(intStorage) // [1, 0, -1]
+
+Buffer.toArray(intStorage)
 // ANCHOR_END: a
