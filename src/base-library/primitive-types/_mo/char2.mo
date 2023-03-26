@@ -2,7 +2,5 @@
 // ANCHOR: a
 import Char "mo:base/Char";
 
-let letter = 'y';
-
-Char.toNat32(letter);
+Char.toNat32('y');
 // ANCHOR_END: a

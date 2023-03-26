@@ -2,7 +2,5 @@
 // ANCHOR: a
 import Char "mo:base/Char";
 
-let letter = 'y';
-
-Char.isDigit(letter);
+Char.isDigit('y');
 // ANCHOR_END: a
