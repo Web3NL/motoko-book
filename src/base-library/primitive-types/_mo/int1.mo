@@ -1,13 +1,9 @@
 // INT
-
+// ANCHOR: a
 import Int "mo:base/Int";
 
-
-// ANCHOR: a
 let a : Int = 20;
 let b : Int = -20;
 
-let maximum = Int.max(a, b);
-
-assert maximum == 20;
+Int.max(a, b);
 // ANCHOR_END: a

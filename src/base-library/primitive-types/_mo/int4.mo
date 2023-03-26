@@ -2,8 +2,7 @@
 // ANCHOR: a
 import Int "mo:base/Int";
 
-let a : Int = 20;
-let b : Int = -20;
+let integer : Int = -10;
 
-Int.compare(a, b);
+Int.abs(integer);
 // ANCHOR_END: a
