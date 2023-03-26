@@ -9,18 +9,18 @@ map.put("kohli", 74);
 map.put("root", 50);
 
 func edit(k : Text, v : Int) : ?Int {
-     if (v > 0) {
-       ?(v * 2);
-   } else {
-       null;
+  if (v > 0) {
+    ?(v * 2);
+  } else {
+    null;
   };
 };
 
 let mapFilter : HashMap.HashMap<Text, Int> = HashMap.mapFilter<Text, Int, Int>(
-    map,
-    Text.equal,
-    Text.hash,
-    edit,
+  map,
+  Text.equal,
+  Text.hash,
+  edit,
 );
 
 mapFilter.get("root")

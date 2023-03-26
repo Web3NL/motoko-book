@@ -4,5 +4,5 @@ import Text "mo:base/Text";
 
 type HashMap<K, V> = HashMap.HashMap<K, V>;
 
-let Map : HashMap<Text, Int> = HashMap.HashMap<Text, Int>(5, Text.equal, Text.hash);
+let hashmap : HashMap<Text, Int> = HashMap.HashMap<Text, Int>(5, Text.equal, Text.hash);
 // ANCHOR_END: a

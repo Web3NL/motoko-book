@@ -8,18 +8,21 @@ The _convention_ is to name the [_module alias_](/common-programming-concepts/mo
 
 ### On this page
 
-[Type `HashMap.HashMap<K, V>`](#type-hashmaphashmapk-v)
+[Type `HashMap.HashMap<K, V>`](#type-hashmaphashmapk-v)  
+[Class `HashMap.HashMap<K, V>`](#class-hashmaphashmapk-v)
 
-[Class `HashMap.HashMap<K, V>(initCapacity : Nat, keyEq : (K, K) -> Bool, keyHash : K -> Hash.Hash  )`](#class-hashmaphashmapk-v)    
-&nbsp;&nbsp;&nbsp;&nbsp;[Function `get`](#hashmapget)  
-&nbsp;&nbsp;&nbsp;&nbsp;[Function `size`](#hashmapsize)  
-&nbsp;&nbsp;&nbsp;&nbsp;[Function `put`](#hashmapput)  
-&nbsp;&nbsp;&nbsp;&nbsp;[Function `replace`](#hashmapreplace)  
-&nbsp;&nbsp;&nbsp;&nbsp;[Function `delete`](#hashmapdelete)  
-&nbsp;&nbsp;&nbsp;&nbsp;[Function `remove`](#hashmapremove)  
-&nbsp;&nbsp;&nbsp;&nbsp;[Function `keys`](#hashmapkeys)  
-&nbsp;&nbsp;&nbsp;&nbsp;[Function `vals`](#hashmapvals)  
-&nbsp;&nbsp;&nbsp;&nbsp;[Function `entries`](#hashmapentries)  
+[**Class methods**](#class-methods)  
+&nbsp;&nbsp;&nbsp;&nbsp;[Method `get`](#hashmapget)  
+&nbsp;&nbsp;&nbsp;&nbsp;[Method `size`](#hashmapsize)  
+&nbsp;&nbsp;&nbsp;&nbsp;[Method `put`](#hashmapput)  
+&nbsp;&nbsp;&nbsp;&nbsp;[Method `replace`](#hashmapreplace)  
+&nbsp;&nbsp;&nbsp;&nbsp;[Method `delete`](#hashmapdelete)  
+&nbsp;&nbsp;&nbsp;&nbsp;[Method `remove`](#hashmapremove)  
+&nbsp;&nbsp;&nbsp;&nbsp;[Method `keys`](#hashmapkeys)  
+&nbsp;&nbsp;&nbsp;&nbsp;[Method `vals`](#hashmapvals)  
+&nbsp;&nbsp;&nbsp;&nbsp;[Method `entries`](#hashmapentries)
+
+[**Module public functions**](#module-public-functions)  
 [Function `clone`](#hashmapclone)  
 [Function `fromIter`](#hashmapfromiter)  
 [Function `map`](#hashmapmap)  
@@ -33,14 +36,20 @@ The `HashMap` module contains a [public type](/common-programming-concepts/modul
 {{#include _mo/hashmap/type/type.mo:a}}
 ```
 
-In the second line we declare a local [type alias](/common-programming-concepts/modules.html#type-imports-and-renaming) `HashMap<K, V>` by referring to the type inside the module. This new local type name takes in a [generic type parameter](/advanced-types/generics.html#type-parameters-and-type-arguments) `<K, V>`.
+In the second line we declare a local [type alias](/common-programming-concepts/modules.html#type-imports-and-renaming) `HashMap<K, V>` by referring to the type inside the module. This new local type name takes in two [generic type parameters](/advanced-types/generics.html#type-parameters-and-type-arguments) `<K, V>`.
 
-In the third line we declare another local alias `mapTextInt` which takes no parameters. It is always a `HashMap` of `Text` and `Int`.
+In the third line we declare another local alias `MapTextInt` which takes no parameters. It is always a `HashMap<Text, Int>`.
 
 ## Class `HashMap.HashMap<K, V>`
 
 ```motoko
-HashMap.HashMap<K, V>(initCapacity : Nat, keyEq : (K, K) -> Bool,keyHash : K -> Hash.Hash)
+HashMap.HashMap<K, V>(
+
+  initCapacity : Nat,
+  keyEq : (K, K) -> Bool,
+  keyHash : K -> Hash.Hash
+
+)
 ```
 
 To construct a hashmap object, we use the `HashMap` class:
@@ -49,7 +58,9 @@ To construct a hashmap object, we use the `HashMap` class:
 {{#include _mo/hashmap/_class.mo:a}}
 ```
 
-## Hashmap.size
+## Class methods
+
+## hashmap.size
 
 ```motoko
 func size() : Nat
@@ -61,7 +72,7 @@ The function `size` takes no argument and returns a `Nat` value.
 {{#include _mo/hashmap/size.mo:a}}
 ```
 
-## Hashmap.get
+## hashmap.get
 
 ```motoko
 func get(key : K) : (value : ?V)
@@ -73,7 +84,7 @@ The function `get` takes one argument of type `K` and returns a value of type `?
 {{#include _mo/hashmap/get.mo:a}}
 ```
 
-## Hashmap.put
+## hashmap.put
 
 ```motoko
 func put(key : K, value : V)
@@ -85,7 +96,7 @@ The function `put` takes one argument of type `K` and returns a value of type `V
 {{#include _mo/hashmap/put.mo:a}}
 ```
 
-## Hashmap.replace
+## hashmap.replace
 
 ```motoko
 func replace(key : K, value : V) : (oldValue : ?V)
@@ -97,7 +108,7 @@ The function `replace` takes one argument of type `K` and one of type `v` return
 {{#include _mo/hashmap/replace.mo:a}}
 ```
 
-## Hashmap.delete
+## hashmap.delete
 
 ```motoko
 func delete(key : K)
@@ -109,7 +120,7 @@ The function `delete` takes one argument of type `K` and returns nothing.
 {{#include _mo/hashmap/delete.mo:a}}
 ```
 
-## Hashmap.remove
+## hashmap.remove
 
 ```motoko
 func remove(key : K) : (oldValue : ?V)
@@ -121,7 +132,7 @@ The function `remove` takes one argument of type `K` and returns a value of type
 {{#include _mo/hashmap/remove.mo:a}}
 ```
 
-## Hashmap.keys
+## hashmap.keys
 
 ```motoko
 func keys() : Iter.Iter<K>
@@ -133,7 +144,7 @@ The function `keys` takes nothing and returns an `Iterator` of type `K`.
 {{#include _mo/hashmap/keys.mo:a}}
 ```
 
-## Hashmap.vals
+## hashmap.vals
 
 ```motoko
 func vals() : Iter.Iter<V>
@@ -145,7 +156,7 @@ The function `vals` takes nothing and returns an `Iterator` of type `V`.
 {{#include _mo/hashmap/vals.mo:a}}
 ```
 
-## Hashmap.entries
+## hashmap.entries
 
 ```motoko
 func entries() : Iter.Iter<(K, V)>
@@ -157,7 +168,9 @@ The function `entries` takes nothing and returns an `Iterator` of type tuple `(K
 {{#include _mo/hashmap/entries.mo:a}}
 ```
 
-## Hashmap.clone
+## Module public functions
+
+## HashMap.clone
 
 ### Function signature
 
@@ -183,7 +196,7 @@ func clone<K, V>(
 {{#include _mo/hashmap/clone.mo:a}}
 ```
 
-## Hashmap.fromIter
+## HashMap.fromIter
 
 ### Function signature
 
@@ -211,7 +224,7 @@ func fromIter<K, V>(
 {{#include _mo/hashmap/fromIter.mo:a}}
 ```
 
-## Hashmap.map
+## HashMap.map
 
 ### Function signature
 
@@ -239,7 +252,7 @@ func map<K, V1, V2>(
 {{#include _mo/hashmap/map.mo:a}}
 ```
 
-## Hashmap.mapFilter
+## HashMap.mapFilter
 
 ### Function signature
 
