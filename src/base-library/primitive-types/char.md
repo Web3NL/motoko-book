@@ -1,5 +1,5 @@
 # Char
-In Motoko, a *character literal* is a single character enclosed in **single quotes** and has type `Char`. (As opposed to a *text literals* of type `Text`, which may be multiple characters enclosed in **double quotes**.)
+In Motoko, a *character literal* is a single character enclosed in **single quotes** and has type `Char`. (As opposed to *text literals* of type `Text`, which may be multiple characters enclosed in **double quotes**.)
 
 ```motoko, run
 let char : Char = 'a';
