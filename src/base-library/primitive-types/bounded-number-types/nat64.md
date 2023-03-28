@@ -26,18 +26,19 @@ type Nat64 = Nat64.Nat64
 
 ```motoko
 let minimumValue : Nat64 = 0;
-
 ```
 
 ## MaximumValue
 
 ```motoko
 let maximumValue : Nat64 = 18,446,744,073,709,551,615;
-
 ```
 
 ## Nat64.toNat
 
+```motoko
+ func toNat(i : Nat64) : Nat
+```
 The function `toNat` takes one `Nat64` argument and returns an `Nat` value.
 
 ```motoko, run
@@ -46,6 +47,9 @@ The function `toNat` takes one `Nat64` argument and returns an `Nat` value.
 
 ## Nat64.toText
 
+```motoko
+ func toText(i : Nat64) : Text
+```
 The function `toText` takes one `Nat64` argument and returns a `Text` value.
 
 ```motoko, run
@@ -54,6 +58,9 @@ The function `toText` takes one `Nat64` argument and returns a `Text` value.
 
 ## Nat64.fromNat
 
+```motoko
+ func fromNat(i : Nat) : Nat64
+```
 The function `fromNat` takes one `Nat` argument and returns an `Nat64` value.
 
 ```motoko, run
@@ -62,7 +69,10 @@ The function `fromNat` takes one `Nat` argument and returns an `Nat64` value.
 
 ## Nat64.fromIntWrap
 
-The function `fromIntWrap` takes one `Int` argument and returns an `Int` value.
+```motoko
+ func fromIntWrap(i : Int) : Nat64
+```
+The function `fromIntWrap` takes one `Int` argument and returns an `Nat64` value.
 
 ```motoko, run
 {{#include _mo/nat64d.mo:a}}
