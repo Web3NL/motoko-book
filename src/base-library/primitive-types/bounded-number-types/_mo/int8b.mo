@@ -1,11 +1,8 @@
 // Int8
-
+// ANCHOR: a
 import Int8 "mo:base/Int8";
 
-// ANCHOR: a
 let nat8 : Nat8 = 127;
 
-let int8 = Int8.fromNat8(nat8);
-
-assert int8 == +127;
+Int8.fromNat8(nat8);
 // ANCHOR_END: a

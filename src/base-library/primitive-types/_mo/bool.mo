@@ -5,9 +5,9 @@ import Bool "mo:base/Bool";
 // ANCHOR_END: a
 
 // ANCHOR: b
-let is_principal = true;
+let isPrincipal = true;
 
-let textualBoolean = Bool.toText(is_principal);
+let textualBoolean = Bool.toText(isPrincipal);
 
 assert textualBoolean == "true";
 // ANCHOR_END: b

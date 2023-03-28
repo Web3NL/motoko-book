@@ -1,15 +1,9 @@
-import Text "mo:base/Text";
-
-
-
 // ANCHOR: a
-type Pattern = {#char : Char; #text : Text; #predicate : (Char -> Bool)};
+import Text "mo:base/Text";
+import Char "mo:base/Char";
 
-let text = "blockchain";
+let text : Text = "blockchain";
+let letter : Text.Pattern = #predicate (func c = Char.isAlphabetic(c));
 
-let letter : Pattern = #char 'b';
-
-let endsWith = Text.endsWith(text, letter);
-
-assert endsWith == false ;
+Text.endsWith(text, letter);
 // ANCHOR_END: a

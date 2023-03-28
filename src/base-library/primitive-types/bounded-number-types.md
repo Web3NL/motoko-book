@@ -1,24 +1,7 @@
 # Bounded Number Types
+Unlike [`Nat`](/base-library/primitive-types/nat.html) and [`Int`](/base-library/primitive-types/int.html), which are *unbounded* numbers, the *bounded number types* have a specified *bit length*. Operations that *overflow* (reach numbers beyond the *minimum* or *maximum* value defined by the bit length) on these bounded number types cause a [trap](/advanced-concepts/async-programming/errors-and-traps.html). 
 
-<!-- ## Nat8, Nat16, Nat32, Nat64
-- toNat
-- fromNat
-- toText
+The bounded *natural* number types `Nat8`, `Nat32`, `Nat32`, `Nat64` and the bounded *integer* number types `Int8`, `Int16`, `Int32`, `Int64` are all [*primitive types*](/common-programming-concepts/types.html#primitive-types) in Motoko and don't need to be imported. 
 
-## Int8, Int16, Int32, Int64
-- toInt
-- fromInt
-- toText
-- abs
+This section covers [*modules*](common-programming-concepts/modules.html) with useful functionality for these types. 
 
-Int8.toNat8
-Int8.fromNat8
-
-Int16.toNat16
-Int16.fromNat16
-
-Int32.toNat32
-Int32.fromNat32
-
-Int64.toNat64
-Int64.fromNat64 -->

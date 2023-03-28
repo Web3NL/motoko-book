@@ -1,12 +1,11 @@
 // Nat
-
+// ANCHOR: a
 import Nat "mo:base/Nat";
 
-// ANCHOR: a
-let a = 50;
-let b = 20;
+let a : Nat = 50;
+let b : Nat = 20;
 
-let subtraction = Nat.sub(a, b);
+let subtract = Nat.sub(a, b);
 
-assert subtraction == 30;
+let subtraction = a - b; 
 // ANCHOR_END: a

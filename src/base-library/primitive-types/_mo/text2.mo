@@ -1,15 +1,9 @@
-import Text "mo:base/Text";
-
-
 
 // ANCHOR: a
-type Pattern = {#char : Char; #text : Text; #predicate : (Char -> Bool)};
+import Text "mo:base/Text";
 
-let text = "blockchain";
+let text : Text = "blockchain";
+let letter : Text.Pattern = #text "block";
 
-let letter : Pattern = #char 'b';
-
-let startsWith = Text.startsWith(text, letter);
-
-assert startsWith == true ;
+Text.startsWith(text, letter);
 // ANCHOR_END: a

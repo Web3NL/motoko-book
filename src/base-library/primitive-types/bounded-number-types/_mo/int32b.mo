@@ -1,11 +1,8 @@
 // Int32
-
+// ANCHOR: a
 import Int32 "mo:base/Int32";
 
-// ANCHOR: a
-let nat32 : Nat32 = 2147483647;
+let nat32 : Nat32 = 21474;
 
-let int32 = Int32.fromNat32(nat32);
-
-assert int32 == +2147483647;
+Int32.fromNat32(nat32);
 // ANCHOR_END: a

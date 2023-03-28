@@ -1,42 +1,67 @@
 # Int
-The convention is to name the *module alias* after the *file name* it is defined in:
-
+The *convention* is to name the [*module alias*](/common-programming-concepts/modules.html#imports) after the [*file name*](/common-programming-concepts/modules.html#imports) it is defined in:
 ```motoko
 {{#include _mo/int.mo:a}}
 ```
 
-## Int.abs
-The function `abs` takes one `Int` argument and returns an `Int` value. 
+### Numerical operations
+[Function `abs`](#intabs)    
 
-```motoko
-{{#include _mo/int.mo:b}}
+### Conversion
+[Function `toText`](#inttotext)  
+
+### Comparison
+[Function `min`](#intmin)  
+[Function `max`](#intmax)  
+[Function `compare`](#intcompare)  
+
+## Int.abs
+```motoko,
+func abs(x : Int) : Nat
 ```
 
+The function `abs` takes one `Int` argument and returns a `Nat` value. 
+```motoko, run
+{{#include _mo/int4.mo:a}}
+```
 
 ## Int.toText
-The function `toText` takes one `Int` argument and returns a `Text` value.  
+```motoko,
+func toText(x : Int) : Text
+```
 
-```motoko
-{{#include _mo/int.mo:c}}
+The function `toText` takes one `Int` argument and returns a `Text` value.  
+```motoko, run
+{{#include _mo/int3.mo:a}}
 ```
 
 ## Int.min
-The function `min` takes two `Int` arguments and returns an `Int` value. 
+```motoko,
+func min(x : Int, y : Int) : Int
+```
 
-```motoko
-{{#include _mo/int.mo:d}}
+The function `min` takes two `Int` arguments and returns an `Int` value. 
+```motoko, run
+{{#include _mo/int5.mo:a}}
 ```
 
 ## Int.max
-The function `max` takes two `Int` arguments and returns an `Int` value. 
+```motoko,
+func max(x : Int, y : Int) : Int
+```
 
-```motoko
+The function `max` takes two `Int` arguments and returns an `Int` value. 
+```motoko, run
 {{#include _mo/int1.mo:a}}
 ```
 
 ## Int.compare
-The function `compare` takes two `Int` arguments and returns an `Order` variant value.  
+```motoko,
+func compare(x : Int, y : Int) : {#less; #equal; #greater}
+```
 
-```motoko
+The function `compare` takes two `Int` arguments and returns an [Order](/base-library/utils/order.html) variant value.
+
+```motoko, run
 {{#include _mo/int2.mo:a}}
 ```
