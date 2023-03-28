@@ -3,6 +3,7 @@
 **WARNING**: Book is work in progress.
 
 **Latest updates**  
+28-03-2023: Version 0.5.2 (Chapter 5 [Primitive Types Beta](/base-library/primitive-types.html))  
 15-03-2023: Version 0.5.1 (Chapter 5 [Introduction](/base-library.html))  
 11-03-2023: Version 0.4 (Chapter 4 Release)  
 
