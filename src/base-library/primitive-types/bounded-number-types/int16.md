@@ -1,62 +1,90 @@
 # Int16
 
-## Public items
-The following types and functions are made public in the `Int16` module:  
-[Type Int16](#type)   
+The _convention_ is to name the [_module alias_](/common-programming-concepts/modules.html#type-imports-and-renaming) after the [_file name_](/common-programming-concepts/modules.html#imports) it is defined in:
+
+```motoko, run
+{{#include _mo/int16.mo:a}}
+```
+
+### On this page
+
 [Value `minimumValue`](#minimumvalue)  
-[Value `maximumValue`](#maximumvalue)  
-[Function `toInt`](#int16toint)    
+[Value `maximumValue`](#maximumvalue)
+
+[Function `toInt`](#int16toint)  
 [Function `toText`](#int16totext)  
 [Function `fromInt`](#int16fromint)  
 [Function `fromNat16`](#int16fromnat16)  
-[Function `toNat16`](#int16tonat16)  
+[Function `toNat16`](#int16tonat16)
 
-## Type
+## minimumValue
+
 ```motoko
-type Int16 = Int16.Int16
+let minimumValue : Int16 = -32_768;
 ```
-## MinimumValue
-```motoko
-let minimumValue : Int16 = -32768
 
-```
-## MaximumValue
-```motoko
-let maximumValue : Int16 = 32767
+## maximumValue
 
+```motoko
+let maximumValue : Int16 = 32_767;
 ```
 
 ## Int16.toInt
-The function `toInt` takes one `Int16` argument and returns an `Int` value. 
 
 ```motoko
-{{#include _mo/int16.mo:b}}
+ func toInt(i : Int16) : Int
+```
+
+The function `toInt` takes one `Int16` argument and returns an `Int` value.
+
+```motoko, run
+{{#include _mo/int16d.mo:a}}
 ```
 
 ## Int16.toText
-The function `toText` takes one `Int16` argument and returns a `Text` value. 
 
 ```motoko
-{{#include _mo/int16.mo:c}}
+ func toText(i : Int16) : Text
+```
+
+The function `toText` takes one `Int16` argument and returns a `Text` value.
+
+```motoko, run
+{{#include _mo/int16e.mo:a}}
 ```
 
 ## Int16.fromInt
-The function `fromInt` takes one `Int` argument and returns an `Int16` value. 
 
 ```motoko
+ func fromInt(i : Int) : Int16
+```
+
+The function `fromInt` takes one `Int` argument and returns an `Int16` value.
+
+```motoko, run
 {{#include _mo/int16a.mo:a}}
 ```
 
 ## Int16.fromNat16
-The function `fromNat16` takes one `Nat16` argument and returns an `Int16` value. 
 
 ```motoko
+ func fromNat16(i : Nat16) : Int16
+```
+
+The function `fromNat16` takes one `Nat16` argument and returns an `Int16` value.
+
+```motoko, run
 {{#include _mo/int16b.mo:a}}
 ```
 
 ## Int16.toNat16
-The function `toNat16` takes one `Int16` argument and returns an `Nat16` value. 
 
 ```motoko
+ func toNat16(i : Int16) : Nat16
+```
+
+The function `toNat16` takes one `Int16` argument and returns an `Nat16` value.
+
+```motoko, run
 {{#include _mo/int16c.mo:a}}
 ```

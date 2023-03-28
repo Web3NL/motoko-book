@@ -1,8 +1,7 @@
 # Bounded Number Types
-The Nat8 type represents 8-bit unsigned integers with checked arithmetic, which means that operations performed on Nat8 values are checked to prevent integer overflow or underflow. 
+Unlike [`Nat`](/base-library/primitive-types/nat.html) and [`Int`](/base-library/primitive-types/int.html), which are *unbounded* numbers, the *bounded number types* have a specified *bit length*. Operations that *overflow* (reach numbers beyond the *minimum* or *maximum* value defined by the bit length) on these bounded number types cause a [trap](/advanced-concepts/async-programming/errors-and-traps.html). 
 
-Similarly, Nat16 represents 16-bit unsigned integers, 
+The bounded *natural* number types `Nat8`, `Nat32`, `Nat32`, `Nat64` and the bounded *integer* number types `Int8`, `Int16`, `Int32`, `Int64` are all [*primitive types*](/common-programming-concepts/types.html#primitive-types) in Motoko and don't need to be imported. 
 
-Nat32 represents 32-bit unsigned integers, and Nat64 represents 64-bit unsigned integers. 
+This section covers [*modules*](common-programming-concepts/modules.html) with useful functionality for these types. 
 
-All these types have checked arithmetic, making them safer to use than the corresponding signed integer types.
