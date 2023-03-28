@@ -1,6 +1,6 @@
 # Nat64
 
-The _convention_ is to name the [_module alias_](/common-programming-concepts/modules.html#imports) after the [_file name_](/common-programming-concepts/modules.html#imports) it is defined in:
+The _convention_ is to name the [_module alias_](/common-programming-concepts/modules.html#type-imports-and-renaming) after the [_file name_](/common-programming-concepts/modules.html#imports) it is defined in:
 
 ```motoko
 {{#include _mo/nat64.mo:a}}
@@ -8,30 +8,24 @@ The _convention_ is to name the [_module alias_](/common-programming-concepts/mo
 
 ### On this page
 
-[Type Nat64](#type)  
 [Value `minimumValue`](#minimumvalue)  
-[Value `maximumValue`](#maximumvalue)  
+[Value `maximumValue`](#maximumvalue)
+
 [Function `toNat`](#nat64tonat)  
 [Function `toText`](#nat64totext)  
 [Function `fromNat`](#nat64fromnat)  
 [Function `fromIntWrap`](#nat64fromintwrap)
 
-## Type
-
-```motoko
-type Nat64 = Nat64.Nat64
-```
-
-## MinimumValue
+## minimumValue
 
 ```motoko
 let minimumValue : Nat64 = 0;
 ```
 
-## MaximumValue
+## maximumValue
 
 ```motoko
-let maximumValue : Nat64 = 18,446,744,073,709,551,615;
+let maximumValue : Nat64 = 18_446_744_073_709_551_615;
 ```
 
 ## Nat64.toNat
@@ -39,6 +33,7 @@ let maximumValue : Nat64 = 18,446,744,073,709,551,615;
 ```motoko
  func toNat(i : Nat64) : Nat
 ```
+
 The function `toNat` takes one `Nat64` argument and returns an `Nat` value.
 
 ```motoko, run
@@ -50,6 +45,7 @@ The function `toNat` takes one `Nat64` argument and returns an `Nat` value.
 ```motoko
  func toText(i : Nat64) : Text
 ```
+
 The function `toText` takes one `Nat64` argument and returns a `Text` value.
 
 ```motoko, run
@@ -61,6 +57,7 @@ The function `toText` takes one `Nat64` argument and returns a `Text` value.
 ```motoko
  func fromNat(i : Nat) : Nat64
 ```
+
 The function `fromNat` takes one `Nat` argument and returns an `Nat64` value.
 
 ```motoko, run
@@ -72,6 +69,7 @@ The function `fromNat` takes one `Nat` argument and returns an `Nat64` value.
 ```motoko
  func fromIntWrap(i : Int) : Nat64
 ```
+
 The function `fromIntWrap` takes one `Int` argument and returns an `Nat64` value.
 
 ```motoko, run

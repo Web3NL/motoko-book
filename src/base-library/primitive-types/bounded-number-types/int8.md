@@ -1,6 +1,6 @@
 # Int8
 
-The _convention_ is to name the [_module alias_](/common-programming-concepts/modules.html#imports) after the [_file name_](/common-programming-concepts/modules.html#imports) it is defined in:
+The _convention_ is to name the [_module alias_](/common-programming-concepts/modules.html#type-imports-and-renaming) after the [_file name_](/common-programming-concepts/modules.html#imports) it is defined in:
 
 ```motoko, run
 {{#include _mo/int8.mo:a}}
@@ -8,28 +8,22 @@ The _convention_ is to name the [_module alias_](/common-programming-concepts/mo
 
 ### On this page
 
-[Type Int8](#type)  
 [Value `minimumValue`](#minimumvalue)  
-[Value `maximumValue`](#maximumvalue)  
+[Value `maximumValue`](#maximumvalue)
+
 [Function `toInt`](#int8toint)  
 [Function `toText`](#int8totext)  
 [Function `fromInt`](#int8fromint)  
 [Function `fromNat8`](#int8fromnat8)  
 [Function `toNat8`](#int8tonat8)
 
-## Type
-
-```motoko
-type Int8 = Int8.Int8
-```
-
-## MinimumValue
+## minimumValue
 
 ```motoko
 let minimumValue : Int8 = -128
 ```
 
-## MaximumValue
+## maximumValue
 
 ```motoko
 let maximumValue : Int8 = 127

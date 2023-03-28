@@ -1,6 +1,6 @@
 # Int32
 
-The _convention_ is to name the [_module alias_](/common-programming-concepts/modules.html#imports) after the [_file name_](/common-programming-concepts/modules.html#imports) it is defined in:
+The _convention_ is to name the [_module alias_](/common-programming-concepts/modules.html#type-imports-and-renaming) after the [_file name_](/common-programming-concepts/modules.html#imports) it is defined in:
 
 ```motoko, run
 {{#include _mo/int32.mo:a}}
@@ -8,31 +8,25 @@ The _convention_ is to name the [_module alias_](/common-programming-concepts/mo
 
 ### On this page
 
-[Type Int32](#type)  
 [Value `minimumValue`](#minimumvalue)  
-[Value `maximumValue`](#maximumvalue)  
+[Value `maximumValue`](#maximumvalue)
+
 [Function `toInt`](#int32toint)  
 [Function `toText`](#int32totext)  
 [Function `fromInt`](#int32fromint)  
 [Function `fromNat32`](#int32fromnat32)  
 [Function `toNat32`](#int32tonat32)
 
-## Type
+## minimumValue
 
 ```motoko
-type Int32 = Int32.Int32
+let minimumValue : Int32 = -2_147_483_648
 ```
 
-## MinimumValue
+## maximumValue
 
 ```motoko
-let minimumValue : Int32 = -2147483648
-```
-
-## MaximumValue
-
-```motoko
-let maximumValue : Int32 = 2147483647
+let maximumValue : Int32 = 2_147_483_647
 ```
 
 ## Int32.toInt

@@ -1,6 +1,6 @@
 # Int64
 
-The _convention_ is to name the [_module alias_](/common-programming-concepts/modules.html#imports) after the [_file name_](/common-programming-concepts/modules.html#imports) it is defined in:
+The _convention_ is to name the [_module alias_](/common-programming-concepts/modules.html#type-imports-and-renaming) after the [_file name_](/common-programming-concepts/modules.html#imports) it is defined in:
 
 ```motoko, run
 {{#include _mo/int64.mo:a}}
@@ -8,31 +8,25 @@ The _convention_ is to name the [_module alias_](/common-programming-concepts/mo
 
 ### On this page
 
-[Type Int64](#type)  
 [Value `minimumValue`](#minimumvalue)  
-[Value `maximumValue`](#maximumvalue)  
+[Value `maximumValue`](#maximumvalue)
+
 [Function `toInt`](#int64toint)  
 [Function `toText`](#int64totext)  
 [Function `fromInt`](#int64fromint)  
 [Function `fromNat64`](#int64fromnat64)  
 [Function `toNat64`](#int64tonat64)
 
-## Type
+## minimumValue
 
 ```motoko
-type Int64 = Int64.Int64
+let minimumValue : Int64 = -9_223_372_036_854_775_808;
 ```
 
-## MinimumValue
+## maximumValue
 
 ```motoko
-let minimumValue : Int64 = -9223372036854775808
-```
-
-## MaximumValue
-
-```motoko
-let maximumValue : Int64= 9223372036854775807
+let maximumValue : Int64 = 9_223_372_036_854_775_807;
 ```
 
 ## Int64.toInt
