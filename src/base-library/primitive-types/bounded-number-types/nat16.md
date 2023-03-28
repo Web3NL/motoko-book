@@ -1,62 +1,83 @@
-
-
 # Nat16
-The *convention* is to name the [*module alias*](/common-programming-concepts/modules.html#imports) after the *file name* it is defined in:
 
-```motoko
+The _convention_ is to name the [_module alias_](/common-programming-concepts/modules.html#imports) after the [_file name_](/common-programming-concepts/modules.html#imports) it is defined in:
+
+```motoko, run
 {{#include _mo/nat16.mo:a}}
 ```
-## Public items
-The following types and functions are made public in the `Nat16` module:  
+
+### On this page
+
 [Type Nat16](#type)  
 [Value `minimumValue`](#minimumvalue)  
 [Value `maximumValue`](#maximumvalue)  
-[Function `toNat`](#nat16tonat)    
+[Function `toNat`](#nat16tonat)  
 [Function `toText`](#nat16totext)  
 [Function `fromNat`](#nat16fromnat)  
-[Function `fromIntWrap`](#nat16fromintwrap)  
-
+[Function `fromIntWrap`](#nat16fromintwrap)
 
 ## Type
+
 ```motoko
 type Nat16 = Nat16.Nat16
 ```
+
 ## MinimumValue
+
 ```motoko
 let minimumValue : Nat16 = 0;
-
 ```
+
 ## MaximumValue
+
 ```motoko
 let maximumValue : Nat16 = 65,535;
-
 ```
-
 
 ## Nat16.toNat
-The function `toNat` takes one `Nat16` argument and returns an `Nat` value.
 
 ```motoko
-{{#include _mo/nat16.mo:b}}
+ func toNat(i : Nat16) : Nat
 ```
+
+The function `toNat` takes one `Nat16` argument and returns a `Nat` value.
+
+```motoko, run
+{{#include _mo/nat16a.mo:a}}
+```
+
 ## Nat16.toText
-The function `toText` takes one `Nat16` argument and returns a `Text` value. 
 
 ```motoko
-{{#include _mo/nat16.mo:c}}
+ func toText(i : Nat16) : Text
 ```
+
+The function `toText` takes one `Nat16` argument and returns a `Text` value.
+
+```motoko, run
+{{#include _mo/nat16b.mo:a}}
+```
+
 ## Nat16.fromNat
-The function `fromNat` takes one `Nat` argument and returns an `Nat16` value. 
 
 ```motoko
-{{#include _mo/nat16.mo:d}}
+ func fromNat(i : Nat) : Nat16
 ```
+
+The function `fromNat` takes one `Nat` argument and returns a `Nat16` value.
+
+```motoko, run
+{{#include _mo/nat16c.mo:a}}
+```
+
 ## Nat16.fromIntWrap
-The function `fromIntWrap` takes one `Int` argument and returns an `Int` value. 
 
 ```motoko
-{{#include _mo/nat16.mo:e}}
-```
+ func fromIntWrap(i : Int) : Nat
 ```
 
+The function `fromIntWrap` takes one `Int` argument and returns a `Nat16` value.
 
+```motoko, run
+{{#include _mo/nat16d.mo:a}}
+```
