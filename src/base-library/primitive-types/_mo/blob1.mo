@@ -1,15 +1,10 @@
 // Blob
-
+// ANCHOR: a
 import Blob "mo:base/Blob";
 
-
-// ANCHOR: a
 let a : [Nat8] = [1,2,3];
 
-let blob = Blob.fromArray(a);
+let blob : Blob = Blob.fromArray(a);
 
-let array = Blob.toArray(blob);
-
-assert array == [1,2,3];
+Blob.toArray(blob);
 // ANCHOR_END: a
-

@@ -1,27 +1,21 @@
 # Blob
-The Blob module is a built-in module in the Motoko language for working with immutable sequences of bytes. Blobs are similar to arrays of bytes, but are more efficient and take up less memory.
+A blob is an immutable sequences of bytes. Blobs are similar to arrays of bytes `[Nat8]`.
 
 
-The *convention* is to name the [*module alias*](/common-programming-concepts/modules.html#imports) after the [*file name*](/common-programming-concepts/modules.html#imports) it is defined in:
+The *convention* is to name the [*module alias*](/common-programming-concepts/modules.html#type-imports-and-renaming) after the [*file name*](/common-programming-concepts/modules.html#imports) it is defined in:
 
 ```motoko
 {{#include _mo/blob.mo:a}}
 ```
 
- **Public Types**
-[Type Blob](#type) 
-
- **conversion**
+### On this page
+  
 [Function `fromArray`](#blobfromarray)  
 [Function `toArray`](#blobtoarray)  
-[Function `toArrayMut`](#blobfromarraymut)  
+[Function `toArrayMut`](#blobtoarraymut)  
 [Function `fromArrayMut`](#blobfromarraymut)  
 
 
-## Type
-```motoko
-type Blob = Blob.Blob
-```
 
 ## Blob.fromArray
 
@@ -29,10 +23,10 @@ type Blob = Blob.Blob
 func fromArray(bytes : [Nat8]) : Blob
 ```
 
-The function `fromArray` takes one `Array` argument and returns a `Blob` value.  
+The function `fromArray` takes a `[Nat8]` argument and returns a `Blob` value.  
 
-```motoko
-{{#include _mo/blob.mo:b}}
+```motoko, run
+{{#include _mo/blob4.mo:a}}
 ```
 ## Blob.toArray
 
@@ -40,9 +34,9 @@ The function `fromArray` takes one `Array` argument and returns a `Blob` value.
 func toArray(blob : Blob) : [Nat8]
 ```
 
-The function `toArray` takes one `Blob` argument and returns a `Array` value.  
+The function `toArray` takes one `Blob` argument and returns a `[Nat8]` value.  
 
-```motoko
+```motoko, run
 {{#include _mo/blob1.mo:a}}
 ```
 ## Blob.toArrayMut
@@ -51,9 +45,9 @@ The function `toArray` takes one `Blob` argument and returns a `Array` value.
 func toArrayMut(blob : Blob) : [var Nat8]
 ```
 
-The function `toArrayMut` takes one `Blob` argument and returns a `Mutable Array` value.  
+The function `toArrayMut` takes one `Blob` argument and returns a mutable array `[var Nat8]` value.  
 
-```motoko
+```motoko, run
 {{#include _mo/blob2.mo:a}}
 ```
 ## Blob.fromArrayMut
@@ -62,15 +56,8 @@ The function `toArrayMut` takes one `Blob` argument and returns a `Mutable Array
 func fromArrayMut(bytes : [var Nat8]) : Blob
 ```
 
-The function `fromArrayMut` takes one `Mutable Array` argument and returns a `Blob` value.  
+The function `fromArrayMut` takes one mutable array `[var Nat8]` argument and returns a `Blob` value.  
 
-```motoko
+```motoko, run
 {{#include _mo/blob3.mo:a}}
 ```
-
-
-Type Blob
-Value fromArray
-Value fromArrayMut
-Value toArray
-Value toArrayMut
