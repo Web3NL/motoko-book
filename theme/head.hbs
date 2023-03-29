@@ -1,0 +1,17 @@
+<script src="{{ path_to_root }}highlight.js"></script>
+
+<!-- Custom JS scripts -->
+{{#each additional_js}}
+<script src="{{ ../path_to_root }}{{this}}"></script>
+{{/each}}
+
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KB7734XFFY"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-KB7734XFFY');
+</script>
