@@ -2,10 +2,9 @@
 
 // ANCHOR: a
 import Time "mo:base/Time";
+
+let currentTime : Int = Time.now();
 // ANCHOR_END: a
 
-// ANCHOR: b
-let currentTime : Int = Time.now();
-// ANCHOR_END: b
 
 
