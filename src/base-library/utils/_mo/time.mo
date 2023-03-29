@@ -5,10 +5,7 @@ import Time "mo:base/Time";
 // ANCHOR_END: a
 
 // ANCHOR: b
-let currentTIme = Time.now();
-
-let currentYearFrom1970 = currentTIme /((10**9)*(60)*(60)*(24)*(30)*(12));
-
-assert currentYearFrom1970 == 53;
+let currentTime : Int = Time.now();
 // ANCHOR_END: b
+
 
