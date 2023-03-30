@@ -5,6 +5,5 @@ import List "mo:base/List";
 
 let nil : List.List<Int> = List.nil<Int>(); 
 
-let newList :  List.List<Int> = List.push(-1, nil);  // ?(-1, null)
+List.push(-1, nil);
 // ANCHOR_END: a
-

@@ -15,6 +15,6 @@ for(i in iter){
     number += i
 };
 
-assert number == 5;
+number
 // ANCHOR_END: a
 

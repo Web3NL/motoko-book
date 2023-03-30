@@ -10,6 +10,5 @@ func change(x : Int ) : Bool {
     x == -2
 };
 
-let some : Bool = List.some<Int>(list, change);
+List.some<Int>(list, change);
 // ANCHOR_END: a
-

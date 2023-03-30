@@ -14,6 +14,5 @@ if (x >= 0) {
 }
 };
 
-let mapResult : Result.Result<List.List<Int>,Text> = List.mapResult<Int, Int, Text>(list, result);
+List.mapResult<Int, Int, Text>(list, result);
 // ANCHOR_END: a
-

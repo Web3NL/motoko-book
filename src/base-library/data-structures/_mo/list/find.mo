@@ -10,6 +10,5 @@ func change(x : Int ) : Bool {
     x > -2
 };
 
-let find : ?Int = List.find<Int>(list, change);
+List.find<Int>(list, change);
 // ANCHOR_END: a
-

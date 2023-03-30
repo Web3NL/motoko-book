@@ -10,7 +10,5 @@ func change(x : Int, y : Int) : Int {
     x + y
 };
 
-let foldLeft : Int = List.foldLeft<Int, Int>(list, 2, change);
-// 5 : Int
+List.foldLeft<Int, Int>(list, 2, change);
 // ANCHOR_END: a
-

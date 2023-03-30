@@ -1,6 +1,4 @@
 //List
-
-
 // ANCHOR: a
 import List "mo:base/List";
 import Int "mo:base/Int";
@@ -11,6 +9,5 @@ func change(x : Int) : Text {
 Int.toText(x)
 };
 
-let map : List.List<Text> = List.map<Int, Text>(list, change);// ("-3", ?("-2", ?("-1", null)))
+List.map<Int, Text>(list, change);
 // ANCHOR_END: a
-

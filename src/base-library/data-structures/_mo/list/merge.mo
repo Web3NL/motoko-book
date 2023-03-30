@@ -9,7 +9,5 @@ func change(x : Int , y : Int) : Bool {
     x <= y
 };
 
-let merge : List.List<Int> = List.merge<Int>(list1, list2, change);
-// ?(-3, ?(-3, ?(-2, ?(-2, ?(-1,?(-1, null))))))
+List.merge<Int>(list1, list2, change);
 // ANCHOR_END: a
-
