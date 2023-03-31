@@ -10,8 +10,8 @@ intStorage.add(4);
 intStorage.add(7);
 
 func check(index : Nat, value : Int) : Bool {
-      value % 2 == 0;
-    };
+  value % 2 == 0;
+};
 
 intStorage.filterEntries(check);
 

@@ -1,4 +1,3 @@
-
 // ANCHOR: a
 import Array "mo:base/Array";
 import Nat "mo:base/Nat";

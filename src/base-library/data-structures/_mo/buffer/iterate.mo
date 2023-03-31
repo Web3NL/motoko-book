@@ -8,7 +8,7 @@ intStorage.add(-1);
 intStorage.add(0);
 
 func change(x : Int) : () {
-    number += x
+    number += x;
 };
 var number : Int = 10;
 

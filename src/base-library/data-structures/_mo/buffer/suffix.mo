@@ -10,7 +10,7 @@ intStorage.add(0);
 intStorage.add(1);
 intStorage.add(2);
 
-let suffix : Buffer.Buffer<Int> = Buffer.suffix(intStorage, 3); 
+let suffix : Buffer.Buffer<Int> = Buffer.suffix(intStorage, 3);
 
 Buffer.toText(suffix, Int.toText)
 // ANCHOR_END: a

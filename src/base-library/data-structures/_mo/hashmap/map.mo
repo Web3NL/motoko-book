@@ -13,11 +13,10 @@ func edit(k : Text, v : Int) : Int {
 };
 
 let mapping : HashMap.HashMap<Text, Int> = HashMap.map<Text, Int, Int>(
-      map,
-      Text.equal,
-      Text.hash,
-      edit,
+    map,
+    Text.equal,
+    Text.hash,
+    edit,
 );
 
-mapping.get("kohli")   
-// ANCHOR_END: a
+mapping.get("kohli") // ANCHOR_END: a

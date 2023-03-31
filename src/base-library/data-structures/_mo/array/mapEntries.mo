@@ -1,4 +1,3 @@
-
 // ANCHOR: a
 import Array "mo:base/Array";
 import Nat "mo:base/Nat";
@@ -6,7 +5,7 @@ import Nat "mo:base/Nat";
 let array = [-1, -2, -3, -4];
 
 func change(x : Int, y : Nat) : Int {
-  x * y 
+  x * y;
 };
 
 let newArray = Array.mapEntries<Int, Int>(array, change);

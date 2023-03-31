@@ -9,7 +9,7 @@ intStorage.add(0);
 intStorage.add(1);
 
 func change(x : Int) : Int {
-    x**2
+    x ** 2;
 };
 
 let newBuffer : Buffer.Buffer<Int> = Buffer.map<Int, Int>(intStorage, change);

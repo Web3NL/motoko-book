@@ -1,6 +1,6 @@
 # List
 
-The difference between a list and an [array](/base-library/data-structures/array.html) is that an array is stored as one *contiguous block of bytes* in memory and a list is 'scattered' around without the elements having to be adjacent to each other. The advantage is that we can use memory more efficiently by filling the memory more flexibly. The downside is that for operations on the whole list, we have to visit each element one by one which may be computationally expensive.
+The difference between a list and an [array](/base-library/data-structures/array.html) is that an array is stored as one _contiguous block of bytes_ in memory and a list is 'scattered' around without the elements having to be adjacent to each other. The advantage is that we can use memory more efficiently by filling the memory more flexibly. The downside is that for operations on the whole list, we have to visit each element one by one which may be computationally expensive.
 
 For more on the List data structures visit [recursive types](/advanced-types/recursive-types.html).
 
@@ -9,6 +9,7 @@ The _convention_ is to name the [_module alias_](/common-programming-concepts/mo
 ```motoko
 {{#include _mo/list.mo:a}}
 ```
+
 ### On this page
 
 [Function `nil`](#listnil)  
@@ -58,7 +59,7 @@ The _convention_ is to name the [_module alias_](/common-programming-concepts/mo
 func nil<T>() : List<T>
 ```
 
-|   **parameters**   |           |
+| **parameters**     |           |
 | ------------------ | --------- |
 | Generic parameters | `T`       |
 | Return type        | `List<T>` |
@@ -77,7 +78,7 @@ func nil<T>() : List<T>
 func isNil<T>(l : List<T>) : Bool
 ```
 
-|   **parameters**   |               |
+| **parameters**     |               |
 | ------------------ | ------------- |
 | Generic parameters | `T`           |
 | Variable argument  | `l : List<T>` |
@@ -102,7 +103,7 @@ func push<T>(
 ) : List<T>
 ```
 
-|   **parameters**   |               |
+| **parameters**     |               |
 | ------------------ | ------------- |
 | Generic parameters | `T`           |
 | Variable argument1 | `x : T`       |
@@ -123,7 +124,7 @@ func push<T>(
 func last<T>(l : List<T>) : ?T
 ```
 
-|   **parameters**   |               |
+| **parameters**     |               |
 | ------------------ | ------------- |
 | Generic parameters | `T`           |
 | Variable argument  | `l : List<T>` |
@@ -143,7 +144,7 @@ func last<T>(l : List<T>) : ?T
 func pop<T>(l : List<T>) : (?T, List<T>)
 ```
 
-|   **parameters**   |                 |
+| **parameters**     |                 |
 | ------------------ | --------------- |
 | Generic parameters | `T`             |
 | Variable argument  | `l : List<T>`   |
@@ -163,7 +164,7 @@ func pop<T>(l : List<T>) : (?T, List<T>)
 func size<T>(l : List<T>) : Nat
 ```
 
-|   **parameters**   |               |
+| **parameters**     |               |
 | ------------------ | ------------- |
 | Generic parameters | `T`           |
 | Variable argument  | `l : List<T>` |
@@ -188,7 +189,7 @@ func get<T>(
 ) : ?T
 ```
 
-|   **parameters**   |               |
+| **parameters**     |               |
 | ------------------ | ------------- |
 | Generic parameters | `T`           |
 | Variable argument1 | `l : List<T>` |
@@ -209,7 +210,7 @@ func get<T>(
 func reverse<T>(l : List<T>) : List<T>
 ```
 
-|   **parameters**   |               |
+| **parameters**     |               |
 | ------------------ | ------------- |
 | Generic parameters | `T`           |
 | Variable argument  | `l : List<T>` |
@@ -234,7 +235,7 @@ func iterate<T>(
 ) : ()
 ```
 
-|   **parameters**   |               |
+| **parameters**     |               |
 | ------------------ | ------------- |
 | Generic parameters | `T`           |
 | Variable argument  | `l : List<T>` |
@@ -260,7 +261,7 @@ func map<T, U>(
 ) : List<U>
 ```
 
-|   **parameters**   |               |
+| **parameters**     |               |
 | ------------------ | ------------- |
 | Generic parameters | `T, U`        |
 | Variable argument  | `l : List<T>` |
@@ -286,7 +287,7 @@ func filter<T>(
 ) : List<T>
 ```
 
-|   **parameters**   |                 |
+| **parameters**     |                 |
 | ------------------ | --------------- |
 | Generic parameters | `T`             |
 | Variable argument  | `l : List<T>`   |
@@ -312,7 +313,7 @@ func partition<T>(
 ) : (List<T>, List<T>)
 ```
 
-|   **parameters**   |                      |
+| **parameters**     |                      |
 | ------------------ | -------------------- |
 | Generic parameters | `T`                  |
 | Variable argument  | `l : List<T>`        |
@@ -338,7 +339,7 @@ func mapFilter<T, U>(
 ) : List<U>
 ```
 
-|   **parameters**   |               |
+| **parameters**     |               |
 | ------------------ | ------------- |
 | Generic parameters | `T, U`        |
 | Variable argument  | `l : List<T>` |
@@ -364,7 +365,7 @@ func mapResult<T, R, E>(
 ) : Result.Result<List<R>, E>
 ```
 
-|   **parameters**   |                                |
+| **parameters**     |                                |
 | ------------------ | ------------------------------ |
 | Generic parameters | `T, R, E`                      |
 | Variable argument  | `xs : List<T>`                 |
@@ -390,7 +391,7 @@ func append<T>(
 ) : (List<T>)
 ```
 
-|   **parameters**   |               |
+| **parameters**     |               |
 | ------------------ | ------------- |
 | Generic parameters | `T`           |
 | Variable argument1 | `l : List<T>` |
@@ -415,7 +416,7 @@ l : List<List<T>>
 ) : (List<T>)
 ```
 
-|   **parameters**   |                     |
+| **parameters**     |                     |
 | ------------------ | ------------------- |
 | Generic parameters | `T`                 |
 | Variable argument  | `l : List<List<T>>` |
@@ -440,7 +441,7 @@ func take<T>(
 ) : (List<T>)
 ```
 
-|   **parameters**   |               |
+| **parameters**     |               |
 | ------------------ | ------------- |
 | Generic parameters | `T`           |
 | Variable argument1 | `l : List<T>` |
@@ -466,7 +467,7 @@ func drop<T>(
 ) : (List<T>)
 ```
 
-|   **parameters**   |               |
+| **parameters**     |               |
 | ------------------ | ------------- |
 | Generic parameters | `T`           |
 | Variable argument1 | `l : List<T>` |
@@ -493,7 +494,7 @@ func foldLeft<T, S>(
 ) : S
 ```
 
-|   **parameters**   |                         |
+| **parameters**     |                         |
 | ------------------ | ----------------------- |
 | Generic parameters | `T, S`                  |
 | Variable argument1 | `list : List<T>`        |
@@ -521,7 +522,7 @@ func foldRight<T, S>(
 ) : S
 ```
 
-|   **parameters**   |                         |
+| **parameters**     |                         |
 | ------------------ | ----------------------- |
 | Generic parameters | `T, S`                  |
 | Variable argument1 | `list : List<T>`        |
@@ -548,7 +549,7 @@ func find<T>(
 ) : ?T
 ```
 
-|   **parameters**   |                 |
+| **parameters**     |                 |
 | ------------------ | --------------- |
 | Generic parameters | `T`             |
 | Variable argument  | `l : List<T>`   |
@@ -574,7 +575,7 @@ func some<T>(
 ) : Bool
 ```
 
-|   **parameters**   |                 |
+| **parameters**     |                 |
 | ------------------ | --------------- |
 | Generic parameters | `T`             |
 | Variable argument  | `l : List<T>`   |
@@ -600,7 +601,7 @@ func all<T>(
 ) : Bool
 ```
 
-|   **parameters**   |                 |
+| **parameters**     |                 |
 | ------------------ | --------------- |
 | Generic parameters | `T`             |
 | Variable argument  | `l : List<T>`   |
@@ -627,7 +628,7 @@ func merge<T>(
 ) : List<T>
 ```
 
-|   **parameters**   |                                    |
+| **parameters**     |                                    |
 | ------------------ | ---------------------------------- |
 | Generic parameters | `T`                                |
 | Variable argument1 | `l1 : List<T>`                     |
@@ -655,7 +656,7 @@ compare : (T, T) -> Order.Order
 ) : Order.Order
 ```
 
-|   **parameters**   |                                   |
+| **parameters**     |                                   |
 | ------------------ | --------------------------------- |
 | Generic parameters | `T`                               |
 | Variable argument1 | `l1 : List<T>`                    |
@@ -683,7 +684,7 @@ equal : (T, T) -> Bool
 ) : Bool
 ```
 
-|   **parameters**   |                          |
+| **parameters**     |                          |
 | ------------------ | ------------------------ |
 | Generic parameters | `T`                      |
 | Variable argument1 | `l1 : List<T>`           |
@@ -710,7 +711,7 @@ func tabulate<T>(
 ) : List<T>
 ```
 
-|   **parameters**   |                |
+| **parameters**     |                |
 | ------------------ | -------------- |
 | Generic parameters | `T`            |
 | Variable argument  | `n : Nat`      |
@@ -731,7 +732,7 @@ func tabulate<T>(
 func make<T>(n : T) : List<T>
 ```
 
-|   **parameters**   |           |
+| **parameters**     |           |
 | ------------------ | --------- |
 | Generic parameters | `T`       |
 | Variable argument  | `n : T`   |
@@ -756,7 +757,7 @@ func replicate<T>(
 ) : List<T>
 ```
 
-|   **parameters**   |           |
+| **parameters**     |           |
 | ------------------ | --------- |
 | Generic parameters | `T`       |
 | Variable argument1 | `n : Nat` |
@@ -782,7 +783,7 @@ func zip<T, U>(
 ) : List<(T, U)>
 ```
 
-|   **parameters**   |                |
+| **parameters**     |                |
 | ------------------ | -------------- |
 | Generic parameters | `T, U`         |
 | Variable argument1 | `xs : List<T>` |
@@ -809,7 +810,7 @@ func zipWith<T, U, V>(
 ) : List<V>
 ```
 
-|   **parameters**   |                   |
+| **parameters**     |                   |
 | ------------------ | ----------------- |
 | Generic parameters | `T, U, V`         |
 | Variable argument1 | `xs : List<T>`    |
@@ -836,7 +837,7 @@ func split<T>(
 ) : (List<T>, List<T>)
 ```
 
-|   **parameters**   |                      |
+| **parameters**     |                      |
 | ------------------ | -------------------- |
 | Generic parameters | `T`                  |
 | Variable argument1 | `n : Nat`            |
@@ -862,7 +863,7 @@ func chunks<T>(
 ) : List<List<T>>
 ```
 
-|   **parameters**   |                 |
+| **parameters**     |                 |
 | ------------------ | --------------- |
 | Generic parameters | `T`             |
 | Variable argument1 | `n : Nat`       |
@@ -883,7 +884,7 @@ func chunks<T>(
 func fromArray<T>(xs : [T]) : List<T>
 ```
 
-|   **parameters**   |            |
+| **parameters**     |            |
 | ------------------ | ---------- |
 | Generic parameters | `T`        |
 | Variable argument  | `xs : [T]` |
@@ -907,7 +908,7 @@ func fromVarArray<T>(
 ) : List<T>
 ```
 
-|   **parameters**   |                |
+| **parameters**     |                |
 | ------------------ | -------------- |
 | Generic parameters | `T`            |
 | Variable argument  | `xs : [var T]` |
@@ -927,7 +928,7 @@ func fromVarArray<T>(
 func toArray<T>(xs : List<T>) : [T]
 ```
 
-|   **parameters**   |                |
+| **parameters**     |                |
 | ------------------ | -------------- |
 | Generic parameters | `T`            |
 | Variable argument  | `xs : List<T>` |
@@ -947,7 +948,7 @@ func toArray<T>(xs : List<T>) : [T]
 func toVarArray<T>(xs : List<T>) : [var T]
 ```
 
-|   **parameters**   |                |
+| **parameters**     |                |
 | ------------------ | -------------- |
 | Generic parameters | `T`            |
 | Variable argument  | `xs : List<T>` |
@@ -967,7 +968,7 @@ func toVarArray<T>(xs : List<T>) : [var T]
 func toIter<T>(xs : List<T>) : Iter.Iter<T>
 ```
 
-|   **parameters**   |                |
+| **parameters**     |                |
 | ------------------ | -------------- |
 | Generic parameters | `T`            |
 | Variable argument  | `xs : List<T>` |

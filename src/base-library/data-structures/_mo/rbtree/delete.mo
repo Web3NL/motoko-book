@@ -12,5 +12,5 @@ let delete : () = textIntTree.delete("bitcoin");
 
 let iter : Iter.Iter<(Text, Int)> = textIntTree.entries();
 
-let array : [(Text, Int)]= Iter.toArray(iter)
+let array : [(Text, Int)] = Iter.toArray(iter)
 // ANCHOR_END: a

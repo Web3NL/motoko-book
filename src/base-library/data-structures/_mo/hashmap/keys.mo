@@ -4,7 +4,7 @@ import Text "mo:base/Text";
 import Iter "mo:base/Iter";
 
 let map = HashMap.HashMap<Text, Int>(5, Text.equal, Text.hash);
- 
+
 map.put("Rohit", 30);
 map.put("Kohli", 28);
 map.put("Rahul", 27);

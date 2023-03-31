@@ -13,7 +13,7 @@ func part(x : Int) : Bool {
     x > 0;
 };
 
-let partitions = Buffer.partition<Int>(intStorage,part);
+let partitions = Buffer.partition<Int>(intStorage, part);
 
 let tuple : ([Int], [Int]) = (Buffer.toArray(partitions.0), Buffer.toArray(partitions.1))
 // ANCHOR_END: a

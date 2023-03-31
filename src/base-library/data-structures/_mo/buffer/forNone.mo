@@ -7,8 +7,8 @@ intStorage.add(-1);
 intStorage.add(0);
 intStorage.add(1);
 
-func check( x : Int) : Bool {
-    x > 1
+func check(x : Int) : Bool {
+    x > 1;
 };
 
 Buffer.forNone<Int>(intStorage, check);

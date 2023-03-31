@@ -216,7 +216,7 @@ func thaw<X>(array : [X]) : [var X]
 ```motoko
 func sort<X>(
 
-   array : [X], 
+   array : [X],
  compare : (X, X) -> Order.Order
 
 ) : [X]
@@ -243,7 +243,6 @@ func sort<X>(
 | 3     | 20               | 40               |
 | 4     | 10               | 50               |
 
-
 ## Array.sortInPlace
 
 ### Function signature
@@ -251,7 +250,7 @@ func sort<X>(
 ```motoko
 func sortInPlace<X>(
 
-   array : [var X], 
+   array : [var X],
  compare : (X, X) -> Order.Order
 
 ) : ()
@@ -296,7 +295,6 @@ func reverse<X>(array : [X]) : [X]
 | 1     | "second"          | "second"          |
 | 2     | "third"           | "first"           |
 
-
 ## Array.flatten
 
 ### Function signature
@@ -324,8 +322,8 @@ func flatten<X>(arrays : [[X]]) : [x]
 ```motoko
 func equal<X>(
 
-  array1 : [X], 
-  array2 : [X], 
+  array1 : [X],
+  array2 : [X],
    equal : (X, X) -> Bool
 
 ) : Bool
@@ -352,7 +350,7 @@ func equal<X>(
 ```motoko
 func map<X>(
 
-array : [X], 
+array : [X],
     f : X -> Y
 
 ) : [Y]
@@ -378,7 +376,6 @@ array : [X],
 | 2     | true              | false             |
 | 3     | false             | true              |
 
-
 ## Array.filter
 
 ### Function signature
@@ -386,7 +383,7 @@ array : [X],
 ```motoko
 func filter<X>(
 
-    array : [X], 
+    array : [X],
 predicate : X -> Bool
 
 ) : [X]
@@ -414,7 +411,6 @@ predicate : X -> Bool
 | 4     | 9                |                  |
 | 5     | 7                |                  |
 
-
 ## Array.mapEntries
 
 ### Function signature
@@ -422,7 +418,7 @@ predicate : X -> Bool
 ```motoko
 func mapEntries<X,Y>(
 
-array : [X], 
+array : [X],
     f : (X, Nat) -> Y
 
 ) : [Y]
@@ -448,7 +444,6 @@ array : [X],
 | 2     | -3               | -6               |
 | 3     | -4               | -12              |
 
-
 ## Array.mapFilter
 
 ### Function signature
@@ -456,7 +451,7 @@ array : [X],
 ```motoko
 func mapFilter<X,Y>(
 
-   array : [X], 
+   array : [X],
        f : X -> ?Y
 
 ) : [Y]
@@ -482,7 +477,6 @@ func mapFilter<X,Y>(
 | 2     | 4                | "25"              |
 | 3     | 5                | "20"              |
 
-
 ## Array.mapResult
 
 ### Function signature
@@ -490,7 +484,7 @@ func mapFilter<X,Y>(
 ```motoko
 func mapResult<X, Y, E>(
 
-  array : [X], 
+  array : [X],
       f : X -> Result.Result<Y, E>
 
 ) : Result.Result<[Y], E>
@@ -515,7 +509,6 @@ func mapResult<X, Y, E>(
 | 1     | 5                | 20               |
 | 2     | 2                | 50               |
 | 3     | 1                | 100              |
-
 
 ## Array.vals
 
@@ -564,7 +557,7 @@ func keys<X>(array : [X]) : I.Iter<Nat>
 ```motoko
 func find<X>(
 
-    array : [X], 
+    array : [X],
 predicate : X -> Bool
 
 ) : ?X
@@ -590,7 +583,7 @@ predicate : X -> Bool
 ```motoko
 func chain<X, Y>(
 
-  array : [X], 
+  array : [X],
       k : X -> [Y]
 
 ) : [Y]
@@ -618,7 +611,6 @@ func chain<X, Y>(
 | 4     |                  | 30               |
 | 5     |                  | -30              |
 
-
 ## Array.foldLeft
 
 ### Function signature
@@ -626,8 +618,8 @@ func chain<X, Y>(
 ```motoko
 func foldLeft<X, A>(
 
-  array : [X], 
-   base : A, 
+  array : [X],
+   base : A,
 combine : (A, X) -> A
 
 ) : A
@@ -654,8 +646,8 @@ combine : (A, X) -> A
 ```motoko
 func foldRight<X, A>(
 
-  array : [X], 
-   base : A, 
+  array : [X],
+   base : A,
 combine : (X, A) -> A
 
 ) : A
@@ -673,4 +665,4 @@ combine : (X, A) -> A
 
 ```motoko, run
 {{#include _mo/array/foldRight.mo:a}}
-``` 
+```

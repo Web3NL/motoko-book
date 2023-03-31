@@ -11,7 +11,7 @@ The _convention_ is to name the [_module alias_](/common-programming-concepts/mo
 ### On this page
 
 [Type `Buffer.Buffer<X>`](#type-bufferbufferx)  
-[Class `Buffer.Buffer<X>(initCapacity : Nat)`](#class-bufferbufferx)  
+[Class `Buffer.Buffer<X>(initCapacity : Nat)`](#class-bufferbufferx)
 
 [**Class methods**](#class-methods)  
 &nbsp;&nbsp;&nbsp;&nbsp;[Method `size`](#buffersize)  

@@ -16,6 +16,5 @@ intStorage2.add(-1);
 intStorage2.add(0);
 intStorage2.add(1);
 
-
 Buffer.indexOfBuffer<Int>(intStorage2, intStorage1, Int.equal)
 // ANCHOR_END: a

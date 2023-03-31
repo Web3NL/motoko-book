@@ -7,5 +7,4 @@ intStorage.add(-1);
 intStorage.add(1);
 intStorage.add(1);
 
-Buffer.first<Int>(intStorage) 
-// ANCHOR_END: a
+Buffer.first<Int>(intStorage) // ANCHOR_END: a

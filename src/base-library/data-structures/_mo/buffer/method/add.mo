@@ -1,4 +1,3 @@
-
 // ANCHOR: a
 import Buffer "mo:base/Buffer";
 

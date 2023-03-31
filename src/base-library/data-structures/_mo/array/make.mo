@@ -1,4 +1,3 @@
-
 // ANCHOR: a
 import Array "mo:base/Array";
 
