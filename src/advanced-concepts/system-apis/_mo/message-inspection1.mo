@@ -20,7 +20,6 @@ type CallArgs = {
 };
 // ANCHOR_END: b
 
-
 //ANCHOR: c
 
 //ANCHOR_END: c

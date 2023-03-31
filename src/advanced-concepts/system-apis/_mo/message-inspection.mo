@@ -9,9 +9,9 @@ actor {
         caller : Principal;
         arg : Blob;
         msg : {
-            #f1 : () -> (); 
-            #f2 : () -> Nat; 
-            #f3 : () -> Text
+            #f1 : () -> ();
+            #f2 : () -> Nat;
+            #f3 : () -> Text;
         };
     };
 
@@ -20,7 +20,7 @@ actor {
         if (Principal.isAnonymous(caller)) { return false };
 
         let msgArg = args.arg;
-        if (msgArg.size() > 1024 ) { return false };
+        if (msgArg.size() > 1024) { return false };
 
         switch (args.msg) {
             case (#f1 _) { true };
@@ -28,4 +28,4 @@ actor {
             case (#f3 f3Args) { f3Args() == "some text" };
         };
     };
-}
+};
