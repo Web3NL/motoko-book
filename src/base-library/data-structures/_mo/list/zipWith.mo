@@ -2,11 +2,11 @@
 // ANCHOR: a
 import List "mo:base/List";
 
-let listN :  List.List<Int> =?(-3, ?(-2, ?(-1, null))); 
-let listP :  List.List<Int> = ?(0, ?(0, null)); 
+let listN : List.List<Int> = ?(-3, ?(-2, ?(-1, null)));
+let listP : List.List<Int> = ?(0, ?(0, null));
 
-func edit(x : Int , y : Int) : Int {
-    x*y
+func edit(x : Int, y : Int) : Int {
+    x * y;
 };
 
 List.zipWith<Int, Int, Int>(listN, listP, edit);

@@ -3,7 +3,7 @@
 import List "mo:base/List";
 
 func change(x : Int) : Int {
-    x*2
+    x * 2;
 };
 
 List.tabulate<Int>(3, change);
