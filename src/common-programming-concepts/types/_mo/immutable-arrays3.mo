@@ -1,7 +1,7 @@
 // IMMUTABLE ARRAYS
 
 // ANCHOR: a
-let letters : [Text] = ["a","b","c"];
+let letters : [Text] = ["a", "b", "c"];
 // ANCHOR_END: a
 
 // ANCHOR: b
@@ -22,4 +22,3 @@ var numbers : [Nat] = [5, 3, 7];
 
 numbers := [2, 6, 7, 4, 7];
 // ANCHOR_END: e
-

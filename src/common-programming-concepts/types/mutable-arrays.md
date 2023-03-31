@@ -1,13 +1,14 @@
 # Mutable Arrays
-Mutable arrays are a sequence of ordered *mutable* values of a certain type. To define a mutable array, we use the `var` keyword *inside* the array. 
+
+Mutable arrays are a sequence of ordered _mutable_ values of a certain type. To define a mutable array, we use the `var` keyword _inside_ the array.
 
 ```motoko
 {{#include _mo/mutable-arrays1.mo:a}}
 ```
 
-We declared an *immutable variable* named `letters` and assigned an array value to it. Our array has the keyword `var` inside of it after the first bracket to indicate that the values are mutable. The `var` keyword is used only once at the beginning. 
+We declared an _immutable variable_ named `letters` and assigned an array value to it. Our array has the keyword `var` inside of it after the first bracket to indicate that the values are mutable. The `var` keyword is used only once at the beginning.
 
-Notice, that array indexing works the same as for a immutable array. 
+Notice, that array indexing works the same as for a immutable array.
 
 We could be more explicit about the type of our variable by annotating it:
 
@@ -36,7 +37,8 @@ Our array has now the following value:
 ```
 
 ## Mutable arrays and mutable variables
-We could also assign a mutable array to a mutable variable. 
+
+We could also assign a mutable array to a mutable variable.
 
 ```motoko
 {{#include _mo/mutable-arrays3.mo:a}}

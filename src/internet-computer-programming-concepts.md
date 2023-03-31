@@ -2,7 +2,8 @@
 
 This chapters covers Internet Computer specific features of Motoko.
 
-It is *recommended* to be familiar with the following items (and their types) from the last chapter:  
+It is _recommended_ to be familiar with the following items (and their types) from the last chapter:
+
 - [functions](/common-programming-concepts/functions.html)
 - [records](/common-programming-concepts/types/records.html)
 - [objects](/common-programming-concepts/objects-and-classes/objects.html)
@@ -18,6 +19,6 @@ Before diving in, lets briefly describe four terms that look alike, but are not 
 
 - [**Canister**](/internet-computer-programming-concepts/actors/actor-to-canister.html) An instance of an actor that runs on the Internet Computer Blockchain.
 
-- [**WebAssembly Module**](/internet-computer-programming-concepts/actors/actor-to-canister.html#code-compiling-and-wasm-modules) A file containing a binary representation of a program (that may have been written in Motoko) that is installed in a canister that runs on the Internet Computer. 
+- [**WebAssembly Module**](/internet-computer-programming-concepts/actors/actor-to-canister.html#code-compiling-and-wasm-modules) A file containing a binary representation of a program (that may have been written in Motoko) that is installed in a canister that runs on the Internet Computer.
 
-- **Smart Contract**  The traditional notion of a blockchain program with roughly the same security guarantees as canisters but with limited memory and computation power. 
+- **Smart Contract** The traditional notion of a blockchain program with roughly the same security guarantees as canisters but with limited memory and computation power.

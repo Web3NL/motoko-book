@@ -2,13 +2,13 @@
 
 actor {
 
-// ANCHOR: a
-type GenderAge = { 
-    #Male : Nat;
-    #Female : Nat;
+    // ANCHOR: a
+    type GenderAge = {
+        #Male : Nat;
+        #Female : Nat;
+    };
+
+    type SharedFunction = shared GenderAge -> async GenderAge;
+    // ANCHOR_END: a
+
 };
-
-type SharedFunction = shared GenderAge -> async GenderAge;
-// ANCHOR_END: a
-
-}

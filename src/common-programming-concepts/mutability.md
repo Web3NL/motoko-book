@@ -1,20 +1,20 @@
 # Mutability
 
-Variables that can change their value *after* declaring them are called *mutable variables*. They are declared using a `var` declaration:
+Variables that can change their value _after_ declaring them are called _mutable variables_. They are declared using a `var` declaration:
 
 ```motoko
 {{#include _mo/mutability.mo:a}}
 ```
 
-`x` is now the name of a mutable variable with the value `1`. If we want to change the value, in other words *mutate* it, we *assign* a new value to it:
+`x` is now the name of a mutable variable with the value `1`. If we want to change the value, in other words _mutate_ it, we _assign_ a new value to it:
 
 ```motoko
 {{#include _mo/mutability.mo:b}}
 ```
 
-`x` now has the value `2`. 
+`x` now has the value `2`.
 
-The `:=` is called the assignment [operator](operators.html). It is used to assign a new value to an already declared variable. 
+The `:=` is called the assignment [operator](operators.html). It is used to assign a new value to an already declared variable.
 
 We can change the value of a mutable variable as many times as we like. For example, we declare a mutable variable named `city` with text value `"Amsterdam"`
 
@@ -22,7 +22,7 @@ We can change the value of a mutable variable as many times as we like. For exam
 {{#include _mo/mutability.mo:c}}
 ```
 
-And we also declare two immutable variables. 
+And we also declare two immutable variables.
 
 ```motoko
 {{#include _mo/mutability.mo:d}}
@@ -34,5 +34,4 @@ Now we mutate `city` three times:
 {{#include _mo/mutability.mo:e}}
 ```
 
-The last mutation was achieved by assigning a *string literal* to the variable name. The first two mutations were achieved by assigning the value of other immutable variables. It is also possible to assign the value of another mutable variable. 
-
+The last mutation was achieved by assigning a _string literal_ to the variable name. The first two mutations were achieved by assigning the value of other immutable variables. It is also possible to assign the value of another mutable variable.

@@ -9,8 +9,7 @@ type Age = Nat;
 // ANCHOR_END: b
 
 // ANCHOR: c
-let age : Age = 18; 
-// ANCHOR_END: c
+let age : Age = 18; // ANCHOR_END: c
 
 // ANCHOR: d
 let unitType : () = () : ();
@@ -21,13 +20,3 @@ type B = Bool;
 
 let boolean : B = true;
 // ANCHOR_END: e
-
-
-
-
-
-
-
-
-
-

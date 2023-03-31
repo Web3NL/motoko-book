@@ -13,5 +13,5 @@ module {
     };
 
     public let place = Info.city;
-}
+};
 // ANCHOR_END: a

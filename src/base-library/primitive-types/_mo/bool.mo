@@ -30,4 +30,3 @@ assert negative == false;
 let logicalNot = not positive;
 assert logicalNot == false;
 // ANCHOR_END: d
-

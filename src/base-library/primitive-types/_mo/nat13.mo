@@ -7,5 +7,4 @@ let b : Nat = 50;
 
 let divide = Nat.div(a, b);
 
-let division = a / b; 
-// ANCHOR_END: a
+let division = a / b; // ANCHOR_END: a

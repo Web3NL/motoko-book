@@ -12,13 +12,13 @@ Here is a variable with the `MyTuple` type.
 let myTuple: MyTuple = (2, "motoko");
 ```
 
-We can *access* the values of the tuple like this:
+We can _access_ the values of the tuple like this:
 
 ```motoko
 let motoko = myTuple.1;
 ```
 
-By adding `.1` to `myTuple` we access the second element of the tuple. This is called *tuple projection*. The indexing starts at 0.
+By adding `.1` to `myTuple` we access the second element of the tuple. This is called _tuple projection_. The indexing starts at 0.
 
 Another example:
 
@@ -33,6 +33,3 @@ We access the first element like this:
 ```motoko
 let username: Text = profile.0;
 ```
-
-
-

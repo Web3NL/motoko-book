@@ -1,6 +1,3 @@
-
-
-
 // ANCHOR: a
 import Principal "mo:base/Principal";
 

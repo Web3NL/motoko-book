@@ -11,7 +11,6 @@
 //     public let y = 0;
 // };
 
-
 // let obj = object {
 //     private func f() {};
 //     private let x = f;
@@ -29,15 +28,15 @@ let balance = object {
 
     public var balance = initialBalance;
 
-    public func addAmount( amount : Nat ) : Nat {
+    public func addAmount(amount : Nat) : Nat {
         balance += amount;
-        balance
-    }; 
+        balance;
+    };
 };
 
-// { 
-//     addAmount : Nat -> Nat; 
-//     var balance : Nat; 
+// {
+//     addAmount : Nat -> Nat;
+//     var balance : Nat;
 // }
 
 // ANCHOR: a

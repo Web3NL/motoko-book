@@ -6,6 +6,5 @@ let person = {
 };
 
 // ANCHOR: a
-let {name} = person;
+let { name } = person;
 // ANCHOR_END: a
-

@@ -1,5 +1,5 @@
 // Int64
-// ANCHOR: a 
+// ANCHOR: a
 import Int64 "mo:base/Int64";
 
 let int64 : Int64 = -9551616;

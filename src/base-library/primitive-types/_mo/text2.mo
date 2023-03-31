@@ -1,4 +1,3 @@
-
 // ANCHOR: a
 import Text "mo:base/Text";
 

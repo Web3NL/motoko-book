@@ -5,7 +5,7 @@ class CryptoAccount(amount : Nat, multiplier : Nat) {
     public var balance = amount * multiplier;
 
     public func pay(amount : Nat) {
-        balance += amount
+        balance += amount;
     };
 };
 

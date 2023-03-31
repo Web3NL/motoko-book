@@ -8,6 +8,3 @@ let bothTrue = Bool.logand(a, b);
 
 assert bothTrue == false;
 // ANCHOR_END: a
-
-
-

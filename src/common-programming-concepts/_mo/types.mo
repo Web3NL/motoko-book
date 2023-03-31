@@ -9,5 +9,5 @@ module {
     };
 
     public type User = (Nat, UserData);
-}
+};
 // ANCHOR_END: a

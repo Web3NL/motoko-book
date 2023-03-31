@@ -13,4 +13,3 @@ let city = "Amsterdam";
 
 let isNotFunny = false;
 // ANCHOR_END: b
-

@@ -1,6 +1,6 @@
 # Records
 
-Records are like a *collection* of named values (variables). These values could be mutable or immutable. We assign a record to a variable name `peter`:
+Records are like a _collection_ of named values (variables). These values could be mutable or immutable. We assign a record to a variable name `peter`:
 
 ```motoko
 let peter = {
@@ -9,7 +9,7 @@ let peter = {
 };
 ```
 
-The record is enclosed with curly brackets `{}`. The example above is a record with two *field expressions*. A field expression consists of a variable name and its assigned value. In this case `name` and `age` are the names. `Peter` and `18` are the values. Field expressions end with a semicolon `;`
+The record is enclosed with curly brackets `{}`. The example above is a record with two _field expressions_. A field expression consists of a variable name and its assigned value. In this case `name` and `age` are the names. `Peter` and `18` are the values. Field expressions end with a semicolon `;`
 
 We could annotate the types of the variables like this:
 
@@ -40,7 +40,7 @@ let bob : Person = {
 let alice : Person = {
     name = "Alice";
     age = 25;
-};  
+};
 ```
 
 Another example is a record with mutable contents:
@@ -59,13 +59,13 @@ let car : Car = {
 car.mileage := 30_000;
 ```
 
-We defined a new type `Car`. It has a mutable field `var mileage`. This field can be accessed by writing `car.mileage`. We then mutated the value of the mutable `mileage` variable to the value 30_000; 
+We defined a new type `Car`. It has a mutable field `var mileage`. This field can be accessed by writing `car.mileage`. We then mutated the value of the mutable `mileage` variable to the value 30_000;
 
 Note, we used an underscore `_` in the natural number. This is allowed for readability and does not affect the value.
 
 ## Object literal
 
-Records are sometimes referred to as *[object](/common-programming-concepts/objects-and-classes.html) literals*. They are like the [string literals](/common-programming-concepts/mutability.html) we saw in earlier chapters. Records are a 'literal' value of an object. We will discuss [objects](/common-programming-concepts/objects-and-classes.html) and their types in an upcoming chapter.
+Records are sometimes referred to as _[object](/common-programming-concepts/objects-and-classes.html) literals_. They are like the [string literals](/common-programming-concepts/mutability.html) we saw in earlier chapters. Records are a 'literal' value of an object. We will discuss [objects](/common-programming-concepts/objects-and-classes.html) and their types in an upcoming chapter.
 
 In our examples above, the literal value for the `bob` variable was:
 
@@ -91,7 +91,6 @@ Zero or more annotated names enclosed in `{}` is an object type. In fact, we cou
 let bob : { name : Text; age : Nat; } = { name = "Bob"; age = 20; };
 ```
 
-This is the same declaration we made earlier, but now we spelled out the type explicitly. 
+This is the same declaration we made earlier, but now we spelled out the type explicitly.
 
 We will revisit this subject in [objects and classes](/common-programming-concepts/objects-and-classes.html). -->
-

@@ -5,5 +5,3 @@ let character : Char = 'c';
 
 Text.fromChar(character)
 // ANCHOR_END: a
-
-

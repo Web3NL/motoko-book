@@ -5,11 +5,7 @@ type MyVariant = {
     #White;
 };
 
-
-
 let myVariant : MyVariant = #Black;
-
-
 
 type Person = {
     #Male : Nat;
@@ -19,8 +15,6 @@ type Person = {
 let me : Person = #Male 34;
 
 let her : Person = #Female(29);
-
-
 
 type Os = {
     #Mac;

@@ -1,4 +1,5 @@
 # If Else Expression
+
 The `if else` expression starts with the `if` keyword followed by two sub-expressions (a condition and its associated branch) and ends with the `else` keyword and a third sub-expression:
 
 ```motoko
@@ -13,7 +14,7 @@ When the branches are more complex expressions, they require curly braces:
 {{#include _mo/if-else.mo:b}}
 ```
 
-Unlike `if` expressions that lack an `else`, when the first sub-expression of an `if else` evaluates to `false`, the entire `if else` expression evaluates as the third sub-expression, not the unit value `()`. 
+Unlike `if` expressions that lack an `else`, when the first sub-expression of an `if else` evaluates to `false`, the entire `if else` expression evaluates as the third sub-expression, not the unit value `()`.
 
 For example, this `if else` expression evaluates to a value of a certain type `Text`, and we assign that value to a variable named `result`:
 

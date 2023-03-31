@@ -1,5 +1,5 @@
 // Int32
-// ANCHOR: a 
+// ANCHOR: a
 import Int32 "mo:base/Int32";
 
 let int32 : Int32 = -967296;

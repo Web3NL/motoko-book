@@ -13,10 +13,10 @@ type MessageObject = {
 // ANCHOR_END: b
 
 actor {
-// ANCHOR: c
-public shared (messageObject) func whoami() : async Principal {
-    let {caller} = messageObject;
-    caller
-};
-// ANCHOR_END: c
+    // ANCHOR: c
+    public shared (messageObject) func whoami() : async Principal {
+        let { caller } = messageObject;
+        caller;
+    };
+    // ANCHOR_END: c
 };

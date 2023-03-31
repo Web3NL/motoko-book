@@ -18,7 +18,7 @@ async function runMotoko() {
     "code.language-motoko.run"
   )
 
-  if( motokoCodeElements.length > 0) {
+  if (motokoCodeElements.length > 0) {
     await loadPackages()
   }
 

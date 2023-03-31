@@ -7,5 +7,4 @@ let b : Nat = 20;
 
 let subtract = Nat.sub(a, b);
 
-let subtraction = a - b; 
-// ANCHOR_END: a
+let subtraction = a - b; // ANCHOR_END: a

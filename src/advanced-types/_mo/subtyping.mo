@@ -2,7 +2,7 @@
 
 // ANCHOR: a
 func returnInt() : Int {
-    0 : Nat
+    0 : Nat;
 };
 // ANCHOR_END: a
 
@@ -25,13 +25,12 @@ type RGB = {
     #red : Nat8;
     #blue : Nat8;
     #green : Nat8;
-}; 
-// ANCHOR_END: b
+}; // ANCHOR_END: b
 
 // ANCHOR: c
 func rgb(color : RGB) { () };
 
-let red : Red = #red 255; 
+let red : Red = #red 255;
 rgb(red);
 
 let blue : Blue = #blue 100;
@@ -54,7 +53,7 @@ type NamedUser = {
 
 // ANCHOR: e
 func getId(user : User) : Nat {
-    user.id
+    user.id;
 };
 // ANCHOR_END: e
 

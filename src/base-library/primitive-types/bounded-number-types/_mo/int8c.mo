@@ -1,5 +1,5 @@
 // Int8
-// ANCHOR: a 
+// ANCHOR: a
 import Int8 "mo:base/Int8";
 
 let int8 : Int8 = -127;

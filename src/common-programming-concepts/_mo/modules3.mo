@@ -20,7 +20,7 @@ module {
     // };
 
     public func compute(x : Nat, y : Nat) : Nat {
-        x * y
+        x * y;
     };
 };
 // ANCHOR_END: b

@@ -16,14 +16,13 @@ let y : ?Text = null : Null;
 
 // ANCHOR: c
 func returnOption() : ?Nat {
-    ?0
+    ?0;
 };
 
 func returnNull() : ?Nat {
-    null
+    null;
 };
 // ANCHOR_END: c
-
 
 // ANCHOR: d
 type Result = {
@@ -34,16 +33,10 @@ type Result = {
 
 // ANCHOR: e
 func returnOk() : Result {
-    #ok
+    #ok;
 };
 
 func returnErr() : Result {
-    #err
+    #err;
 };
 // ANCHOR_END: e
-
-
-
-
-
-

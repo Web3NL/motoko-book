@@ -12,24 +12,9 @@ let person = {
     member = false;
 };
 
-let {name; member} = person;
+let { name; member } = person;
 // ANCHOR_END: b
 
 // ANCHOR: c
-let {name = realName; member = groupMember} = person;
+let { name = realName; member = groupMember } = person;
 // ANCHOR_END: c
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

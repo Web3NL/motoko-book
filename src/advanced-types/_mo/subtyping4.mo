@@ -11,13 +11,10 @@ actor {
         note : Text;
     };
 
-// ANCHOR: a
-public func post(n : ArgsV2) : async ResultV2 {
-    { 
-        data = [0, 0]; 
-        note = ""; 
-    }
-};
-// ANCHOR_END: a
+    // ANCHOR: a
+    public func post(n : ArgsV2) : async ResultV2 {
+        { data = [0, 0]; note = "" };
+    };
+    // ANCHOR_END: a
 
 };

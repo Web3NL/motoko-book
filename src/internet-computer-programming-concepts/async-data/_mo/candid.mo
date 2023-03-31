@@ -8,7 +8,5 @@ actor {
         (id, Principal.toText(id));
     };
 
-    public shared func doSomething() {
-        ()
-    };
+    public shared func doSomething() { () };
 };

@@ -7,7 +7,3 @@ let text : Text = "blockchain";
 
 Text.size(text)
 // ANCHOR_END: a
-
-
-
-

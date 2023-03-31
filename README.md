@@ -1,6 +1,6 @@
 # [The Motoko Programming Language Book](https://web3.motoko-book.dev/)
 
-**WARNING: Book is work in progress.**  
+**WARNING: Book is work in progress.**
 
 A book aiming to cover a broad range of concepts for programming in Motoko on the Internet Computer.
 

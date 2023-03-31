@@ -12,4 +12,3 @@ let myObject = MyClass<Bool>(2, true);
 // myClass.array now has value [true, true]
 myObject.array[0] := false;
 // ANCHOR_END: b
-

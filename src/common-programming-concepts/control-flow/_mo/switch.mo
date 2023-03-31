@@ -8,7 +8,7 @@ switch (condition) {
 // ANCHOR_END: a
 
 // ANCHOR: b
-type Color = { #Black; #White; #Blue; };
+type Color = { #Black; #White; #Blue };
 
 let color : Color = #Black;
 
@@ -34,12 +34,12 @@ var balance : Balance = null;
 func getBalance(bal : ?Nat) : Result {
     switch (bal) {
         case (null) {
-            #err "No balance!"
+            #err "No balance!";
         };
         case (?amount) {
-            #ok amount
+            #ok amount;
         };
-    }
+    };
 };
 // ANCHOR_END: c
 

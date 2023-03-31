@@ -27,8 +27,8 @@ let anotherClassInstance : ObjectType = MyClass();
 
 // ANCHOR: e
 class CryptoAccount(amount : Nat, multiplier : Nat) {
-    private func calc( a : Nat, b : Nat ) : Nat {
-        a * b
+    private func calc(a : Nat, b : Nat) : Nat {
+        a * b;
     };
 
     public var balance = calc(amount, multiplier);
