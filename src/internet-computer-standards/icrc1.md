@@ -5,7 +5,7 @@ ICRC1 is a standard for fungible tokens on the Internet Computer (IC). The stand
 The standard is defined in a [Candid file](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-1/ICRC-1.did) accompanied by an [additional description](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-1/README.md) of the intended behavior of any ICRC1 token.
 
 > **NOTE**  
-> *ICRC is an abbreviation of 'Internet Computer Request for Comments' and is chosen for historical reasons related to token developments in blockchains such as Ethereum and the popular ERC standards (Ethereum Request for Comments)*
+> _ICRC is an abbreviation of 'Internet Computer Request for Comments' and is chosen for historical reasons related to token developments in blockchains such as Ethereum and the popular ERC standards (Ethereum Request for Comments)_
 
 #### On this page
 
@@ -142,15 +142,14 @@ The standard specifies five [query functions](/internet-computer-programming-con
 
 ICRC1 intentionally excludes some ledger implementation details and does not specify how an actor should keep track of token balances and transaction history. It does specify three important [shared functions](/internet-computer-programming-concepts/actors.html#public-shared-functions-in-actors) to interact with the ledger, regardless of how the implementer of the standard chooses to implement the ledger.
 
-1. `icrc1_minting_account` is a [query function](/internet-computer-programming-concepts/actors.html#public-shared-query) that takes no arguments and returns `?Account`, an [optional](/common-programming-concepts/options-and-results.html) account. The token ledger *may* have a special account called the _minting account_. If this account exists, it would serve two purposes:
+1. `icrc1_minting_account` is a [query function](/internet-computer-programming-concepts/actors.html#public-shared-query) that takes no arguments and returns `?Account`, an [optional](/common-programming-concepts/options-and-results.html) account. The token ledger _may_ have a special account called the _minting account_. If this account exists, it would serve two purposes:
 
    - Token amounts sent **TO** the minting account would be _burned_, thus removing them from the total supply. This makes a token _deflationary_. Burn transactions have no fee.
    - Token amounts sent **FROM** the minting account would be _minted_, thus freshly created and added to the total supply. This makes a token _inflationary_. Mint transactions have no fee.
 
 1. `icrc1_balance_of` is a [query function](/internet-computer-programming-concepts/actors.html#public-shared-query) that takes an `Account` as an argument and returns the balance of that account as a `Nat` measured in smallest subunits of the token (defined by the token decimals).
 
-1. `icrc1_transfer` is the main and most important function of the standard. It is the only [update function](/internet-computer-programming-concepts/actors.html#public-shared-update) that [identifies its caller](/internet-computer-programming-concepts/principals-and-authentication.html#caller-authenticating-public-shared-functions) and is meant to transfer token amounts from one account to another. It takes the `TransferArgs` record as an argument and returns a result `Result<Nat, TransferError>`.  
-
+1. `icrc1_transfer` is the main and most important function of the standard. It is the only [update function](/internet-computer-programming-concepts/actors.html#public-shared-update) that [identifies its caller](/internet-computer-programming-concepts/principals-and-authentication.html#caller-authenticating-public-shared-functions) and is meant to transfer token amounts from one account to another. It takes the `TransferArgs` record as an argument and returns a result `Result<Nat, TransferError>`.
 
 This function should perform important checks before approving the transfer:
 
@@ -164,15 +163,15 @@ This function should perform important checks before approving the transfer:
 
 If anything fails, the function returns `#Err(txError)` where `txError` is a `TransferError` indicating what has gone wrong.
 
-If all checks are met, then the transfer is recorded and the function returns `#Ok(txIndex)` where `txIndex` is a `Nat` that represents the transaction index for the recorded transaction.  
-
+If all checks are met, then the transfer is recorded and the function returns `#Ok(txIndex)` where `txIndex` is a `Nat` that represents the transaction index for the recorded transaction.
 
 ## Metadata and Extensions
-1. `icrc1_metadata` is a [query](/internet-computer-programming-concepts/actors.html#public-shared-query) function that takes no arguments and returns an array of tuples `(Text, Value)`. The array may be empty. The tuples represent *metadata* about the token that may be used for client integrations with the token. The tuple represents a key-value store. The data does not have to be constant and may change in time. Notice that we use the `Value` [variant](/common-programming-concepts/types/variants.html) in the tuple.
-   - The `Text` is *namespaced* and consists of two parts separated by a colon: `namespace:key`. The first part `namespace` may not contain colons (`:`) and represents a 'domain' of metadata. The second part `key` is the actual key which is a name for the `Value`. 
+
+1. `icrc1_metadata` is a [query](/internet-computer-programming-concepts/actors.html#public-shared-query) function that takes no arguments and returns an array of tuples `(Text, Value)`. The array may be empty. The tuples represent _metadata_ about the token that may be used for client integrations with the token. The tuple represents a key-value store. The data does not have to be constant and may change in time. Notice that we use the `Value` [variant](/common-programming-concepts/types/variants.html) in the tuple.
+   - The `Text` is _namespaced_ and consists of two parts separated by a colon: `namespace:key`. The first part `namespace` may not contain colons (`:`) and represents a 'domain' of metadata. The second part `key` is the actual key which is a name for the `Value`.
    - The `icrc1` namespace is reserved is reserved for keys from the ICRC1 standard itself, like `icrc1:name`, `icrc1:symbol`, `icrc1:decimals` and `icrc1:fee`. Other keys could be added as part of the `icrc1` metadata domain, for example `icrc1:logo`.
-   - Another domain of metadata could be `stats` for providing statistics about the distribution of tokens. Some keys could be `stats:total_accounts`, `stats:average_balance` and `stats:total_tx`. 
-1. `icrc1_supported_standards` is a [query](/internet-computer-programming-concepts/actors.html#public-shared-query) function that returns an array of records `{ name : Text; url : Text }`. Each record contains info about *another* standard that may be implemented by this ICRC1 token. The ICRC1 token standard is intentionally designed to be very simple with the expectation that it will be extended by other standards. This *modularity of standards* allows for flexibility. (Not every token needs all capabilities of advanced token ledgers)    
+   - Another domain of metadata could be `stats` for providing statistics about the distribution of tokens. Some keys could be `stats:total_accounts`, `stats:average_balance` and `stats:total_tx`.
+1. `icrc1_supported_standards` is a [query](/internet-computer-programming-concepts/actors.html#public-shared-query) function that returns an array of records `{ name : Text; url : Text }`. Each record contains info about _another_ standard that may be implemented by this ICRC1 token. The ICRC1 token standard is intentionally designed to be very simple with the expectation that it will be extended by other standards. This _modularity of standards_ allows for flexibility. (Not every token needs all capabilities of advanced token ledgers)
 
 # Transaction deduplication
 
@@ -180,7 +179,7 @@ Usually, when a client makes a transfer, the token canister responds with a `Res
 
 If the client fails to receive the transfer response (for some reason, like a network outage) from the canister, it has no way of knowing whether the transaction was successful or not. The client could implement some logic to check the balance of the account, but that's not a perfect solution because it would still not know why a transfer may have been rejected.
 
-To offer a solution for this scenario (a client misses the response after making a transfer and doesn't know whether the transaction was successful), ICRC1 specifies _transaction deduplication_ functionality. An *identical transaction* submitted more than once within a certain *time window* is will not be accepted a second time. 
+To offer a solution for this scenario (a client misses the response after making a transfer and doesn't know whether the transaction was successful), ICRC1 specifies _transaction deduplication_ functionality. An _identical transaction_ submitted more than once within a certain _time window_ is will not be accepted a second time.
 
 The time window could be a period of say 24 hours. This way, a frequent user (like an exchange or trader perhaps) could label their transactions with a `created_at_time` and a (possibly unique) `memo`. The client could, in the case of a missed response, send the same transaction again within the allowed time window and learn about the status of the transaction.
 
@@ -188,9 +187,9 @@ If the initial transaction was successful, a correct implementation of ICRC1 wou
 
 ## IC time and Client time
 
-An actor (the _host_) who receives a transaction can get the current *IC time* through the [Time Base Module](/base-library/utils/time.html).
+An actor (the _host_) who receives a transaction can get the current _IC time_ through the [Time Base Module](/base-library/utils/time.html).
 
-A client could be a canister and in that case it would also get its time from the IC. But a client could also be a browser. In both cases, the *host time* and *client time* are not perfectly synced. 
+A client could be a canister and in that case it would also get its time from the IC. But a client could also be a browser. In both cases, the _host time_ and _client time_ are not perfectly synced.
 
 The _client_ may specify a `created_at_time` which is different from the IC time as perceived by an actor who receives a transactions at some point in time.
 

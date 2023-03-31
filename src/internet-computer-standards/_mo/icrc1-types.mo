@@ -13,14 +13,17 @@ type ICRC1_Interface = actor {
     icrc1_total_supply : shared query () -> async (Nat);
 
     // Ledger functionality
-    icrc1_minting_account : shared query () -> async ( ?Account );
+    icrc1_minting_account : shared query () -> async (?Account);
     icrc1_balance_of : shared query (Account) -> async (Nat);
-    icrc1_transfer : shared (TransferArgs) -> async ( Result<Nat, TransferError> );
+    icrc1_transfer : shared (TransferArgs) -> async (Result<Nat, TransferError>);
 
     // Metadata and Extensions
-    icrc1_metadata : shared query () -> async ( [(Text, Value)] );
-    icrc1_supported_standards : shared query () -> async ( [{ name : Text; url : Text }] );
-    
+    icrc1_metadata : shared query () -> async ([(Text, Value)]);
+    icrc1_supported_standards : shared query () -> async ([{
+        name : Text;
+        url : Text;
+    }]);
+
 };
 // ANCHOR_END: d
 
@@ -61,14 +64,9 @@ type TransferError = {
     #BadBurn : { min_burn_amount : Nat };
     #InsufficientFunds : { balance : Nat };
     #TooOld;
-    #CreatedInFuture: { ledger_time : Timestamp };
+    #CreatedInFuture : { ledger_time : Timestamp };
     #Duplicate : { duplicate_of : Nat };
     #TemporarilyUnavailable;
     #GenericError : { error_code : Nat; message : Text };
 };
 // ANCHOR_END: c
-
-
-
-
-
