@@ -1,7 +1,5 @@
-
 import Int "mo:base/Int";
 import Iter "mo:base/Iter";
-
 
 // ANCHOR: a
 
@@ -11,8 +9,7 @@ let i : Iter.Iter<Int> = a.vals();
 
 let sorted : Iter.Iter<Int> = Iter.sort(i, Int.compare);
 
-Iter.toArray(sorted) 
+Iter.toArray(sorted)
 
-// [-3, 1, 2, 5] : [Int] 
+// [-3, 1, 2, 5] : [Int]
 // ANCHOR_END: a
-

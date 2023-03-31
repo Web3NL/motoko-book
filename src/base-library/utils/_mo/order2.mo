@@ -1,15 +1,15 @@
 // order
 import Order "mo:base/Order";
 type Order = {
-    #less; 
-    #equal; 
-    #greater
-    };
+    #less;
+    #equal;
+    #greater;
+};
 
 // ANCHOR: a
-let order : Order = #less ;
+let order : Order = #less;
 
 let isEqual = Order.isEqual(order);
 
-assert isEqual == false ;
+assert isEqual == false;
 // ANCHOR_END: a

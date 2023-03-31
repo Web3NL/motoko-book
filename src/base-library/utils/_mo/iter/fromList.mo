@@ -12,5 +12,5 @@ let iter = Iter.fromList(list2);
 
 let array = Iter.toArray(iter);
 
-// [ 0, 1] : [ Nat] 
+// [ 0, 1] : [ Nat]
 // ANCHOR_END: a

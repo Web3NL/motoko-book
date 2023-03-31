@@ -15,11 +15,7 @@ actor {
         let t2 = await time2();
         let t3 = Time.now();
 
-        (t1, t2, t3)
+        (t1, t2, t3);
     };
-}
+};
 // ANCHOR_END: a
-
-
-
-

@@ -1,5 +1,6 @@
 # Iterators
-The *convention* is to name the [*module alias*](/common-programming-concepts/modules.html#imports) after the [*file name*](/common-programming-concepts/modules.html#imports) it is defined in:
+
+The _convention_ is to name the [_module alias_](/common-programming-concepts/modules.html#imports) after the [_file name_](/common-programming-concepts/modules.html#imports) it is defined in:
 
 ```motoko
 {{#include _mo/iter/iter.mo:a}}
@@ -7,17 +8,17 @@ The *convention* is to name the [*module alias*](/common-programming-concepts/mo
 
 ## Public items
 
-The following types and functions are made public in the `Iter` module:  
+The following types and functions are made public in the `Iter` module:
 
 [Type ](#type)
 
-[Class `range`](#class) 
+[Class `range`](#class)
 
-&nbsp;&nbsp;&nbsp;&nbsp;[Function `next`](#rangenext)  
+&nbsp;&nbsp;&nbsp;&nbsp;[Function `next`](#rangenext)
 
-[Class `revRange`](#class) 
+[Class `revRange`](#class)
 
-&nbsp;&nbsp;&nbsp;&nbsp;[Function `next`](#revRangenext)  
+&nbsp;&nbsp;&nbsp;&nbsp;[Function `next`](#revRangenext)
 
 [Function `iterate`](#iteriterate)  
 [Function `size`](#itersize)  
@@ -30,26 +31,29 @@ The following types and functions are made public in the `Iter` module:
 [Function `toArray`](#itertoarray)  
 [Function `toArrayMut`](#itertoarraymut)  
 [Function `toList`](#itertolist)  
-[Function `sort`](#itersort)  
-
+[Function `sort`](#itersort)
 
 ## Type
+
 ```motoko
 type Iter<T> = { next : () -> ?T }
 ```
 
 ## Class range
+
 ```motoko
 class range(x : Nat, y : Int)
 ```
 
 ## range.next
+
 ### Function signature
 
 ```motoko
 func next() : ?Nat
 ```
-The function `next` takes no argument and returns an `?Nat` value. 
+
+The function `next` takes no argument and returns an `?Nat` value.
 
 ### Example
 
@@ -57,11 +61,12 @@ The function `next` takes no argument and returns an `?Nat` value.
 {{#include _mo/iter/iter.mo:b}}
 ```
 
-
 ## Class revRange
+
 ```motoko
 class revRange(x : Int, y : Int)
 ```
+
 ## revRange.next
 
 ### Function signature
@@ -69,14 +74,14 @@ class revRange(x : Int, y : Int)
 ```motoko
 func next() : ?Int
 ```
-The function `next` takes no argument and returns an `?Int` value. 
+
+The function `next` takes no argument and returns an `?Int` value.
 
 ### Example
 
 ```motoko
 {{#include _mo/iter/iter.mo:c}}
 ```
-
 
 ## Iter.iterate
 
@@ -89,24 +94,24 @@ func iterate<A>(
 
    f : (A, Nat) -> ()
 
-) : () 
+) : ()
 
 ```
+
 ### Parameters
 
-|                     |                        |
-| ------------------- | ---------------------- |
-| Generic parameters  | `A`                    |
-| Variable argument   | `xs : Iter<A>`         |
-| Function argument   | `f : (A, Nat) -> ()`   |
-| Return type         | `() `                  |
+|                    |                      |
+| ------------------ | -------------------- |
+| Generic parameters | `A`                  |
+| Variable argument  | `xs : Iter<A>`       |
+| Function argument  | `f : (A, Nat) -> ()` |
+| Return type        | `() `                |
 
 ### Example
 
 ```motoko
 {{#include _mo/iter/iterate.mo:a}}
 ```
-
 
 ## Iter.size
 
@@ -118,12 +123,11 @@ func size<A>(xs : Iter<A>) : Nat
 
 ### Parameters
 
-|                     |                        |
-| ------------------- | ---------------------- |
-| Generic parameters  | `A`                    |
-| Variable argument   | `xs : Iter<A>`         |
-| Return type         | `Nat`                  |
-
+|                    |                |
+| ------------------ | -------------- |
+| Generic parameters | `A`            |
+| Variable argument  | `xs : Iter<A>` |
+| Return type        | `Nat`          |
 
 ### Example
 
@@ -145,14 +149,15 @@ func map<A, B>(
 ) : Iter<B>
 
 ```
+
 ### Parameters
 
-|                     |                        |
-| ------------------- | ---------------------- |
-| Generic parameter   | `A, B`                 |
-| Variable argument   | `xs : Iter<A>`         |
-| Function argument   | `f : A -> B`           |
-| Return type         | `Iter<B>`              |
+|                   |                |
+| ----------------- | -------------- |
+| Generic parameter | `A, B`         |
+| Variable argument | `xs : Iter<A>` |
+| Function argument | `f : A -> B`   |
+| Return type       | `Iter<B>`      |
 
 ### Example
 
@@ -174,14 +179,15 @@ func filter<A>(
 ) : Iter<A>
 
 ```
+
 ### Parameters
 
-|                     |                        |
-| ------------------- | ---------------------- |
-| Generic parameters  | `A`                    |
-| Variable argument   | `xs : Iter<A>`         |
-| Function argument   | `f : A -> Bool`        |
-| Return type         | `Iter<A>`              |
+|                    |                 |
+| ------------------ | --------------- |
+| Generic parameters | `A`             |
+| Variable argument  | `xs : Iter<A>`  |
+| Function argument  | `f : A -> Bool` |
+| Return type        | `Iter<A>`       |
 
 ### Example
 
@@ -196,13 +202,14 @@ func filter<A>(
 ```motoko
 func make<A>(x : A) : Iter<A>
 ```
+
 ### Parameters
 
-|                     |                        |
-| ------------------- | ---------------------- |
-| Generic parameters  | `A`                    |
-| Variable argument   | `x : A`                |
-| Return type         | `Iter<A>`              |
+|                    |           |
+| ------------------ | --------- |
+| Generic parameters | `A`       |
+| Variable argument  | `x : A`   |
+| Return type        | `Iter<A>` |
 
 ### Example
 
@@ -217,13 +224,14 @@ func make<A>(x : A) : Iter<A>
 ```motoko
 func fromArray<A>(xs : [A]) : Iter<A>
 ```
+
 ### Parameters
 
-|                     |                        |
-| ------------------- | ---------------------- |
-| Generic parameters  | `A`                    |
-| Variable argument   | `xs : [A]`             |
-| Return type         | `Iter<A>`              |
+|                    |            |
+| ------------------ | ---------- |
+| Generic parameters | `A`        |
+| Variable argument  | `xs : [A]` |
+| Return type        | `Iter<A>`  |
 
 ### Example
 
@@ -239,13 +247,14 @@ func fromArray<A>(xs : [A]) : Iter<A>
 func fromArrayMut<A>(xs : [var A]) : Iter<A>
 
 ```
+
 ### Parameters
 
-|                     |                        |
-| ------------------- | ---------------------- |
-| Generic parameters  | `A`                    |
-| Variable argument   | `xs : [var A]`         |
-| Return type         | `Iter<A>`              |
+|                    |                |
+| ------------------ | -------------- |
+| Generic parameters | `A`            |
+| Variable argument  | `xs : [var A]` |
+| Return type        | `Iter<A>`      |
 
 ### Example
 
@@ -260,12 +269,13 @@ func fromArrayMut<A>(xs : [var A]) : Iter<A>
 ```motoko
 func fromList(xs : List<T>) : Iter
 ```
+
 ### Parameters
 
-|                     |                        |
-| ------------------- | ---------------------- |
-| Variable argument   | `xs : List<T>`         |
-| Return type         | `Iter`                 |
+|                   |                |
+| ----------------- | -------------- |
+| Variable argument | `xs : List<T>` |
+| Return type       | `Iter`         |
 
 ### Example
 
@@ -280,13 +290,14 @@ func fromList(xs : List<T>) : Iter
 ```motoko
 func toArray<A>(xs : Iter<A>) : [A]
 ```
+
 ### Parameters
 
-|                     |                        |
-| ------------------- | ---------------------- |
-| Generic parameters  | `A`                    |
-| Variable argument   | `xs : Iter<A>`         |
-| Return type         | `[A]`                  |
+|                    |                |
+| ------------------ | -------------- |
+| Generic parameters | `A`            |
+| Variable argument  | `xs : Iter<A>` |
+| Return type        | `[A]`          |
 
 ### Example
 
@@ -301,13 +312,14 @@ func toArray<A>(xs : Iter<A>) : [A]
 ```motoko
 func toArrayMut<A>(xs : Iter<A>) : [var A]
 ```
+
 ### Parameters
 
-|                     |                        |
-| ------------------- | ---------------------- |
-| Generic parameters  | `A`                    |
-| Variable argument   | `xs : Iter<A>`         |
-| Return type         | `[var A]`              |
+|                    |                |
+| ------------------ | -------------- |
+| Generic parameters | `A`            |
+| Variable argument  | `xs : Iter<A>` |
+| Return type        | `[var A]`      |
 
 ### Example
 
@@ -322,13 +334,14 @@ func toArrayMut<A>(xs : Iter<A>) : [var A]
 ```motoko
 func list<A>(xs : Iter<A>) : List.List<A>
 ```
+
 ### Parameters
 
-|                     |                        |
-| ------------------- | ---------------------- |
-| Generic parameters  | `A`                    |
-| Variable argument   | `xs : Iter<A>`         |
-| Return type         | `List.List<A>`         |
+|                    |                |
+| ------------------ | -------------- |
+| Generic parameters | `A`            |
+| Variable argument  | `xs : Iter<A>` |
+| Return type        | `List.List<A>` |
 
 ### Example
 
@@ -342,7 +355,7 @@ func list<A>(xs : Iter<A>) : List.List<A>
 
 ```motoko
 func sort<A>(
-  
+
      xs : Iter<A>
 
 compare : (A, A) -> Order.Order
@@ -350,18 +363,18 @@ compare : (A, A) -> Order.Order
 ) : Iter<A>
 
 ```
+
 ### Parameters
 
-|                     |                                    |
-| ------------------- | ----------------------             |
-| Generic parameters  | `A`                                |
-| Variable argument   | `xs : Iter<A>`                     |
-| Function argument   | `compare : (A, A) -> Order.Order`  |
-| Return type         | `Iter<A>`                          |
+|                    |                                   |
+| ------------------ | --------------------------------- |
+| Generic parameters | `A`                               |
+| Variable argument  | `xs : Iter<A>`                    |
+| Function argument  | `compare : (A, A) -> Order.Order` |
+| Return type        | `Iter<A>`                         |
 
 ### Example
 
 ```motoko
 {{#include _mo/iter/sort.mo:a}}
 ```
-
