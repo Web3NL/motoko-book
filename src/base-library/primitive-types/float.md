@@ -120,3 +120,4 @@ The function `fromInt64` takes one `Int64` argument and returns a `Float` value.
 ```motoko
 func format(fmt : {#fix : Nat8; #exp : Nat8; #gen : Nat8; #hex : Nat8; #exact}, x : Float) : Text
 ```
+-->
