@@ -1,11 +1,7 @@
 //List
-
-
 // ANCHOR: a
 import List "mo:base/List";
 import Int "mo:base/Int";
 
-let make : List.List<Int> = List.make<Int>(3);
-// List.List<Int> : ?(3, null); 
+List.make<Int>(3);
 // ANCHOR_END: a
-

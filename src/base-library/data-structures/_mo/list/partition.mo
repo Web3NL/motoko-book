@@ -1,17 +1,13 @@
 //List
-
-
 // ANCHOR: a
 import List "mo:base/List";
 import Int "mo:base/Int";
 
-let list :  List.List<Int> =?(1, ?(0, ?(-1, ?(-2, null)))); 
+let list : List.List<Int> = ?(1, ?(0, ?(-1, ?(-2, null))));
 
 func change(x : Int) : Bool {
-x >= 0
+    x >= 0;
 };
 
-let partition : (List.List<Int>, List.List<Int>) = List.partition<Int>(list, change);
-// (?(1, ?(0, null)), ?(-1, ?(-2, null)))
+List.partition<Int>(list, change);
 // ANCHOR_END: a
-

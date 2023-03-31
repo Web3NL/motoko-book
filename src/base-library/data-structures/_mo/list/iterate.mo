@@ -1,15 +1,17 @@
 //List
 // ANCHOR: a
 import List "mo:base/List";
+import Iter "mo:base/Iter";
 
-let list :  List.List<Int> =?(-3, ?(-2, ?(-1, null))); 
+let list : List.List<Int> = ?(-3, ?(-2, ?(-1, null)));
 
 var number : Int = 5;
 
 func edit(x : Int) : () {
-number += x    
+    number += x;
 };
 
-let iterate :() = List.iterate(list, edit);  
-// ANCHOR_END: a
+let iterate : () = List.iterate(list, edit);
 
+List.toArray(list);
+// ANCHOR_END: a
