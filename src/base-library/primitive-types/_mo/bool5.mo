@@ -1,10 +1,9 @@
-import Bool "mo:base/Bool";
 
 // ANCHOR: a
+import Bool "mo:base/Bool";
+
 let a = true;
 let b = false;
 
-let isEqual = Bool.equal(a, b);
-
-assert isEqual == false;
+Bool.equal(a, b);
 // ANCHOR_END: a
