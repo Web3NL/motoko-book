@@ -90,7 +90,7 @@ We can now access all the information for any function call inside the `inspect`
 
 Inside `inspect` we first check whether the `caller` field of `args`, which is a `Principal`, is equal to the anonymous principal. If so, then `inspect` returns `false` and the call is _rejected_. Anonymous principals can't call any functions of this [actor](/internet-computer-programming-concepts/actors.html).
 
-Another check is performed on the size of the `arg` field value of our `args` object. If the _binary message argument_ is larger than `1024` bytes, then the call is _rejected_ by returning `false` once more.
+Another check is performed on the size of the `arg` field value of our `args` record. If the _binary message argument_ is larger than `1024` bytes, then the call is _rejected_ by returning `false` once more.
 
 Our `inspect` implementation ends with a switch expression that checks every case of the `msg` variant inside `args`.
 
