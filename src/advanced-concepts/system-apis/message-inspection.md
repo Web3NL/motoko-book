@@ -84,7 +84,7 @@ We implemented an actor that _inspects_ any call to its [public shared functions
 
 First, the `Principal` module is imported and the [actor](/internet-computer-programming-concepts/actors.html) is declared with three [public shared functions](/internet-computer-programming-concepts/actors.html#public-shared-functions-in-actors) `f1`, `f2` and `f3`.
 
-Then, we defined `CallArgs` as the object type of the _expected_ argument to the `inspect` system function. We then declare the system function and use `CallArgs` to annotate the `args` argument.
+Then, we defined `CallArgs` as the record type of the _expected_ argument to the `inspect` system function. We then declare the system function and use `CallArgs` to annotate the `args` argument.
 
 We can now access all the information for any function call inside the `inspect` function through the _chosen_ name `args`. (We could have chosen any other name)
 
