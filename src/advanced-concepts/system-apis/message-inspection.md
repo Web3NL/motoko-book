@@ -42,7 +42,7 @@ The argument to the `inspect` system function is provided by the IC. The type of
 
 The functions `f1` and `f2` are _update_ functions and `f3` is a _oneway_ function. Also, `f2` takes a `Nat` argument and `f3` takes a `Text` argument.
 
-The argument to the `inspect` system function (which we call `args` in this example) for this specific [actor](/internet-computer-programming-concepts/actors.html) will be an object of the following type:
+The argument to the `inspect` system function (which we call `args` in this example) for this specific [actor](/internet-computer-programming-concepts/actors.html) will be a record of the following type:
 
 ```motoko
 {{#include _mo/message-inspection1.mo:b}}
