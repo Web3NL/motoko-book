@@ -4,7 +4,7 @@ import Iter "mo:base/Iter";
 let myRange = Iter.range(1, 3);
 
 func change(n : Nat) : Bool {
-    n> 1;
+    n > 1;
 };
 
 let filterIter = Iter.filter<Nat>(myRange, change);

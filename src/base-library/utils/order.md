@@ -6,28 +6,27 @@ The _convention_ is to name the [_module alias_](/common-programming-concepts/mo
 {{#include _mo/order.mo:a}}
 ```
 
-The Order type is commonly used in programming to represents a set of possible outcomes when comparing two values.
-it is defined as:
+The `Order` [variant] type is used to represent three possible outcomes when comparing the _order_ two values.
 
 ```motoko
 {{#include _mo/order.mo:b}}
 ```
 
-The #less variant represents the result of comparing two values where the first value is less than the second value.
+When comparing the order of two values, we could either return:
 
-The #equal variant represents the result of comparing two values where both values are equal.
+- `#less` when the first value is less than the second value.
+- `#equal` when both values are equal.
+- `#greater` when the first value is greater than the second value.
 
-The #greater variant represents the result of comparing two values where the first value is greater than the second value.
-
-For example, consider the code below. This creates a new variable named order and assigns it the value #less.
+Some types are naturally ordered like number types [`Nat`] and [`Int`]. But we may define an order for any type, even types for which there is no obvious natural order.
 
 ```motoko
 {{#include _mo/order.mo:c}}
 ```
 
-## Order.isLess
+Here we define an order for our `Color` variant by defining a function that compares two values of `Color` and returns an `Order`. It treats `#Red` to be `#greater` than `#Blue`.
 
-The function `isLess` takes `Order` argument and returns a `Bool` value.
+## Order.isLess
 
 ```motoko
 {{#include _mo/order1.mo:a}}
@@ -35,23 +34,17 @@ The function `isLess` takes `Order` argument and returns a `Bool` value.
 
 ## Order.isEqual
 
-The function `isEqual` takes `Order` argument and returns a `Bool` value.
-
 ```motoko
 {{#include _mo/order2.mo:a}}
 ```
 
 ## Order.isGreater
 
-The function `isGreater` takes `Order` argument and returns a `Bool` value.
-
 ```motoko
 {{#include _mo/order3.mo:a}}
 ```
 
 ## Order.equal
-
-The function `equal` takes two `Order` argument and returns a `Bool` value.
 
 ```motoko
 {{#include _mo/order.mo:d}}
