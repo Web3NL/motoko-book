@@ -1,16 +1,16 @@
 # Time
 
-The _convention_ is to name the [_module alias_](/common-programming-concepts/modules.html#imports) after the [_file name_](/common-programming-concepts/modules.html#type-imports-and-renaming) it is defined in.
+The _convention_ is to name the [_module alias_](/common-programming-concepts/modules.html#type-imports-and-renaming) after the [_file name_](/common-programming-concepts/modules.html#type-imports-and-renaming) it is defined in.
 
-The time module exposes one function `now` that returns the IC system time represented as nanoseconds since 1970-01-01 as a `Int`.
+The time module exposes one function `now` that returns the IC system time represented as nanoseconds since 1970-01-01 as an `Int`.
 
 ```motoko, run
 {{#include _mo/time.mo:a}}
 ```
 
-## Constant time
+## Time is constant within `async` call
 
-The system time is constant within one function call and any sub calls.
+The system time is constant within one `async` function call and any sub calls.
 
 ```motoko, run
 {{#include _mo/time2.mo:a}}

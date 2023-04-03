@@ -2,7 +2,7 @@
 
 In programming, errors can occur due to various reasons, such as invalid user input, network errors, or code bugs. Handling these errors is crucial for building reliable and robust applications. The Motoko language provides built-in support for handling errors through the Error module.
 
-The _convention_ is to name the [_module alias_](/common-programming-concepts/modules.html#imports) after the [_file name_](/common-programming-concepts/modules.html#imports) it is defined in:
+The _convention_ is to name the [_module alias_](/common-programming-concepts/modules.html#type-imports-and-renaming) after the [_file name_](/common-programming-concepts/modules.html#imports) it is defined in:
 
 ```motoko
 {{#include _mo/error.mo:a}}
