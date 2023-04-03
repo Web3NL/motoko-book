@@ -23,6 +23,16 @@ import Text "mo:base/Text";
 [Function `encodeUtf8`](#textencodeutf8)  
 [Function `decodeUtf8`](#textdecodeutf8)
 
+### Comparison
+
+[Function `equal`](#textequal)    
+[Function `notEqual`](#textnotequal)    
+[Function `less`](#textless)    
+[Function `lessOrEqual`](#textlessorequal)    
+[Function `greater`](#textgreater)    
+[Function `greaterOrEqual`](#textgreaterorequal)    
+[Function `compare`](#textcompare)    
+
 ### Transformation
 
 [Function `replace`](#textreplace)  
@@ -120,6 +130,83 @@ The function `decodeUtf8` takes one `Blob` argument and returns a `?Text` value.
 
 ```motoko, run
 {{#include _mo/text7.mo:a}}
+```
+## Text.equal
+
+```motoko
+func equal(t1 : Text, t2 : Text) : Bool
+```
+
+The function `equal` takes two `Text` value as a argument and returns a `Bool` value.
+
+```motoko, run
+{{#include _mo/text0.mo:a}}
+```
+## Text.notEqual
+
+```motoko
+func notEqual(t1 : Text, t2 : Text) : Bool
+```
+
+The function `notEqual` takes two `Text` value as a argument and returns a `Bool` value.
+
+```motoko, run
+{{#include _mo/text0.mo:a}}
+```
+## Text.less
+
+```motoko
+func less(t1 : Text, t2 : Text) : Bool
+```
+
+The function `less` takes two `Text` value as a argument and returns a `Bool` value.
+
+```motoko, run
+{{#include _mo/text0.mo:a}}
+```
+## Text.lessOrEqual
+
+```motoko
+func lessOrEqual(t1 : Text, t2 : Text) : Bool
+```
+
+The function `lessOrEqual` takes two `Text` value as a argument and returns a `Bool` value.
+
+```motoko, run
+{{#include _mo/text0.mo:a}}
+```
+## Text.greater
+
+```motoko
+func greater(t1 : Text, t2 : Text) : Bool
+```
+
+The function `greater` takes two `Text` value as a argument and returns a `Bool` value.
+
+```motoko, run
+{{#include _mo/text0.mo:a}}
+```
+## Text.greaterOrEqual
+
+```motoko
+func greaterOrEqual(t1 : Text, t2 : Text) : Bool
+```
+
+The function `greaterOrEqual` takes two `Text` value as a argument and returns a `Bool` value.
+
+```motoko, run
+{{#include _mo/text0.mo:a}}
+```
+## Text.compare
+
+```motoko
+func compare(t1 : Text, t2 : Text) : {#less; #equal; #greater}
+```
+
+The function `compare` takes two `Text` value as a argument and returns an [Order](/base-library/utils/order.html) variant value.
+
+```motoko, run
+{{#include _mo/text0.mo:a}}
 ```
 
 ## Text.replace
