@@ -60,7 +60,7 @@ The `msg` [variant](/common-programming-concepts/types/variants.html) inside the
 
 But the _associated types_ for the variant fields **ARE NOT** the types of the [actor functions](/internet-computer-programming-concepts/actors.html#public-shared-functions-in-actors). Instead, the types of the variant fields `#f1`, `#f2` and `#f3` are 'function-variable-accessor' functions that we could call inside the `inspect` system function.
 
-In our example these 'function-variable-accessor' function types are:
+In our example these 'function-argument-accessor' function types are:
 
 ```motoko
 () -> ();
