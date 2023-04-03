@@ -1,6 +1,6 @@
 # Bool
 
-The _convention_ is to name the [_module alias_](/common-programming-concepts/modules.html#imports) after the [_file name_](/common-programming-concepts/modules.html#imports) it is defined in:
+The _convention_ is to name the [_module alias_](/common-programming-concepts/modules.html#type-imports-and-renaming) after the [_file name_](/common-programming-concepts/modules.html#imports) it is defined in:
 
 ```motoko, run
 {{#include _mo/bool.mo:a}}
@@ -34,9 +34,6 @@ The function `equal` takes two `Bool` arguments and returns a `Bool` value. It i
 ```motoko, run
 {{#include _mo/bool5.mo:a}}
 ```
-```motoko, run
-{{#include _mo/bool9.mo:b}}
-```
 
 ## Bool.notEqual
 
@@ -48,10 +45,6 @@ The function `notEqual` takes two `Bool` arguments and returns a `Bool` value. I
 
 ```motoko, run
 {{#include _mo/bool4.mo:a}}
-```
-
-```motoko, run
-{{#include _mo/bool9.mo:c}}
 ```
 
 ## Bool.compare
@@ -88,10 +81,6 @@ The function `lognot` takes one `Bool` argument and returns a `Bool` value. It s
 
 ```motoko, run
 {{#include _mo/bool8.mo:a}}
-```
-
-```motoko, run
-{{#include _mo/bool9.mo:a}}
 ```
 
 ## Bool.logand

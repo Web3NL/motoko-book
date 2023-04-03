@@ -2,7 +2,7 @@
 
 To understand this _principal module_, it might be helpful to learn about [Principles](/internet-computer-programming-concepts/principals-and-authentication.html) first.
 
-The _convention_ is to name the [_module alias_](/common-programming-concepts/modules.html#imports) after the [_file name_](/common-programming-concepts/modules.html#imports) it is defined in:
+The _convention_ is to name the [_module alias_](/common-programming-concepts/modules.html#type-imports-and-renaming) after the [_file name_](/common-programming-concepts/modules.html#imports) it is defined in:
 
 ```motoko
 {{#include _mo/principal.mo:a}}
