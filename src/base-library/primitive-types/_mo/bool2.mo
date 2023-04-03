@@ -1,10 +1,8 @@
+// ANCHOR: a
 import Bool "mo:base/Bool";
 
-// ANCHOR: a
 let a = true;
 let b = false;
 
-let eitherIsTrue = Bool.logor(a, b);
-
-assert eitherIsTrue == true;
+Bool.logor(a, b);
 // ANCHOR_END: a

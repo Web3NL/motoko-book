@@ -5,5 +5,5 @@ import Principal "mo:base/Principal";
 
 actor MyActor {};
 
-let actorsPrincipal : Principal = Principal.fromActor(MyActor);
+Principal.fromActor(MyActor);
 // ANCHOR_END: b
