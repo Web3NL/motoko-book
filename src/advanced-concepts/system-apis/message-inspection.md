@@ -54,7 +54,7 @@ This object contains three fields with _predefined_ names:
 - The `arg` field is always of type `Blob`.
 - The `msg` field is always a [variant](/common-programming-concepts/types/variants.html) type and its fields will depend on the [type of the actor](/internet-computer-programming-concepts/actors.html#actor-type) that this `inspect` function is defined in.
 
-### The `msg` variant and 'function-variable-accessor' functions
+### The `msg` variant and 'function-argument-accessor' functions
 
 The `msg` [variant](/common-programming-concepts/types/variants.html) inside the argument for the `inspect` system function will have a field for every public shared function of the [actor](/internet-computer-programming-concepts/actors.html). The variant _field names_ `#f1`, `#f2` and `#f3` correspond the the _function names_ `f1`, `f2` and `f3`.
 
