@@ -45,7 +45,7 @@ The argument to the `inspect` system function is provided by the IC. The type of
 
 The functions `f1` and `f2` are _update_ functions and `f3` is a _oneway_ function. Also, `f2` takes a `Nat` argument and `f3` takes a `Text` argument.
 
-The argument to the `inspect` system function (which we call `args` in this example) for this specific [actor](/internet-computer-programming-concepts/actors.html) will be a record of the following type:
+The argument to the `inspect` system function (which we call `args` in this example) for this specific [actor](/internet-computer-programming-concepts/actors.html) will be a [record](/common-programming-concepts/types/records.html) of the following type:
 
 ```motoko
 {{#include _mo/message-inspection1.mo:b}}
@@ -121,7 +121,7 @@ And notice that we use the `Any` type as the _associated type_ of the `#f1` vari
 
 Inside the function, we switch on `msg` and only handle the case where function `f2` is called. If the variable value to `f2` is less than `100`, we _accept_, otherwise we _reject_ the call.
 
-In all other cases, we check whether `id` is the anonymous principal. If it is, we _reject_, otherwise we _accept_ the call.
+In all other cases, we check whether `id` is the [anonymous principal](/internet-computer-programming-concepts/principals-and-authentication.html#anonymous-principal). If it is, we _reject_, otherwise we _accept_ the call.
 
 ## Message inspection vs Caller identifying functions
 
