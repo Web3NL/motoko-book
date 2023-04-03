@@ -96,7 +96,7 @@ Our `inspect` implementation ends with a switch expression that checks every cas
 
 In the case function `f1` is called, we ignore the possible arguments supplied to it by using the wildcard `_` for the 'function-variable-accessor' function and always _accept_ the call by always returning `true`.
 
-In case function `f2` is called, we bind the 'function-variable-accessor' function to the local name `f2Args` and run it to get the value of the argument to `f2`, which is a `Nat`. If this value is smaller then `100`, we _accept_ the call, otherwise we _reject_.
+In case function `f2` is called, we bind the 'function-argument-accessor' function to the local name `f2Args` and run it to get the value of the argument to `f2`, which is a `Nat`. If this value is smaller then `100`, we _accept_ the call, otherwise we _reject_.
 
 In case function `f3` is called, we bind the 'function-variable-accessor' function to the local name `f3Args` and run it to get the value of the argument to `f3`, which is a `Text`. If this value is equal to `"some text"`, we _accept_ the call, otherwise we _reject_.
 
