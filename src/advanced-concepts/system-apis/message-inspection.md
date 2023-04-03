@@ -2,14 +2,14 @@
 
 A running canister on the Internet Computer (IC) can receive calls to its [_public shared functions_](/internet-computer-programming-concepts/actors.html#public-shared-functions-in-actors) that may take a [_message object_](/internet-computer-programming-concepts/principals-and-authentication.html#caller-authenticating-public-shared-functions) that contains information about the _function call_. The function could for example implement [_caller authentication_](/internet-computer-programming-concepts/principals-and-authentication.html#caller-authenticating-public-shared-functions) based on the information provided in the message object.
 
-Additionally, the IC provides _message inspection_ functionality to inspect [_update_](/internet-computer-programming-concepts/actors.html#public-shared-update) or [_oneway_](/internet-computer-programming-concepts/actors.html#public-shared-oneway) calls and either _accept_ or _decline_ the call _before_ running a public shared function.
+Additionally, the IC provides _message inspection_ functionality to inspect [_update_](/internet-computer-programming-concepts/actors.html#public-shared-update) or [_oneway_](/internet-computer-programming-concepts/actors.html#public-shared-oneway) calls (and even [update calls to query functions](#how-it-works)) and either _accept_ or _decline_ the call _before_ running a public shared function.
 
 > **NOTE**  
 > _Message inspection is executed by a [single replica](#message-inspection-vs-caller-identifying-functions) and does not provide the full security guarantees of going through consensus._
 
 ## The `inspect` system function
 
-In Motoko, this functionality can be implemented as a _system function_ called `inspect`. This function takes an [object](/common-programming-concepts/objects-and-classes/objects.html) as an argument and returns a `Bool` value. If we _name_ the object argument `args`, then the _function signature_ looks like this:
+In Motoko, this functionality can be implemented as a _system function_ called `inspect`. This function takes a [record](/common-programming-concepts/types/records.html) as an argument and returns a `Bool` value. If we _name_ the record argument `args`, then the _function signature_ looks like this:
 
 ```motoko
 system func inspect(args) : Bool
@@ -19,18 +19,21 @@ Note that the [return type](/internet-computer-programming-concepts/actors.html#
 
 ### How it works
 
-The `inspect` function is run before any call to an [_update_](/internet-computer-programming-concepts/actors.html#public-shared-update) or [_oneway_](/internet-computer-programming-concepts/actors.html#public-shared-oneway) function of an [actor](/internet-computer-programming-concepts/actors.html). The call to the [actor](/internet-computer-programming-concepts/actors.html) is then _inspected_ by the `inspect` system function.
+The `inspect` function is run before any external _update_ call (via an IC ingress message) to an [_update_](/internet-computer-programming-concepts/actors.html#public-shared-update), [_oneway_](/internet-computer-programming-concepts/actors.html#public-shared-oneway) or [_query_](/internet-computer-programming-concepts/actors.html#public-shared-query) function of an [actor](/internet-computer-programming-concepts/actors.html). The call to the [actor](/internet-computer-programming-concepts/actors.html) is then _inspected_ by the `inspect` system function.
+
+> **NOTE**  
+> *The most common way to call a `query` function is through a query call, but query functions could also be called by an *update call* (less common). The latter calls are slower but more trustworthy: they require consensus and are charged in cycles. Update calls to query methods are protected by message inspection too, though query call to query methods are not!*
 
 The argument to the `inspect` function (an object we call `args` in the function signature above) is provided by the IC and contains information about:
 
-- The [public shared function](/internet-computer-programming-concepts/actors.html#public-shared-functions-in-actors) that is being called
+- The name of the [public shared function](/internet-computer-programming-concepts/actors.html#public-shared-functions-in-actors) that is being called and a function to obtain its arguments
 - The [caller](/internet-computer-programming-concepts/principals-and-authentication.html#caller-authenticating-public-shared-functions) of the function
 - The _binary content_ of the _message argument_.
 
 The `inspect` function may examine this information about the call and decide to either _accept_ or _decline_ the call by returning either `true` or `false` respectively.
 
 > **NOTE**  
-> _Calls to either [query functions](/internet-computer-programming-concepts/actors.html#public-shared-query), [other canisters](/advanced-concepts/async-programming/cross-canister-calls-and-rollbacks.html) or the [management canister](/common-internet-computer-canisters/ic-management-canister.html) are NOT inspected by the `inspect` system function._
+> _Ingress query calls to [query functions](/internet-computer-programming-concepts/actors.html#public-shared-query) and any calls from [other canisters](/advanced-concepts/async-programming/cross-canister-calls-and-rollbacks.html) are NOT inspected by the `inspect` system function._
 
 ### The `inspect` function argument
 
@@ -48,7 +51,7 @@ The argument to the `inspect` system function (which we call `args` in this exam
 {{#include _mo/message-inspection1.mo:b}}
 ```
 
-This object contains three fields with _predefined_ names:
+This record contains three fields with _predefined_ names:
 
 - The `caller` field is always of type `Principal`.
 - The `arg` field is always of type `Blob`.
@@ -58,7 +61,7 @@ This object contains three fields with _predefined_ names:
 
 The `msg` [variant](/common-programming-concepts/types/variants.html) inside the argument for the `inspect` system function will have a field for every public shared function of the [actor](/internet-computer-programming-concepts/actors.html). The variant _field names_ `#f1`, `#f2` and `#f3` correspond the the _function names_ `f1`, `f2` and `f3`.
 
-But the _associated types_ for the variant fields **ARE NOT** the types of the [actor functions](/internet-computer-programming-concepts/actors.html#public-shared-functions-in-actors). Instead, the types of the variant fields `#f1`, `#f2` and `#f3` are 'function-variable-accessor' functions that we could call inside the `inspect` system function.
+But the _associated types_ for the variant fields **ARE NOT** the types of the [actor functions](/internet-computer-programming-concepts/actors.html#public-shared-functions-in-actors). Instead, the types of the variant fields `#f1`, `#f2` and `#f3` are 'function-argument-accessor' functions that we can call (if needed) inside the `inspect` system function.
 
 In our example these 'function-argument-accessor' function types are:
 
@@ -68,7 +71,7 @@ In our example these 'function-argument-accessor' function types are:
 () -> Text;
 ```
 
-These functions return the variable arguments that were supplied during the call to the public shared function. Thus, they always have unit argument types and return the variable type of the called function.
+These functions return the arguments that were supplied during the call to the public shared function. They always have unit argument type but return the argument type of the corresponding shared function. The return type of each accessor thus depends on the shared function that it is inspecting.
 
 For example function `f2` takes a `Nat`. If we wanted to _inspect_ this value, we could call the _associated function_ of variant `#f2`, which is of type `() -> Nat`. This function will provide the actual argument passed in the call to the public shared function.
 
@@ -108,7 +111,7 @@ Instead of defining the type `CallArgs` beforehand and referring to the object a
 {{#include _mo/message-inspection2.mo:a}}
 ```
 
-We now declared `inspect` with an _object literal_ as the argument.
+We now declared `inspect` with a _record pattern_ as the argument.
 
 We pattern match on the `caller` field and rename it to `id`. We could now just refer to `id` inside the function.
 
