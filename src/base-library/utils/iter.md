@@ -6,10 +6,6 @@ The _convention_ is to name the [_module alias_](/common-programming-concepts/mo
 {{#include _mo/iter/iter.mo:a}}
 ```
 
-## Public items
-
-The following types and functions are made public in the `Iter` module:
-
 [Type ](#type)
 
 [Class `range`](#class)
@@ -53,8 +49,6 @@ class range(x : Nat, y : Int)
 func next() : ?Nat
 ```
 
-The function `next` takes no argument and returns an `?Nat` value.
-
 ### Example
 
 ```motoko
@@ -74,8 +68,6 @@ class revRange(x : Int, y : Int)
 ```motoko
 func next() : ?Int
 ```
-
-The function `next` takes no argument and returns an `?Int` value.
 
 ### Example
 
