@@ -17,7 +17,7 @@ The _convention_ is to name the [_module alias_](/common-programming-concepts/mo
 
 ## Public type
 
-The `Result<Ok, Err>` type is a [variant] with two [generic parameters]. It can be used as the return type for functions to indicate either _success_ or _error_. Both cases can be handled _programmatically_.
+The `Result<Ok, Err>` type is a [variant](/common-programming-concepts/types/variants.html) with two [generic parameters](/advanced-types/generics.html#type-parameters-and-type-arguments). It can be used as the return type for functions to indicate either _success_ or _error_. Both cases can be handled _programmatically_.
 
 ```motoko
 {{#include _mo/result/type.mo:a}}
@@ -25,10 +25,10 @@ The `Result<Ok, Err>` type is a [variant] with two [generic parameters]. It can 
 
 A `Result<Ok, Err>` could either be
 
-- `#ok(x)` where `x` is of [generic type] `Ok`
-- `#err(x)` where `x` is of [generic type] `Err`
+- `#ok(x)` where `x` is of [generic type](/advanced-types/generics.html#generics-in-type-declarations) `Ok`
+- `#err(x)` where `x` is of [generic type](/advanced-types/generics.html#generics-in-type-declarations) `Err`
 
-We usually [import], [rename] and instantiate `Result` with types for our own purpose and use it as the return type of a function.
+We usually [import](/common-programming-concepts/modules.html#type-imports-and-renaming), [rename](/common-programming-concepts/modules.html#type-imports-and-renaming) and instantiate `Result` with types for our own purpose and use it as the return type of a function.
 
 ```motoko
 {{#include _mo/result/type2.mo:a}}
@@ -38,7 +38,7 @@ We import `Result` and declare our own custom type `MyResult` by instantiating t
 
 Our function `doSomething` could either return a `#ok` with a `Nat` value or a `#err` with a `Text` value.
 
-Both cases are handled _programmatically_ in the last [switch expression]. The return values associated with both cases are locally named `nat` and `text` and could be used inside the switch case body.
+Both cases are handled _programmatically_ in the last [switch expression](/common-programming-concepts/control-flow/switch-expression.html). The return values associated with both cases are locally named `nat` and `text` and could be used inside the switch case body.
 
 ## Result.fromOption
 

@@ -33,7 +33,5 @@ let icpToday : Order = #less;
 
 let icpTomorrow : Order = #greater;
 
-let equal = Order.equal(icpToday, icpTomorrow);
-
-assert equal == false;
+Order.equal(icpToday, icpTomorrow);
 // ANCHOR_END: d

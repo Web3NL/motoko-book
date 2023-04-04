@@ -16,7 +16,7 @@ The system time is constant within one `async` function call and any sub calls.
 {{#include _mo/time2.mo:a}}
 ```
 
-We [import] the [module] and declare an [actor]. The Time module exposes one _type_ `Time` that that is equal to `Int`. We bring it into scope by [renaming](/common-programming-concepts/modules.html#type-imports-and-renaming) it.
+We [import](/common-programming-concepts/modules.html#type-imports-and-renaming) the [module](/common-programming-concepts/modules.html#public-classes-in-modules) and declare an [actor](/internet-computer-programming-concepts/actors.html). The Time module exposes one _type_ `Time` that that is equal to `Int`. We bring it into scope by [renaming](/common-programming-concepts/modules.html#type-imports-and-renaming) it.
 
 We then declare a [_private function_](/common-programming-concepts/functions.html) `time1` and a [_query function_](/internet-computer-programming-concepts/actors.html#public-shared-query) `time2` that both return the system `Time`. And we declare a third [_update function_](/internet-computer-programming-concepts/actors.html#public-shared-update) `time` that calls the first function, [_awaits_](/advanced-concepts/async-programming.html) the second function and request the system time once more.
 

@@ -9,7 +9,5 @@ type Order = {
 // ANCHOR: a
 let order : Order = #less;
 
-let isEqual = Order.isEqual(order);
-
-assert isEqual == false;
+Order.isEqual(order);
 // ANCHOR_END: a
