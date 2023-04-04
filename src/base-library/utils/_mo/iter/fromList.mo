@@ -1,16 +1,10 @@
-import Iter "mo:base/Iter";
-import List "mo:base/List";
-
-type List<T> = ?(T, List<T>);
-
 // ANCHOR: a
-let list1 : List<Nat> = ?(0, null);
+import List "mo:base/List";
+import Iter "mo:base/Iter";
 
-let list2 : List<Nat> = ?(1, list1);
+let list : List.List<Nat> = ?(0, ?(1, null));
 
-let iter = Iter.fromList(list2);
+let iter = Iter.fromList(list);
 
-let array = Iter.toArray(iter);
-
-// [ 0, 1] : [ Nat]
+Iter.toArray(iter);
 // ANCHOR_END: a

@@ -1,9 +1,7 @@
+// ANCHOR: a
 import Iter "mo:base/Iter";
 
-// ANCHOR: a
-let myRange = Iter.make(3);
+let myRange : Iter.Iter<Nat> = Iter.make(3);
 
-let size = Iter.size(myRange);
-
-// 1 : Nat
+Iter.size(myRange);
 // ANCHOR_END: a
