@@ -1,11 +1,9 @@
 module {
 
-    // Minimum and maximum comment text size
-    public let MIN_COMMENT_SIZE = 1;
-    public let MAX_COMMENT_SIZE = 250;
+    // Canister IDs
+    public let LEDGER_CANISTER = "ryjl3-tyaaa-aaaaa-aaaba-cai";
+    public let CYCLES_MINTING_CANISTER = "rkp4c-7iaaa-aaaaa-aaaca-cai";
 
-    public let PRINCIPAL_SIZE = 29;
-
-    public let MAX_USERS = 1000;
-    public let MAX_COMMENTS = 1000;
+    // Accounts
+    public let BURNING_ACCOUNT = "3f71c25372e76ddc8146d7a30425b91a9aaab8dee84686bc48976b8eb80ecf3b"; 
 }
