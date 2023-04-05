@@ -6,6 +6,10 @@
       "frontend": {
         "entrypoint": "book/index.html"
       }
+    },
+    "basics": {
+      "type": "motoko",
+      "main": "ic-basics"
     }
   }
 }
