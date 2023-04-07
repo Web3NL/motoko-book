@@ -1,3 +1,5 @@
+> **BETA WARNING** _This chapter is being reviewed and updated_
+
 # Blob
 
 A blob is an immutable sequences of bytes. Blobs are similar to arrays of bytes `[Nat8]`.

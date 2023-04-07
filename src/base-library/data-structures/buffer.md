@@ -1,3 +1,5 @@
+> **BETA WARNING** _This chapter is being reviewed and updated_
+
 # Buffer
 
 A Buffer in Motoko is a _growable_ data structure that houses elements of [generic type](/advanced-types/generics.html) `X`. The `Buffer` [Base Module](/base-library.html) contains a [class](/common-programming-concepts/objects-and-classes/classes.html) `Buffer` (same name as module) with [_class methods_](/common-programming-concepts/objects-and-classes/classes.html#public-functions-in-classes). The module also offers many [_public functions_](/common-programming-concepts/modules.html#public-functions-in-modules).

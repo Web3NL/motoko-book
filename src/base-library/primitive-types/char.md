@@ -1,3 +1,5 @@
+> **BETA WARNING** _This chapter is being reviewed and updated_
+
 # Char
 
 In Motoko, a _character literal_ is a single character enclosed in **single quotes** and has type `Char`. (As opposed to _text literals_ of type `Text`, which may be multiple characters enclosed in **double quotes**.)

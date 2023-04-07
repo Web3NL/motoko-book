@@ -1,3 +1,5 @@
+> **BETA WARNING** _This chapter is being reviewed and updated_
+
 # Array
 
 The _convention_ is to name the _module alias_ after the _file name_ it is defined in:

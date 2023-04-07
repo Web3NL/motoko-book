@@ -9,5 +9,5 @@ let iter : Iter.Iter<Text> = Array.vals(array);
 
 let text : Text = "-";
 
-Text.join(text,iter)
+Text.join(text, iter)
 // ANCHOR_END: a

@@ -1,3 +1,5 @@
+> **BETA WARNING** _This chapter is being reviewed and updated_
+
 # Principal
 
 To understand this _principal module_, it might be helpful to learn about [Principles](/internet-computer-programming-concepts/principals-and-authentication.html) first.
