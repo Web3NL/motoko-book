@@ -81,8 +81,6 @@ The function `size` takes one `Text` value as a argument and returns a `Nat` val
 func contains(t : Text, p : Pattern) : Bool
 ```
 
-The function `contains` takes one `Text` and one `Pattern` value as a arguments and returns a `Bool` value.
-
 ```motoko, run
 {{#include _mo/text/text1.mo:a}}
 ```
@@ -92,8 +90,6 @@ The function `contains` takes one `Text` and one `Pattern` value as a arguments 
 ```motoko
 func startsWith(t : Text, p : Pattern) : Bool
 ```
-
-The function `startsWith` takes one `Text` and one `Pattern` value as a arguments and returns a `Bool` value.
 
 ```motoko, run
 {{#include _mo/text/text2.mo:a}}
@@ -105,8 +101,6 @@ The function `startsWith` takes one `Text` and one `Pattern` value as a argument
 func endsWith(t : Text, p : Pattern) : Bool
 ```
 
-The function `endsWith` takes one `Text` and one `Pattern` value as a arguments and returns a `Bool` value.
-
 ```motoko, run
 {{#include _mo/text/text3.mo:a}}
 ```
@@ -115,8 +109,6 @@ The function `endsWith` takes one `Text` and one `Pattern` value as a arguments 
 ```motoko
 func stripStart(t : Text, p : Pattern) : ?Text
 ```
-
-The function `stripStart` takes one `Text` and one `Pattern` value  as a arguments and returns a `?Text` value.
 
 ```motoko, run
 {{#include _mo/text/text16.mo:a}}
@@ -127,8 +119,6 @@ The function `stripStart` takes one `Text` and one `Pattern` value  as a argumen
 func stripEnd(t : Text, p : Pattern) : ?Text
 ```
 
-The function `stripEnd` takes one `Text` and one `Pattern` value as a arguments and returns a `?Text` value.
-
 ```motoko, run
 {{#include _mo/text/text17.mo:a}}
 ```
@@ -137,8 +127,6 @@ The function `stripEnd` takes one `Text` and one `Pattern` value as a arguments 
 ```motoko
 func trimStart(t : Text, p : Pattern) : Text
 ```
-
-The function `trimStart` takes one `Text` and one `Pattern` value as a arguments and returns a `Text` value.
 
 ```motoko, run
 {{#include _mo/text/text18.mo:a}}
@@ -149,8 +137,6 @@ The function `trimStart` takes one `Text` and one `Pattern` value as a arguments
 func trimEnd(t : Text, p : Pattern) : Text
 ```
 
-The function `trimEnd` takes one `Text` and one `Pattern` value as a arguments and returns a `Text` value.
-
 ```motoko, run
 {{#include _mo/text/text19.mo:a}}
 ```
@@ -159,8 +145,6 @@ The function `trimEnd` takes one `Text` and one `Pattern` value as a arguments a
 ```motoko
 func trim(t : Text, p : Pattern) : Text
 ```
-
-The function `trim` takes one `Text` and one `Pattern` value as a arguments and returns a `Text` value.
 
 ```motoko, run
 {{#include _mo/text/text23.mo:a}}
@@ -183,8 +167,6 @@ The function `fromChar` takes one `Text`value as a argument and returns a `Char`
 func toIter(t : Text) : Iter.Iter<Char>
 ```
 
-The function `toIter` takes one `Text` value as a argument and returns a `Iterator` value.
-
 ```motoko, run
 {{#include _mo/text/text20.mo:a}}
 ```
@@ -193,8 +175,6 @@ The function `toIter` takes one `Text` value as a argument and returns a `Iterat
 ```motoko
 func fromIter(cs : Iter.Iter<Char>) : Text
 ```
-
-The function `fromIter` takes one `Iterator` value as a argument and returns a `Text` value.
 
 ```motoko, run
 {{#include _mo/text/text21.mo:a}}
@@ -317,8 +297,13 @@ The function `compare` takes two `Text` value as a argument and returns an [Orde
 ```motoko
 func replace(t : Text, p : Pattern, r : Text) : Text
 ```
+| **Parameters**     |                     |
+| ------------------ | --------------------|
+| Variable argument1 | `t : Text`          |
+| Variable argument2 | `r : Text`          |
+| Object argument    | `p : pattern`       |
+| Return type        | `Iter.Iter<Text>`   |
 
-The function `replace` takes one `Text`, one `Pattern` and one `Text` value as a arguments and returns a `Text` value.
 
 ```motoko, run
 {{#include _mo/text/text4.mo:a}}
@@ -330,7 +315,7 @@ The function `replace` takes one `Text`, one `Pattern` and one `Text` value as a
 func concat(t1 : Text, t2 : Text) : Text
 ```
 
-The function `concat` takes two `Text` arguments and returns a `Text` value. It is equivalent to the `#` [operator](/common-programming-concepts/operators/text-concatenation.html).
+The function `concat` takes two `Text` value as a arguments and returns a `Text` value. It is equivalent to the `#` [operator](/common-programming-concepts/operators/text-concatenation.html).
 
 ```motoko, run
 {{#include _mo/text/text8.mo:a}}
@@ -341,8 +326,12 @@ The function `concat` takes two `Text` arguments and returns a `Text` value. It 
 ```motoko
 func join(sep : Text, ts : Iter.Iter<Text>) : Text
 ```
+| **Parameters**     |                       |
+| ------------------ | ----------------------|
+| Variable argument  | `sep : Text`          |
+| Object argument    | `ts : Iter.Iter<Text>`|
+| Return type        | `Text`                |
 
-The function `join` takes one `Text` and one `Iterator` as argument and returns a `Text` value.
 
 ```motoko, run
 {{#include _mo/text/text24.mo:a}}
@@ -352,8 +341,11 @@ The function `join` takes one `Text` and one `Iterator` as argument and returns 
 ```motoko
 func map(t : Text, f : Char -> Char) : Text
 ```
-
-The function `map` takes one `Text` and one `function` as argument and returns a `Text` value.
+| **Parameters**     |                       |
+| ------------------ | ----------------------|
+| Variable argument  | `t : Text`            |
+| Function argument  | `f : Char -> Char`    |
+| Return type        | `Text`                |
 
 ```motoko, run
 {{#include _mo/text/text25.mo:a}}
@@ -363,8 +355,11 @@ The function `map` takes one `Text` and one `function` as argument and returns a
 ```motoko
 func translate(t : Text, f : Char -> Text) : Text
 ```
-
-The function `translate` takes one `Text` and one `function` as argument and returns a `Text` value.
+| **Parameters**     |                       |
+| ------------------ | ----------------------|
+| Variable argument  | `t : Text`            |
+| Function argument  | `f : Char -> Char`    |
+| Return type        | `Text`                |
 
 ```motoko, run
 {{#include _mo/text/text26.mo:a}}
@@ -374,8 +369,11 @@ The function `translate` takes one `Text` and one `function` as argument and ret
 ```motoko
 func split(t : Text, p : Pattern) : Iter.Iter<Text>
 ```
-
-The function `split` takes one `Text` and one `Pattern` as arguments and returns a `Iter<Text>` value.
+| **Parameters**     |                       |
+| ------------------ | ----------------------|
+| Variable argument  | `t : Text`            |
+| Object argument    | `p : pattern`         |
+| Return type        | `Iter.Iter<Text>`     |
 
 ```motoko, run
 {{#include _mo/text/text27.mo:a}}
@@ -385,8 +383,12 @@ The function `split` takes one `Text` and one `Pattern` as arguments and returns
 ```motoko
 func tokens(t : Text, p : Pattern) : Iter.Iter<Text>
 ```
+| **Parameters**     |                       |
+| ------------------ | ----------------------|
+| Variable argument  | `t : Text`            |
+| Object argument    | `p : pattern`         |
+| Return type        | `Iter.Iter<Text>`     |
 
-The function `tokens` takes one `Text` and one `Pattern` as arguments and returns a `Iter<Text>` value.
 
 ```motoko, run
 {{#include _mo/text/text28.mo:a}}
@@ -396,8 +398,13 @@ The function `tokens` takes one `Text` and one `Pattern` as arguments and return
 ```motoko
 func compareWith(t1 : Text, t2 : Text, cmp : (Char, Char) -> {#less; #equal; #greater}) : {#less; #equal; #greater}
 ```
+| **Parameters**     |                                                  |
+| ------------------ | ------------------------------------------------ |
+| Variable argument1 | `t1 : Text`                                      |
+| Variable argument2 | `t2 : Text`                                      |
+| Function argument  | `cmp : (Char, Char) -> {#less; #equal; #greater}`|
+| Return type        | `{#less; #equal; #greater}`                      |
 
-The function `compareWith` takes two `Text` as arguments and one `compare` as function and returns a `Order` value.
 
 ```motoko, run
 {{#include _mo/text/text29.mo:a}}
