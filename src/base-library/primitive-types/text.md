@@ -8,7 +8,7 @@ import Text "mo:base/Text";
 
 ### Types
 
-[Type `Pattern`](#type-textpattern)
+[Type `Pattern`](#type-pattern)
 
 ### Analysis
 
@@ -16,31 +16,30 @@ import Text "mo:base/Text";
 [Function `contains`](#textcontains)  
 [Function `startsWith`](#textstartswith)  
 [Function `endsWith`](#textendswith)  
-[Function `stripStart`](#textstripstart)    
+[Function `stripStart`](#textstripstart)  
 [Function `stripEnd`](#textstripend)  
-[Function `trimStart`](#texttrimstart)    
+[Function `trimStart`](#texttrimstart)  
 [Function `trimEnd`](#texttrimend)  
-[Function `trim`](#texttrim)  
-
+[Function `trim`](#texttrim)
 
 ### Conversion
 
 [Function `fromChar`](#textfromchar)  
-[Function `toIter`](#texttoiter)    
-[Function `fromIter`](#textfromiter)    
-[Function `hash`](#texthash)     
+[Function `toIter`](#texttoiter)  
+[Function `fromIter`](#textfromiter)  
+[Function `hash`](#texthash)  
 [Function `encodeUtf8`](#textencodeutf8)  
 [Function `decodeUtf8`](#textdecodeutf8)
 
 ### Comparison
 
-[Function `equal`](#textequal)    
-[Function `notEqual`](#textnotequal)    
-[Function `less`](#textless)    
-[Function `lessOrEqual`](#textlessorequal)    
-[Function `greater`](#textgreater)    
-[Function `greaterOrEqual`](#textgreaterorequal)    
-[Function `compare`](#textcompare)    
+[Function `equal`](#textequal)  
+[Function `notEqual`](#textnotequal)  
+[Function `less`](#textless)  
+[Function `lessOrEqual`](#textlessorequal)  
+[Function `greater`](#textgreater)  
+[Function `greaterOrEqual`](#textgreaterorequal)  
+[Function `compare`](#textcompare)
 
 ### Transformation
 
@@ -51,7 +50,7 @@ import Text "mo:base/Text";
 [Function `translate`](#texttranslate)  
 [Function `split`](#textsplit)  
 [Function `tokens`](#texttokens)  
-[Function `compareWith`](#textcomparewith)  
+[Function `compareWith`](#textcomparewith)
 
 ## Type Pattern
 
@@ -104,6 +103,7 @@ func endsWith(t : Text, p : Pattern) : Bool
 ```motoko, run
 {{#include _mo/text/text3.mo:a}}
 ```
+
 ## Text.stripStart
 
 ```motoko
@@ -113,6 +113,7 @@ func stripStart(t : Text, p : Pattern) : ?Text
 ```motoko, run
 {{#include _mo/text/text16.mo:a}}
 ```
+
 ## Text.stripEnd
 
 ```motoko
@@ -122,6 +123,7 @@ func stripEnd(t : Text, p : Pattern) : ?Text
 ```motoko, run
 {{#include _mo/text/text17.mo:a}}
 ```
+
 ## Text.trimStart
 
 ```motoko
@@ -131,6 +133,7 @@ func trimStart(t : Text, p : Pattern) : Text
 ```motoko, run
 {{#include _mo/text/text18.mo:a}}
 ```
+
 ## Text.trimEnd
 
 ```motoko
@@ -140,6 +143,7 @@ func trimEnd(t : Text, p : Pattern) : Text
 ```motoko, run
 {{#include _mo/text/text19.mo:a}}
 ```
+
 ## Text.trim
 
 ```motoko
@@ -161,6 +165,7 @@ The function `fromChar` takes one `Text`value as a argument and returns a `Char`
 ```motoko, run
 {{#include _mo/text/text0.mo:a}}
 ```
+
 ## Text.toIter
 
 ```motoko
@@ -170,6 +175,7 @@ func toIter(t : Text) : Iter.Iter<Char>
 ```motoko, run
 {{#include _mo/text/text20.mo:a}}
 ```
+
 ## Text.fromIter
 
 ```motoko
@@ -179,6 +185,7 @@ func fromIter(cs : Iter.Iter<Char>) : Text
 ```motoko, run
 {{#include _mo/text/text21.mo:a}}
 ```
+
 ## Text.hash
 
 ```motoko
@@ -214,6 +221,7 @@ The function `decodeUtf8` takes one `Blob` value as a argument and returns a `?T
 ```motoko, run
 {{#include _mo/text/text7.mo:a}}
 ```
+
 ## Text.equal
 
 ```motoko
@@ -225,6 +233,7 @@ The function `equal` takes two `Text` value as a argument and returns a `Bool` v
 ```motoko, run
 {{#include _mo/text/text9.mo:a}}
 ```
+
 ## Text.notEqual
 
 ```motoko
@@ -236,6 +245,7 @@ The function `notEqual` takes two `Text` value as a argument and returns a `Bool
 ```motoko, run
 {{#include _mo/text/text10.mo:a}}
 ```
+
 ## Text.less
 
 ```motoko
@@ -247,6 +257,7 @@ The function `less` takes two `Text` value as a argument and returns a `Bool` va
 ```motoko, run
 {{#include _mo/text/text11.mo:a}}
 ```
+
 ## Text.lessOrEqual
 
 ```motoko
@@ -258,6 +269,7 @@ The function `lessOrEqual` takes two `Text` value as a argument and returns a `B
 ```motoko, run
 {{#include _mo/text/text12.mo:a}}
 ```
+
 ## Text.greater
 
 ```motoko
@@ -269,6 +281,7 @@ The function `greater` takes two `Text` value as a argument and returns a `Bool`
 ```motoko, run
 {{#include _mo/text/text13.mo:a}}
 ```
+
 ## Text.greaterOrEqual
 
 ```motoko
@@ -280,6 +293,7 @@ The function `greaterOrEqual` takes two `Text` value as a argument and returns a
 ```motoko, run
 {{#include _mo/text/text14.mo:a}}
 ```
+
 ## Text.compare
 
 ```motoko
@@ -297,13 +311,13 @@ The function `compare` takes two `Text` value as a argument and returns an [Orde
 ```motoko
 func replace(t : Text, p : Pattern, r : Text) : Text
 ```
-| **Parameters**     |                     |
-| ------------------ | --------------------|
-| Variable argument1 | `t : Text`          |
-| Variable argument2 | `r : Text`          |
-| Object argument    | `p : pattern`       |
-| Return type        | `Iter.Iter<Text>`   |
 
+| **Parameters**     |                   |
+| ------------------ | ----------------- |
+| Variable argument1 | `t : Text`        |
+| Variable argument2 | `r : Text`        |
+| Object argument    | `p : pattern`     |
+| Return type        | `Iter.Iter<Text>` |
 
 ```motoko, run
 {{#include _mo/text/text4.mo:a}}
@@ -326,85 +340,93 @@ The function `concat` takes two `Text` value as a arguments and returns a `Text`
 ```motoko
 func join(sep : Text, ts : Iter.Iter<Text>) : Text
 ```
-| **Parameters**     |                       |
-| ------------------ | ----------------------|
-| Variable argument  | `sep : Text`          |
-| Object argument    | `ts : Iter.Iter<Text>`|
-| Return type        | `Text`                |
 
+| **Parameters**    |                        |
+| ----------------- | ---------------------- |
+| Variable argument | `sep : Text`           |
+| Object argument   | `ts : Iter.Iter<Text>` |
+| Return type       | `Text`                 |
 
 ```motoko, run
 {{#include _mo/text/text24.mo:a}}
 ```
+
 ## Text.map
 
 ```motoko
 func map(t : Text, f : Char -> Char) : Text
 ```
-| **Parameters**     |                       |
-| ------------------ | ----------------------|
-| Variable argument  | `t : Text`            |
-| Function argument  | `f : Char -> Char`    |
-| Return type        | `Text`                |
+
+| **Parameters**    |                    |
+| ----------------- | ------------------ |
+| Variable argument | `t : Text`         |
+| Function argument | `f : Char -> Char` |
+| Return type       | `Text`             |
 
 ```motoko, run
 {{#include _mo/text/text25.mo:a}}
 ```
+
 ## Text.translate
 
 ```motoko
 func translate(t : Text, f : Char -> Text) : Text
 ```
-| **Parameters**     |                       |
-| ------------------ | ----------------------|
-| Variable argument  | `t : Text`            |
-| Function argument  | `f : Char -> Char`    |
-| Return type        | `Text`                |
+
+| **Parameters**    |                    |
+| ----------------- | ------------------ |
+| Variable argument | `t : Text`         |
+| Function argument | `f : Char -> Char` |
+| Return type       | `Text`             |
 
 ```motoko, run
 {{#include _mo/text/text26.mo:a}}
 ```
+
 ## Text.split
 
 ```motoko
 func split(t : Text, p : Pattern) : Iter.Iter<Text>
 ```
-| **Parameters**     |                       |
-| ------------------ | ----------------------|
-| Variable argument  | `t : Text`            |
-| Object argument    | `p : pattern`         |
-| Return type        | `Iter.Iter<Text>`     |
+
+| **Parameters**    |                   |
+| ----------------- | ----------------- |
+| Variable argument | `t : Text`        |
+| Object argument   | `p : pattern`     |
+| Return type       | `Iter.Iter<Text>` |
 
 ```motoko, run
 {{#include _mo/text/text27.mo:a}}
 ```
+
 ## Text.tokens
 
 ```motoko
 func tokens(t : Text, p : Pattern) : Iter.Iter<Text>
 ```
-| **Parameters**     |                       |
-| ------------------ | ----------------------|
-| Variable argument  | `t : Text`            |
-| Object argument    | `p : pattern`         |
-| Return type        | `Iter.Iter<Text>`     |
 
+| **Parameters**    |                   |
+| ----------------- | ----------------- |
+| Variable argument | `t : Text`        |
+| Object argument   | `p : pattern`     |
+| Return type       | `Iter.Iter<Text>` |
 
 ```motoko, run
 {{#include _mo/text/text28.mo:a}}
 ```
+
 ## Text.compareWith
 
 ```motoko
 func compareWith(t1 : Text, t2 : Text, cmp : (Char, Char) -> {#less; #equal; #greater}) : {#less; #equal; #greater}
 ```
-| **Parameters**     |                                                  |
-| ------------------ | ------------------------------------------------ |
-| Variable argument1 | `t1 : Text`                                      |
-| Variable argument2 | `t2 : Text`                                      |
-| Function argument  | `cmp : (Char, Char) -> {#less; #equal; #greater}`|
-| Return type        | `{#less; #equal; #greater}`                      |
 
+| **Parameters**     |                                                   |
+| ------------------ | ------------------------------------------------- |
+| Variable argument1 | `t1 : Text`                                       |
+| Variable argument2 | `t2 : Text`                                       |
+| Function argument  | `cmp : (Char, Char) -> {#less; #equal; #greater}` |
+| Return type        | `{#less; #equal; #greater}`                       |
 
 ```motoko, run
 {{#include _mo/text/text29.mo:a}}
