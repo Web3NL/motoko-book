@@ -8,7 +8,7 @@ let base = await mo.fetchPackage(
 )
 mo.loadPackage(base)
 
-let folders = findFolder("src", "_mo")
+let folders = findFolder("../src", "_mo")
 console.log(folders)
 folders.forEach((folder) => checkMoFiles(folder))
 
