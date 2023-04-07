@@ -142,7 +142,7 @@ module {
     };
     public type TransferFee = { transfer_fee : Tokens };
 
-    public type LedgerActor = actor {
+    public type LedgerCanister = actor {
         account_balance : shared query BinaryAccountBalanceArgs -> async Tokens;
         account_balance_dfx : shared query AccountBalanceArgs -> async Tokens;
         archives : shared query () -> async Archives;

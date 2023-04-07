@@ -9,7 +9,7 @@
     },
     "basics": {
       "type": "motoko",
-      "main": "ic-basics"
+      "main": "ic-basics/main.mo"
     }
   }
 }
