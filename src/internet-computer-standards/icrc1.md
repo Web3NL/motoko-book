@@ -1,11 +1,13 @@
 # ICRC1
 
+Checkout the [official documentation for ICRC1](https://internetcomputer.org/docs/current/developer-docs/integrations/icrc-1/)
+
 ICRC1 is a standard for fungible tokens on the Internet Computer (IC). The standard specifies the types of [_data_](/common-programming-concepts/types.html), the[ _interface_](/internet-computer-programming-concepts/async-data/candid.html#actor-interfaces) and certain [_functionality_](/internet-computer-programming-concepts/actors.html#public-shared-functions-in-actors) for fungible tokens on the IC.
 
 The standard is defined in a [Candid file](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-1/ICRC-1.did) accompanied by an [additional description](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-1/README.md) of the intended behavior of any ICRC1 token.
 
 > **NOTE**  
-> _ICRC is an abbreviation of 'Internet Computer Request for Comments' and is chosen for historical reasons related to token developments in blockchains such as Ethereum and the popular ERC standards (Ethereum Request for Comments)_
+> _[ICRC](https://github.com/dfinity/ICRC) is an abbreviation of 'Internet Computer Request for Comments' and is chosen for historical reasons related to token developments in blockchains such as Ethereum and the popular ERC standards (Ethereum Request for Comments)_
 
 #### On this page
 
@@ -30,6 +32,9 @@ In essence, an ICRC1 token is an actor that maintains data about _accounts_ and 
 The token _balances_ are represented in Motoko as simple `Nat` values belonging to certain [accounts](#account-types). Transferring tokens just comes down to subtracting from one balance of some account and adding to another balance of another account.
 
 Because an [actor](/internet-computer-programming-concepts/actors.html) runs on the IC blockchain (and is therefore is tamperproof), we can trust that a correctly programmed actor would never 'cheat' and that it would correctly keep track of all balances and transfers.
+
+> **NOTE**  
+> _If the token actor is controlled by one or more entities (its controllers), then its security depends on the trustworthiness of the controllers. A fully decentralized token actor is one that is controlled by eiter a DAO or no entity at all!_
 
 # ICRC1 types
 
