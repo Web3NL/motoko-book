@@ -93,8 +93,6 @@ class range(x : Nat, y : Int)
 func next() : ?Nat
 ```
 
-The function `next` takes no argument and returns an `?Nat` value.
-
 ### Example
 
 ```motoko, run
@@ -114,8 +112,6 @@ class revRange(x : Int, y : Int)
 ```motoko
 func next() : ?Int
 ```
-
-The function `next` takes no argument and returns an `?Int` value.
 
 ### Example
 
