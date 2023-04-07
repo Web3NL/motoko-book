@@ -1,6 +1,6 @@
 {
   "canisters": {
-    "motoko-book": {
+    "staging": {
       "type": "assets",
       "source": ["book/"],
       "frontend": {
