@@ -9,40 +9,7 @@ let account1 : Account = {
 };
 
 // Account with specific subaccount
-let subaccount : ?Blob = ?Blob.fromArray([
-    1,
-    1,
-    1,
-    1,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-]);
+let subaccount : ?Blob = ?Blob.fromArray([1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
 
 let account2 : Account = {
     owner = Principal.fromText("un4fu-tqaaa-aaaab-qadjq-cai");
