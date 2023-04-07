@@ -1,4 +1,3 @@
-
 // ANCHOR: a
 import Iter "mo:base/Iter";
 import Int "mo:base/Int";

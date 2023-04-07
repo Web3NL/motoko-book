@@ -18,7 +18,7 @@ type Color = {
     #Blue;
 };
 
-func sortColor(c1 : Color, c2 : Color) :  Order {
+func sortColor(c1 : Color, c2 : Color) : Order {
     switch ((c1, c2)) {
         case ((#Red, #Blue)) { #greater };
         case ((#Red, #Red)) { #equal };
@@ -27,7 +27,6 @@ func sortColor(c1 : Color, c2 : Color) :  Order {
     };
 };
 // ANCHOR_END: c
-
 
 // ANCHOR: d
 
