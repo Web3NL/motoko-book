@@ -1,0 +1,15 @@
+// ANCHOR: a
+import HashMap "mo:base/HashMap";
+import Text "mo:base/Text";
+import Iter "mo:base/Iter";
+
+let map = HashMap.HashMap<Text, Int>(5, Text.equal, Text.hash);
+
+map.put("Rohit", 30);
+map.put("Kohli", 28);
+map.put("Rahul", 27);
+
+let iter : Iter.Iter<Int> = map.vals();
+
+Iter.toArray<Int>(iter);
+// ANCHOR_END: a

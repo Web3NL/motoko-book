@@ -1,3 +1,5 @@
+> **BETA WARNING** _This chapter is being reviewed and updated_
+
 # The Base Library
 
 The Motoko Base Library is a collection of [modules](/common-programming-concepts/modules.html) with basic functionality for working with _primitive types_, _utilities_, _data structures_ and other functionality.
