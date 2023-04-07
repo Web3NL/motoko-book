@@ -89,8 +89,6 @@ class range(x : Nat, y : Int)
 
 ## range.next
 
-### Function signature
-
 ```motoko
 func next() : ?Nat
 ```
@@ -109,8 +107,6 @@ class revRange(x : Int, y : Int)
 
 ## revRange.next
 
-### Function signature
-
 ```motoko
 func next() : ?Int
 ```
@@ -122,8 +118,6 @@ func next() : ?Int
 ```
 
 ## Iter.iterate
-
-### Function signature
 
 ```motoko
 func iterate<A>(
@@ -149,8 +143,6 @@ func iterate<A>(
 
 ## Iter.size
 
-### Function signature
-
 ```motoko
 func size<A>(xs : Iter<A>) : Nat
 ```
@@ -168,8 +160,6 @@ func size<A>(xs : Iter<A>) : Nat
 ```
 
 ## Iter.map
-
-### Function signature
 
 ```motoko
 func map<A, B>(
@@ -195,8 +185,6 @@ func map<A, B>(
 
 ## Iter.filter
 
-### Function signature
-
 ```motoko
 func filter<A>(
 
@@ -221,8 +209,6 @@ func filter<A>(
 
 ## Iter.make
 
-### Function signature
-
 ```motoko
 func make<A>(x : A) : Iter<A>
 ```
@@ -240,8 +226,6 @@ func make<A>(x : A) : Iter<A>
 ```
 
 ## Iter.fromArray
-
-### Function signature
 
 ```motoko
 func fromArray<A>(xs : [A]) : Iter<A>
@@ -261,8 +245,6 @@ func fromArray<A>(xs : [A]) : Iter<A>
 
 ## Iter.fromArrayMut
 
-### Function signature
-
 ```motoko
 func fromArrayMut<A>(xs : [var A]) : Iter<A>
 ```
@@ -281,8 +263,6 @@ func fromArrayMut<A>(xs : [var A]) : Iter<A>
 
 ## Iter.fromList
 
-### Function signature
-
 ```motoko
 func fromList(xs : List<T>) : Iter
 ```
@@ -299,8 +279,6 @@ func fromList(xs : List<T>) : Iter
 ```
 
 ## Iter.toArray
-
-### Function signature
 
 ```motoko
 func toArray<A>(xs : Iter<A>) : [A]
@@ -320,8 +298,6 @@ func toArray<A>(xs : Iter<A>) : [A]
 
 ## Iter.toArrayMut
 
-### Function signature
-
 ```motoko
 func toArrayMut<A>(xs : Iter<A>) : [var A]
 ```
@@ -340,8 +316,6 @@ func toArrayMut<A>(xs : Iter<A>) : [var A]
 
 ## Iter.toList
 
-### Function signature
-
 ```motoko
 func list<A>(xs : Iter<A>) : List.List<A>
 ```
@@ -359,8 +333,6 @@ func list<A>(xs : Iter<A>) : List.List<A>
 ```
 
 ## Iter.sort
-
-### Function signature
 
 ```motoko
 func sort<A>(
