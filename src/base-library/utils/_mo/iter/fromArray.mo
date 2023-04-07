@@ -1,11 +1,9 @@
+// ANCHOR: a
 import Iter "mo:base/Iter";
 
-// ANCHOR: a
 let array = ["bitcoin", "ETH", "ICP"];
 
-let myRange = Iter.fromArray(array);
+let myRange : Iter.Iter<Nat> = Iter.fromArray(array);
 
-let size = Iter.size(myRange);
-
-// 3 : Nat
+Iter.size(myRange);
 // ANCHOR_END: a

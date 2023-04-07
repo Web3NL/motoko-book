@@ -1,15 +1,9 @@
 // order
-import Order "mo:base/Order";
-type Order = {
-    #less;
-    #equal;
-    #greater;
-};
 
 // ANCHOR: a
-let order : Order = #less;
+import Order "mo:base/Order";
 
-let isLess = Order.isLess(order);
+let order : Order.Order = #less;
 
-assert isLess == true;
+Order.isLess(order);
 // ANCHOR_END: a

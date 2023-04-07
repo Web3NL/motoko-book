@@ -1,10 +1,8 @@
-import Iter "mo:base/Iter";
 
 // ANCHOR: a
+import Iter "mo:base/Iter";
 
-let myRange = Iter.range(1, 3);
+let myRange : Iter.Iter<Nat> = Iter.range(1, 3);
 
-let arrayMut = Iter.toArrayMut<Nat>(myRange);
-
-// [ var 1, 2, 3] : [var Nat]
+Iter.toArrayMut<Nat>(myRange);
 // ANCHOR_END: a

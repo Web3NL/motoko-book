@@ -1,14 +1,10 @@
+// ANCHOR: a
 import Iter "mo:base/Iter";
 import List "mo:base/List";
 
-type List<T> = ?(T, List<T>);
+let myRange : Iter.Iter<Nat> = Iter.range(1, 3);
 
-// ANCHOR: a
-let myRange = Iter.range(1, 3);
+let list : List.List<Nat> = Iter.toList(myRange);
 
-let list = Iter.toList(myRange);
-
-let last = List.last(list);
-
-// ?3 : ?Nat
+List.last(list);
 // ANCHOR_END: a
