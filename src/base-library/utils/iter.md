@@ -134,7 +134,6 @@ func iterate<A>(
    f : (A, Nat) -> ()
 
 ) : ()
-
 ```
 
 | **Parameters**     |                      |
@@ -181,7 +180,6 @@ func map<A, B>(
    f : A -> B
 
 ) : Iter<B>
-
 ```
 
 | **Parameters**    |                |
@@ -208,7 +206,6 @@ func filter<A>(
    f : A -> Bool
 
 ) : Iter<A>
-
 ```
 
 | **Parameters**     |                 |
@@ -270,7 +267,6 @@ func fromArray<A>(xs : [A]) : Iter<A>
 
 ```motoko
 func fromArrayMut<A>(xs : [var A]) : Iter<A>
-
 ```
 
 | **Parameters**     |                |
@@ -375,7 +371,6 @@ func sort<A>(
 compare : (A, A) -> Order.Order
 
 ) : Iter<A>
-
 ```
 
 | **Parameters**     |                                   |
