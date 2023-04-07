@@ -174,8 +174,6 @@ The function `entries` takes nothing and returns an `Iterator` of type tuple `(K
 
 ## HashMap.clone
 
-### Function signature
-
 ```motoko
 func clone<K, V>(
 
@@ -199,8 +197,6 @@ func clone<K, V>(
 ```
 
 ## HashMap.fromIter
-
-### Function signature
 
 ```motoko
 func fromIter<K, V>(
@@ -228,8 +224,6 @@ func fromIter<K, V>(
 
 ## HashMap.map
 
-### Function signature
-
 ```motoko
 func map<K, V1, V2>(
 
@@ -255,8 +249,6 @@ func map<K, V1, V2>(
 ```
 
 ## HashMap.mapFilter
-
-### Function signature
 
 ```motoko
 func mapFilter<K, V1, V2>(

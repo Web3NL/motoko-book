@@ -51,8 +51,6 @@ The _convention_ is to name the _module alias_ after the _file name_ it is defin
 
 ## Array.size
 
-### Function signature
-
 ```motoko
 func size<X>(array : [X]) : Nat
 ```
@@ -70,8 +68,6 @@ func size<X>(array : [X]) : Nat
 ```
 
 ## Array.init
-
-### Function signature
 
 ```motoko
 func init<X>(
@@ -97,8 +93,6 @@ initValue : X
 
 ## Array.make
 
-### Function signature
-
 ```motoko
 func make<X>(element : X) : [x]
 ```
@@ -118,8 +112,6 @@ func make<X>(element : X) : [x]
 ## Array.tabulate
 
 The `tabulate` function generates an _immutable array_ of predefined `size` by using a generator function that takes the index of every element as an argument and produces the elements of the array.
-
-### Function signature
 
 ```motoko
 func tabulate<X>(
@@ -147,8 +139,6 @@ generator : Nat -> X
 
 The `tabulateVar` function generates an _mutable array_ of predefined `size` by using a generator function that takes the index of every element as an argument and produces the elements of the array.
 
-### Function signature
-
 ```motoko
 func tabulateVar<X>(
 
@@ -173,8 +163,6 @@ generator : Nat -> X
 
 ## Array.freeze
 
-### Function signature
-
 ```motoko
 func freeze<X>(varArray : [var X]) : [X]
 ```
@@ -193,8 +181,6 @@ func freeze<X>(varArray : [var X]) : [X]
 
 ## Array.thaw
 
-### Function signature
-
 ```motoko
 func thaw<X>(array : [X]) : [var X]
 ```
@@ -212,8 +198,6 @@ func thaw<X>(array : [X]) : [var X]
 ```
 
 ## Array.sort
-
-### Function signature
 
 ```motoko
 func sort<X>(
@@ -247,8 +231,6 @@ func sort<X>(
 
 ## Array.sortInPlace
 
-### Function signature
-
 ```motoko
 func sortInPlace<X>(
 
@@ -272,8 +254,6 @@ func sortInPlace<X>(
 ```
 
 ## Array.reverse
-
-### Function signature
 
 ```motoko
 func reverse<X>(array : [X]) : [X]
@@ -299,8 +279,6 @@ func reverse<X>(array : [X]) : [X]
 
 ## Array.flatten
 
-### Function signature
-
 ```motoko
 func flatten<X>(arrays : [[X]]) : [x]
 ```
@@ -318,8 +296,6 @@ func flatten<X>(arrays : [[X]]) : [x]
 ```
 
 ## Array.equal
-
-### Function signature
 
 ```motoko
 func equal<X>(
@@ -346,8 +322,6 @@ func equal<X>(
 ```
 
 ## Array.map
-
-### Function signature
 
 ```motoko
 func map<X>(
@@ -379,8 +353,6 @@ array : [X],
 | 3     | false             | true              |
 
 ## Array.filter
-
-### Function signature
 
 ```motoko
 func filter<X>(
@@ -415,8 +387,6 @@ predicate : X -> Bool
 
 ## Array.mapEntries
 
-### Function signature
-
 ```motoko
 func mapEntries<X,Y>(
 
@@ -447,8 +417,6 @@ array : [X],
 | 3     | -4               | -12              |
 
 ## Array.mapFilter
-
-### Function signature
 
 ```motoko
 func mapFilter<X,Y>(
@@ -481,8 +449,6 @@ func mapFilter<X,Y>(
 
 ## Array.mapResult
 
-### Function signature
-
 ```motoko
 func mapResult<X, Y, E>(
 
@@ -514,8 +480,6 @@ func mapResult<X, Y, E>(
 
 ## Array.vals
 
-### Function signature
-
 ```motoko
 func vals<X>(array : [X]) : I.Iter<X>
 ```
@@ -534,8 +498,6 @@ func vals<X>(array : [X]) : I.Iter<X>
 
 ## Array.keys
 
-### Function signature
-
 ```motoko
 func keys<X>(array : [X]) : I.Iter<Nat>
 ```
@@ -553,8 +515,6 @@ func keys<X>(array : [X]) : I.Iter<Nat>
 ```
 
 ## Array.find
-
-### Function signature
 
 ```motoko
 func find<X>(
@@ -579,8 +539,6 @@ predicate : X -> Bool
 ```
 
 ## Array.chain
-
-### Function signature
 
 ```motoko
 func chain<X, Y>(
@@ -615,8 +573,6 @@ func chain<X, Y>(
 
 ## Array.foldLeft
 
-### Function signature
-
 ```motoko
 func foldLeft<X, A>(
 
@@ -642,8 +598,6 @@ combine : (A, X) -> A
 ```
 
 ## Array.foldRight
-
-### Function signature
 
 ```motoko
 func foldRight<X, A>(

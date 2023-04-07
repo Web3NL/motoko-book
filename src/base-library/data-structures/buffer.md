@@ -321,8 +321,6 @@ The function `vals` takes no argument and returns a `Iter` value.
 
 ## Buffer.isEmpty
 
-### Function signature
-
 ```motoko
 func isEmpty<X>(buffer : Buffer<X>) : Bool
 ```
@@ -338,8 +336,6 @@ func isEmpty<X>(buffer : Buffer<X>) : Bool
 ```
 
 ## Buffer.contains
-
-### Function signature
 
 ```motoko
 func contains<X>(
@@ -365,8 +361,6 @@ func contains<X>(
 
 ## Buffer.clone
 
-### Function signature
-
 ```motoko
 func clone<X>(buffer : Buffer<X>) : Buffer<X>
 ```
@@ -382,8 +376,6 @@ func clone<X>(buffer : Buffer<X>) : Buffer<X>
 ```
 
 ## Buffer.max
-
-### Function signature
 
 ```motoko
 func max<X>(
@@ -407,8 +399,6 @@ func max<X>(
 
 ## Buffer.min
 
-### Function signature
-
 ```motoko
 func min<X>(
 
@@ -430,8 +420,6 @@ func min<X>(
 ```
 
 ## Buffer.equal
-
-### Function signature
 
 ```motoko
 func equal<X>(
@@ -457,8 +445,6 @@ func equal<X>(
 
 ## Buffer.compare
 
-### Function signature
-
 ```motoko
 func compare<X>(
 
@@ -483,8 +469,6 @@ func compare<X>(
 
 ## Buffer.toText
 
-### Function signature
-
 ```motoko
 func toText<X>(
 
@@ -507,8 +491,6 @@ func toText<X>(
 
 ## Buffer.hash
 
-### Function signature
-
 ```motoko
 func toText<X>(
 
@@ -530,8 +512,6 @@ func toText<X>(
 ```
 
 ## Buffer.indexOf
-
-### Function signature
 
 ```motoko
 func indexOf<X>(
@@ -557,8 +537,6 @@ element : X
 
 ## Buffer.lastIndexOf
 
-### Function signature
-
 ```motoko
 func indexOf<X>(
 
@@ -582,8 +560,6 @@ element : X
 ```
 
 ## Buffer.indexOfBuffer
-
-### Function signature
 
 ```motoko
 func indexOfBuffer<X>(
@@ -609,8 +585,6 @@ func indexOfBuffer<X>(
 
 ## Buffer.binarySearch
 
-### Function signature
-
 ```motoko
 func binarySearch<X>(
 
@@ -634,8 +608,6 @@ compare : (X, X) -> Order.Order
 ```
 
 ## Buffer.subBuffer
-
-### Function signature
 
 ```motoko
 func subBuffer<X>(
@@ -661,8 +633,6 @@ func subBuffer<X>(
 
 ## Buffer.isSubBufferOf
 
-### Function signature
-
 ```motoko
 func isSubBufferOf<X>(
 
@@ -686,8 +656,6 @@ func isSubBufferOf<X>(
 ```
 
 ## Buffer.isStrictSubBufferOf
-
-### Function signature
 
 ```motoko
 func isSubBufferOf<X>(
@@ -713,8 +681,6 @@ func isSubBufferOf<X>(
 
 ## Buffer.prefix
 
-### Function signature
-
 ```motoko
 func prefix<X>(
 
@@ -736,8 +702,6 @@ func prefix<X>(
 ```
 
 ## Buffer.isPrefixOf
-
-### Function signature
 
 ```motoko
 func isPrefixOf<X>(
@@ -763,8 +727,6 @@ func isPrefixOf<X>(
 
 ## Buffer.isStrictPrefixOf
 
-### Function signature
-
 ```motoko
 func isStrictPrefixOf<X>(
 
@@ -789,8 +751,6 @@ func isStrictPrefixOf<X>(
 
 ## Buffer.suffix
 
-### Function signature
-
 ```motoko
 func suffix<X>(
 
@@ -812,8 +772,6 @@ func suffix<X>(
 ```
 
 ## Buffer.isSuffixOf
-
-### Function signature
 
 ```motoko
 func isSuffixOf<X>(
@@ -839,8 +797,6 @@ func isSuffixOf<X>(
 
 ## Buffer.isStrictSuffixOf
 
-### Function signature
-
 ```motoko
 func isSuffixOf<X>(
 
@@ -865,8 +821,6 @@ func isSuffixOf<X>(
 
 ## Buffer.forAll
 
-### Function signature
-
 ```motoko
 func forAll<X>(
 
@@ -888,8 +842,6 @@ func forAll<X>(
 ```
 
 ## Buffer.forSome
-
-### Function signature
 
 ```motoko
 func forSome<X>(
@@ -913,8 +865,6 @@ func forSome<X>(
 
 ## Buffer.forNone
 
-### Function signature
-
 ```motoko
 func forNone<X>(
 
@@ -937,8 +887,6 @@ func forNone<X>(
 
 ## Buffer.toArray
 
-### Function signature
-
 ```motoko
 func toArray<X>(buffer : Buffer<X>) : [X]
 ```
@@ -954,8 +902,6 @@ func toArray<X>(buffer : Buffer<X>) : [X]
 ```
 
 ## Buffer.toVarArray
-
-### Function signature
 
 ```motoko
 func toVarArray<X>(buffer : Buffer<X>) : [var X]
@@ -973,8 +919,6 @@ func toVarArray<X>(buffer : Buffer<X>) : [var X]
 
 ## Buffer.fromArray
 
-### Function signature
-
 ```motoko
 func fromArray<X>(array : [X]) : Buffer<X>
 ```
@@ -990,8 +934,6 @@ func fromArray<X>(array : [X]) : Buffer<X>
 ```
 
 ## Buffer.fromVarArray
-
-### Function signature
 
 ```motoko
 func fromArray<X>(array : [var X]) : Buffer<X>
@@ -1009,8 +951,6 @@ func fromArray<X>(array : [var X]) : Buffer<X>
 
 ## Buffer.fromIter
 
-### Function signature
-
 ```motoko
 func fromIter<X>(iter : { next : () -> ?X }) : Buffer<X>
 ```
@@ -1027,8 +967,6 @@ func fromIter<X>(iter : { next : () -> ?X }) : Buffer<X>
 
 ## Buffer.trimToSize
 
-### Function signature
-
 ```motoko
 func trimToSize<X>(buffer : Buffer<X>) : ()
 ```
@@ -1044,8 +982,6 @@ func trimToSize<X>(buffer : Buffer<X>) : ()
 ```
 
 ## Buffer.map
-
-### Function signature
 
 ```motoko
 func map<X, Y>(
@@ -1069,8 +1005,6 @@ buffer : Buffer<X>
 
 ## Buffer.iterate
 
-### Function signature
-
 ```motoko
 func iterate<X>(
 
@@ -1092,8 +1026,6 @@ buffer : Buffer<X>
 ```
 
 ## Buffer.mapEntries
-
-### Function signature
 
 ```motoko
 func mapEntries<X, Y>(
@@ -1117,8 +1049,6 @@ buffer : Buffer<X>
 
 ## Buffer.mapFilter
 
-### Function signature
-
 ```motoko
 func mapFilter<X, Y>(
 
@@ -1140,8 +1070,6 @@ buffer : Buffer<X>
 ```
 
 ## Buffer.mapResult
-
-### Function signature
 
 ```motoko
 func mapResult<X, Y, E>(
@@ -1165,8 +1093,6 @@ buffer : Buffer<X>
 
 ## Buffer.chain
 
-### Function signature
-
 ```motoko
 func chain<X, Y>(
 
@@ -1188,8 +1114,6 @@ buffer : Buffer<X>
 ```
 
 ## Buffer.foldLeft
-
-### Function signature
 
 ```motoko
 func foldLeft<A, X>(
@@ -1215,8 +1139,6 @@ func foldLeft<A, X>(
 
 ## Buffer.foldRight
 
-### Function signature
-
 ```motoko
 func foldLeft<A, X>(
 
@@ -1241,8 +1163,6 @@ func foldLeft<A, X>(
 
 ## Buffer.first
 
-### Function signature
-
 ```motoko
 func first<X>(buffer : Buffer<X>) : X
 ```
@@ -1258,8 +1178,6 @@ func first<X>(buffer : Buffer<X>) : X
 ```
 
 ## Buffer.last
-
-### Function signature
 
 ```motoko
 func last<X>(buffer : Buffer<X>) : X
@@ -1277,8 +1195,6 @@ func last<X>(buffer : Buffer<X>) : X
 
 ## Buffer.make
 
-### Function signature
-
 ```motoko
 func make<X>(element : X) : Buffer<X>
 ```
@@ -1295,8 +1211,6 @@ func make<X>(element : X) : Buffer<X>
 
 ## Buffer.reverse
 
-### Function signature
-
 ```motoko
 func reverse<X>(buffer : Buffer<X>) : ()
 ```
@@ -1312,8 +1226,6 @@ func reverse<X>(buffer : Buffer<X>) : ()
 ```
 
 ## Buffer.merge
-
-### Function signature
 
 ```motoko
 func merge<X>(
@@ -1339,8 +1251,6 @@ func merge<X>(
 
 ## Buffer.removeDuplicates
 
-### Function signature
-
 ```motoko
 func removeDuplicates<X>(
 
@@ -1362,8 +1272,6 @@ func removeDuplicates<X>(
 ```
 
 ## Buffer.partition
-
-### Function signature
 
 ```motoko
 func partition<X>(
@@ -1387,8 +1295,6 @@ func partition<X>(
 
 ## Buffer.split
 
-### Function signature
-
 ```motoko
 func split<X>(
 
@@ -1410,8 +1316,6 @@ func split<X>(
 ```
 
 ## Buffer.chunk
-
-### Function signature
 
 ```motoko
 func chunk<X>(
@@ -1435,8 +1339,6 @@ func chunk<X>(
 
 ## Buffer.groupBy
 
-### Function signature
-
 ```motoko
 func groupBy<X>(
 
@@ -1459,8 +1361,6 @@ func groupBy<X>(
 
 ## Buffer.flatten
 
-### Function signature
-
 ```motoko
 func flatten<X>(buffer : Buffer<Buffer<X>>) : Buffer<X>
 ```
@@ -1476,8 +1376,6 @@ func flatten<X>(buffer : Buffer<Buffer<X>>) : Buffer<X>
 ```
 
 ## Buffer.zip
-
-### Function signature
 
 ```motoko
 func zip<X, Y>(
@@ -1500,8 +1398,6 @@ func zip<X, Y>(
 ```
 
 ## Buffer.zipWith
-
-### Function signature
 
 ```motoko
 func zipWith<X, Y, Z>(
@@ -1528,8 +1424,6 @@ buffer2 : Buffer<Y>
 
 ## Buffer.takeWhile
 
-### Function signature
-
 ```motoko
 func takeWhile<X>(
 
@@ -1551,8 +1445,6 @@ func takeWhile<X>(
 ```
 
 ## Buffer.dropWhile
-
-### Function signature
 
 ```motoko
 func dropWhile<X>(
