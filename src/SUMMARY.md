@@ -88,6 +88,7 @@
     - [Buffer](base-library/data-structures/buffer.md)
     - [HashMap](base-library/data-structures/hashmap.md)
     - [RBTree](base-library/data-structures/rbtree.md)
+  - [IC APIs](base-library/ic-apis.md)
 
 - [Advanced Concepts](advanced-concepts.md)
 
