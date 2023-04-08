@@ -17,7 +17,7 @@ Other possible functions will be discussed in upcoming chapters:
 Lets start with most simple function in Motoko:
 
 ```motoko
-{{#include _mo/functions1.mo:a}}
+func myFunc() {};
 ```
 
 The `func` keyword is indicating a _function declaration_. `myFunc` is an arbitrary name of the function followed by two parenthesis `()` and two curly brackets `{}`. The `()` are used for function _arguments_ (inputs to the function) and the `{}` are used for the function _body_.
@@ -29,7 +29,9 @@ We could _explicitly_ tell Motoko that this is a private function by using the `
 Lets be more explicit about our private function, add one argument as an input and expand the body:
 
 ```motoko
-{{#include _mo/functions2.mo:a}}
+private func myFunc(x : Nat) {
+    // function body
+};
 ```
 
 The function is now marked private. All arguments **must** be annotated. Type inference doesn't work here. In this case we take in one argument and name it `x`. We also type annotate it with `Nat`.
@@ -37,7 +39,9 @@ The function is now marked private. All arguments **must** be annotated. Type in
 Lets proceed by adding a return type to this function and actually returning a value of that type:
 
 ```motoko
-{{#include _mo/functions3.mo:a}}
+private func myFunc(x : Nat) : Nat {
+    return x;
+};
 ```
 
 After the function arguments we annotate the _return type_ of this function with `: Nat`. If we don't annotate the return type of a private function, it defaults to the unit `()` return type.
@@ -47,15 +51,22 @@ Inside the body we return `x`, the same variable that was passed to the function
 Lets simplify this function:
 
 ```motoko
-{{#include _mo/functions4.mo:a}}
+func myFunc(x : Nat) : Nat {
+    x;
+};
 ```
 
 We removed the private keyword and simplified the return expression to just `x`. Even the semicolon `;` is gone. But note that we can't leave out the type annotations, like we did with variables. Type inference doesn't work on function declarations except for the defaulting unit type behavior mentioned above.
 
 Lets write a useful private function and _call_ it:
 
-```motoko
-{{#include _mo/functions4.mo:b}}
+```motoko, run
+func concat(t1 : Text, t2 : Text) : Text {
+let result = t1 # t2;
+    result;
+};
+
+let output = concat("Hello", "world");
 ```
 
 Our function `concat` takes two arguments of type `Text`. It also returns a `Text` type.
@@ -73,7 +84,9 @@ Lastly, we _call_ this function with two text _literals_ as the arguments and as
 The last concept for this chapter is the type of the _whole_ function. A function's _typed arguments_ and _return type_ together are used to define a type for the function as a whole. The type of the function `concat` above is the following:
 
 ```motoko
-{{#include _mo/functions4.mo:c}}
+type Concat = (Text, Text) -> Text;
+
+let ourFunc : Concat = concat;
 ```
 
 We used the type name `Concat` to define a new type `(Text, Text) -> Text`. This is the type of our function `concat`. The function type is constructed by joining three things:

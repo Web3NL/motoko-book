@@ -9,7 +9,11 @@ Modules are like a _limited_ version of objects. We will discuss their [limitati
 Lets define a simple module in its own source file `module.mo`:
 
 ```motoko
-{{#include _mo/module.mo:a}}
+module {
+  private let x = 0;
+  public let name = "Peter";
+};
+
 ```
 
 This module has two fields, one private, one public. Like in the case of objects, only the public fields are 'visible' from the outside.
@@ -31,7 +35,18 @@ We then used its public field `name` by referencing it through our chosen module
 Modules can contain other modules. Lets write a module with two _child_ modules.
 
 ```motoko
-{{#include _mo/module-nested.mo:a}}
+module {
+  public module Person {
+    public let name = "Peter";
+    public let age = 20;
+  };
+
+  private module Info {
+    public let city = "Amsterdam";
+  };
+
+  public let place = Info.city;
+};
 ```
 
 The top-level module has two _named_ child modules `Person` and `Info`. The one is public, the other is private.
@@ -41,7 +56,12 @@ The public contents of the `Info` module are only visible to the top-level modul
 Only the sub-module `Person` and variable `place` are accessible when imported.
 
 ```motoko
-{{#include _mo/modules2.mo:a}}
+// main.mo
+import Mod "module-nested";
+
+let personName = Mod.Person.name;
+
+let city = Mod.place;
 ```
 
 ## Public functions in modules
@@ -49,7 +69,13 @@ Only the sub-module `Person` and variable `place` are accessible when imported.
 A module exposes a _public API_ by defining public functions inside the module. In fact, this is what modules are mostly used for. A module with a very simple API could be:
 
 ```motoko
-{{#include _mo/module-public-functions.mo:a}}
+module {
+  private let MAX_SIZE = 10;
+
+  public func checkSize(size : Nat) : Bool {
+    size <= MAX_SIZE;
+  };
+};
 ```
 
 This module has a private constant `MAX_SIZE` only available to the module itself. It's a convention to use capital letters for constants.
@@ -73,7 +99,14 @@ Modules can also define private and public _types_. Private types are meant for 
 Types are declared using the `type` keyword and their _visibility_ is specified:
 
 ```motoko
-{{#include _mo/types.mo:a}}
+module {
+  private type UserData = {
+    name : Text;
+    age : Nat;
+  };
+
+  public type User = (Nat, UserData);
+};
 ```
 
 Only the `User` type is visible outside the module. Type `UserData` can only be referenced inside a module and even used in a public type (or variable or function) declaration as shown above.
@@ -99,7 +132,20 @@ Modules can also define private and public [_classes_](/common-programming-conce
 Classes in modules are declared using the `class` keyword and their _visibility_ is specified:
 
 ```motoko
-{{#include _mo/MyClass.mo:a}}
+module {
+  public class MyClass(x : Nat) {
+    private let start = x ** 2;
+    private var counter = 0;
+
+    public func addOne() {
+      counter += 1;
+    };
+
+    public func getCurrent() : Nat {
+      counter;
+    };
+  };
+};
 ```
 
 The class `MyClass` is visible outside the module. It can only be _instantiated_ if it is imported somewhere else, due to [static limitations](#static-expressions-only) of modules. Our class takes in one initial argument `x : Nat` and defines two internal private variables. It also exposes two public functions.
@@ -125,7 +171,17 @@ Modules are limited to _static_ expressions only. This means that no computation
 A function call is non-static. Computations, like adding and multiplying are also non-static. Therefore the following code is not allowed inside modules:
 
 ```motoko
-{{#include _mo/modules3.mo:b}}
+module {
+  // public let x = 1 + 1;
+
+  // public func compute() {
+  //     8 - 5
+  // };
+
+  public func compute(x : Nat, y : Nat) : Nat {
+    x * y;
+  };
+};
 ```
 
 The first line in the module tries to compute `1 + 1` which is a 'dynamic' operation. The second line tries to define a function which makes an internal computation, another non-static operation.
@@ -137,7 +193,10 @@ The last function `compute` is allowed because it only defines _how_ to perform 
 Module types are not used often in practice, but they do exist. Modules have types that look almost the same as object types. A type of a module looks like this:
 
 ```motoko
-{{#include _mo/modules4.mo:a}}
+type MyModule = module {
+  x : Nat;
+  f : () -> ();
+};
 ```
 
 This type describes a module with two public fields, one being a `Nat` and the other being a function of type `() -> ()`.
