@@ -328,7 +328,17 @@ func flatten<X>(arrays : [[X]]) : [X]
 {{#include _mo/array/flatten.mo:a}}
 ```
 
+| Index | `arrays : [[Char]]` | `newArray : [Char]` |
+| ----- | ------------------- | ------------------- |
+| 0     | `['a', 'b']`        | `'a'`               |
+| 1     | `['c', 'd']`        | `'b'`               |
+| 2     | `['e']`             | `'c'`               |
+| 3     |                     | `'d'`               |
+| 4     |                     | `'e'`               |
+
 ## Array.equal
+
+Equal compares each element of two arrays and checks whether they are all equal according to a `equal` function of type `(X, X) -> Bool`.
 
 ```motoko
 func equal<X>(
