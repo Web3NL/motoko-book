@@ -2,6 +2,7 @@
 import Array "mo:base/Array";
 import Nat "mo:base/Nat";
 
-let ages : [var Nat] = [var 50, 40, 30, 20, 10];
+var ages : [var Nat] = [var 50, 20, 10, 30, 40];
 
-let shortedAges : () = Array.sortInPlace<Nat>(ages, Nat.compare); // ANCHOR_END: a
+Array.sortInPlace<Nat>(ages, Nat.compare);
+// ANCHOR_END: a
