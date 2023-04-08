@@ -62,7 +62,7 @@ Lets write a useful private function and _call_ it:
 
 ```motoko, run
 func concat(t1 : Text, t2 : Text) : Text {
-let result = t1 # t2;
+    let result = t1 # t2;
     result;
 };
 

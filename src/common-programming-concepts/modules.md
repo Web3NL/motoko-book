@@ -13,7 +13,6 @@ module {
   private let x = 0;
   public let name = "Peter";
 };
-
 ```
 
 This module has two fields, one private, one public. Like in the case of objects, only the public fields are 'visible' from the outside.
