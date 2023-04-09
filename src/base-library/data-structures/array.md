@@ -338,7 +338,7 @@ func flatten<X>(arrays : [[X]]) : [X]
 
 ## Array.equal
 
-Equal compares each element of two arrays and checks whether they are all equal according to a `equal` function of type `(X, X) -> Bool`.
+Compare each element of two arrays and check whether they are all equal according to an `equal` function of type `(X, X) -> Bool`.
 
 ```motoko
 func equal<X>(
@@ -364,6 +364,8 @@ func equal<X>(
 
 ## Array.map
 
+The mapping function `map` iterates through each element of an [immutable array], applies a given transformation function `f` to it, and creates a new array with the transformed elements. The input array is of [generic type] `[X]`, the transformation function takes elements of type `X` and returns elements of type `Y`, and the resulting array is of type `[Y]`.
+
 ```motoko
 func map<X>(
 
@@ -384,14 +386,16 @@ array : [X],
 {{#include _mo/array/map.mo:a}}
 ```
 
-| Index | `array1 : [Bool]` | `array2 : [Bool]` |
-| ----- | ----------------- | ----------------- |
-| 0     | true              | false             |
-| 1     | false             | true              |
-| 2     | true              | false             |
-| 3     | false             | true              |
+| Index | `array1 : [Bool]` | `array2 : [Nat]` |
+| ----- | ----------------- | ---------------- |
+| 0     | true              | 1                |
+| 1     | false             | 0                |
+| 2     | true              | 1                |
+| 3     | false             | 0                |
 
 ## Array.filter
+
+The `filter` function takes an [immutable array] of elements of [generic type] `X` and a predicate function `predicate` (that takes a `X` and returns a `Bool`) and returns a new array containing only the elements that satisfy the predicate condition.
 
 ```motoko
 func filter<X>(
@@ -413,16 +417,18 @@ predicate : X -> Bool
 {{#include _mo/array/filter.mo:a}}
 ```
 
-| Index | `array1 : [Nat]` | `array2 : [Nat]` |
-| ----- | ---------------- | ---------------- |
-| 0     | 1                | 2                |
-| 1     | 2                | 6                |
-| 2     | 5                |                  |
-| 3     | 6                |                  |
-| 4     | 9                |                  |
-| 5     | 7                |                  |
+| Index | `ages : [Nat]` | `evenAges : [Nat]` |
+| ----- | -------------- | ------------------ |
+| 0     | 1              | 2                  |
+| 1     | 2              | 6                  |
+| 2     | 5              |                    |
+| 3     | 6              |                    |
+| 4     | 9              |                    |
+| 5     | 7              |                    |
 
 ## Array.mapEntries
+
+The `mapEntries` function takes an [immutable array] of elements of [generic type] `[X]` and a function `f` that accepts an element and its index (a `Nat` value) as arguments, then returns a new array of type `[Y]` with elements transformed by applying the function `f` to each element and its index.
 
 ```motoko
 func mapEntries<X,Y>(
@@ -444,12 +450,12 @@ array : [X],
 {{#include _mo/array/mapEntries.mo:a}}
 ```
 
-| Index | `array1 : [Int]` | `array2 : [Int]` |
-| ----- | ---------------- | ---------------- |
-| 0     | -1               | 0                |
-| 1     | -2               | -2               |
-| 2     | -3               | -6               |
-| 3     | -4               | -12              |
+| Index | `array1 : [Int]` | `array2 : [Text]` |
+| ----- | ---------------- | ----------------- |
+| 0     | -1               | `"-1; 0"`         |
+| 1     | -2               | `"-2; 1"`         |
+| 2     | -3               | `"-3; 2"`         |
+| 3     | -4               | `"-4; 3"`         |
 
 ## Array.mapFilter
 
