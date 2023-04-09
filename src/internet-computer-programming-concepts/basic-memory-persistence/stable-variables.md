@@ -9,13 +9,21 @@ The [_state of an actor_](/internet-computer-programming-concepts/actors.html#a-
 If we want to retain the state of our actor when [upgrading](/internet-computer-programming-concepts/basic-memory-persistence/upgrades.html), we need to declare all its state variables as `stable`. A variable can only be declared stable if it is of [stable type](/internet-computer-programming-concepts/basic-memory-persistence/stable-variables.html#stable-types). Many, but not all types, are stable. Mutable and immutable stable variables are declared like this:
 
 ```motoko
-{{#include _mo/stable-variables.mo:a}}
+stable let x = 0;
+
+stable var y = 0;
 ```
 
 These variables now _retain_ their state even after _upgrading_ the actor code. Lets demonstrate this with an actor that implements a simple counter.
 
 ```motoko
-{{#include _mo/stable-variables2.mo:a}}
+actor {
+  stable var count : Nat = 0;
+
+  public shared query func read() : async Nat { count };
+
+  public shared func increment() : async () { count += 1 };
+};
 ```
 
 Our actor has a mutable variable `count` that is declared `stable`. It's initial value is `0`. We also have a [query](/internet-computer-programming-concepts/actors.html#public-shared-query) function `read` and an [update](/internet-computer-programming-concepts/actors.html#public-shared-update) function `increment`. The value of `count` is shown below in a _timeline of state_ in two instances of our counter actor: one with `var count` and the other with `stable var count`:
@@ -56,7 +64,9 @@ The following _types_ for _[immutable](common-programming-concepts/variables.htm
 Immutable or mutable variables of [_mutable array type_](/common-programming-concepts/types/mutable-arrays.html) could be declared stable:
 
 ```motoko
-{{#include _mo/stable-var1.mo:a}}
+stable let a1 : [var Nat] = [var 0, 1, 2];
+
+stable var a2 : [var Text] = [var "t1", "t2", "t3"];
 ```
 
 _Immutable variable_ `a1` can be stable because `[var Nat]` is a mutable array type. _Mutable variable_ `a2` can be stable because `[var Text]` is of mutable array type.
@@ -66,7 +76,9 @@ _Immutable variable_ `a1` can be stable because `[var Nat]` is a mutable array t
 Immutable or mutable variables of [_records with mutable fields_](/common-programming-concepts/types/records.html) could be declared stable:
 
 ```motoko
-{{#include _mo/stable-var1.mo:b}}
+stable let r1 = { var x = 0 };
+
+stable var r2 = { var x = 0; y = 1 };
 ```
 
 _Immutable variable_ `r1` and _mutable variable_ `r2` can be stable because they contain a stable type, namely a _record with a mutable field_.
@@ -76,7 +88,15 @@ _Immutable variable_ `r1` and _mutable variable_ `r2` can be stable because they
 Immutable or mutable variables of [_objects with (private or public) mutable variables_](/common-programming-concepts/objects-and-classes/objects.html) could be declared stable:
 
 ```motoko
-{{#include _mo/stable-var1.mo:c}}
+stable let o1 = object {
+  public var x = 0;
+  private var y = 0;
+};
+
+stable var o2 = object {
+  public var x = 0;
+  private var y = 0;
+};
 ```
 
 _Immutable variable_ `o1` and _mutable variable_ `o2` can be stable because they contain a stable type, namely an _object with private and public mutable variables_.
@@ -86,7 +106,9 @@ _Immutable variable_ `o1` and _mutable variable_ `o2` can be stable because they
 Immutable or mutable variables of [_objects with private functions_](/common-programming-concepts/objects-and-classes/objects.html) could be declared stable:
 
 ```motoko
-{{#include _mo/stable-var1.mo:d}}
+stable let p1 = object { private func f() {} };
+
+stable var p2 = object { private func f() {} };
 ```
 
 _Immutable variable_ `p1` and _mutable variable_ `p2` can be stable because they contain a stable type, namely an _object with a private function_.
@@ -115,7 +137,7 @@ A non-stable type could be an [object with public functions](/common-programming
 
 ```motoko
 stable let q1 = object {
-    public func f() {};
+  public func f() {};
 };
 ```
 

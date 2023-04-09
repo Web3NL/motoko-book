@@ -17,7 +17,7 @@ Here are the most important shared types in Motoko.
 All [primitive types](/common-programming-concepts/types.html#primitive-types) (except the [`Error`](/base-library/utils/error.html) type) are shared.
 
 ```motoko
-{{#include _mo/shared.mo:a}}
+type SharedFunction = shared Nat -> async Text;
 ```
 
 The argument of type `Nat` and the return value of type `Text` are shared types.
@@ -27,7 +27,7 @@ The argument of type `Nat` and the return value of type `Text` are shared types.
 Any shared type in Motoko can be turned into an [_Option_](/common-programming-concepts/options-and-results.html) type which remains shared.
 
 ```motoko
-{{#include _mo/shared2.mo:a}}
+type SharedFunction = shared ?Principal -> async ?Bool;
 ```
 
 The argument of type `?Principal` and the return value of type `?Bool` are shared types.
@@ -37,7 +37,7 @@ The argument of type `?Principal` and the return value of type `?Bool` are share
 [Tuples](/common-programming-concepts/types/tuples.html) consisting of shared types are also shared, that is they are _shared tuple types_.
 
 ```motoko
-{{#include _mo/shared3.mo:a}}
+type SharedFunction = shared (Nat, Int, Float) -> async (Principal, Text);
 ```
 
 The argument `(Nat, Int, Float)` and the return value `(Principal, Text)` are shared tuple types.
@@ -47,7 +47,7 @@ The argument `(Nat, Int, Float)` and the return value `(Principal, Text)` are sh
 [Immutable arrays](/common-programming-concepts/types/immutable-arrays.html) consisting of shared types are also shared, that is they are _shared immutable array types_.
 
 ```motoko
-{{#include _mo/shared4.mo:a}}
+type SharedFunction = shared [Int] -> async [Nat];
 ```
 
 The types `[Int]` and `[Nat]` are shared immutable array types.
@@ -57,7 +57,12 @@ The types `[Int]` and `[Nat]` are shared immutable array types.
 [Variant types](/common-programming-concepts/types/variants.html) that have _shared associated types_ are also shared.
 
 ```motoko
-{{#include _mo/shared5.mo:a}}
+type GenderAge = {
+  #Male : Nat;
+  #Female : Nat;
+};
+
+type SharedFunction = shared GenderAge -> async GenderAge;
 ```
 
 The variant type `GenderAge` is a shared type because `Nat` is also shared.
@@ -67,7 +72,12 @@ The variant type `GenderAge` is a shared type because `Nat` is also shared.
 [Object types](/common-programming-concepts/types/variants.html) that have _shared field types_ are also shared.
 
 ```motoko
-{{#include _mo/shared6.mo:a}}
+type User = {
+  id : Principal;
+  genderAge : GenderAge;
+};
+
+type SharedFunction = shared User -> async User;
 ```
 
 Object type `User` is a shared type because `Principal` and `GenderAge` are also shared types.
@@ -77,7 +87,9 @@ Object type `User` is a shared type because `Principal` and `GenderAge` are also
 [Shared function types](/internet-computer-programming-concepts/actors.html#public-shared-functions-in-actors) are also shared types. This example shows a shared public function that has another shared public function as its argument and return type.
 
 ```motoko
-{{#include _mo/shared7.mo:a}}
+type CheckBalance = shared() -> async Nat;
+
+type SharedFunction = shared CheckBalance -> async CheckBalance;
 ```
 
 `CheckBalance` is a shared type because it is the type of a public shared function.
@@ -87,7 +99,11 @@ Object type `User` is a shared type because `Principal` and `GenderAge` are also
 All [actor types](/internet-computer-programming-concepts/actors.html#actor-type) are shared types.
 
 ```motoko
-{{#include _mo/shared8.mo:a}}
+Account = actor {
+  checkBalance : shared() -> async Nat;
+};
+
+type SharedFunction = shared Account -> async Account;
 ```
 
 `Account` is a shared type because it is the type of an actor.

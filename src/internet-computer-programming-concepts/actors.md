@@ -70,7 +70,9 @@ These functions are only allowed inside _actors_. Here are their _function signa
 ### Public shared query
 
 ```motoko
-{{#include _mo/actors2.mo:a}}
+public shared query func read() : async () { () };
+
+// Has type `shared query () -> async Text`
 ```
 
 The function named `read` is declared with `public shared query` and returns `async ()`. This function is not allowed to modify the state of the actor because of the `query` keyword. It can only read state and return most types. The `shared query` and `async` keywords are part of the function type. Query functions are fast.
@@ -78,7 +80,9 @@ The function named `read` is declared with `public shared query` and returns `as
 ### Public shared update
 
 ```motoko
-{{#include _mo/actors2.mo:b}}
+public shared func write() : async () { () };
+
+// Has type `shared Text -> async ()`
 ```
 
 The function named `write` is declared with `public shared` and also returns `async ()`. This function is allowed to modify the state of the actor. There is no other special keyword (like query) to indicate that this is an update function. The `shared` and `async` keywords are part of the function type. Update functions take 2 seconds per call.
@@ -86,7 +90,9 @@ The function named `write` is declared with `public shared` and also returns `as
 ### Public shared oneway
 
 ```motoko
-{{#include _mo/actors2.mo:c}}
+public shared func oneway() { () };
+
+// Has type `shared () -> ()`
 ```
 
 The function named `oneway` is also declared with `public shared` but does not have a return type. This function is allowed to modify the state of the actor. Because it has no return type, it is assumed to be a oneway function which always returns `()` regardless of whether they execute successfully. Only the `shared` keyword is part of their type. Oneway functions also take 2 seconds per call.
@@ -101,7 +107,23 @@ In our example none of the functions take any arguments for simplicity.
 Here's an actor with one _state_ variable and some functions that _read_ or _write_ that variable:
 
 ```motoko
-{{#include _mo/actors3.mo:a}}
+actor {
+
+  private var latestComment = "";
+
+  public shared query func readComment() : async Text {
+    latestComment;
+  };
+
+  public shared func writeComment(comment : Text) : async () {
+    latestComment := comment;
+  };
+
+  public shared func deleteComment() {
+    latestComment := "";
+  };
+
+};
 ```
 
 This actor has one private mutable variable named `latestComment` of type `Text` and is initially set to the empty string `""`. This variable is not visible 'from the outside', but only available internally inside the actor. The actor also demonstrates the three possible public functions in any actor.
@@ -119,7 +141,11 @@ Only public shared functions are part of the type of an actor.
 The type of the actor above is the following:
 
 ```motoko
-{{#include _mo/actors4.mo:a}}
+type CommentActor = actor {
+  deleteComment : shared() -> ();
+  readComment : shared query () -> async Text;
+  writeComment : shared Text -> async ();
+};
 ```
 
 We named our actor type `CommentActor`. The type itself starts with the `actor` keyword followed by curly braces `{}` (like objects). Inside we find the three function names as fields of the type definition.

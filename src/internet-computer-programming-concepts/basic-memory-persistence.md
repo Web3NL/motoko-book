@@ -24,7 +24,17 @@ The same applies for any other imported [item](https://docs.google.com/spreadshe
 Consider the actor from our [previous example](/internet-computer-programming-concepts/actors.html#a-simple-actor) with only the mutable variable `latestComment` and the functions `readComment` and `writeComment`:
 
 ```motoko
-{{#include _mo/basic-memory-persistence.mo:a}}
+actor {
+  private var latestComment = "";
+
+  public shared query func readComment() : async Text {
+    latestComment;
+  };
+
+  public shared func writeComment(comment : Text) : async () {
+    latestComment := comment;
+  };
+};
 ```
 
 The mutable variable `latestComment` is stored in main memory. Calling the update function `writeComment` [_mutates_](/common-programming-concepts/mutability.html) the state of the mutable variable `latestComment` in main memory.
