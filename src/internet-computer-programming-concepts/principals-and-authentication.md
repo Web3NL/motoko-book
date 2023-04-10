@@ -49,7 +49,10 @@ We chose the name `MessageObject` arbitrarily, but the type `{ caller : Principa
 To use this object, we must _[pattern match](/common-programming-concepts/pattern-matching.html)_ on it in the function signature:
 
 ```motoko
-{{#include _mo/principals2.mo:c}}
+public shared(messageObject) func whoami() : async Principal {
+    let { caller } = messageObject;
+    caller;
+};
 ```
 
 Our public shared update function now specifies a _variable name_ `messageObject` (enclosed in parenthesis `()`) in its signature after the `shared` keyword. We now named the special message object `messageObject` by pattern matching.
@@ -65,7 +68,9 @@ The function still has the same function type regardless of the message object i
 We did not have to pattern match inside the function body. A simple way to access the caller field of the message object is like this:
 
 ```motoko
-{{#include _mo/principals3.mo:a}}
+public shared query (msg) func call() : async Principal {
+    msg.caller;
+};
 ```
 
 This time we used a public shared query function that returns the principal obtained from the message object.
