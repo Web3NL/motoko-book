@@ -41,19 +41,17 @@ There is a special _message object_ that is available to [public shared function
 This message [object](/common-programming-concepts/objects-and-classes/objects.html) has the following type:
 
 ```motoko
-type MessageObject = {
-  caller : Principal;
-};
+{{#include _mo/principals2.mo:b}}
 ```
 
 We chose the name `MessageObject` arbitrarily, but the type `{ caller : Principal }` is a special _object type_ available to public shared functions inside actors.
 
 To use this object, we must _[pattern match](/common-programming-concepts/pattern-matching.html)_ on it in the function signature:
 
-```motoko, run
+```motoko
 public shared(messageObject) func whoami() : async Principal {
-  let { caller } = messageObject;
-  caller;
+    let { caller } = messageObject;
+    caller;
 };
 ```
 
@@ -69,9 +67,9 @@ The function still has the same function type regardless of the message object i
 
 We did not have to pattern match inside the function body. A simple way to access the caller field of the message object is like this:
 
-```motoko, run
+```motoko
 public shared query (msg) func call() : async Principal {
-  msg.caller;
+    msg.caller;
 };
 ```
 
@@ -83,16 +81,8 @@ If an actor specifies public shared functions and is deployed, then anyone can c
 
 Here's an actor with a public shared query function which checks whether its caller is anonymous:
 
-```motoko, run
-import P "mo:base/Principal";
-
-actor {
-  public shared query ({ caller = id }) func isAnonymous() : async Bool {
-    let anon = P.fromText("2vxsx-fae");
-
-    if (id == anon) true else false;
-  };
-};
+```motoko
+{{#include _mo/principals4.mo:a}}
 ```
 
 We now used pattern matching in the function signature to _rename_ the `caller` field of the message object to `id`. We also declared a variable `anon` of type `Principal` and set it to the anonymous principal.
