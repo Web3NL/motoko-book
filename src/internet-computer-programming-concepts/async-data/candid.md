@@ -52,8 +52,8 @@ vec nat
 
 ```candid
 variant {
-  A : nat;
-  B : text
+    A : nat;
+    B : text
 };
 ```
 
@@ -65,8 +65,8 @@ The `#` character is not used
 
 ```candid
 record {
-  name : text;
-  age : nat
+    name : text;
+    age : nat
 };
 ```
 
@@ -107,18 +107,7 @@ type MyType = nat
 An [actor](/internet-computer-programming-concepts/actors.html) running in a [canister](/internet-computer-programming-concepts/actors/actor-to-canister.html) has a Candid description of its interface. Consider the following actor in a Motoko source file `main.mo`:
 
 ```motoko
-// main.mo
-import Principal "mo:base/Principal";
-
-actor {
-  public type User = (Principal, Text);
-
-  public shared query ({ caller = id }) func getUser() : async User {
-    (id, Principal.toText(id));
-  };
-
-  public shared func doSomething() { () };
-};
+{{#include _mo/candid.mo}}
 ```
 
 Only public types and [public shared functions](/internet-computer-programming-concepts/actors.html#public-shared-functions-in-actors) are included in the _candid interface_. This actor has a `public type` and two `public shared functions`. Both of these are part of its public interface.
@@ -130,8 +119,8 @@ We describe this actor's interface in a Candid `.did` file. A Candid Interface c
 ```candid
 // candid.did
 type User = record {
-  principal;
-  text;
+   principal;
+   text;
 };
 
 service : {
@@ -158,27 +147,13 @@ Motoko has built in support for serializing shared types into Candid format. A _
 Consider the following relatively complex data structure:
 
 ```motoko
-type A = { #a : Nat; #b : Int };
-
-type B = { #a : Int; #b : Nat };
-
-type MyData = {
-  title : Text;
-  a : A;
-  b : B;
-};
+{{#include _mo/candid2.mo:a}}
 ```
 
 Our object type `MyData` contains a `Text` field and fields of variant types `A` and `B`. We could turn a _value_ of type `MyData` into a value of type `Blob` by using the `to_candid()` and `from_candid()` functions in Motoko.
 
 ```motoko
-let data : MyData = {
-  title = "Motoko";
-  a = #a(1);
-  b = #a(-1);
-};
-
-let blob : Blob = to_candid (data);
+{{#include _mo/candid2.mo:b}}
 ```
 
 We declared a variable of type `MyData` and assigned it a value. Then we _serialized_ that data into a `Blob` by using `to_candid()`.
@@ -188,12 +163,7 @@ This blob can now be sent or received in arguments or return types of public sha
 We could recover the original type by doing the opposite, namely deserializing the data back into a Motoko shared type by using `from_candid()`.
 
 ```motoko
-let deserialized_data : ?MyData = from_candid (blob);
-
-switch (deserialized_data) {
-  case null {};
-  case (?data) {};
-};
+{{#include _mo/candid2.mo:c}}
 ```
 
 We declare a variable with option type `?MyData`, because the `from_candid()` function always returns an option of the original type. Type annotation is required for this function to work. We use a `switch` statement after deserializing to handle both cases of the option type.

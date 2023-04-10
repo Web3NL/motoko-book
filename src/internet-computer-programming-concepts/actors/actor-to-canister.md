@@ -5,11 +5,7 @@ An actor is written in Motoko code. It defines _public functions_ that can be ac
 Here is the code for _one_ actor defined in its own Motoko source file. It contains one public function.
 
 ```motoko
-actor {
-  public shared query func hello() : async Text {
-    "Hello world";
-  };
-};
+{{#include _mo/actor-to-canister.mo:a}}
 ```
 
 We will _deploy_ this actor to the Internet Computer!
