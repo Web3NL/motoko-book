@@ -17,13 +17,7 @@ stable var y = 0;
 These variables now _retain_ their state even after _upgrading_ the actor code. Lets demonstrate this with an actor that implements a simple counter.
 
 ```motoko
-actor {
-  stable var count : Nat = 0;
-
-  public shared query func read() : async Nat { count };
-
-  public shared func increment() : async () { count += 1 };
-};
+{{#include _mo/stable-variables2.mo:a}}
 ```
 
 Our actor has a mutable variable `count` that is declared `stable`. It's initial value is `0`. We also have a [query](/internet-computer-programming-concepts/actors.html#public-shared-query) function `read` and an [update](/internet-computer-programming-concepts/actors.html#public-shared-update) function `increment`. The value of `count` is shown below in a _timeline of state_ in two instances of our counter actor: one with `var count` and the other with `stable var count`:
@@ -89,13 +83,13 @@ Immutable or mutable variables of [_objects with (private or public) mutable var
 
 ```motoko
 stable let o1 = object {
-  public var x = 0;
-  private var y = 0;
+    public var x = 0;
+    private var y = 0;
 };
 
 stable var o2 = object {
-  public var x = 0;
-  private var y = 0;
+    public var x = 0;
+    private var y = 0;
 };
 ```
 
@@ -137,7 +131,7 @@ A non-stable type could be an [object with public functions](/common-programming
 
 ```motoko
 stable let q1 = object {
-  public func f() {};
+    public func f() {};
 };
 ```
 
