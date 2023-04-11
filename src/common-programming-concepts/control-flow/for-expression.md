@@ -27,18 +27,22 @@ Now lets try out with a simple array called `users`. We also define an empty tex
 Here we iterate over every element of the array users and concad each element with `userList`.
 The resulting var `userList` would be "Amy, Bonnie, Chris".
 
-Now let's try a more complex situation: 
+Now let's try a more complex situation with an attached label: 
 
 ```motoko
 {{#include _mo/for.mo:c}}
 ```
 
-In this example we added a var `balance` and an array `donations` of tuples consisting of a name and a value. We also added a label named `bl` to the loop and an if-statement inside it.
+In this example we added a var `balance` and an array `donations` of tuples consisting of a name and a value. We also added a label named `bl` to the loop and 2 if-statements inside it.
 
-During iteration there will first be checked if the current balance is above 600, in that case a `break bl`is called to exit the labeled loop block immediately. 
-Remember that this is **imperative control flow** and will skip any other expressions that were still left to be executed inside the block.
+During iteration there will first be checked if the current balance is above or equal to 600 (the donation goal to reach), in that case a `break bl`is called to exit the labeled loop block immediately. 
+The second if statement checks wether a donation value is not less than 5 (as we require users a minimum to donate), in this case a `continue bl` is called to start the next iteration of the loop.
+
+Remember that `continue` and `break` **imperative control flow** and will skip any other expressions that were still left to be executed inside the loop block.
 
 If the balance has not been reached yet, then it wil continue its expression and add the corresponding donation value to balance, and name to userList.
+
+
 
 
 

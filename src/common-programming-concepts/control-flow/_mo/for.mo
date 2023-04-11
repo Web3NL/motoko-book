@@ -17,12 +17,15 @@ for (user in users.vals()) {
 // ANCHOR: c
 let donations = [
   ("Amy", 140),
-  ("Bonnie", 550),
-  ("Chris", 80)
+  ("Bonnie", 1),
+  ("Chris", 550),
+  ("Daphne", 80)
 ];
 var balance = 0;
+
 label bl for ((user, price) in donations.vals()) {
-  if (balance > 600) break bl;
+  if (balance >= 600) break bl;
+  if (balance < 5) continue bl;
   balance += price;
   userList #= user # ", ";
 };
