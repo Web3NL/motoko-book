@@ -2,5 +2,5 @@
 // ANCHOR: a
 import Char "mo:base/Char";
 
-Char.isDigit('y');
+Char.isWhitespace(' ');
 // ANCHOR_END: a
