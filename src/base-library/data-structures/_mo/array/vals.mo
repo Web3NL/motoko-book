@@ -3,9 +3,11 @@ import Array "mo:base/Array";
 
 let array = ["ICP", "will", "grow", "?"];
 
-var sentance = "";
+var sentence = "";
 
 for (value in array.vals()) {
-    sentance #= value;
+    sentence #= value # " ";
 };
+
+sentence
 // ANCHOR_END: a

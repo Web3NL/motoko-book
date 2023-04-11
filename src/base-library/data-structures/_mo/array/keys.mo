@@ -1,11 +1,10 @@
 // ANCHOR: a
 import Array "mo:base/Array";
+import Iter "mo:base/Iter";
 
 let array = [true, false, true, false];
 
-var number = 0;
+let iter = array.keys();
 
-for (key in array.keys()) {
-    number += key;
-};
+Iter.toArray(iter)
 // ANCHOR_END: a
