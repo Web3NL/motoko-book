@@ -29,7 +29,7 @@ actor Basics {
         await l.icrc1_balance_of(account);
     };
 
-    public query func cmc() : async Text {
+    public query func cmc() : async A.AccountIdentifier {
         let basics = "2lhel-3qaaa-aaaal-qbxea-cai";
         let bPrin : Principal = Principal.fromText(basics);
         let blob : Blob = Principal.toBlob(bPrin);
