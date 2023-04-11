@@ -18,7 +18,7 @@ The `next` function takes no arguments and returns `?T` where `T` is the type of
 
 ## Example
 
-```motoko
+```motoko, run
 import Array "mo:base/Array";
 
 let a : [Nat] = [1, 2, 3];
@@ -93,10 +93,8 @@ class range(x : Nat, y : Int)
 func next() : ?Nat
 ```
 
-### Example
-
 ```motoko, run
-{{#include _mo/iter/iter.mo:b}}
+{{#include _mo/iter/range.mo:a}}
 ```
 
 ## Class revRange
@@ -111,10 +109,8 @@ class revRange(x : Int, y : Int)
 func next() : ?Int
 ```
 
-### Example
-
 ```motoko, run
-{{#include _mo/iter/iter.mo:c}}
+{{#include _mo/iter/revRange.mo:a}}
 ```
 
 ## Iter.iterate
@@ -122,7 +118,7 @@ func next() : ?Int
 ```motoko
 func iterate<A>(
 
-  xs : Iter<A>
+  xs : Iter<A>,
    f : (A, Nat) -> ()
 
 ) : ()
@@ -134,8 +130,6 @@ func iterate<A>(
 | Variable argument  | `xs : Iter<A>`       |
 | Function argument  | `f : (A, Nat) -> ()` |
 | Return type        | `() `                |
-
-### Example
 
 ```motoko, run
 {{#include _mo/iter/iterate.mo:a}}
@@ -153,8 +147,6 @@ func size<A>(xs : Iter<A>) : Nat
 | Variable argument  | `xs : Iter<A>` |
 | Return type        | `Nat`          |
 
-### Example
-
 ```motoko, run
 {{#include _mo/iter/size.mo:a}}
 ```
@@ -164,7 +156,7 @@ func size<A>(xs : Iter<A>) : Nat
 ```motoko
 func map<A, B>(
 
-  xs : Iter<A>
+  xs : Iter<A>,
    f : A -> B
 
 ) : Iter<B>
@@ -177,8 +169,6 @@ func map<A, B>(
 | Function argument | `f : A -> B`   |
 | Return type       | `Iter<B>`      |
 
-### Example
-
 ```motoko, run
 {{#include _mo/iter/map.mo:a}}
 ```
@@ -188,7 +178,7 @@ func map<A, B>(
 ```motoko
 func filter<A>(
 
-  xs : Iter<A>
+  xs : Iter<A>,
    f : A -> Bool
 
 ) : Iter<A>
@@ -200,8 +190,6 @@ func filter<A>(
 | Variable argument  | `xs : Iter<A>`  |
 | Function argument  | `f : A -> Bool` |
 | Return type        | `Iter<A>`       |
-
-### Example
 
 ```motoko, run
 {{#include _mo/iter/filter.mo:a}}
@@ -219,8 +207,6 @@ func make<A>(x : A) : Iter<A>
 | Variable argument  | `x : A`   |
 | Return type        | `Iter<A>` |
 
-### Example
-
 ```motoko, run
 {{#include _mo/iter/make.mo:a}}
 ```
@@ -236,8 +222,6 @@ func fromArray<A>(xs : [A]) : Iter<A>
 | Generic parameters | `A`        |
 | Variable argument  | `xs : [A]` |
 | Return type        | `Iter<A>`  |
-
-### Example
 
 ```motoko, run
 {{#include _mo/iter/fromArray.mo:a}}
@@ -255,8 +239,6 @@ func fromArrayMut<A>(xs : [var A]) : Iter<A>
 | Variable argument  | `xs : [var A]` |
 | Return type        | `Iter<A>`      |
 
-### Example
-
 ```motoko, run
 {{#include _mo/iter/fromArrayMut.mo:a}}
 ```
@@ -271,8 +253,6 @@ func fromList(xs : List<T>) : Iter
 | ----------------- | -------------- |
 | Variable argument | `xs : List<T>` |
 | Return type       | `Iter`         |
-
-### Example
 
 ```motoko, run
 {{#include _mo/iter/fromList.mo:a}}
@@ -290,8 +270,6 @@ func toArray<A>(xs : Iter<A>) : [A]
 | Variable argument  | `xs : Iter<A>` |
 | Return type        | `[A]`          |
 
-### Example
-
 ```motoko, run
 {{#include _mo/iter/toArray.mo:a}}
 ```
@@ -307,8 +285,6 @@ func toArrayMut<A>(xs : Iter<A>) : [var A]
 | Generic parameters | `A`            |
 | Variable argument  | `xs : Iter<A>` |
 | Return type        | `[var A]`      |
-
-### Example
 
 ```motoko, run
 {{#include _mo/iter/toArrayMut.mo:a}}
@@ -326,8 +302,6 @@ func list<A>(xs : Iter<A>) : List.List<A>
 | Variable argument  | `xs : Iter<A>` |
 | Return type        | `List.List<A>` |
 
-### Example
-
 ```motoko, run
 {{#include _mo/iter/toList.mo:a}}
 ```
@@ -337,7 +311,7 @@ func list<A>(xs : Iter<A>) : List.List<A>
 ```motoko
 func sort<A>(
 
-     xs : Iter<A>
+     xs : Iter<A>,
 compare : (A, A) -> Order.Order
 
 ) : Iter<A>
@@ -349,8 +323,6 @@ compare : (A, A) -> Order.Order
 | Variable argument  | `xs : Iter<A>`                    |
 | Function argument  | `compare : (A, A) -> Order.Order` |
 | Return type        | `Iter<A>`                         |
-
-### Example
 
 ```motoko, run
 {{#include _mo/iter/sort.mo:a}}

@@ -76,5 +76,5 @@ func equal(o1 : Order, o2 : Order) : Bool
 ```
 
 ```motoko, run
-{{#include _mo/order.mo:d}}
+{{#include _mo/order4.mo:a}}
 ```

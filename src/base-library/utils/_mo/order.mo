@@ -27,12 +27,3 @@ func sortColor(c1 : Color, c2 : Color) : Order {
     };
 };
 // ANCHOR_END: c
-
-// ANCHOR: d
-
-let icpToday : Order = #less;
-
-let icpTomorrow : Order = #greater;
-
-Order.equal(icpToday, icpTomorrow);
-// ANCHOR_END: d
