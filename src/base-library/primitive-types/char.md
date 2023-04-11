@@ -44,7 +44,7 @@ The _convention_ is to name the [_module alias_](/common-programming-concepts/mo
 func toNat32 : (c : Char) -> Nat32
 ```
 
-The function `toNat32` takes one `Char` argument and returns a `Nat32` value.
+The function `toNat32` takes one `Char` value and returns a `Nat32` value.
 
 ```motoko, run
 {{#include _mo/char/char2.mo:a}}
@@ -56,7 +56,7 @@ The function `toNat32` takes one `Char` argument and returns a `Nat32` value.
 func fromNat32 : (w : Nat32) -> Char
 ```
 
-The function `fromNat32` takes one `Nat32` argument and returns a `Char` value.
+The function `fromNat32` takes one `Nat32` value and returns a `Char` value.
 
 ```motoko, run
 {{#include _mo/char/char3.mo:a}}
@@ -67,7 +67,7 @@ The function `fromNat32` takes one `Nat32` argument and returns a `Char` value.
 func toText : (c : Char) -> Text
 ```
 
-The function `toText` takes one `Char` argument and returns a `Text` value.
+The function `toText` takes one `Char` value and returns a `Text` value.
 
 ```motoko, run
 {{#include _mo/char/char12.mo:a}}
@@ -79,7 +79,7 @@ The function `toText` takes one `Char` argument and returns a `Text` value.
 func isDigit(c : Char) : Bool
 ```
 
-The function `isDigit` takes one `Char` argument and returns a `Bool` value.
+The function `isDigit` takes one `Char` value and returns a `Bool` value.
 
 ```motoko, run
 {{#include _mo/char/char1.mo:a}}
@@ -91,7 +91,7 @@ The function `isDigit` takes one `Char` argument and returns a `Bool` value.
 let isWhitespace : (c : Char) -> Bool
 ```
 
-The function `isWhitespace` takes one `Char` argument and returns a `Bool` value.
+The function `isWhitespace` takes one `Char` value and returns a `Bool` value.
 
 ```motoko, run
 {{#include _mo/char/char13.mo:a}}
@@ -102,7 +102,7 @@ The function `isWhitespace` takes one `Char` argument and returns a `Bool` value
 func isLowercase(c : Char) : Bool
 ```
 
-The function `isLowercase` takes one `Char` argument and returns a `Bool` value.
+The function `isLowercase` takes one `Char` value and returns a `Bool` value.
 
 ```motoko, run
 {{#include _mo/char/char14.mo:a}}
@@ -113,7 +113,7 @@ The function `isLowercase` takes one `Char` argument and returns a `Bool` value.
 func isUppercase(c : Char) : Bool
 ```
 
-The function `isUppercase` takes one `Char` argument and returns a `Bool` value.
+The function `isUppercase` takes one `Char` value and returns a `Bool` value.
 
 ```motoko, run
 {{#include _mo/char/char15.mo:a}}
@@ -125,7 +125,7 @@ The function `isUppercase` takes one `Char` argument and returns a `Bool` value.
 func isAlphabetic : (c : Char) -> Bool
 ```
 
-The function `isAlphabetic` takes one `Char` argument and returns a `Bool` value.
+The function `isAlphabetic` takes one `Char` value and returns a `Bool` value.
 
 ```motoko, run
 {{#include _mo/char/char4.mo:a}}
