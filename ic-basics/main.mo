@@ -14,6 +14,7 @@ import Blob "mo:base/Blob";
 import Array "mo:base/Array";
 import Nat8 "mo:base/Nat8";
 import Nat64 "mo:base/Nat64";
+import CanisterIds "constants/CanisterIds";
 
 actor Basics {
     public func cycleBalance() : async Text {
@@ -71,6 +72,7 @@ actor Basics {
 
     func subaccountFromPrincipal(principal : Principal) : Blob {
         let buf : [var Nat8] = Array.init<Nat8>(32, 0);
+
         let p : Blob = Principal.toBlob(principal);
 
         buf[0] := Nat8.fromNat(p.size());
@@ -85,4 +87,22 @@ actor Basics {
 
         Blob.fromArray(Array.freeze(buf));
     };
+
+    // NOT WORKING. MINTING ACCOUNT UNKNOWN
+    // public func burn() : async Ledger.Result {
+    //     let l : Ledger.LedgerCanister = actor (LEDGER_CANISTER);
+    //     await l.icrc1_transfer(
+    //         {
+    //             from_subaccount = null;
+    //             memo = null;
+    //             created_at_time = null;
+    //             amount = 10000;
+    //             fee = ?10000;
+    //             to = {
+    //                 owner = Principal.fromText(LEDGER_CANISTER);
+    //                 subaccount = null;
+    //             };
+    //         }
+    //     );
+    // };
 };
