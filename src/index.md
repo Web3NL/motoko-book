@@ -21,7 +21,7 @@
 [GitHub Repo](https://github.com/Web3NL/motoko-book)
 
 [Official Motoko Docs](https://internetcomputer.org/docs/current/developer-docs/build/cdks/motoko-dfinity/motoko/)  
-[Official Base Library Reference](https://internetcomputer.org/docs/current/references/motoko-ref/)
+[Official Base Library Reference](https://internetcomputer.org/docs/current/references/motoko-ref/)  
 [Official ICRC1 Docs](https://internetcomputer.org/docs/current/developer-docs/integrations/icrc-1/)
 
 ## Author
