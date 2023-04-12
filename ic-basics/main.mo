@@ -52,11 +52,11 @@ actor Basics {
         await l.transfer(args);
     };
 
-    public func notify_top_up() : async CMC.NotifyTopUpResult {
+    public func notify_top_up(height : Nat64) : async CMC.NotifyTopUpResult {
         let cmc : CMC.Self = actor (CYCLES_MINTING_CANISTER);
         await cmc.notify_top_up(
             {
-                block_index = 5_946_328 : Nat64;
+                block_index = height;
                 canister_id = Principal.fromActor(Basics);
             }
         );
