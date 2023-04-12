@@ -1,10 +1,11 @@
-import { MANAGEMENT_CANISTER; LEDGER_CANISTER } "constants/CanisterIds";
+import { MANAGEMENT_CANISTER; LEDGER_CANISTER; CYCLES_MINTING_CANISTER } "constants/CanisterIds";
 import Management "canisters/Management";
 import Ledger "canisters/Ledger";
+import CMC "canisters/CyclesMinter";
 
 import Accounts "utils/Accounts";
 
-import A "Accounts";
+import Account "Accounts";
 
 import Principal "mo:base/Principal";
 import Int "mo:base/Int";
@@ -12,6 +13,7 @@ import Float "mo:base/Float";
 import Blob "mo:base/Blob";
 import Array "mo:base/Array";
 import Nat8 "mo:base/Nat8";
+import Nat64 "mo:base/Nat64";
 
 actor Basics {
     public func cycleBalance() : async Text {
@@ -29,24 +31,58 @@ actor Basics {
         await l.icrc1_balance_of(account);
     };
 
-    public query func cmc() : async A.AccountIdentifier {
-        let basics = "2lhel-3qaaa-aaaal-qbxea-cai";
-        let bPrin : Principal = Principal.fromText(basics);
-        let blob : Blob = Principal.toBlob(bPrin);
-        let blobArray : [Nat8] = Blob.toArray(blob);
+    public func transfer_cmc() : async Ledger.Result_1 {
+        let subaccount = subaccountFromPrincipal(Principal.fromActor(Basics));
 
-        let a : [var Nat8] = Array.init<Nat8>(32, 0);
+        let t = Account.accountIdentifier(Principal.fromText(CYCLES_MINTING_CANISTER), subaccount);
 
-        a[0] := Nat8.fromNat(blob.size());
+        let memo : Nat64 = 1347768404;
+
+        let args : Ledger.TransferArgs = {
+            to = Blob.toArray(t);
+            memo;
+            amount : Ledger.Tokens = { e8s = 10000 };
+            fee = { e8s = 10000 };
+            created_at_time = null;
+            from_subaccount = null;
+        };
+
+        let l : Ledger.LedgerCanister = actor (LEDGER_CANISTER);
+        await l.transfer(args);
+    };
+
+    public func notify_top_up() : async CMC.NotifyTopUpResult {
+        let cmc : CMC.Self = actor (CYCLES_MINTING_CANISTER);
+        await cmc.notify_top_up(
+            {
+                block_index = 5_946_328 : Nat64;
+                canister_id = Principal.fromActor(Basics);
+            }
+        );
+    };
+
+    public query func canisterAccount() : async Account.AccountIdentifier {
+        myAccountId();
+    };
+
+    func myAccountId() : Account.AccountIdentifier {
+        Account.accountIdentifier(Principal.fromActor(Basics), Account.defaultSubaccount());
+    };
+
+    func subaccountFromPrincipal(principal : Principal) : Blob {
+        let buf : [var Nat8] = Array.init<Nat8>(32, 0);
+        let p : Blob = Principal.toBlob(principal);
+
+        buf[0] := Nat8.fromNat(p.size());
+
+        let a : [Nat8] = Blob.toArray(p);
 
         var i = 1;
-        for (byte in Array.vals(blobArray)) {
-            a[i] := byte;
+        for (byte in a.vals()) {
+            buf[i] := byte;
             i += 1;
         };
 
-        let bb = Blob.fromArray(Array.freeze(a));
-
-        A.accountIdentifier(Principal.fromText("rkp4c-7iaaa-aaaaa-aaaca-cai"), bb);
+        Blob.fromArray(Array.freeze(buf));
     };
 };
