@@ -58,7 +58,7 @@ Actors allow _three kinds_ of public functions:
 > **NOTE**  
 > _Public shared query functions are fast, but don't have the full security guarantees of the Internet Computer because they do not 'go through' consensus_
 
-### Shared types
+### Shared async types
 
 The argument and return types of public shared functions are restricted to _[shared types](/internet-computer-programming-concepts/async-data/shared-types.html)_ only. We will cover shared types [later](/internet-computer-programming-concepts/async-data/shared-types.html) in this book.
 
