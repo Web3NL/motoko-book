@@ -1,4 +1,4 @@
-# Canisters
+# Canister Calls
 
 A _canister_ is an instance of an actor that runs on the Internet Computer (IC). The IC provides _system resources_ to the canister, like:
 

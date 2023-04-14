@@ -93,10 +93,10 @@
 - [Advanced Concepts](advanced-concepts.md)
 
   - [Async Programming](advanced-concepts/async-programming.md)
-    - [Canisters](advanced-concepts/async-programming/canisters.md)
-    - [Async Calls and Await](advanced-concepts/async-programming/async-calls-and-await.md)
+    - [Canister Calls](advanced-concepts/async-programming/canister-calls.md)
+    - [Async and Await](advanced-concepts/async-programming/async-and-await.md)
     - [Errors and Traps](advanced-concepts/async-programming/errors-and-traps.md)
-    - [Cross Canister Calls and Rollbacks](advanced-concepts/async-programming/cross-canister-calls-and-rollbacks.md)
+    - [State Rollbacks](advanced-concepts/async-programming/state-rollbacks.md)
     - [Async* and Await*](advanced-concepts/async-programming/internal-async-await.md)
   - [Scalability](advanced-concepts/scalability.md)
     - [Stable Storage](advanced-concepts/scalability/stable-storage.md)
