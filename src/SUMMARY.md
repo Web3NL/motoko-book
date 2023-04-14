@@ -93,7 +93,7 @@
 - [Advanced Concepts](advanced-concepts.md)
 
   - [Async Programming](advanced-concepts/async-programming.md)
-    - [Canister Calls](advanced-concepts/async-programming/canister-calls.md)
+    - [Inter Canister Calls](advanced-concepts/async-programming/inter-canister-calls.md)
     - [Async and Await](advanced-concepts/async-programming/async-and-await.md)
     - [Errors and Traps](advanced-concepts/async-programming/errors-and-traps.md)
     - [State Rollbacks](advanced-concepts/async-programming/state-rollbacks.md)
