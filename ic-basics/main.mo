@@ -6,6 +6,7 @@ import CMC "canisters/CyclesMinter";
 import Accounts "utils/Accounts";
 
 import Account "Accounts";
+import Hex "hex";
 
 import Principal "mo:base/Principal";
 import Int "mo:base/Int";
@@ -17,6 +18,8 @@ import Nat64 "mo:base/Nat64";
 import CanisterIds "constants/CanisterIds";
 
 actor Basics {
+    let memo : Nat64 = 1347768404;
+
     public func cycleBalance() : async Text {
         let m : Management.ManagementCanister = actor (MANAGEMENT_CANISTER);
         let status = await m.canister_status({
@@ -32,32 +35,30 @@ actor Basics {
         await l.icrc1_balance_of(account);
     };
 
-    public func transfer_cmc() : async Ledger.Result_1 {
-        let subaccount = subaccountFromPrincipal(Principal.fromActor(Basics));
+    // public func transfer_cmc() : async Ledger.Result_1 {
+    //     let subaccount = subaccountFromPrincipal(Principal.fromActor(Basics));
 
-        let t = Account.accountIdentifier(Principal.fromText(CYCLES_MINTING_CANISTER), subaccount);
+    //     let t = Account.accountIdentifier(Principal.fromText(CYCLES_MINTING_CANISTER), subaccount);
 
-        let memo : Nat64 = 1347768404;
+    //     let args : Ledger.TransferArgs = {
+    //         to = Blob.toArray(t);
+    //         memo;
+    //         amount : Ledger.Tokens = { e8s = 10000 };
+    //         fee = { e8s = 10000 };
+    //         created_at_time = null;
+    //         from_subaccount = null;
+    //     };
 
-        let args : Ledger.TransferArgs = {
-            to = Blob.toArray(t);
-            memo;
-            amount : Ledger.Tokens = { e8s = 10000 };
-            fee = { e8s = 10000 };
-            created_at_time = null;
-            from_subaccount = null;
-        };
+    //     let l : Ledger.LedgerCanister = actor (LEDGER_CANISTER);
+    //     await l.transfer(args);
+    // };
 
-        let l : Ledger.LedgerCanister = actor (LEDGER_CANISTER);
-        await l.transfer(args);
-    };
-
-    public func notify_top_up(height : Nat64) : async CMC.NotifyTopUpResult {
+    public func notify_top_up(height : Nat64, canister_id : Principal) : async CMC.NotifyTopUpResult {
         let cmc : CMC.Self = actor (CYCLES_MINTING_CANISTER);
         await cmc.notify_top_up(
             {
                 block_index = height;
-                canister_id = Principal.fromActor(Basics);
+                canister_id;
             }
         );
     };
@@ -70,7 +71,7 @@ actor Basics {
         Account.accountIdentifier(Principal.fromActor(Basics), Account.defaultSubaccount());
     };
 
-    func subaccountFromPrincipal(principal : Principal) : Blob {
+    public func subaccountFromPrincipal(principal : Principal) : async Blob {
         let buf : [var Nat8] = Array.init<Nat8>(32, 0);
 
         let p : Blob = Principal.toBlob(principal);
@@ -88,21 +89,7 @@ actor Basics {
         Blob.fromArray(Array.freeze(buf));
     };
 
-    // NOT WORKING. MINTING ACCOUNT UNKNOWN
-    // public func burn() : async Ledger.Result {
-    //     let l : Ledger.LedgerCanister = actor (LEDGER_CANISTER);
-    //     await l.icrc1_transfer(
-    //         {
-    //             from_subaccount = null;
-    //             memo = null;
-    //             created_at_time = null;
-    //             amount = 10000;
-    //             fee = ?10000;
-    //             to = {
-    //                 owner = Principal.fromText(LEDGER_CANISTER);
-    //                 subaccount = null;
-    //             };
-    //         }
-    //     );
-    // };
+    public query func blobToHex(b : Blob) : async Text {
+        Hex.encode(Blob.toArray(b));
+    };
 };
