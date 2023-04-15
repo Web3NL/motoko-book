@@ -1,6 +1,13 @@
 # Async Programming
 
-The Internet Computer offers an _asynchronous programming paradigm_ in which actors interact with each other through _asynchronous messages_. To fully understand this, we will introduce some terminology and explain asynchronous behavior in this chapter. In particular, we will cover:
+The Internet Computer offers an _asynchronous programming paradigm_ in which actors interact with each other through _asynchronous function calls_. To better understand this, we need to be familiar with some terminology and develop an understanding of asynchronous behavior.
+
+## Async calls
+
+**Outgoing calls** An actor running in a canister can execute an _async call_ by calling another canister's public shared functions.
+**Incoming calls** An actor running in a canister can receive an _async call_ when another canister calls its public shared functions.
+
+> **NOTE** > _A canister can also call its own public shared functions_
 
 - Async function calls and Messaging
 - Async Futures and Await
