@@ -2,7 +2,5 @@
 // ANCHOR: a
 import Float "mo:base/Float";
 
-let a : Float = 5.12;
-
-Float.neg(a);
+Float.neg(5.12);
 // ANCHOR_END: a

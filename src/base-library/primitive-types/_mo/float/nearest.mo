@@ -2,7 +2,5 @@
 // ANCHOR: a
 import Float "mo:base/Float";
 
-let float : Float = 3.5;
-
-Float.nearest(float);
+Float.nearest(3.5);
 // ANCHOR_END: a

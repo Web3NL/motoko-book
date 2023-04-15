@@ -28,8 +28,6 @@ The _convention_ is to name the [_module alias_](/common-programming-concepts/mo
 
 ### comparison
 
-[Function `equal`](#floatequal)    
-[Function `notEqual`](#floatnotequal)    
 [Function `equalWithin`](#floatequalwithin)    
 [Function `notEqualWithin`](#floatnotequalwithin)    
 [Function `less`](#floatless)  
@@ -50,15 +48,15 @@ The _convention_ is to name the [_module alias_](/common-programming-concepts/mo
 
 ### Mathematical Operations
 
-[Function `sin`](#floatneg)    
-[Function `cos`](#floatadd)  
-[Function `tan`](#floatsub)    
-[Function `arcsin`](#floatmul)  
-[Function `arccos`](#floatdiv)    
-[Function `arctan`](#floatrem)    
-[Function `arctan2`](#floatpow)  
-[Function `exp`](#floatpow)  
-[Function `log`](#floatpow)  
+[Function `sin`](#floatsin)    
+[Function `cos`](#floatcos)  
+[Function `tan`](#floattan)    
+[Function `arcsin`](#floatarcsin)  
+[Function `arccos`](#floatarccos)    
+[Function `arctan`](#floatarctan)    
+[Function `arctan2`](#floatarctan2)  
+[Function `exp`](#floatexp)  
+[Function `log`](#floatlog)  
 
 
 ## Float.abs
@@ -222,28 +220,6 @@ The function `fromInt64` takes one `Int64` value and returns a `Float` value.
 ```motoko, run
 {{#include _mo/float/fromInt64.mo:a}}
 ```
-## Float.equal
-
-```motoko
-func equal(x : Float, y : Float) : Bool
-```
-
-The function `equal` takes two `Float` value and returns a `Bool` value.
-
-```motoko, run
-{{#include _mo/float/equal.mo:a}}
-```
-## Float.notEqual
-
-```motoko
-func notEqual(x : Float, y : Float) : Bool
-```
-
-The function `notEqual` takes two `Float` value and returns a `Bool` value.
-
-```motoko, run
-{{#include _mo/float/notEqual.mo:a}}
-```
 ## Float.equalWithin
 
 ```motoko
@@ -316,7 +292,7 @@ The function `greaterOrEqual` takes two `Float` value and returns a `Bool` value
 func compare(x : Float, y : Float) : {#less; #equal; #greater}
 ```
 
-The function `compare` takes two `Float` value and returns an [Order](/base-library/utils/order.html) variant value.
+The function `compare` takes two `Float` value and returns an [Order](/base-library/utils/order.html) value.
 
 ```motoko, run
 {{#include _mo/float/compare.mo:a}}
@@ -438,7 +414,7 @@ The function `tan` takes two `Float` value and returns a `Float` value.
 func arcsin : (x : Float) -> Float
 ```
 
-The function `arcsin` takes two `Float` value and returns a `Float` value.
+The function `arcsin` takes two `Float` value and returns a `Float` value. for more explanation look for [official documentation](https://internetcomputer.org/docs/current/motoko/main/base/Float/#value-arcsin) 
 
 ```motoko, run
 {{#include _mo/float/arcsin.mo:a}}
@@ -449,7 +425,7 @@ The function `arcsin` takes two `Float` value and returns a `Float` value.
 func arccos : (x : Float) -> Float
 ```
 
-The function `arccos` takes two `Float` value and returns a `Float` value.
+The function `arccos` takes two `Float` value and returns a `Float` value. for more explanation look for [official documentation](https://internetcomputer.org/docs/current/motoko/main/base/Float/#value-arccos) 
 
 ```motoko, run
 {{#include _mo/float/arccos.mo:a}}
@@ -460,7 +436,7 @@ The function `arccos` takes two `Float` value and returns a `Float` value.
 func arctan : (x : Float) -> Float
 ```
 
-The function `arctan` takes two `Float` value and returns a `Float` value.
+The function `arctan` takes two `Float` value and returns a `Float` value. for more explanation look for [official documentation](https://internetcomputer.org/docs/current/motoko/main/base/Float/#value-arctan) 
 
 ```motoko, run
 {{#include _mo/float/arctan.mo:a}}
@@ -471,7 +447,7 @@ The function `arctan` takes two `Float` value and returns a `Float` value.
 func arctan2 : (x : Float) -> Float
 ```
 
-The function `arctan2` takes two `Float` value and returns a `Float` value.
+The function `arctan2` takes two `Float` value and returns a `Float` value. for more explanation look for [official documentation](https://internetcomputer.org/docs/current/motoko/main/base/Float/#value-arctan2) 
 
 ```motoko, run
 {{#include _mo/float/arctan2.mo:a}}
@@ -479,7 +455,7 @@ The function `arctan2` takes two `Float` value and returns a `Float` value.
 ## Float.exp
 
 ```motoko
-func exp : (x : Float) -> Float
+func exp : (x : Float) -> Float 
 ```
 
 The function `exp` takes two `Float` value and returns a `Float` value.
@@ -498,12 +474,3 @@ The function `log` takes two `Float` value and returns a `Float` value.
 ```motoko, run
 {{#include _mo/float/log.mo:a}}
 ```
-
-
-
-
-<!-- ## Float.format
-```motoko
-func format(fmt : {#fix : Nat8; #exp : Nat8; #gen : Nat8; #hex : Nat8; #exact}, x : Float) : Text
-```
--->

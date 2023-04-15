@@ -2,7 +2,5 @@
 // ANCHOR: a
 import Float "mo:base/Float";
 
-let float : Float = 3.64;
-
-Float.trunc(float);
+Float.trunc(3.98);
 // ANCHOR_END: a
