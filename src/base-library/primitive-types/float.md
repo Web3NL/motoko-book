@@ -14,11 +14,11 @@ The _convention_ is to name the [_module alias_](/common-programming-concepts/mo
 [Function `sqrt`](#floatsqrt)  
 [Function `ceil`](#floatceil)  
 [Function `floor`](#floatfloor)  
-[Function `trunc`](#floattrunc)    
-[Function `nearest`](#floatnearest)    
-[Function `copySign`](#floatcopysign)    
+[Function `trunc`](#floattrunc)  
+[Function `nearest`](#floatnearest)  
+[Function `copySign`](#floatcopysign)  
 [Function `min`](#floatmin)  
-[Function `max`](#floatmax)  
+[Function `max`](#floatmax)
 
 ### Conversion
 
@@ -26,39 +26,39 @@ The _convention_ is to name the [_module alias_](/common-programming-concepts/mo
 [Function `fromInt`](#floatfromint)  
 [Function `toText`](#floattotext)  
 [Function `toInt64`](#floattoint64)  
-[Function `fromInt64`](#floatfromint642)
+[Function `fromInt64`](#floatfromint64)
 
-### comparison
+### Comparison
 
-[Function `equalWithin`](#floatequalwithin)    
-[Function `notEqualWithin`](#floatnotequalwithin)    
+[Function `equalWithin`](#floatequalwithin)  
+[Function `notEqualWithin`](#floatnotequalwithin)  
 [Function `less`](#floatless)  
-[Function `lessOrEqual`](#floatlessorequal)    
-[Function `greater`](#floatgreater)    
-[Function `greaterOrEqual`](#floatgreaterorequal)    
-[Function `compare`](#floatcompare)    
+[Function `lessOrEqual`](#floatlessorequal)  
+[Function `greater`](#floatgreater)  
+[Function `greaterOrEqual`](#floatgreaterorequal)  
+[Function `compare`](#floatcompare)
 
 ### Numerical Operations
 
-[Function `neg`](#floatneg)    
+[Function `neg`](#floatneg)  
 [Function `add`](#floatadd)  
-[Function `sub`](#floatsub)    
+[Function `sub`](#floatsub)  
 [Function `mul`](#floatmul)  
-[Function `div`](#floatdiv)    
-[Function `rem`](#floatrem)    
-[Function `pow`](#floatpow)  
+[Function `div`](#floatdiv)  
+[Function `rem`](#floatrem)  
+[Function `pow`](#floatpow)
 
 ### Mathematical Operations
 
-[Function `sin`](#floatsin)    
+[Function `sin`](#floatsin)  
 [Function `cos`](#floatcos)  
-[Function `tan`](#floattan)    
+[Function `tan`](#floattan)  
 [Function `arcsin`](#floatarcsin)  
-[Function `arccos`](#floatarccos)    
-[Function `arctan`](#floatarctan)    
+[Function `arccos`](#floatarccos)  
+[Function `arctan`](#floatarctan)  
 [Function `arctan2`](#floatarctan2)  
 [Function `exp`](#floatexp)  
-[Function `log`](#floatlog)  
+[Function `log`](#floatlog)
 
 ## Float.abs
 
@@ -71,6 +71,7 @@ The function `abs` takes one `Float` value and returns a `Float` value.
 ```motoko, run
 {{#include _mo/float/abs.mo:a}}
 ```
+
 ## Float.sqrt
 
 ```motoko
@@ -106,6 +107,7 @@ The function `floor` takes one `Float` value and returns a `Float` value.
 ```motoko, run
 {{#include _mo/float/floor.mo:a}}
 ```
+
 ## Float.trunc
 
 ```motoko
@@ -117,6 +119,7 @@ The function `trunc` takes one `Float` value and returns a `Float` value.
 ```motoko, run
 {{#include _mo/float/trunc.mo:a}}
 ```
+
 ## Float.nearest
 
 ```motoko
@@ -128,6 +131,7 @@ The function `nearest` takes one `Float` value and returns a `Float` value.
 ```motoko, run
 {{#include _mo/float/nearest.mo:a}}
 ```
+
 ## Float.copySign
 
 ```motoko
@@ -139,6 +143,7 @@ The function `copySign` takes one `Float` value and returns a `Float` value.
 ```motoko, run
 {{#include _mo/float/copySign.mo:a}}
 ```
+
 ## Float.min
 
 ```motoko
@@ -150,6 +155,7 @@ The function `min` takes two `Float` value and returns a `Float` value.
 ```motoko, run
 {{#include _mo/float/min.mo:a}}
 ```
+
 ## Float.max
 
 ```motoko
@@ -221,6 +227,7 @@ The function `fromInt64` takes one `Int64` value and returns a `Float` value.
 ```motoko, run
 {{#include _mo/float/fromInt64.mo:a}}
 ```
+
 ## Float.equalWithin
 
 ```motoko
@@ -232,6 +239,7 @@ The function `equalWithin` takes two `Float` and one `epsilon` value and returns
 ```motoko, run
 {{#include _mo/float/equalWith.mo:a}}
 ```
+
 ## Float.notEqualWithin
 
 ```motoko
@@ -243,6 +251,7 @@ The function `notEqualWithin` takes two `Float` and one `epsilon` value and retu
 ```motoko, run
 {{#include _mo/float/notEqualWith.mo:a}}
 ```
+
 ## Float.less
 
 ```motoko
@@ -254,6 +263,7 @@ The function `less` takes two `Float` value and returns a `Bool` value.
 ```motoko, run
 {{#include _mo/float/less.mo:a}}
 ```
+
 ## Float.lessOrEqual
 
 ```motoko
@@ -265,6 +275,7 @@ The function `lessOrEqual` takes two `Float` value and returns a `Bool` value.
 ```motoko, run
 {{#include _mo/float/lessOrEqual.mo:a}}
 ```
+
 ## Float.greater
 
 ```motoko
@@ -276,6 +287,7 @@ The function `greater` takes two `Float` value and returns a `Bool` value.
 ```motoko, run
 {{#include _mo/float/greater.mo:a}}
 ```
+
 ## Float.greaterOrEqual
 
 ```motoko
@@ -287,6 +299,7 @@ The function `greaterOrEqual` takes two `Float` value and returns a `Bool` value
 ```motoko, run
 {{#include _mo/float/greaterOrEqual.mo:a}}
 ```
+
 ## Float.compare
 
 ```motoko
@@ -310,6 +323,7 @@ The function `neg` takes one `Float` value and returns a `Float` value.
 ```motoko, run
 {{#include _mo/float/neg.mo:a}}
 ```
+
 ## Float.add
 
 ```motoko
@@ -321,6 +335,7 @@ The function `add` takes two `Float` value and returns a `Float` value.
 ```motoko, run
 {{#include _mo/float/add.mo:a}}
 ```
+
 ## Float.sub
 
 ```motoko
@@ -332,6 +347,7 @@ The function `sub` takes two `Float` value and returns a `Float` value.
 ```motoko, run
 {{#include _mo/float/sub.mo:a}}
 ```
+
 ## Float.mul
 
 ```motoko
@@ -343,6 +359,7 @@ The function `mul` takes two `Float` value and returns a `Float` value.
 ```motoko, run
 {{#include _mo/float/mul.mo:a}}
 ```
+
 ## Float.div
 
 ```motoko
@@ -354,6 +371,7 @@ The function `div` takes two `Float` value and returns a `Float` value.
 ```motoko, run
 {{#include _mo/float/div.mo:a}}
 ```
+
 ## Float.rem
 
 ```motoko
@@ -365,6 +383,7 @@ The function `rem` takes two `Float` value and returns a `Float` value.
 ```motoko, run
 {{#include _mo/float/rem.mo:a}}
 ```
+
 ## Float.pow
 
 ```motoko
@@ -376,6 +395,7 @@ The function `pow` takes two `Float` value and returns a `Float` value.
 ```motoko, run
 {{#include _mo/float/pow.mo:a}}
 ```
+
 ## Float.sin
 
 ```motoko
@@ -387,6 +407,7 @@ The function `sin` takes one `Float` value and returns a `Float` value.
 ```motoko, run
 {{#include _mo/float/sin.mo:a}}
 ```
+
 ## Float.cos
 
 ```motoko
@@ -398,6 +419,7 @@ The function `cos` takes one `Float` value and returns a `Float` value.
 ```motoko, run
 {{#include _mo/float/cos.mo:a}}
 ```
+
 ## Float.tan
 
 ```motoko
@@ -409,54 +431,59 @@ The function `tan` takes one `Float` value and returns a `Float` value.
 ```motoko, run
 {{#include _mo/float/tan.mo:a}}
 ```
+
 ## Float.arcsin
 
 ```motoko
 func arcsin : (x : Float) -> Float
 ```
 
-The function `arcsin` takes one `Float` value and returns a `Float` value. for more explanation look for [official documentation](https://internetcomputer.org/docs/current/motoko/main/base/Float/#value-arcsin) 
+The function `arcsin` takes one `Float` value and returns a `Float` value. for more explanation look for [official documentation](https://internetcomputer.org/docs/current/motoko/main/base/Float/#value-arcsin)
 
 ```motoko, run
 {{#include _mo/float/arcsin.mo:a}}
 ```
+
 ## Float.arccos
 
 ```motoko
 func arccos : (x : Float) -> Float
 ```
 
-The function `arccos` takes one `Float` value and returns a `Float` value. for more explanation look for [official documentation](https://internetcomputer.org/docs/current/motoko/main/base/Float/#value-arccos) 
+The function `arccos` takes one `Float` value and returns a `Float` value. for more explanation look for [official documentation](https://internetcomputer.org/docs/current/motoko/main/base/Float/#value-arccos)
 
 ```motoko, run
 {{#include _mo/float/arccos.mo:a}}
 ```
+
 ## Float.arctan
 
 ```motoko
 func arctan : (x : Float) -> Float
 ```
 
-The function `arctan` takes one `Float` value and returns a `Float` value. for more explanation look for [official documentation](https://internetcomputer.org/docs/current/motoko/main/base/Float/#value-arctan) 
+The function `arctan` takes one `Float` value and returns a `Float` value. for more explanation look for [official documentation](https://internetcomputer.org/docs/current/motoko/main/base/Float/#value-arctan)
 
 ```motoko, run
 {{#include _mo/float/arctan.mo:a}}
 ```
+
 ## Float.arctan2
 
 ```motoko
 func arctan2 : (y : Float, x : Float) -> Float
 ```
 
-The function `arctan2` takes two `Float` value and returns a `Float` value. for more explanation look for [official documentation](https://internetcomputer.org/docs/current/motoko/main/base/Float/#value-arctan2) 
+The function `arctan2` takes two `Float` value and returns a `Float` value. for more explanation look for [official documentation](https://internetcomputer.org/docs/current/motoko/main/base/Float/#value-arctan2)
 
 ```motoko, run
 {{#include _mo/float/arctan2.mo:a}}
 ```
+
 ## Float.exp
 
 ```motoko
-func exp : (x : Float) -> Float 
+func exp : (x : Float) -> Float
 ```
 
 The function `exp` takes one `Float` value and returns a `Float` value.
@@ -464,6 +491,7 @@ The function `exp` takes one `Float` value and returns a `Float` value.
 ```motoko, run
 {{#include _mo/float/exp.mo:a}}
 ```
+
 ## Float.log
 
 ```motoko
@@ -475,4 +503,3 @@ The function `log` takes one `Float` value and returns a `Float` value.
 ```motoko, run
 {{#include _mo/float/log.mo:a}}
 ```
-
