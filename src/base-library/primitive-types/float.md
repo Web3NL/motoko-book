@@ -58,7 +58,6 @@ The _convention_ is to name the [_module alias_](/common-programming-concepts/mo
 [Function `exp`](#floatexp)  
 [Function `log`](#floatlog)  
 
-
 ## Float.abs
 
 ```motoko
@@ -381,7 +380,7 @@ The function `pow` takes two `Float` value and returns a `Float` value.
 func sin : (x : Float) -> Float
 ```
 
-The function `sin` takes two `Float` value and returns a `Float` value.
+The function `sin` takes one `Float` value and returns a `Float` value.
 
 ```motoko, run
 {{#include _mo/float/sin.mo:a}}
@@ -392,7 +391,7 @@ The function `sin` takes two `Float` value and returns a `Float` value.
 func cos : (x : Float) -> Float
 ```
 
-The function `cos` takes two `Float` value and returns a `Float` value.
+The function `cos` takes one `Float` value and returns a `Float` value.
 
 ```motoko, run
 {{#include _mo/float/cos.mo:a}}
@@ -403,7 +402,7 @@ The function `cos` takes two `Float` value and returns a `Float` value.
 func tan : (x : Float) -> Float
 ```
 
-The function `tan` takes two `Float` value and returns a `Float` value.
+The function `tan` takes one `Float` value and returns a `Float` value.
 
 ```motoko, run
 {{#include _mo/float/tan.mo:a}}
@@ -414,7 +413,7 @@ The function `tan` takes two `Float` value and returns a `Float` value.
 func arcsin : (x : Float) -> Float
 ```
 
-The function `arcsin` takes two `Float` value and returns a `Float` value. for more explanation look for [official documentation](https://internetcomputer.org/docs/current/motoko/main/base/Float/#value-arcsin) 
+The function `arcsin` takes one `Float` value and returns a `Float` value. for more explanation look for [official documentation](https://internetcomputer.org/docs/current/motoko/main/base/Float/#value-arcsin) 
 
 ```motoko, run
 {{#include _mo/float/arcsin.mo:a}}
@@ -425,7 +424,7 @@ The function `arcsin` takes two `Float` value and returns a `Float` value. for m
 func arccos : (x : Float) -> Float
 ```
 
-The function `arccos` takes two `Float` value and returns a `Float` value. for more explanation look for [official documentation](https://internetcomputer.org/docs/current/motoko/main/base/Float/#value-arccos) 
+The function `arccos` takes one `Float` value and returns a `Float` value. for more explanation look for [official documentation](https://internetcomputer.org/docs/current/motoko/main/base/Float/#value-arccos) 
 
 ```motoko, run
 {{#include _mo/float/arccos.mo:a}}
@@ -436,7 +435,7 @@ The function `arccos` takes two `Float` value and returns a `Float` value. for m
 func arctan : (x : Float) -> Float
 ```
 
-The function `arctan` takes two `Float` value and returns a `Float` value. for more explanation look for [official documentation](https://internetcomputer.org/docs/current/motoko/main/base/Float/#value-arctan) 
+The function `arctan` takes one `Float` value and returns a `Float` value. for more explanation look for [official documentation](https://internetcomputer.org/docs/current/motoko/main/base/Float/#value-arctan) 
 
 ```motoko, run
 {{#include _mo/float/arctan.mo:a}}
@@ -444,7 +443,7 @@ The function `arctan` takes two `Float` value and returns a `Float` value. for m
 ## Float.arctan2
 
 ```motoko
-func arctan2 : (x : Float) -> Float
+func arctan2 : (y : Float, x : Float) -> Float
 ```
 
 The function `arctan2` takes two `Float` value and returns a `Float` value. for more explanation look for [official documentation](https://internetcomputer.org/docs/current/motoko/main/base/Float/#value-arctan2) 
@@ -458,7 +457,7 @@ The function `arctan2` takes two `Float` value and returns a `Float` value. for 
 func exp : (x : Float) -> Float 
 ```
 
-The function `exp` takes two `Float` value and returns a `Float` value.
+The function `exp` takes one `Float` value and returns a `Float` value.
 
 ```motoko, run
 {{#include _mo/float/exp.mo:a}}
@@ -469,8 +468,9 @@ The function `exp` takes two `Float` value and returns a `Float` value.
 func log : (x : Float) -> Float
 ```
 
-The function `log` takes two `Float` value and returns a `Float` value.
+The function `log` takes one `Float` value and returns a `Float` value.
 
 ```motoko, run
 {{#include _mo/float/log.mo:a}}
 ```
+
