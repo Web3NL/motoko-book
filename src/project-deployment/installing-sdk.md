@@ -67,7 +67,7 @@ To configure the local and mainnet networks used by `dfx` create a `networks.jso
 }
 ```
 
-## Step 4: Run for the first time
+### Step 4: Run for the first time
 
 Now run `dfx` for the first time
 
