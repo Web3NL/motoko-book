@@ -12,7 +12,7 @@ After installing, the main program you will use (to manage and deploy canisters 
 
 ## Install steps
 
-On Linux, MacOS or Windows WSL, we can install and configure the SDK in three steps.
+On Linux, MacOS or Windows WSL, we can install and configure the SDK in four steps.
 
 ### Step 1: Install
 
@@ -76,6 +76,10 @@ dfx start
 ```
 
 This should create a version cache for `dfx` located at `/home/USER/.cache/dfinity/versions/`
+
+## Dependencies
+
+For `dfx` to work correctly, you need to have [Node.js](https://nodejs.org/en/download/current) v16.0.0 (or higher) installed on your system.
 
 ## Uninstall
 

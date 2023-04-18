@@ -113,8 +113,8 @@
 
   - [Installing the SDK](project-deployment/installing-sdk.md)
   - [Local Deployment](project-deployment/local-deployment.md)
-  - [PEM Files](project-deployment/pem-files.md)
   - [Canister Status](project-deployment/canister-status.md)
+  - [PEM Files](project-deployment/pem-files.md)
   - [Cycles and ICP](project-deployment/cycles-and-icp.md)
   - [Cycles Wallet](project-deployment/cycles-wallet.md)
   - [IC Deployment](project-deployment/ic-deployment.md)
