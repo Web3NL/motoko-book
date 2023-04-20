@@ -2,7 +2,8 @@
 
 When we interact with the Internet Computer (IC), we use a [principal](/internet-computer-programming-concepts/principals-and-authentication.html) for authentication. In fact, a principal is just a _transformed_ version of a _public key_ that is derived from a _private key_ according to a Digital Signature Scheme.
 
-> **NOTE** > _For more detailed information about [digital signatures](https://internetcomputer.org/docs/current/references/ic-interface-spec#ecdsa), consult the [IC Interface specification](https://internetcomputer.org/docs/current/references/ic-interface-spec)_
+> **NOTE**  
+> _For more detailed information about [digital signatures](https://internetcomputer.org/docs/current/references/ic-interface-spec#ecdsa), consult the [IC Interface specification](https://internetcomputer.org/docs/current/references/ic-interface-spec)_
 
 Users of applications on the IC, will typically use [Internet Identity](https://identity.ic0.app/about) (or some other authentication tool like a hardware of software wallet) to manage and store private keys and generate signatures to sign calls and authenticate to services.
 
