@@ -109,12 +109,12 @@
     - [Pre-upgrade and Post-upgrade](advanced-concepts/system-apis/preupgrade-postupgrade.md)
     - [Cryptographic Randomness](advanced-concepts/system-apis/randomness.md)
 
-- [Canister Deployment and Upgrading](project-deployment.md)
+- [Project Deployment](project-deployment.md)
 
   - [Installing the SDK](project-deployment/installing-sdk.md)
   - [Local Deployment](project-deployment/local-deployment.md)
   - [Canister Status](project-deployment/canister-status.md)
-  - [PEM Files](project-deployment/pem-files.md)
+  - [Identities and PEM Files](project-deployment/identities-and-pem-files.md)
   - [Cycles and ICP](project-deployment/cycles-and-icp.md)
   - [Cycles Wallet](project-deployment/cycles-wallet.md)
   - [IC Deployment](project-deployment/ic-deployment.md)
