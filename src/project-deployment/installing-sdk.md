@@ -26,7 +26,7 @@ This will download and install the `dfx` binary in `/home/USER/bin`.
 
 ### Step 2: Add to PATH
 
-Add the `/home/USER/bin` directory to your PATH variable by editing your `/home/USER/.bashrc` file. Add the these lines to the end of `.bashrc.`
+Add the `/home/USER/bin` directory to your PATH variable by editing your `/home/USER/.bashrc` file. Add these lines to the end of `.bashrc.`
 
 ```bash
 #DFX
