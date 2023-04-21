@@ -1,4 +1,4 @@
-# PEM Files
+# Identities and PEM Files
 
 When we interact with the Internet Computer (IC), we use a [principal](/internet-computer-programming-concepts/principals-and-authentication.html) for authentication. In fact, a principal is just a _transformed_ version of a _public key_ that is derived from a _private key_ according to a Digital Signature Scheme.
 
