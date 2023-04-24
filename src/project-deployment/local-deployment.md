@@ -102,7 +102,7 @@ The output should be `("Hello, motoko!")` indicating that the function inside `m
 There is a command that combines the previous steps into one step. You need a running replica before running this command.
 
 ```bash
-dfx deploy
+dfx deploy motime
 ```
 
 This command creates a canister (if it doesn't exist already), compiles the code and installs the wasm module in one step.
