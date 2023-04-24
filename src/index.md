@@ -4,7 +4,7 @@
 
 ## Latest updates
 
-**18-04-2023** Chapter 7 [Installing the SDK](/project-deployment/installing-sdk.html)
+**18-04-2023** Chapter 7 [Project Deployment](/project-deployment.html)  
 
 **08-04-2023** Chapter 5 [Data Structures Beta](/base-library/utils.html)  
 **07-04-2023** Chapter 5 [Utility Modules Beta](/base-library/utils.html)
