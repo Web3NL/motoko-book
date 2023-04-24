@@ -4,7 +4,7 @@ import P "mo:base/Principal";
 import Iter "mo:base/Iter";
 import Nat "mo:base/Nat";
 
-actor cycle {
+actor Cycles {
   type Canister_id = Principal;
   type canister_settings = PT.canister_settings;
   type definite_canister_settings = PT.definite_canister_settings;
@@ -48,7 +48,7 @@ actor cycle {
     // get cycles balance
     func get_cycles() : async Nat {
       let status = await ManagementCanister.canister_status({
-        canister_id = P.fromActor(cycle);
+        canister_id = P.fromActor(Cycles);
       });
       return status.cycles;
     };
