@@ -1,15 +1,15 @@
 # IC Deployment
 
-Now we have our [wallet canister] setup on the Internet Computer (IC) with some [cycles], we are ready to deploy our first canister to the IC Mainnet.
+Now we have our [wallet canister](/project-deployment/cycles-wallet.html) setup on the Internet Computer (IC) with some [cycles](/project-deployment/cycles-and-icp.html), we are ready to deploy our first canister to the IC Mainnet.
 
-Assuming the same project that we [deployed locally], we can now use the same commands that we used to create, install and call a canister, only this time we add the `--network ic` flag to indicate to `dfx` that we want to execute these commands on the IC Mainnet.
+Assuming the same project that we [deployed locally](/project-deployment/local-deployment.html), we can now use the same commands that we used to create, install and call a canister, only this time we add the `--network ic` flag to indicate to `dfx` that we want to execute these commands on the IC Mainnet.
 
 > **NOTE**  
-> _Using the `--network ic` will cost [cycles] that will be payed with your [cycles wallet]_
+> _Using the `--network ic` will cost [cycles](/project-deployment/cycles-and-icp.html) that will be payed with your [cycles wallet](/project-deployment/cycles-wallet.html)_
 
 ## IC Mainnet Deployment
 
-Make sure you have the same setup as in the [local deployment] example.
+Make sure you have the same setup as in the [local deployment](/project-deployment/local-deployment.html) example.
 
 ### Create empty canister
 
@@ -34,7 +34,7 @@ dfx canister status motime --network ic
 
 ### Build Motoko code
 
-Now we can compile the Motoko code into a [wasm file] by running
+Now we can compile the Motoko code into a [wasm file](/internet-computer-programming-concepts/actors/actor-to-canister.html#code-compiling-and-wasm-modules) by running
 
 ```bash
 dfx build motime --network ic
@@ -74,7 +74,7 @@ This command creates a canister (if it doesn't exist already), compiles the code
 
 ## Deleting a canister
 
-To delete a canister and retrieve its cycles back to your cycles wallet, we need to first stop the canister by updating its [status].
+To delete a canister and retrieve its cycles back to your cycles wallet, we need to first stop the canister by updating its [status](/project-deployment/canister-status.html).
 
 ```bash
 dfx canister stop motime --network ic
