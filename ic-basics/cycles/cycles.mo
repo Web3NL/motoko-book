@@ -3,6 +3,7 @@ import RB "mo:base/RBTree";
 import P "mo:base/Principal";
 import Iter "mo:base/Iter";
 import Nat "mo:base/Nat";
+import Array "mo:base/Array";
 
 actor Cycles {
   type Canister_id = Principal;
@@ -43,7 +44,7 @@ actor Cycles {
   // let mc : MC = actor ("aaaaa-aa");
 
   // test cycle cost for n new users
-  public shared({ caller }) func test(n : Nat) : async Nat {
+  public shared ({ caller }) func test(n : Nat) : async Nat {
 
     // get cycles balance
     func get_cycles() : async Nat {
@@ -57,18 +58,59 @@ actor Cycles {
     let before = await get_cycles();
 
     for (i in Iter.range(1, n)) {
-      newUser(i, {
-        principal = caller;
-        username = "name";
-        balance = 0;
-      });
+      newUser(
+        i,
+        {
+          principal = caller;
+          username = "name";
+          balance = 0;
+        },
+      );
     };
 
     // get cycles balance after creating new users
     let after = await get_cycles();
 
     // return cycle difference
-    before - after
+    before - after;
+  };
+
+
+// cycle test in array data structure //////////////////////////////////////////////////////
+
+  var array : [var User] = [var];
+
+   public func array_size() : async Nat {
+    array.size();
+  };
+
+  public shared ({caller}) func test_array(n : Nat) : async Nat {
+
+ // get cycles balance
+    func get_cycles() : async Nat {
+      let status = await ManagementCanister.canister_status({
+        canister_id = P.fromActor(Cycles);
+      });
+      return status.cycles;
+    };
+
+    // get cycles balance before creating new users
+    let before = await get_cycles();
+
+  for (i in Iter.range(1, n)){
+    array := Array.init<User>(i, {
+          principal = caller;
+          username = "name";
+          balance = 0;
+        })
+  };
+
+  // get cycles balance after creating new users
+    let after = await get_cycles();
+
+    // return cycle difference
+    before - after;
+
   };
 
 };
