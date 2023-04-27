@@ -4,23 +4,23 @@
 
 ## What is an array?
 
-An [_immutable_] or [_mutable_] array of type `[T]` or `[var T]` is a sequence of values of type `T`. Each element can be accessed by its index, which is a `Nat` value that represents the position of the element in the array. Indexing starts at `0`. Some properties of arrays are:
+An [_immutable_](/common-programming-concepts/types/immutable-arrays.html) or [_mutable_](/common-programming-concepts/types/mutable-arrays.html) array of type `[T]` or `[var T]` is a sequence of values of type `T`. Each element can be accessed by its index, which is a `Nat` value that represents the position of the element in the array. Indexing starts at `0`. Some properties of arrays are:
 
 - **Memory layout**  
-  Arrays are stored in contiguous memory, meaning that all elements are stored next to each other in memory. This makes arrays more memory-efficient than some other data structures, like [lists], where elements can be scattered throughout memory.
+  Arrays are stored in contiguous memory, meaning that all elements are stored next to each other in memory. This makes arrays more memory-efficient than some other data structures, like [lists](/base-library/data-structures/list.html), where elements can be scattered throughout memory.
 
 - **Fast indexing**  
   Arrays provide constant-time access to elements by index. This is because the memory address of any element can be calculated directly from its index and the starting memory address of the array.
 
 - **Fixed size**  
-  Once an array is created, its size cannot be changed. If you need to add or remove elements, you will have to create a new array of the desired size and copy the elements. This is different from other sequence data structures like [lists] or [buffers] that can grow or shrink dynamically.
+  Once an array is created, its size cannot be changed. If you need to add or remove elements, you will have to create a new array of the desired size and copy the elements. This is different from other sequence data structures like [lists](/base-library/data-structures/list.html) or [buffers](/base-library/data-structures/buffer.html) that can grow or shrink dynamically.
 
 - **Computational cost of copying**  
   Since arrays are stored in a contiguous block of memory, copying an array requires copying all its elements to a new memory location. This can be computationally expensive, especially for large arrays.
 
 ## Import
 
-The _convention_ is to name the [_module alias_] after the [_file name_] it is defined in:
+The _convention_ is to name the [_module alias_](/common-programming-concepts/modules.html#type-imports-and-renaming) after the [_file name_](/common-programming-concepts/modules.html#imports) it is defined in:
 
 ```motoko
 {{#include _mo/array.mo:a}}
@@ -96,7 +96,7 @@ func size<X>(array : [X]) : Nat
 
 ## Array.init
 
-Initialize a [mutable array] of type `[var X]` with a `size` and an initial value `initValue` of [generic type] `X`.
+Initialize a [mutable array](/common-programming-concepts/types/mutable-arrays.html) of type `[var X]` with a `size` and an initial value `initValue` of [generic type](/advanced-types/generics.html) `X`.
 
 ```motoko
 func init<X>(
@@ -120,7 +120,7 @@ initValue : X
 
 ## Array.make
 
-Make an [immutable] array with exactly one element of [generic type] `X`.
+Make an [immutable](/common-programming-concepts/types/immutable-arrays.html) array with exactly one element of [generic type](/advanced-types/generics.html) `X`.
 
 ```motoko
 func make<X>(element : X) : [x]
@@ -138,7 +138,7 @@ func make<X>(element : X) : [x]
 
 ## Array.tabulate
 
-The `tabulate` function generates an [_immutable array_] of [generic type] `X` and predefined `size` by using a generator function that takes the index of every element as an argument and produces the elements of the array.
+The `tabulate` function generates an [_immutable array_](/common-programming-concepts/types/immutable-arrays.html) of [generic type](/advanced-types/generics.html) `X` and predefined `size` by using a generator function that takes the index of every element as an argument and produces the elements of the array.
 
 ```motoko
 func tabulate<X>(
@@ -162,7 +162,7 @@ generator : Nat -> X
 
 ## Array.tabulateVar
 
-The `tabulateVar` function generates a [_mutable array_] of [generic type] `X` and predefined `size` by using a generator function that takes the index of every element as an argument and produces the elements of the array.
+The `tabulateVar` function generates a [_mutable array_](/common-programming-concepts/types/mutable-arrays.html) of [generic type](/advanced-types/generics.html) `X` and predefined `size` by using a generator function that takes the index of every element as an argument and produces the elements of the array.
 
 ```motoko
 func tabulateVar<X>(
@@ -186,7 +186,7 @@ generator : Nat -> X
 
 ## Array.freeze
 
-Freeze converts a [mutable array] of [generic type] `X` to a [immutable array] of the same type.
+Freeze converts a [mutable array](/common-programming-concepts/types/mutable-arrays.html) of [generic type](/advanced-types/generics.html) `X` to a [immutable array](/common-programming-concepts/types/immutable-arrays.html) of the same type.
 
 ```motoko
 func freeze<X>(varArray : [var X]) : [X]
@@ -204,7 +204,7 @@ func freeze<X>(varArray : [var X]) : [X]
 
 ## Array.thaw
 
-Thaw converts an [immutable array] of [generic type] `X` to a [mutable array] of the same type.
+Thaw converts an [immutable array](/common-programming-concepts/types/immutable-arrays.html) of [generic type](/advanced-types/generics.html) `X` to a [mutable array](/common-programming-concepts/types/mutable-arrays.html) of the same type.
 
 ```motoko
 func thaw<X>(array : [X]) : [var X]
@@ -222,7 +222,7 @@ func thaw<X>(array : [X]) : [var X]
 
 ## Array.sort
 
-Sort takes an [immutable array] of [generic type] `X` and produces a second array which is sorted according to a comparing function `compare`. This comparing function compares two elements of type `X` and returns an [`Order`](/base-library/utils/order.html) type that is used to sort the array.
+Sort takes an [immutable array](/common-programming-concepts/types/immutable-arrays.html) of [generic type](/advanced-types/generics.html) `X` and produces a second array which is sorted according to a comparing function `compare`. This comparing function compares two elements of type `X` and returns an [`Order`](/base-library/utils/order.html) type that is used to sort the array.
 
 We could use a comparing function from the Base Library, like in the example below, or write our own custom comparing function, as long as its type is `(X, X) -> Order.Order`
 
@@ -256,7 +256,7 @@ func sort<X>(
 
 ## Array.sortInPlace
 
-We can also 'sort in place', which behaves the same as [`sort`](#arraysort) except we mutate a [mutable array] in stead of producing a new array. Note the function returns unit type `()`.
+We can also 'sort in place', which behaves the same as [`sort`](#arraysort) except we mutate a [mutable array](/common-programming-concepts/types/mutable-arrays.html) in stead of producing a new array. Note the function returns unit type `()`.
 
 ```motoko
 func sortInPlace<X>(
@@ -288,7 +288,7 @@ func sortInPlace<X>(
 
 ## Array.reverse
 
-Takes an [immutable array] and produces a second array with elements in reversed order.
+Takes an [immutable array](/common-programming-concepts/types/immutable-arrays.html) and produces a second array with elements in reversed order.
 
 ```motoko
 func reverse<X>(array : [X]) : [X]
@@ -364,7 +364,7 @@ func equal<X>(
 
 ## Array.map
 
-The mapping function `map` iterates through each element of an [immutable array], applies a given transformation function `f` to it, and creates a new array with the transformed elements. The input array is of [generic type] `[X]`, the transformation function takes elements of type `X` and returns elements of type `Y`, and the resulting array is of type `[Y]`.
+The mapping function `map` iterates through each element of an [immutable array](/common-programming-concepts/types/immutable-arrays.html), applies a given transformation function `f` to it, and creates a new array with the transformed elements. The input array is of [generic type](/advanced-types/generics.html) `[X]`, the transformation function takes elements of type `X` and returns elements of type `Y`, and the resulting array is of type `[Y]`.
 
 ```motoko
 func map<X>(
@@ -395,7 +395,7 @@ array : [X],
 
 ## Array.filter
 
-The `filter` function takes an [immutable array] of elements of [generic type] `X` and a predicate function `predicate` (that takes a `X` and returns a `Bool`) and returns a new array containing only the elements that satisfy the predicate condition.
+The `filter` function takes an [immutable array](/common-programming-concepts/types/immutable-arrays.html) of elements of [generic type](/advanced-types/generics.html) `X` and a predicate function `predicate` (that takes a `X` and returns a `Bool`) and returns a new array containing only the elements that satisfy the predicate condition.
 
 ```motoko
 func filter<X>(
@@ -428,7 +428,7 @@ predicate : X -> Bool
 
 ## Array.mapEntries
 
-The `mapEntries` function takes an [immutable array] of elements of [generic type] `[X]` and a function `f` that accepts an element and its index (a `Nat` value) as arguments, then returns a new array of type `[Y]` with elements transformed by applying the function `f` to each element and its index.
+The `mapEntries` function takes an [immutable array](/common-programming-concepts/types/immutable-arrays.html) of elements of [generic type](/advanced-types/generics.html) `[X]` and a function `f` that accepts an element and its index (a `Nat` value) as arguments, then returns a new array of type `[Y]` with elements transformed by applying the function `f` to each element and its index.
 
 ```motoko
 func mapEntries<X,Y>(
