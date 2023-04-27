@@ -69,7 +69,7 @@ This creates a temporary `.dfx` folder in the root of your project. After this s
 
 ### Build Motoko code
 
-Now we can compile the Motoko code into a [wasm file] by running
+Now we can compile the Motoko code into a [wasm file](/internet-computer-programming-concepts/actors/actor-to-canister.html#code-compiling-and-wasm-modules) by running
 
 ```bash
 dfx build motime
