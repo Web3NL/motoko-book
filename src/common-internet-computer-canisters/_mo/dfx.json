@@ -1,0 +1,8 @@
+{
+    "canisters": {
+        "ic-management": {
+            "type": "motoko",
+            "main": "ic-management.mo"
+        }
+    }
+}
