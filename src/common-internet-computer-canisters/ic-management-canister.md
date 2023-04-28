@@ -50,28 +50,113 @@ We import the management canister by importing the interface file and referencin
 
 We can now reference the canister as `ic`.
 
-We also imported `ExperimentalCycles` because some of our function calls require cycles to be added. 
+We also imported `ExperimentalCycles` because some of our function calls require cycles to be added.
 
 ## Public functions
 
 ### Create canister
 
+To create a new canister, we call the `create_canister` function.
+
 ```motoko
-{{#include _mo/ic-management/ic-management-public-functions.mo:create_canister}}
+create_canister : shared { settings : ?canister_settings } -> async {
+    canister_id : canister_id;
+};
 ```
+
+The function may take a optional `canisters_settings` record to set initial settings for the canister, but this argument may be `null`.
+
+The function returns a record containing the `Principal` of the newly created canister.
+
+> **NOTE**  
+> _To create a new canister, you must add cycles to the call using the `ExperimentalCycles` module_
 
 ### Install code
 
-### Start canister
+To install a wasm module in a canister, we call `install_code`. Only _controllers_ of a canister can call this function.
+
+We need to provide a wasm module install arguments as `[Nat8]` arrays. We also pick a [mode](/internet-computer-programming-concepts/basic-memory-persistence/upgrades.html#reinstall-and-upgrade) to indicate whether we freshly installing or [upgrading](/internet-computer-programming-concepts/basic-memory-persistence/upgrades.html) the canister. And finally, we provide the _canister id_ (principal) that we want to install code into.
+
+```motoko
+install_code : shared {
+    arg : [Nat8];
+    wasm_module : wasm_module;
+    mode : { #reinstall; #upgrade; #install };
+    canister_id : canister_id;
+} -> async ();
+```
+
+This function is _atomic_ meaning that it either succeeds and returns `()` or it has no effect.
 
 ### Canister status
 
+To get the current status of a canister we call `canister_status`. We only provide a simple record with a `canister_id` (principal) of the canister we are interested in. Only _controllers_ of the canister can ask for its settings.
+
+```motoko
+canister_status : shared { canister_id : canister_id } -> async {
+    status : { #stopped; #stopping; #running };
+    memory_size : Nat;
+    cycles : Nat;
+    settings : definite_canister_settings;
+    idle_cycles_burned_per_day : Nat;
+    module_hash : ?[Nat8];
+};
+```
+
+The function returns a record containing the `status` of the canister, the `memory_size` in bytes, the `cycles` balance, a `definite_canister_settings` with its current settings, the `idle_cycles_burned_per_day` which indicates the average cycle consumption of the canister and a `module_hash` if the canister has a wasm module installed on it.
+
 ### Deposit cycles
+
+To deposit cycles into a canister we call `deposit_cycles`. Anyone can call this function.
+
+We only need to provide a record with the `canister_id` of the canister we want to deposit into.
+
+```motoko
+deposit_cycles : shared { canister_id : canister_id } -> async ();
+```
+
+> **NOTE**  
+> _To deposit cycles into a canister, you must add cycles to the call using the `ExperimentalCycles` module_
 
 ### Update settings
 
-### Stop canister
+To update the settings of a canister, we call `update_settings` and provide the `canister_id` together with the new `canister_settings`.
+
+```motoko
+update_settings : shared {
+      canister_id : Principal;
+      settings : canister_settings;
+} -> async ();
+```
 
 ### Uninstall code
 
+To _uninstall_ (remove) the wasm module from a canister we call `uninstall_code` with a record containing the `canister_id`. Only controllers of the canister can call this function.
+
+```motoko
+uninstall_code : shared { canister_id : canister_id } -> async ();
+```
+
+### Stop canister
+
+To _stop_ a running canister we call `stop_canister` with a record containing the `canister_id`. Only controllers of the canister can call this function.
+
+```motoko
+stop_canister : shared { canister_id : canister_id } -> async ();
+```
+
+### Start canister
+
+To _start_ a stopped canister we call `start_canister` with a record containing the `canister_id`. Only controllers of the canister can call this function.
+
+```motoko
+start_canister : shared { canister_id : canister_id } -> async ();
+```
+
 ### Delete canister
+
+To _delete_ a stopped canister we call `delete_canister` with a record containing the `canister_id`. Only stopped canisters can be deleted and only controllers of the canister can call this function.
+
+```motoko
+delete_canister : shared { canister_id : canister_id } -> async ();
+```
