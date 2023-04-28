@@ -2,7 +2,8 @@
     "canisters": {
         "ic-management": {
             "type": "motoko",
-            "main": "ic-management.mo"
+            "main": "ic-management/ic-management-public-functions.mo",
+            "args": "--network ic"
         }
     }
 }

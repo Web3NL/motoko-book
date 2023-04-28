@@ -15,8 +15,6 @@ module {
     compute_allocation : Nat;
   };
 
-  public type user_id = Principal;
-
   public type wasm_module = [Nat8];
 
   public type Self = actor {
