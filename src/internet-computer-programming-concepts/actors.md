@@ -58,7 +58,7 @@ Actors allow _three kinds_ of public functions:
 > **NOTE**  
 > _Public shared query functions are fast, but don't have the full security guarantees of the Internet Computer because they do not 'go through' consensus_
 
-### Shared types
+### Shared async types
 
 The argument and return types of public shared functions are restricted to _[shared types](/internet-computer-programming-concepts/async-data/shared-types.html)_ only. We will cover shared types [later](/internet-computer-programming-concepts/async-data/shared-types.html) in this book.
 
@@ -70,7 +70,9 @@ These functions are only allowed inside _actors_. Here are their _function signa
 ### Public shared query
 
 ```motoko
-{{#include _mo/actors2.mo:a}}
+public shared query func read() : async () { () };
+
+// Has type `shared query () -> async ()`
 ```
 
 The function named `read` is declared with `public shared query` and returns `async ()`. This function is not allowed to modify the state of the actor because of the `query` keyword. It can only read state and return most types. The `shared query` and `async` keywords are part of the function type. Query functions are fast.
@@ -78,7 +80,9 @@ The function named `read` is declared with `public shared query` and returns `as
 ### Public shared update
 
 ```motoko
-{{#include _mo/actors2.mo:b}}
+public shared func write() : async () { () };
+
+// Has type `shared Text -> async ()`
 ```
 
 The function named `write` is declared with `public shared` and also returns `async ()`. This function is allowed to modify the state of the actor. There is no other special keyword (like query) to indicate that this is an update function. The `shared` and `async` keywords are part of the function type. Update functions take 2 seconds per call.
@@ -86,7 +90,9 @@ The function named `write` is declared with `public shared` and also returns `as
 ### Public shared oneway
 
 ```motoko
-{{#include _mo/actors2.mo:c}}
+public shared func oneway() { () };
+
+// Has type `shared () -> ()`
 ```
 
 The function named `oneway` is also declared with `public shared` but does not have a return type. This function is allowed to modify the state of the actor. Because it has no return type, it is assumed to be a oneway function which always returns `()` regardless of whether they execute successfully. Only the `shared` keyword is part of their type. Oneway functions also take 2 seconds per call.

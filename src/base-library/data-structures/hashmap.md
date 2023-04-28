@@ -1,3 +1,5 @@
+> **BETA WARNING** _This chapter is being reviewed and updated_
+
 # HashMap
 
 The _convention_ is to name the [_module alias_](/common-programming-concepts/modules.html#imports) after the [_file name_](/common-programming-concepts/modules.html#imports) it is defined in:
@@ -172,8 +174,6 @@ The function `entries` takes nothing and returns an `Iterator` of type tuple `(K
 
 ## HashMap.clone
 
-### Function signature
-
 ```motoko
 func clone<K, V>(
 
@@ -197,8 +197,6 @@ func clone<K, V>(
 ```
 
 ## HashMap.fromIter
-
-### Function signature
 
 ```motoko
 func fromIter<K, V>(
@@ -226,8 +224,6 @@ func fromIter<K, V>(
 
 ## HashMap.map
 
-### Function signature
-
 ```motoko
 func map<K, V1, V2>(
 
@@ -253,8 +249,6 @@ func map<K, V1, V2>(
 ```
 
 ## HashMap.mapFilter
-
-### Function signature
 
 ```motoko
 func mapFilter<K, V1, V2>(

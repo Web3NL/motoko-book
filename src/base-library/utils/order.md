@@ -1,3 +1,5 @@
+> **BETA WARNING** _This chapter is being reviewed and updated_
+
 # Order
 
 The _convention_ is to name the [_module alias_](/common-programming-concepts/modules.html#type-imports-and-renaming) after the [_file name_](/common-programming-concepts/modules.html#imports) it is defined in:
@@ -6,7 +8,7 @@ The _convention_ is to name the [_module alias_](/common-programming-concepts/mo
 {{#include _mo/order.mo:a}}
 ```
 
-### On this page 
+### On this page
 
 [Public type `Order`](#public-type)
 
@@ -48,6 +50,7 @@ func isLess(order : Order) : Bool
 ```
 
 ## Order.isEqual
+
 ```motoko
 func isEqual(order : Order) : Bool
 ```
@@ -57,6 +60,7 @@ func isEqual(order : Order) : Bool
 ```
 
 ## Order.isGreater
+
 ```motoko
 func isGreater(order : Order) : Bool
 ```
@@ -66,10 +70,11 @@ func isGreater(order : Order) : Bool
 ```
 
 ## Order.equal
+
 ```motoko
 func equal(o1 : Order, o2 : Order) : Bool
 ```
 
 ```motoko, run
-{{#include _mo/order.mo:d}}
+{{#include _mo/order4.mo:a}}
 ```

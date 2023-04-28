@@ -1,3 +1,5 @@
+> **BETA WARNING** _This chapter is being reviewed and updated_
+
 # List
 
 The difference between a list and an [array](/base-library/data-structures/array.html) is that an array is stored as one _contiguous block of bytes_ in memory and a list is 'scattered' around without the elements having to be adjacent to each other. The advantage is that we can use memory more efficiently by filling the memory more flexibly. The downside is that for operations on the whole list, we have to visit each element one by one which may be computationally expensive.
@@ -53,8 +55,6 @@ The _convention_ is to name the [_module alias_](/common-programming-concepts/mo
 
 ## List.nil
 
-### Function signature
-
 ```motoko
 func nil<T>() : List<T>
 ```
@@ -71,8 +71,6 @@ func nil<T>() : List<T>
 ```
 
 ## List.isNil
-
-### Function signature
 
 ```motoko
 func isNil<T>(l : List<T>) : Bool
@@ -91,8 +89,6 @@ func isNil<T>(l : List<T>) : Bool
 ```
 
 ## List.push
-
-### Function signature
 
 ```motoko
 func push<T>(
@@ -118,8 +114,6 @@ func push<T>(
 
 ## List.last
 
-### Function signature
-
 ```motoko
 func last<T>(l : List<T>) : ?T
 ```
@@ -137,8 +131,6 @@ func last<T>(l : List<T>) : ?T
 ```
 
 ## List.pop
-
-### Function signature
 
 ```motoko
 func pop<T>(l : List<T>) : (?T, List<T>)
@@ -158,8 +150,6 @@ func pop<T>(l : List<T>) : (?T, List<T>)
 
 ## List.size
 
-### Function signature
-
 ```motoko
 func size<T>(l : List<T>) : Nat
 ```
@@ -177,8 +167,6 @@ func size<T>(l : List<T>) : Nat
 ```
 
 ## List.get
-
-### Function signature
 
 ```motoko
 func get<T>(
@@ -204,8 +192,6 @@ func get<T>(
 
 ## List.reverse
 
-### Function signature
-
 ```motoko
 func reverse<T>(l : List<T>) : List<T>
 ```
@@ -223,8 +209,6 @@ func reverse<T>(l : List<T>) : List<T>
 ```
 
 ## List.iterate
-
-### Function signature
 
 ```motoko
 func iterate<T>(
@@ -250,8 +234,6 @@ func iterate<T>(
 
 ## List.map
 
-### Function signature
-
 ```motoko
 func map<T, U>(
 
@@ -275,8 +257,6 @@ func map<T, U>(
 ```
 
 ## List.filter
-
-### Function signature
 
 ```motoko
 func filter<T>(
@@ -302,8 +282,6 @@ func filter<T>(
 
 ## List.partition
 
-### Function signature
-
 ```motoko
 func partition<T>(
 
@@ -327,8 +305,6 @@ func partition<T>(
 ```
 
 ## List.mapFilter
-
-### Function signature
 
 ```motoko
 func mapFilter<T, U>(
@@ -354,8 +330,6 @@ func mapFilter<T, U>(
 
 ## List.mapResult
 
-### Function signature
-
 ```motoko
 func mapResult<T, R, E>(
 
@@ -379,8 +353,6 @@ func mapResult<T, R, E>(
 ```
 
 ## List.append
-
-### Function signature
 
 ```motoko
 func append<T>(
@@ -406,8 +378,6 @@ func append<T>(
 
 ## List.flatten
 
-### Function signature
-
 ```motoko
 func flatten<T>(
 
@@ -429,8 +399,6 @@ l : List<List<T>>
 ```
 
 ## List.take
-
-### Function signature
 
 ```motoko
 func take<T>(
@@ -456,8 +424,6 @@ func take<T>(
 
 ## List.drop
 
-### Function signature
-
 ```motoko
 func drop<T>(
 
@@ -481,8 +447,6 @@ func drop<T>(
 ```
 
 ## List.foldLeft
-
-### Function signature
 
 ```motoko
 func foldLeft<T, S>(
@@ -510,8 +474,6 @@ func foldLeft<T, S>(
 
 ## List.foldRight
 
-### Function signature
-
 ```motoko
 func foldRight<T, S>(
 
@@ -538,8 +500,6 @@ func foldRight<T, S>(
 
 ## List.find
 
-### Function signature
-
 ```motoko
 func find<T>(
 
@@ -563,8 +523,6 @@ func find<T>(
 ```
 
 ## List.some
-
-### Function signature
 
 ```motoko
 func some<T>(
@@ -590,8 +548,6 @@ func some<T>(
 
 ## List.all
 
-### Function signature
-
 ```motoko
 func all<T>(
 
@@ -615,8 +571,6 @@ func all<T>(
 ```
 
 ## List.merge
-
-### Function signature
 
 ```motoko
 func merge<T>(
@@ -644,8 +598,6 @@ func merge<T>(
 
 ## List.compare
 
-### Function signature
-
 ```motoko
 func compare<T>(
 
@@ -671,8 +623,6 @@ compare : (T, T) -> Order.Order
 ```
 
 ## List.equal
-
-### Function signature
 
 ```motoko
 func equal<T>(
@@ -700,8 +650,6 @@ equal : (T, T) -> Bool
 
 ## List.tabulate
 
-### Function signature
-
 ```motoko
 func tabulate<T>(
 
@@ -726,8 +674,6 @@ func tabulate<T>(
 
 ## List.make
 
-### Function signature
-
 ```motoko
 func make<T>(n : T) : List<T>
 ```
@@ -745,8 +691,6 @@ func make<T>(n : T) : List<T>
 ```
 
 ## List.replicate
-
-### Function signature
 
 ```motoko
 func replicate<T>(
@@ -772,8 +716,6 @@ func replicate<T>(
 
 ## List.zip
 
-### Function signature
-
 ```motoko
 func zip<T, U>(
 
@@ -797,8 +739,6 @@ func zip<T, U>(
 ```
 
 ## List.zipWith
-
-### Function signature
 
 ```motoko
 func zipWith<T, U, V>(
@@ -826,8 +766,6 @@ func zipWith<T, U, V>(
 
 ## List.split
 
-### Function signature
-
 ```motoko
 func split<T>(
 
@@ -851,8 +789,6 @@ func split<T>(
 ```
 
 ## List.chunks
-
-### Function signature
 
 ```motoko
 func chunks<T>(
@@ -878,8 +814,6 @@ func chunks<T>(
 
 ## List.fromArray
 
-### Function signature
-
 ```motoko
 func fromArray<T>(xs : [T]) : List<T>
 ```
@@ -897,8 +831,6 @@ func fromArray<T>(xs : [T]) : List<T>
 ```
 
 ## List.fromVarArray
-
-### Function signature
 
 ```motoko
 func fromVarArray<T>(
@@ -922,8 +854,6 @@ func fromVarArray<T>(
 
 ## List.toArray
 
-### Function signature
-
 ```motoko
 func toArray<T>(xs : List<T>) : [T]
 ```
@@ -942,8 +872,6 @@ func toArray<T>(xs : List<T>) : [T]
 
 ## List.toVarArray
 
-### Function signature
-
 ```motoko
 func toVarArray<T>(xs : List<T>) : [var T]
 ```
@@ -961,8 +889,6 @@ func toVarArray<T>(xs : List<T>) : [var T]
 ```
 
 ## List.toIter
-
-### Function signature
 
 ```motoko
 func toIter<T>(xs : List<T>) : Iter.Iter<T>

@@ -1,10 +1,32 @@
+> **BETA WARNING** _This chapter is being reviewed and updated_
+
 # Array
 
-The _convention_ is to name the _module alias_ after the _file name_ it is defined in:
+## What is an array?
+
+An [_immutable_](/common-programming-concepts/types/immutable-arrays.html) or [_mutable_](/common-programming-concepts/types/mutable-arrays.html) array of type `[T]` or `[var T]` is a sequence of values of type `T`. Each element can be accessed by its index, which is a `Nat` value that represents the position of the element in the array. Indexing starts at `0`. Some properties of arrays are:
+
+- **Memory layout**  
+  Arrays are stored in contiguous memory, meaning that all elements are stored next to each other in memory. This makes arrays more memory-efficient than some other data structures, like [lists](/base-library/data-structures/list.html), where elements can be scattered throughout memory.
+
+- **Fast indexing**  
+  Arrays provide constant-time access to elements by index. This is because the memory address of any element can be calculated directly from its index and the starting memory address of the array.
+
+- **Fixed size**  
+  Once an array is created, its size cannot be changed. If you need to add or remove elements, you will have to create a new array of the desired size and copy the elements. This is different from other sequence data structures like [lists](/base-library/data-structures/list.html) or [buffers](/base-library/data-structures/buffer.html) that can grow or shrink dynamically.
+
+- **Computational cost of copying**  
+  Since arrays are stored in a contiguous block of memory, copying an array requires copying all its elements to a new memory location. This can be computationally expensive, especially for large arrays.
+
+## Import
+
+The _convention_ is to name the [_module alias_](/common-programming-concepts/modules.html#type-imports-and-renaming) after the [_file name_](/common-programming-concepts/modules.html#imports) it is defined in:
 
 ```motoko
 {{#include _mo/array.mo:a}}
 ```
+
+## `Array.mo` module public functions
 
 ### Size
 
@@ -49,7 +71,14 @@ The _convention_ is to name the _module alias_ after the _file name_ it is defin
 
 ## Array.size
 
-### Function signature
+The size of an array can be accessed my the `.size()` method:
+
+```motoko, run
+let array : [Nat] = [0, 1, 2];
+array.size()
+```
+
+The module also provides a dedicated function for the size of an array.
 
 ```motoko
 func size<X>(array : [X]) : Nat
@@ -61,15 +90,13 @@ func size<X>(array : [X]) : Nat
 | Variable argument  | `array : [X]` |
 | Return type        | `Nat`         |
 
-### Example
-
 ```motoko, run
 {{#include _mo/array/size.mo:a}}
 ```
 
 ## Array.init
 
-### Function signature
+Initialize a [mutable array](/common-programming-concepts/types/mutable-arrays.html) of type `[var X]` with a `size` and an initial value `initValue` of [generic type](/advanced-types/generics.html) `X`.
 
 ```motoko
 func init<X>(
@@ -87,15 +114,13 @@ initValue : X
 | Variable argument 2 | `initValue : X` |
 | Return type         | `[var X]`       |
 
-### Example
-
 ```motoko, run
 {{#include _mo/array/init.mo:a}}
 ```
 
 ## Array.make
 
-### Function signature
+Make an [immutable](/common-programming-concepts/types/immutable-arrays.html) array with exactly one element of [generic type](/advanced-types/generics.html) `X`.
 
 ```motoko
 func make<X>(element : X) : [x]
@@ -107,17 +132,13 @@ func make<X>(element : X) : [x]
 | Variable argument  | `element : X` |
 | Return type        | `[X]`         |
 
-### Example
-
 ```motoko, run
 {{#include _mo/array/make.mo:a}}
 ```
 
 ## Array.tabulate
 
-The `tabulate` function generates an _immutable array_ of predefined `size` by using a generator function that takes the index of every element as an argument and produces the elements of the array.
-
-### Function signature
+The `tabulate` function generates an [_immutable array_](/common-programming-concepts/types/immutable-arrays.html) of [generic type](/advanced-types/generics.html) `X` and predefined `size` by using a generator function that takes the index of every element as an argument and produces the elements of the array.
 
 ```motoko
 func tabulate<X>(
@@ -135,17 +156,13 @@ generator : Nat -> X
 | Function argument  | `generator : Nat -> X` |
 | Return type        | `[X]`                  |
 
-### Example
-
 ```motoko, run
 {{#include _mo/array/tabulate.mo:a}}
 ```
 
 ## Array.tabulateVar
 
-The `tabulateVar` function generates an _mutable array_ of predefined `size` by using a generator function that takes the index of every element as an argument and produces the elements of the array.
-
-### Function signature
+The `tabulateVar` function generates a [_mutable array_](/common-programming-concepts/types/mutable-arrays.html) of [generic type](/advanced-types/generics.html) `X` and predefined `size` by using a generator function that takes the index of every element as an argument and produces the elements of the array.
 
 ```motoko
 func tabulateVar<X>(
@@ -163,15 +180,13 @@ generator : Nat -> X
 | Function argument  | `generator : Nat -> X` |
 | Return type        | `[var X]`              |
 
-### Example
-
 ```motoko, run
 {{#include _mo/array/tabulateVar.mo:a}}
 ```
 
 ## Array.freeze
 
-### Function signature
+Freeze converts a [mutable array](/common-programming-concepts/types/mutable-arrays.html) of [generic type](/advanced-types/generics.html) `X` to a [immutable array](/common-programming-concepts/types/immutable-arrays.html) of the same type.
 
 ```motoko
 func freeze<X>(varArray : [var X]) : [X]
@@ -183,15 +198,13 @@ func freeze<X>(varArray : [var X]) : [X]
 | Variable argument  | `varArray : [var X]` |
 | Return type        | `[X]`                |
 
-### Example
-
 ```motoko, run
 {{#include _mo/array/freeze.mo:a}}
 ```
 
 ## Array.thaw
 
-### Function signature
+Thaw converts an [immutable array](/common-programming-concepts/types/immutable-arrays.html) of [generic type](/advanced-types/generics.html) `X` to a [mutable array](/common-programming-concepts/types/mutable-arrays.html) of the same type.
 
 ```motoko
 func thaw<X>(array : [X]) : [var X]
@@ -203,15 +216,15 @@ func thaw<X>(array : [X]) : [var X]
 | Variable argument  | `array : [X]` |
 | Return type        | `[var X]`     |
 
-### Example
-
 ```motoko, run
 {{#include _mo/array/thaw.mo:a}}
 ```
 
 ## Array.sort
 
-### Function signature
+Sort takes an [immutable array](/common-programming-concepts/types/immutable-arrays.html) of [generic type](/advanced-types/generics.html) `X` and produces a second array which is sorted according to a comparing function `compare`. This comparing function compares two elements of type `X` and returns an [`Order`](/base-library/utils/order.html) type that is used to sort the array.
+
+We could use a comparing function from the Base Library, like in the example below, or write our own custom comparing function, as long as its type is `(X, X) -> Order.Order`
 
 ```motoko
 func sort<X>(
@@ -229,23 +242,21 @@ func sort<X>(
 | Function argument  | `compare : (X, X) -> Order.Order` |
 | Return type        | `[X]`                             |
 
-### Example
-
 ```motoko, run
 {{#include _mo/array/sort.mo:a}}
 ```
 
-| Index | `array1 : [Nat]` | `array2 : [Nat]` |
-| ----- | ---------------- | ---------------- |
-| 0     | 50               | 10               |
-| 1     | 40               | 20               |
-| 2     | 30               | 30               |
-| 3     | 20               | 40               |
-| 4     | 10               | 50               |
+| Index | `ages : [Nat]` | `sortedAges : [Nat]` |
+| ----- | -------------- | -------------------- |
+| 0     | 50             | 10                   |
+| 1     | 20             | 20                   |
+| 2     | 10             | 30                   |
+| 3     | 30             | 40                   |
+| 4     | 40             | 50                   |
 
 ## Array.sortInPlace
 
-### Function signature
+We can also 'sort in place', which behaves the same as [`sort`](#arraysort) except we mutate a [mutable array](/common-programming-concepts/types/mutable-arrays.html) in stead of producing a new array. Note the function returns unit type `()`.
 
 ```motoko
 func sortInPlace<X>(
@@ -263,15 +274,21 @@ func sortInPlace<X>(
 | Function argument  | `compare : (X, X) -> Order.Order` |
 | Return type        | `()`                              |
 
-### Example
-
 ```motoko, run
 {{#include _mo/array/sortInPlace.mo:a}}
 ```
 
+| Index | `ages : [var Nat]` | `ages : [var Nat]` |
+| ----- | ------------------ | ------------------ |
+| 0     | 50                 | 10                 |
+| 1     | 20                 | 20                 |
+| 2     | 10                 | 30                 |
+| 3     | 30                 | 40                 |
+| 4     | 40                 | 50                 |
+
 ## Array.reverse
 
-### Function signature
+Takes an [immutable array](/common-programming-concepts/types/immutable-arrays.html) and produces a second array with elements in reversed order.
 
 ```motoko
 func reverse<X>(array : [X]) : [X]
@@ -283,24 +300,22 @@ func reverse<X>(array : [X]) : [X]
 | Variable argument  | `array : [X]` |
 | Return type        | `[X]`         |
 
-### Example
-
 ```motoko, run
 {{#include _mo/array/reverse.mo:a}}
 ```
 
-| Index | `array1 : [Text]` | `array2 : [Text]` |
-| ----- | ----------------- | ----------------- |
-| 0     | "first"           | "third"           |
-| 1     | "second"          | "second"          |
-| 2     | "third"           | "first"           |
+| Index | `rank : [Text]` | `reverse : [Text]` |
+| ----- | --------------- | ------------------ |
+| 0     | "first"         | "third"            |
+| 1     | "second"        | "second"           |
+| 2     | "third"         | "first"            |
 
 ## Array.flatten
 
-### Function signature
+Takes an array of arrays and produces a single array, while retaining the original ordering of the elements.
 
 ```motoko
-func flatten<X>(arrays : [[X]]) : [x]
+func flatten<X>(arrays : [[X]]) : [X]
 ```
 
 | **Parameters**     |                  |
@@ -309,15 +324,21 @@ func flatten<X>(arrays : [[X]]) : [x]
 | Variable argument  | `arrays : [[X]]` |
 | Return type        | `[X]`            |
 
-### Example
-
 ```motoko, run
 {{#include _mo/array/flatten.mo:a}}
 ```
 
+| Index | `arrays : [[Char]]` | `newArray : [Char]` |
+| ----- | ------------------- | ------------------- |
+| 0     | `['a', 'b']`        | `'a'`               |
+| 1     | `['c', 'd']`        | `'b'`               |
+| 2     | `['e']`             | `'c'`               |
+| 3     |                     | `'d'`               |
+| 4     |                     | `'e'`               |
+
 ## Array.equal
 
-### Function signature
+Compare each element of two arrays and check whether they are all equal according to an `equal` function of type `(X, X) -> Bool`.
 
 ```motoko
 func equal<X>(
@@ -337,15 +358,13 @@ func equal<X>(
 | Function argument  | `equal : (X, X) -> Bool` |
 | Return type        | `Bool`                   |
 
-### Example
-
 ```motoko, run
 {{#include _mo/array/equal.mo:a}}
 ```
 
 ## Array.map
 
-### Function signature
+The mapping function `map` iterates through each element of an [immutable array](/common-programming-concepts/types/immutable-arrays.html), applies a given transformation function `f` to it, and creates a new array with the transformed elements. The input array is of [generic type](/advanced-types/generics.html) `[X]`, the transformation function takes elements of type `X` and returns elements of type `Y`, and the resulting array is of type `[Y]`.
 
 ```motoko
 func map<X>(
@@ -363,22 +382,20 @@ array : [X],
 | Function argument  | `f : X -> Y`  |
 | Return type        | `[Y]`         |
 
-### Example
-
 ```motoko, run
 {{#include _mo/array/map.mo:a}}
 ```
 
-| Index | `array1 : [Bool]` | `array2 : [Bool]` |
-| ----- | ----------------- | ----------------- |
-| 0     | true              | false             |
-| 1     | false             | true              |
-| 2     | true              | false             |
-| 3     | false             | true              |
+| Index | `array1 : [Bool]` | `array2 : [Nat]` |
+| ----- | ----------------- | ---------------- |
+| 0     | true              | 1                |
+| 1     | false             | 0                |
+| 2     | true              | 1                |
+| 3     | false             | 0                |
 
 ## Array.filter
 
-### Function signature
+The `filter` function takes an [immutable array](/common-programming-concepts/types/immutable-arrays.html) of elements of [generic type](/advanced-types/generics.html) `X` and a predicate function `predicate` (that takes a `X` and returns a `Bool`) and returns a new array containing only the elements that satisfy the predicate condition.
 
 ```motoko
 func filter<X>(
@@ -396,24 +413,22 @@ predicate : X -> Bool
 | Function argument  | `predicate : X -> Bool` |
 | Return type        | `[X]`                   |
 
-### Example
-
 ```motoko, run
 {{#include _mo/array/filter.mo:a}}
 ```
 
-| Index | `array1 : [Nat]` | `array2 : [Nat]` |
-| ----- | ---------------- | ---------------- |
-| 0     | 1                | 2                |
-| 1     | 2                | 6                |
-| 2     | 5                |                  |
-| 3     | 6                |                  |
-| 4     | 9                |                  |
-| 5     | 7                |                  |
+| Index | `ages : [Nat]` | `evenAges : [Nat]` |
+| ----- | -------------- | ------------------ |
+| 0     | 1              | 2                  |
+| 1     | 2              | 6                  |
+| 2     | 5              |                    |
+| 3     | 6              |                    |
+| 4     | 9              |                    |
+| 5     | 7              |                    |
 
 ## Array.mapEntries
 
-### Function signature
+The `mapEntries` function takes an [immutable array](/common-programming-concepts/types/immutable-arrays.html) of elements of [generic type](/advanced-types/generics.html) `[X]` and a function `f` that accepts an element and its index (a `Nat` value) as arguments, then returns a new array of type `[Y]` with elements transformed by applying the function `f` to each element and its index.
 
 ```motoko
 func mapEntries<X,Y>(
@@ -431,22 +446,18 @@ array : [X],
 | Function argument  | `f : (X, Nat) -> Y` |
 | Return type        | `[Y]`               |
 
-### Example
-
 ```motoko, run
 {{#include _mo/array/mapEntries.mo:a}}
 ```
 
-| Index | `array1 : [Int]` | `array2 : [Int]` |
-| ----- | ---------------- | ---------------- |
-| 0     | -1               | 0                |
-| 1     | -2               | -2               |
-| 2     | -3               | -6               |
-| 3     | -4               | -12              |
+| Index | `array1 : [Int]` | `array2 : [Text]` |
+| ----- | ---------------- | ----------------- |
+| 0     | -1               | `"-1; 0"`         |
+| 1     | -2               | `"-2; 1"`         |
+| 2     | -3               | `"-3; 2"`         |
+| 3     | -4               | `"-4; 3"`         |
 
 ## Array.mapFilter
-
-### Function signature
 
 ```motoko
 func mapFilter<X,Y>(
@@ -464,8 +475,6 @@ func mapFilter<X,Y>(
 | Function argument  | `f : X -> ?Y` |
 | Return type        | `[Y]`         |
 
-### Example
-
 ```motoko, run
 {{#include _mo/array/mapFilter.mo:a}}
 ```
@@ -474,12 +483,11 @@ func mapFilter<X,Y>(
 | ----- | ---------------- | ----------------- |
 | 0     | 1                | "100"             |
 | 1     | 2                | "50"              |
-| 2     | 4                | "25"              |
-| 3     | 5                | "20"              |
+| 2     | 3                | "33"              |
+| 3     | 4                |                   |
+| 3     | 5                |                   |
 
 ## Array.mapResult
-
-### Function signature
 
 ```motoko
 func mapResult<X, Y, E>(
@@ -497,22 +505,18 @@ func mapResult<X, Y, E>(
 | Function argument  | `f : X -> Result.Result<Y, E>` |
 | Return type        | `Result.Result<[Y], E>`        |
 
-### Example
-
 ```motoko, run
 {{#include _mo/array/mapResult.mo:a}}
 ```
 
-| Index | `array1 : [Nat]` | `array2 : [Nat]` |
-| ----- | ---------------- | ---------------- |
-| 0     | 4                | 25               |
-| 1     | 5                | 20               |
-| 2     | 2                | 50               |
-| 3     | 1                | 100              |
+| Index | `array1 : [Nat]` | `mapResult : #ok : [Nat]` |
+| ----- | ---------------- | ------------------------- |
+| 0     | 4                | 25                        |
+| 1     | 5                | 20                        |
+| 2     | 2                | 50                        |
+| 3     | 1                | 100                       |
 
 ## Array.vals
-
-### Function signature
 
 ```motoko
 func vals<X>(array : [X]) : I.Iter<X>
@@ -524,15 +528,11 @@ func vals<X>(array : [X]) : I.Iter<X>
 | Variable argument  | `array : [X]` |
 | Return type        | `I.Iter<X>`   |
 
-### Example
-
 ```motoko, run
 {{#include _mo/array/vals.mo:a}}
 ```
 
 ## Array.keys
-
-### Function signature
 
 ```motoko
 func keys<X>(array : [X]) : I.Iter<Nat>
@@ -544,15 +544,11 @@ func keys<X>(array : [X]) : I.Iter<Nat>
 | Variable argument  | `array : [X]` |
 | Return type        | `I.Iter<Nat>` |
 
-### Example
-
 ```motoko, run
 {{#include _mo/array/keys.mo:a}}
 ```
 
 ## Array.find
-
-### Function signature
 
 ```motoko
 func find<X>(
@@ -570,15 +566,11 @@ predicate : X -> Bool
 | function argument  | `predicate : X -> Bool` |
 | Return type        | `?X`                    |
 
-### Example
-
 ```motoko, run
 {{#include _mo/array/find.mo:a}}
 ```
 
 ## Array.chain
-
-### Function signature
 
 ```motoko
 func chain<X, Y>(
@@ -596,8 +588,6 @@ func chain<X, Y>(
 | Function argument  | `k : X -> [Y]` |
 | Return type        | `[Y]`          |
 
-### Example
-
 ```motoko, run
 {{#include _mo/array/chain.mo:a}}
 ```
@@ -612,8 +602,6 @@ func chain<X, Y>(
 | 5     |                  | -30              |
 
 ## Array.foldLeft
-
-### Function signature
 
 ```motoko
 func foldLeft<X, A>(
@@ -633,15 +621,11 @@ combine : (A, X) -> A
 | Function argument  | `combine : (A, X) -> A` |
 | Return type        | `A`                     |
 
-### Example
-
 ```motoko, run
 {{#include _mo/array/foldLeft.mo:a}}
 ```
 
 ## Array.foldRight
-
-### Function signature
 
 ```motoko
 func foldRight<X, A>(
@@ -660,8 +644,6 @@ combine : (X, A) -> A
 | Variable argument2 | `base : A`              |
 | Function argument  | `combine : (X, A) -> A` |
 | Return type        | `A`                     |
-
-### Example
 
 ```motoko, run
 {{#include _mo/array/foldRight.mo:a}}

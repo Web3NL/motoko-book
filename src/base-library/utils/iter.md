@@ -1,3 +1,5 @@
+> **BETA WARNING** _This chapter is being reviewed and updated_
+
 # Iterators
 
 The `Iter.mo` module provides useful [_classes_](/common-programming-concepts/modules.html#public-classes-in-modules) and [_public functions_](/common-programming-concepts/modules.html#public-functions-in-modules) for _iteration_ on data sequences.
@@ -16,7 +18,7 @@ The `next` function takes no arguments and returns `?T` where `T` is the type of
 
 ## Example
 
-```motoko
+```motoko, run
 import Array "mo:base/Array";
 
 let a : [Nat] = [1, 2, 3];
@@ -87,16 +89,12 @@ class range(x : Nat, y : Int)
 
 ## range.next
 
-### Function signature
-
 ```motoko
 func next() : ?Nat
 ```
 
-### Example
-
 ```motoko, run
-{{#include _mo/iter/iter.mo:b}}
+{{#include _mo/iter/range.mo:a}}
 ```
 
 ## Class revRange
@@ -107,26 +105,20 @@ class revRange(x : Int, y : Int)
 
 ## revRange.next
 
-### Function signature
-
 ```motoko
 func next() : ?Int
 ```
 
-### Example
-
 ```motoko, run
-{{#include _mo/iter/iter.mo:c}}
+{{#include _mo/iter/revRange.mo:a}}
 ```
 
 ## Iter.iterate
 
-### Function signature
-
 ```motoko
 func iterate<A>(
 
-  xs : Iter<A>
+  xs : Iter<A>,
    f : (A, Nat) -> ()
 
 ) : ()
@@ -139,15 +131,11 @@ func iterate<A>(
 | Function argument  | `f : (A, Nat) -> ()` |
 | Return type        | `() `                |
 
-### Example
-
 ```motoko, run
 {{#include _mo/iter/iterate.mo:a}}
 ```
 
 ## Iter.size
-
-### Function signature
 
 ```motoko
 func size<A>(xs : Iter<A>) : Nat
@@ -159,20 +147,16 @@ func size<A>(xs : Iter<A>) : Nat
 | Variable argument  | `xs : Iter<A>` |
 | Return type        | `Nat`          |
 
-### Example
-
 ```motoko, run
 {{#include _mo/iter/size.mo:a}}
 ```
 
 ## Iter.map
 
-### Function signature
-
 ```motoko
 func map<A, B>(
 
-  xs : Iter<A>
+  xs : Iter<A>,
    f : A -> B
 
 ) : Iter<B>
@@ -185,20 +169,16 @@ func map<A, B>(
 | Function argument | `f : A -> B`   |
 | Return type       | `Iter<B>`      |
 
-### Example
-
 ```motoko, run
 {{#include _mo/iter/map.mo:a}}
 ```
 
 ## Iter.filter
 
-### Function signature
-
 ```motoko
 func filter<A>(
 
-  xs : Iter<A>
+  xs : Iter<A>,
    f : A -> Bool
 
 ) : Iter<A>
@@ -211,15 +191,11 @@ func filter<A>(
 | Function argument  | `f : A -> Bool` |
 | Return type        | `Iter<A>`       |
 
-### Example
-
 ```motoko, run
 {{#include _mo/iter/filter.mo:a}}
 ```
 
 ## Iter.make
-
-### Function signature
 
 ```motoko
 func make<A>(x : A) : Iter<A>
@@ -231,15 +207,11 @@ func make<A>(x : A) : Iter<A>
 | Variable argument  | `x : A`   |
 | Return type        | `Iter<A>` |
 
-### Example
-
 ```motoko, run
 {{#include _mo/iter/make.mo:a}}
 ```
 
 ## Iter.fromArray
-
-### Function signature
 
 ```motoko
 func fromArray<A>(xs : [A]) : Iter<A>
@@ -251,15 +223,11 @@ func fromArray<A>(xs : [A]) : Iter<A>
 | Variable argument  | `xs : [A]` |
 | Return type        | `Iter<A>`  |
 
-### Example
-
 ```motoko, run
 {{#include _mo/iter/fromArray.mo:a}}
 ```
 
 ## Iter.fromArrayMut
-
-### Function signature
 
 ```motoko
 func fromArrayMut<A>(xs : [var A]) : Iter<A>
@@ -271,15 +239,11 @@ func fromArrayMut<A>(xs : [var A]) : Iter<A>
 | Variable argument  | `xs : [var A]` |
 | Return type        | `Iter<A>`      |
 
-### Example
-
 ```motoko, run
 {{#include _mo/iter/fromArrayMut.mo:a}}
 ```
 
 ## Iter.fromList
-
-### Function signature
 
 ```motoko
 func fromList(xs : List<T>) : Iter
@@ -290,15 +254,11 @@ func fromList(xs : List<T>) : Iter
 | Variable argument | `xs : List<T>` |
 | Return type       | `Iter`         |
 
-### Example
-
 ```motoko, run
 {{#include _mo/iter/fromList.mo:a}}
 ```
 
 ## Iter.toArray
-
-### Function signature
 
 ```motoko
 func toArray<A>(xs : Iter<A>) : [A]
@@ -310,15 +270,11 @@ func toArray<A>(xs : Iter<A>) : [A]
 | Variable argument  | `xs : Iter<A>` |
 | Return type        | `[A]`          |
 
-### Example
-
 ```motoko, run
 {{#include _mo/iter/toArray.mo:a}}
 ```
 
 ## Iter.toArrayMut
-
-### Function signature
 
 ```motoko
 func toArrayMut<A>(xs : Iter<A>) : [var A]
@@ -330,15 +286,11 @@ func toArrayMut<A>(xs : Iter<A>) : [var A]
 | Variable argument  | `xs : Iter<A>` |
 | Return type        | `[var A]`      |
 
-### Example
-
 ```motoko, run
 {{#include _mo/iter/toArrayMut.mo:a}}
 ```
 
 ## Iter.toList
-
-### Function signature
 
 ```motoko
 func list<A>(xs : Iter<A>) : List.List<A>
@@ -350,20 +302,16 @@ func list<A>(xs : Iter<A>) : List.List<A>
 | Variable argument  | `xs : Iter<A>` |
 | Return type        | `List.List<A>` |
 
-### Example
-
 ```motoko, run
 {{#include _mo/iter/toList.mo:a}}
 ```
 
 ## Iter.sort
 
-### Function signature
-
 ```motoko
 func sort<A>(
 
-     xs : Iter<A>
+     xs : Iter<A>,
 compare : (A, A) -> Order.Order
 
 ) : Iter<A>
@@ -375,8 +323,6 @@ compare : (A, A) -> Order.Order
 | Variable argument  | `xs : Iter<A>`                    |
 | Function argument  | `compare : (A, A) -> Order.Order` |
 | Return type        | `Iter<A>`                         |
-
-### Example
 
 ```motoko, run
 {{#include _mo/iter/sort.mo:a}}

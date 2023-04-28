@@ -6,7 +6,7 @@ The Motoko Base Library is a collection of [modules](/common-programming-concept
 
 Most modules define a _[public type](/common-programming-concepts/modules.html#public-types-in-modules)_ that is associated with the core use of the module.
 
-The Base Library also includes _IC system APIs_ that today (Jan 2023) are still experimental. We will visit them [later in this book](/advanced-concepts.html).
+The Base Library also includes [_IC system APIs_](/base-library/ic-apis.html) that today (Jan 2023) are still experimental. We will visit them [later in this book](/advanced-concepts.html).
 
 ## Importing from the Base Library
 
@@ -35,7 +35,3 @@ Note the two meanings of `Principal`:
 - The [type annotation](/common-programming-concepts/types.html) for variable `p` uses the always available [_primitive type_](/common-programming-concepts/types.html#primitive-types) `Principal`. This _type_ does not have to be imported.
 
 - We used the `.fromText()` _method_ from the `Principal` module (public functions in [modules](/common-programming-concepts/modules.html) or in [objects or classes](/common-programming-concepts/objects-and-classes.html) are often called methods) by referencing it through our chosen _module name_ `Principal`.
-
-## Assertions
-
-In this chapter, we will use [assertions](/common-programming-concepts/assertions.html) that always evaluate to `()` in the code examples to illustrate the results of the manipulations we perform.

@@ -1,3 +1,5 @@
+> **BETA WARNING** _This chapter is being reviewed and updated_
+
 # RBTree
 
 The _convention_ is to name the [_module alias_](/common-programming-concepts/modules.html#imports) after the [_file name_](/common-programming-concepts/modules.html#imports) it is defined in:
@@ -55,8 +57,6 @@ To construct a rbtree object, we use the `RBTree` class:
 
 ## rbtree.share
 
-### Function signature
-
 ```motoko
 func share() : Tree<K, V>
 ```
@@ -70,8 +70,6 @@ The function `share` takes no argument and returns an value of type `Tree<K, V>`
 ```
 
 ## rbtree.unShare
-
-### Function signature
 
 ```motoko
 func unShare(t : Tree<K, V>) : ()
@@ -90,8 +88,6 @@ func unShare(t : Tree<K, V>) : ()
 
 ## rbtree.get
 
-### Function signature
-
 ```motoko
 func get(key : K) : ?V
 ```
@@ -108,8 +104,6 @@ func get(key : K) : ?V
 ```
 
 ## rbtree.replace
-
-### Function signature
 
 ```motoko
 func replace(key : K, value : V) : ?V
@@ -129,8 +123,6 @@ func replace(key : K, value : V) : ?V
 
 ## rbtree.put
 
-### Function signature
-
 ```motoko
 func put(key : K, value : V) : ()
 ```
@@ -149,8 +141,6 @@ func put(key : K, value : V) : ()
 
 ## rbtree.delete
 
-### Function signature
-
 ```motoko
 func delete(key : K) : ()
 ```
@@ -167,8 +157,6 @@ func delete(key : K) : ()
 ```
 
 ## rbtree.remove
-
-### Function signature
 
 ```motoko
 func remove(key : K) : ?V
@@ -187,8 +175,6 @@ func remove(key : K) : ?V
 
 ## rbtree.entries
 
-### Function signature
-
 ```motoko
 func entries() : I.Iter<(K, V)>
 ```
@@ -202,8 +188,6 @@ The function `entries` takes no argument and returns an value of type `I.Iter<(K
 ```
 
 ## rbtree.entriesRev
-
-### Function signature
 
 ```motoko
 func entriesRev() : I.Iter<(K, V)>
@@ -223,8 +207,6 @@ func entriesRev() : I.Iter<(K, V)>
 ## Module public functions
 
 ## RBTree.iter
-
-### Function signature
 
 ```motoko
 func iter<X, Y>(
@@ -249,8 +231,6 @@ func iter<X, Y>(
 ```
 
 ## RBTree.size
-
-### Function signature
 
 ```motoko
 func size<X, Y>(

@@ -1,10 +1,12 @@
 {
-    "cSpell.words": [
-        "DFINITY",
-        "ICRC",
-        "mdbook",
-        "Motoko",
-        "subtyping",
-        "Webassembly"
-    ]
+  "cSpell.words": [
+    "DFINITY",
+    "ICRC",
+    "mdbook",
+    "Motoko",
+    "Oneway",
+    "subtyping",
+    "tokenomics",
+    "Webassembly"
+  ]
 }

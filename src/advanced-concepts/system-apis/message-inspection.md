@@ -15,7 +15,7 @@ In Motoko, this functionality can be implemented as a _system function_ called `
 system func inspect(args) : Bool
 ```
 
-Note that the [return type](/internet-computer-programming-concepts/actors.html#shared-types) is NOT `async`. Also, this function CANNOT update the [state of the actor](/internet-computer-programming-concepts/basic-memory-persistence.html).
+Note that the [return type](/internet-computer-programming-concepts/actors.html#shared-async-types) is NOT `async`. Also, this function CANNOT update the [state of the actor](/internet-computer-programming-concepts/basic-memory-persistence.html).
 
 ### How it works
 

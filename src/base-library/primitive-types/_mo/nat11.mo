@@ -7,4 +7,5 @@ let b : Nat = 20;
 
 let subtract = Nat.sub(a, b);
 
-let subtraction = a - b; // ANCHOR_END: a
+// Result has type `Int` because subtracting two `Nat` may trap due to undeflow
+let subtraction : Int = a - b; // ANCHOR_END: a

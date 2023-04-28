@@ -1,4 +1,3 @@
-
 // ANCHOR: a
 import Bool "mo:base/Bool";
 
