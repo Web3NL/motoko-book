@@ -36,11 +36,11 @@ actor class IC({ wasm_module : [Nat8] }) {
 
     public func test() : async [Text] {
         await* create_canister();
-        await* install_code();
+        // await* install_code();
 
         [
             "create_canister",
-            "install_code",
+            // "install_code",
         ];
     };
 
