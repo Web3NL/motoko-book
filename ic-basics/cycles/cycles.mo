@@ -5,6 +5,8 @@ import Iter "mo:base/Iter";
 import Nat "mo:base/Nat";
 import Array "mo:base/Array";
 import List "mo:base/List";
+import Buffer "mo:base/Buffer";
+import HashMap "mo:base/HashMap";
 
 actor Cycles {
   type Canister_id = Principal;
@@ -128,6 +130,37 @@ public func list_size() : async Nat {
 };
 
 public shared ({caller}) func test_list(n : Nat) : async (Nat, Nat) {
+
+ // get cycles balance
+    func get_cycles() : async Nat {
+      let status = await ManagementCanister.canister_status({
+        canister_id = P.fromActor(Cycles);
+      });
+      return status.cycles;
+    };
+
+    // get cycles balance before creating new users
+    let before = await get_cycles();
+
+  for (i in Iter.range(1, n)){
+  let newlist = List.push<Nat>(i, myList);
+  };
+
+  // get cycles balance after creating new users
+    let after = await get_cycles();
+
+    // return cycle difference
+    (before, after)
+
+  };
+
+  // cycle test in Buffer data structure ////////////////////////////////////////////////////
+
+type Buffer<X> = Buffer.Buffer<X>;
+
+let myBuffer : Buffer<Nat> = Buffer.Buffer<Nat>(100);
+
+public shared ({caller}) func Buffer(n : Nat) : async (Nat, Nat) {
 
  // get cycles balance
     func get_cycles() : async Nat {
