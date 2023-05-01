@@ -10,6 +10,8 @@ The _convention_ is to name the [_module alias_](/common-programming-concepts/mo
 
 ### On this page
 
+### Constants
+
 [Value `minimumValue`](#minimumvalue)  
 [Value `maximumValue`](#maximumvalue)
 
@@ -61,7 +63,10 @@ The _convention_ is to name the [_module alias_](/common-programming-concepts/mo
 [Function `bitflip`](#int8bitflip)  
 [Function `bitcountNonZero`](#int8bitcountnonzero)  
 [Function `bitcountLeadingZero`](#int8bitcountleadingzero)  
-[Function `bitcountTrailingZero`](#int8bitcounttrailingzero)  
+[Function `bitcountTrailingZero`](#int8bitcounttrailingzero)
+
+### Wrapping Operations
+
 [Function `addWrap`](#int8addwrap)  
 [Function `subWrap`](#int8subwrap)  
 [Function `mulWrap`](#int8mulwrap)  

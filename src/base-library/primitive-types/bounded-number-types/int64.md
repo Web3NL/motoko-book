@@ -1,4 +1,4 @@
-32> **BETA WARNING** _This chapter is being reviewed and updated_
+> **BETA WARNING** _This chapter is being reviewed and updated_
 
 # Int64
 
@@ -9,6 +9,8 @@ The _convention_ is to name the [_module alias_](/common-programming-concepts/mo
 ```
 
 ### On this page
+
+### Constants
 
 [Value `minimumValue`](#minimumvalue)  
 [Value `maximumValue`](#maximumvalue)
@@ -61,7 +63,10 @@ The _convention_ is to name the [_module alias_](/common-programming-concepts/mo
 [Function `bitflip`](#int64bitflip)  
 [Function `bitcountNonZero`](#int64bitcountnonzero)  
 [Function `bitcountLeadingZero`](#int64bitcountleadingzero)  
-[Function `bitcountTrailingZero`](#int64bitcounttrailingzero)  
+[Function `bitcountTrailingZero`](#int64bitcounttrailingzero)
+
+### Wrapping Operations
+
 [Function `addWrap`](#int64addwrap)  
 [Function `subWrap`](#int64subwrap)  
 [Function `mulWrap`](#int64mulwrap)  
