@@ -1,0 +1,8 @@
+// ANCHOR: a
+import Int32 "mo:base/Int32";
+
+let x : Int32 = 255; // Binary : 00000000_00000000_00000000_11111111
+let y : Int32 = 240; // Binary : 00000000_00000000_00000000_11110000
+
+Int32.bitxor(x, y) // Binary : 00000000_00000000_00000000_00001111
+// ANCHOR_END: a
