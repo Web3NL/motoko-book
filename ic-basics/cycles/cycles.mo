@@ -241,5 +241,17 @@ public func hashmap_size() : async Nat {
 
   };
 
+  // factor out get_cycles as an async* func in top level
+  // test all 5 data structures systematically
+  // test write amounts for 10, 100, 1000, 10_000
+  // test read amounts for 10, 100, 1000, 10_000
+  // test delete amounts for 10, 100, 1000, 10_000
+
+  // produce a text report
+  // Example:
+  // Tested 10 writes into Hashmap: x cycles
+  // Tested 100 writes into Hashmap: x cycles
+
+  
 
 };
