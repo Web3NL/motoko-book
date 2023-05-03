@@ -8,5 +8,8 @@
     "subtyping",
     "tokenomics",
     "Webassembly"
+  ],
+  "githubPullRequests.ignoredPullRequestBranches": [
+    "main"
   ]
 }
