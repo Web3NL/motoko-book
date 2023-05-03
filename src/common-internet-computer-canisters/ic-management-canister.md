@@ -1,6 +1,6 @@
 # IC Management Canister
 
-To manage canisters programmatically, the Internet Computer (IC) provides a _management canister_. This canister, like any other canister, has a [Candid Interface](/internet-computer-programming-concepts/async-data/candid.html) and could be called by other canisters or [ingress messages].
+The Internet Computer (IC) provides a _management canister_ to manage canisters programmatically. This canister, like any other canister, has a [Candid Interface](/internet-computer-programming-concepts/async-data/candid.html) and could be called by other canisters or [ingress messages].
 
 In this chapter, we will only look at a subset of the interface. In particular, we will not cover Bitcoin, HTTP and cryptography related functionality and only focus on _canister management_.
 
@@ -14,7 +14,7 @@ In this chapter, we will only look at a subset of the interface. In particular, 
 
 ## Motoko Interface
 
-This is a subset of the interface as a [Motoko module]. It only includes _canister management_ related types and functions. It is available as [ic-management-interface.mo](_mo/ic-management/ic-management-interface.mo)
+This is a subset of the interface as a [Motoko module](/common-programming-concepts/modules.html). It only includes _canister management_ related types and functions. It is available as [ic-management-interface.mo](_mo/ic-management/ic-management-interface.mo)
 
 ### Types
 
@@ -42,7 +42,7 @@ This is a subset of the interface as a [Motoko module]. It only includes _canist
 
 ## Import
 
-We import the management canister by importing the interface file and referencing the `Self` type.
+We import the management canister by importing the interface file and declaring an actor by principle `aaaaa-aa` and type it as the `Self` (which is declared in the interface).
 
 ```motoko
 {{#include _mo/ic-management/ic-management-import.mo}}
@@ -198,7 +198,7 @@ delete_canister : shared { canister_id : canister_id } -> async ();
 
 To install a wasm module in a canister, we call `install_code`. Only _controllers_ of a canister can call this function.
 
-We need to provide a wasm module install arguments as `[Nat8]` arrays. We also pick a [mode](/internet-computer-programming-concepts/basic-memory-persistence/upgrades.html#reinstall-and-upgrade) to indicate whether we freshly installing or [upgrading](/internet-computer-programming-concepts/basic-memory-persistence/upgrades.html) the canister. And finally, we provide the _canister id_ (principal) that we want to install code into.
+We need to provide a wasm module install arguments as `[Nat8]` arrays. We also pick a [mode](/internet-computer-programming-concepts/basic-memory-persistence/upgrades.html#reinstall-and-upgrade) to indicate whether we are freshly installing or [upgrading](/internet-computer-programming-concepts/basic-memory-persistence/upgrades.html) the canister. And finally, we provide the _canister id_ (principal) that we want to install code into.
 
 ```motoko
 install_code : shared {
