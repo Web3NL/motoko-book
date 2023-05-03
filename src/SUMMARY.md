@@ -122,7 +122,7 @@
 - [Common Internet Computer Canisters](common-internet-computer-canisters.md)
 
   - [IC Management Canister](common-internet-computer-canisters/ic-management-canister.md)
-  - [ICP Ledger](common-internet-computer-canisters/ledger.md)
+  - [ICP Ledger Canister](common-internet-computer-canisters/icp-ledger-canister.md)
   - [Cycle Minting Canister](common-internet-computer-canisters/cycles-minting-canister.md)
 
 - [Internet Computer Standards](internet-computer-standards.md)
