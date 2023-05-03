@@ -34,7 +34,7 @@
     - [Switch Expression](common-programming-concepts/control-flow/switch-expression.md)
     - [While Expression](common-programming-concepts/control-flow/while-expression.md)
     - [For Expression](common-programming-concepts/control-flow/for-expression.md)
-    - [Do Expression](common-programming-concepts/control-flow/do-expression.md)
+    - [Do/Option Expression](common-programming-concepts/control-flow/do-option-expression.md)
     - [Let Else Expression](common-programming-concepts/control-flow/let-else-expression.md)
   - [Objects and Classes](common-programming-concepts/objects-and-classes.md)
     - [Objects](common-programming-concepts/objects-and-classes/objects.md)

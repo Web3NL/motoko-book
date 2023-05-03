@@ -11,9 +11,11 @@ Others are loops that iterate over a certain value. Examples are `for` and `whil
 
 ## Block Expressions
 
-Block expressions are blocks of statements and declarations that are defined by enclosing curly brackets `do { }`. They are used to form the sub-expressions of above control flow constructs.
+Block expressions are blocks of statements and declarations that are defined by enclosing curly brackets ex: `do { };`. They are used to form the sub-expressions of above control flow constructs.
 
-Remember that these evaluate to an `expression` of `type ()` !  Unlike some other use-cases of curly brackets that would evaluate to an object literal of `type {}` 
+Remember that these evaluate to an `expression` of `type ()` because they have a control flow key word expression!
+
+Unlike other use-cases of curly brackets `{}` that would evaluate to an object literal of `type {}`. 
 
 ## Loops
 A simple loop in Motoko will iterate and execute its expressions infinitely.
