@@ -1,4 +1,4 @@
-import PT "modules";
+import PT "publicType";
 import RB "mo:base/RBTree";
 import P "mo:base/Principal";
 import Iter "mo:base/Iter";
@@ -10,23 +10,6 @@ import HashMap "mo:base/HashMap";
 import Nat32 "mo:base/Nat32";
 
 actor Cycles {
-  type Canister_id = Principal;
-  type canister_settings = PT.canister_settings;
-  type definite_canister_settings = PT.definite_canister_settings;
-  type http_header = PT.http_header;
-  type http_response = PT.http_response;
-  type wasm_module = PT.wasm_module;
-
-  type PCCWC = {
-    settings : ?canister_settings;
-    amount : ?Nat;
-  };
-
-  type PTUC = {
-    Canister_id : Canister_id;
-    amount : Nat;
-  };
-
 
   type ManagementCanisterInterface = PT.ManagementCanister;
 
@@ -40,6 +23,13 @@ actor Cycles {
     balance : Nat;
   };
 
+  func get_cycles() : async* Nat {
+    let status = await ManagementCanister.canister_status({
+      canister_id = P.fromActor(Cycles);
+    });
+    return status.cycles;
+  };
+
   public query func getUser(i : Nat) : async ?User { tree.get(i) };
 
   public query func size() : async Nat { RB.size(tree.share()) };
@@ -51,16 +41,8 @@ actor Cycles {
   // test cycle cost for n new users
   public shared ({ caller }) func test(n : Nat) : async Nat {
 
-    // get cycles balance
-    func get_cycles() : async Nat {
-      let status = await ManagementCanister.canister_status({
-        canister_id = P.fromActor(Cycles);
-      });
-      return status.cycles;
-    };
-
     // get cycles balance before creating new users
-    let before = await get_cycles();
+    let before = await* get_cycles();
 
     for (i in Iter.range(1, n)) {
       newUser(
@@ -74,7 +56,7 @@ actor Cycles {
     };
 
     // get cycles balance after creating new users
-    let after = await get_cycles();
+    let after = await* get_cycles();
 
     // return cycle difference
     before - after;
@@ -88,18 +70,10 @@ actor Cycles {
     array.size();
   };
 
-  public shared ({ caller }) func test_array(n : Nat) : async (Nat, Nat) {
-
-    // get cycles balance
-    func get_cycles() : async Nat {
-      let status = await ManagementCanister.canister_status({
-        canister_id = P.fromActor(Cycles);
-      });
-      return status.cycles;
-    };
+ public shared ({ caller }) func test_array(n : Nat) : async (Nat) {
 
     // get cycles balance before creating new users
-    let before = await get_cycles();
+    let before = await* get_cycles();
 
     for (i in Iter.range(1, n)) {
       array := Array.init<User>(
@@ -113,10 +87,10 @@ actor Cycles {
     };
 
     // get cycles balance after creating new users
-    let after = await get_cycles();
+    let after = await* get_cycles();
 
     // return cycle difference
-    (before, after);
+    (after - before);
   };
 
   // cycle test in List data structure //////////////////////////////////////////////////////
@@ -135,28 +109,24 @@ actor Cycles {
 
   public shared ({ caller }) func test_list(n : Nat) : async (Nat, Nat) {
 
-    // get cycles balance
-    func get_cycles() : async Nat {
-      let status = await ManagementCanister.canister_status({
-        canister_id = P.fromActor(Cycles);
-      });
-      return status.cycles;
-    };
-
     // get cycles balance before creating new users
-    let before = await get_cycles();
-    var array : [var User] = Array.init<User>(n, {
-          principal = caller;
-          username = "name";
-          balance = 0;
-        });
+    let before = await* get_cycles();
+
+    var array : [var User] = Array.init<User>(
+      n,
+      {
+        principal = caller;
+        username = "name";
+        balance = 0;
+      },
+    );
 
     for (user in array.vals()) {
       let newlist = List.push<User>(user, myList);
     };
 
     // get cycles balance after creating new users
-    let after = await get_cycles();
+    let after = await* get_cycles();
 
     // return cycle difference
     (before, after)
@@ -164,38 +134,31 @@ actor Cycles {
   };
 
   // cycle test in Buffer data structure //////////////////////////////////////////////////
-  
+
   let natstorage = Buffer.Buffer<User>(10000);
 
   public func buffer_size() : async Nat {
-    natstorage.size()
+    natstorage.size();
   };
 
   public shared ({ caller }) func test_Buffer(n : Nat) : async (Nat, Nat) {
 
-    // get cycles balance
-    func get_cycles() : async Nat {
-      let status = await ManagementCanister.canister_status({
-        canister_id = P.fromActor(Cycles);
-      });
-      return status.cycles;
-    };
-
     // get cycles balance before creating new users
-    let before = await get_cycles();
-    
-    let vish : User = {
+    let before = await* get_cycles();
+
+    for (i in Iter.range(0, n -1)) {
+      natstorage.put(
+        i,
+        {
           principal = caller;
           username = "name";
           balance = 0;
-        };
-
-    for (i in Iter.range(1, n)) {
-       natstorage.put(i, vish );
+        },
+      );
     };
 
     // get cycles balance after creating new users
-    let after = await get_cycles();
+    let after = await* get_cycles();
 
     // return cycle difference
     (before, after)
@@ -204,37 +167,30 @@ actor Cycles {
 
   // cycle test in hashmap data structure //////////////////////////////////////////////////
 
-let myMap = HashMap.HashMap<Nat, User>(1000, Nat.equal, func x = Nat32.fromNat(x) );
+  let myMap = HashMap.HashMap<Nat, User>(1000, Nat.equal, func x = Nat32.fromNat(x));
 
-public func hashmap_size() : async Nat {
-  myMap.size()
-};
+  public func hashmap_size() : async Nat {
+    myMap.size();
+  };
 
- public shared ({ caller }) func test_hashmap(n : Nat) : async (Nat, Nat) {
-
-    // get cycles balance
-    func get_cycles() : async Nat {
-      let status = await ManagementCanister.canister_status({
-        canister_id = P.fromActor(Cycles);
-      });
-      return status.cycles;
-    };
+  public shared ({ caller }) func test_hashmap(n : Nat) : async (Nat, Nat) {
 
     // get cycles balance before creating new users
-    let before = await get_cycles();
-    
-    let vish : User = {
+    let before = await* get_cycles();
+
+    for (i in Iter.range(1, n)) {
+      myMap.put(
+        i,
+        {
           principal = caller;
           username = "name";
           balance = 0;
-        };
-
-    for (i in Iter.range(1, n)) {
-       myMap.put(i, vish );
+        },
+      );
     };
 
     // get cycles balance after creating new users
-    let after = await get_cycles();
+    let after = await* get_cycles();
 
     // return cycle difference
     (before, after)
@@ -244,6 +200,14 @@ public func hashmap_size() : async Nat {
   // factor out get_cycles as an async* func in top level
   // test all 5 data structures systematically
   // test write amounts for 10, 100, 1000, 10_000
+  public func write_test() : async (Nat, Nat, Nat, Nat) {
+    (
+      await test_array(10),
+      await test_array(100),
+      await test_array(1000),
+      await test_array(10000),
+    );
+  };
   // test read amounts for 10, 100, 1000, 10_000
   // test delete amounts for 10, 100, 1000, 10_000
 
@@ -251,7 +215,5 @@ public func hashmap_size() : async Nat {
   // Example:
   // Tested 10 writes into Hashmap: x cycles
   // Tested 100 writes into Hashmap: x cycles
-
-  
 
 };

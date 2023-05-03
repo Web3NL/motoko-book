@@ -1,5 +1,16 @@
 module {
     public type canister_id = Principal;
+
+    public type PCCWC = {
+        settings : ?canister_settings;
+        amount : ?Nat;
+    };
+
+    public type PTUC = {
+        Canister_id : canister_id;
+        amount : Nat;
+    };
+
     public type canister_settings = {
         freezing_threshold : ?Nat;
         controllers : ?[Principal];
