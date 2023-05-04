@@ -1,1 +1,1 @@
-# Cycle Minting Canister
+# Cycles Minting Canister
