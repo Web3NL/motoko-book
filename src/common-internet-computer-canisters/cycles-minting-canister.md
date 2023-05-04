@@ -8,7 +8,7 @@
 | [Importing](#import)                               | [-import.mo]()           |
 | [Public function calls](#public-functions)         | [-public-functions.mo]() |
 
-## Motoko Interface
+## CMC Interface
 
 <!-- This is a subset of the interface as a [Motoko module](/common-programming-concepts/modules.html). It only includes _icrc1_ related types and functions. It is available as [icp-ledger-interface.mo](_mo/icp-ledger/icp-ledger-interface.mo) -->
 
