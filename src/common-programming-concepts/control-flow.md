@@ -11,7 +11,10 @@ Others are loops that iterate over a certain value. Examples are `for` and `whil
 
 ## Block Expressions
 
+Block expressions are blocks declarations that are defined by enclosing curly brackets for ex: `do { };`. They are used to form the sub-expressions of above mentioned 
+```suggestion
 Block expressions are blocks of statements and declarations that are defined by enclosing curly brackets ex: `do { };`. They are used to form the sub-expressions of above control flow constructs.
+```control flow constructs.
 
 Remember that these evaluate to an `expression` of `type ()` because they have a control flow key word expression!
 
