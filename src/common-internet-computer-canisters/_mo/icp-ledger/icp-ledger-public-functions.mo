@@ -1,6 +1,7 @@
 import Interface "icp-ledger-interface";
 
 import Principal "mo:base/Principal";
+import Array "mo:base/Array";
 import Error "mo:base/Error";
 
 actor ICManagement {
@@ -69,7 +70,7 @@ actor ICManagement {
     // ANCHOR_END: transfer
 
     // ANCHOR: test
-    public func test() : async { #OK; #ERR : Text } {
+    public func test() : async { #OK : Interface.Result; #ERR : Text } {
         try {
 
             // Query tests
@@ -94,9 +95,13 @@ actor ICManagement {
             ignore await* balance(account);
 
             // Transfer test
+            var sub = Array.init<Nat8>(32, 0);
+            sub[0] := 1;
+            let subaccount = Array.freeze(sub);
+
             let account2 : Interface.Account = {
                 owner = principal;
-                subaccount = ?[1];
+                subaccount = ?subaccount;
             };
 
             let arg : Interface.TransferArg = {
@@ -108,9 +113,10 @@ actor ICManagement {
                 created_at_time = null;
             };
 
-            ignore await* transfer(arg);
+            let result = await* transfer(arg);
 
-            #OK;
+            #OK result
+
         } catch (e) {
             #ERR(Error.message(e));
         };
