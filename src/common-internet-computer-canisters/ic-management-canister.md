@@ -213,8 +213,10 @@ This function is _atomic_ meaning that it either succeeds and returns `()` or it
 
 ## Test
 
-To test all the functions, we `await*` all of them in a `try-catch` block inside a regular shared public function. Our function either returns `#OK` or `#ERR` with a caught error message that is converted into text.
+To test all the functions, we `await*` all of them in a `try-catch` block inside a regular shared public function. This test is available in [`ic-management-public-functions.mo`](_mo/ic-management/ic-management-public-functions.mo).
 
 ```motoko
 {{#include _mo/ic-management/ic-management-public-functions.mo:test}}
 ```
+
+Our function either returns `#OK` or `#ERR` with a caught error message that is converted into text.

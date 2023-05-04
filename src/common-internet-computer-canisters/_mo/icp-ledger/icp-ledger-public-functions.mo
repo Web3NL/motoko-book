@@ -5,6 +5,7 @@ import Array "mo:base/Array";
 import Error "mo:base/Error";
 
 actor ICManagement {
+    // The Ledger Canister ID
     let ICP = "ryjl3-tyaaa-aaaaa-aaaba-cai";
     let icp = actor (ICP) : Interface.Self;
 

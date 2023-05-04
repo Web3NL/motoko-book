@@ -54,7 +54,7 @@ Note, that the types are slightly different from the icrc1 standard, but the fun
 We import the ICP ledger canister by importing the interface file and declaring an actor by principle `ryjl3-tyaaa-aaaaa-aaaba-cai` and type it as the `Self` type (which is declared in the interface).
 
 > **NOTE**  
-> _If you are testing locally, you should have the Ledger Canister installed locally._
+> _If you are testing locally, you should have the Ledger Canister [installed locally](/common-internet-computer-canisters.html)._
 
 ```motoko
 {{#include _mo/icp-ledger/icp-ledger-import.mo}}

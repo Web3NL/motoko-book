@@ -5,6 +5,7 @@ import Principal "mo:base/Principal";
 import Error "mo:base/Error";
 
 actor ICManagement {
+    // The IC Management Canister ID
     let IC = "aaaaa-aa";
     let ic = actor (IC) : Interface.Self;
 
