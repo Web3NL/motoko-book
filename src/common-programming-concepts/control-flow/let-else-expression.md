@@ -1,14 +1,14 @@
 # Let-Else
 
 The let-else declaration is a way to declare bindings with a default value. 
-We learned about let bindings, which has a pattern on the left side and an expression on the right side, both with `type T`. 
+We learned about let bindings, which has a _[pattern](/common-programming-concepts/pattern-matching.html)_ on the left side and an expression on the right side, both with `type T`. 
 
 ```motoko
 let x = 3;
 ```
 
 With Let-Else we introduce an `else` keyword on the right side, followed with a block/expression `{}`.
-Whenever a pattern match failure occurs with the let binding, the else block will execute its content. 
+Whenever a _[pattern match](common-programming-concepts/pattern-matching.md)_ failure occurs with the let binding, the else block will execute its content. 
 
 The else block however has to return a value of `type None` , so only imperative control flow statements can be used as the last return value like: `return`, `break`, `continue`, `throw`.
 
@@ -24,7 +24,7 @@ let x = null else return "Error";
 // This will fail and return "Error"
 ```
 
-In common practice, our `let-else` expression might have an `Opt type`. By putting a questionmark `?` in front of the let pattern we can bind this `Opt Value` and desugar it by using its pattern name without the `?`. Using this we can evaluate expressions with opt types, and imperatively act or bind accordingly to their result type.
+In common practice, our `let-else` expression might have an `Opt type`. By putting a questionmark `?` in front of the _[pattern](/common-programming-concepts/pattern-matching.html)_ we can bind this `Opt Value` and desugar it by using its pattern name without the `?`. Using this we can evaluate expressions with opt types, and imperatively act or bind accordingly to their result type.
 
 Assume we have 2 Opt text types as input.
 
@@ -60,7 +60,7 @@ let ?_ = someSideEffect(p, newBalance) else return #err("Could not do side effec
 #ok(balance, newBalance)
 ```
 
-`isBlacklisted()` would check wether a user is not blacklisted, in that case it will return `null`, the pattern match will succeed and execution continues. 
+`isBlacklisted()` would check wether a user is not blacklisted, in that case it will return `null`, the _[pattern match](common-programming-concepts/pattern-matching.md)_ will succeed and execution continues. 
 Incase a user is found it might return a value of some type, evaluating in a failed pattern match and returning the program with an `#err`. 
 This can be usefull in some situations where we want to do a simple check while having a possible custom return and maintaining code consistency to its surroundings without the need of any binded values to be later used.
 
@@ -69,9 +69,9 @@ This can be usefull in some situations where we want to do a simple check while 
 `getOptionalDebt()` would return a value of `Opt type T`. So we can expect a value or null. 
 By putting a questionmark `?` in front of the let pattern we can bind this `Opt Value` and desugar it by using its pattern name without the `?`.
 
-`payDebt()` would take an extra input; the desugared debt constant. It would try to extract the debt from the balance amount, and binds the new balance. For any other reasons it could fail and return a null value, evaluating as a failed pattern match and an `#err` would be returned.
+`payDebt()` would take an extra input; the desugared debt constant. It would try to extract the debt from the balance amount, and binds the new balance. For any other reasons it could fail and return a null value, evaluating as a failed _[pattern match](common-programming-concepts/pattern-matching.md)_ and an `#err` would be returned.
 
-`someSideEffect()` would take the newBalance and perform some complex side effects with possible intermediate types as result that we might not need here, which is why we bind the result to a wildcard `?_`, the value can be anything. But once the expression returns null then the patern match fails and the else block will execute and return an error.
+`someSideEffect()` would take the newBalance and perform some complex side effects with possible intermediate types as result that we might not need here, which is why we bind the result to a wildcard `?_`, the value can be anything. But once the expression returns null then the _[pattern match](common-programming-concepts/pattern-matching.md)_ fails and the else block will execute and return an error.
 
 If we don't want to return an error when the side effect might fail then you could use an `ignore do {}` block for this but here we showcase how it can also be used in this instance, which makes the overal code look more streamlined. 
 
