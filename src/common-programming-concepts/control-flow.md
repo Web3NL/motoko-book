@@ -3,7 +3,7 @@ Control flow is a programming language feature that _controls_ the order in whic
 
 1.  Declarative: the structure of a value guides control and selects the next expression. Examples are `if` and `switch`.
     
-2.  Imperative: a hard coded command abruptly changes control , which supersedes regular control flow. Examples of such commands are `break`, `continue`, `return`, and `throw`.
+2.  Imperative: a hard coded command abruptly changes control, which supersedes regular control flow. Examples of such commands are `break`, `continue`, `return`, and `throw`.
 
 Some of the control flow constructs are called _expressions_ because they _evaluate_ to a value of a certain type. Examples are `if`, `if else`, `switch`, `do` and `let else`.
 
