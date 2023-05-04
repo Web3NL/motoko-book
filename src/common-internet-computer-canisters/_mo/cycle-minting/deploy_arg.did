@@ -1,4 +1,0 @@
-record {
-    "ee3f4f909dcb60bc9bcba7a2855c29b75ddd3f4d656e0883a1dfcafa08ec1b2f";
-    record { e8s = 10000000000 };
-};

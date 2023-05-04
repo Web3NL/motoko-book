@@ -3,7 +3,7 @@ import Principal "mo:base/Principal";
 
 import Error "mo:base/Error";
 
-actor CMCTest {
+actor class CMCTest({a : Nat; b : Int}) {
     // // The Cycles Minting Canister ID
     // let CMC = "rkp4c-7iaaa-aaaaa-aaaca-cai";
     // let icp = actor (CMC) : Interface.Self;
