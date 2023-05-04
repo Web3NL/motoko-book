@@ -1,8 +1,8 @@
 # ICP Ledger
 
-ICP tokens are held on a Ledger Canister. This ICP Ledger Canister exposes an [Candid Interface](/internet-computer-programming-concepts/async-data/candid.html) with ledger functionality, like sending tokens and querying balances.
+ICP tokens are held on a canister that implements a token ledger. We refer to it as the Ledger Canister. This ICP Ledger Canister exposes a [Candid Interface](/internet-computer-programming-concepts/async-data/candid.html) with ledger functionality, like sending tokens and querying balances.
 
-We will only focus on the `icrc1` part of the interface. The full interface is available as a file [here](_mo/icp-ledger/icp-ledger.did) and online [here](https://dashboard.internetcomputer.org/canister/ryjl3-tyaaa-aaaaa-aaaba-cai).
+We will only focus on the `icrc1` part of the interface. The full interface is available as a file [here](_mo/icp-ledger/icp-ledger.did) and [online in a 'ledger explorer'](https://dashboard.internetcomputer.org/canister/ryjl3-tyaaa-aaaaa-aaaba-cai).
 
 For detailed information about the `icrc1` standard, you may review [chapter 9](/internet-computer-standards/icrc1.html).
 
@@ -16,7 +16,7 @@ For detailed information about the `icrc1` standard, you may review [chapter 9](
 
 ## Motoko Interface
 
-This is a subset of the interface as a [Motoko module](/common-programming-concepts/modules.html). It only includes _icrc1_ related types and functions. It is available as [icp-ledger-interface.mo](_mo/icp-ledger/icp-ledger-interface.mo)
+This is a subset of the interface as a [Motoko module](/common-programming-concepts/modules.html). It only includes `icrc1` related types and functions. It is available as [icp-ledger-interface.mo](_mo/icp-ledger/icp-ledger-interface.mo)
 
 Note, that the types are slightly different from the icrc1 standard, but the functions are the same.
 
@@ -52,6 +52,9 @@ Note, that the types are slightly different from the icrc1 standard, but the fun
 ## Import
 
 We import the ICP ledger canister by importing the interface file and declaring an actor by principle `ryjl3-tyaaa-aaaaa-aaaba-cai` and type it as the `Self` type (which is declared in the interface).
+
+> **NOTE**  
+> _If you are testing locally, you should have the Ledger Canister installed locally._
 
 ```motoko
 {{#include _mo/icp-ledger/icp-ledger-import.mo}}
@@ -179,4 +182,11 @@ icrc1_transfer : shared TransferArg -> async Result;
 
 ```motoko
 {{#include _mo/icp-ledger/icp-ledger-public-functions.mo:transfer}}
+```
+
+## Test
+To test all the Ledger public functions, we run this test. (Also available as [icp-ledger-public-functions.mo:test](_mo/icp-ledger/icp-ledger-public-functions.mo))
+
+```motoko
+{{#include _mo/icp-ledger/icp-ledger-public-functions.mo:test}}
 ```
