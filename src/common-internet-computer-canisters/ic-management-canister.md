@@ -1,8 +1,8 @@
 # IC Management Canister
 
-The Internet Computer (IC) provides a _management canister_ to manage canisters programmatically. This canister, like any other canister, has a [Candid Interface](/internet-computer-programming-concepts/async-data/candid.html) and could be called by other canisters or [ingress messages].
+The Internet Computer (IC) provides a _management canister_ to manage canisters programmatically. This canister, like any other canister, has a [Candid Interface](/internet-computer-programming-concepts/async-data/candid.html) and can be called by other canisters or [ingress messages](/internet-computer-programming-concepts/actors/canister-calling.html).
 
-In this chapter, we will only look at a subset of the interface. In particular, we will not cover Bitcoin, HTTP and cryptography related functionality and only focus on _canister management_.
+In this chapter, we will only look at a subset of the interface for _canister management_.
 
 | On this page                                                                                                             | Files                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------- |
@@ -66,7 +66,7 @@ create_canister : shared { settings : ?canister_settings } -> async {
 };
 ```
 
-The function may take a optional `canisters_settings` record to set initial settings for the canister, but this argument may be `null`.
+The function may take an optional `canisters_settings` record to set initial settings for the canister, but this argument may be `null`.
 
 The function returns a record containing the `Principal` of the newly created canister.
 
