@@ -1,37 +1,34 @@
 # Cycle Minting Canister
+The Cycles Minting Canister (CMC) can mint cycles by converting [ICP into cycles]. Every canister can top up itself by sending ICP to the CMC and receiving cycles in return.
+
+For this to be possible, a canister must:
+- hold ICP tokens (on a Ledger account controlled by its principle)
+- send ICP tokens by calling the Ledger Canister
+- notify the CMC of the transaction
+- check its cycle balance
 
 | On this page                                       | Files                    |
 | -------------------------------------------------- | ------------------------ |
-| [Official full Candid Interface File]()            | [.did]()                 |
+| [Official full Candid Interface File](https://github.com/dfinity/ic/blob/master/rs/nns/cmc/cmc.did)            | [cmc.did](_mo/cycle-minting/cmc.did)                 |
 |                                                    |                          |
-| [Subset of Interface in Motoko](#motoko-interface) | [-interface.mo]()        |
-| [Importing](#import)                               | [-import.mo]()           |
-| [Public function calls](#public-functions)         | [-public-functions.mo]() |
+| [Subset of Interface in Motoko](#cmc-interface) | [cmc-interface.mo](_mo/cycle-minting/cycle-minting-interface.mo)        |
+| [Importing](#import)                               | [cycle-minting-import.mo](_mo/cycle-minting/cycle-minting-import.mo)           |
+| [Cycle Minting Test](#cycle-minting-test)         | [cycle-minting-public-functions.mo](_mo/cycle-minting/cycle-minting-test.mo) |
 
 ## CMC Interface
 
-<!-- This is a subset of the interface as a [Motoko module](/common-programming-concepts/modules.html). It only includes _icrc1_ related types and functions. It is available as [icp-ledger-interface.mo](_mo/icp-ledger/icp-ledger-interface.mo) -->
+This is a subset of the interface as a [Motoko module](/common-programming-concepts/modules.html). It only includes the `notify_top_up` public function. It is available as [cmc-interface.mo](_mo/cycle-minting/cycle-minting-interface.mo)
 
 ### Types
 
-- `AccountIdentifier`
 - `BlockIndex`
 - `Cycles`
-- `CyclesCanisterInitPayload`
-- `ExchangeRateCanister`
-- `IcpXdrConversionRateResponse`
-- `NotifyCreateCanisterArg`
-- `NotifyCreateCanisterResult`
 - `NotifyError`
 - `NotifyTopUpArg`
 - `NotifyTopUpResult`
-- `SubnetTypesToSubnetsResponse`
 
-### Public functions
+### Cycle Minting Test
 
-- [`get_icp_xdr_conversion_rate`](#get_icp_xdr_conversion_rate)
-- [`get_subnet_types_to_subnets`](#get_subnet_types_to_subnets)
-- [`notify_create_canister`](#notify_create_canister)
 - [`notify_top_up`](#notify_top_up)
 
 ```motoko
@@ -49,42 +46,6 @@ We import the ICP ledger canister by importing the interface file and declaring 
 We can now reference the icp ledger canister as `icp`.
 
 ## Public functions
-
-### get_icp_xdr_conversion_rate
-
-```motoko
-get_icp_xdr_conversion_rate : shared query () -> async IcpXdrConversionRateResponse;
-```
-
-#### Example
-
-```motoko
-{{#include _mo/cycle-minting/cycle-minting-public-functions.mo:get_icp_xdr_conversion_rate}}
-```
-
-### get_subnet_types_to_subnets
-
-```motoko
-get_subnet_types_to_subnets : shared query () -> async SubnetTypesToSubnetsResponse;
-```
-
-#### Example
-
-```motoko
-{{#include _mo/cycle-minting/cycle-minting-public-functions.mo:get_subnet_types_to_subnets}}
-```
-
-### notify_create_canister
-
-```motoko
-notify_create_canister : shared NotifyCreateCanisterArg -> async NotifyCreateCanisterResult;
-```
-
-#### Example
-
-```motoko
-{{#include _mo/cycle-minting/cycle-minting-public-functions.mo:notify_create_canister}}
-```
 
 ### notify_top_up
 
