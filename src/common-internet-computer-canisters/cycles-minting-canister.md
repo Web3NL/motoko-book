@@ -7,7 +7,7 @@ For this to be possible, a canister must:
 - notify the CMC of the transaction
 - check its cycle balance
 
-| On this page                                       | Files                    |
+<!-- | On this page                                       | Files                    |
 | -------------------------------------------------- | ------------------------ |
 | [Official full Candid Interface File](https://github.com/dfinity/ic/blob/master/rs/nns/cmc/cmc.did)            | [cmc.did](_mo/cycle-minting/cmc.did)                 |
 |                                                    |                          |
@@ -57,4 +57,4 @@ notify_top_up : shared NotifyTopUpArg -> async NotifyTopUpResult;
 
 ```motoko
 {{#include _mo/cycle-minting/cycle-minting-public-functions.mo:notify_top_up}}
-```
+``` -->
