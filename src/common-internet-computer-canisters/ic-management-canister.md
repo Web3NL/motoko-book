@@ -54,7 +54,7 @@ We also imported `ExperimentalCycles` because some of our function calls require
 
 ## Public functions
 
-The source file with function calls is [available here](_mo/ic-management/ic-management-public-functions.mo) including a test to run all functions. You can deploy it [locally](/project-deployment/local-deployment.html) for testing. 
+The source file with function calls is [available here](_mo/ic-management/ic-management-public-functions.mo) including a test to run all functions. You can deploy it [locally](/project-deployment/local-deployment.html) for testing.
 
 ### Create canister
 
@@ -210,3 +210,11 @@ install_code : shared {
 ```
 
 This function is _atomic_ meaning that it either succeeds and returns `()` or it has no effect.
+
+## Test
+
+To test all the functions, we `await*` all of them in a `try-catch` block inside a regular shared public function. Our function either returns `#OK` or `#ERR` with a caught error message that is converted into text.
+
+```motoko
+{{#include _mo/ic-management/ic-management-public-functions.mo:test}}
+```

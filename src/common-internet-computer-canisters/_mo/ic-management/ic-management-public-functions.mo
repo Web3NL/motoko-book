@@ -1,5 +1,4 @@
 import Interface "ic-management-interface";
-import Wasm "wasm";
 
 import Cycles "mo:base/ExperimentalCycles";
 import Principal "mo:base/Principal";
@@ -42,19 +41,6 @@ actor ICManagement {
         await ic.deposit_cycles({ canister_id });
     };
     // ANCHOR_END: deposit_cycles
-
-    // ANCHOR: install_code
-    func install_code() : async* () {
-        let canister_id = Principal.fromText(canister_principal);
-
-        await ic.install_code({
-            arg = [0];
-            wasm_module = Wasm.wasm;
-            mode = #install;
-            canister_id;
-        });
-    };
-    // ANCHOR_END: create_canister
 
     // ANCHOR: update_settings
     func update_settings() : async* () {
@@ -103,7 +89,8 @@ actor ICManagement {
     };
     // ANCHOR_END: delete_canister
 
-    public func test() : async { #OK; #ERR : Text } {
+    // ANCHOR: test
+    public func ic_management_canister_test() : async { #OK; #ERR : Text } {
         try {
             await* create_canister();
             await* canister_status();
@@ -117,13 +104,11 @@ actor ICManagement {
             await* stop_canister();
 
             await* delete_canister();
-            // await* install_code();
 
             #OK;
         } catch (e) {
             #ERR(Error.message(e));
         };
-
     };
-
+    // ANCHOR_END: test
 };
