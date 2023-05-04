@@ -98,7 +98,7 @@ Beware of the exclamation marks after the `null` result , this is still needed h
 
 In practice we would often use functions to check and call our data within the do block to maintain code readability. So let's extract the if statement as a function. 
 
-The null break `!` can be used in the beginning of  the `z` declaration during the function call, resulting in the block to be aborted without further execution. 
+The null break `!` can be used in the beginning of  the `z` declaration during the function call, resulting in the block to be aborted _without_ further execution. 
 
 ```motoko
 func noZero(x: ?Nat) : ?Nat {
@@ -112,7 +112,7 @@ do ? {
     x * y * z
 }
 ```
-Or the null break `!` is put in a later stage or last expression, allowing the previous lines of code to be executed before the null break aborts the block.
+Or the null break `!` is put in a later stage or last expression, allowing the previous lines of code to be executed _before_ the null break aborts the block.
 
 ```motoko
 func noZero(x: ?Nat) : ?Nat {
