@@ -1,12 +1,12 @@
 # Cycle Minting Canister
 
-| On this page                                                                                                             | Files                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------- |
-| [Official full Candid Interface File]() | [.did]()                                 |
-|                                                                                                                          |                                                                                          |
-| [Subset of Interface in Motoko](#motoko-interface)                                                                       | [-interface.mo]()               |
-| [Importing](#import)                                                                                                     | [-import.mo]()                     |
-| [Public function calls](#public-functions)                                                                               | [-public-functions.mo]() |
+| On this page                                       | Files                    |
+| -------------------------------------------------- | ------------------------ |
+| [Official full Candid Interface File]()            | [.did]()                 |
+|                                                    |                          |
+| [Subset of Interface in Motoko](#motoko-interface) | [-interface.mo]()        |
+| [Importing](#import)                               | [-import.mo]()           |
+| [Public function calls](#public-functions)         | [-public-functions.mo]() |
 
 ## Motoko Interface
 
@@ -14,15 +14,28 @@
 
 ### Types
 
-- 
+- `AccountIdentifier`
+- `BlockIndex`
+- `Cycles`
+- `CyclesCanisterInitPayload`
+- `ExchangeRateCanister`
+- `IcpXdrConversionRateResponse`
+- `NotifyCreateCanisterArg`
+- `NotifyCreateCanisterResult`
+- `NotifyError`
+- `NotifyTopUpArg`
+- `NotifyTopUpResult`
+- `SubnetTypesToSubnetsResponse`
 
 ### Public functions
 
-- []
-
+- [`get_icp_xdr_conversion_rate`](#get_icp_xdr_conversion_rate)
+- [`get_subnet_types_to_subnets`](#get_subnet_types_to_subnets)
+- [`notify_create_canister`](#notify_create_canister)
+- [`notify_top_up`](#notify_top_up)
 
 ```motoko
-{{#include}}
+{{#include _mo/cycle-minting/cycle-minting-interface.mo}}
 ```
 
 ## Import
@@ -30,20 +43,57 @@
 We import the ICP ledger canister by importing the interface file and declaring an actor by principle `ryjl3-tyaaa-aaaaa-aaaba-cai` and type it as the `Self` type (which is declared in the interface).
 
 ```motoko
-{{#include }}
+{{#include _mo/cycle-minting/cycle-minting-import.mo}}
 ```
 
 We can now reference the icp ledger canister as `icp`.
 
 ## Public functions
 
-### icrc1_transfer
+### get_icp_xdr_conversion_rate
+
 ```motoko
-icrc1_transfer : shared TransferArg -> async Result;
+get_icp_xdr_conversion_rate : shared query () -> async IcpXdrConversionRateResponse;
 ```
 
 #### Example
 
 ```motoko
-{{#include _mo/icp-ledger/icp-ledger-public-functions.mo:transfer}}
+{{#include _mo/cycle-minting/cycle-minting-public-functions.mo:get_icp_xdr_conversion_rate}}
+```
+
+### get_subnet_types_to_subnets
+
+```motoko
+get_subnet_types_to_subnets : shared query () -> async SubnetTypesToSubnetsResponse;
+```
+
+#### Example
+
+```motoko
+{{#include _mo/cycle-minting/cycle-minting-public-functions.mo:get_subnet_types_to_subnets}}
+```
+
+### notify_create_canister
+
+```motoko
+notify_create_canister : shared NotifyCreateCanisterArg -> async NotifyCreateCanisterResult;
+```
+
+#### Example
+
+```motoko
+{{#include _mo/cycle-minting/cycle-minting-public-functions.mo:notify_create_canister}}
+```
+
+### notify_top_up
+
+```motoko
+notify_top_up : shared NotifyTopUpArg -> async NotifyTopUpResult;
+```
+
+#### Example
+
+```motoko
+{{#include _mo/cycle-minting/cycle-minting-public-functions.mo:notify_top_up}}
 ```
