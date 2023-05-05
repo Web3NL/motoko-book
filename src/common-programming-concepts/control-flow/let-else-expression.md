@@ -1,47 +1,44 @@
 # Let-Else
 
 The let-else declaration is a way to declare bindings with a default value. 
-We learned about let bindings, which has a _[pattern](/common-programming-concepts/pattern-matching.html)_ on the left side and an expression on the right side, both with `type T`. 
+We learned about let bindings, which has a _[variable declaration](common-programming-concepts/variables.md)_ . 
 
-```motoko
-let x = 3;
-```
+With Let-Else we introduce an `else` keyword on the right side, followed with a sub-expression `{}`.
+In common practice, `let-else` will also have an option type `?` in front of the _[variable declaration](common-programming-concepts/variables.md)_ ,
+With this we can evaluate expressions with an optional `null`value.
 
-With Let-Else we introduce an `else` keyword on the right side, followed with a block/expression `{}`.
-Whenever a _[pattern match](common-programming-concepts/pattern-matching.md)_ failure occurs with the let binding, the else block will execute its content. 
+<!-- ```Motoko
+let ?x = getData() else { return #err("No data!")} ; 
+``` -->
 
-The else block however has to return a value of `type None` , so only imperative control flow statements can be used as the last return value like: `return`, `break`, `continue`, `throw`.
-
-Beware:
-- If the right side expression of let would `trap` then the program `traps` and the else block will not be executed.
-- let-else declarations are immutable, meaning that they cannot be changed once assigned. If you try to assign a new value to the same identifier, you will get an error.
-
-```motoko
-let x = 3 else return "Error"; 
-// This will succeed and bind
-
-let x = null else return "Error"; 
-// This will fail and return "Error"
-```
-
-In common practice, our `let-else` expression might have an `Opt type`. By putting a questionmark `?` in front of the _[pattern](/common-programming-concepts/pattern-matching.html)_ we can bind this `Opt Value` and desugar it by using its pattern name without the `?`. Using this we can evaluate expressions with opt types, and imperatively act or bind accordingly to their result type.
-
-Assume we have 2 Opt text types as input.
 
 ```Motoko
-let by = ", by ";
+{{#include _mo/let-else.mo:a}}
+```
 
-let ?msg = input.message else return #err("Error: no message");
-let ?writer = input.name else return #err("Error: no name");
+If a _[pattern match](common-programming-concepts/pattern-matching.md)_ failure occurs 
+The last line in the else block however has to return a value of type `None` , so the imperative control flow statements can be used as the last return value like: `return`, `break`, `continue`, `throw`.
 
-#ok(msg # by # writer)
+If the let declaration would trap then the program traps and the `else` block will not be executed.
+
+
+```Motoko
+{{#include _mo/let-else.mo:b}}
 ```
 
 These constructs are really usefull when we have multiple functions and processes that have to be called or checked on, sometimes in a logical order. 
 On failure of one of such expressions we can easily control the flow and exit the overal function or a parent construct like a `label`. 
 
-This functionality is mostly used to streamline/have readable code and to prevent `switch` or `do` complexity.
+`let-else` can be powerful control flow tools to handle complex logic, have readable code and to prevent `switch` or `do` nesting chaos.
 
+Let's take the previous example of our _[switch](common-programming-concepts/control-flow/switch-expression.md)_ expression and remake it with a let-else.
+
+```Motoko
+{{#include _mo/let-else.mo:c}}
+```
+
+<!-- 
+## 
 Here is an example showcasing some possibilities with let-else declarations, assuming we have a list of users, and a set of predefined functions.
 
 ```motoko
@@ -73,9 +70,4 @@ By putting a questionmark `?` in front of the let pattern we can bind this `Opt 
 
 `someSideEffect()` would take the newBalance and perform some complex side effects with possible intermediate types as result that we might not need here, which is why we bind the result to a wildcard `?_`, the value can be anything. But once the expression returns null then the _[pattern match](common-programming-concepts/pattern-matching.md)_ fails and the else block will execute and return an error.
 
-If we don't want to return an error when the side effect might fail then you could use an `ignore do {}` block for this but here we showcase how it can also be used in this instance, which makes the overal code look more streamlined. 
-
-
-Let-Else's in combination with labeled loops can be powerfull control flow tools to handle complex logic while keeping code readability. But use them wisely, in some instances it might be better to use switche/if/do constructs depending on various factors.
-
-
+If we don't want to return an error when the side effect might fail then you could use an `ignore do {}` block for this but here we showcase how it can also be used in this instance, which makes the overal code look more streamlined.  -->

@@ -1,39 +1,11 @@
-# Do Block
-
-A _do_ block is constructed by `do` keyword follow by two curly brackets and closed with `;`. Within the brackets can be _statements_ and _declarations_ that are in order executed with the last line as the evaluation to a _result value_ of `type ()`. 
-This is a special kind of control flow used in places where a block expressions can not be used.
-
-```motoko
-{{#include _mo/if-else.mo:a}}
-```
-
-All variables within these are privately scoped. They can have the same names as other variables in the parent scope without interference. 
-These blocks can now also be binded to an outside variable, in this case we also call it `x`.
-
-```motoko
-{{#include _mo/if-else.mo:b}}
-```
-
-We could also rewrite this by enclosing the `do {}`in parentheses, so it can be used in another compound expression. Lets try to add the first y into the calculation.
-
-```motoko
-{{#include _mo/if-else.mo:c}}
-```
-
-Beware that outside variables can still be used within the block aslong as they are not redefined within its private scope. If we remove `let y = 2` then our do block evaluation will use the variable `y` outside its scope.
-
-```motoko
-{{#include _mo/if-else.mo:d}}
-```
-
-## Do Option Block
+# Do Option Block
 
 A _do option_ block is written by adding a question mark `?` after the `do` keyword. The result of the do block will now have an optional null value, this value is achieved by having _atleast_ one imperative null break within this block by using an exclamation mark `!` with or without a space in between. If the associated expression is null then it will abort the do block and result in a null value.
 
 Let's introduce an unknown variable of type ?Nat called `z` .
 
 ```motoko
-{{#include _mo/if-else.mo:e}}
+{{#include _mo/option-block.mo:a}}
 ```
 
 These null breaks can also be used as the result of more complex expressions or statements inside the option block, often used as a way to check for certain conditions.
@@ -41,7 +13,7 @@ These null breaks can also be used as the result of more complex expressions or 
 In this example we add an if statement to prevent `z` from being of value 0, forcing the input to be atleast a positive natural number.
 
 ```motoko
-{{#include _mo/if-else.mo:f}}
+{{#include _mo/option-block.mo:b}}
 ```
 
 Beware of the exclamation marks after the `null` result , this is still needed here to be able to abort the do block. 
@@ -51,12 +23,12 @@ In practice we would often use functions to check and call our data within the d
 The null break `!` can be used in the beginning of  the `z` declaration during the function call, resulting in the block to be aborted _without_ further execution. 
 
 ```motoko
-{{#include _mo/if-else.mo:g}}
+{{#include _mo/option-block.mo:c}}
 ```
 Or the null break `!` is put in a later stage or last expression, allowing the previous lines of code to be executed _before_ the null break aborts the block.
 
 ```motoko
-{{#include _mo/if-else.mo:h}}
+{{#include _mo/option-block.mo:d}}
 ```
 
 ## Side Effects
@@ -68,7 +40,7 @@ Whatever happens inside this block of actions, the final value that it returns w
 This is for example useful for testing certain code or other specific _side effects_.
 
 ```motoko
-{{#include _mo/if-else.mo:i}}
+{{#include _mo/option-block.mo:e}}
 ```
 This evaluates to _nothing_ as any return value is ignored
 But as a side effect, there might be a console output if the block's expressions did not fail.

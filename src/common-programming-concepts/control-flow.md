@@ -9,7 +9,7 @@ Some of the control flow constructs are called _expressions_ because they _evalu
 
 Others are loops that iterate over a certain value. Examples are `for` and `while`. 
 
-## Block Expressions
+<!-- ## Block Expressions
 
 Block expressions are blocks declarations that are defined by enclosing curly brackets for ex: `do { };`. They are used to form the sub-expressions of above mentioned 
 ```suggestion
@@ -18,7 +18,7 @@ Block expressions are blocks of statements and declarations that are defined by 
 
 Remember that these evaluate to an `expression` of `type ()` because they have a control flow key word expression!
 
-Unlike other use-cases of curly brackets `{}` that would evaluate to an object literal of `type {}`. 
+Unlike other use-cases of curly brackets `{}` that would evaluate to an object literal of `type {}`.  -->
 
 ## Loops
 A simple loop in Motoko will iterate and execute its expressions infinitely.

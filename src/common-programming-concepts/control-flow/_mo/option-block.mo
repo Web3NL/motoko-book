@@ -1,63 +1,9 @@
-// DO
+// OPTION
 let hoursInput: ?Nat = ?3;
 
 ignore do {
-// ANCHOR: a
-do { 
-    let x = 5;
-    let y = 2;
-    x * y 
-}
-
-// this evaluates to 10
-// ANCHOR_END: a
-};
-
-ignore do {
-// ANCHOR: b
-let y = 10;
-
-let x = do { 
-    let x = 5;
-    let y = 2;
-    x * y 
-};
-
-// x evaluates to 10, the first declared y has no effect
-// ANCHOR_END: b
-};
-
-ignore do {
-// ANCHOR: c
-let y = 10;
-
-let x = y * (do { 
-    let x = 5;
-    let y = 2;
-    x * y 
-})
-
-// x evaluates to 100
-// ANCHOR_END: c
-};
-
-ignore do {
-// ANCHOR: d
-let y = 10;
-
-let x = y * (do { 
-    let x = 5;
-
-    x * y 
-})
-
-//x evaluates to 500
-// ANCHOR_END: d
-};
-
-ignore do {
 let z = ?10;
-// ANCHOR: e
+// ANCHOR: a
 let y = 2;
 
 do ? { 
@@ -69,12 +15,12 @@ do ? {
 // (z = 10)   evaluates to 100
 // (z = 0)   evaluates to 0
 // (z = null) evaluates to null
-// ANCHOR_END: e
+// ANCHOR_END: a
 };
 
 ignore do {
 let z = ?10;
-// ANCHOR: f
+// ANCHOR: b
 let y = 2;
 
 do ? {
@@ -88,11 +34,11 @@ do ? {
 // (z = 10)   evaluates to 100
 // (z = 0)   evaluates to null
 // (z = null) evaluates to null
-// ANCHOR_END: f
+// ANCHOR_END: b
 };
 
 ignore do {
-// ANCHOR: g
+// ANCHOR: c
 func noZero(x: ?Nat) : ?Nat {
     if (x == ?0) null else x;
 };
@@ -102,11 +48,11 @@ let seconds = do ? {
     let multiplier = 60 * 60;
     hours * multiplier
 };
-// ANCHOR_END: g
+// ANCHOR_END: c
 };
 
 ignore do {
-// ANCHOR: h
+// ANCHOR: d
 func noZero(x: ?Nat) : ?Nat {
     if (x == ?0) null else x;
 };
@@ -116,7 +62,7 @@ let seconds = do ? {
     let multiplier = 60 * 60;
     hours ! * multiplier
 };
-// ANCHOR_END: h
+// ANCHOR_END: d
 };
 
 ignore do {
@@ -133,14 +79,14 @@ let Debug = object {
         amount
     };
 };
-// ANCHOR: i
+// ANCHOR: e
 ignore do ? {
     let amount = noZero(n) ! ;
     let eachCost = getCost() ! ;
     let tax = getTax(eachCost, amount) ! ;
     Debug.print((amount * eachCost) + tax) ;
 };
-// ANCHOR_END: i
+// ANCHOR_END: e
 };
 
 
