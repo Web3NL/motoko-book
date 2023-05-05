@@ -108,7 +108,7 @@ actor ICManagement {
             let arg : Interface.TransferArg = {
                 from_subaccount = null;
                 to = account2;
-                amount = 1_000_000; // 0.01 ICP;
+                amount = 100_000_000; // 1 ICP;
                 fee = null;
                 memo = null;
                 created_at_time = null;

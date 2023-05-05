@@ -64,6 +64,8 @@ We can now reference the icp ledger canister as `icp`.
 
 ## Public functions
 
+These functions are available in [`icp-ledger-public-functions.mo`](_mo/icp-ledger/icp-ledger-public-functions.mo) together with a test function. To test these functions, please read the [test](#test) section.
+
 ### icrc1_name
 
 ```motoko
@@ -185,8 +187,67 @@ icrc1_transfer : shared TransferArg -> async Result;
 ```
 
 ## Test
-To test all the Ledger public functions, we run this test. (Also available as [icp-ledger-public-functions.mo:test](_mo/icp-ledger/icp-ledger-public-functions.mo))
 
+Before we can run the test, we have to
+
+- have a [local instance](/common-internet-computer-canisters.html) of the Ledger Canister
+- [deploy](/project-deployment/local-deployment.html) the [`icp-ledger-public-functions.mo`](_mo/icp-ledger/icp-ledger-public-functions.mo) actor locally and name the canister `icp-ledger` in your `dfx.json`.
+- transfer some ICP to the canister
+
+If you followed the steps for [local ledger canister deployment](/common-internet-computer-canisters.html), you should have ICP on the default account of your identity. Then you can send ICP to your canister with these steps.
+
+### Step 1
+
+First export your canister id to an environment variable. Assuming your canister name in `dfx.json` is `icp-ledger` run:
+
+```bash
+export CANISTER_ID=$(dfx canister id icp-ledger)
+```
+
+### Step 2
+
+Then export your the default account id belonging to your canister principal by using the `dfx ledger account-id` command with the `--of-principal` flag:
+
+```bash
+export ACCOUNT_ID=$(dfx ledger account-id --of-principal $CANISTER_ID)
+```
+
+### Step 3
+
+Check the ICP balance on your local Ledger of the default accounts of your identity and canister id with these commands.
+
+Identity balance:
+
+```bash
+dfx ledger balance
+```
+
+Canister balance:
+
+```bash
+dfx ledger balance $ACCOUNT_ID
+```
+
+### Step 4
+
+Finally, send ICP to your canister with the `dfx ledger transfer` command:
+
+```bash
+dfx ledger transfer --amount 1 $ACCOUNT_ID --memo 0
+```
+
+Now check your balances again to check the transfer.
+
+### Step 5
+
+To test all the Ledger public functions, we run this test. (Available in [icp-ledger-public-functions.mo](_mo/icp-ledger/icp-ledger-public-functions.mo))
+
+For testing the `icrc1_balance_of` function, you need to replace the principal with your own principal. 
+
+For the `icrc1_transfer` function, we use a specific subaccount by making a 32 byte [Nat8] array with the first byte set to `1`.
+  
 ```motoko
 {{#include _mo/icp-ledger/icp-ledger-public-functions.mo:test}}
 ```
+
+After running this test locally, you should check your canister balance again to verify that the `icrc1_transfer` function was successful and thus the whole test was executed. 
