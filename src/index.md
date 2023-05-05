@@ -4,6 +4,8 @@
 
 ## Latest updates
 
+**05-05-2023** Chapter 8 [Common Internet Computer Canisters](/common-internet-computer-canisters.html)  
+
 **18-04-2023** Chapter 7 [Project Deployment](/project-deployment.html)  
 
 **08-04-2023** Chapter 5 [Data Structures Beta](/base-library/utils.html)  
