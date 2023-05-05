@@ -1,30 +1,41 @@
 # Let-Else
 
-The let-else declaration is a way to declare bindings with a default value. 
-We learned about let bindings, which has a _[variable declaration](common-programming-concepts/variables.md)_ . 
-
+We learned about let , which has an immutable named _[variable](common-programming-concepts/variables.md)_ declared. 
 With Let-Else we introduce an `else` keyword on the right side, followed with a sub-expression `{}`.
-In common practice, `let-else` will also have an option type `?` in front of the _[variable declaration](common-programming-concepts/variables.md)_ ,
-With this we can evaluate expressions with an optional `null`value.
-
-<!-- ```Motoko
-let ?x = getData() else { return #err("No data!")} ; 
-``` -->
-
 
 ```Motoko
-{{#include _mo/let-else.mo:a}}
+let x = expression else { sub-expression }
+```
+During this declaration, expression will give a value. This value will be binded to x through pattern matching, if this fails then it won't be binded and instead the declaration will continue to `else` and execute its content.
+Beware: If expression traps then the whole program traps, the rest of the let-else evalutation won't happen.
+
+```Motoko
+let x = 3 else { return };
+// this will succeed
+
+let x = null else { return }; 
+// this will fail
+```
+
+In common practice, `let-else` will also have an option type `?` as named _[variable](common-programming-concepts/variables.md)_ ,
+Using this we now can declare expressions with an optional `null` value. When they occur our pattern match will fail and the `else` content is executed.
+
+```Motoko
+let b = ?Nat;
+let ?x = b else { return };
+
+//b = null will fail
+//b = 3 will succeed
+```
+A real usecase would be for example if we had to get some data by calling a function with inner complexity, and then use or return that data variable for further logic, essentially decoupling from the Opt type.
+
+```Motoko
+let ?data = getData() else { return #err "No data!" } ; 
+#ok data
 ```
 
 If a _[pattern match](common-programming-concepts/pattern-matching.md)_ failure occurs 
-The last line in the else block however has to return a value of type `None` , so the imperative control flow statements can be used as the last return value like: `return`, `break`, `continue`, `throw`.
-
-If the let declaration would trap then the program traps and the `else` block will not be executed.
-
-
-```Motoko
-{{#include _mo/let-else.mo:b}}
-```
+The last line in the else block has to return a value of type `None` , so the imperative control flow statements can be used as the last return value like: `return`, `break`, `continue`, `throw`.
 
 These constructs are really usefull when we have multiple functions and processes that have to be called or checked on, sometimes in a logical order. 
 On failure of one of such expressions we can easily control the flow and exit the overal function or a parent construct like a `label`. 
@@ -32,6 +43,18 @@ On failure of one of such expressions we can easily control the flow and exit th
 `let-else` can be powerful control flow tools to handle complex logic, have readable code and to prevent `switch` or `do` nesting chaos.
 
 Let's take the previous example of our _[switch](common-programming-concepts/control-flow/switch-expression.md)_ expression and remake it with a let-else.
+
+```Motoko
+{{#include _mo/let-else.mo:a}}
+```
+
+Lets add another function called subFee, which will subtract a value called fee from the balance when balance is more than fee. Otherwise it will return an #err;
+
+```Motoko
+{{#include _mo/let-else.mo:b}}
+```
+
+Let's make a function that combines these 2, and checks in a logical order when one of them has failed.
 
 ```Motoko
 {{#include _mo/let-else.mo:c}}
