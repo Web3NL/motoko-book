@@ -1,60 +1,61 @@
 # Cycles Minting Canister
-The Cycles Minting Canister (CMC) can mint cycles by converting [ICP into cycles](/project-deployment/cycles-and-icp.html). Every canister can top up itself by sending ICP to the CMC and receiving cycles in return.
 
-For this to be possible, a canister must:
-- hold ICP tokens on a Ledger account controlled by its principle
-- send ICP tokens to the CMC by calling the Ledger Canister
-- notify the CMC of the transaction
-- check its cycle balance
+The Cycles Minting Canister (CMC) can mint cycles by converting [ICP into cycles](/project-deployment/cycles-and-icp.html). We can 'top up' a canister with [cycles](/project-deployment/cycles-and-icp.html) by sending ICP to the CMC and receiving cycles in return.
 
-| On this page                                       | Files                    |
-| -------------------------------------------------- | ------------------------ |
-| [Official full Candid Interface File](https://github.com/dfinity/ic/blob/master/rs/nns/cmc/cmc.did)            | [cmc.did](_mo/cycle-minting/cmc.did)                 |
-|                                                    |                          |
-| [Subset of Interface in Motoko](#cmc-interface) | [cmc-interface.mo](_mo/cycle-minting/cycle-minting-interface.mo)        |
-| [Importing](#import)                               | [cycle-minting-import.mo](_mo/cycle-minting/cycle-minting-import.mo)           |
-| [Cycle Minting Test](#cycle-minting-test)         | [cycle-minting-test.mo](_mo/cycle-minting/cycle-minting-test.mo) |
+## Top up a canister locally
 
-## CMC Interface
+The easiest way to top up a canister with cycles is to use the `dfx` command line tool.
 
-This is a subset of the interface as a [Motoko module](/common-programming-concepts/modules.html). It only includes the `notify_top_up` public function. It is available as [cmc-interface.mo](_mo/cycle-minting/cycle-minting-interface.mo)
+For this, we need a locally running test canister to top up. We can use the canister `motime` that we deployed in [this chapter](/project-deployment/local-deployment.html).
 
-### Types
+Assuming your canister name in `dfx.json` is `motime`, run
 
-- `BlockIndex`
-- `Cycles`
-- `NotifyError`
-- `NotifyTopUpArg`
-- `NotifyTopUpResult`
-
-### Cycle Minting Test
-
-- [`notify_top_up`](#notify_top_up)
-
-```motoko
-{{#include _mo/cycle-minting/cycle-minting-interface.mo}}
+```bash
+dfx canister status motime
 ```
 
-## Import
+This should print your [canister status](/project-deployment/canister-status.html). Please note your cycles balance.
 
-We import the ICP ledger canister by importing the interface file and declaring an actor by principle `ryjl3-tyaaa-aaaaa-aaaba-cai` and type it as the `Self` type (which is declared in the interface).
+Now top up the canister by running:
 
-```motoko
-{{#include _mo/cycle-minting/cycle-minting-import.mo}}
+```bash
+dfx ledger top-up $(dfx canister id motime) --amount 1
 ```
 
-We can now reference the icp ledger canister as `icp`.
+This command will automatically convert 1 ICP into cycles and deposit the cycles into your canister.
 
-## Public functions
+Now check your canister status again, to see that your cycles balance has increased.
 
-### notify_top_up
+## Top up a canister on mainnet
 
-```motoko
-notify_top_up : shared NotifyTopUpArg -> async NotifyTopUpResult;
+The same `dfx top-up` command can be used to top up a canister running on mainnet. For this to work, you must use an identity that holds ICP on the mainnet Ledger Canister.
+
+### Step 1
+
+Make sure you have a [identity set up](/project-deployment/identities-and-pem-files.html) and print its default account with:
+
+```bash
+dfx ledger account-id
 ```
 
-#### Example
+Send real ICP to this account. Now check your balance with:
 
-```motoko
-{{#include _mo/cycle-minting/cycle-minting-test.mo:notify_top_up}}
+```bash
+dfx ledger balance --network ic
 ```
+
+### Step 2
+
+Assuming you deployed `motime` on mainnet, check its cycle balance:
+
+```bash
+dfx canister status motime --network ic
+```
+
+And top it up with:
+
+```bash
+dfx ledger top-up $(dfx canister id motime) --amount 1 --network ic
+```
+
+Now check the cycle balance again to verify that it has increased.
