@@ -52,10 +52,12 @@
     - [Stable Variables](internet-computer-programming-concepts/basic-memory-persistence/stable-variables.md)
 
 - [Advanced Types](advanced-types.md)
+
   - [Generic Types](advanced-types/generics.md)
   - [Subtyping](advanced-types/subtyping.md)
   - [Recursive Types](advanced-types/recursive-types.md)
   - [Type Bounds](advanced-types/type-bounds.md)
+
 - [The Base Library](base-library.md)
 
   - [Primitive Types](base-library/primitive-types.md)
@@ -76,19 +78,38 @@
       - [Int32](base-library/primitive-types/bounded-number-types/int32.md)
       - [Int64](base-library/primitive-types/bounded-number-types/int64.md)
     - [Blob](base-library/primitive-types/blob.md)
+
   - [Utility Modules](base-library/utils.md)
-    - [Time](base-library/utils/time.md)
+    - [Iterators](base-library/utils/iter.md)
+    - [Hash](base-library/utils/hash.md)
+    - [Option](base-library/utils/option.md)
     - [Result](base-library/utils/result.md)
     - [Order](base-library/utils/order.md)
+    - [Debug](base-library/utils/debug.md)
     - [Error](base-library/utils/error.md)
-    - [Iterators](base-library/utils/iter.md)
+
   - [Data Structures](base-library/data-structures.md)
-    - [Array](base-library/data-structures/array.md)
+    - [Array](base-library/data-structures/array.md)    
     - [List](base-library/data-structures/list.md)
     - [Buffer](base-library/data-structures/buffer.md)
     - [HashMap](base-library/data-structures/hashmap.md)
     - [RBTree](base-library/data-structures/rbtree.md)
+
+  - [More Data Structures](base-library/more-data-structures.md)
+    - [AssocList](base-library/more-data-structures/assocList.md)
+    - [Deque](base-library/more-data-structures/deque.md)
+    - [Heap](base-library/more-data-structures/heap.md)
+    - [Stack](base-library/more-data-structures/stack.md)
+    
   - [IC APIs](base-library/ic-apis.md)
+    - [Time](base-library/ic-apis/time.md)
+    - [Timer](base-library/ic-apis/timer.md)
+    - [CertifiedData](base-library/ic-apis/certifieddata.md)
+    - [Random](base-library/ic-apis/random.md)
+    - [Experimental](base-library/ic-apis/experimental.md)
+      - [ExperimentalCycles](base-library/ic-apis/experimental/experimentalcycles.md)
+      - [ExperimentalInternetComputer](base-library/ic-apis/experimental/experimentalinternetcomputer.md)
+      - [ExperimentalStableMemory](base-library/ic-apis/experimental/experimentalstablememory.md)
 
 - [Advanced Concepts](advanced-concepts.md)
 
