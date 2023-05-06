@@ -1,6 +1,6 @@
 # Async Programming
 
-The Internet Computer offers an _asynchronous programming paradigm_ in which actors interact with each other through _asynchronous message passing_ (async function calls). 
+<!-- The Internet Computer offers an _asynchronous programming paradigm_ in which actors interact with each other through _asynchronous message passing_ (async function calls). 
 
 ##  Ingress Messages vs Inter-Canister Messages
 An ingress message is a message sent by an end-user to a canister
@@ -40,4 +40,4 @@ A function that does not await in its body is guaranteed to execute atomically -
 Errors and traps
 A trap is a non-recoverable runtime failure caused by, for example, division-by-zero, out-of-bounds array indexing, numeric overflow, cycle exhaustion or assertion failure.
 
-State rollbacks
+State rollbacks -->
