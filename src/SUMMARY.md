@@ -113,16 +113,20 @@
 
 - [Advanced Concepts](advanced-concepts.md)
 
+  - [Async calls and Messages](advanced-concepts/async-calls-and-messages.md)
+    - [Message Execution](advanced-concepts/async-calls-and-messages/message-execution.md)
+    - [Errors and Traps](advanced-concepts/async-calls-and-messages/errors-and-traps.md)
+
   - [Async Programming](advanced-concepts/async-programming.md)
-    - [Inter Canister Calls](advanced-concepts/async-programming/inter-canister-calls.md)
     - [Async and Await](advanced-concepts/async-programming/async-and-await.md)
-    - [Errors and Traps](advanced-concepts/async-programming/errors-and-traps.md)
-    - [State Rollbacks](advanced-concepts/async-programming/state-rollbacks.md)
-    - [Async* and Await*](advanced-concepts/async-programming/local-async-await.md)
+    - [Async* and Await*](advanced-concepts/async-programming/internal-async-await.md)
+    - [Try-Catch](advanced-concepts/async-programming/try-catch.md)
+    
   - [Scalability](advanced-concepts/scalability.md)
     - [Stable Storage](advanced-concepts/scalability/stable-storage.md)
     - [Actor Classes](advanced-concepts/scalability/actor-classes.md)
     - [Multi-canister Scaling](advanced-concepts/scalability/multi-canister-scaling.md)
+    
   - [System API's](advanced-concepts/system-apis.md)
     - [Message Inspection](advanced-concepts/system-apis/message-inspection.md)
     - [Timers and Heartbeats](advanced-concepts/system-apis/timers.md)
