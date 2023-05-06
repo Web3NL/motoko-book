@@ -1,11 +1,12 @@
 # Async Programming
 
-The Internet Computer offers an _asynchronous programming paradigm_ in which actors interact with each other through _asynchronous function calls_. To better understand this, we need to be familiar with some terminology and develop an understanding of asynchronous behavior.
+The Internet Computer offers an _asynchronous programming paradigm_ in which actors interact with each other through _asynchronous message passing_ (async function calls). 
 
-## Async calls
+##  Ingress Messages vs Inter-Canister Messages
+An ingress message is a message sent by an end-user to a canister
 
-**Outgoing calls** An actor running in a canister can execute an _async call_ by calling another canister's public shared functions.
-**Incoming calls** An actor running in a canister can receive an _async call_ when another canister calls its public shared functions.
+**Outgoing message** An actor running in a canister can execute an _async call_ by calling another canister's public shared functions.
+**Incoming message** An actor running in a canister can receive an _async call_ when another canister calls its public shared functions.
 
 > **NOTE** > _A canister can also call its own public shared functions_
 
