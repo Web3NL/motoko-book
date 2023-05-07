@@ -1,7 +1,10 @@
+import M "mod";
+
 actor {
     type A = actor {
         read : shared () -> async Nat;
         incr : shared () -> async Nat;
+        trap : shared Bool -> async ();
     };
     let a : A = actor ("by6od-j4aaa-aaaaa-qaadq-cai");
 
@@ -27,5 +30,24 @@ actor {
         ignore await a.incr();
         state += 1;
         0 / 0;
+    };
+
+    public func test_trap(t1 : Bool, t2 : Bool, t3 : Bool) : async () {
+        state += 1;
+        ignore a.trap(false);
+        if (t1) {ignore 0/0};
+
+        state += 1;
+
+        // ------------------------
+
+        await a.trap(false);
+        if (t2) {ignore 0/0};
+        
+        state += 1;
+        ignore a.trap(false);
+        if (t3) {ignore 0/0};
+
+        await* M.foo()
     };
 };
