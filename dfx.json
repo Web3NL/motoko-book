@@ -2,7 +2,9 @@
   "canisters": {
     "motoko-book": {
       "type": "assets",
-      "source": ["book/"],
+      "source": [
+        "book/"
+      ],
       "frontend": {
         "entrypoint": "book/index.html"
       }
@@ -14,6 +16,14 @@
     "cycles": {
       "type": "motoko",
       "main": "ic-basics/cycles/cycles.mo"
+    },
+    "async": {
+      "type": "motoko",
+      "main": "ic-basics/async.mo"
+    },
+    "actor": {
+      "type": "motoko",
+      "main": "ic-basics/actor.mo"
     }
   }
 }
