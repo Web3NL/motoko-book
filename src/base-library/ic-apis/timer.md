@@ -52,5 +52,5 @@ func cancelTimer : TimerId -> ()
 ```
 
 ```motoko
-{{#include _mo/timer/cancelTimer.mo:a}}
+{{#include _mo/timer/canceltimer.mo:a}}
 ```

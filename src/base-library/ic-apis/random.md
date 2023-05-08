@@ -24,7 +24,7 @@
 class Finite(entropy : Blob)
 ```
 
-## Random.Blob
+## Random.blob
 
 ```motoko
 func blob : shared () -> async Blob
