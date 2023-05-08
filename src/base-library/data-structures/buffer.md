@@ -1419,7 +1419,7 @@ buffer2 : Buffer<Y>
 | Return type        | `Buffer<Z>`           |
 
 ```motoko, run
-{{#include _mo/buffer/zip.mo:a}}
+{{#include _mo/buffer/zipWith.mo:a}}
 ```
 
 ## Buffer.takeWhile
