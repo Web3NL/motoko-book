@@ -113,7 +113,7 @@
 
 - [Advanced Concepts](advanced-concepts.md)
 
-  - [Async calls](advanced-concepts/async-calls.md)
+  - [Async Calls](advanced-concepts/async-calls.md)
 
   - [Async Programming](advanced-concepts/async-programming.md)
     - [Async and Await](advanced-concepts/async-programming/async-and-await.md)
