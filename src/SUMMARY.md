@@ -113,9 +113,7 @@
 
 - [Advanced Concepts](advanced-concepts.md)
 
-  - [Async calls and Messages](advanced-concepts/async-calls-and-messages.md)
-    - [Message Execution](advanced-concepts/async-calls-and-messages/message-execution.md)
-    - [Errors and Traps](advanced-concepts/async-calls-and-messages/errors-and-traps.md)
+  - [Async calls](advanced-concepts/async-calls.md)
 
   - [Async Programming](advanced-concepts/async-programming.md)
     - [Async and Await](advanced-concepts/async-programming/async-and-await.md)
