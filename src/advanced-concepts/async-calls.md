@@ -34,6 +34,9 @@ To actually retrieve the `Nat` value, we have to `await` the future. This halts 
 
 The result is a `Nat` that we increment and use as the return value for `call_read`.
 
+> **NOTE**  
+> _This example contains multiple [messages](#messages-and-atomicity), see [shared functions that `await`](#shared-functions-that-await)._
+
 ## Inter-Canister Calls
 
 Actors can also call the shared functions of other actors. This always happens from within an [_asynchronous context_](#message-send-capability).
@@ -61,7 +64,7 @@ A call to a shared function of any actor A, whether from an [_external client_],
 
 A single message is executed _atomically_. This means that the code executed within one message either executes successfully or not at all. This also means that any _state mutations_ within a single message are either all committed or none of them are committed.
 
-**An `await` ends the current message and splits the execution of a function into [several messages](#shared-functions-that-await).** 
+**An `await` ends the current message and splits the execution of a function into [several messages](#shared-functions-that-await).**
 
 ### Atomic functions
 
@@ -84,32 +87,32 @@ The order in which computations and state mutations occur is not relevant for th
 The [async-await](#async-and-await) example earlier looks simple, but there is a lot going on there:
 
 - The first call to `read` that returns a future is executed as a single [message](#messages-and-atomicity).
-- The `await` keyword causes a new [message](#messages-and-atomicity) to be sent.
+- The `await` keyword ends the current message by committing it and _sends_ a new [message](#messages-and-atomicity).
 - This sent message will be executed as a single message and could possibly be executed remotely, see [inter-canister calls](#inter-canister-calls)
-- The sent message results in a callback that is executed as yet another message in the the last line of `call_read`.
+- The sent message results in a _callback_ that is executed as yet another message in the the last line of `call_read`.
 
 In total, there are **three messages**, two of which are executed in `call_read` and one that is executed elsewhere.
 
 > **NOTE**  
-> _Even if we don't `await` a future, a [message](#messages-and-atomicity) could be sent and [remote code execution](#atomic-functions-that-send-messages) could be initiated and change the state remotely, see [_state commits_](#state-commits-and-message-sends)_
+> _Even if we don't `await` a future, a [message](#messages-and-atomicity) could still be sent and [remote code execution](#atomic-functions-that-send-messages) could be initiated and change the state remotely or locally, see [*state commits*](#state-commits-and-message-sends)._
 
 ### Atomic functions that send messages
 
-A successful atomic function may or may not mutate the state itself, but during execution, it could send multiple messages (by calling shared functions) that each may or may not execute and mutate state successfully, see [state commits](#state-commits-and-message-sends).
+A successful atomic function may or may not mutate the state itself, but successful execution could cause multiple messages to be sent (by calling shared functions) that each may or may not execute (and possibly mutate state) successfully, see [state commits](#state-commits-and-message-sends).
 
 ```motoko
 {{#include _mo/async-calls5.mo:a}}
 ```
 
-We have two state variables `s1` and `s2` and two shared functions that mutate them. Both functions `incr_s1` and `incr_s2` are each executed atomically as single messages. (They do not `await` in their body). 
+We have two state variables `s1` and `s2` and two shared functions that mutate them. Both functions `incr_s1` and `incr_s2` are each executed atomically as single messages. (They do not `await` in their body).
 
-`incr_s1` should execute successfully, while `incr_s2` will trap and revert any state mutation. 
+`incr_s1` should execute successfully, while `incr_s2` will trap and revert any state mutation.
 
 A call to `atomic` will execute successfully without mutating the state during its own execution. When `atomic` exits successfully [with a result](#state-commits-and-message-sends), the calls to `incr_s1` and `incr_s2` are committed and two separate messages are sent, see [state commits].
 
 Now, `incr_s1` will mutate the state, while `incr_s2` does not. The values of `s1` and `s2`, after the successful atomic execution of `atomic` will be `1` and `0` respectively.
 
-These function calls could have been calls to shared function in remote actors, therefore initiating remote execution of code and possible remote state mutations. 
+These function calls could have been calls to shared function in remote actors, therefore initiating remote execution of code and possible remote state mutations.
 
 > **NOTE**  
 > _We are using the `ignore` keyword to ignore return types that are not the empty tuple `()` to resume execution. For example, `0 / 0` should in principle return a `Nat`, while `incr_s1()` returns a future of type `async ()`._
@@ -177,4 +180,25 @@ Functions that await are not atomic.
 Suspension introduces concurrency hazards.
 Beware of race conditions!
 A function that does not await in its body is guaranteed to execute atomically - in particular, the environment cannot change the state of the actor while the function is executing. If a function performs an await, however, atomicity is no longer guaranteed. Between suspension and resumption around the await, the state of the enclosing actor may change due to concurrent processing of other incoming actor messages. It is the programmer’s responsibility to guard against non-synchronized state changes. A programmer may, however, rely on any state change prior to the await being committed.
+
+Messaging Restrictions
+The Internet Computer places restrictions on when and how canisters are allowed to communicate. These restrictions are enforced dynamically on the Internet Computer but prevented statically in Motoko, ruling out a class of dynamic execution errors. Two examples are:
+
+canister installation can execute code, but not send messages.
+
+a canister query method cannot send messages.
+
+These restrictions are surfaced in Motoko as restrictions on the context in which certain expressions can be used.
+
+In Motoko, an expression occurs in an asynchronous context if it appears in the body of an async expression, which may be the body of a (shared or local) function or a stand-alone expression. The only exception are query functions, whose body is not considered to open an asynchronous context.
+
+In Motoko calling a shared function is an error unless the function is called in an asynchronouus context. In addition, calling a shared function from an actor class constructor is also an error.
+
+The await construct is only allowed in an asynchronous context.
+
+The async construct is only allowed in an asynchronous context.
+
+It is only possible to throw or try/catch errors in an asynchronous context. This is because structured error handling is supported for messaging errors only and, like messaging itself, confined to asynchronous contexts.
+
+These rules also mean that local functions cannot, in general, directly call shared functions or await futures. This limitation can sometimes be awkward: we hope to extend the type system to be more permissive in future.
 -->
