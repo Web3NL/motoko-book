@@ -12,6 +12,8 @@ actor {
         ignore 0 / 0;
     };
 
+    // A call to this function executes succesfully 
+    // and increments `s1`, but not `s2`
     public func atomic() : async () {
         ignore incr_s1();
         ignore incr_s2();
