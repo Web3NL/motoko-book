@@ -1,11 +1,13 @@
 // ANCHOR: a
-actor {
-    public shared query func read() : async Nat { 0 };
+actor A {
+    public query func read() : async Nat { 0 };
 
     public func call_read() : async Nat {
         let future : async Nat = read();
 
-        await future;
+        let result = await future;
+
+        result + 1
     };
 };
 // ANCHOR_END: a

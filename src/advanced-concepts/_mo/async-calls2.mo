@@ -1,13 +1,13 @@
 // ANCHOR: a
-actor {
-    type SomeActor = actor {
-        read : shared query () -> async Nat;
+actor B {
+    type ActorA = actor {
+        read : query () -> async Nat;
     };
 
-    let someActor : SomeActor = actor ("7po3j-syaaa-aaaal-qbqea-cai");
+    let actorA : ActorA = actor ("7po3j-syaaa-aaaal-qbqea-cai");
 
-    public shared func callSomeActor() : async Nat {
-        await someActor.read();
+    public func callActorA() : async Nat {
+        await actorA.read();
     };
 };
 // ANCHOR_END: a
