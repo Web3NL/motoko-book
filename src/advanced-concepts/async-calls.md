@@ -21,7 +21,7 @@ To master Motoko programming on the IC, we need to understand how to write async
 [Atomic functions that send messages](#atomic-functions-that-send-messages)  
 [State commits and message sends](#state-commits-and-messsage-sends)  
 [Message send capability](#messaging-restrictions)  
-[Message Queue and Ordering](#message-queue-and-ordering)
+[Message Ordering and Execution](#message-ordering-and-execution)
 
 **[Errors and Traps](#errors-and-traps)**
 
@@ -52,7 +52,7 @@ To actually retrieve the `Nat` value, we have to `await` the future. This halts 
 The result is a `Nat` that we increment and use as the return value for `call_read`.
 
 > **NOTE**  
-> _`call_read()` is executed as several separate [messages](#messages-and-atomicity), see [shared functions that `await`](#shared-functions-that-await)._
+> _Shared functions that `await` are not atomic. `call_read()` is executed as several separate [messages](#messages-and-atomicity), see [shared functions that `await`](#shared-functions-that-await)._
 
 ## Inter-Canister Calls
 
@@ -80,7 +80,12 @@ Calling a [query function] from an actor is currently (May 2023) only allowed fr
 
 ## Messages and atomicity
 
-A call to a shared function of any actor A, whether from an [_external client_], [from itself](#async-and-await) or from another actor B (as an [Inter-Canister Call](#inter-canister-calls)), results in an [_incoming message_](#message-queue-and-ordering) to actor A.
+From the [official docs](https://internetcomputer.org/docs/current/developer-docs/security/rust-canister-development-security-best-practices/#inter-canister-calls-and-rollbacks):  
+_A message is a set of consecutive instructions that a subnet executes for a canister._
+
+We have not covered the terms 'instruction' and 'subnet' in this book. Lets just remember that a single call to a [shared update function] call can be split into several messages that execute separately.
+
+A call to a shared function of any actor A, whether from an [_external client_], [from itself](#async-and-await) or from another actor B (as an [Inter-Canister Call](#inter-canister-calls)), results in an [_incoming message_](#message-ordering-and-execution) to actor A.
 
 A single message is executed _atomically_. This means that the code executed within one message either executes successfully or not at all. This also means that any _state mutations_ within a single message are either all committed or none of them are committed.
 
@@ -166,8 +171,6 @@ public func early_return(b : Bool) : async Text {
 
 [*See official docs*]
 
-### Message send capability
-
 ### Messaging Restrictions
 
 The Internet Computer places restrictions on when and how canisters are allowed to communicate. In Motoko this means that there are restrictions on when and where the use of _async expressions_ is allowed.
@@ -187,8 +190,6 @@ Examples of messaging restrictions:
 - The `throw` expression (to throw an [error](#errors)) is only allowed in an asynchronous context.
 
 - The `try-catch` expression is only allowed in an asynchronous context. This is because error handling is supported for _messaging errors_ only and, like messaging itself, confined to asynchronous contexts.
-
-### Message Queue and Ordering
 
 ## Errors and Traps
 
@@ -242,14 +243,14 @@ Furthermore, an `async*` function that only uses `await*` in its body to await f
 
 ## Try-Catch Expressions
 
+### Message Ordering and Execution
+
+To fully understand this section, please consult the 5 properties listed in the [official docs](https://internetcomputer.org/docs/current/developer-docs/security/rust-canister-development-security-best-practices/#inter-canister-calls-and-rollbacks) on Inter-Canister Calls and Rollbacks. We will illustrate different scenarios to better explain message ordering, execution and ordering guarantees.
+
+Based on the message properties given in the [official docs](https://internetcomputer.org/docs/current/developer-docs/security/rust-canister-development-security-best-practices/#inter-canister-calls-and-rollbacks), we will sketch out and elaborate on different possible scenario's.
+
+TBC
+
 ## Concurrency Hazards
 
-<!--
-
-Functions that await are not atomic.
-Suspension introduces concurrency hazards.
-Beware of race conditions!
-A function that does not await in its body is guaranteed to execute atomically - in particular, the environment cannot change the state of the actor while the function is executing. If a function performs an await, however, atomicity is no longer guaranteed. Between suspension and resumption around the await, the state of the enclosing actor may change due to concurrent processing of other incoming actor messages. It is the programmer’s responsibility to guard against non-synchronized state changes. A programmer may, however, rely on any state change prior to the await being committed.
-
-
--->
+TBC
