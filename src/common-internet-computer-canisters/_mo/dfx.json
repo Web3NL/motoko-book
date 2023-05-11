@@ -11,6 +11,10 @@
         "cycle-minting": {
             "type": "motoko",
             "main": "cycle-minting/cycle-minting-test.mo"
+        },
+        "hello": {
+            "type": "motoko",
+            "main": "ic-management/wasm.mo"
         }
     }
 }

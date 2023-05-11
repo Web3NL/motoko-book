@@ -4,7 +4,7 @@ import Cycles "mo:base/ExperimentalCycles";
 import Principal "mo:base/Principal";
 import Error "mo:base/Error";
 
-actor ICManagement {
+actor class ICManagement({wasm_module : [Nat8]}) {
     // The IC Management Canister ID
     let IC = "aaaaa-aa";
     let ic = actor (IC) : Interface.Self;
@@ -20,6 +20,19 @@ actor ICManagement {
         canister_principal := Principal.toText(newCanister.canister_id);
     };
     // ANCHOR_END: create_canister
+
+    // ANCHOR: install_code
+    func install_code() : async* () {
+        let canister_id = Principal.fromText(canister_principal);
+
+        await ic.install_code({
+            canister_id;
+            wasm_module;
+            arg = [];
+            mode = #install;
+        });
+    };
+    // ANCHOR_END: install_code
 
     // ANCHOR: canister_status
     var controllers : [Principal] = [];
@@ -94,6 +107,7 @@ actor ICManagement {
     public func ic_management_canister_test() : async { #OK; #ERR : Text } {
         try {
             await* create_canister();
+            await* install_code();
             await* canister_status();
 
             await* deposit_cycles();

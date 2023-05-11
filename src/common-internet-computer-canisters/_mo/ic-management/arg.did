@@ -1,0 +1,7 @@
+record {
+    wasm_module = vec {
+        0;
+        97;
+        115;
+    };
+}
