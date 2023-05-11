@@ -8,16 +8,19 @@
 
 [Class `Stack<T>`](#class-stackt)
 
-[Function `push`](#stackpush)  
-[Function `isEmpty`](#stackisempty)  
-[Function `peek`](#stackpeek)  
-[Function `pop`](#stackpop)
+[**Class methods**](#class-methods)  
+&nbsp;&nbsp;&nbsp;&nbsp;[Method `push`](#stackpush)  
+&nbsp;&nbsp;&nbsp;&nbsp;[Method `isEmpty`](#stackisempty)  
+&nbsp;&nbsp;&nbsp;&nbsp;[Method `peek`](#stackpeek)  
+&nbsp;&nbsp;&nbsp;&nbsp;[Method `pop`](#stackpop)
 
 ## Class `Stack<T>`
 
 ```motoko
 class Stack<T>()
 ```
+
+# Class methods
 
 ## Stack.push
 
