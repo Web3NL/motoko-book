@@ -282,8 +282,8 @@ The call to a private non-shared `async*` function is split up into several mess
     await async_incr();
     await* star_incr();
 
-    let _ = async_incr();
-    let _ = star_incr();
+    let async_future = async_incr();
+    let star_future = star_incr();
 
     state
   };
