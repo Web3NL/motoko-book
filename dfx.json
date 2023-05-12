@@ -24,6 +24,10 @@
     "actor": {
       "type": "motoko",
       "main": "ic-basics/actor.mo"
+    },
+    "mem": {
+      "type": "motoko",
+      "main": "ic-basics/mem.mo"
     }
   }
 }
