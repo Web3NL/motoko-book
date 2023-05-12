@@ -83,7 +83,7 @@ Calling a [query function] from an actor is currently (May 2023) only allowed fr
 From the [official docs](https://internetcomputer.org/docs/current/developer-docs/security/rust-canister-development-security-best-practices/#inter-canister-calls-and-rollbacks):  
 _A message is a set of consecutive instructions that a subnet executes for a canister._
 
-We have not covered the terms 'instruction' and 'subnet' in this book. Lets just remember that a single call to a [shared update function] call can be split into several messages that execute separately.
+We have not covered the terms 'instruction' and 'subnet' in this book. Lets just remember that a single call to a [shared update function] can be split into several messages that execute separately.
 
 A call to a shared function of any actor A, whether from an [_external client_], [from itself](#async-and-await) or from another actor B (as an [Inter-Canister Call](#inter-canister-calls)), results in an [_incoming message_](#message-ordering-and-execution) to actor A.
 
@@ -147,26 +147,28 @@ These function calls could have been calls to shared function in remote actors, 
 
 ### State commits and message sends
 
-The points at which a _state changes_ and _message sends_ are irrevocably committed are:
+There are several points during the execution of a shared function at which _state changes_ and _message sends_ are irrevocably committed:
 
 1. **Implicit exit from a shared function by producing a result**  
-   The function executes until the end of its body and produces the expected return value with which it is declared.
+   The function executes until the end of its body and produces the expected return value with which it is declared. If the function did not `await` in its body, then it is executed atomically within a single message and state changes will be committed once it produces a result.
 
-1. **Explicit exit via return**  
+```motoko
+{{#include _mo/async-calls6.mo:a}}
+```
+
+2. **Explicit exit via return**  
    Think of an early return like:
 
 ```motoko
-public func early_return(b : Bool) : async Text {
-    if (b) return "returned early";
-
-    "executed till end"
-};
+{{#include _mo/async-calls6.mo:b}}
 ```
 
-1. **Explicit [throw expressions](#errors)**
+If condition `b` is `true`, the `return` keyword ends the current message and state is committed up to this
+
+3. **Explicit [throw expressions](#example)**
    When an error is thrown, the state changes up until the error are committed.
 
-1. **Explicit [await expressions](#shared-functions-that-await)**
+4. **Explicit [await expressions](#shared-functions-that-await)**
    As we have seen in the [shared functions that `await`](#shared-functions-that-await) example, an `await` ends the current message and splits the execution of a function into separate messages.
 
 [*See official docs*]
@@ -191,66 +193,77 @@ Examples of messaging restrictions:
 
 - The `try-catch` expression is only allowed in an asynchronous context. This is because error handling is supported for _messaging errors_ only and, like messaging itself, confined to asynchronous contexts.
 
+[See official docs]
+
 ## Errors and Traps
 
 During the execution of a message, an _error_ may be thrown or a _trap_ may occur.
 
 ### Errors
 
-- An [error] is thrown _intentionally_ to inform a caller that something is not right.
+An [error] is thrown _intentionally_ using the `throw` keyword to inform a caller that something is not right.
+
 - State changes up until an error within a message are committed.
 - Code after an error within a message is **NOT** executed, therefore state changes after an error within a message are **NOT** committed.
 - Errors can be handled using [`try-catch`] expressions.
 - Errors can only be thrown in an [asynchronous context](#messaging-restrictions).
 - To work with errors we use the `Error` module in the [base library].
 
+```motoko
+{{#include _mo/async-calls3-error.mo:a}}
+```
+
+We import the [`Error`] module.
+
+We have a shared functions `incrementAndError` that mutates `state` and throws an `Error`. We increment the value of `state` once before and once after the error throw.
+
+The function fails and does not return `()`. Instead it results in an error of type `Error` (see [Error] module). **The first state mutation is committed, but the second is not.**
+
+After `incrementAndError`, our mutable variable `state` only incremented once to value `1`.
+
 ### Traps
 
-- A trap is an _unintended_ non-recoverable runtime failure caused by, for example, division-by-zero, out-of-bounds array indexing, numeric overflow, cycle exhaustion or assertion failure.
+A trap is an _unintended_ non-recoverable runtime failure caused by, for example, division-by-zero, out-of-bounds array indexing, numeric overflow, cycle exhaustion or assertion failure.
+
 - A trap during the execution of a single message causes the entire message to fail.
 - State changes before and after a trap within a message are **NOT** committed.
 - Traps can be handled using [`try-catch`] expressions.
 - A trap may occur intentionally for development purposes, see [Debug.trap()]
 - A trap can happen anywhere code runs in an actor, not only in an [asynchronous context](#messaging-restrictions).
 
-### Example
-
-Lets demonstrate state changes before and after errors and traps.
-
 ```motoko
-{{#include _mo/async-calls3.mo:a}}
+{{#include _mo/async-calls3-trap.mo:a}}
 ```
 
-We import the [`Error`] and [`Debug`] modules.
+We import the [`Debug`] module.
 
-We have an actor with one [mutable variable] `state` that we mutate from within two shared functions. In both cases, we increment the value of `state` once before and once after an error or trap.
-
-The first shared function `incrementAndError` fails and does not return `()`. Instead it results in an error of type `Error` (see [Error] module). The first state mutation is committed, but the second is not.
-
-After `incrementAndError`, our mutable variable `state` only incremented once.
-
-The second shared function `incrementAndTrap` also fails and does not return `()`. Instead it causes the execution to trap (see [Debug] module). Both the first and second state mutation are **NOT** committed.
+The shared function `incrementAndTrap` fails and does not return `()`. Instead it causes the execution to trap (see [Debug] module). **Both the first and second state mutation are NOT committed.**
 
 After `incrementAndTrap`, our mutable variable `state` is not changed at all.
 
+> **NOTE**  
+> _Usually a trap occurs without `Debug.trap()` during execution of code, for example at underflow or overflow of [bounded types] or other runtime failures, see [traps](#traps)._
+
 ## Async* and Await*
 
-Recall that [shared functions] are part of the [actor type] and therefore publicly visible as the public API of the actor. Shared functions also provide an [asynchronous context](#messaging-restrictions) from which other shared functions can be called and awaited, because calling and awaiting requires messages to be sent.
+Recall that [shared functions] with `async` return type are part of the [actor type] and therefore publicly visible as the [public API] of the actor. Shared functions provide an [asynchronous context](#messaging-restrictions) from which other shared functions can be called and awaited, because awaiting a shared function requires a [message](#messages-and-atomicity) to be sent.
 
-Private `async*` functions provide an [asynchronous context](#messaging-restrictions) without exposing the function as part of the public API of the actor. A call to an `async*` function also immediately returns a future that can be awaited using the `await*` keyword in any asynchronous context.
+Private non-shared `async*` functions provide an [asynchronous context](#messaging-restrictions) without exposing the function as part of the public API of the actor.
 
-Furthermore, an `async*` function that only uses `await*` in its body to await futures of other `async*` functions, is guaranteed to be atomic. This means that either all `await*` expressions within a `async*` function are executed successfully or non of them have any effect at all.
+A call to an `async*` function also immediately returns a future. But the future **needs** to be awaited using the `await*` keyword (in any asynchronous context) to produce a result. This was not the case with un-awaited `async` calls, see [atomic functions that send messages](#atomic-functions-that-send-messages).
+
+```motoko
+{{#include _mo/async-calls7.mo}}
+```
+
+### `await` and `await*`
+
+**`await` triggers a new message send, where `await*` doesn't necessarily trigger new message sends and could be atomically executed.**
+
+An `async*` function that only uses `await*` in its body to await futures of other `async*` functions (that don't 'ordinarily' `await` in their body), is executed as a single message and is guaranteed to be atomic. This means that either all `await*` expressions within a `async*` function are executed successfully or non of them have any effect at all.
+
+This is different form 'ordinary' `await` where each `await` triggers a new message and splits the function call into several messages. State changes from the current message are then committed each time a new `await` happens.
+
+The call to a private non-shared `async*` function is split up into several messages only when we use an ordinary `await` in its body.
 
 ## Try-Catch Expressions
-
-### Message Ordering and Execution
-
-To fully understand this section, please consult the 5 properties listed in the [official docs](https://internetcomputer.org/docs/current/developer-docs/security/rust-canister-development-security-best-practices/#inter-canister-calls-and-rollbacks) on Inter-Canister Calls and Rollbacks. We will illustrate different scenarios to better explain message ordering, execution and ordering guarantees.
-
-Based on the message properties given in the [official docs](https://internetcomputer.org/docs/current/developer-docs/security/rust-canister-development-security-best-practices/#inter-canister-calls-and-rollbacks), we will sketch out and elaborate on different possible scenario's.
-
-TBC
-
-## Concurrency Hazards
-
-TBC
