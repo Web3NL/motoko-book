@@ -267,3 +267,24 @@ This is different form 'ordinary' `await` where each `await` triggers a new mess
 The call to a private non-shared `async*` function is split up into several messages only when we use an ordinary `await` in its body.
 
 ## Try-Catch Expressions
+
+<!-- actor Echo {
+  var state = 0;
+  public query func read() : async Nat {state};
+
+  public func async_incr() : async () { state += 1 };
+  private func star_incr() : async* () { state += 1 };
+
+  public func call() : async Nat {
+    ignore async_incr();
+    ignore star_incr();
+
+    await async_incr();
+    await* star_incr();
+
+    let _ = async_incr();
+    let _ = star_incr();
+
+    state
+  };
+}; -->
