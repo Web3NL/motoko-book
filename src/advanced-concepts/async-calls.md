@@ -246,45 +246,47 @@ After `incrementAndTrap`, our mutable variable `state` is not changed at all.
 
 ## Async* and Await*
 
-Recall that [shared functions] with `async` return type are part of the [actor type] and therefore publicly visible as the [public API] of the actor. Shared functions provide an [asynchronous context](#messaging-restrictions) from which other shared functions can be called and awaited, because awaiting a shared function requires a [message](#messages-and-atomicity) to be sent.
+Recall that 'ordinary' [shared functions] with `async` return type are part of the [actor type] and therefore publicly visible in the [public API] of the actor. Shared functions provide an [asynchronous context](#messaging-restrictions) from which other shared functions can be called and awaited, because awaiting a shared function requires a [message](#messages-and-atomicity) to be sent.
 
-Private non-shared `async*` functions provide an [asynchronous context](#messaging-restrictions) without exposing the function as part of the public API of the actor.
+**Private non-shared `async*` functions** provide an [asynchronous context](#messaging-restrictions) without exposing the function as part of the public API of the actor.
 
-A call to an `async*` function also immediately returns a future. But the future **needs** to be awaited using the `await*` keyword (in any asynchronous context) to produce a result. This was not the case with un-awaited `async` calls, see [atomic functions that send messages](#atomic-functions-that-send-messages).
+A call to an `async*` function also immediately returns a future. The future **needs** to be awaited using the `await*` keyword (in any asynchronous context) to produce a result. This was not the case with un-awaited `async` calls, see [atomic functions that send messages](#atomic-functions-that-send-messages).
+
+For demonstration purposes, lets look at an example of a private `async*` function, that doesn't use its asynchronous context to call other `async` or `async*` functions, but instead uses it to perform a _delayed computation_:
 
 ```motoko
 {{#include _mo/async-calls7.mo}}
 ```
 
+`compute` is a [private function] with `async* Nat` return type. Calling it directly yields a *future* of type `async* Nat`. This future needs to be awaited using `await*` for the computation to actually execute (unlike the case with 'ordinary' `async` [atomic functions that send messages](#atomic-functions-that-send-messages)). We could also pass around the future within our actor code and only `await*` it when we actually need the result.
+
+We `await*` our function `compute` from within an [asynchronous context](#messaging-restrictions). 
+
+We `await*` our function `compute` from within an 'ordinary' shared `async` function `call_compute` or from within another private `async*` like `call_compute2`. In the case of `call_compute` we obtain the result more verbosely by first declaring a future and then `await*`ing it. In the case of `call_compute2` we `await*` the result directly.
+
+`compute` is not part of the [actor type] and [public API], because it is a [private function].
+
 ### `await` and `await*`
+
+Private non-shared `async*` functions can both `await` and `await*` in their body.
 
 **`await` triggers a new message send, where `await*` doesn't necessarily trigger new message sends and could be atomically executed.**
 
-An `async*` function that only uses `await*` in its body to await futures of other `async*` functions (that don't 'ordinarily' `await` in their body), is executed as a single message and is guaranteed to be atomic. This means that either all `await*` expressions within a `async*` function are executed successfully or non of them have any effect at all.
+An `async*` function that only uses `await*` in its body to await futures of other `async*` functions (that also don't 'ordinarily' `await` in their body), is executed as a single message and is guaranteed to be atomic. This means that either all `await*` expressions within a `async*` function are executed successfully or non of them have any effect at all.
 
 This is different form 'ordinary' `await` where each `await` triggers a new message and splits the function call into several messages. State changes from the current message are then committed each time a new `await` happens.
 
-The call to a private non-shared `async*` function is split up into several messages only when we use an ordinary `await` in its body.
+The call to a private non-shared `async*` function is split up into several messages only when we use an ordinary `await` in its body. Or when we `await*` a `async*` function that 'ordinarily' `await`s in its body.
+
+```motoko
+{{#include _mo/async-calls8.mo}}
+```
+
+We `await` and `await*` from within a private non-shared `async*` function named `call`. 
+
+The `await` suspends execution of the current message and triggers a new message send. In this case the actor sends a message to itself, but it could have been a call to a remote actor. 
+
+When a result is returned we resume execution of `call` within a second message. The `await*` acts as if we substitute the body of `incr2` for the line `await* incr2()`. Because `incr2` does not `await` or `await*` in its body, it acts like an ordinary private function when `await*`ed. No message is sent.
 
 ## Try-Catch Expressions
 
-<!-- actor Echo {
-  var state = 0;
-  public query func read() : async Nat {state};
-
-  public func async_incr() : async () { state += 1 };
-  private func star_incr() : async* () { state += 1 };
-
-  public func call() : async Nat {
-    ignore async_incr();
-    ignore star_incr();
-
-    await async_incr();
-    await* star_incr();
-
-    let async_future = async_incr();
-    let star_future = star_incr();
-
-    state
-  };
-}; -->
