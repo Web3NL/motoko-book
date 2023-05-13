@@ -113,12 +113,7 @@
 
 - [Advanced Concepts](advanced-concepts.md)
 
-  - [Async Calls](advanced-concepts/async-calls.md)
-
   - [Async Programming](advanced-concepts/async-programming.md)
-    - [Async and Await](advanced-concepts/async-programming/async-and-await.md)
-    - [Async* and Await*](advanced-concepts/async-programming/internal-async-await.md)
-    - [Try-Catch](advanced-concepts/async-programming/try-catch.md)
     
   - [Scalability](advanced-concepts/scalability.md)
     - [Stable Storage](advanced-concepts/scalability/stable-storage.md)
