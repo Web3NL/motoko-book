@@ -85,8 +85,8 @@
     - [Option](base-library/utils/option.md)
     - [Result](base-library/utils/result.md)
     - [Order](base-library/utils/order.md)
-    - [Debug](base-library/utils/debug.md)
     - [Error](base-library/utils/error.md)
+    - [Debug](base-library/utils/debug.md)
 
   - [Data Structures](base-library/data-structures.md)
     - [Array](base-library/data-structures/array.md)    
