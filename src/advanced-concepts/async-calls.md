@@ -2,12 +2,12 @@
 
 The asynchronous programming paradigm of the Internet Computer is based on the actor model.
 
-[Actors] are isolated units of code and state that communicate with each other by calling each others' [shared functions] where each shared function call triggers at least 1 or more [messages](#messages-and-atomicity) to be sent and executed.
+[Actors](/internet-computer-programming-concepts/actors.html) are isolated units of code and state that communicate with each other by calling each others' [shared functions](/internet-computer-programming-concepts/actors.html#public-shared-functions-in-actors) where each shared function call triggers at least 1 or more [messages](#messages-and-atomicity) to be sent and executed.
 
 To master Motoko programming on the IC, we need to understand how to write _asynchronous code_, how to [**correctly handle async calls using try-catch**](#try-catch-expressions) and mutate the state safely.
 
 > **NOTE**  
-> _From now on, we will drop the optional `shared` keyword in the declaration of [public shared functions] and refer to these functions as simply 'shared functions'._
+> _From now on, we will drop the optional `shared` keyword in the declaration of [shared functions](/internet-computer-programming-concepts/actors.html#public-shared-functions-in-actors) and refer to these functions as simply 'shared functions'._
 
 ### On this page
 
@@ -41,19 +41,19 @@ To master Motoko programming on the IC, we need to understand how to write _asyn
 
 ## Async and Await
 
-A call to a [shared function] immediately returns a _future_ of type [`async T`], where T is a [*shared type*]. A _future_ of type `async T` can be _awaited_ using the `await` keyword to retrieve the value of type `T`.
+A call to a [shared function](/internet-computer-programming-concepts/actors.html#public-shared-functions-in-actors) immediately returns a _future_ of type [`async T`], where T is a [*shared type*]. A _future_ of type `async T` can be _awaited_ using the `await` keyword to retrieve the value of type `T`.
 
 - Shared function calls and awaits are only allowed in [_asynchronous context_](#messaging-restrictions).
 - Shared function calls that immediately return a future, do not suspend execution of the code.
 - Awaits using `await` do suspend execution of code until a [_callback_](#shared-functions-that-await) is received.
 
-[Actors] can call their own [shared functions]. Here is an actor calling its own shared function from another shared function:
+[Actors](/internet-computer-programming-concepts/actors.html) can call their own [shared functions](/internet-computer-programming-concepts/actors.html#public-shared-functions-in-actors). Here is an actor calling its own shared function from another shared function:
 
 ```motoko
 {{#include _mo/async-calls.mo:a}}
 ```
 
-The first call to `read` immediately returns a future of type `async Nat`, which is the [return type] of our [shared query] function `read`. This means that the caller does not wait for a response from `read` and immediately continues execution.
+The first call to `read` immediately returns a future of type `async Nat`, which is the [return type](/internet-computer-programming-concepts/actors.html#shared-async-types) of our [shared query](/internet-computer-programming-concepts/actors.html#public-shared-query) function `read`. This means that the caller does not wait for a response from `read` and immediately continues execution.
 
 To actually retrieve the `Nat` value, we have to `await` the future. The actor sends a [message](#messages-and-atomicity) to itself with the request and halts execution until a response is received.
 
@@ -68,30 +68,30 @@ Actors can also call the shared functions of other actors. This always happens f
 
 ### Importing other actors
 
-To call the shared functions of other actors, we need the [_actor type_] of the external actor and an _actor reference_.
+To call the shared functions of other actors, we need the [_actor type_](/internet-computer-programming-concepts/actors.html#actor-type) of the external actor and an _actor reference_.
 
 ```motoko
 {{#include _mo/async-calls2.mo:a}}
 ```
 
-The actor type we use may be a [_subtype_] of the external actor type. We declare the actor type `actor {}` with only the shared functions we are interested in. In this case, we are importing the actor from the previous example and are only interested in the [query function] `read`.
+The actor type we use may be a [_subtype_](/advanced-types/subtyping.html) of the external actor type. We declare the actor type `actor {}` with only the shared functions we are interested in. In this case, we are importing the actor from the previous example and are only interested in the [query function](/internet-computer-programming-concepts/actors.html#public-shared-query) `read`.
 
-We declare a variable `actorA` with actor type `ActorA` and assign an actor reference `actor()` to it. We supply the [principal id] of actor A to reference it. We can now refer to the shared function `read` of actor A as `actorA.read`.
+We declare a variable `actorA` with actor type `ActorA` and assign an actor reference `actor()` to it. We supply the [principal id](/internet-computer-programming-concepts/principals-and-authentication.html) of actor A to reference it. We can now refer to the shared function `read` of actor A as `actorA.read`.
 
-Finally, we `await` the shared function `read` of actor A yielding a `Nat` value that we use as a return value for our [update function] `callActorA`.
+Finally, we `await` the shared function `read` of actor A yielding a `Nat` value that we use as a return value for our [update function](/internet-computer-programming-concepts/actors.html#public-shared-update) `callActorA`.
 
 ### Inter-Canister Query Calls
 
-Calling a [query function] from an actor is currently (May 2023) only allowed from inside an [update function], because query functions don't yet have [message send capability](#messaging-restrictions).
+Calling a [query function](/internet-computer-programming-concepts/actors.html#public-shared-query) from an actor is currently (May 2023) only allowed from inside an [update function](/internet-computer-programming-concepts/actors.html#public-shared-update), because query functions don't yet have [message send capability](#messaging-restrictions).
 
-'Inter-Canister Query Calls' will be available on the IC in the future. For now, only ingress messages (from [external clients] to the IC) can request a fast query call ([without going through consensus]).
+'Inter-Canister Query Calls' will be available on the IC in the future. For now, only ingress messages (from [external clients](/internet-computer-programming-concepts/actors/canister-calling.html) to the IC) can request a fast query call ([without going through consensus](/internet-computer-programming-concepts/actors.html#public-shared-functions-in-actors)).
 
 ## Messages and atomicity
 
 From the [official docs](https://internetcomputer.org/docs/current/developer-docs/security/rust-canister-development-security-best-practices/#inter-canister-calls-and-rollbacks):  
 _A message is a set of consecutive instructions that a subnet executes for a canister._
 
-We will not cover the terms 'instruction' and 'subnet' in this book. Lets just remember that a single call to a [shared update function] can be split up into several messages that execute separately.
+We will not cover the terms 'instruction' and 'subnet' in this book. Lets just remember that a single call to a [shared function](/internet-computer-programming-concepts/actors.html#public-shared-functions-in-actors) can be split up into several messages that execute separately.
 
 A call to a shared function of any actor A, whether from an [_external client_], [from itself](#async-and-await) or from another actor B (as an [Inter-Canister Call](#inter-canister-calls)), results in an _incoming message_ to actor A.
 
@@ -111,7 +111,7 @@ An atomic function is one that executes within one single message. The function 
 
 Our function `atomic` mutates the state, performs a computation and mutates the `state` again. Both the computation and the state mutations belong to the same message execution. The whole function either succeeds and commits all state mutations or it fails and does not commit any changes at all.
 
-The second function `atomic_fail` is another atomic function. It also performs a computation and state mutations within one single message. **But this time, the computation [traps] and both state mutations are not committed, even though the trap happened after the first state mutation.**
+The second function `atomic_fail` is another atomic function. It also performs a computation and state mutations within one single message. **But this time, the computation [traps](#traps) and both state mutations are not committed, even though the trap happened after the first state mutation.**
 
 Unless an [`Error`](#errors) is thrown _intentionally_ during execution, the order in which computations and state mutations occur is not relevant for the atomicity of a function. The whole function is executed as a single message that either fails or succeeds in its entirety.
 
@@ -187,7 +187,7 @@ The Internet Computer places restrictions on when and how canisters are allowed 
 
 **An expression in Motoko is said to occur in an _asynchronous context_ if it appears in the body of an `async` or `async*` expression.**
 
-Therefore, calling a shared function from outside an asynchronous context is not allowed, because calling a shared function requires a message to be sent. For the same reason, calling a shared function from an [actor class] constructor is also not allowed, because an actor class is not an asynchronous context and so on.
+Therefore, calling a shared function from outside an asynchronous context is not allowed, because calling a shared function requires a message to be sent. For the same reason, calling a shared function from an [actor class](/advanced-concepts/scalability/actor-classes.html) constructor is also not allowed, because an actor class is not an asynchronous context and so on.
 
 Examples of messaging restrictions:
 
@@ -209,7 +209,7 @@ Messages in an actor are always executed sequentially, meaning one after the oth
 
 You can only control the order in which you send messages to other actors, with the guarantee that they will be executed in the order you sent them. But you have no guarantee on the order in which you receive the _callbacks_ for those messages.
 
-Consult the [official docs] for more information on this topic.
+Consult the [official docs](https://internetcomputer.org/docs/current/developer-docs/security/rust-canister-development-security-best-practices/#inter-canister-calls-and-rollbacks) for more information on this topic.
 
 ## Errors and Traps
 
@@ -217,21 +217,21 @@ During the execution of a message, an _error_ may be thrown or a _trap_ may occu
 
 ### Errors
 
-An [error] is thrown _intentionally_ using the `throw` keyword to inform a caller that something is not right.
+An [Error](/base-library/utils/error.html) is thrown _intentionally_ using the `throw` keyword to inform a caller that something is not right.
 
 - State changes up until an error within a message are committed.
 - Code after an error within a message is **NOT** executed, therefore state changes after an error within a message are **NOT** committed.
-- Errors can be handled using [`try-catch`] expressions.
+- Errors can be handled using [`try-catch`](#try-catch-expressions) expressions.
 - Errors can only be thrown in an [asynchronous context](#messaging-restrictions).
-- To work with errors we use the `Error` module in the [base library].
+- To work with errors we use the [`Error`](/base-library/utils/error.html) module in the [base library].
 
 ```motoko
 {{#include _mo/async-calls3-error.mo:a}}
 ```
 
-We import the [`Error`] module.
+We import the [`Error`](/base-library/utils/error.html) module.
 
-We have a shared functions `incrementAndError` that mutates `state` and throws an `Error`. We increment the value of `state` once before and once after the error throw. The function does not return `()`. Instead it results in an error of type `Error` (see [Error] module).
+We have a shared functions `incrementAndError` that mutates `state` and throws an `Error`. We increment the value of `state` once before and once after the error throw. The function does not return `()`. Instead it results in an error of type `Error` (see [Error](/base-library/utils/error.html) module).
 
 **The first state mutation is committed, but the second is not.**
 
@@ -243,7 +243,7 @@ A trap is an _unintended_ non-recoverable runtime failure caused by, for example
 
 - A trap during the execution of a single message causes the entire message to fail.
 - State changes before and after a trap within a message are **NOT** committed.
-- Traps can be handled using [`try-catch`] expressions.
+- Traps can be handled using [`try-catch`](#try-catch-expressions) expressions.
 - A trap may occur intentionally for development purposes, see [Debug.trap()]
 - A trap can happen anywhere code runs in an actor, not only in an [asynchronous context](#messaging-restrictions).
 
@@ -251,20 +251,20 @@ A trap is an _unintended_ non-recoverable runtime failure caused by, for example
 {{#include _mo/async-calls3-trap.mo:a}}
 ```
 
-We import the [`Debug`] module.
+We import the [`Debug`](/base-library/utils/debug.html) module.
 
-The shared function `incrementAndTrap` fails and does not return `()`. Instead it causes the execution to trap (see [Debug] module).
+The shared function `incrementAndTrap` fails and does not return `()`. Instead it causes the execution to trap (see [Debug](/base-library/utils/debug.html) module).
 
 **Both the first and second state mutation are NOT committed.**
 
 After `incrementAndTrap`, our mutable variable `state` is not changed at all.
 
 > **NOTE**  
-> _Usually a trap occurs without `Debug.trap()` during execution of code, for example at underflow or overflow of [bounded types] or other runtime failures, see [traps](#traps)._
+> _Usually a trap occurs without `Debug.trap()` during execution of code, for example at underflow or overflow of [bounded types](/base-library/primitive-types/bounded-number-types.html) or other runtime failures, see [traps](#traps)._
 
 ## Async* and Await*
 
-Recall that 'ordinary' [shared functions] with `async` return type are part of the [actor type] and therefore publicly visible in the [public API] of the actor. Shared functions provide an [asynchronous context](#messaging-restrictions) from which other shared functions can be called and awaited, because awaiting a shared function requires a [message](#messages-and-atomicity) to be sent.
+Recall that 'ordinary' [shared functions](/internet-computer-programming-concepts/actors.html#public-shared-functions-in-actors) with `async` return type are part of the [_actor type_](/internet-computer-programming-concepts/actors.html#actor-type) and therefore publicly visible in the [_public API_](/internet-computer-programming-concepts/async-data/candid.html#actor-interfaces) of the actor. Shared functions provide an [asynchronous context](#messaging-restrictions) from which other shared functions can be called and awaited, because awaiting a shared function requires a [message](#messages-and-atomicity) to be sent.
 
 **Private non-shared functions with `async*` return type** provide an [asynchronous context](#messaging-restrictions) without exposing the function as part of the public API of the actor.
 
@@ -276,7 +276,7 @@ For demonstration purposes, lets look at an example of a private `async*` functi
 {{#include _mo/async-calls7.mo}}
 ```
 
-`compute` is a [private function] with `async* Nat` return type. Calling it directly yields a _future_ of type `async* Nat` and resumes execution without blocking. This future needs to be awaited using `await*` for the computation to actually execute (unlike the case with 'ordinary' `async` [atomic functions that send messages](#atomic-functions-that-send-messages)).
+`compute` is a [private function](/common-programming-concepts/functions.html#private-functions) with `async* Nat` return type. Calling it directly yields a _future_ of type `async* Nat` and resumes execution without blocking. This future needs to be awaited using `await*` for the computation to actually execute (unlike the case with 'ordinary' `async` [atomic functions that send messages](#atomic-functions-that-send-messages)).
 
 `await*` also suspends execution, until a result is obtained. We could also pass around the future within our actor code and only `await*` it when we actually need the result.
 
@@ -286,7 +286,7 @@ We `await*` our function `compute` from within an 'ordinary' shared `async` func
 
 In the case of `call_compute` we obtain the result by first declaring a future and then `await*`ing it. In the case of `call_compute2` we `await*` the result directly.
 
-`compute` and `call_compute` are not part of the [actor type] and [public API], because it is a [private function].
+`compute` and `call_compute` are not part of the [_actor type_](/internet-computer-programming-concepts/actors.html#actor-type) and [_public API_](/internet-computer-programming-concepts/async-data/candid.html#actor-interfaces), because it is a [private function](/common-programming-concepts/functions.html#private-functions).
 
 ### `await` and `await*`
 
@@ -394,7 +394,7 @@ Lets `try` to `await*` a private `async*` function and `catch` any possible erro
 {{#include _mo/async-calls11.mo}}
 ```
 
-We start by importing [`Result`] and [`Error`] from the [base library](/base-library.html) and declare a `Result` type with associated types for our purpose.
+We start by importing [`Result`](/base-library/utils/result.html) and [`Error`](/base-library/utils/error.html) from the [base library](/base-library.html) and declare a `Result` type with associated types for our purpose.
 
 Note that our private `async*` function `error()` should under normal circumstances return a `()` when `await*`ed. But it performs some check and could _intentionally_ `throw` an [`Error`](#errors) under some circumstances to alert the caller that something is not right.
 
@@ -402,11 +402,11 @@ To account for this case, we `try` the function first in a try-block `try {}`, w
 
 But in case an error is thrown, we `catch` it in the catch-block and give it a name `e`. This error has type `Error`, which is a non-shared type that can only happen in an [asynchronous context](#messaging-restrictions).
 
-We analyze our error `e` using the methods from the [Error module] to obtain the [`ErrorCode`] and the error message as a `Text`. We return this information as the associated type of our `#err` variant for our `Result`.
+We analyze our error `e` using the methods from the [Error module](/base-library/utils/error.html) to obtain the [`ErrorCode`](/base-library/utils/error.html) and the error message as a `Text`. We return this information as the associated type of our `#err` variant for our `Result`.
 
 Note, we bind the return value of the whole try-catch block expression to the variable `result` to demonstrate that it is indeed an expression that evaluates to a value. In this case, the try-catch expression evaluates to a `Result` type.
 
 ### Catching a trap
 The same try-catch expression can be used to catch a [trap](#traps) that occurs during execution of an `async` or `async*` function. 
 
-A trap would surface as an [`Error`](#errors) with system reject code `5` (which isn't part of the [`ErrorCode`] variant) and a message that indicates why the execution trapped. 
+A trap would surface as an [`Error`](#errors) with system reject code `5` (which isn't part of the [`ErrorCode`](/base-library/utils/error.html) variant) and a message that indicates why the execution trapped. 
