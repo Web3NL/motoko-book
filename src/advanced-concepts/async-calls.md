@@ -32,7 +32,10 @@ To master Motoko programming on the IC, we need to understand how to write _asyn
 **[Async* and Await*](#async-and-await-1)**  
 [`await` and `await*`](#await-and-await)  
 [Atomic `await*`](#atomic-await)  
-[Non-atomic `await*`](#non-atomic-await)
+[Non-atomic `await*`](#non-atomic-await)  
+[Keeping track of state commits and message sends](#keeping-track-of-state-commits-and-message-sends)
+
+**[Table of asynchronous functions in Motoko](#table-of-asynchronous-functions-in-motoko)**
 
 **[Try-Catch Expressions](#try-catch-expressions)**
 
@@ -345,9 +348,34 @@ Our function `non_atomic()` performs an `await*` in its body. The `await*` to `i
 
 This happens because `incr2()` uses an 'ordinary' `await` in its body.
 
+### Keeping track of state commits and message sends
+
+Consider the following scenario's:
+
+- an `await*` for an `async*` function that performed an 'ordinary' `await` in its body.
+- an `await*` for an `async*` function that performed an `await*` in its body (**for an `async*` function that does not 'ordinarily' `await`s in its body**) or performs no awaits at all.
+
+In every case, our code should handle [state commits and message sends](#state-commits-and-message-sends) correctly and only mutate the state when we intend to do so.
+
+> **NOTE**  
+> _The [`Star.mo`](https://github.com/icdevs/star.mo) library declares a [result type](/base-library/utils/result.html) that is useful for handling `async*` functions. We highly recommend it, but will not cover it here._
+
+## Table of asynchronous functions in Motoko
+
+| **Visibility** | **Async context** | **Return type** | **Awaited with** | **CS and TM\*\*** |
+| :------------- | :---------------- | :-------------- | :--------------- | :---------------- |
+| `private`      | no                | non-async       | not awaited      | no                |
+| `public`       | yes               | `async` future  | `await`          | yes               |
+| `private`      | yes               | `async` future  | `await`          | yes               |
+| `private`      | yes               | `async*` future | `await*`         | no                |
+
+\*\* Commits state and triggers a new message send.
+
+The private function with 'ordinary' `async` function is not covered in this chapter. It behaves like a public function with 'ordinary' `async` return type, meaning it commits state up to that point when `await`ed and triggers a new message send.
+
 ## Try-Catch Expressions
 
-To correctly handle calls to `async` and `async*` functions, we need to write code that also deals with scenario's in which function do not execute successfully. This may be due to an [`Error`](#errors) or a [trap](#traps).
+To correctly handle awaits for `async` and `async*` functions, we need to write code that also deals with scenario's in which functions do not execute successfully. This may be due to an [`Error`](#errors) or a [trap](#traps).
 
 In both cases, the failure can be _'caught'_ and handled safely using a _try-catch expression_.
 
@@ -356,14 +384,29 @@ Consider the following failure scenario's:
 - an `await` or `await*` for an `async` or `async*` function that throws an [`Error`](#errors).
 - an `await` or `await*` for an `async` or `async*` function that [traps](#traps) during execution.
 
-And the following success scenario's:
+In every case, our code should handle function failures ([errors](#errors) or [traps](#traps)) correctly and only mutate the state when we intend to do so.
 
-- an `await*` for an `async*` function that performed an 'ordinary' `await` in its body.
-- an `await*` for an `async*` function that performed an `await*` in its body (**for an `async*` function that does not 'ordinarily' `await`s in its body**) or performs no awaits at all.
+In the following examples, we will use [`Result<Ok, Err>`](/base-library/utils/result.html) from the [base library](/base-library.html) as the return type of our functions.
 
-In every case, our code should handle function failures ([errors](#errors) or [traps](#traps)) correctly and keep track of [state commits and message sends](#state-commits-and-message-sends) to only mutate the state when we intend to do so.
+Lets `try` to `await*` a private `async*` function and `catch` any possible errors or traps:
 
-> **NOTE**  
-> _The [`Star.mo`](https://github.com/icdevs/star.mo) library declares a [result type](/base-library/utils/result.html) that is useful for handling `async*` functions. We highly recommend it, but will not cover it here._
+```motoko
+{{#include _mo/async-calls11.mo}}
+```
 
-In the following examples, we will use [`Result<Ok, Err>`](/base-library/utils/result.html) as the return type of our functions.
+We start by importing [`Result`] and [`Error`] from the [base library](/base-library.html) and declare a `Result` type with associated types for our purpose.
+
+Note that our private `async*` function `error()` should under normal circumstances return a `()` when `await*`ed. But it performs some check and could _intentionally_ `throw` an [`Error`](#errors) under some circumstances to alert the caller that something is not right.
+
+To account for this case, we `try` the function first in a try-block `try {}`, where we `await*` for it. If that succeeds, we know the function returned a `()` and we return the `#ok` variant as our `Result`.
+
+But in case an error is thrown, we `catch` it in the catch-block and give it a name `e`. This error has type `Error`, which is a non-shared type that can only happen in an [asynchronous context](#messaging-restrictions).
+
+We analyze our error `e` using the methods from the [Error module] to obtain the [`ErrorCode`] and the error message as a `Text`. We return this information as the associated type of our `#err` variant for our `Result`.
+
+Note, we bind the return value of the whole try-catch block expression to the variable `result` to demonstrate that it is indeed an expression that evaluates to a value. In this case, the try-catch expression evaluates to a `Result` type.
+
+### Catching a trap
+The same try-catch expression can be used to catch a [trap](#traps) that occurs during execution of an `async` or `async*` function. 
+
+A trap would surface as an [`Error`](#errors) with system reject code `5` (which isn't part of the [`ErrorCode`] variant) and a message that indicates why the execution trapped. 
