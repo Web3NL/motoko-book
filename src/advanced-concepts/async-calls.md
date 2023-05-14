@@ -320,3 +320,8 @@ Now our function `non_atomic()` performs an `await*` in its body. The `await*` t
 This happens because `incr2()` uses an 'ordinary' `await` in its body.
 
 ## Try-Catch Expressions
+
+To correctly handle calls to `async` and `async*` functions, we need to safely handle some possible cases:
+- an `await` or `await*` call to an `async` or `async*` function that throws an [`Error`](#errors). 
+- an `await` or `await*` call to an `async` or `async*` function that [traps](#traps) during execution. 
+- an `await*` call to an `async*` function that performed an 'ordinary' `await` in its body.
