@@ -244,7 +244,7 @@ A trap is an _unintended_ non-recoverable runtime failure caused by, for example
 - A trap during the execution of a single message causes the entire message to fail.
 - State changes before and after a trap within a message are **NOT** committed.
 - Traps can be handled using [`try-catch`](#try-catch-expressions) expressions.
-- A trap may occur intentionally for development purposes, see [Debug.trap()]
+- A trap may occur intentionally for development purposes, see [Debug.trap()](/base-library/utils/debug.html)
 - A trap can happen anywhere code runs in an actor, not only in an [asynchronous context](#messaging-restrictions).
 
 ```motoko
