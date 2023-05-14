@@ -1,6 +1,8 @@
 # Async Programming
 
-The asynchronous programming paradigm of the Internet Computer is based on the actor model. Actors are isolated units of code and state that communicate with each other by calling each others' [shared functions]. Each shared function call results in at least 1 or more [messages](#messages-and-atomicity) to be sent and executed.
+The asynchronous programming paradigm of the Internet Computer is based on the actor model. 
+
+[Actors] are isolated units of code and state that communicate with each other by calling each others' [shared functions] where each shared function call triggers at least 1 or more [messages](#messages-and-atomicity) to be sent and executed.
 
 To master Motoko programming on the IC, we need to understand how to write _asynchronous code_, how to [**correctly handle async calls using try-catch**](#try-catch-expressions) and mutate the state safely.
 
