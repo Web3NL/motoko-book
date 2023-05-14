@@ -41,7 +41,7 @@ To master Motoko programming on the IC, we need to understand how to write _asyn
 
 ## Async and Await
 
-A call to a [shared function](/internet-computer-programming-concepts/actors.html#public-shared-functions-in-actors) immediately returns a _future_ of type [`async T`], where T is a [*shared type*]. A _future_ of type `async T` can be _awaited_ using the `await` keyword to retrieve the value of type `T`.
+A call to a [shared function](/internet-computer-programming-concepts/actors.html#public-shared-functions-in-actors) immediately returns a _future_ of type [`async T`](/internet-computer-programming-concepts/actors.html#shared-async-types), where T is a [*shared type*](/internet-computer-programming-concepts/async-data/shared-types.html). A _future_ of type `async T` can be _awaited_ using the `await` keyword to retrieve the value of type `T`.
 
 - Shared function calls and awaits are only allowed in [_asynchronous context_](#messaging-restrictions).
 - Shared function calls that immediately return a future, do not suspend execution of the code.
@@ -93,7 +93,7 @@ _A message is a set of consecutive instructions that a subnet executes for a can
 
 We will not cover the terms 'instruction' and 'subnet' in this book. Lets just remember that a single call to a [shared function](/internet-computer-programming-concepts/actors.html#public-shared-functions-in-actors) can be split up into several messages that execute separately.
 
-A call to a shared function of any actor A, whether from an [_external client_], [from itself](#async-and-await) or from another actor B (as an [Inter-Canister Call](#inter-canister-calls)), results in an _incoming message_ to actor A.
+A call to a shared function of any actor A, whether from an [_external client_](/internet-computer-programming-concepts/actors/canister-calling.html), [from itself](#async-and-await) or from another actor B (as an [Inter-Canister Call](#inter-canister-calls)), results in an _incoming message_ to actor A.
 
 A single message is executed _atomically_. This means that the code executed within one message either executes successfully or not at all. This also means that any _state mutations_ within a single message are either all committed or none of them are committed.
 
@@ -179,7 +179,7 @@ If condition `b` is `true`, the `return` keyword ends the current message and st
 4. **Explicit [await expressions](#shared-functions-that-await)**  
    As we have seen in the [shared functions that `await`](#shared-functions-that-await) example, an `await` ends the current message, commits state up to that point and splits the execution of a function into separate messages.
 
-[*See official docs*]
+[*See official docs*](https://internetcomputer.org/docs/current/motoko/main/actors-async/#traps-and-commit-points)
 
 ### Messaging Restrictions
 
@@ -201,7 +201,7 @@ Examples of messaging restrictions:
 
 - The `try-catch` expression is only allowed in an asynchronous context. This is because error handling is supported for _messaging errors_ only and, like messaging itself, confined to asynchronous contexts.
 
-[See official docs]
+[See official docs](https://internetcomputer.org/docs/current/motoko/main/actors-async/#messaging-restrictions)
 
 ### Message ordering
 
@@ -223,7 +223,7 @@ An [Error](/base-library/utils/error.html) is thrown _intentionally_ using the `
 - Code after an error within a message is **NOT** executed, therefore state changes after an error within a message are **NOT** committed.
 - Errors can be handled using [`try-catch`](#try-catch-expressions) expressions.
 - Errors can only be thrown in an [asynchronous context](#messaging-restrictions).
-- To work with errors we use the [`Error`](/base-library/utils/error.html) module in the [base library].
+- To work with errors we use the [`Error`](/base-library/utils/error.html) module in the [base library](/base-library.html).
 
 ```motoko
 {{#include _mo/async-calls3-error.mo:a}}
