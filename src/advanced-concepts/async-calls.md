@@ -1,8 +1,8 @@
 # Async Programming
 
-The asynchronous programming paradigm of the Internet Computer is based on the actor model. Actors are isolated units of code and state that communicate with each other by [sending messages](#messages-and-atomicity).
+The asynchronous programming paradigm of the Internet Computer is based on the actor model. Actors are isolated units of code and state that communicate with each other by calling each others' [shared functions]. Each shared function call results in at least 1 or more [messages](#messages-and-atomicity) to be sent and executed.
 
-To master Motoko programming on the IC, we need to understand how to write asynchronous code, how to correctly [handle async calls](#try-catch-expressions) and state mutations and how to avoid [concurrency hazards](#concurrency-hazards).
+To master Motoko programming on the IC, we need to understand how to write _asynchronous code_, how to [**correctly handle async calls using try-catch**](#try-catch-expressions) and mutate the state safely.
 
 > **NOTE**  
 > _From now on, we will drop the optional `shared` keyword in the declaration of [public shared functions] and refer to these functions as simply 'shared functions'._
@@ -20,8 +20,7 @@ To master Motoko programming on the IC, we need to understand how to write async
 [Shared functions that `await`](#shared-functions-that-await)  
 [Atomic functions that send messages](#atomic-functions-that-send-messages)  
 [State commits and message sends](#state-commits-and-messsage-sends)  
-[Message send capability](#messaging-restrictions)  
-[Message Ordering and Execution](#message-ordering-and-execution)
+[Messaging restrictions](#messaging-restrictions)
 
 **[Errors and Traps](#errors-and-traps)**
 
@@ -29,11 +28,9 @@ To master Motoko programming on the IC, we need to understand how to write async
 
 **[Try-Catch Expressions](#try-catch-expressions)**
 
-**[Concurrency Hazards](#concurrency-hazards)**
-
 ## Async and Await
 
-A call to a shared function immediately returns a _future_ of type [`async T`], where T is a [*shared type*]. A _future_ of type `async T` can be _awaited_ using the `await` keyword to retrieve the value of type `T`.
+A call to a [shared function] immediately returns a _future_ of type [`async T`], where T is a [*shared type*]. A _future_ of type `async T` can be _awaited_ using the `await` keyword to retrieve the value of type `T`.
 
 - Shared function calls and awaits are only allowed in [_asynchronous context_](#messaging-restrictions).
 - Shared function calls that immediately return a future, do not suspend execution of the code.
@@ -47,9 +44,9 @@ A call to a shared function immediately returns a _future_ of type [`async T`], 
 
 The first call to `read` immediately returns a future of type `async Nat`, which is the [return type] of our [shared query] function `read`. This means that the caller does not wait for a response from `read` and immediately continues execution.
 
-To actually retrieve the `Nat` value, we have to `await` the future. This halts execution until a response is received.
+To actually retrieve the `Nat` value, we have to `await` the future. The actor sends a [message](#messages-and-atomicity) to itself with the request and halts execution until a response is received.
 
-The result is a `Nat` that we increment and use as the return value for `call_read`.
+The result is a `Nat` that we increment within the [_callback_](#messages-and-atomicity) and use as the return value for `call_read`.
 
 > **NOTE**  
 > _Shared functions that `await` are not atomic. `call_read()` is executed as several separate [messages](#messages-and-atomicity), see [shared functions that `await`](#shared-functions-that-await)._
@@ -68,7 +65,7 @@ To call the shared functions of other actors, we need the [_actor type_] of the 
 
 The actor type we use may be a [_subtype_] of the external actor type. We declare the actor type `actor {}` with only the shared functions we are interested in. In this case, we are importing the actor from the previous example and are only interested in the [query function] `read`.
 
-We declare a variable `actorA` with actor type `ActorA` and assign an actor reference `actor()` to it. We supply the [principal id] of actor A to reference it remotely. We can now refer to the shared function `read` of actor A as `actorA.read`.
+We declare a variable `actorA` with actor type `ActorA` and assign an actor reference `actor()` to it. We supply the [principal id] of actor A to reference it. We can now refer to the shared function `read` of actor A as `actorA.read`.
 
 Finally, we `await` the shared function `read` of actor A yielding a `Nat` value that we use as a return value for our [update function] `callActorA`.
 
@@ -83,7 +80,7 @@ Calling a [query function] from an actor is currently (May 2023) only allowed fr
 From the [official docs](https://internetcomputer.org/docs/current/developer-docs/security/rust-canister-development-security-best-practices/#inter-canister-calls-and-rollbacks):  
 _A message is a set of consecutive instructions that a subnet executes for a canister._
 
-We have not covered the terms 'instruction' and 'subnet' in this book. Lets just remember that a single call to a [shared update function] can be split into several messages that execute separately.
+We will not cover the terms 'instruction' and 'subnet' in this book. Lets just remember that a single call to a [shared update function] can be split into several messages that execute separately.
 
 A call to a shared function of any actor A, whether from an [_external client_], [from itself](#async-and-await) or from another actor B (as an [Inter-Canister Call](#inter-canister-calls)), results in an [_incoming message_](#message-ordering-and-execution) to actor A.
 
@@ -101,11 +98,11 @@ An atomic function is one that executes within one single message. The function 
 {{#include _mo/async-calls4.mo:a}}
 ```
 
-Our function `atomic` mutates the state, performs a computation on constant `C` and mutates the `state` again. Both the computation and the state mutations belong to the same message execution. The whole function either succeeds and commits all state mutations or it fails and does not commit any changes at all.
+Our function `atomic` mutates the state, performs a computation and mutates the `state` again. Both the computation and the state mutations belong to the same message execution. The whole function either succeeds and commits all state mutations or it fails and does not commit any changes at all.
 
 The second function `atomic_fail` is another atomic function. It also performs a computation and state mutations within one single message. **But this time, the computation [traps] and both state mutations are not committed, even though the trap happened after the first state mutation.**
 
-The order in which computations and state mutations occur is not relevant for the atomicity of a function. The whole function is executed as a single message that either fails or succeeds in its entirety.
+Unless an [`Error`](#errors) is thrown _intentionally_ during execution, the order in which computations and state mutations occur is not relevant for the atomicity of a function. The whole function is executed as a single message that either fails or succeeds in its entirety.
 
 ### Shared functions that `await`
 
@@ -115,7 +112,7 @@ The first line `let future : async Nat = read()` is executed as part of the firs
 
 The second line `let result = await future;` keyword ends the first message and any state changes made during execution of the message are committed. The `await` also calls `read()` and suspends execution until a response is received.
 
-The call to `read()` is executed as a separate message and could possibly be executed remotely in another actor, see [inter-canister calls](#inter-canister-calls). The message sent to `read()` could possibly result in several messages if the `read()` function also `await`s in its body. In this case it doesn't and couldn't because [query functions currently can't `await`](#inter-canister-query-calls).
+The call to `read()` is executed as a separate message and could possibly be executed remotely in another actor, see [inter-canister calls](#inter-canister-calls). The message sent to `read()` could possibly result in several messages if the `read()` function also `await`s in its body.
 
 If the sent message executes successfully, a _callback_ is made to `call_read` that is executed as yet another message as the the last line `result + 1`.
 
@@ -126,7 +123,7 @@ In total, there are **three messages**, two of which are executed inside the cal
 
 ### Atomic functions that send messages
 
-A successful atomic function may or may not mutate the state itself, but successful execution could cause multiple messages to be sent (by calling shared functions) that each may or may not execute (and possibly mutate state) successfully, see [state commits](#state-commits-and-message-sends).
+A successful atomic function may or may not mutate the state itself, but successful execution of an atomic function could cause multiple messages to be sent (by calling shared functions) that each may or may not execute successfully (and possibly mutate state locally or remotely), see [state commits](#state-commits-and-message-sends).
 
 ```motoko
 {{#include _mo/async-calls5.mo:a}}
@@ -136,14 +133,14 @@ We have two state variables `s1` and `s2` and two shared functions that mutate t
 
 `incr_s1` should execute successfully, while `incr_s2` will trap and revert any state mutation.
 
-A call to `atomic` will execute successfully without mutating the state during its own execution. When `atomic` exits successfully [with a result](#state-commits-and-message-sends), the calls to `incr_s1` and `incr_s2` are committed and two separate messages are sent, see [state commits](#state-commits-and-message-sends).
+A call to `atomic` will execute successfully without mutating the state during its own execution. When `atomic` exits successfully [with a result](#state-commits-and-message-sends), the calls to `incr_s1` and `incr_s2` are committed (without `await`) and two separate messages are sent, see [state commits](#state-commits-and-message-sends).
 
 Now, `incr_s1` will mutate the state, while `incr_s2` does not. The values of `s1` and `s2`, after the successful atomic execution of `atomic` will be `1` and `0` respectively.
 
 These function calls could have been calls to shared function in remote actors, therefore initiating remote execution of code and possible remote state mutations.
 
 > **NOTE**  
-> _We are using the `ignore` keyword to ignore return types that are not the empty tuple `()` to resume execution. For example, `0 / 0` should in principle return a `Nat`, while `incr_s1()` returns a future of type `async ()`. Both are ignored as if they return `()`._
+> _We are using the `ignore` keyword to ignore return types that are not the empty tuple `()`. For example, `0 / 0` should in principle return a `Nat`, while `incr_s1()` returns a future of type `async ()`. Both are ignored to resume execution._
 
 ### State commits and message sends
 
@@ -163,13 +160,13 @@ There are several points during the execution of a shared function at which _sta
 {{#include _mo/async-calls6.mo:b}}
 ```
 
-If condition `b` is `true`, the `return` keyword ends the current message and state is committed up to this
+If condition `b` is `true`, the `return` keyword ends the current message and state is committed up to that point only. If `b` is true, `y` will only be incremented once.
 
-3. **Explicit [throw expressions](#example)**
-   When an error is thrown, the state changes up until the error are committed.
+3. **Explicit [throw expressions](#example)**  
+   When an [error](#errors) is thrown, the state changes up until the error are committed and execution of the current message is stopped.
 
-4. **Explicit [await expressions](#shared-functions-that-await)**
-   As we have seen in the [shared functions that `await`](#shared-functions-that-await) example, an `await` ends the current message and splits the execution of a function into separate messages.
+4. **Explicit [await expressions](#shared-functions-that-await)**  
+   As we have seen in the [shared functions that `await`](#shared-functions-that-await) example, an `await` ends the current message, commits state up to that point and splits the execution of a function into separate messages.
 
 [*See official docs*]
 
@@ -215,9 +212,9 @@ An [error] is thrown _intentionally_ using the `throw` keyword to inform a calle
 
 We import the [`Error`] module.
 
-We have a shared functions `incrementAndError` that mutates `state` and throws an `Error`. We increment the value of `state` once before and once after the error throw.
+We have a shared functions `incrementAndError` that mutates `state` and throws an `Error`. We increment the value of `state` once before and once after the error throw. The function does not return `()`. Instead it results in an error of type `Error` (see [Error] module).
 
-The function fails and does not return `()`. Instead it results in an error of type `Error` (see [Error] module). **The first state mutation is committed, but the second is not.**
+**The first state mutation is committed, but the second is not.**
 
 After `incrementAndError`, our mutable variable `state` only incremented once to value `1`.
 
@@ -237,7 +234,9 @@ A trap is an _unintended_ non-recoverable runtime failure caused by, for example
 
 We import the [`Debug`] module.
 
-The shared function `incrementAndTrap` fails and does not return `()`. Instead it causes the execution to trap (see [Debug] module). **Both the first and second state mutation are NOT committed.**
+The shared function `incrementAndTrap` fails and does not return `()`. Instead it causes the execution to trap (see [Debug] module).
+
+**Both the first and second state mutation are NOT committed.**
 
 After `incrementAndTrap`, our mutable variable `state` is not changed at all.
 
@@ -250,27 +249,31 @@ Recall that 'ordinary' [shared functions] with `async` return type are part of t
 
 **Private non-shared `async*` functions** provide an [asynchronous context](#messaging-restrictions) without exposing the function as part of the public API of the actor.
 
-A call to an `async*` function also immediately returns a future. The future **needs** to be awaited using the `await*` keyword (in any asynchronous context) to produce a result. This was not the case with un-awaited `async` calls, see [atomic functions that send messages](#atomic-functions-that-send-messages).
+A call to an `async*` function also immediately returns a future. The future **needs** to be awaited using the `await*` keyword (in any asynchronous context `async` or `async*`) to produce a result. This was not the case with un-awaited `async` calls, see [atomic functions that send messages](#atomic-functions-that-send-messages).
 
-For demonstration purposes, lets look at an example of a private `async*` function, that doesn't use its asynchronous context to call other `async` or `async*` functions, but instead uses it to perform a _delayed computation_:
+For demonstration purposes, lets look at an example of a private `async*` function, that does not use its asynchronous context to call other `async` or `async*` functions, but instead only performs a _delayed computation_:
 
 ```motoko
 {{#include _mo/async-calls7.mo}}
 ```
 
-`compute` is a [private function] with `async* Nat` return type. Calling it directly yields a *future* of type `async* Nat`. This future needs to be awaited using `await*` for the computation to actually execute (unlike the case with 'ordinary' `async` [atomic functions that send messages](#atomic-functions-that-send-messages)). We could also pass around the future within our actor code and only `await*` it when we actually need the result.
+`compute` is a [private function] with `async* Nat` return type. Calling it directly yields a _future_ of type `async* Nat` and resumes execution without blocking. This future needs to be awaited using `await*` for the computation to actually execute (unlike the case with 'ordinary' `async` [atomic functions that send messages](#atomic-functions-that-send-messages)).
 
-We `await*` our function `compute` from within an [asynchronous context](#messaging-restrictions). 
+`await*` also suspends execution, until a result is obtained. We could also pass around the future within our actor code and only `await*` it when we actually need the result.
 
-We `await*` our function `compute` from within an 'ordinary' shared `async` function `call_compute` or from within another private `async*` like `call_compute2`. In the case of `call_compute` we obtain the result more verbosely by first declaring a future and then `await*`ing it. In the case of `call_compute2` we `await*` the result directly.
+We `await*` our function `compute` from within an [asynchronous context](#messaging-restrictions).
 
-`compute` is not part of the [actor type] and [public API], because it is a [private function].
+We `await*` our function `compute` from within an 'ordinary' shared `async` function `call_compute` or from within another private `async*` like `call_compute2`.
+
+In the case of `call_compute` we obtain the result by first declaring a future and then `await*`ing it. In the case of `call_compute2` we `await*` the result directly.
+
+`compute` and `call_compute` are not part of the [actor type] and [public API], because it is a [private function].
 
 ### `await` and `await*`
 
 Private non-shared `async*` functions can both `await` and `await*` in their body.
 
-**`await` triggers a new message send, where `await*` doesn't necessarily trigger new message sends and could be atomically executed.**
+**`await` always triggers a new message send, where `await*` doesn't necessarily trigger new message sends and could be executed as part of the current.**
 
 An `async*` function that only uses `await*` in its body to await futures of other `async*` functions (that also don't 'ordinarily' `await` in their body), is executed as a single message and is guaranteed to be atomic. This means that either all `await*` expressions within a `async*` function are executed successfully or non of them have any effect at all.
 
@@ -282,11 +285,36 @@ The call to a private non-shared `async*` function is split up into several mess
 {{#include _mo/async-calls8.mo}}
 ```
 
-We `await` and `await*` from within a private non-shared `async*` function named `call`. 
+We `await` and `await*` from within a private non-shared `async*` function named `call`.
 
-The `await` suspends execution of the current message and triggers a new message send. In this case the actor sends a message to itself, but it could have been a call to a remote actor. 
+The `await` suspends execution of the current message and triggers a new message send. In this case the actor sends a message to itself, but it could have been a call to a remote actor.
 
-When a result is returned we resume execution of `call` within a second message. The `await*` acts as if we substitute the body of `incr2` for the line `await* incr2()`. Because `incr2` does not `await` or `await*` in its body, it acts like an ordinary private function when `await*`ed. No message is sent.
+When a result is returned we resume execution of `call` within a second message. The `await*` acts as if we substitute the body of `incr2` for the line `await* incr2()`. No message is sent.
+
+### Atomic `await*`
+
+Here's an example of several `await*` within a function call:
+
+```motoko
+{{#include _mo/async-calls9.mo}}
+```
+
+Because `incr()` and `incr2()` don't 'ordinarily' `await` in their body, a call to `atomic()` is executed as single message. It behaves as if we substitute the body of `incr()` and `incr2()` for the `await*` expressions.
+
+### Non-atomic `await*`
+
+The [asynchronous context](#messaging-restrictions) that `incr()` and `incr2()` provide could be used to `await` and `await*` other `async` or `async*` functions.
+
+The key difference is that `await` commits the current message and triggers a new message send, where `await*` doesn't, unless the `async*` function that is being `await*`ed 'ordinarily' `await`s in its body.
+
+Here's an example of a 'nested' `await`:
+
+```motoko
+{{#include _mo/async-calls10.mo}}
+```
+
+Now our function `non_atomic()` performs an `await*` in its body twice. The first `await*` to `incr()` suspends execution until a result is received, but does not send a new message.
+
+The second `await*` to `incr2()` triggers a commit of the state up to that point and triggers a new message send, thereby splitting the call to `non_atomic()` into two messages like we [discussed earlier](#shared-functions-that-await). This happens because `incr2()` uses an 'ordinary' `await` in its body.
 
 ## Try-Catch Expressions
-

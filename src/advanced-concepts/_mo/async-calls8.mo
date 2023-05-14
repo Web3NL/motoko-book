@@ -5,13 +5,11 @@ actor {
 
     private func incr2() : async* () { x += 1 };
 
-    private func call() : async* Text {
+    private func call() : async* () {
         // awaiting 'ordinary' `async` function
-        await incr();
+        await incr(); // current message is comitted, new message send occurs
 
         // awaiting `async*` function
-        await* incr2();
-
-        "awaited with both await and await*"
+        await* incr2(); // no message send occurs
     };
 };

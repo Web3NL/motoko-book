@@ -1,12 +1,11 @@
 // ANCHOR: a
 actor {
-    let C = 11;
     var state = 0;
 
     public func atomic() : async () {
-        state += 1; // update the again
+        state += 11; // update the state
 
-        let result = C % 2; // perform a computation
+        let result = state % 2; // perform a computation
 
         state := result; // update state again
     };
