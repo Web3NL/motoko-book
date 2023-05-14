@@ -22,11 +22,17 @@ To master Motoko programming on the IC, we need to understand how to write _asyn
 [Shared functions that `await`](#shared-functions-that-await)  
 [Atomic functions that send messages](#atomic-functions-that-send-messages)  
 [State commits and message sends](#state-commits-and-messsage-sends)  
-[Messaging restrictions](#messaging-restrictions)
+[Messaging restrictions](#messaging-restrictions)  
+[Message ordering](#message-ordering)
 
-**[Errors and Traps](#errors-and-traps)**
+**[Errors and Traps](#errors-and-traps)**  
+[Errors](#errors)  
+[Traps](#traps)
 
-**[Async* and Await*](#async-and-await-1)**
+**[Async* and Await*](#async-and-await-1)**  
+[`await` and `await*`](#await-and-await)  
+[Atomic `await*`](#atomic-await)  
+[Non-atomic `await*`](#non-atomic-await)
 
 **[Try-Catch Expressions](#try-catch-expressions)**
 
@@ -82,9 +88,9 @@ Calling a [query function] from an actor is currently (May 2023) only allowed fr
 From the [official docs](https://internetcomputer.org/docs/current/developer-docs/security/rust-canister-development-security-best-practices/#inter-canister-calls-and-rollbacks):  
 _A message is a set of consecutive instructions that a subnet executes for a canister._
 
-We will not cover the terms 'instruction' and 'subnet' in this book. Lets just remember that a single call to a [shared update function] can be split into several messages that execute separately.
+We will not cover the terms 'instruction' and 'subnet' in this book. Lets just remember that a single call to a [shared update function] can be split up into several messages that execute separately.
 
-A call to a shared function of any actor A, whether from an [_external client_], [from itself](#async-and-await) or from another actor B (as an [Inter-Canister Call](#inter-canister-calls)), results in an [_incoming message_](#message-ordering-and-execution) to actor A.
+A call to a shared function of any actor A, whether from an [_external client_], [from itself](#async-and-await) or from another actor B (as an [Inter-Canister Call](#inter-canister-calls)), results in an _incoming message_ to actor A.
 
 A single message is executed _atomically_. This means that the code executed within one message either executes successfully or not at all. This also means that any _state mutations_ within a single message are either all committed or none of them are committed.
 
@@ -193,6 +199,14 @@ Examples of messaging restrictions:
 - The `try-catch` expression is only allowed in an asynchronous context. This is because error handling is supported for _messaging errors_ only and, like messaging itself, confined to asynchronous contexts.
 
 [See official docs]
+
+### Message ordering
+
+Messages in an actor are always executed sequentially, meaning one after the other and never in parallel. As a programmer, you have no control over the order in which _incoming messages_ are executed.
+
+You can only control the order in which you send messages to other actors, with the guarantee that they will be executed in the order you sent them. But you have no guarantee on the order in which you receive the _callbacks_ for those messages.
+
+Consult the [official docs] for more information on this topic.
 
 ## Errors and Traps
 
