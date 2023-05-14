@@ -1,6 +1,6 @@
 # Async Programming
 
-The asynchronous programming paradigm of the Internet Computer is based on the actor model. 
+The asynchronous programming paradigm of the Internet Computer is based on the actor model.
 
 [Actors] are isolated units of code and state that communicate with each other by calling each others' [shared functions] where each shared function call triggers at least 1 or more [messages](#messages-and-atomicity) to be sent and executed.
 
@@ -249,7 +249,7 @@ After `incrementAndTrap`, our mutable variable `state` is not changed at all.
 
 Recall that 'ordinary' [shared functions] with `async` return type are part of the [actor type] and therefore publicly visible in the [public API] of the actor. Shared functions provide an [asynchronous context](#messaging-restrictions) from which other shared functions can be called and awaited, because awaiting a shared function requires a [message](#messages-and-atomicity) to be sent.
 
-**Private non-shared `async*` functions** provide an [asynchronous context](#messaging-restrictions) without exposing the function as part of the public API of the actor.
+**Private non-shared functions with `async*` return type** provide an [asynchronous context](#messaging-restrictions) without exposing the function as part of the public API of the actor.
 
 A call to an `async*` function also immediately returns a future. The future **needs** to be awaited using the `await*` keyword (in any asynchronous context `async` or `async*`) to produce a result. This was not the case with un-awaited `async` calls, see [atomic functions that send messages](#atomic-functions-that-send-messages).
 
@@ -275,13 +275,17 @@ In the case of `call_compute` we obtain the result by first declaring a future a
 
 Private non-shared `async*` functions can both `await` and `await*` in their body.
 
-**`await` always triggers a new message send, where `await*` doesn't necessarily trigger new message sends and could be executed as part of the current.**
+**`await` always commits the current state and triggers a new message send, where `await*`:**
+
+- does not commit the current state
+- does not necessarily trigger new message sends
+- could be executed as part of the current message
 
 An `async*` function that only uses `await*` in its body to await futures of other `async*` functions (that also don't 'ordinarily' `await` in their body), is executed as a single message and is guaranteed to be atomic. This means that either all `await*` expressions within a `async*` function are executed successfully or non of them have any effect at all.
 
-This is different form 'ordinary' `await` where each `await` triggers a new message and splits the function call into several messages. State changes from the current message are then committed each time a new `await` happens.
+This is different form 'ordinary' `await` where each `await` triggers a new message and splits the function call into [several messages](#shared-functions-that-await). State changes from the current message are then committed each time a new `await` happens.
 
-The call to a private non-shared `async*` function is split up into several messages only when we use an ordinary `await` in its body. Or when we `await*` a `async*` function that 'ordinarily' `await`s in its body.
+The call to a private non-shared `async*` function is split up into [several messages](#shared-functions-that-await) only when we use an ordinary `await` in its body. Or when we `await*` a `async*` function that 'ordinarily' `await`s in its body.
 
 ```motoko
 {{#include _mo/async-calls8.mo}}
@@ -289,25 +293,31 @@ The call to a private non-shared `async*` function is split up into several mess
 
 We `await` and `await*` from within a private non-shared `async*` function named `call`.
 
-The `await` suspends execution of the current message and triggers a new message send. In this case the actor sends a message to itself, but it could have been a call to a remote actor.
+The `await` suspends execution of the current message, commits the first state mutation and triggers a new message send. In this case the actor sends a message to itself, but it could have been a call to a remote actor.
 
-When a result is returned we resume execution of `call` within a second message. The `await*` acts as if we substitute the body of `incr2` for the line `await* incr2()`. No message is sent.
+The sent message is executed, mutating the state again.
+
+When a result is returned we resume execution of `call` within a second message. We mutate the state a third time.
+
+The `await*` acts as if we substitute the body of `incr2` for the line `await* incr2()`. The third state mutation is **not** committed before execution of `incr2()`. No message is sent.
+
+The third and fourth state mutation are committed when we successfully exit `call()`, see [state commits](#state-commits-and-message-sends).
 
 ### Atomic `await*`
 
-Here's an example of a nested `await*` within `async*` function calls:
+Here's an example of a nested `await*` within an `async*` function calls:
 
 ```motoko
 {{#include _mo/async-calls9.mo}}
 ```
 
-Because `incr()` doesn't 'ordinarily' `await` in its body, a call to `atomic()` is executed as single message. It behaves as if we substitute the body of `incr()` for the `await* incr()` expression and similarly substitute the body of `incr2()` for the `await* incr2()` expression. 
+Because `incr()` and `incr2()` do not 'ordinarily' `await` in their body, a call to `atomic()` is executed as single message. It behaves as if we substitute the body of `incr()` for the `await* incr()` expression and similarly substitute the body of `incr2()` for the `await* incr2()` expression.
 
 ### Non-atomic `await*`
 
-The [asynchronous context](#messaging-restrictions) that `incr()` provides could be used to `await` and 'ordinary' `async` functions.
+The [asynchronous context](#messaging-restrictions) that `incr()` provides could be used to `await` 'ordinary' `async` functions.
 
-The key difference is that `await` commits the current message and triggers a new message send, where `await*` doesn't, unless the `async*` function that is being `await*`ed 'ordinarily' `await`s in its body.
+The key difference is that `await` commits the current message and triggers a new message send, where `await*` doesn't.
 
 Here's an example of a 'nested' `await`:
 
@@ -315,13 +325,31 @@ Here's an example of a 'nested' `await`:
 {{#include _mo/async-calls10.mo}}
 ```
 
-Now our function `non_atomic()` performs an `await*` in its body. The `await*` to `incr()` suspends execution until a result is received. The call triggers a commit of the state up to that point and a new message send, thereby splitting the call to `non_atomic()` into two messages like we [discussed earlier](#shared-functions-that-await). 
+This time `incr2()` is a public shared function with `async ()` return type.
+
+Our function `non_atomic()` performs an `await*` in its body. The `await*` to `incr()` contains an 'ordinary' `await` and thus suspends execution until a result is received. A commit of the state is triggered up to that point and a new message is sent, thereby splitting the call to `non_atomic()` into two messages like we [discussed earlier](#shared-functions-that-await).
 
 This happens because `incr2()` uses an 'ordinary' `await` in its body.
 
 ## Try-Catch Expressions
 
-To correctly handle calls to `async` and `async*` functions, we need to safely handle some possible cases:
-- an `await` or `await*` call to an `async` or `async*` function that throws an [`Error`](#errors). 
-- an `await` or `await*` call to an `async` or `async*` function that [traps](#traps) during execution. 
-- an `await*` call to an `async*` function that performed an 'ordinary' `await` in its body.
+To correctly handle calls to `async` and `async*` functions, we need to write code that also deals with scenario's in which function do not execute successfully. This may be due to an [`Error`](#errors) or a [trap](#traps).
+
+In both cases, the failure can be _'caught'_ and handled safely using a _try-catch expression_.
+
+Consider the following failure scenario's:
+
+- an `await` or `await*` for an `async` or `async*` function that throws an [`Error`](#errors).
+- an `await` or `await*` for an `async` or `async*` function that [traps](#traps) during execution.
+
+And the following success scenario's:
+
+- an `await*` for an `async*` function that performed an 'ordinary' `await` in its body.
+- an `await*` for an `async*` function that performed an `await*` in its body (**for an `async*` function that does not 'ordinarily' `await`s in its body**) or performs no awaits at all.
+
+In every case, our code should handle function failures ([errors](#errors) or [traps](#traps)) correctly and keep track of [state commits and message sends](#state-commits-and-message-sends) to only mutate the state when we intend to do so.
+
+> **NOTE**  
+> _The [`Star.mo`](https://github.com/icdevs/star.mo) library declares a [result type](/base-library/utils/result.html) that is useful for handling `async*` functions. We highly recommend it, but will not cover it here._
+
+In the following examples, we will use [`Result<Ok, Err>`](/base-library/utils/result.html) as the return type of our functions.

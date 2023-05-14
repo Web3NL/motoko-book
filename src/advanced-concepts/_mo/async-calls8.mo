@@ -6,10 +6,12 @@ actor {
     private func incr2() : async* () { x += 1 };
 
     private func call() : async* () {
-        // awaiting 'ordinary' `async` function
-        await incr(); // current message is comitted, new message send occurs
+        x += 1; // first state muation
+        await incr(); // current state is comitted, new message send occurs
 
-        // awaiting `async*` function
-        await* incr2(); // no message send occurs
+        x += 1; // third state mutation
+        await* incr2(); // state is not comitted, no message send occurs
+
+        // state is comitted when function exits successfully
     };
 };
