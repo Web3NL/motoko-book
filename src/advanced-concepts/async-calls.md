@@ -36,7 +36,7 @@ A call to a [shared function] immediately returns a _future_ of type [`async T`]
 
 - Shared function calls and awaits are only allowed in [_asynchronous context_](#messaging-restrictions).
 - Shared function calls that immediately return a future, do not suspend execution of the code.
-- Awaits using `await` do suspend execution of code until a _callback_ is received.
+- Awaits using `await` do suspend execution of code until a [_callback_](#shared-functions-that-await) is received.
 
 [Actors] can call their own [shared functions]. Here is an actor calling its own shared function from another shared function:
 
@@ -295,17 +295,17 @@ When a result is returned we resume execution of `call` within a second message.
 
 ### Atomic `await*`
 
-Here's an example of several `await*` within a function call:
+Here's an example of a nested `await*` within `async*` function calls:
 
 ```motoko
 {{#include _mo/async-calls9.mo}}
 ```
 
-Because `incr()` and `incr2()` don't 'ordinarily' `await` in their body, a call to `atomic()` is executed as single message. It behaves as if we substitute the body of `incr()` and `incr2()` for the `await*` expressions.
+Because `incr()` doesn't 'ordinarily' `await` in its body, a call to `atomic()` is executed as single message. It behaves as if we substitute the body of `incr()` for the `await* incr()` expression and similarly substitute the body of `incr2()` for the `await* incr2()` expression. 
 
 ### Non-atomic `await*`
 
-The [asynchronous context](#messaging-restrictions) that `incr()` and `incr2()` provide could be used to `await` and `await*` other `async` or `async*` functions.
+The [asynchronous context](#messaging-restrictions) that `incr()` provides could be used to `await` and 'ordinary' `async` functions.
 
 The key difference is that `await` commits the current message and triggers a new message send, where `await*` doesn't, unless the `async*` function that is being `await*`ed 'ordinarily' `await`s in its body.
 
@@ -315,8 +315,8 @@ Here's an example of a 'nested' `await`:
 {{#include _mo/async-calls10.mo}}
 ```
 
-Now our function `non_atomic()` performs an `await*` in its body twice. The first `await*` to `incr()` suspends execution until a result is received, but does not send a new message.
+Now our function `non_atomic()` performs an `await*` in its body. The `await*` to `incr()` suspends execution until a result is received. The call triggers a commit of the state up to that point and a new message send, thereby splitting the call to `non_atomic()` into two messages like we [discussed earlier](#shared-functions-that-await). 
 
-The second `await*` to `incr2()` triggers a commit of the state up to that point and triggers a new message send, thereby splitting the call to `non_atomic()` into two messages like we [discussed earlier](#shared-functions-that-await). This happens because `incr2()` uses an 'ordinary' `await` in its body.
+This happens because `incr2()` uses an 'ordinary' `await` in its body.
 
 ## Try-Catch Expressions
