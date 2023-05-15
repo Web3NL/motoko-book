@@ -6,7 +6,23 @@ let base = await mo.fetchPackage(
   "base",
   "https://github.com/dfinity/motoko-base/master/src"
 )
+
 mo.loadPackage(base)
+
+// let basePath = "/home/xps/motoko-book/src/"
+// let packages = [
+//   "common-internet-computer-canisters/_mo/icp-ledger/icp-ledger-interface.mo",
+//   "common-internet-computer-canisters/_mo/ic-management/ic-management-interface.mo",
+//   "common-internet-computer-canisters/_mo/ic-management/ic-management-import.mo",
+//   "common-internet-computer-canisters/_mo/ic-management/ic-management-public-functions.mo",
+
+// ]
+// packages.forEach((p) => {
+//   let path = basePath + p
+//   let fileString = fs.readFileSync(path).toString()
+//   mo.write(path, fileString)
+//   mo.usePackage(p, path)
+// })
 
 let folders = findFolder("src", "_mo")
 console.log(folders)
@@ -72,6 +88,10 @@ function checkMotoko(file: string) {
   let check = mo.check(file)
   mo.delete(file)
 
+  // if (check.length !== 0) {
+  //   console.log("ERROR: " + file)
+  //   console.log(check)
+  // };
   if (check.length === 0) {
     console.log("CORRECT: " + file)
   } else {
