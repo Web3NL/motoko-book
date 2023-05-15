@@ -489,7 +489,7 @@ func toText<X>(
 {{#include _mo/buffer/toText.mo:a}}
 ```
 
-## Buffer.hash
+<!-- ## Buffer.hash
 
 ```motoko
 func toText<X>(
@@ -509,7 +509,7 @@ func toText<X>(
 
 ```motoko, run
 {{#include _mo/buffer/hash.mo:a}}
-```
+``` -->
 
 ## Buffer.indexOf
 

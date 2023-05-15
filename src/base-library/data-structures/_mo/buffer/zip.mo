@@ -1,4 +1,4 @@
-N// ANCHOR: a
+// ANCHOR: a
 import Buffer "mo:base/Buffer";
 
 let intStorageN = Buffer.Buffer<Int>(0);
