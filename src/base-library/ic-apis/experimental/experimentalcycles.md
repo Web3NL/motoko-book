@@ -1,3 +1,5 @@
+> **BETA WARNING** _This chapter is being reviewed and updated_
+
 # ExperimentalCycles
 
 ```motoko
@@ -10,7 +12,7 @@
 [Function `available`](#experimentalcyclesavailable)  
 [Function `accept`](#experimentalcyclesaccept)  
 [Function `add`](#experimentalcyclesadd)  
-[Function `refunded`](#experimentalcyclesrefunded)  
+[Function `refunded`](#experimentalcyclesrefunded)
 
 ## ExperimentalCycles.balance
 
@@ -21,6 +23,7 @@ func balance : () -> (amount : Nat)
 ```motoko
 {{#include _mo/experimentalCycles/balance.mo:a}}
 ```
+
 ## ExperimentalCycles.available
 
 ```motoko
@@ -30,6 +33,7 @@ func available : () -> (amount : Nat)
 ```motoko
 {{#include _mo/experimentalCycles/available.mo:a}}
 ```
+
 ## ExperimentalCycles.accept
 
 ```motoko
@@ -39,6 +43,7 @@ func accept : (amount : Nat) -> (accepted : Nat)
 ```motoko
 {{#include _mo/experimentalCycles/accept.mo:a}}
 ```
+
 ## ExperimentalCycles.add
 
 ```motoko
@@ -48,6 +53,7 @@ func add : (amount : Nat) -> ()
 ```motoko
 {{#include _mo/experimentalCycles/add.mo:a}}
 ```
+
 ## ExperimentalCycles.refunded
 
 ```motoko

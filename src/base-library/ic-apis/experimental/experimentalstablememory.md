@@ -1,3 +1,5 @@
+> **BETA WARNING** _This chapter is being reviewed and updated_
+
 # ExperimentalStableMemory
 
 ```motoko
@@ -24,8 +26,7 @@
 [Function `loadInt16`](#experimentalstablememoryloadint16)  
 [Function `storeInt16`](#experimentalstablememorystoreint16)  
 [Function `loadInt64`](#experimentalstablememoryloadint64)  
-[Function `storeInt64`](#experimentalstablememorystoreint64)  
-
+[Function `storeInt64`](#experimentalstablememorystoreint64)
 
 ## ExperimentalStableMemory.size
 
@@ -76,6 +77,7 @@ func storeNat32 : (offset : Nat64, value : Nat32) -> ()
 ```motoko
 {{#include _mo/experimentalStableMemory/storeNat32.mo:a}}
 ```
+
 ## ExperimentalStableMemory.loadNat8
 
 ```motoko
@@ -115,6 +117,7 @@ func storeNat16 : (offset : Nat64, value : Nat16) -> ()
 ```motoko
 {{#include _mo/experimentalStableMemory/storeNat16.mo:a}}
 ```
+
 ## ExperimentalStableMemory.loadNat64
 
 ```motoko
@@ -134,6 +137,7 @@ func storeNat64 : (offset : Nat64, value : Nat64) -> ()
 ```motoko
 {{#include _mo/experimentalStableMemory/storeNat64.mo:a}}
 ```
+
 ## ExperimentalStableMemory.loadInt32
 
 ```motoko
@@ -153,6 +157,7 @@ func storeInt32 : (offset : Nat64, value : Int32) -> ()
 ```motoko
 {{#include _mo/experimentalStableMemory/storeInt32.mo:a}}
 ```
+
 ## ExperimentalStableMemory.loadInt8
 
 ```motoko
@@ -172,6 +177,7 @@ func storeInt8 : (offset : Nat64, value : Int8) -> ()
 ```motoko
 {{#include _mo/experimentalStableMemory/storeInt8.mo:a}}
 ```
+
 ## ExperimentalStableMemory.loadInt16
 
 ```motoko
@@ -191,6 +197,7 @@ func storeInt16 : (offset : Nat64, value : Int16) -> ()
 ```motoko
 {{#include _mo/experimentalStableMemory/storeInt16.mo:a}}
 ```
+
 ## ExperimentalStableMemory.loadInt64
 
 ```motoko
