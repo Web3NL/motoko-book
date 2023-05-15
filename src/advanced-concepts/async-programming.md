@@ -101,9 +101,9 @@ A single message is executed _atomically_. This means that the code executed wit
 
 ### Atomic functions
 
-An atomic function is one that executes within one single message. The function either executes successfully or has no effect at all. If an atomic function fails, we know for sure **its own** state mutations have not been committed.
+An atomic function is one that executes within one single message. The function either executes successfully or has no effect at all. If an atomic function fails, we know for sure its state mutations have not been committed.
 
-**If a shared function does not `await` in its body, then it is atomic.**
+**If a shared function does not `await` in its body, then it is executed atomically.**
 
 ```motoko
 {{#include _mo/async-calls4.mo:a}}
@@ -364,7 +364,6 @@ In every case, our code should handle [state commits and message sends](#state-c
 
 | **Visibility** | **Async context** | **Return type** | **Awaited with** | **CS and TM\*\*** |
 | :------------- | :---------------- | :-------------- | :--------------- | :---------------- |
-| `private`      | no                | non-async       | not awaited      | no                |
 | `public`       | yes               | `async` future  | `await`          | yes               |
 | `private`      | yes               | `async` future  | `await`          | yes               |
 | `private`      | yes               | `async*` future | `await*`         | no                |
