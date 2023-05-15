@@ -1,6 +1,7 @@
 book
 .dfx
 node_modules
+.mops
 
 tokenized-comments/.svelte-kit
 tokenized-comments/build

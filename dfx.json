@@ -1,11 +1,13 @@
 {
+  "defaults": {
+    "build": {
+      "packtool": "mops sources"
+    }
+  },
   "canisters": {
-    "motoko-book": {
-      "type": "assets",
-      "source": ["book/"],
-      "frontend": {
-        "entrypoint": "book/index.html"
-      }
+    "mops": {
+      "type": "motoko",
+      "main": "mops/mops.mo"
     }
   }
 }

@@ -1,0 +1,3 @@
+[dependencies]
+base = "0.8.7"
+star = "0.1.0"
