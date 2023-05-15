@@ -1,5 +1,5 @@
 //certifiedData
 
 // ANCHOR: a
-import certifiedData "mo:base/certifiedData";
+import CertifiedData "mo:base/CertifiedData";
 // ANCHOR_END: a
