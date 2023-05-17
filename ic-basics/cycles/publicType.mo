@@ -1,6 +1,12 @@
 module {
     public type canister_id = Principal;
 
+    public type User = {
+        principal : Principal;
+        username : Text;
+        balance : Nat;
+    };
+
     public type PCCWC = {
         settings : ?canister_settings;
         amount : ?Nat;
