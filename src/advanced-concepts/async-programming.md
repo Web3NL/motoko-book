@@ -45,7 +45,10 @@ A call to a [shared function](/internet-computer-programming-concepts/actors.htm
 
 - Shared function calls and awaits are only allowed in [_asynchronous context_](#messaging-restrictions).
 - Shared function calls that immediately return a future, do not suspend execution of the code.
-- Awaits using `await` do suspend execution of code until a [_callback_](#shared-functions-that-await) is received.
+- Awaits using `await` do suspend execution of the function until a [_callback_](#shared-functions-that-await) is received.
+
+> **NOTE**  
+> _While execution of a shared function is suspended due to an `await` or [`await*`](#async-and-await-1), other [messages](#messages-and-atomicity) can be processed by the actor in the meantime._
 
 [Actors](/internet-computer-programming-concepts/actors.html) can call their own [shared functions](/internet-computer-programming-concepts/actors.html#public-shared-functions-in-actors). Here is an actor calling its own shared function from another shared function:
 
@@ -82,7 +85,7 @@ Finally, we `await` the shared function `read` of actor A yielding a `Nat` value
 
 ### Inter-Canister Query Calls
 
-Calling a [query function](/internet-computer-programming-concepts/actors.html#public-shared-query) from an actor is currently (May 2023) only allowed from inside an [update function](/internet-computer-programming-concepts/actors.html#public-shared-update), because query functions don't yet have [message send capability](#messaging-restrictions).
+Calling a [shared function](/internet-computer-programming-concepts/actors.html#public-shared-functions-in-actors) from an actor is currently (May 2023) only allowed from inside an [update function](/internet-computer-programming-concepts/actors.html#public-shared-update) or [oneway function](/internet-computer-programming-concepts/actors.html#public-shared-oneway), because query functions don't yet have [message send capability](#messaging-restrictions).
 
 'Inter-Canister Query Calls' will be available on the IC in the future. For now, only ingress messages (from [external clients](/internet-computer-programming-concepts/actors/canister-calling.html) to the IC) can request a fast query call ([without going through consensus](/internet-computer-programming-concepts/actors.html#public-shared-functions-in-actors)).
 
