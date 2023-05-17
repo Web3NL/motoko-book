@@ -370,7 +370,7 @@ In every case, our code should handle [state commits and message sends](#state-c
 
 \*\* Commits state and triggers a new message send.
 
-The private function with 'ordinary' `async` function is not covered in this chapter. It behaves like a public function with 'ordinary' `async` return type, meaning it commits state up to that point when `await`ed and triggers a new message send.
+The _private_ function with 'ordinary' `async` return type is not covered in this chapter. It behaves like a public function with 'ordinary' `async` return type, meaning that when `await`ed, state is committed up to that point and a new message send is triggered. Because of its private visibility, it is not part of the [actor type](/internet-computer-programming-concepts/actors.html#actor-type). 
 
 ## Try-Catch Expressions
 
