@@ -2,9 +2,11 @@
 
 [The Motoko Programming Language](index.md)
 
-[Introduction](introduction.md)
+# Part 1
 
-- [Getting Started](getting-started.md)
+- [Introduction](introduction.md)
+
+  - [Getting Started](introduction/getting-started.md)
 
 - [Common Programming Concepts](common-programming-concepts.md)
 
@@ -51,6 +53,8 @@
     - [Upgrades](internet-computer-programming-concepts/basic-memory-persistence/upgrades.md)
     - [Stable Variables](internet-computer-programming-concepts/basic-memory-persistence/stable-variables.md)
 
+# Part 2
+
 - [Advanced Types](advanced-types.md)
 
   - [Generic Types](advanced-types/generics.md)
@@ -61,6 +65,7 @@
 - [The Base Library](base-library.md)
 
   - [Primitive Types](base-library/primitive-types.md)
+
     - [Bool](base-library/primitive-types/bool.md)
     - [Nat](base-library/primitive-types/nat.md)
     - [Int](base-library/primitive-types/int.md)
@@ -80,6 +85,7 @@
     - [Blob](base-library/primitive-types/blob.md)
 
   - [Utility Modules](base-library/utils.md)
+
     - [Iterators](base-library/utils/iter.md)
     - [Hash](base-library/utils/hash.md)
     - [Option](base-library/utils/option.md)
@@ -89,7 +95,8 @@
     - [Debug](base-library/utils/debug.md)
 
   - [Data Structures](base-library/data-structures.md)
-    - [Array](base-library/data-structures/array.md)    
+
+    - [Array](base-library/data-structures/array.md)
     - [List](base-library/data-structures/list.md)
     - [Buffer](base-library/data-structures/buffer.md)
     - [HashMap](base-library/data-structures/hashmap.md)
@@ -100,7 +107,6 @@
     - [Deque](base-library/more-data-structures/deque.md)
     - [Heap](base-library/more-data-structures/heap.md)
     - [Stack](base-library/more-data-structures/stack.md)
-    
   - [IC APIs](base-library/ic-apis.md)
     - [Time](base-library/ic-apis/time.md)
     - [Timer](base-library/ic-apis/timer.md)
@@ -114,8 +120,8 @@
 - [Advanced Concepts](advanced-concepts.md)
 
   - [Async Programming](advanced-concepts/async-programming.md)
-    
   - [Scalability](advanced-concepts/scalability.md)
+
     - [Stable Storage](advanced-concepts/scalability/stable-storage.md)
     - [Actor Classes](advanced-concepts/scalability/actor-classes.md)
     - [Multi-canister Scaling](advanced-concepts/scalability/multi-canister-scaling.md)
@@ -126,6 +132,8 @@
     - [Certified Variables](advanced-concepts/system-apis/certified-variables.md)
     - [Pre-upgrade and Post-upgrade](advanced-concepts/system-apis/preupgrade-postupgrade.md)
     - [Cryptographic Randomness](advanced-concepts/system-apis/randomness.md)
+
+# Part 3
 
 - [Project Deployment](project-deployment.md)
 
