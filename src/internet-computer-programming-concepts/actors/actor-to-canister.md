@@ -1,6 +1,6 @@
 # From Actor to Canister
 
-An [actor](internet-computer-programming-concepts/actors.html) is written in Motoko code. It defines [_public functions_](/internet-computer-programming-concepts/actors.html#public-shared-functions-in-actors) that can be accessed from outside the Internet Computer (IC). A [_client_](/internet-computer-programming-concepts/canister-calling.html), like a laptop or a mobile phone, can send a request over the internet to call one of the public functions defined in an actor.
+An [actor](internet-computer-programming-concepts/actors.html) is written in Motoko code. It defines [_public shared functions_](/internet-computer-programming-concepts/actors.html#public-shared-functions-in-actors) that can be accessed from outside the Internet Computer (IC). A [_client_](/internet-computer-programming-concepts/canister-calling.html), like a laptop or a mobile phone, can send a request over the internet to call one of the public functions defined in an actor.
 
 Here is the code for _one_ actor defined in its own Motoko source file. It contains one public function.
 
