@@ -2,6 +2,8 @@
 
 # Result
 
+This is a subset of functions available in the [official reference](https://internetcomputer.org/docs/current/motoko/main/base/Result) for working with `Result` variants. See [this chapter of this book](/common-programming-concepts/options-and-results.html) for more information on `Result`.  
+
 The _convention_ is to name the [_module alias_](/common-programming-concepts/modules.html#type-imports-and-renaming) after the [_file name_](/common-programming-concepts/modules.html#imports) it is defined in:
 
 ```motoko
