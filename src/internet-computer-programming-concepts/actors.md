@@ -30,6 +30,11 @@ To understand actors it is useful to compare them with objects:
 - Actors don't allow public ([immutable](/common-programming-concepts/variables.html) or [mutable](/common-programming-concepts/mutability.html)) variables
 - Objects do allow public ([immutable](/common-programming-concepts/variables.html) or [mutable](/common-programming-concepts/mutability.html)) variables
 
+### Private functions
+
+- [Private functions](/common-programming-concepts/functions.html) in actors are not part of the [actor type](/internet-computer-programming-concepts/actors.html#actor-type)
+- [Private functions](/common-programming-concepts/functions.html) in [objects](/common-programming-concepts/objects-and-classes/objects.html) are not part of the [object type](/common-programming-concepts/objects-and-classes/objects.html)
+
 ### Public shared functions
 
 - Actors only allow _[shared](#public-shared-functions-in-actors)_ public functions
