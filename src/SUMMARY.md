@@ -122,9 +122,8 @@
   - [Async Programming](advanced-concepts/async-programming.md)
   - [Scalability](advanced-concepts/scalability.md)
 
-    - [Stable Storage](advanced-concepts/scalability/stable-storage.md)
     - [Actor Classes](advanced-concepts/scalability/actor-classes.md)
-    - [Multi-canister Scaling](advanced-concepts/scalability/multi-canister-scaling.md)
+    - [Stable Storage](advanced-concepts/scalability/stable-storage.md)
 
   - [System API's](advanced-concepts/system-apis.md)
     - [Message Inspection](advanced-concepts/system-apis/message-inspection.md)
