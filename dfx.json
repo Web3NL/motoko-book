@@ -6,6 +6,10 @@
       "frontend": {
         "entrypoint": "book/index.html"
       }
+    },
+    "comments": {
+      "type": "motoko",
+      "main": "comments/main.mo"
     }
   }
 }
