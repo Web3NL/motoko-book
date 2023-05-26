@@ -18,7 +18,7 @@ module {
     type QueryComment = Types.QueryComment;
 
     public func postComment(stores : Stores, owner : Principal, comment : Text) : PostResult {
-        if (validateComment(comment)) return #err(#InvalidComment);
+        if (not validateComment(comment)) return #err(#InvalidComment);
 
         let now = Time.now();
 
