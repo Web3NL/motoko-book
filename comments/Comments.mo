@@ -11,16 +11,13 @@ module {
     type Stores = Types.Stores;
 
     type Comment = Types.Comment;
+    type Reward = Types.Reward;
     type CommentHash = Types.CommentHash;
 
-    type QueryComment = Types.QueryComment;
     type PostResult = Types.PostResult;
-
-    type Reward = Types.Reward;
+    type QueryComment = Types.QueryComment;
 
     public func postComment(stores : Stores, owner : Principal, comment : Text) : PostResult {
-        // check time
-
         if (validateComment(comment)) return #err(#InvalidComment);
 
         let now = Time.now();
@@ -35,13 +32,17 @@ module {
 
         let (treasury, users, commentStore, commentHistory) = stores;
 
-        treasury[0] -= Constants.COMMENT_REWARD;
-
         switch (users.get(owner)) {
-            case (?(id, balance, _)) {
+            case (?(id, balance, lastPost)) {
+                if (now - lastPost < Constants.MAX_INTERVAL_USER) {
+                    return #err(#TimeRemaining(Constants.MAX_INTERVAL_USER - (now - lastPost)));
+                };
+
+                treasury[0] -= Constants.COMMENT_REWARD;
                 users.put(owner, (id, balance + Constants.COMMENT_REWARD, now));
             };
             case (null) {
+                treasury[0] -= Constants.COMMENT_REWARD;
                 users.put(owner, (users.size() + 1, Constants.COMMENT_REWARD, now));
             };
         };
@@ -63,50 +64,51 @@ module {
         let (treasury, users, commentStore, _) = stores;
 
         switch (commentStore.get(hash)) {
+            case (null) return null;
             case (?(comment, reward)) {
                 switch (users.get(comment.owner)) {
                     case (null) {
                         throw Error.reject("Comment has now owner");
                     };
                     case (?(id, balance, lastPost)) {
-                        treasury[0] -= Constants.COMMENT_REWARD;
+                        treasury[0] -= Constants.LIKE_REWARD;
                         commentStore.put(hash, (comment, reward + Constants.LIKE_REWARD));
                         users.put(comment.owner, (id, balance + Constants.LIKE_REWARD, lastPost));
                     };
 
                 };
             };
-            case (null) return null;
         };
         ?();
     };
 
-    // func latestComments(stores : Stores) : async* [QueryComment] {
-    //     let (_, users, commentStore, commentHistory) = stores;
+    public func latestComments(stores : Stores) : [QueryComment] {
+        let (_, users, commentStore, commentHistory) = stores;
 
-    //     let latestHashes = List.take<CommentHash>(commentHistory[0], 10);
+        let latestHashes = List.take<CommentHash>(commentHistory[0], 10);
 
-    //     let comments = List.map<CommentHash, QueryComment>(
-    //         latestHashes,
-    //         func(hash : CommentHash) : QueryComment {
-    //             switch (commentStore.get(hash)) {
-    //                 case (null) {
-    //                     // throw Error.reject("Comment not found");
-    //                 };
-    //                 case (?(comment, reward)) {
-    //                     let ?(id, balance, lastPost) = users.get(comment.owner);
-    //                     let userId = "User" # Nat.toText(id);
-
-    //                     {
-    //                         created = comment.created;
-    //                         userId;
-    //                         userBalance = balance;
-    //                         comment = comment.comment;
-    //                     };
-    //                 };
-    //             };
-    //         },
-    //     );
-    //     List.toArray(comments);
-    // };
+        let comments = List.mapFilter<CommentHash, QueryComment>(
+            latestHashes,
+            func(hash : CommentHash) : ?QueryComment {
+                switch (commentStore.get(hash)) {
+                    case (null) return null;
+                    case (?(comment, reward)) {
+                        switch (users.get(comment.owner)) {
+                            case (null) return null;
+                            case (?(id, balance, lastPost)) {
+                                let userId = "User" # Nat.toText(id);
+                                ?{
+                                    created = comment.created;
+                                    userId;
+                                    userBalance = balance;
+                                    comment = comment.comment;
+                                };
+                            };
+                        };
+                    };
+                };
+            },
+        );
+        List.toArray(comments);
+    };
 };
