@@ -9,7 +9,7 @@
     },
     "comments": {
       "type": "motoko",
-      "main": "comments/main.mo"
+      "main": "comments/backend/main.mo"
     }
   }
 }
