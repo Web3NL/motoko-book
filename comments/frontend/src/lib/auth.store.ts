@@ -10,6 +10,7 @@ let authClient: AuthClient | undefined | null;
 
 export interface AuthStore extends Readable<AuthStoreData> {
 	sync: () => Promise<void>;
+
 	signIn: () => Promise<void>;
 	signOut: () => Promise<void>;
 }
@@ -24,7 +25,7 @@ const initAuthStore = (): AuthStore => {
 
 		sync: async () => {
 			authClient = authClient ?? (await AuthClient.create());
-            
+
 			const isAuthenticated: boolean = await authClient.isAuthenticated();
 
 			set({
@@ -37,9 +38,10 @@ const initAuthStore = (): AuthStore => {
 			new Promise<void>(async (resolve, reject) => {
 				authClient = authClient ?? (await AuthClient.create());
 
-				const identityProvider = import.meta.env.MODE == 'development'
-					? `http://qhbym-qaaaa-aaaaa-aaafq-cai.localhost:8080`
-					: `https://identity.ic0.app`;
+				const identityProvider =
+					import.meta.env.MODE == 'development'
+						? `http://qhbym-qaaaa-aaaaa-aaafq-cai.localhost:8080`
+						: `https://identity.ic0.app`;
 
 				await authClient?.login({
 					onSuccess: () => {
@@ -51,7 +53,7 @@ const initAuthStore = (): AuthStore => {
 						resolve();
 					},
 					onError: reject,
-					identityProvider,
+					identityProvider
 				});
 			}),
 
@@ -73,7 +75,7 @@ const initAuthStore = (): AuthStore => {
 
 export const authStore = initAuthStore();
 
-export const authSignedInStore: Readable<boolean> = derived(
+export const isSignedIn: Readable<boolean> = derived(
 	authStore,
 	({ identity }) => identity !== null && identity !== undefined
 );
