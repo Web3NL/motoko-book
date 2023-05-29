@@ -1,5 +1,3 @@
-
-
 # Iterators
 
 The `Iter.mo` module provides useful [_classes_](/common-programming-concepts/modules.html#public-classes-in-modules) and [_public functions_](/common-programming-concepts/modules.html#public-functions-in-modules) for _iteration_ on data sequences.
