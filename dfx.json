@@ -9,7 +9,11 @@
     },
     "comments": {
       "type": "motoko",
-      "main": "comments/backend/main.mo"
+      "main": "comments/backend/main.mo",
+      "declarations": {
+        "output": "comments/declarations/",
+        "node_compatibility": true
+      }
     }
   }
 }

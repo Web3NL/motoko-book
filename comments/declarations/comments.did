@@ -1,0 +1,31 @@
+type QueryComment = 
+ record {
+   comment: text;
+   created: int;
+   userBalance: Balance;
+   userId: text;
+ };
+type PostResult = 
+ variant {
+   err: PostError;
+   ok;
+ };
+type PostError = 
+ variant {
+   AnonNotAllowed;
+   InvalidComment;
+   TimeRemaining: int;
+ };
+type CommentHash = nat32;
+type Balance = nat;
+service : {
+  balance: () -> (opt record {
+                        nat;
+                        nat;
+                        int;
+                      }) query;
+  latestComments: () -> (vec QueryComment) query;
+  likeComment: (CommentHash) -> (opt null);
+  postComment: (text) -> (PostResult);
+  tokenTreasury: () -> (nat) query;
+}

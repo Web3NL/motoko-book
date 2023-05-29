@@ -1,7 +1,9 @@
 <script lang="ts">
 	import { authStore, isSignedIn } from '$lib/auth.store';
 	import Button from '$lib/Button.svelte';
+	import { canisterId } from '$lib/actor.store';
 
+	console.log(canisterId)
 </script>
 
 <div class="text-2xl">
