@@ -1,5 +1,3 @@
-
-
 # Char
 
 In Motoko, a _character literal_ is a single character enclosed in **single quotes** and has type `Char`. (As opposed to _text literals_ of type `Text`, which may be multiple characters enclosed in **double quotes**.)
@@ -20,7 +18,7 @@ The _convention_ is to name the [_module alias_](/common-programming-concepts/mo
 
 [Function `toNat32`](#chartonat32)  
 [Function `fromNat32`](#charfromnat32)  
-[Function `toText`](#chartotext)    
+[Function `toText`](#chartotext)
 
 ### Utility Function
 
@@ -38,7 +36,7 @@ The _convention_ is to name the [_module alias_](/common-programming-concepts/mo
 [Function `lessOrEqual`](#charlessorequal)  
 [Function `greater`](#chargreater)  
 [Function `greaterOrEqual`](#chargreaterorequal)  
-[Function `compare`](#charcompare)  
+[Function `compare`](#charcompare)
 
 ## Char.toNat32
 
@@ -63,6 +61,7 @@ The function `fromNat32` takes one `Nat32` value and returns a `Char` value.
 ```motoko, run
 {{#include _mo/char/char3.mo:a}}
 ```
+
 ## Char.toText
 
 ```motoko
@@ -98,6 +97,7 @@ The function `isWhitespace` takes one `Char` value and returns a `Bool` value.
 ```motoko, run
 {{#include _mo/char/char13.mo:a}}
 ```
+
 ## Char.isLowercase
 
 ```motoko
@@ -109,6 +109,7 @@ The function `isLowercase` takes one `Char` value and returns a `Bool` value.
 ```motoko, run
 {{#include _mo/char/char14.mo:a}}
 ```
+
 ## Char.isUppercase
 
 ```motoko
@@ -139,73 +140,79 @@ The function `isAlphabetic` takes one `Char` value and returns a `Bool` value.
 func equal(x : Char, y : Char) : Bool
 ```
 
-The function `equal` takes two `Char` value  and returns a `Bool` value.
+The function `equal` takes two `Char` value and returns a `Bool` value.
 
 ```motoko, run
 {{#include _mo/char/char5.mo:a}}
 ```
+
 ## Char.notEqual
 
 ```motoko
 func notEqual(x : Char, y : Char) : Bool
 ```
 
-The function `notEqual` takes two `Char` value  and returns a `Bool` value.
+The function `notEqual` takes two `Char` value and returns a `Bool` value.
 
 ```motoko, run
 {{#include _mo/char/char6.mo:a}}
 ```
+
 ## Char.less
 
 ```motoko
 func less(x : Char, y : Char) : Bool
 ```
 
-The function `less` takes two `Char` value  and returns a `Bool` value.
+The function `less` takes two `Char` value and returns a `Bool` value.
 
 ```motoko, run
 {{#include _mo/char/char7.mo:a}}
 ```
+
 ## Char.lessOrEqual
 
 ```motoko
 func lessOrEqual(x : Char, y : Char) : Bool
 ```
 
-The function `lessOrEqual` takes two `Char` value  and returns a `Bool` value.
+The function `lessOrEqual` takes two `Char` value and returns a `Bool` value.
 
 ```motoko, run
 {{#include _mo/char/char8.mo:a}}
 ```
+
 ## Char.greater
 
 ```motoko
 func greater(x : Char, y : Char) : Bool
 ```
 
-The function `greater` takes two `Char` value  and returns a `Bool` value.
+The function `greater` takes two `Char` value and returns a `Bool` value.
 
 ```motoko, run
 {{#include _mo/char/char9.mo:a}}
 ```
+
 ## Char.greaterOrEqual
 
 ```motoko
 func greaterOrEqual(x : Char, y : Char) : Bool
 ```
 
-The function `greaterOrEqual` takes two `Char` value  and returns a `Bool` value.
+The function `greaterOrEqual` takes two `Char` value and returns a `Bool` value.
 
 ```motoko, run
 {{#include _mo/char/char10.mo:a}}
 ```
+
 ## Char.compare
 
 ```motoko
 func compare(x : Char, y : Char) : {#less; #equal; #greater}
 ```
 
-The function `compare` takes two `Char` value  and returns an [Order](/base-library/utils/order.html) value.
+The function `compare` takes two `Char` value and returns an [Order](/base-library/utils/order.html) value.
 
 ```motoko, run
 {{#include _mo/char/char11.mo:a}}

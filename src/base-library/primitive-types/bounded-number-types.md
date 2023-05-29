@@ -1,5 +1,3 @@
-
-
 # Bounded Number Types
 
 Unlike [`Nat`](/base-library/primitive-types/nat.html) and [`Int`](/base-library/primitive-types/int.html), which are _unbounded_ numbers, the _bounded number types_ have a specified _bit length_. Operations that _overflow_ (reach numbers beyond the _minimum_ or _maximum_ value defined by the bit length) on these bounded number types cause a [trap](/advanced-concepts/async-programming/errors-and-traps.html).

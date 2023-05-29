@@ -1,5 +1,3 @@
-
-
 # Int16
 
 The _convention_ is to name the [_module alias_](/common-programming-concepts/modules.html#type-imports-and-renaming) after the [_file name_](/common-programming-concepts/modules.html#imports) it is defined in:
@@ -63,9 +61,10 @@ The _convention_ is to name the [_module alias_](/common-programming-concepts/mo
 [Function `bitflip`](#int16bitflip)  
 [Function `bitcountNonZero`](#int16bitcountnonzero)  
 [Function `bitcountLeadingZero`](#int16bitcountleadingzero)  
-[Function `bitcountTrailingZero`](#int16bitcounttrailingzero)  
+[Function `bitcountTrailingZero`](#int16bitcounttrailingzero)
 
 ### Wrapping Operations
+
 [Function `addWrap`](#int16addwrap)  
 [Function `subWrap`](#int16subwrap)  
 [Function `mulWrap`](#int16mulwrap)  

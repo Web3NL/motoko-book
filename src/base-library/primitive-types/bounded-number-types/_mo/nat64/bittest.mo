@@ -1,8 +1,8 @@
 // ANCHOR: a
 import Nat64 "mo:base/Nat64";
 
-let x : Nat64 = 255;     
+let x : Nat64 = 255;
 let p : Nat = 7;
 
-Nat64.bittest(x, p)      
+Nat64.bittest(x, p)
 // ANCHOR_END: a

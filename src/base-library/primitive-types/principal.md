@@ -1,5 +1,3 @@
-
-
 # Principal
 
 To understand this _principal module_, it might be helpful to learn about [Principles](/internet-computer-programming-concepts/principals-and-authentication.html) first.
@@ -21,18 +19,17 @@ The _convention_ is to name the [_module alias_](/common-programming-concepts/mo
 ### Utility
 
 [Function `isAnonymous`](#principalisanonymous)  
-[Function `hash`](#principalhash)  
+[Function `hash`](#principalhash)
 
 ### Comparison
 
-[Function `equal`](#principalequal)    
-[Function `notEqual`](#principalnotequal)    
+[Function `equal`](#principalequal)  
+[Function `notEqual`](#principalnotequal)  
 [Function `less`](#principalless)  
-[Function `lessOrEqual`](#principallessorequal)    
-[Function `greater`](#principalgreater)    
+[Function `lessOrEqual`](#principallessorequal)  
+[Function `greater`](#principalgreater)  
 [Function `greaterOrEqual`](#principalgreaterorequal)  
-[Function `compare`](#principalcompare)    
-
+[Function `compare`](#principalcompare)
 
 ## Principal.fromActor
 
@@ -105,6 +102,7 @@ The function `isAnonymous` takes one `Principal` value and returns a `Bool` valu
 ```motoko, run
 {{#include _mo/principal/isAnonymous.mo:a}}
 ```
+
 ## Principal.hash
 
 ```motoko
@@ -116,6 +114,7 @@ The function `hash` takes one `Principal` value and returns a `Hash` value.
 ```motoko, run
 {{#include _mo/principal/hash.mo:a}}
 ```
+
 ## Principal.equal
 
 ```motoko
@@ -127,6 +126,7 @@ The function `equal` takes two `Principal` value and returns a `Bool` value.
 ```motoko, run
 {{#include _mo/principal/equal.mo:a}}
 ```
+
 ## Principal.notEqual
 
 ```motoko
@@ -138,6 +138,7 @@ The function `notEqual` takes two `Principal` value and returns a `Bool` value.
 ```motoko, run
 {{#include _mo/principal/notEqual.mo:a}}
 ```
+
 ## Principal.less
 
 ```motoko
@@ -149,6 +150,7 @@ The function `less` takes two `Principal` value and returns a `Bool` value.
 ```motoko, run
 {{#include _mo/principal/less.mo:a}}
 ```
+
 ## Principal.lessOrEqual
 
 ```motoko
@@ -160,6 +162,7 @@ The function `lessOrEqual` takes two `Principal` value and returns a `Bool` valu
 ```motoko, run
 {{#include _mo/principal/lessOrEqual.mo:a}}
 ```
+
 ## Principal.greater
 
 ```motoko
@@ -171,6 +174,7 @@ The function `greater` takes two `Principal` value and returns a `Bool` value.
 ```motoko, run
 {{#include _mo/principal/greater.mo:a}}
 ```
+
 ## Principal.greaterOrEqual
 
 ```motoko
@@ -182,6 +186,7 @@ The function `greaterOrEqual` takes two `Principal` value and returns a `Bool` v
 ```motoko, run
 {{#include _mo/principal/greaterOrEqual.mo:a}}
 ```
+
 ## Principal.compare
 
 ```motoko
