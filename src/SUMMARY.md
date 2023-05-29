@@ -103,10 +103,7 @@
     - [RBTree](base-library/data-structures/rbtree.md)
 
   - [More Data Structures](base-library/more-data-structures.md)
-    - [AssocList](base-library/more-data-structures/assocList.md)
-    - [Deque](base-library/more-data-structures/deque.md)
-    - [Heap](base-library/more-data-structures/heap.md)
-    - [Stack](base-library/more-data-structures/stack.md)
+
   - [IC APIs](base-library/ic-apis.md)
     - [Time](base-library/ic-apis/time.md)
     - [Timer](base-library/ic-apis/timer.md)
