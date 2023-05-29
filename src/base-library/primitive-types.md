@@ -1,5 +1,3 @@
-> **BETA WARNING** _This chapter is being reviewed and updated_
-
 # Primitive Types
 
 As described [earlier](/common-programming-concepts/types.html) in this book, [_primitive types_](/common-programming-concepts/types.html#primitive-types) are core data types that are not _composed_ of more fundamental types.

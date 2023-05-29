@@ -1,12 +1,10 @@
-> **BETA WARNING** _This chapter is being reviewed and updated_
-
 # The Base Library
 
 The Motoko Base Library is a collection of [modules](/common-programming-concepts/modules.html) with basic functionality for working with _primitive types_, _utilities_, _data structures_ and other functionality.
 
 Most modules define a _[public type](/common-programming-concepts/modules.html#public-types-in-modules)_ that is associated with the core use of the module.
 
-The Base Library also includes [_IC system APIs_](/base-library/ic-apis.html) that today (Jan 2023) are still experimental. We will visit them [later in this book](/advanced-concepts.html).
+The Base Library also includes [_IC system APIs_](/base-library/ic-apis.html), some of which are still experimental (June 2023). We will visit them [later in this book](/advanced-concepts.html).
 
 ## Importing from the Base Library
 
