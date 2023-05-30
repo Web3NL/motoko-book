@@ -80,7 +80,7 @@ actor {
 
     public query func tokenTreasury() : async Nat { treasury[0] };
 
-    public shared query (msg) func balance() : async ?(Nat, Nat, Int) {
+    public shared query (msg) func user() : async ?(Nat, Nat, Int) {
         switch (users.get(msg.caller)) {
             case null return null;
             case (?(userId, balance, lastPost)) ?(userId, balance, lastPost);

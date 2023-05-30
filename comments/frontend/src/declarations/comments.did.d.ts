@@ -15,9 +15,9 @@ export interface QueryComment {
   'userBalance' : Balance,
 }
 export interface _SERVICE {
-  'balance' : ActorMethod<[], [] | [[bigint, bigint, bigint]]>,
   'latestComments' : ActorMethod<[], Array<QueryComment>>,
   'likeComment' : ActorMethod<[CommentHash], [] | [null]>,
   'postComment' : ActorMethod<[string], PostResult>,
   'tokenTreasury' : ActorMethod<[], bigint>,
+  'user' : ActorMethod<[], [] | [[bigint, bigint, bigint]]>,
 }

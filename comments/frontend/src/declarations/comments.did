@@ -19,13 +19,13 @@ type PostError =
 type CommentHash = nat32;
 type Balance = nat;
 service : {
-  balance: () -> (opt record {
-                        nat;
-                        nat;
-                        int;
-                      }) query;
   latestComments: () -> (vec QueryComment) query;
   likeComment: (CommentHash) -> (opt null);
   postComment: (text) -> (PostResult);
   tokenTreasury: () -> (nat) query;
+  user: () -> (opt record {
+                     nat;
+                     nat;
+                     int;
+                   }) query;
 }
