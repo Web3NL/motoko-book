@@ -1,7 +1,7 @@
 import { HttpAgent, Actor } from '@dfinity/agent';
 import { authStore } from './auth.store';
-import { idlFactory } from '../../declarations';
-import type { _SERVICE } from '../../declarations/comments.did';
+import { idlFactory } from '../declarations';
+import type { _SERVICE } from '../declarations/comments.did';
 import type { Identity, ActorSubclass } from '@dfinity/agent';
 import { get } from 'svelte/store';
 

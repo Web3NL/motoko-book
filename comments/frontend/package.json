@@ -14,6 +14,7 @@
 		"format": "prettier --plugin-search-dir . --write ."
 	},
 	"devDependencies": {
+		"@esbuild-plugins/node-modules-polyfill": "^0.2.2",
 		"@playwright/test": "^1.28.1",
 		"@sveltejs/adapter-static": "^2.0.2",
 		"@sveltejs/kit": "^1.5.0",
@@ -39,6 +40,8 @@
 	"type": "module",
 	"dependencies": {
 		"@dfinity/agent": "^0.15.6",
-		"@dfinity/auth-client": "^0.15.6"
+		"@dfinity/auth-client": "^0.15.6",
+		"@rollup/plugin-inject": "^5.0.3",
+		"buffer": "^6.0.3"
 	}
 }
