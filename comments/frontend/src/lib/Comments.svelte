@@ -1,20 +1,19 @@
 <script lang="ts">
-    import { getActor } from '$lib/actor.store';
+	import { getActor } from '$lib/actor.store';
+	import { onMount } from 'svelte';
+	import type { QueryComment } from '../declarations/comments.did';
+
+	let comments: QueryComment[] = [];
+
+	onMount(async () => {
+		const actor = await getActor();
+		comments = await actor.latestComments();
+	});
 </script>
 
-{#await getActor()}
-    Loading...
-{:then actor} 
-    {#await actor.latestComments()}
-        Loading...
-        
-    {:then comments}
-         {#each comments as comment}
-            <div>
-                <p>{comment.comment}</p>
-                <p>{comment.userId}</p>
-            </div>
-         {/each}
-        
-    {/await}
-{/await}
+{#each comments as comment}
+	<div>
+		<p>{comment.comment}</p>
+		<p>{comment.userId}</p>
+	</div>
+{/each}
