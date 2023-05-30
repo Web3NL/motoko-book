@@ -11,7 +11,7 @@
       "type": "motoko",
       "main": "comments/backend/main.mo",
       "declarations": {
-        "output": "comments/declarations/",
+        "output": "declarations",
         "node_compatibility": true
       }
     }
