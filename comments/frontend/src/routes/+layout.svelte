@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { authStore, isSignedIn } from '$lib/auth.store';
+	import { authStore } from '$lib/auth.store';
 	import { browser } from '$app/environment';
 
 	const syncAuthStore = async () => {
