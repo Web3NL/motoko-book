@@ -1,9 +1,7 @@
 <script lang="ts">
 	import { authStore, isSignedIn } from '$lib/auth.store';
 	import Button from '$lib/Button.svelte';
-	// import { canisterId } from '$lib/actor.store';
-
-	// console.log(canisterId)
+	import Comments from '$lib/Comments.svelte';
 </script>
 
 <div class="text-2xl">
@@ -15,5 +13,7 @@ Id: {$authStore.identity?.getPrincipal()}<br />
 {:else}
 	<Button onClick={authStore.signIn} text="Login with II" />
 {/if}
+
+<Comments />
 </div>
     
