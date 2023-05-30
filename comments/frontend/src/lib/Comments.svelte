@@ -5,5 +5,16 @@
 {#await getActor()}
     Loading...
 {:then actor} 
-    console.log(actor.latestComments())
+    {#await actor.latestComments()}
+        Loading...
+        
+    {:then comments}
+         {#each comments as comment}
+            <div>
+                <p>{comment.comment}</p>
+                <p>{comment.userId}</p>
+            </div>
+         {/each}
+        
+    {/await}
 {/await}

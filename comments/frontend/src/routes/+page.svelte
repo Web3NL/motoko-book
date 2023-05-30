@@ -5,15 +5,14 @@
 </script>
 
 <div class="text-2xl">
-Signed in: {$isSignedIn}<br />
-Id: {$authStore.identity?.getPrincipal()}<br />
+	Signed in: {$isSignedIn}<br />
+	Id: {$authStore.identity?.getPrincipal()}<br />
 
-{#if $isSignedIn}
-	<Button onClick={authStore.signOut} text="Logout" />
-{:else}
-	<Button onClick={authStore.signIn} text="Login with II" />
-{/if}
-
-<Comments />
+	{#if $isSignedIn}
+		<Button onClick={authStore.signOut} text="Logout" />
+	{:else}
+		<Button onClick={authStore.signIn} text="Login with II" />
+	{/if}
+	<br />
+	<Comments />
 </div>
-    

@@ -1,4 +1,4 @@
-import { HttpAgent, Actor } from '@dfinity/agent';
+import { HttpAgent, Actor, AnonymousIdentity } from '@dfinity/agent';
 import { authStore } from './auth.store';
 import { idlFactory } from '../declarations';
 import type { _SERVICE } from '../declarations/comments.did';
@@ -10,7 +10,11 @@ export const getActor = async (): Promise<ActorSubclass<_SERVICE>> => {
 	const canisterId = import.meta.env.VITE_BACKEND_CANISTER_ID;
 
 	if (!identity) {
+		const identity = new AnonymousIdentity();
+		const agent = await getAgent(identity);
+
 		return Actor.createActor(idlFactory, {
+			agent,
 			canisterId
 		});
 	}
