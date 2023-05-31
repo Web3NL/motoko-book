@@ -3,6 +3,7 @@ import type { ActorMethod } from '@dfinity/agent';
 
 export type Balance = bigint;
 export type CommentHash = number;
+export type CommentHash__1 = number;
 export type PostError = { 'AnonNotAllowed' : null } |
   { 'InvalidComment' : null } |
   { 'TimeRemaining' : bigint };
@@ -11,6 +12,7 @@ export type PostResult = { 'ok' : null } |
 export interface QueryComment {
   'created' : bigint,
   'userId' : string,
+  'hash' : CommentHash__1,
   'comment' : string,
   'userBalance' : Balance,
 }

@@ -40,5 +40,6 @@ module {
         userId : Text;
         userBalance : Balance;
         comment : Text;
+        hash : CommentHash;
     };
 };

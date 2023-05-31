@@ -2,6 +2,7 @@ type QueryComment =
  record {
    comment: text;
    created: int;
+   hash: CommentHash__1;
    userBalance: Balance;
    userId: text;
  };
@@ -16,6 +17,7 @@ type PostError =
    InvalidComment;
    TimeRemaining: int;
  };
+type CommentHash__1 = nat32;
 type CommentHash = nat32;
 type Balance = nat;
 service : {

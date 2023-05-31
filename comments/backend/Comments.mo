@@ -102,6 +102,7 @@ module {
                                     userId;
                                     userBalance = balance;
                                     comment = comment.comment;
+                                    hash;
                                 };
                             };
                         };

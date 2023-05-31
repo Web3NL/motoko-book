@@ -9,7 +9,10 @@
 
 	onMount(async () => {
 		const actor = await getActor();
+		
 		const user = await actor.user();
+		
+		let comments
 		if (user.length === 0) {
 			
 		}

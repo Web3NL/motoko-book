@@ -1,8 +1,10 @@
 export const idlFactory = ({ IDL }) => {
+  const CommentHash__1 = IDL.Nat32;
   const Balance = IDL.Nat;
   const QueryComment = IDL.Record({
     'created' : IDL.Int,
     'userId' : IDL.Text,
+    'hash' : CommentHash__1,
     'comment' : IDL.Text,
     'userBalance' : Balance,
   });
