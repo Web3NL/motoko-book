@@ -1,19 +1,21 @@
 <script lang="ts">
-	import { getActor } from '$lib/actor.store';
-	import { onMount } from 'svelte';
 	import type { QueryComment } from '../declarations/comments.did';
+	import { createEventDispatcher } from 'svelte';
 
-	let comments: QueryComment[] = [];
+	export let comments: QueryComment[] = [];
 
-	onMount(async () => {
-		const actor = await getActor();
-		comments = await actor.latestComments();
-	});
+	const dispatch = createEventDispatcher();
+
+	const like = (hash : number) => {
+		dispatch('message', hash);
+	};
 </script>
 
 {#each comments as comment}
 	<div>
 		<p>{comment.comment}</p>
 		<p>{comment.userId}</p>
+		<p>{comment.userBalance}</p>
+		<button on:click="{() => like(comment.hash)}">LIKE</button>
 	</div>
 {/each}

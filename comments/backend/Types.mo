@@ -38,7 +38,7 @@ module {
     public type QueryComment = {
         created : Int;
         userId : Text;
-        userBalance : Balance;
+        reward : Reward;
         comment : Text;
         hash : CommentHash;
     };

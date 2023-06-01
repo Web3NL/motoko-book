@@ -60,7 +60,7 @@ module {
         #ok();
     };
 
-    public func likeComment(stores : Stores, hash : CommentHash) : async* ?() {
+    public func likeComment(stores : Stores, hash : CommentHash) : async* ?Reward {
         let (treasury, users, commentStore, _) = stores;
 
         switch (commentStore.get(hash)) {
@@ -74,12 +74,14 @@ module {
                         treasury[0] -= Constants.LIKE_REWARD;
                         commentStore.put(hash, (comment, reward + Constants.LIKE_REWARD));
                         users.put(comment.owner, (id, balance + Constants.LIKE_REWARD, lastPost));
+
+                        ?(reward + Constants.LIKE_REWARD);
                     };
 
                 };
             };
         };
-        ?();
+
     };
 
     public func latestComments(stores : Stores) : [QueryComment] {
@@ -100,7 +102,7 @@ module {
                                 ?{
                                     created = comment.created;
                                     userId;
-                                    userBalance = balance;
+                                    reward;
                                     comment = comment.comment;
                                     hash;
                                 };
