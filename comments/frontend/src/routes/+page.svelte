@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { authStore, isSignedIn } from '$lib/auth.store';
-	import { getActor } from '$lib/actor.store';
+	import { getActor } from '$lib/actor';
 	import Button from '$lib/Button.svelte';
 	import Comments from '$lib/Comments.svelte';
 	import { onMount } from 'svelte';
