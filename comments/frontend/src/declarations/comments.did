@@ -1,9 +1,17 @@
+type User = 
+ record {
+   balance: nat;
+   id: nat;
+   lastLike: int;
+   lastPost: int;
+   likes: List;
+ };
 type QueryComment = 
  record {
    comment: text;
    created: int;
-   hash: CommentHash__1;
-   userBalance: Balance;
+   hash: CommentHash;
+   reward: nat;
    userId: text;
  };
 type PostResult = 
@@ -17,17 +25,28 @@ type PostError =
    InvalidComment;
    TimeRemaining: int;
  };
+type List = 
+ opt record {
+       CommentHash;
+       List;
+     };
+type LikeResult = 
+ variant {
+   err: LikeError;
+   ok: nat;
+ };
+type LikeError = 
+ variant {
+   AlreadyLiked;
+   AnonNotAllowed;
+   TimeRemaining: int;
+ };
 type CommentHash__1 = nat32;
 type CommentHash = nat32;
-type Balance = nat;
 service : {
   latestComments: () -> (vec QueryComment) query;
-  likeComment: (CommentHash) -> (opt null);
+  likeComment: (CommentHash__1) -> (LikeResult);
   postComment: (text) -> (PostResult);
   tokenTreasury: () -> (nat) query;
-  user: () -> (opt record {
-                     nat;
-                     nat;
-                     int;
-                   }) query;
+  user: () -> (opt User) query;
 }

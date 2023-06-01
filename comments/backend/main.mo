@@ -84,4 +84,18 @@ actor {
             case (?user) return ?user;
         };
     };
+
+    type CallArgs = {
+        caller : Principal;
+        arg : Blob;
+        msg : {
+            #likeComment : () -> Any;
+        };
+    };
+    // system func inspect(args : CallArgs) : Bool {
+    //     case (#likeComment) {
+    //         let now = Time.now();
+    //         now 
+    //     }
+    // };
 };
