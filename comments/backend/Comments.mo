@@ -87,6 +87,14 @@ module {
                 if (List.some<CommentHash>(user.likes, func(h : CommentHash) : Bool { h == hash })) {
                     return #err(#AlreadyLiked);
                 };
+
+                let newUser : User = { user with
+                    lastLike = now;
+                    lastPost = now;
+                    likes = List.push<CommentHash>(hash, user.likes);
+                };
+
+                users.put(liker, newUser);  
             };
             case (null) {
                 let newUser : User = {
