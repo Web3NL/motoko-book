@@ -9,37 +9,45 @@ module {
         created : Int;
         owner : Principal;
         comment : Text;
+        reward : Nat;
     };
-    public type Reward = Nat;
     public type CommentHash = Hash.Hash;
 
     // User data
-    public type Id = Nat;
-    public type Balance = Nat;
-    public type LastPost = Int;
+    public type User = {
+        id : Nat;
+        balance : Nat;
+        lastLike : Int;
+        lastPost : Int;
+        likes : List.List<CommentHash>;
+    };
 
     // Stores
     public type Treasury = [var Nat];
-    public type Users = HashMap.HashMap<Principal, (Id, Balance, LastPost)>;
-    public type CommentStore = HashMap.HashMap<CommentHash, (Comment, Reward)>;
+    public type Users = HashMap.HashMap<Principal, User>;
+    public type CommentStore = HashMap.HashMap<CommentHash, Comment>;
     public type CommentHistory = [var List.List<CommentHash>];
 
     public type Stores = (Treasury, Users, CommentStore, CommentHistory);
 
     // Results
-    public type PostResult = Result.Result<(), PostError>;
-    type PostError = {
-        # InvalidComment;
+    type Error = {
         # TimeRemaining : Int;
         # AnonNotAllowed;
     };
+
+    public type PostResult = Result.Result<(), PostError>;
+    type PostError = Error or { # InvalidComment };
+
+    public type LikeResult = Result.Result<Nat, LikeError>;
+    type LikeError = Error or { # AlreadyLiked };
 
     // Queries
     public type QueryComment = {
         created : Int;
         userId : Text;
-        reward : Reward;
         comment : Text;
+        reward : Nat;
         hash : CommentHash;
     };
 };

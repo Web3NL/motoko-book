@@ -10,11 +10,13 @@ import { validateComment; hashComment } "Utils";
 module {
     type Stores = Types.Stores;
 
+    type User = Types.User;
+
     type Comment = Types.Comment;
-    type Reward = Types.Reward;
     type CommentHash = Types.CommentHash;
 
     type PostResult = Types.PostResult;
+    type LikeResult = Types.LikeResult;
     type QueryComment = Types.QueryComment;
 
     public func postComment(stores : Stores, owner : Principal, comment : Text) : PostResult {
@@ -26,6 +28,7 @@ module {
             created = now;
             owner;
             comment;
+            reward = 0;
         };
 
         let hash = hashComment(postComment);
@@ -33,49 +36,95 @@ module {
         let (treasury, users, commentStore, commentHistory) = stores;
 
         switch (users.get(owner)) {
-            case (?(id, balance, lastPost)) {
-                if (now - lastPost < Constants.MAX_INTERVAL_USER) {
-                    return #err(#TimeRemaining(Constants.MAX_INTERVAL_USER - (now - lastPost)));
+            case (null) {
+                treasury[0] -= Constants.COMMENT_REWARD;
+
+                let newUser : User = {
+                    id = users.size() + 1;
+                    balance = Constants.COMMENT_REWARD;
+                    lastPost = now;
+                    lastLike = now;
+                    likes = List.nil<CommentHash>();
+                };
+
+                users.put(owner, newUser);
+            };
+            case (?user) {
+                if (now - user.lastPost < Constants.MAX_INTERVAL_USER_COMMENT) {
+                    return #err(#TimeRemaining(Constants.MAX_INTERVAL_USER_COMMENT - (now - user.lastPost)));
                 };
 
                 treasury[0] -= Constants.COMMENT_REWARD;
-                users.put(owner, (id, balance + Constants.COMMENT_REWARD, now));
-            };
-            case (null) {
-                treasury[0] -= Constants.COMMENT_REWARD;
-                users.put(owner, (users.size() + 1, Constants.COMMENT_REWARD, now));
+
+                let newUser : User = {
+                    user with
+                    balance = user.balance + Constants.COMMENT_REWARD;
+                    lastPost = now;
+                };
+
+                users.put(owner, user);
             };
         };
 
-        commentStore.put(
-            hash,
-            (postComment, Constants.COMMENT_REWARD),
-        );
+        commentStore.put(hash, postComment);
 
-        commentHistory[0] := List.push<CommentHash>(
-            hash,
-            commentHistory[0],
-        );
+        commentHistory[0] := List.push<CommentHash>(hash, commentHistory[0]);
 
         #ok();
     };
 
-    public func likeComment(stores : Stores, hash : CommentHash) : async* ?Reward {
+    public func likeComment(stores : Stores, hash : CommentHash, liker : Principal) : async* LikeResult {
+        let now = Time.now();
+
         let (treasury, users, commentStore, _) = stores;
 
+        switch (users.get(liker)) {
+            case (?user) {
+                if (now - user.lastLike < Constants.MAX_INTERVAL_USER_LIKE) {
+                    return #err(#TimeRemaining(Constants.MAX_INTERVAL_USER_LIKE - (now - user.lastLike)));
+                };
+
+                if (List.some<CommentHash>(user.likes, func(h : CommentHash) : Bool { h == hash })) {
+                    return #err(#AlreadyLiked);
+                };
+            };
+            case (null) {
+                let newUser : User = {
+                    id = users.size() + 1;
+                    balance = 0;
+                    lastPost = now;
+                    lastLike = now;
+                    likes = List.make<CommentHash>(hash);
+                };
+
+                users.put(liker, newUser);
+            };
+        };
+
         switch (commentStore.get(hash)) {
-            case (null) return null;
-            case (?(comment, reward)) {
+            case (null) throw Error.reject("Comment not found");
+            case (?comment) {
                 switch (users.get(comment.owner)) {
                     case (null) {
-                        throw Error.reject("Comment has now owner");
+                        throw Error.reject("Comment has no owner");
                     };
-                    case (?(id, balance, lastPost)) {
+                    case (?owner) {
                         treasury[0] -= Constants.LIKE_REWARD;
-                        commentStore.put(hash, (comment, reward + Constants.LIKE_REWARD));
-                        users.put(comment.owner, (id, balance + Constants.LIKE_REWARD, lastPost));
 
-                        ?(reward + Constants.LIKE_REWARD);
+                        let newComment : Comment = {
+                            comment with
+                            reward = comment.reward + Constants.LIKE_REWARD;
+                        };
+
+                        let newOwner : User = {
+                            owner with
+                            balance = owner.balance + Constants.LIKE_REWARD;
+                        };
+
+                        commentStore.put(hash, newComment);
+                        users.put(comment.owner, newOwner);
+
+                        #ok(newComment.reward);
                     };
 
                 };
@@ -94,15 +143,15 @@ module {
             func(hash : CommentHash) : ?QueryComment {
                 switch (commentStore.get(hash)) {
                     case (null) return null;
-                    case (?(comment, reward)) {
+                    case (?comment) {
                         switch (users.get(comment.owner)) {
                             case (null) return null;
-                            case (?(id, balance, lastPost)) {
-                                let userId = "User" # Nat.toText(id);
+                            case (?user) {
+                                let userId = "User" # Nat.toText(user.id);
                                 ?{
                                     created = comment.created;
                                     userId;
-                                    reward;
+                                    reward = comment.reward;
                                     comment = comment.comment;
                                     hash;
                                 };
