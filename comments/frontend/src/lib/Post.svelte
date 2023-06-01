@@ -1,21 +1,25 @@
 <script lang="ts">
-	// import { getActor } from '$lib/actor.store';
+	import { authStore } from '$lib/auth.store';
 	import { onMount } from 'svelte';
 
     import { postComment } from './api';
+    import Button from '$lib/Button.svelte';
 	// import type { PostResult, PostError } from '../declarations/comments.did';
 
 	let comment: string;
     let input : HTMLInputElement;
-    let submit : HTMLInputElement;
+
+    let text = "Submit";
 
     onMount(async () => {
         input = document.getElementById("comment") as HTMLInputElement;
     });
 
 	const post = async () => {
+        authStore.sync();
+
         input.disabled = true;
-        submit.innerText = "Posting...";
+        text = "Posting...";
 
 		const result = await postComment(comment);
 		
@@ -32,6 +36,6 @@
 <div>
 	<form on:submit={post}>
 		<input id="comment" type="text" bind:value={comment} />
-		<button type="submit" id="submit">Submit</button>
+		<Button {text} on:click={post} />
 	</form>
 </div>

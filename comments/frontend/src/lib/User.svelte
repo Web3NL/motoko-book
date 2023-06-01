@@ -1,12 +1,24 @@
 <script lang="ts">
-	export let userId : bigint;
-	export let balance : bigint;
-	export let lastPost : bigint;
+	import { user } from './api';
+	import type {User} from '../declarations/comments.did';
+	import { onMount } from 'svelte';
 
-	const MAX_INTERVAL_USER = 600 * 10 ** 9;
+
+	let _user : User;
+
+	onMount(async () => {
+		const result = await user();
+		console.log(result);
+		if (result.length !== 0) {
+			_user = result[0];
+		}
+	});
 </script>
 
+{#if _user}
 <div>
-	<p>UserId: {userId}</p>
-	<p>Balance: {balance}</p>
+	<p>UserId: User{_user.id}</p>
+	<p>Balance: {_user.balance}</p>
 </div>
+{/if}
+

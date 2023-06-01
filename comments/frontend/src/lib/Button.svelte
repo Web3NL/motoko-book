@@ -1,5 +1,5 @@
 <script>
-	export let text = 'Button Text';
+	export let text = '';
 	export let onClick = async () => {};
 </script>
 
