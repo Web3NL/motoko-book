@@ -5,6 +5,7 @@
     import { postComment } from './api';
     import Button from '$lib/Button.svelte';
 	// import type { PostResult, PostError } from '../declarations/comments.did';
+    import {AnonymousIdentity} from '@dfinity/agent';
 
 	let comment: string;
     let input : HTMLInputElement;
@@ -16,7 +17,7 @@
     });
 
 	const post = async () => {
-        authStore.sync();
+        
 
         input.disabled = true;
         text = "Posting...";
@@ -33,9 +34,12 @@
 	};
 </script>
 
+
 <div>
 	<form on:submit={post}>
 		<input id="comment" type="text" bind:value={comment} />
 		<Button {text} on:click={post} />
 	</form>
 </div>
+id = {$authStore.identity?.getPrincipal().toString()}
+anon = {(new AnonymousIdentity()).getPrincipal().toString()}

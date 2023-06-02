@@ -1,29 +1,24 @@
 <script lang="ts">
-	import { authStore, isSignedIn } from '$lib/auth.store';
-	import { getActor } from '$lib/actor';
-	import Button from '$lib/Button.svelte';
-	import Comments from '$lib/Comments.svelte';
-	import { onMount } from 'svelte';
-	import type { QueryComment } from '../declarations/comments.did';
-	import User from '$lib/User.svelte';
-	import Post from '$lib/Post.svelte';
+	// import { authStore } from '$lib/auth.store';
+	// import { get } from 'svelte/store';
+	// import Button from '$lib/Button.svelte';
+	// import Comments from '$lib/Comments.svelte';
+	// import { onMount } from 'svelte';
+	// import type { QueryComment } from '../declarations/comments.did';
+	// import User from '$lib/User.svelte';
+	// import Post from '$lib/Post.svelte';
 
-	let comments : QueryComment[] = [];
+	// let comments : QueryComment[] = [];
 
-	let user : [] | [[bigint, bigint, bigint]] = []; 
+	// let user : [] | [[bigint, bigint, bigint]] = []; 
 
-	onMount(async () => {
-		const actor = await getActor();
-
-		comments = await actor.latestComments();
-		
-		const user = await actor.user();
-	});
+	// onMount(async () => {
+	// });
 
 </script>
 
 <div class="text-2xl">
-	{#if $isSignedIn}
+	<!-- {#if $authStore}
 		<User />
 		<Button onClick={authStore.signOut} text="Logout" />
 		<Post />
@@ -31,5 +26,5 @@
 		<Button onClick={authStore.signIn} text="Login with II" />
 	{/if}
 	<br />
-	<Comments {comments} />
+	<Comments {comments} /> -->
 </div>

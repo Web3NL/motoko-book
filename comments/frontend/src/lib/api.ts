@@ -1,7 +1,7 @@
 import type { PostResult, QueryComment, User } from '../declarations/comments.did';
-import { getActor } from './actor';
+import { authStore } from './auth.store';
 
-const actor = await getActor();
+const actor = await authStore.actor();
 
 export const postComment = async (comment: string): Promise<PostResult> => {
 	return await actor.postComment(comment);

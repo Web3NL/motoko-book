@@ -1,26 +1,16 @@
 <script lang="ts">
 	import { authStore } from '$lib/auth.store';
-	import { browser } from '$app/environment';
-
-	const syncAuthStore = async () => {
-		if (!browser) {
-			return;
-		}
-		try {
-			await authStore.sync();
-		} catch (err: unknown) {
-			console.error(err);
-		}
-	};
 </script>
 
-<svelte:window on:storage={syncAuthStore} />
+is signed in = {$authStore}<br />
+<button on:click={() => authStore.signIn()}>SIGNIN</button><br />
+<button on:click={() => authStore.signOut()}>SIGNOUT</button><br />
 
-{#await syncAuthStore()}
-	Loading...
-{:then _}
-	<slot />
+{#await authStore.identity() then id}
+	ID = {id?.getPrincipal().toString()}<br />
 {/await}
+
+<slot />
 
 <style>
 	@import '../app.postcss';
