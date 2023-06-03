@@ -1,14 +1,24 @@
 <script lang="ts">
-	import { authStore } from '$lib/auth.store';
+	import { authStore } from '$lib/auth.store'; 
+	import { Actor } from '@dfinity/agent';
+	import { onMount } from 'svelte';
+
+	let principal : string | undefined = undefined;
+	let actorId : string | undefined = undefined;
+
+	onMount(async () => {
+		await authStore.sync();
+	});
 </script>
 
-is signed in = {$authStore}<br />
+is signed in = {$authStore.isAuthenticated}<br />
+
 <button on:click={() => authStore.signIn()}>SIGNIN</button><br />
 <button on:click={() => authStore.signOut()}>SIGNOUT</button><br />
 
-{#await authStore.identity() then id}
-	ID = {id?.getPrincipal().toString()}<br />
-{/await}
+ID = {$authStore.identity?.getPrincipal()}<br />
+
+Actor id = {$authStore.actor}
 
 <slot />
 

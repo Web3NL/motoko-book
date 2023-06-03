@@ -4,22 +4,49 @@ import { writable, type Readable } from 'svelte/store';
 import type { _SERVICE } from '../declarations/comments.did';
 import { getActor } from './actor';
 
-export interface AuthStore extends Readable<boolean> {
-	signIn: () => Promise<void>;
-	signOut: () => Promise<void>;
-	identity: () => Promise<Identity | undefined | null>;
-	actor: () => Promise<ActorSubclass<_SERVICE>>;
+export interface AuthStoreData {
+	isAuthenticated: boolean;
+	identity: Identity | undefined | null;
+	actor: ActorSubclass<_SERVICE> | Promise<ActorSubclass<_SERVICE>> | undefined | null;
 }
 
-let authClient: AuthClient | undefined | null;
+export interface AuthStore extends Readable<AuthStoreData> {
+	sync: () => Promise<void>;
+	signIn: () => Promise<void>;
+	signOut: () => Promise<void>;
+}
 
-const init = (): AuthStore => {
-	const { subscribe, set, update } = writable<boolean>(false);
+let authClient: AuthClient | null | undefined;
+
+const init = async (): Promise<AuthStore> => {
+	const { subscribe, set } = writable<AuthStoreData>(
+		{
+			isAuthenticated: false,
+			identity: null,
+			actor: null
+		}
+	);
 
 	return {
 		subscribe,
 
-		signIn: () =>
+		sync: async () => {
+			authClient = authClient ?? (await AuthClient.create());
+			const isAuthenticated: boolean = await authClient.isAuthenticated();
+
+			if (isAuthenticated) {
+				const identity: Identity = authClient.getIdentity();
+
+				return set({
+					isAuthenticated,
+					identity,
+					actor: await getActor(identity)
+				});
+			}
+			set({ isAuthenticated, identity: null, actor: null });
+		},
+
+		signIn: async () =>
 			new Promise<void>(async (resolve, reject) => {
 				authClient = authClient ?? (await AuthClient.create());
 
@@ -29,9 +56,8 @@ const init = (): AuthStore => {
 						: `https://identity.internetcomputer.org/`;
 
 				await authClient?.login({
-					onSuccess: () => {
-						set(true);
-
+					onSuccess: async () => {
+						await sync();
 						resolve();
 					},
 					onError: reject,
@@ -47,21 +73,11 @@ const init = (): AuthStore => {
 			// This fix a "sign in -> sign out -> sign in again" flow without window reload.
 			authClient = null;
 
-			set(false);
+			set({isAuthenticated: false, identity: null, actor: null});
 		},
-
-		identity: () =>
-			new Promise<Identity | undefined | null>(async (resolve, _) => {
-				const client: AuthClient = authClient ?? (await AuthClient.create());
-				resolve(client.getIdentity());
-			}),
-
-		actor: () =>
-			new Promise<ActorSubclass<_SERVICE>>(async (resolve, _) => {
-				const client: AuthClient = authClient ?? (await AuthClient.create());
-				resolve(getActor(client.getIdentity()));
-			})
 	};
 };
 
-export const authStore: AuthStore = init();
+export const authStore: AuthStore = await init();
+
+const sync = async () => await authStore.sync();
