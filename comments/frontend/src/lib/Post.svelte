@@ -38,8 +38,8 @@
 </script>
 
 
-<div>
-	<label class="label">
+<div class="flex justify-between mb-10">
+	<label class="label flex-grow mr-4">
         <input 
         bind:value={comment}
         id="comment" 
@@ -47,6 +47,7 @@
         type="text" 
         placeholder="Comment" 
         />
+        
     </label>
-	<Button {text} on:click={post} />
+    <Button {text} on:click={post} />
 </div>

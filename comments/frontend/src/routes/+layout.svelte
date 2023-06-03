@@ -17,13 +17,17 @@
 		await authStore.sync();
 	});
 </script>
-<AppBar>
-	<svelte:fragment slot="lead"><Auth /></svelte:fragment>
-	<h1 class="h2">Web3 Comments</h1>
-	<svelte:fragment slot="trail"><LightSwitch /></svelte:fragment>
-</AppBar>
 
-<slot />
+
+<div class="max-w-xl p-2 mx-auto">
+	<AppBar>
+		<svelte:fragment slot="lead"><Auth /></svelte:fragment>
+		<h1 class="h2">Web3 Comments</h1>
+		<svelte:fragment slot="trail"><LightSwitch /></svelte:fragment>
+	</AppBar>
+	
+	<slot />
+</div>
 
 
 <style>

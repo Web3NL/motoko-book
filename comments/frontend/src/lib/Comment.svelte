@@ -12,7 +12,7 @@
 	};
 </script>
 
-<div class="card">
+<div class="card mt-4">
 	<header class="card-header">
 		{created} by {queryComment.userId}
 		Comment Reward: {queryComment.reward}

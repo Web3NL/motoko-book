@@ -2,6 +2,7 @@
 	import type { QueryUser } from '../declarations/comments.did';
 	import { userStore } from '$lib/user.store';
 	import { onMount } from 'svelte';
+	import Post from './Post.svelte';
 
 	let user: QueryUser | null | undefined = null;
 
@@ -13,8 +14,16 @@
 </script>
 
 {#if user}
-	<div>
-		<p>UserId: User{user.id}</p>
-		<p>Balance: {user.balance}</p>
+	<div class="mr-3 ml-3 mt-5 mb-5 flex justify-between ">
+		<div>
+			<p class="h2">User{user.id}</p>
+			<span class="text-tertiary-900">Logged in</span>
+		</div>
+		<div>
+			<p class="h2">{user.balance}</p>
+			<span class="text-tertiary-900">Balance</span>
+		</div>
 	</div>
+	
+	<Post />
 {/if}
