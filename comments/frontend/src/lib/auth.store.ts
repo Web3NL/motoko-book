@@ -1,4 +1,5 @@
 import type { Identity, ActorSubclass } from '@dfinity/agent';
+import { AnonymousIdentity } from '@dfinity/agent';
 import { AuthClient } from '@dfinity/auth-client';
 import { writable, type Readable } from 'svelte/store';
 import type { _SERVICE } from '../declarations/comments.did';
@@ -6,8 +7,8 @@ import { getActor } from './actor';
 
 export interface AuthStoreData {
 	isAuthenticated: boolean;
-	identity: Identity | undefined | null;
-	actor: ActorSubclass<_SERVICE> | Promise<ActorSubclass<_SERVICE>> | undefined | null;
+	identity: Identity;
+	actor: ActorSubclass<_SERVICE>;
 }
 
 export interface AuthStore extends Readable<AuthStoreData> {
@@ -18,14 +19,15 @@ export interface AuthStore extends Readable<AuthStoreData> {
 
 let authClient: AuthClient | null | undefined;
 
+const anonIdentity = new AnonymousIdentity();
+const anonActor: ActorSubclass<_SERVICE> = await getActor(new AnonymousIdentity());
+
 const init = async (): Promise<AuthStore> => {
-	const { subscribe, set } = writable<AuthStoreData>(
-		{
-			isAuthenticated: false,
-			identity: null,
-			actor: null
-		}
-	);
+	const { subscribe, set } = writable<AuthStoreData>({
+		isAuthenticated: false,
+		identity: new AnonymousIdentity(),
+		actor: anonActor
+	});
 
 	return {
 		subscribe,
@@ -35,15 +37,17 @@ const init = async (): Promise<AuthStore> => {
 			const isAuthenticated: boolean = await authClient.isAuthenticated();
 
 			if (isAuthenticated) {
-				const identity: Identity = authClient.getIdentity();
+				const signIdentity: Identity = authClient.getIdentity();
+
+				const authActor = await getActor(signIdentity);
 
 				return set({
 					isAuthenticated,
-					identity,
-					actor: await getActor(identity)
+					identity: signIdentity,
+					actor: authActor
 				});
 			}
-			set({ isAuthenticated, identity: null, actor: null });
+			set({ isAuthenticated, identity: anonIdentity, actor: anonActor });
 		},
 
 		signIn: async () =>
@@ -73,8 +77,8 @@ const init = async (): Promise<AuthStore> => {
 			// This fix a "sign in -> sign out -> sign in again" flow without window reload.
 			authClient = null;
 
-			set({isAuthenticated: false, identity: null, actor: null});
-		},
+			set({ isAuthenticated: false, identity: anonIdentity, actor: anonActor });
+		}
 	};
 };
 

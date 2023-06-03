@@ -1,7 +1,8 @@
 import type { PostResult, QueryComment, User } from '../declarations/comments.did';
 import { authStore } from './auth.store';
+import { get } from 'svelte/store';
 
-const actor = await authStore.actor();
+const actor = get(authStore).actor;
 
 export const postComment = async (comment: string): Promise<PostResult> => {
 	return await actor.postComment(comment);

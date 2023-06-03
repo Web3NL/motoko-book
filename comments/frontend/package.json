@@ -16,6 +16,7 @@
 	"devDependencies": {
 		"@esbuild-plugins/node-modules-polyfill": "^0.2.2",
 		"@playwright/test": "^1.28.1",
+		"@skeletonlabs/skeleton": "^1.6.2",
 		"@sveltejs/adapter-static": "^2.0.2",
 		"@sveltejs/kit": "^1.5.0",
 		"@typescript-eslint/eslint-plugin": "^5.45.0",
