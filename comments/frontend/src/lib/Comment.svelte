@@ -6,7 +6,7 @@
 
 	export let queryComment: QueryComment;
 
-	const created = new Date(Number(queryComment.created) / 1000000).toLocaleDateString();
+	const created = new Date(Number(queryComment.created) / 1000000).toLocaleString();
 
 	const like = async (hash: CommentHash) => {
 		$authStore.actor.likeComment(hash);
@@ -15,7 +15,7 @@
 
 <div class="card mt-4">
 	<div class="flex justify-between">
-		<p class="p-6 text-xl">{queryComment.comment}</p>
+		<p class="p-6 text-xl max-w-full flex-wrap flex-grow flex-shrink overflow-auto min-w-0">{queryComment.comment}</p>
 
 		<div class="p-5">
 			<p class="h2">{queryComment.reward}</p>
@@ -24,7 +24,7 @@
 	</div>
 
 	<div class="flex justify-between">
-		<span class="text-tertiary-900 pl-10">{created} by {queryComment.userId}</span>
+		<span class="text-tertiary-900 pl-5 pt-10">{created} by {queryComment.userId}</span>
 		{#if $authStore.isAuthenticated}
 			<div class="p-4">
 				<Button text="LIKE" on:click={() => like(queryComment.hash)} />
