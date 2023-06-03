@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { authStore } from '$lib/auth.store';
+	// import { authStore } from '$lib/auth.store';
 	import { onMount } from 'svelte';
 
     import { postComment } from './api';
