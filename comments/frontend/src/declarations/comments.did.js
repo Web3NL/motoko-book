@@ -1,5 +1,4 @@
 export const idlFactory = ({ IDL }) => {
-  const List = IDL.Rec();
   const CommentHash = IDL.Nat32;
   const QueryComment = IDL.Record({
     'reward' : IDL.Nat,
@@ -21,11 +20,10 @@ export const idlFactory = ({ IDL }) => {
     'TimeRemaining' : IDL.Int,
   });
   const PostResult = IDL.Variant({ 'ok' : IDL.Null, 'err' : PostError });
-  List.fill(IDL.Opt(IDL.Tuple(CommentHash, List)));
-  const User = IDL.Record({
+  const QueryUser = IDL.Record({
     'id' : IDL.Nat,
     'balance' : IDL.Nat,
-    'likes' : List,
+    'likes' : IDL.Vec(CommentHash),
     'lastLike' : IDL.Int,
     'lastPost' : IDL.Int,
   });
@@ -34,7 +32,7 @@ export const idlFactory = ({ IDL }) => {
     'likeComment' : IDL.Func([CommentHash__1], [LikeResult], []),
     'postComment' : IDL.Func([IDL.Text], [PostResult], []),
     'tokenTreasury' : IDL.Func([], [IDL.Nat], ['query']),
-    'user' : IDL.Func([], [IDL.Opt(User)], ['query']),
+    'user' : IDL.Func([], [IDL.Opt(QueryUser)], ['query']),
   });
 };
 export const init = ({ IDL }) => { return []; };

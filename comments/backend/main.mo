@@ -30,7 +30,9 @@ actor {
 
     type PostResult = Types.PostResult;
     type LikeResult = Types.LikeResult;
+
     type QueryComment = Types.QueryComment;
+    type QueryUser = Types.QueryUser;
 
     stable var treasury : Treasury = [var Constants.TOTAL_SUPPLY];
 
@@ -78,10 +80,18 @@ actor {
 
     public query func tokenTreasury() : async Nat { treasury[0] };
 
-    public shared query (msg) func user() : async ?User {
+    public shared query (msg) func user() : async ?QueryUser {
         switch (users.get(msg.caller)) {
             case null return null;
-            case (?user) return ?user;
+            case (?user) {
+                ?{
+                    id = user.id;
+                    balance = user.balance;
+                    lastLike = user.lastLike;
+                    lastPost = user.lastPost;
+                    likes = List.toArray<CommentHash>(user.likes);
+                } : ?QueryUser
+            };
         };
     };
 

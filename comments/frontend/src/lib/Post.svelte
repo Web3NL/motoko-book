@@ -5,7 +5,7 @@
     import { postComment } from './api';
     import Button from '$lib/Button.svelte';
 	// import type { PostResult, PostError } from '../declarations/comments.did';
-    import {AnonymousIdentity} from '@dfinity/agent';
+    // import {AnonymousIdentity} from '@dfinity/agent';
 
 	let comment: string;
     let input : HTMLInputElement;
@@ -30,16 +30,23 @@
             'AnonNotAllowed' in result.err ? comment = "Anon not allowed!" : {};
             'InvalidComment' in result.err ? comment = "Invalid comment!" : {};
             'TimeRemaining' in result.err ? window.location.reload() : {};
+
+            input.disabled = false;
+            text = "Submit";
         };
 	};
 </script>
 
 
 <div>
-	<form on:submit={post}>
-		<input id="comment" type="text" bind:value={comment} />
-		<Button {text} on:click={post} />
-	</form>
+	<label class="label">
+        <input 
+        bind:value={comment}
+        id="comment" 
+        class="input" 
+        type="text" 
+        placeholder="Comment" 
+        />
+    </label>
+	<Button {text} on:click={post} />
 </div>
-id = {$authStore.identity?.getPrincipal().toString()}
-anon = {(new AnonymousIdentity()).getPrincipal().toString()}

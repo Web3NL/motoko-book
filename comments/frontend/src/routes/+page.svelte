@@ -5,8 +5,8 @@
 	import Comments from '$lib/Comments.svelte';
 	import { onMount } from 'svelte';
 	import type { QueryComment } from '../declarations/comments.did';
-	// import User from '$lib/User.svelte';
-	// import Post from '$lib/Post.svelte';
+	import User from '$lib/User.svelte';
+	import Post from '$lib/Post.svelte';
 	
 	import { latestComments } from '$lib/api';
 	
@@ -22,7 +22,7 @@
 </script>
 
 <div>
-	
-	
+	<User />
+	<Post />
 	<Comments {comments} />
 </div>

@@ -8,7 +8,6 @@ export type LikeError = { 'AlreadyLiked' : null } |
   { 'TimeRemaining' : bigint };
 export type LikeResult = { 'ok' : bigint } |
   { 'err' : LikeError };
-export type List = [] | [[CommentHash, List]];
 export type PostError = { 'AnonNotAllowed' : null } |
   { 'InvalidComment' : null } |
   { 'TimeRemaining' : bigint };
@@ -21,10 +20,10 @@ export interface QueryComment {
   'hash' : CommentHash,
   'comment' : string,
 }
-export interface User {
+export interface QueryUser {
   'id' : bigint,
   'balance' : bigint,
-  'likes' : List,
+  'likes' : Uint32Array | number[],
   'lastLike' : bigint,
   'lastPost' : bigint,
 }
@@ -33,5 +32,5 @@ export interface _SERVICE {
   'likeComment' : ActorMethod<[CommentHash__1], LikeResult>,
   'postComment' : ActorMethod<[string], PostResult>,
   'tokenTreasury' : ActorMethod<[], bigint>,
-  'user' : ActorMethod<[], [] | [User]>,
+  'user' : ActorMethod<[], [] | [QueryUser]>,
 }

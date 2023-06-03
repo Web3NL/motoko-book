@@ -1,24 +1,20 @@
 <script lang="ts">
-	import { user } from './api';
-	import type {User} from '../declarations/comments.did';
+	import type { QueryUser } from '../declarations/comments.did';
+	import { userStore } from '$lib/user.store';
 	import { onMount } from 'svelte';
 
-
-	let _user : User;
+	let user: QueryUser | null | undefined = null;
 
 	onMount(async () => {
-		const result = await user();
-		console.log(result);
-		if (result.length !== 0) {
-			_user = result[0];
-		}
+		user = $userStore;
 	});
+
+	$: user = $userStore;
 </script>
 
-{#if _user}
-<div>
-	<p>UserId: User{_user.id}</p>
-	<p>Balance: {_user.balance}</p>
-</div>
+{#if user}
+	<div>
+		<p>UserId: User{user.id}</p>
+		<p>Balance: {user.balance}</p>
+	</div>
 {/if}
-

@@ -26,11 +26,6 @@
 		{/if}
 	</footer>
 </div>
-<div>
-	<p>{queryComment.comment}</p>
-	<p />
-	<p />
-</div>
 
 <style>
 </style>

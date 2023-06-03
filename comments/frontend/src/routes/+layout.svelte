@@ -19,8 +19,8 @@
 </script>
 <AppBar>
 	<svelte:fragment slot="lead"><Auth /></svelte:fragment>
+	<h1 class="h2">Web3 Comments</h1>
 	<svelte:fragment slot="trail"><LightSwitch /></svelte:fragment>
-	<svelte:fragment slot="headline"><h1 class="h1">Tokenized Comments</h1></svelte:fragment>
 </AppBar>
 
 <slot />

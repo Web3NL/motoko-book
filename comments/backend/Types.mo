@@ -50,4 +50,12 @@ module {
         reward : Nat;
         hash : CommentHash;
     };
+
+    public type QueryUser = {
+        id : Nat;
+        balance : Nat;
+        lastLike : Int;
+        lastPost : Int;
+        likes : [CommentHash];
+    };
 };
