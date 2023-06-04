@@ -31,6 +31,6 @@ export interface _SERVICE {
   'latestComments' : ActorMethod<[], Array<QueryComment>>,
   'likeComment' : ActorMethod<[CommentHash__1], LikeResult>,
   'postComment' : ActorMethod<[string], PostResult>,
+  'register' : ActorMethod<[], QueryUser>,
   'tokenTreasury' : ActorMethod<[], bigint>,
-  'user' : ActorMethod<[], [] | [QueryUser]>,
 }

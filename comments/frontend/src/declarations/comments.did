@@ -42,6 +42,6 @@ service : {
   latestComments: () -> (vec QueryComment) query;
   likeComment: (CommentHash__1) -> (LikeResult);
   postComment: (text) -> (PostResult);
+  register: () -> (QueryUser);
   tokenTreasury: () -> (nat) query;
-  user: () -> (opt QueryUser) query;
 }

@@ -5,10 +5,11 @@ import Error "mo:base/Error";
 
 import Types "Types";
 import Constants "Constants";
-import { validateComment; hashComment } "Utils";
+import { validateComment; hashComment; userToQueryUser } "Utils";
 
 module {
     type Stores = Types.Stores;
+    type Users = Types.Users;
 
     type User = Types.User;
 
@@ -17,7 +18,9 @@ module {
 
     type PostResult = Types.PostResult;
     type LikeResult = Types.LikeResult;
+
     type QueryComment = Types.QueryComment;
+    type QueryUser = Types.QueryUser;
 
     public func postComment(stores : Stores, owner : Principal, comment : Text) : PostResult {
         if (not validateComment(comment)) return #err(#InvalidComment);
@@ -88,13 +91,14 @@ module {
                     return #err(#AlreadyLiked);
                 };
 
-                let newUser : User = { user with
+                let newUser : User = {
+                    user with
                     lastLike = now;
                     lastPost = now;
                     likes = List.push<CommentHash>(hash, user.likes);
                 };
 
-                users.put(liker, newUser);  
+                users.put(liker, newUser);
             };
             case (null) {
                 let newUser : User = {
@@ -171,4 +175,24 @@ module {
         );
         List.toArray(comments);
     };
+
+    public func register(users : Users, principal : Principal) : QueryUser {
+        switch (users.get(principal)) {
+            case (null) {
+                let newUser : User = {
+                    id = users.size() + 1;
+                    balance = 0;
+                    lastPost = 0;
+                    lastLike = 0;
+                    likes = List.nil<CommentHash>();
+                };
+
+                users.put(principal, newUser);
+
+                userToQueryUser(newUser);
+            };
+            case (?user) { userToQueryUser(user) };
+        };
+    };
+
 };

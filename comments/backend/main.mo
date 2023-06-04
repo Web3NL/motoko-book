@@ -7,6 +7,7 @@
 import Array "mo:base/Array";
 import List "mo:base/List";
 import Hash "mo:base/Hash";
+import Error "mo:base/Error";
 import Principal "mo:base/Principal";
 import HashMap "mo:base/HashMap";
 
@@ -80,19 +81,10 @@ actor {
 
     public query func tokenTreasury() : async Nat { treasury[0] };
 
-    public shared query (msg) func user() : async ?QueryUser {
-        switch (users.get(msg.caller)) {
-            case null return null;
-            case (?user) {
-                ?{
-                    id = user.id;
-                    balance = user.balance;
-                    lastLike = user.lastLike;
-                    lastPost = user.lastPost;
-                    likes = List.toArray<CommentHash>(user.likes);
-                } : ?QueryUser
-            };
-        };
+    public shared (msg) func register() : async QueryUser {
+        if (Principal.isAnonymous(msg.caller)) throw Error.reject("Anonymous users cannot register");
+
+        Comments.register(users, msg.caller);
     };
 
     type CallArgs = {
@@ -105,7 +97,7 @@ actor {
     // system func inspect(args : CallArgs) : Bool {
     //     case (#likeComment) {
     //         let now = Time.now();
-    //         now 
+    //         now
     //     }
     // };
 };

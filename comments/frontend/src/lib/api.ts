@@ -11,8 +11,3 @@ export const latestComments = async (): Promise<QueryComment[]> => {
 	const actor = get(authStore).actor;
 	return await actor.latestComments();
 };
-
-export const user = async (): Promise<[] | [QueryUser]> => {
-	const actor = get(authStore).actor;
-	return await actor.user();
-};

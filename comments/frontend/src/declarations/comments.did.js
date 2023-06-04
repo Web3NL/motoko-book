@@ -31,8 +31,8 @@ export const idlFactory = ({ IDL }) => {
     'latestComments' : IDL.Func([], [IDL.Vec(QueryComment)], ['query']),
     'likeComment' : IDL.Func([CommentHash__1], [LikeResult], []),
     'postComment' : IDL.Func([IDL.Text], [PostResult], []),
+    'register' : IDL.Func([], [QueryUser], []),
     'tokenTreasury' : IDL.Func([], [IDL.Nat], ['query']),
-    'user' : IDL.Func([], [IDL.Opt(QueryUser)], ['query']),
   });
 };
 export const init = ({ IDL }) => { return []; };
