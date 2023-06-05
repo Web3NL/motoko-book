@@ -3,6 +3,9 @@
 	import { postComment } from './api';
 	import Button from '$lib/Button.svelte';
 	import { commentsStore } from './comments.store';
+	import { createEventDispatcher } from 'svelte';
+
+	const dispatch = createEventDispatcher();
 
 	let comment: string;
 	let input: HTMLInputElement;
@@ -20,13 +23,14 @@
 		const result = await postComment(comment);
 
 		if ('ok' in result) {
-            comment = "";
+			comment = '';
+			dispatch('updateUser');
 			await commentsStore.update();
 		} else if ('err' in result) {
 			'AnonNotAllowed' in result.err ? (comment = 'Anon not allowed!') : {};
 			'InvalidComment' in result.err ? (comment = 'Invalid comment!') : {};
 			'TimeRemaining' in result.err
-				? (comment = 'Time remaining: ' + result.err.TimeRemaining)
+				? (comment = 'Wait ' + Math.round(Number(result.err.TimeRemaining) / 10 ** 9) + ' seconds')
 				: {};
 		}
 

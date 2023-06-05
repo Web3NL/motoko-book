@@ -5,7 +5,11 @@ import Error "mo:base/Error";
 
 import Types "Types";
 import Constants "Constants";
-import { validateComment; hashComment; userToQueryUser } "Utils";
+import {
+    validateComment;
+    hashComment;
+    userToQueryUser;
+} "Utils";
 
 module {
     type Stores = Types.Stores;
@@ -32,8 +36,8 @@ module {
             case (?user) {
                 let now = Time.now();
 
-                if (now - user.lastPost < Constants.MAX_INTERVAL_USER_COMMENT) {
-                    return #err(#TimeRemaining(Constants.MAX_INTERVAL_USER_COMMENT - (now - user.lastPost)));
+                if (now - user.lastPost < Constants.COMMENT_INTERVAL) {
+                    return #err(#TimeRemaining(Constants.COMMENT_INTERVAL - (now - user.lastPost)));
                 };
 
                 let postComment : Comment = {
@@ -45,14 +49,16 @@ module {
                 let hash = hashComment(postComment);
 
                 treasury[0] -= Constants.COMMENT_REWARD;
+                let balance = user.balance + Constants.COMMENT_REWARD;
 
                 let newUser : User = {
                     user with
-                    balance = user.balance + Constants.COMMENT_REWARD;
+                    balance;
                     lastPost = now;
+                    likes = List.make<CommentHash>(hash);
                 };
 
-                users.put(owner, user);
+                users.put(owner, newUser);
 
                 commentStore.put(hash, postComment);
 
@@ -75,8 +81,8 @@ module {
                     return #err(#AlreadyLiked);
                 };
 
-                if (now - user.lastLike < Constants.MAX_INTERVAL_USER_LIKE) {
-                    return #err(#TimeRemaining(Constants.MAX_INTERVAL_USER_LIKE - (now - user.lastLike)));
+                if (now - user.lastLike < Constants.LIKE_INTERVAL) {
+                    return #err(#TimeRemaining(Constants.LIKE_INTERVAL - (now - user.lastLike)));
                 };
 
                 let newUser : User = {
@@ -99,15 +105,17 @@ module {
                     };
                     case (?owner) {
                         treasury[0] -= Constants.LIKE_REWARD;
+                        let reward = comment.reward + Constants.LIKE_REWARD;
+                        let balance = owner.balance + Constants.LIKE_REWARD;
 
                         let newComment : Comment = {
                             comment with
-                            reward = comment.reward + Constants.LIKE_REWARD;
+                            reward;
                         };
 
                         let newOwner : User = {
                             owner with
-                            balance = owner.balance + Constants.LIKE_REWARD;
+                            balance;
                         };
 
                         commentStore.put(hash, newComment);

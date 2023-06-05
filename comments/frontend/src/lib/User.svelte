@@ -6,6 +6,8 @@
 
 	let user: QueryUser | null | undefined = null;
 
+	const updateUser = async () => await userStore.update();
+
 	onMount(async () => {
 		user = $userStore;
 	});
@@ -14,6 +16,7 @@
 </script>
 
 {#if user}
+{console.log(user)}
 	<div class="mr-3 ml-3 mt-5 mb-5 flex justify-between ">
 		<div>
 			<p class="h2">User{user.id}</p>
@@ -25,5 +28,5 @@
 		</div>
 	</div>
 	
-	<Post />
+	<Post on:updateUser={updateUser}/>
 {/if}
