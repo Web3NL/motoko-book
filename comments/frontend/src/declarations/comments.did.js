@@ -11,12 +11,14 @@ export const idlFactory = ({ IDL }) => {
   const LikeError = IDL.Variant({
     'AlreadyLiked' : IDL.Null,
     'AnonNotAllowed' : IDL.Null,
+    'UserNotFound' : IDL.Null,
     'TimeRemaining' : IDL.Int,
   });
   const LikeResult = IDL.Variant({ 'ok' : IDL.Nat, 'err' : LikeError });
   const PostError = IDL.Variant({
     'AnonNotAllowed' : IDL.Null,
     'InvalidComment' : IDL.Null,
+    'UserNotFound' : IDL.Null,
     'TimeRemaining' : IDL.Int,
   });
   const PostResult = IDL.Variant({ 'ok' : IDL.Null, 'err' : PostError });

@@ -5,11 +5,13 @@ export type CommentHash = number;
 export type CommentHash__1 = number;
 export type LikeError = { 'AlreadyLiked' : null } |
   { 'AnonNotAllowed' : null } |
+  { 'UserNotFound' : null } |
   { 'TimeRemaining' : bigint };
 export type LikeResult = { 'ok' : bigint } |
   { 'err' : LikeError };
 export type PostError = { 'AnonNotAllowed' : null } |
   { 'InvalidComment' : null } |
+  { 'UserNotFound' : null } |
   { 'TimeRemaining' : bigint };
 export type PostResult = { 'ok' : null } |
   { 'err' : PostError };

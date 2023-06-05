@@ -25,37 +25,24 @@ module {
     public func postComment(stores : Stores, owner : Principal, comment : Text) : PostResult {
         if (not validateComment(comment)) return #err(#InvalidComment);
 
-        let now = Time.now();
-
-        let postComment : Comment = {
-            created = now;
-            owner;
-            comment;
-            reward = 0;
-        };
-
-        let hash = hashComment(postComment);
-
         let (treasury, users, commentStore, commentHistory) = stores;
 
         switch (users.get(owner)) {
-            case (null) {
-                treasury[0] -= Constants.COMMENT_REWARD;
-
-                let newUser : User = {
-                    id = users.size() + 1;
-                    balance = Constants.COMMENT_REWARD;
-                    lastPost = now;
-                    lastLike = now;
-                    likes = List.nil<CommentHash>();
-                };
-
-                users.put(owner, newUser);
-            };
+            case (null) { #err(#UserNotFound) };
             case (?user) {
+                let now = Time.now();
+
                 if (now - user.lastPost < Constants.MAX_INTERVAL_USER_COMMENT) {
                     return #err(#TimeRemaining(Constants.MAX_INTERVAL_USER_COMMENT - (now - user.lastPost)));
                 };
+
+                let postComment : Comment = {
+                    created = now;
+                    owner;
+                    comment;
+                    reward = 0;
+                };
+                let hash = hashComment(postComment);
 
                 treasury[0] -= Constants.COMMENT_REWARD;
 
@@ -66,29 +53,30 @@ module {
                 };
 
                 users.put(owner, user);
+
+                commentStore.put(hash, postComment);
+
+                commentHistory[0] := List.push<CommentHash>(hash, commentHistory[0]);
+
+                #ok();
             };
         };
-
-        commentStore.put(hash, postComment);
-
-        commentHistory[0] := List.push<CommentHash>(hash, commentHistory[0]);
-
-        #ok();
     };
 
     public func likeComment(stores : Stores, hash : CommentHash, liker : Principal) : async* LikeResult {
-        let now = Time.now();
-
         let (treasury, users, commentStore, _) = stores;
 
         switch (users.get(liker)) {
+            case (null) { return #err(#UserNotFound) };
             case (?user) {
-                if (now - user.lastLike < Constants.MAX_INTERVAL_USER_LIKE) {
-                    return #err(#TimeRemaining(Constants.MAX_INTERVAL_USER_LIKE - (now - user.lastLike)));
-                };
+                let now = Time.now();
 
                 if (List.some<CommentHash>(user.likes, func(h : CommentHash) : Bool { h == hash })) {
                     return #err(#AlreadyLiked);
+                };
+
+                if (now - user.lastLike < Constants.MAX_INTERVAL_USER_LIKE) {
+                    return #err(#TimeRemaining(Constants.MAX_INTERVAL_USER_LIKE - (now - user.lastLike)));
                 };
 
                 let newUser : User = {
@@ -96,17 +84,6 @@ module {
                     lastLike = now;
                     lastPost = now;
                     likes = List.push<CommentHash>(hash, user.likes);
-                };
-
-                users.put(liker, newUser);
-            };
-            case (null) {
-                let newUser : User = {
-                    id = users.size() + 1;
-                    balance = 0;
-                    lastPost = now;
-                    lastLike = now;
-                    likes = List.make<CommentHash>(hash);
                 };
 
                 users.put(liker, newUser);
@@ -142,7 +119,6 @@ module {
                 };
             };
         };
-
     };
 
     public func latestComments(stores : Stores) : [QueryComment] {

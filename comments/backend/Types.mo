@@ -34,6 +34,7 @@ module {
     type Error = {
         # TimeRemaining : Int;
         # AnonNotAllowed;
+        # UserNotFound;
     };
 
     public type PostResult = Result.Result<(), PostError>;

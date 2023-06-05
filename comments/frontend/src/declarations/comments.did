@@ -24,6 +24,7 @@ type PostError =
    AnonNotAllowed;
    InvalidComment;
    TimeRemaining: int;
+   UserNotFound;
  };
 type LikeResult = 
  variant {
@@ -35,6 +36,7 @@ type LikeError =
    AlreadyLiked;
    AnonNotAllowed;
    TimeRemaining: int;
+   UserNotFound;
  };
 type CommentHash__1 = nat32;
 type CommentHash = nat32;

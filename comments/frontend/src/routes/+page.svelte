@@ -1,29 +1,34 @@
 <script lang="ts">
 	import Comments from '$lib/Comments.svelte';
-	import { onMount } from 'svelte';
-	import type { QueryComment } from '../declarations/comments.did';
 	import User from '$lib/User.svelte';
 	import { LightSwitch } from '@skeletonlabs/skeleton';
 	import { AppBar } from '@skeletonlabs/skeleton';
-	import { latestComments } from '$lib/api';
 	import Auth from '$lib/Auth.svelte';
-
-	let comments : QueryComment[] = [];
-
-	onMount(async () => {
-		comments = await latestComments();
-	});
-
+	import Treasury from '$lib/Treasury.svelte';
 </script>
 
 <div class="max-w-xl p-2 mx-auto">
+	<div class="flex flex-row-reverse">
+		<div class="m-4 pt-1">
+			<LightSwitch />
+		</div>
+		<div class="m-4">
+			<Treasury />
+		</div>
+	</div>
 	<div>
 		<AppBar>
-			<svelte:fragment slot="lead"><Auth /></svelte:fragment>
-			<h1 class="h2">Web3 Comments</h1>
-			<svelte:fragment slot="trail"><LightSwitch /></svelte:fragment>
+			<svelte:fragment slot="lead">
+				<h1 class="h2 m-4">Web3 Comments</h1>
+			</svelte:fragment>
+			
+			<svelte:fragment slot="trail">
+				<div class="m-4">
+					<Auth />
+				</div>
+			</svelte:fragment>
 		</AppBar>
 	</div>
 	<User />
-	<Comments {comments} />
+	<Comments />
 </div>

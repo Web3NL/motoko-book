@@ -13,6 +13,7 @@
 		if (!browser) {
 			return;
 		}
+		
 		try {
 			await authStore.sync();
 		} catch (err: unknown) {

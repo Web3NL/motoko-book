@@ -1,21 +1,38 @@
 <script lang="ts">
-	import type { QueryComment } from '../declarations/comments.did';
-	import type { CommentHash } from '../declarations/comments.did';
+	import type { QueryComment, CommentHash, LikeResult } from '../declarations/comments.did';
 	import { authStore } from '$lib/auth.store';
 	import Button from '$lib/Button.svelte';
+	import { like } from './api';
 
 	export let queryComment: QueryComment;
 
-	const created = new Date(Number(queryComment.created) / 1000000).toLocaleString();
+	let likeButton = 'LIKE';
 
-	const like = async (hash: CommentHash) => {
-		$authStore.actor.likeComment(hash);
+	const postLike = async (hash: CommentHash) => {
+		likeButton = '...';
+
+		const result : LikeResult = await like(hash);
+
+		if ('ok' in result) {
+			queryComment.reward = result.ok;
+			likeButton = 'LIKED';
+		} else if ('err' in result) {
+			'AnonNotAllowed' in result.err ? likeButton = "Anon not allowed" : {};
+			'AlreadyLiked' in result.err ? likeButton = 'LIKED' : {};
+			'TimeRemaining' in result.err
+				? (likeButton = 'Wait ' + Math.round(Number(result.err.TimeRemaining) / 10**9) + ' seconds')
+				: {};
+		}
 	};
+
+	const created = new Date(Number(queryComment.created) / 1000000).toLocaleString();
 </script>
 
 <div class="card mt-4">
 	<div class="flex justify-between">
-		<p class="p-6 text-xl max-w-full flex-wrap flex-grow flex-shrink overflow-auto min-w-0">{queryComment.comment}</p>
+		<p class="p-6 text-xl max-w-full flex-wrap flex-grow flex-shrink overflow-auto min-w-0">
+			{queryComment.comment}
+		</p>
 
 		<div class="p-5">
 			<p class="h2">{queryComment.reward}</p>
@@ -24,25 +41,14 @@
 	</div>
 
 	<div class="flex justify-between">
-		<span class="text-tertiary-900 pl-5 pt-10">{created} by {queryComment.userId}</span>
+		<span class="text-tertiary-900 pl-5 pb-1">{created} by {queryComment.userId}</span>
 		{#if $authStore.isAuthenticated}
 			<div class="p-4">
-				<Button text="LIKE" on:click={() => like(queryComment.hash)} />
+				<Button text={likeButton} on:click={() => postLike(queryComment.hash)} />
 			</div>
 		{/if}
 	</div>
 </div>
-
-<!-- <div class="mr-3 ml-3 mt-5 mb-5 flex justify-between ">
-	<div>
-		<p class="h2">User{user.id}</p>
-		<span class="text-tertiary-900">Logged in</span>
-	</div>
-	<div>
-		<p class="h2">{user.balance}</p>
-		<span class="text-tertiary-900">Balance</span>
-	</div>
-</div> -->
 
 <style>
 </style>

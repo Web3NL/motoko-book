@@ -1,15 +1,8 @@
 <script lang="ts">
-	import type { QueryComment } from '../declarations/comments.did';
-	import { latestComments } from './api';
 	import Comment from './Comment.svelte';
-	import { onMount } from 'svelte';
+	import { commentsStore } from '$lib/comments.store';
 
-	export let comments: QueryComment[] = [];
-
-	onMount(async () => {
-		comments = await latestComments();
-	});
-
+	$: comments = $commentsStore;
 </script>
 
 {#each comments as queryComment}
