@@ -1,11 +1,11 @@
 // Tokenized Comments Example
 // For demonstration purposes only.
 // Tokens are not transferable.
+// Tokenomics model is not realistic.
 
-// import Time "mo:base/Time";
-// import Int "mo:base/Int";
 import Array "mo:base/Array";
 import List "mo:base/List";
+import Iter "mo:base/Iter";
 import Hash "mo:base/Hash";
 import Error "mo:base/Error";
 import Principal "mo:base/Principal";
@@ -35,12 +35,14 @@ actor {
     type QueryComment = Types.QueryComment;
     type QueryUser = Types.QueryUser;
 
+    // STABLE DATA STORES
     stable var treasury : Treasury = [var Constants.TOTAL_SUPPLY];
 
     stable var stableUsers : [(Principal, User)] = [];
     stable var stableCommentStore : [(CommentHash, Comment)] = [];
     stable var stableCommentHistory : [CommentHash] = [];
 
+    // INIT DATA STORES FROM STABLE DATA
     let users : Users = HashMap.fromIter<Principal, User>(
         Array.vals(stableUsers),
         1000,
@@ -57,7 +59,17 @@ actor {
 
     let commentHistory : CommentHistory = [var List.fromArray<CommentHash>(stableCommentHistory)];
 
+    // PUBLIC METHODS
+
+    public shared (msg) func register() : async QueryUser {
+        // Anonymous users cannot register
+        if (Principal.isAnonymous(msg.caller)) throw Error.reject("Anonymous users cannot register");
+
+        Comments.register(users, msg.caller);
+    };
+
     public shared (msg) func postComment(comment : Text) : async PostResult {
+        // Anonymous users cannot post comments
         if (Principal.isAnonymous(msg.caller)) return #err(#AnonNotAllowed);
 
         let stores : Stores = (treasury, users, commentStore, commentHistory);
@@ -66,6 +78,7 @@ actor {
     };
 
     public shared (msg) func likeComment(hash : CommentHash) : async LikeResult {
+        // Anonymous users cannot like comments
         if (Principal.isAnonymous(msg.caller)) return #err(#AnonNotAllowed);
 
         let stores : Stores = (treasury, users, commentStore, commentHistory);
@@ -74,30 +87,39 @@ actor {
     };
 
     public query func latestComments() : async [QueryComment] {
+        // Anonymous users can query comments
+
         let stores : Stores = (treasury, users, commentStore, commentHistory);
 
         Comments.latestComments(stores);
     };
 
-    public query func tokenTreasury() : async Nat { treasury[0] };
-
-    public shared (msg) func register() : async QueryUser {
-        if (Principal.isAnonymous(msg.caller)) throw Error.reject("Anonymous users cannot register");
-
-        Comments.register(users, msg.caller);
+    public query func tokenTreasury() : async Nat {
+        // Anon users can query treasury
+        treasury[0];
     };
 
-    type CallArgs = {
-        caller : Principal;
-        arg : Blob;
-        msg : {
-            #likeComment : () -> Any;
-        };
+    // UPGRADING
+
+    // Save state to stable arrays
+    system func preupgrade() {
+        stableUsers := Iter.toArray<(Principal, User)>(
+            users.entries()
+        );
+
+        stableCommentStore := Iter.toArray<(CommentHash, Comment)>(
+            commentStore.entries()
+        );
+
+        stableCommentHistory := List.toArray<CommentHash>(
+            commentHistory[0]
+        );
     };
-    // system func inspect(args : CallArgs) : Bool {
-    //     case (#likeComment) {
-    //         let now = Time.now();
-    //         now
-    //     }
-    // };
+
+    // Empty stable arrays to save memory
+    system func postupgrade() {
+        stableUsers := [];
+        stableCommentStore := [];
+        stableCommentHistory := [];
+    };
 };

@@ -29,24 +29,25 @@
 </script>
 
 <div class="card mt-4">
-	<div class="flex justify-between">
-		<p class="p-6 text-xl max-w-full flex-wrap flex-grow flex-shrink overflow-auto min-w-0">
-			{queryComment.comment}
-		</p>
+	<div class="pr-28 pb-10 relative">
 
-		<div class="p-5">
+		<div class="p-6 text-xl w-full break-words h-60">
+			{queryComment.comment}
+		</div>
+
+		<div class="p-5 absolute top-0 right-0">
 			<p class="h2">{queryComment.reward}</p>
 			<span class="text-tertiary-900">Reward</span>
 		</div>
-	</div>
 
-	<div class="flex justify-between">
-		<span class="text-tertiary-900 pl-5 pb-1">{created} by {queryComment.userId}</span>
+		<span class="text-tertiary-900 pl-5 pb-1 absolute bottom-0 left-0">{created} by {queryComment.userId}</span>
+
 		{#if $authStore.isAuthenticated}
-			<div class="p-4">
+			<div class="p-4 absolute right-0 bottom-0">
 				<Button text={likeButton} on:click={() => postLike(queryComment.hash)} />
 			</div>
 		{/if}
+
 	</div>
 </div>
 
