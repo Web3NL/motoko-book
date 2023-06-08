@@ -9,6 +9,7 @@ import {
     validateComment;
     hashComment;
     userToQueryUser;
+    fundsAvalaible;
 } "Utils";
 
 module {
@@ -25,6 +26,13 @@ module {
 
     type QueryComment = Types.QueryComment;
     type QueryUser = Types.QueryUser;
+
+    // Constants
+    let COMMENT_REWARD = Constants.COMMENT_REWARD;
+    let LIKE_REWARD = Constants.LIKE_REWARD;
+
+    let COMMENT_INTERVAL = Constants.COMMENT_INTERVAL;
+    let LIKE_INTERVAL = Constants.LIKE_INTERVAL;
 
     // PUBLIC METHOD IMPLEMENTATIONS
 
@@ -68,8 +76,8 @@ module {
                 let now = Time.now();
 
                 // Check if user has posted recently
-                if (now - user.lastPost < Constants.COMMENT_INTERVAL) {
-                    return #err(#TimeRemaining(Constants.COMMENT_INTERVAL - (now - user.lastPost)));
+                if (now - user.lastPost < COMMENT_INTERVAL) {
+                    return #err(#TimeRemaining(COMMENT_INTERVAL - (now - user.lastPost)));
                 };
 
                 // Create new comment record
@@ -81,9 +89,14 @@ module {
                 };
                 let hash = hashComment(postComment);
 
-                // Subtract and add an equal amount of funds
-                treasury[0] -= Constants.COMMENT_REWARD;
-                let balance = user.balance + Constants.COMMENT_REWARD;
+                // If treasury is not empty, subtract and add an equal amount of funds
+                var reward = 0;
+                if (fundsAvalaible(treasury, COMMENT_REWARD)) {
+                    treasury[0] -= COMMENT_REWARD;
+                    reward += COMMENT_REWARD;
+                };
+                
+                let balance = user.balance + reward;
 
                 // Create new user record
                 let newUser : User = {
@@ -124,8 +137,8 @@ module {
                 };
 
                 // Check if user has liked recently
-                if (now - user.lastLike < Constants.LIKE_INTERVAL) {
-                    return #err(#TimeRemaining(Constants.LIKE_INTERVAL - (now - user.lastLike)));
+                if (now - user.lastLike < LIKE_INTERVAL) {
+                    return #err(#TimeRemaining(LIKE_INTERVAL - (now - user.lastLike)));
                 };
 
                 // Add comment to user's liked comments list
@@ -155,20 +168,26 @@ module {
                         throw Error.reject("Comment has no owner");
                     };
                     case (?owner) {
-                        treasury[0] -= Constants.LIKE_REWARD;
-                        let reward = comment.reward + Constants.LIKE_REWARD;
-                        let balance = owner.balance + Constants.LIKE_REWARD;
-
+                        // If treasury is not empty, subtract and add to user balance and comment total reward
+                        var likeReward = 0;
+                        if (fundsAvalaible(treasury, LIKE_REWARD)) {
+                            treasury[0] -= LIKE_REWARD;
+                            likeReward += LIKE_REWARD;
+                        };
+                        let reward = comment.reward + likeReward;
+                        let balance = owner.balance + likeReward;
+    
+                        // Create new comment and owner records
                         let newComment : Comment = {
                             comment with
                             reward;
                         };
-
                         let newOwner : User = {
                             owner with
                             balance;
                         };
 
+                        // Update state within atomic block
                         commentStore.put(hash, newComment);
                         users.put(comment.owner, newOwner);
 

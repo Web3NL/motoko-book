@@ -9,12 +9,14 @@ import Constants "Constants";
 
 module {
     type Hash = Hash.Hash;
-    
+
     type Comment = Types.Comment;
     type CommentHash = Types.CommentHash;
 
     type User = Types.User;
     type QueryUser = Types.QueryUser;
+
+    type Treasury = Types.Treasury;
 
     // Compare function for comments
     public func compareComment(c1 : Comment, c2 : Comment) : Bool {
@@ -46,5 +48,10 @@ module {
             lastPost = user.lastPost;
             likes = List.toArray<CommentHash>(user.likes);
         } : QueryUser;
+    };
+
+    // Check treasury balance
+    public func fundsAvalaible(t : Treasury, amount : Nat) : Bool {
+        t[0] >= amount;
     };
 };
