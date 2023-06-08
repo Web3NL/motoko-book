@@ -2,5 +2,5 @@ book
 .dfx
 node_modules
 
-tokenized-comments/.svelte-kit
-tokenized-comments/build
+comments/frontend/.svelte-kit
+comments/frontend/build
