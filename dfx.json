@@ -6,6 +6,14 @@
       "frontend": {
         "entrypoint": "book/index.html"
       }
+    },
+    "comments": {
+      "type": "motoko",
+      "main": "comments/backend/main.mo",
+      "declarations": {
+        "output": "comments/frontend/src/declarations",
+        "node_compatibility": true
+      }
     }
   }
 }
