@@ -3,5 +3,5 @@ book
 node_modules
 
 comments/frontend/.svelte-kit
-comments/frontend/build
-comments/frontend/src/declarations
+comments/frontend/build/
+comments/frontend/src/declarations/

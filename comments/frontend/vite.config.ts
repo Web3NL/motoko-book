@@ -46,7 +46,7 @@ export default defineConfig({
 	},
 	define: {
 		'process.env': {
-			"VITE_BACKEND_CANISTER_ID": "bkyz2-fmaaa-aaaaa-qaaaq-cai"
+			"VITE_BACKEND_CANISTER_ID": "qloz2-siaaa-aaaal-qb5oa-cai"
 		}
 	}
 });
