@@ -16,10 +16,12 @@ module {
     type User = Types.User;
     type QueryUser = Types.QueryUser;
 
+    // Compare function for comments
     public func compareComment(c1 : Comment, c2 : Comment) : Bool {
         c1.created == c2.created and c1.owner == c2.owner and c1.comment == c2.comment
     };
 
+    // Hash function for comments
     public func hashComment(c : Comment) : Hash {
         let created = Int.toText(c.created);
         let owner = Principal.toText(c.owner);
@@ -27,12 +29,15 @@ module {
         Text.hash(created # owner # c.comment);
     };
 
+    // Identity function for hash
     public func hash(h : Hash) : Hash = h;
 
+    // Comment size validation
     public func validateComment(c : Text) : Bool {
         c.size() <= Constants.MAX_COMMENT_SIZE;
     };
 
+    // User record conversion
     public func userToQueryUser(user : User) : QueryUser {
         {
             id = user.id;

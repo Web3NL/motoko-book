@@ -183,8 +183,10 @@ module {
     public func latestComments(stores : Stores) : [QueryComment] {
         let (_, users, commentStore, commentHistory) = stores;
 
-        let latestHashes = List.take<CommentHash>(commentHistory[0], 10);
+        // Take the latest 50 comment hashes
+        let latestHashes = List.take<CommentHash>(commentHistory[0], 50);
 
+        // Map comment hashes to [QueryComment]
         let comments = List.mapFilter<CommentHash, QueryComment>(
             latestHashes,
             func(hash : CommentHash) : ?QueryComment {
@@ -210,7 +212,5 @@ module {
         );
         List.toArray(comments);
     };
-
-
 
 };
