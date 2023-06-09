@@ -1,21 +1,66 @@
 import { NodeModulesPolyfillPlugin } from '@esbuild-plugins/node-modules-polyfill';
 import inject from '@rollup/plugin-inject';
 import { sveltekit } from '@sveltejs/kit/vite';
-import { defineConfig } from 'vitest/config';
+import { defineConfig, loadEnv } from 'vite';
+import { join, resolve } from 'path';
+import { readFileSync } from 'fs';
+import type { UserConfig } from 'vite';
 
-export default defineConfig({
+// npm run dev = local
+// npm run build = local
+// dfx deploy = local
+// dfx deploy --network ic = ic
+const network = process.env.DFX_NETWORK ?? 'local';
+
+const readCanisterIds = ({ prefix }: { prefix?: string }): Record<string, string> => {
+	const canisterIdsJsonFile =
+		network === 'ic'
+			? join(process.cwd(), '../../canister_ids.json')
+			: join(process.cwd(), '../../.dfx', 'local', 'canister_ids.json');
+
+	try {
+		type Details = {
+			ic?: string;
+			local?: string;
+		};
+
+		const config: Record<string, Details> = JSON.parse(readFileSync(canisterIdsJsonFile, 'utf-8'));
+
+		return Object.entries(config).reduce((acc, current: [string, Details]) => {
+			const [canisterName, canisterDetails] = current;
+
+			return {
+				...acc,
+				[`${prefix ?? ''}${canisterName.toUpperCase()}_CANISTER_ID`]:
+					canisterDetails[network as keyof Details]
+			};
+		}, {});
+	} catch (e) {
+		throw Error(`Could not get canister ID from ${canisterIdsJsonFile}: ${e}`);
+	}
+};
+
+const config: UserConfig = {
 	plugins: [sveltekit()],
-	test: {
-		include: ['src/**/*.{test,spec}.{js,ts}']
+	resolve: {
+		alias: {
+			$declarations: resolve('./src/declarations')
+		}
 	},
 	build: {
-		target: 'esnext',
+		target: 'es2020',
 		rollupOptions: {
+			// Polyfill Buffer for production build
 			plugins: [
 				inject({
 					modules: { Buffer: ['buffer', 'Buffer'] }
 				})
 			]
+		}
+	},
+	server: {
+		proxy: {
+			'/api': 'http://localhost:8080'
 		}
 	},
 	// Node polyfill agent-js. Thanks solution shared by chovyfu on the Discord channel.
@@ -38,16 +83,25 @@ export default defineConfig({
 				}
 			]
 		}
-	},
-	server: {
-		proxy: {
-			'/api': 'http://localhost:8080'
-		}
-	},
-	define: {
-		'process.env': {
-			"VITE_COMMENTS-BACKEND_CANISTER_ID": "bkyz2-fmaaa-aaaaa-qaaaq-cai"
-			"VITE_BACKEND_CANISTER_ID": "qloz2-siaaa-aaaal-qb5oa-cai"
-		}
 	}
+};
+
+export default defineConfig(({ mode }: UserConfig): UserConfig => {
+	// Expand environment - .env files - with canister IDs
+	process.env = {
+		...process.env,
+		...loadEnv(mode ?? 'development', process.cwd()),
+		...readCanisterIds({ prefix: 'VITE_' })
+	};
+
+	return {
+		...config,
+		// Backwards compatibility for auto generated types of dfx that are meant for webpack and process.env
+		define: {
+			'process.env': {
+				...readCanisterIds({}),
+				DFX_NETWORK: network
+			}
+		}
+	};
 });

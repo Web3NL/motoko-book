@@ -1,5 +1,5 @@
 import { writable, type Readable } from 'svelte/store';
-import type { QueryComment } from '../declarations/commentsbackend.did';
+import type { QueryComment } from '$declarations/commentsbackend.did';
 import { latestComments } from './api';
 
 export interface CommentsStore extends Readable<QueryComment[]> {

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { QueryComment, CommentHash, LikeResult } from '../declarations/commentsbackend.did';
+	import type { QueryComment, CommentHash, LikeResult } from '$declarations/commentsbackend.did';
 	import { authStore } from '$lib/auth.store';
 	import Button from '$lib/Button.svelte';
 	import { like } from './api';

@@ -2,7 +2,7 @@ import type { Identity, ActorSubclass } from '@dfinity/agent';
 import { AnonymousIdentity } from '@dfinity/agent';
 import { AuthClient } from '@dfinity/auth-client';
 import { writable, type Readable } from 'svelte/store';
-import type { _SERVICE } from '../declarations/commentsbackend.did';
+import type { _SERVICE } from '$declarations/commentsbackend.did';
 import { getActor } from './actor';
 
 export interface AuthStoreData {

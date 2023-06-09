@@ -1,5 +1,5 @@
-import { idlFactory } from '../declarations';
-import type { _SERVICE } from '../declarations/commentsbackend.did';
+import { idlFactory } from '$declarations';
+import type { _SERVICE } from '$declarations/commentsbackend.did';
 
 import {
 	type Identity,
@@ -9,7 +9,7 @@ import {
 } from '@dfinity/agent';
 
 export const getActor = async (identity: Identity): Promise<ActorSubclass<_SERVICE>> => {
-	const canisterId = import.meta.env.VITE_COMMENTS-BACKEND_CANISTER_ID;
+	const canisterId = import.meta.env.VITE_COMMENTSBACKEND_CANISTER_ID;
 
 	const agent = await getAgent(identity);
 

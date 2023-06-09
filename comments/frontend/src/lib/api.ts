@@ -3,7 +3,7 @@ import type {
 	LikeResult,
 	QueryComment,
 	CommentHash
-} from '../declarations/commentsbackend.did';
+} from '$declarations/commentsbackend.did';
 import { authStore } from './auth.store';
 import { get } from 'svelte/store';
 
