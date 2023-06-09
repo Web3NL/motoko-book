@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { QueryUser } from '../declarations/comments.did';
+	import type { QueryUser } from '../declarations/commentsbackend.did';
 	import { userStore } from '$lib/user.store';
 	import { onMount } from 'svelte';
 	import Post from './Post.svelte';

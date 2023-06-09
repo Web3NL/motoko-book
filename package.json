@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "cd comments/frontend/ && npm run dev",
     "serve": "mdbook serve",
-    "generate": "dfx generate comments-backend",
+    "generate": "dfx generate commentsbackend",
     "domain": "cp -r domain/.well-known/ book/ && cp domain/.ic-assets.json book/",
     "build-book": "npx vite build && mdbook build && npm run domain",
     "build-comments": "dfx build comments-backend && npm run generate && cd comments/frontend/ && npm run build",
