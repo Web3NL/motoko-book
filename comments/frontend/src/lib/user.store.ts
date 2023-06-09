@@ -1,5 +1,5 @@
 import { writable, type Readable } from 'svelte/store';
-import type { QueryUser } from '../declarations/comments.did';
+import type { QueryUser } from '../declarations/commentsbackend.did';
 import { authStore } from './auth.store';
 import { get } from 'svelte/store';
 import { Actor } from '@dfinity/agent';

@@ -9,7 +9,7 @@
         "entrypoint": "book/index.html"
       }
     },
-    "comments-backend": {
+    "commentsbackend": {
       "type": "motoko",
       "main": "comments/backend/main.mo",
       "declarations": {
@@ -17,13 +17,13 @@
         "node_compatibility": true
       }
     },
-    "comments-frontend": {
+    "commentsfrontend": {
       "type": "assets",
       "source": [
         "comments/frontend/build/"
       ],
       "dependencies": [
-        "comments-backend"
+        "commentsbackend"
       ],
       "frontend": {
         "entrypoint": "comments/frontend/build/index.html"
