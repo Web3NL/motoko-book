@@ -1,3 +1,3 @@
-> **BETA WARNING** _This chapter is being reviewed and updated_
-
 # IC APIs
+
+An overview of modules for the Internet Computer System API's.
