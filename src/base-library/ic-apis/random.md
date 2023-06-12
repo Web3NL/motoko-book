@@ -1,6 +1,6 @@
-> **BETA WARNING** _This chapter is being reviewed and updated_
-
 # Random
+
+The _convention_ is to name the [_module alias_](/common-programming-concepts/modules.html#type-imports-and-renaming) after the [_file name_](/common-programming-concepts/modules.html#type-imports-and-renaming) it is defined in.
 
 ```motoko
 {{#include _mo/random/random.mo:a}}
@@ -20,6 +20,23 @@
 [Function `rangeFrom`](#randomrangefrom)  
 [Function `binomialFrom`](#randombinomialfrom)
 
+## Randomness on the IC
+
+The IC provides a source of randomness for use in canister smart contracts. For non-cryptographic use cases, it is relatively simple to use, but for cryptographic use case, some care is required, see the [Official Base Library Reference](https://internetcomputer.org/docs/current/motoko/main/base/Random) and the [Official Docs](https://internetcomputer.org/how-it-works/execution-layer/#random-number-generation) for more information.
+
+To obtain random numbers you need a _source of entropy_. Entropy is represented as a 32 byte `Blob` value. You may provide your own entropy `Blob` as a seed for random numbers or request 'fresh' entropy from the IC. Requesting entropy from the IC can only be done from within a `shared` function.
+
+After obtaining a blob of entropy, you may use the [`Finite`](#class-finite) class to instantiate an object with methods to 'draw' different forms of randomness, namely:
+
+- A random `Nat8` value with [`byte`](#randombyte)
+- A random `Bool` value with [`coin`](#randomcoin)
+- A random `Nat` value within a (possibly) large range with [`range`](#randomrange)
+- A random `Nat8` value of the number of heads in a series of `n` coin flips with [`binomial`](#randombinomial)
+
+When your entropy is 'used up', the `Finite` class methods will return `null`.
+
+Alternatively, you may use `byteFrom`, `coinFrom`, `rangeFrom` and `binomialFrom` to obtain a single random value from a given `Blob` seed.
+
 ## Class `Finite`
 
 ```motoko
@@ -32,18 +49,10 @@ class Finite(entropy : Blob)
 func blob : shared () -> async Blob
 ```
 
-```motoko
-{{#include _mo/random/blob.mo:a}}
-```
-
 ## Random.byte
 
 ```motoko
 func byte() : ?Nat8
-```
-
-```motoko
-{{#include _mo/random/byte.mo:a}}
 ```
 
 ## Random.coin
@@ -52,18 +61,10 @@ func byte() : ?Nat8
 func coin() : ?Bool
 ```
 
-```motoko
-{{#include _mo/random/coin.mo:a}}
-```
-
 ## Random.range
 
 ```motoko
 func range(p : Nat8) : ?Nat
-```
-
-```motoko
-{{#include _mo/random/range.mo:a}}
 ```
 
 ## Random.binomial
@@ -72,18 +73,10 @@ func range(p : Nat8) : ?Nat
 func binomial(n : Nat8) : ?Nat8
 ```
 
-```motoko
-{{#include _mo/random/binomial.mo:a}}
-```
-
 ## Random.byteFrom
 
 ```motoko
 func byteFrom(seed : Blob) : Nat8
-```
-
-```motoko
-{{#include _mo/random/byteFrom.mo:a}}
 ```
 
 ## Random.coinFrom
@@ -92,26 +85,14 @@ func byteFrom(seed : Blob) : Nat8
 func coinFrom(seed : Blob) : Bool
 ```
 
-```motoko
-{{#include _mo/random/coinFrom.mo:a}}
-```
-
 ## Random.rangeFrom
 
 ```motoko
 func rangeFrom(p : Nat8, seed : Blob) : Nat
 ```
 
-```motoko
-{{#include _mo/random/rangeFrom.mo:a}}
-```
-
 ## Random.binomialFrom
 
 ```motoko
 func binomialFrom(n : Nat8, seed : Blob) : Nat8
-```
-
-```motoko
-{{#include _mo/random/binomialFrom.mo:a}}
 ```
