@@ -1,5 +1,3 @@
-> **BETA WARNING** _This chapter is being reviewed and updated_
-
 # Time
 
 The _convention_ is to name the [_module alias_](/common-programming-concepts/modules.html#type-imports-and-renaming) after the [_file name_](/common-programming-concepts/modules.html#type-imports-and-renaming) it is defined in.
@@ -12,7 +10,7 @@ The time module exposes one function `now` that returns the IC system time repre
 
 ## Time is constant within `async` call
 
-The system time is constant within one `async` function call and any sub calls.
+The system time is **constant** within one `async` function call and any sub calls.
 
 ```motoko, run
 {{#include _mo/time2.mo:a}}
