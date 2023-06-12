@@ -110,9 +110,6 @@
     - [CertifiedData](base-library/ic-apis/certifieddata.md)
     - [Random](base-library/ic-apis/random.md)
     - [Experimental](base-library/ic-apis/experimental.md)
-      - [ExperimentalCycles](base-library/ic-apis/experimental/experimentalcycles.md)
-      - [ExperimentalInternetComputer](base-library/ic-apis/experimental/experimentalinternetcomputer.md)
-      - [ExperimentalStableMemory](base-library/ic-apis/experimental/experimentalstablememory.md)
 
 - [Advanced Concepts](advanced-concepts.md)
 
