@@ -2,9 +2,9 @@
 
 The asynchronous programming paradigm of the Internet Computer is based on the actor model.
 
-[Actors](/internet-computer-programming-concepts/actors.html) are isolated units of code and state that communicate with each other by calling each others' [shared functions](/internet-computer-programming-concepts/actors.html#public-shared-functions-in-actors) where each shared function call triggers at least 1 or more [messages](#messages-and-atomicity) to be sent and executed.
+[Actors](/internet-computer-programming-concepts/actors.html) are isolated units of code and state that communicate with each other by calling each others' [shared functions](/internet-computer-programming-concepts/actors.html#public-shared-functions-in-actors) where each shared function call triggers one or more [messages](#messages-and-atomicity) to be sent and executed.
 
-To master Motoko programming on the IC, we need to understand how to write _asynchronous code_, how to [**correctly handle async calls using try-catch**](#try-catch-expressions) and mutate the state safely.
+To master Motoko programming on the IC, we need to understand how to write _asynchronous code_, how to [**correctly handle async calls using try-catch**](#try-catch-expressions) and modify state safely.
 
 > **NOTE**  
 > _From now on, we will drop the optional `shared` keyword in the declaration of [shared functions](/internet-computer-programming-concepts/actors.html#public-shared-functions-in-actors) and refer to these functions as simply 'shared functions'._
@@ -41,11 +41,15 @@ To master Motoko programming on the IC, we need to understand how to write _asyn
 
 ## Async and Await
 
-A call to a [shared function](/internet-computer-programming-concepts/actors.html#public-shared-functions-in-actors) immediately returns a _future_ of type [`async T`](/internet-computer-programming-concepts/actors.html#shared-async-types), where T is a [*shared type*](/internet-computer-programming-concepts/async-data/shared-types.html). A _future_ of type `async T` can be _awaited_ using the `await` keyword to retrieve the value of type `T`.
+A call to a [shared function](/internet-computer-programming-concepts/actors.html#public-shared-functions-in-actors) immediately returns a _future_ of type [`async T`](/internet-computer-programming-concepts/actors.html#shared-async-types), where T is a [*shared type*](/internet-computer-programming-concepts/async-data/shared-types.html). 
 
-- Shared function calls and awaits are only allowed in [_asynchronous context_](#messaging-restrictions).
-- Shared function calls that immediately return a future, do not suspend execution of the code.
-- Awaits using `await` do suspend execution of the function until a [_callback_](#shared-functions-that-await) is received.
+A future is a value representing the (future) result of a concurrent computation. When the computation completes (with  either a value of type `T` or an [error](#errors)), the result is stored in the future.  
+
+A _future_ of type `async T` can be _awaited_ using the `await` keyword to retrieve the value of type `T`. Execution is paused at the await until the future is complete and produces the result of the computation, by returning the value of type `T` or [throwing the error](#errors).
+
+- Shared function calls and awaits are only allowed in an [_asynchronous context_](#messaging-restrictions).
+- Shared function calls immediately return a future but, unlike ordinary function calls, do not suspend execution of the caller at the call-site.
+- Awaits using `await` do suspend execution of the computation until a [_callback_](#shared-functions-that-await) is received.
 
 > **NOTE**  
 > _While execution of a shared function is suspended due to an `await` or [`await*`](#async-and-await-1), other [messages](#messages-and-atomicity) can be processed by the actor in the meantime._
@@ -77,7 +81,7 @@ To call the shared functions of other actors, we need the [_actor type_](/intern
 {{#include _mo/async-calls2.mo:a}}
 ```
 
-The actor type we use may be a [_subtype_](/advanced-types/subtyping.html) of the external actor type. We declare the actor type `actor {}` with only the shared functions we are interested in. In this case, we are importing the actor from the previous example and are only interested in the [query function](/internet-computer-programming-concepts/actors.html#public-shared-query) `read`.
+The actor type we use may be a [_supertype_](/advanced-types/subtyping.html) of the external actor type. We declare the actor type `actor {}` with only the shared functions we are interested in. In this case, we are importing the actor from the previous example and are only interested in the [query function](/internet-computer-programming-concepts/actors.html#public-shared-query) `read`.
 
 We declare a variable `actorA` with actor type `ActorA` and assign an actor reference `actor()` to it. We supply the [principal id](/internet-computer-programming-concepts/principals-and-authentication.html) of actor A to reference it. We can now refer to the shared function `read` of actor A as `actorA.read`.
 
@@ -98,7 +102,9 @@ We will not cover the terms 'instruction' and 'subnet' in this book. Lets just r
 
 A call to a shared function of any actor A, whether from an [_external client_](/internet-computer-programming-concepts/actors/canister-calling.html), [from itself](#async-and-await) or from another actor B (as an [Inter-Canister Call](#inter-canister-calls)), results in an _incoming message_ to actor A.
 
-A single message is executed _atomically_. This means that the code executed within one message either executes successfully or not at all. This also means that any _state mutations_ within a single message are either all committed or none of them are committed.
+A single message is executed _atomically_. This means that the code executed within one message either executes successfully or not at all. This also means that any _state changes_ within a single message are either all committed or none of them are committed.
+
+These state changes also include any messages sent with calls to shared function. Calls are queued locally and only sent on successful commit.
 
 **An `await` ends the current message and splits the execution of a function into [separate messages](#shared-functions-that-await).**
 
@@ -128,7 +134,7 @@ The second line `let result = await future;` keyword ends the first message and 
 
 The call to `read()` is executed as a separate message and could possibly be executed remotely in another actor, see [inter-canister calls](#inter-canister-calls). The message sent to `read()` could possibly result in several messages if the `read()` function also `await`s in its body.
 
-If the sent message executes successfully, a _callback_ is made to `call_read` that is executed as yet another message as the the last line `result + 1`.
+If the sent message executes successfully, a _callback_ is made to `call_read` that is executed as yet another message as the last line `result + 1`. The callback writes the result into the future, completing it, and resumes the code that was waiting on the future, i.e. the last line `result + 1`.
 
 In total, there are **three messages**, two of which are executed inside the calling actor as part of `call_read` and one that is executed elsewhere, possibly a remote actor. In this case `actor A` sends a message to itself.
 
@@ -246,7 +252,7 @@ A trap is an _unintended_ non-recoverable runtime failure caused by, for example
 
 - A trap during the execution of a single message causes the entire message to fail.
 - State changes before and after a trap within a message are **NOT** committed.
-- Traps can be handled using [`try-catch`](#try-catch-expressions) expressions.
+- A message that traps will return a special error to the sender and those errors can be caught using [`try-catch`](#try-catch-expressions), like other errors, see [catching a trap](#catching-a-trap).
 - A trap may occur intentionally for development purposes, see [Debug.trap()](/base-library/utils/debug.html)
 - A trap can happen anywhere code runs in an actor, not only in an [asynchronous context](#messaging-restrictions).
 
@@ -263,7 +269,9 @@ The shared function `incrementAndTrap` fails and does not return `()`. Instead i
 After `incrementAndTrap`, our mutable variable `state` is not changed at all.
 
 > **NOTE**  
-> _Usually a trap occurs without `Debug.trap()` during execution of code, for example at underflow or overflow of [bounded types](/base-library/primitive-types/bounded-number-types.html) or other runtime failures, see [traps](#traps)._
+> _Usually a trap occurs without `Debug.trap()` during execution of code, for example at underflow or overflow of [bounded types](/base-library/primitive-types/bounded-number-types.html) or other runtime failures, see [traps](#traps)._  
+>  
+> _[Assertions](/common-programming-concepts/assertions.html) also generate a trap if their argument evaluates to `false`_
 
 ## Async* and Await*
 
