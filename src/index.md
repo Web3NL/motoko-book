@@ -1,8 +1,8 @@
 # The Motoko Programming Language
 
-**BETA**: Book is work in progress.
-
 ## Latest updates
+
+**13-06-2023** Chapter 10 [Tokenized Comments Example](/tokenized-comments-example.html)  
 
 **05-05-2023** Chapter 8 [Common Internet Computer Canisters](/common-internet-computer-canisters.html)  
 
