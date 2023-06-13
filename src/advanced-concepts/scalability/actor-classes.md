@@ -14,7 +14,7 @@ See ['Actor classes'](https://internetcomputer.org/docs/current/motoko/main/acto
 
 We use the `actor class` keywords followed by a name with parentheses `User()` and an optional input argument list, in this case `username : Text`.
 
-The body of the actor class, like any actor, may contain [_variables_](/common-programming-concepts/variables.html), [_private_](/common-programming-concepts/functions.html#private-functions) or [_shared functions_](/internet-computer-programming-concepts/actors.html#public-shared-functions-in-actors), [_type declarations_](/common-programming-concepts/modules.html#public-types-in-modules) and [_private `async*` functions_](/advanced-concepts/async-programming.html#async-and-await-1).
+The body of the actor class, like any actor, may contain [_variables_](/common-programming-concepts/variables.html), [_private_](/common-programming-concepts/functions.html#private-functions) or [_shared functions_](/internet-computer-programming-concepts/actors.html#public-shared-functions-in-actors), [_type declarations_](/common-programming-concepts/modules.html#public-types-in-modules), [_private `async*` functions_](/advanced-concepts/async-programming.html#async-and-await-1), etc.
 
 ## Actor class import
 
