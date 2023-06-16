@@ -1,6 +1,7 @@
 # Async Programming
 
-The asynchronous programming paradigm of the Internet Computer is based on the actor model.
+The asynchronous programming paradigm of the Internet Computer is based on the [actor model]
+(https://en.wikipedia.org/wiki/Actor_model).
 
 [Actors](/internet-computer-programming-concepts/actors.html) are isolated units of code and state that communicate with each other by calling each others' [shared functions](/internet-computer-programming-concepts/actors.html#public-shared-functions-in-actors) where each shared function call triggers one or more [messages](#messages-and-atomicity) to be sent and executed.
 
@@ -52,7 +53,7 @@ A _future_ of type `async T` can be _awaited_ using the `await` keyword to retri
 - Awaits using `await` do suspend execution of the computation until a [_callback_](#shared-functions-that-await) is received.
 
 > **NOTE**  
-> _While execution of a shared function is suspended due to an `await` or [`await*`](#async-and-await-1), other [messages](#messages-and-atomicity) can be processed by the actor in the meantime._
+> _While execution of a shared function call is suspended at an `await` or [`await*`](#async-and-await-1), other [messages](#messages-and-atomicity) can be processed by the actor, possibly changing its state._
 
 [Actors](/internet-computer-programming-concepts/actors.html) can call their own [shared functions](/internet-computer-programming-concepts/actors.html#public-shared-functions-in-actors). Here is an actor calling its own shared function from another shared function:
 
@@ -104,13 +105,13 @@ A call to a shared function of any actor A, whether from an [_external client_](
 
 A single message is executed _atomically_. This means that the code executed within one message either executes successfully or not at all. This also means that any _state changes_ within a single message are either all committed or none of them are committed.
 
-These state changes also include any messages sent with calls to shared function. Calls are queued locally and only sent on successful commit.
+These state changes also include any messages sent as calls to shared functions. These calls are queued locally and only sent on successful commit.
 
 **An `await` ends the current message and splits the execution of a function into [separate messages](#shared-functions-that-await).**
 
 ### Atomic functions
 
-An atomic function is one that executes within one single message. The function either executes successfully or has no effect at all. If an atomic function fails, we know for sure its state mutations have not been committed.
+An atomic function is one that executes within one single message. The function either executes successfully or has no effect at all. If an atomic function fails, we know for sure its state changes have not been committed.
 
 **If a shared function does not `await` in its body, then it is executed atomically.**
 
@@ -271,7 +272,7 @@ After `incrementAndTrap`, our mutable variable `state` is not changed at all.
 > **NOTE**  
 > _Usually a trap occurs without `Debug.trap()` during execution of code, for example at underflow or overflow of [bounded types](/base-library/primitive-types/bounded-number-types.html) or other runtime failures, see [traps](#traps)._  
 >  
-> _[Assertions](/common-programming-concepts/assertions.html) also generate a trap if their argument evaluates to `false`_
+> _[Assertions](/common-programming-concepts/assertions.html) also generate a trap if their argument evaluates to `false`._
 
 ## Async* and Await*
 
@@ -287,9 +288,9 @@ For demonstration purposes, lets look at an example of a private `async*` functi
 {{#include _mo/async-calls7.mo}}
 ```
 
-`compute` is a [private function](/common-programming-concepts/functions.html#private-functions) with `async* Nat` return type. Calling it directly yields a _future_ of type `async* Nat` and resumes execution without blocking. This future needs to be awaited using `await*` for the computation to actually execute (unlike the case with 'ordinary' `async` [atomic functions that send messages](#atomic-functions-that-send-messages)).
+`compute` is a [private function](/common-programming-concepts/functions.html#private-functions) with `async* Nat` return type. Calling it directly yields a _computation_ of type `async* Nat` and resumes execution without blocking. This computation needs to be awaited using `await*` for the computation to actually execute (unlike the case with 'ordinary' `async` [atomic functions that send messages](#atomic-functions-that-send-messages)).
 
-`await*` also suspends execution, until a result is obtained. We could also pass around the future within our actor code and only `await*` it when we actually need the result.
+`await*` also suspends execution, until a result is obtained. We could also pass around the computation within our actor code and only `await*` it when we actually need the result.
 
 We `await*` our function `compute` from within an [asynchronous context](#messaging-restrictions).
 
@@ -297,7 +298,7 @@ We `await*` our function `compute` from within an 'ordinary' shared `async` func
 
 In the case of `call_compute` we obtain the result by first declaring a future and then `await*`ing it. In the case of `call_compute2` we `await*` the result directly.
 
-`compute` and `call_compute` are not part of the [_actor type_](/internet-computer-programming-concepts/actors.html#actor-type) and [_public API_](/internet-computer-programming-concepts/async-data/candid.html#actor-interfaces), because it is a [private function](/common-programming-concepts/functions.html#private-functions).
+`compute` and `call_compute` are not part of the [_actor type_](/internet-computer-programming-concepts/actors.html#actor-type) and [_public API_](/internet-computer-programming-concepts/async-data/candid.html#actor-interfaces), because they are [private functions](/common-programming-concepts/functions.html#private-functions).
 
 ### `await` and `await*`
 
@@ -309,7 +310,7 @@ Private non-shared `async*` functions can both `await` and `await*` in their bod
 - does not necessarily trigger new message sends
 - could be executed as part of the current message
 
-An `async*` function that only uses `await*` in its body to await futures of other `async*` functions (that also don't 'ordinarily' `await` in their body), is executed as a single message and is guaranteed to be atomic. This means that either all `await*` expressions within a `async*` function are executed successfully or non of them have any effect at all.
+An `async*` function that only uses `await*` in its body to await computations of other `async*` functions (that also don't 'ordinarily' `await` in their body), is executed as a single message and is guaranteed to be atomic. This means that either all `await*` expressions within a `async*` function are executed successfully or non of them have any effect at all.
 
 This is different form 'ordinary' `await` where each `await` triggers a new message and splits the function call into [several messages](#shared-functions-that-await). State changes from the current message are then committed each time a new `await` happens.
 
@@ -339,7 +340,7 @@ Here's an example of a nested `await*` within an `async*` function calls:
 {{#include _mo/async-calls9.mo}}
 ```
 
-Because `incr()` and `incr2()` do not 'ordinarily' `await` in their body, a call to `atomic()` is executed as single message. It behaves as if we substitute the body of `incr()` for the `await* incr()` expression and similarly substitute the body of `incr2()` for the `await* incr2()` expression.
+Because `incr()` and `incr2()` do not 'ordinarily' `await` in their body, a call to `atomic()` is executed as a single message. It behaves as if we substitute the body of `incr()` for the `await* incr()` expression and similarly substitute the body of `incr2()` for the `await* incr2()` expression.
 
 ### Non-atomic `await*`
 
@@ -406,7 +407,7 @@ Lets `try` to `await*` a private `async*` function and `catch` any possible erro
 
 We start by importing [`Result`](/base-library/utils/result.html) and [`Error`](/base-library/utils/error.html) from the [base library](/base-library.html) and declare a `Result` type with associated types for our purpose.
 
-Note that our private `async*` function `error()` should under normal circumstances return a `()` when `await*`ed. But it performs some check and could _intentionally_ `throw` an [`Error`](#errors) under some circumstances to alert the caller that something is not right.
+Note that our private `async*` function `error()` should, in normal circumstances, return a `()` when `await*`ed. But it performs a check and _intentionally_ `throw`s an [`Error`](#errors) in exceptional circumstances to alert the caller that something is not right.
 
 To account for this case, we `try` the function first in a try-block `try {}`, where we `await*` for it. If that succeeds, we know the function returned a `()` and we return the `#ok` variant as our `Result`.
 
