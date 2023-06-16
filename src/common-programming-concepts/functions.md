@@ -8,7 +8,8 @@ Other possible functions will be discussed in upcoming chapters:
 
 - [`Objects and Classes`](objects-and-classes.html) public and private functions inside an object or class
 - [`Modules`](modules.html) public and private functions inside a module
-- [`Actors`](/internet-computer-programming-concepts/actors.html) update, query and oneway shared functions
+- [`Actors`](/internet-computer-programming-concepts/actors.html) `async` update, query and oneway shared functions
+- [`Actors`](/advanced-concepts/async-programming.html) `async*` functions
 - [`Principals and Authentication`](/internet-computer-programming-concepts/principals-and-authentication.html) caller-identifying functions
 - [`Upgrades`](/advanced-concepts/system-apis/preupgrade-postupgrade.html) system upgrade functions
 
