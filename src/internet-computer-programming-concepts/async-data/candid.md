@@ -140,7 +140,7 @@ The type reflects the public Motoko type `User` from our actor. Since this is a 
 
 ## Candid Serialization
 
-Another important use of Candid is _data serialization_ of [shared types](/internet-computer-programming-concepts/async-data/shared-types.html). Data structures in Motoko, like in any other language, are not always stored as serial (contiguous) bytes in _working memory_. When we want to _send_ shared data in and out of a canisters or store data in [stable memory](/advanced-concepts/scalability/stable-storage.html), we have to _serialize_ the data before sending.
+Another important use of Candid is _data serialization_ of [shared types](/internet-computer-programming-concepts/async-data/shared-types.html). Data structures in Motoko, like in any other language, are not always stored as serial (contiguous) bytes in [_main memory_](/internet-computer-programming-concepts/basic-memory-persistence.html#canister-main-memory). When we want to _send_ shared data in and out of a canisters or store data in [stable memory](/advanced-concepts/scalability/stable-storage.html), we have to _serialize_ the data before sending.
 
 Motoko has built in support for serializing shared types into Candid format. A _higher order_ data type like an object can be converted into a _binary blob_ that would still have a shared type.
 
@@ -158,7 +158,7 @@ Our object type `MyData` contains a `Text` field and fields of variant types `A`
 
 We declared a variable of type `MyData` and assigned it a value. Then we _serialized_ that data into a `Blob` by using `to_candid()`.
 
-This blob can now be sent or received in arguments or return types of public shared functions or stored in [memory](/advanced-concepts/scalability/stable-storage.html).
+This blob can now be sent or received in arguments or return types of public shared functions or stored in [stable memory](/advanced-concepts/scalability/stable-storage.html).
 
 We could recover the original type by doing the opposite, namely deserializing the data back into a Motoko shared type by using `from_candid()`.
 
