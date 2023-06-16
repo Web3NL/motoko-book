@@ -149,3 +149,7 @@
   - [ICRC1](internet-computer-standards/icrc1.md)
 
 - [Tokenized Comments Example](tokenized-comments-example.md)
+
+# APPENDIX
+
+- [TABLES](tables.md)
