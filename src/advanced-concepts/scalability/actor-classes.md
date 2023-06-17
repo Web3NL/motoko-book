@@ -6,6 +6,9 @@ But unlike ordinary [_public classes_](/common-programming-concepts/modules.html
 
 See ['Actor classes'](https://internetcomputer.org/docs/current/motoko/main/actor-classes/) and ['Actor classes generalize actors'](https://internetcomputer.org/docs/current/motoko/main/actors-async/#actor-classes-generalize-actors) in the official documentation for more information.
 
+> **NOTE**  
+> _For programmatically managing actor classes, also check out [Actor class management](https://internetcomputer.org/docs/current/motoko/main/language-manual#actor-class-management)_
+
 ## A simple actor class
 
 ```motoko
@@ -78,6 +81,9 @@ The shared function `newUser` takes a `Text` and uses that as the argument to `a
 We add the new actor to the buffer (`users.add(instance)`) to be able to interact with it later.
 
 Finally, we return the principal of the new actor by calling `Principal.fromActor(instance)`.
+
+> **NOTE**  
+> _On the IC we actually need to provide some [cycles](https://web3.motoko-book.dev/base-library/ic-apis/experimental.html#experimentalcycles) with the call to the actor constructor `User.User()`. On Motoko Playground, this code may work fine for testing purposes._
 
 ## Calling child actors
 
