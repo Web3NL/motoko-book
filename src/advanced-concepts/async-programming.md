@@ -5,7 +5,7 @@ The asynchronous programming paradigm of the Internet Computer is based on the [
 
 [Actors](/internet-computer-programming-concepts/actors.html) are isolated units of code and state that communicate with each other by calling each others' [shared functions](/internet-computer-programming-concepts/actors.html#public-shared-functions-in-actors) where each shared function call triggers one or more [messages](#messages-and-atomicity) to be sent and executed.
 
-To master Motoko programming on the IC, we need to understand how to write _asynchronous code_, how to [**correctly handle async calls using try-catch**](#try-catch-expressions) and modify state safely.
+To master Motoko programming on the IC, we need to understand how to write _asynchronous code_, how to [**correctly handle async calls using try-catch**](#try-catch-expressions) and and how to safely modify state in the presence of concurrent activity.
 
 > **NOTE**  
 > _From now on, we will drop the optional `shared` keyword in the declaration of [shared functions](/internet-computer-programming-concepts/actors.html#public-shared-functions-in-actors) and refer to these functions as simply 'shared functions'._
@@ -42,15 +42,15 @@ To master Motoko programming on the IC, we need to understand how to write _asyn
 
 ## Async and Await
 
-A call to a [shared function](/internet-computer-programming-concepts/actors.html#public-shared-functions-in-actors) immediately returns a _future_ of type [`async T`](/internet-computer-programming-concepts/actors.html#shared-async-types), where T is a [*shared type*](/internet-computer-programming-concepts/async-data/shared-types.html). 
+A call to a [shared function](/internet-computer-programming-concepts/actors.html#public-shared-functions-in-actors) immediately returns a _future_ of type [`async T`](/internet-computer-programming-concepts/actors.html#shared-async-types), where T is a [_shared type_](/internet-computer-programming-concepts/async-data/shared-types.html).
 
-A future is a value representing the (future) result of a concurrent computation. When the computation completes (with  either a value of type `T` or an [error](#errors)), the result is stored in the future.  
+A future is a value representing the (future) result of a concurrent computation. When the computation completes (with either a value of type `T` or an [error](#errors)), the result is stored in the future.
 
 A _future_ of type `async T` can be _awaited_ using the `await` keyword to retrieve the value of type `T`. Execution is paused at the await until the future is complete and produces the result of the computation, by returning the value of type `T` or [throwing the error](#errors).
 
 - Shared function calls and awaits are only allowed in an [_asynchronous context_](#messaging-restrictions).
 - Shared function calls immediately return a future but, unlike ordinary function calls, do not suspend execution of the caller at the call-site.
-- Awaits using `await` do suspend execution of the computation until a [_callback_](#shared-functions-that-await) is received.
+- Awaiting a future using `await` suspends execution until the result of the future, a value or [error](#errors), is available.
 
 > **NOTE**  
 > _While execution of a shared function call is suspended at an `await` or [`await*`](#async-and-await-1), other [messages](#messages-and-atomicity) can be processed by the actor, possibly changing its state._
@@ -65,7 +65,7 @@ The first call to `read` immediately returns a future of type `async Nat`, which
 
 To actually retrieve the `Nat` value, we have to `await` the future. The actor sends a [message](#messages-and-atomicity) to itself with the request and halts execution until a response is received.
 
-The result is a `Nat` that we increment within the [_callback_](#messages-and-atomicity) and use as the return value for `call_read`.
+The result is a `Nat` value. We increment it in the code block after the `await` and use as the return value for `call_read`.
 
 > **NOTE**  
 > _Shared functions that `await` are not atomic. `call_read()` is executed as several separate [messages](#messages-and-atomicity), see [shared functions that `await`](#shared-functions-that-await)._
@@ -119,7 +119,7 @@ An atomic function is one that executes within one single message. The function 
 {{#include _mo/async-calls4.mo:a}}
 ```
 
-Our function `atomic` mutates the state, performs a computation and mutates the `state` again. Both the computation and the state mutations belong to the same message execution. The whole function either succeeds and commits all state mutations or it fails and does not commit any changes at all.
+Our function `atomic` mutates the state, performs a computation and mutates the `state` again. Both the computation and the state mutations belong to the same message execution. The whole function either succeeds and commits its final state or it fails and does not commit any changes at all. Moreover, the intermediate state changes are not observable from other messages. Execution is all or nothing (i.e. transactional).
 
 The second function `atomic_fail` is another atomic function. It also performs a computation and state mutations within one single message. **But this time, the computation [traps](#traps) and both state mutations are not committed, even though the trap happened after the first state mutation.**
 
@@ -135,6 +135,8 @@ The second line `let result = await future;` keyword ends the first message and 
 
 The call to `read()` is executed as a separate message and could possibly be executed remotely in another actor, see [inter-canister calls](#inter-canister-calls). The message sent to `read()` could possibly result in several messages if the `read()` function also `await`s in its body.
 
+In this case `read()` can't `await` in its body because it is a [query function](/internet-computer-programming-concepts/actors.html#public-shared-query), but if it were an [update](/internet-computer-programming-concepts/actors.html#public-shared-update) or [oneway](/internet-computer-programming-concepts/actors.html#public-shared-oneway) function, it would be able to send [messages](#messages-and-atomicity).
+
 If the sent message executes successfully, a _callback_ is made to `call_read` that is executed as yet another message as the last line `result + 1`. The callback writes the result into the future, completing it, and resumes the code that was waiting on the future, i.e. the last line `result + 1`.
 
 In total, there are **three messages**, two of which are executed inside the calling actor as part of `call_read` and one that is executed elsewhere, possibly a remote actor. In this case `actor A` sends a message to itself.
@@ -144,7 +146,7 @@ In total, there are **three messages**, two of which are executed inside the cal
 
 ### Atomic functions that send messages
 
-A successful atomic function may or may not mutate the state itself, but successful execution of an atomic function could cause multiple messages to be sent (by calling shared functions) that each may or may not execute successfully (and possibly mutate state locally or remotely), see [state commits](#state-commits-and-message-sends).
+An atomic function may or may not mutate local state itself, but execution of that atomic function could still cause multiple messages to be sent (by calling shared functions) that each may or may not execute successfully. In turn, these callees may change local or remote state, see [state commits](#state-commits-and-message-sends).
 
 ```motoko
 {{#include _mo/async-calls5.mo:a}}
@@ -189,7 +191,7 @@ If condition `b` is `true`, the `return` keyword ends the current message and st
 4. **Explicit [await expressions](#shared-functions-that-await)**  
    As we have seen in the [shared functions that `await`](#shared-functions-that-await) example, an `await` ends the current message, commits state up to that point and splits the execution of a function into separate messages.
 
-[*See official docs*](https://internetcomputer.org/docs/current/motoko/main/actors-async/#traps-and-commit-points)
+[_See official docs_](https://internetcomputer.org/docs/current/motoko/main/actors-async/#traps-and-commit-points)
 
 ### Messaging Restrictions
 
@@ -217,7 +219,9 @@ Examples of messaging restrictions:
 
 Messages in an actor are always executed sequentially, meaning one after the other and never in parallel. As a programmer, you have no control over the order in which _incoming messages_ are executed.
 
-You can only control the order in which you send messages to other actors, with the guarantee that they will be executed in the order you sent them. But you have no guarantee on the order in which you receive the _callbacks_ for those messages.
+You can only control the order in which you send messages to other actors, with the guarantee that, for a particular destination actor, they will be executed in the order you sent them. Messages sent to different actors may be executed out of order.
+
+You have no guarantee on the order in which you receive the results of any messages sent.
 
 Consult the [official docs](https://internetcomputer.org/docs/current/developer-docs/security/rust-canister-development-security-best-practices/#inter-canister-calls-and-rollbacks) for more information on this topic.
 
@@ -270,8 +274,8 @@ The shared function `incrementAndTrap` fails and does not return `()`. Instead i
 After `incrementAndTrap`, our mutable variable `state` is not changed at all.
 
 > **NOTE**  
-> _Usually a trap occurs without `Debug.trap()` during execution of code, for example at underflow or overflow of [bounded types](/base-library/primitive-types/bounded-number-types.html) or other runtime failures, see [traps](#traps)._  
->  
+> _Usually a trap occurs without `Debug.trap()` during execution of code, for example at underflow or overflow of [bounded types](/base-library/primitive-types/bounded-number-types.html) or other runtime failures, see [traps](#traps)._
+>
 > _[Assertions](/common-programming-concepts/assertions.html) also generate a trap if their argument evaluates to `false`._
 
 ## Async* and Await*
@@ -280,7 +284,7 @@ Recall that 'ordinary' [shared functions](/internet-computer-programming-concept
 
 **Private non-shared functions with `async*` return type** provide an [asynchronous context](#messaging-restrictions) without exposing the function as part of the public API of the actor.
 
-A call to an `async*` function also immediately returns a future. The future **needs** to be awaited using the `await*` keyword (in any asynchronous context `async` or `async*`) to produce a result. This was not the case with un-awaited `async` calls, see [atomic functions that send messages](#atomic-functions-that-send-messages).
+A call to an `async*` function immediately returns a _delayed computation_ of type `async* T`. Note the `*` that distinguishes this from the future `async T`. The computation **needs** to be awaited using the `await*` keyword (in any asynchronous context `async` or `async*`) to produce a result. This was not the case with un-awaited `async` calls, see [atomic functions that send messages](#atomic-functions-that-send-messages).
 
 For demonstration purposes, lets look at an example of a private `async*` function, that does not use its asynchronous context to call other `async` or `async*` functions, but instead only performs a _delayed computation_:
 
@@ -314,7 +318,12 @@ An `async*` function that only uses `await*` in its body to await computations o
 
 This is different form 'ordinary' `await` where each `await` triggers a new message and splits the function call into [several messages](#shared-functions-that-await). State changes from the current message are then committed each time a new `await` happens.
 
-The call to a private non-shared `async*` function is split up into [several messages](#shared-functions-that-await) only when we use an ordinary `await` in its body. Or when we `await*` a `async*` function that 'ordinarily' `await`s in its body.
+The call to a private non-shared `async*` function is split up into [several messages](#shared-functions-that-await) only when it executes an ordinary `await` on a future, either directly in its body, or indirectly, by calling `await*` on a computation that itself executes an ordinary `await` on a future.
+
+You can think of `await*` as indicating that this `await*` may perform zero or more ordinary `await`s during the execution of its computation.
+
+> **NOTE**  
+> _One way to keep track of possible `await`s and state mutations within `async*` functions is to use the [`Star.mo`](https://github.com/icdevs/star.mo) library, which is not covered in this book, but recommended._
 
 ```motoko
 {{#include _mo/async-calls8.mo}}
@@ -374,15 +383,15 @@ In every case, our code should handle [state commits and message sends](#state-c
 
 ## Table of asynchronous functions in Motoko
 
-| **Visibility** | **Async context** | **Return type** | **Awaited with** | **CS and TM\*\*** |
-| :------------- | :---------------- | :-------------- | :--------------- | :---------------- |
-| `public`       | yes               | `async` future  | `await`          | yes               |
-| `private`      | yes               | `async` future  | `await`          | yes               |
-| `private`      | yes               | `async*` future | `await*`         | no                |
+| **Visibility** | **Async context** | **Return type**      | **Awaited with** | **CS and TM\*\***                                                  |
+| :------------- | :---------------- | :------------------- | :--------------- | :----------------------------------------------------------------- |
+| `public`       | yes               | `async` future       | `await`          | yes                                                                |
+| `private`      | yes               | `async` future       | `await`          | yes                                                                |
+| `private`      | yes               | `async*` computation | `await*`         | [maybe](/advanced-concepts/async-programming.html#await-and-await) |
 
 \*\* Commits state and triggers a new message send.
 
-The _private_ function with 'ordinary' `async` return type is not covered in this chapter. It behaves like a public function with 'ordinary' `async` return type, meaning that when `await`ed, state is committed up to that point and a new message send is triggered. Because of its private visibility, it is not part of the [actor type](/internet-computer-programming-concepts/actors.html#actor-type). 
+The _private_ function with 'ordinary' `async` return type is not covered in this chapter. It behaves like a public function with 'ordinary' `async` return type, meaning that when `await`ed, state is committed up to that point and a new message send is triggered. Because of its private visibility, it is not part of the [actor type](/internet-computer-programming-concepts/actors.html#actor-type).
 
 ## Try-Catch Expressions
 
@@ -418,6 +427,9 @@ We analyze our error `e` using the methods from the [Error module](/base-library
 Note, we bind the return value of the whole try-catch block expression to the variable `result` to demonstrate that it is indeed an expression that evaluates to a value. In this case, the try-catch expression evaluates to a `Result` type.
 
 ### Catching a trap
-The same try-catch expression can be used to catch a [trap](#traps) that occurs during execution of an `async` or `async*` function. 
 
-A trap would surface as an [`Error`](#errors) with system reject code `5` (which isn't part of the [`ErrorCode`](/base-library/utils/error.html) variant) and a message that indicates why the execution trapped. 
+The same try-catch expression can be used to catch a [trap](#traps) that occurs during execution of an `async` or `async*` function.
+
+In the case of an `async*` function, you will only be able to catch traps that occur after a proper `await` (in another message). Any traps before that cannot be caught and will roll back the entire computation up to the previous commit point.
+
+A trap would surface as an [`Error`](#errors) with variant `#canister_error` from the type [`ErrorCode`](/base-library/utils/error.html). This error could be handled in the [catch](#try-catch-expressions) block.
