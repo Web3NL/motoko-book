@@ -1,26 +1,11 @@
 # The Motoko Programming Language
 
-## Latest updates
+Version 1.0  
+Last updated: 2023-06-17
 
-**13-06-2023** Chapter 6 [Actor Classes](/advanced-concepts/scalability/actor-classes.html)  
+## Download
 
-**13-06-2023** Chapter 10 [Tokenized Comments Example](/tokenized-comments-example.html)  
-
-**05-05-2023** Chapter 8 [Common Internet Computer Canisters](/common-internet-computer-canisters.html)  
-
-**18-04-2023** Chapter 7 [Project Deployment](/project-deployment.html)  
-
-**08-04-2023** Chapter 5 [Data Structures Beta](/base-library/utils.html)  
-**07-04-2023** Chapter 5 [Utility Modules Beta](/base-library/utils.html)
-
-**07-04-2023** Chapter 9 [ICRC1](/internet-computer-standards/icrc1.html)
-
-**03-04-2023** Chapter 6 [Message Inspection](/advanced-concepts/system-apis/message-inspection.html)
-
-**28-03-2023** Chapter 5 [Primitive Types Beta](/base-library/primitive-types.html)  
-**15-03-2023** Chapter 5 [Introduction](/base-library.html)
-
-**11-03-2023** Chapter 4 Release
+[Download as PDF](/print.html)
 
 ## Links
 
