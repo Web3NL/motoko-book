@@ -2,9 +2,13 @@
 
 Last updated: 2023-06-17
 
-[Download v1.0](/print.html)
-<img src="../assets/pdf.svg" alt="pdf" width="20" />  
-
+<a href="/print.html">
+Download v1.0
+<img src="pdf.svg" alt="pdf" width="20" />
+</a>  
+  
+[]()  
+[]()  
 
 ## Links
 
