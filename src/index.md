@@ -1,11 +1,10 @@
 # The Motoko Programming Language
 
-Version 1.0  
 Last updated: 2023-06-17
 
-## Download
+[Download v1.0](/print.html)
+<img src="../assets/pdf.svg" alt="pdf" width="20" />  
 
-[Download as PDF](/print.html)
 
 ## Links
 

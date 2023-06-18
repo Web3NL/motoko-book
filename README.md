@@ -1,6 +1,6 @@
 # [The Motoko Programming Language Book](https://web3.motoko-book.dev/)
 
-<img src="./src/motoko.png" width="300">
+<img src="assets/motoko.png" alt="motoko-logo" width="300" />
 
 A book covering a broad range of concepts for programming in Motoko on the Internet Computer.
 
