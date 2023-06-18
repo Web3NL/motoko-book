@@ -8,7 +8,6 @@ Download v1.0
 </a>  
   
 []()  
-[]()  
 
 ## Links
 
