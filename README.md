@@ -1,6 +1,8 @@
 # [The Motoko Programming Language Book](https://web3.motoko-book.dev/)
 
-A book aiming to cover a broad range of concepts for programming in Motoko on the Internet Computer.
+<img src="./src/motoko.png" width="300">
+
+A book covering a broad range of concepts for programming in Motoko on the Internet Computer.
 
 This book is meant for beginners and offers simple explanations. For a full overview of all features visit:
 

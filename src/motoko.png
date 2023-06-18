@@ -1,0 +1,13 @@
+--2023-06-18 21:48:59--  https://images.squarespace-cdn.com/content/v1/54437e21e4b048c830a0cff1/1582790973231-Y6Y49DRMFQTDOL5F9T32/motoko-master-01.png?format=2500w
+Resolving images.squarespace-cdn.com (images.squarespace-cdn.com)... 151.101.36.238
+Connecting to images.squarespace-cdn.com (images.squarespace-cdn.com)|151.101.36.238|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 107541 (105K) [image/png]
+Saving to: ‘motoko-master-01.png?format=2500w’
+
+     0K .......... .......... .......... .......... .......... 47% 3.25M 0s
+    50K .......... .......... .......... .......... .......... 95% 5.03M 0s
+   100K .....                                                 100% 77.8M=0.02s
+
+2023-06-18 21:48:59 (4.14 MB/s) - ‘motoko-master-01.png?format=2500w’ saved [107541/107541]
+
