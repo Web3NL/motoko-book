@@ -36,7 +36,7 @@ where `NAME` is the new name for your new identity. You will be prompted for a p
 For development, it might be useful to have 'throw away keys' without a password for easy testing of `dfx` features. For this we could run
 
 ```
-dfx identity new NAME --disable-encryption
+dfx identity new NAME --storage-mode=plaintext
 ```
 
 This will immediately generate a new private key and store it in folder in `.config/dfx/identity/`.
