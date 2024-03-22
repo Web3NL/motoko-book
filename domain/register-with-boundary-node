@@ -3,6 +3,6 @@ curl -sLv -X POST \
     https://ic0.app/registrations \
     --data @- <<EOF
 {
-    "name": "web3.motoko-book.dev"
+    "name": "motoko-book.dev"
 }
 EOF

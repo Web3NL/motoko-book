@@ -83,7 +83,7 @@ We add the new actor to the buffer (`users.add(instance)`) to be able to interac
 Finally, we return the principal of the new actor by calling `Principal.fromActor(instance)`.
 
 > **NOTE**  
-> _On the IC we actually need to provide some [cycles](https://web3.motoko-book.dev/base-library/ic-apis/experimental.html#experimentalcycles) with the call to the actor constructor `User.User()`. On Motoko Playground, this code may work fine for testing purposes._
+> _On the IC we actually need to provide some [cycles](/base-library/ic-apis/experimental.html#experimentalcycles) with the call to the actor constructor `User.User()`. On Motoko Playground, this code may work fine for testing purposes._
 
 ## Calling child actors
 

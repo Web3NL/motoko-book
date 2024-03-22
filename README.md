@@ -1,4 +1,4 @@
-# [The Motoko Programming Language Book](https://web3.motoko-book.dev/)
+# [The Motoko Programming Language Book](https://motoko-book.dev/)
 
 <img src="assets/motoko.png" alt="motoko-logo" width="300" />
 
