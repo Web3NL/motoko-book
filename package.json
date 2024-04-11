@@ -12,5 +12,8 @@
     "domain": "cp -r domain/.well-known/ book/ && cp domain/.ic-assets.json book/",
     "sitemap": "mdbook-sitemap-generator -d motoko-book.dev -o book/sitemap.xml",
     "build": "npm run build:book && npm run domain && npm run sitemap"
+  },
+  "dependencies": {
+    "@dfinity/auth-client": "^1.2.0"
   }
 }

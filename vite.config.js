@@ -9,8 +9,10 @@ export default defineConfig({
         dir: "theme",
         entryFileNames: "motoko.js",
         inlineDynamicImports: true,
-      }
+      },
     },
     emptyOutDir: false,
   },
+
+  root: "ii_origins",
 })
