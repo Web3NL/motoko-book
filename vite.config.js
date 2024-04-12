@@ -13,6 +13,4 @@ export default defineConfig({
     },
     emptyOutDir: false,
   },
-
-  root: "ii_origins",
 })
