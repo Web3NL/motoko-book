@@ -16,4 +16,4 @@ if (condition) { number += 1 };
 
 The first expression evaluates to `true` so the second expression is evaluated and the code inside it is executed. Note we used the `+=` assignment [operator](/common-programming-concepts/operators.html) to increment the mutable variable `number`.
 
-If the first expression evaluates to `false`, then the second expression is **not** evaluated and the _whole_ `if` expression will evaluate to the unit type `()` and the program continues.
+If the first expression evaluates to `false`, then the second expression is **not** evaluated and the _whole_ `if` expression would evaluate to type `()` and the program continues.
