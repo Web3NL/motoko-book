@@ -12,7 +12,7 @@ We recommend to make use of several services that work together to create and ma
 
 ## Step 1: Create an Internet Identity anchor
 
-Internet Identity (II) is outside the scope of this book. For more info on how to securely create an II Anchor and use it, please refer [to this page](https://internetcomputer.org/docs/current/tokenomics/identity-auth/auth-how-to#create-an-identity-anchor).
+Internet Identity (II) is outside the scope of this book. For more info on how to securely create an II Anchor and use it, please refer [to this page](https://identitysupport.dfinity.org/hc/en-us/articles/15430677359124-How-Do-I-Create-an-Internet-Identity-on-My-Mobile-Device-).
 
 ## Step 2: Transfer ICP to your NNS Dapp Wallet
 
