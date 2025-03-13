@@ -59,7 +59,7 @@ Here's an example:
 Our `CryptoAccount` class takes the same two arguments as before, but now has only two members. One is the public mutable `balance` variable. The second is a _public function_. Because there are two public fields, the expected type of the object returned from this class is
 
     {
-        pay : () -> Nat;
+        pay : (Nat) -> ();
         balance : Nat;
     }
 
