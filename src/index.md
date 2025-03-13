@@ -1,9 +1,9 @@
 # The Motoko Programming Language
 
-Last updated: 2023-06-17
+Last updated: 2025-03-13
 
 <a href="/print.html">
-Download v1.0
+Download v1.1
 <img src="pdf.svg" alt="pdf" width="20" />
 </a>  
   
