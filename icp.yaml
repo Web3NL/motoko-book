@@ -1,0 +1,16 @@
+canisters:
+  - name: motoko-book
+
+    build:
+      steps:
+        - type: pre-built
+          url: https://github.com/dfinity/sdk/raw/refs/tags/0.27.0/src/distributed/assetstorage.wasm.gz
+          sha256: 865eb25df5a6d857147e078bb33c727797957247f7af2635846d65c5397b36a6
+
+    sync:
+      steps:
+        - type: plugin
+          url: https://github.com/dfinity/certified-assets/releases/download/migration-v2.2.1-6b48585/sync_plugin.wasm
+          sha256: ca7cb5666c30d2875f8d5e10535f8a53f97a86c79c263f7d5bdac2fdd1bbf83c
+          dirs:
+            - book
