@@ -19,7 +19,7 @@ Download v1.1
 
 ## Author
 
-_Written by [@SamerWeb3](https://twitter.com/SamerWeb3)_
+_Written by [Samer](https://x.com/physiognostica)_
 
 _Special thank you to OpenAI's ChatGPT for helping me learn quickly and assisting me with writing this text!_
 
